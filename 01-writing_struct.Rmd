@@ -1,4 +1,4 @@
-# Writing Lab Reports: structure {#structure}
+# Writing Lab Reports: Structure {#structure}
 
 ## Structure Overview
 

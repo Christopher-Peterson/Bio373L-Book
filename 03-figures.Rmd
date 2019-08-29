@@ -15,6 +15,7 @@ library(dplyr)
 library(purrr)
 library(glue)
 theme_set(theme_cowplot())
+set.seed(20923) # to keep rngs consistent
 ```
 
 ## Captions
