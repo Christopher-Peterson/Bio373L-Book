@@ -1,0 +1,3 @@
+# Preface {-}
+
+This book contains advice for students in the University of Texas at Austin's Field Ecology course.  It will be updated throughout the semester. The first three chapters contain general guidelines for writing lab reports.  
