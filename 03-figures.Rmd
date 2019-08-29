@@ -287,7 +287,7 @@ anole_dat %>% arrange(Perch, desc(Count)) %>%
 
 
 
-An important consideration is whether to represent your data with counts or proportions.  There are pros and cons to both approaches, but frequencies are usually better if the number of observations differs among your groups (compare Figure \@ref(fig:anoleFreqByPerch) with Figure \@ref(fig:anoleCountDodge)).  Be careful when calculating frequencies, because you may inadvertently end up making a graph that isn't answering the question you're trying to ask.  For example, Figure \@ref(fig:anoleFreqByPerch) shows how anole frequencies differ between perch types, but  Figure \@ref(fig:anoleBySppCap) shows the frequency at which each species occupies the two perches.
+An important consideration is whether to represent your data with counts or proportions.  There are pros and cons to both approaches, but frequencies are usually better if the number of observations differs among your groups (compare Figure \@ref(fig:anoleFreqByPerch) with Figure \@ref(fig:anoleCountDodge)).  Be careful when calculating frequencies, because you may inadvertently end up making a graph that isn't answering the question you're trying to ask.  For example, Figure \@ref(fig:anoleFreqByPerch) shows how anole frequencies differ between perch types, but  Figure \@ref(fig:anoleFreqBySpp) shows the frequency at which each species occupies the two perches.
 
 (ref:anoleByPerchCap) Frequency of *Anolis* species captured from canopy and trunk perches.
 
