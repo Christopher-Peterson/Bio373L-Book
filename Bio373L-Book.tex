@@ -1,4 +1,4 @@
-\documentclass[]{article}
+\documentclass[]{book}
 \usepackage{lmodern}
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
@@ -21,14 +21,15 @@
 \usepackage{microtype}
 \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
 }{}
-\usepackage[margin=1in]{geometry}
 \usepackage{hyperref}
 \hypersetup{unicode=true,
+            pdftitle={Bio 373L Survival Guide},
+            pdfauthor={Christopher R. Peterson},
             pdfborder={0 0 0},
             breaklinks=true}
 \urlstyle{same}  % don't use monospace font for urls
 \usepackage{natbib}
-\bibliographystyle{plainnat}
+\bibliographystyle{apalike}
 \usepackage{longtable,booktabs}
 \usepackage{graphicx,grffile}
 \makeatletter
@@ -75,33 +76,36 @@
 
 \setlength{\droptitle}{-2em}
 
-  \title{}
-    \pretitle{\vspace{\droptitle}}
-  \posttitle{}
-    \author{}
-    \preauthor{}\postauthor{}
-    \date{}
-    \predate{}\postdate{}
-  
+  \title{Bio 373L Survival Guide}
+    \pretitle{\vspace{\droptitle}\centering\huge}
+  \posttitle{\par}
+    \author{Christopher R. Peterson}
+    \preauthor{\centering\large\emph}
+  \postauthor{\par}
+      \predate{\centering\large\emph}
+  \postdate{\par}
+    \date{2019-08-29}
+
 \usepackage{booktabs}
 
 \begin{document}
+\maketitle
 
 {
-\setcounter{tocdepth}{2}
+\setcounter{tocdepth}{1}
 \tableofcontents
 }
-\section*{Preface}\label{preface}
-\addcontentsline{toc}{section}{Preface}
+\chapter*{Preface}\label{preface}
+\addcontentsline{toc}{chapter}{Preface}
 
 This book contains advice for students in the University of Texas at
 Austin's Field Ecology course. It will be updated throughout the
 semester. The first three chapters contain general guidelines for
 writing lab reports.
 
-\section{Writing Lab Reports: Structure}\label{structure}
+\chapter{Writing Lab Reports: Structure}\label{structure}
 
-\subsection{Structure Overview}\label{structure-overview}
+\section{Structure Overview}\label{structure-overview}
 
 The main goal of scientific writing is to effectively communicate
 complicated concepts. Scientific manuscripts tend to follow a
@@ -127,7 +131,7 @@ navigate these concepts. Each section should answer a question:
 
 Greater detail is provided in the following sections.
 
-\subsection{Abstract}\label{abstract}
+\section{Abstract}\label{abstract}
 
 The abstract is a one paragraph summary that functions as an
 advertisement/elevator pitch for the rest of the paper. A reader should
@@ -142,7 +146,7 @@ tables, or other literature in here.
 
 Generally, this section is written last.
 
-\subsection{Introduction}\label{introduction}
+\section{Introduction}\label{introduction}
 
 The introduction section sets the stage for the work you are about to
 describe and should tell your reader \emph{why} your research is
@@ -200,7 +204,7 @@ You should cite at least two peer-reviewed papers in this section.
 Please ensure these papers are actually relevant to what you're talking
 about and aren't just tacked on to meet this requirement.
 
-\subsection{Methods}\label{methods}
+\section{Methods}\label{methods}
 
 This section includes detailed information on your experimental setup,
 data collection procedures, and the statistical analyses you used. If
@@ -235,7 +239,7 @@ section are often the easiest to write, so it might be a good idea to
 start with these two middle sections, and then work on the introduction
 and discussion.
 
-\subsection{Results}\label{results}
+\section{Results}\label{results}
 
 This is where you describe your observations and the results of any
 analyses. Make sure you do not include new methods (\textbf{including
@@ -248,7 +252,7 @@ following the same system you used in the methods (some sub-sections
 from the methods may not need to be used in the results, but follow the
 organization as closely as possible).
 
-\subsubsection{Reporting statistics}\label{reporting-statistics}
+\subsection{Reporting statistics}\label{reporting-statistics}
 
 In general, you should begin by presenting the relevant summary
 statistics (such as means for measured data and frequencies for
@@ -289,7 +293,7 @@ the reader nothing about the trees or ants or mushrooms that you were
 studying. Do not write up your results like this; it's unpleasant to
 read and you're just going to have to fix it in revisions.
 
-\subsubsection{Do not interpret your data
+\subsection{Do not interpret your data
 here}\label{do-not-interpret-your-data-here}
 
 Do not interpret your data in the results. That belongs in the
@@ -304,7 +308,7 @@ That belongs in the discussion.
 This is probably the most common mistake I've encountered in grading
 student lab reports.
 
-\subsection{Discussion}\label{discussion}
+\section{Discussion}\label{discussion}
 
 The discussion is where you are should interpret your data and draw
 conclusions by comparing your data to what is known from the published
@@ -344,7 +348,7 @@ after temperature tolerance trials'.
 As in the introduction, you should cite at least two peer-reviewed
 papers in this section in a way that isn't obviously shoehorned in.
 
-\subsection{Literature Cited}\label{literature-cited}
+\section{Literature Cited}\label{literature-cited}
 
 You must use a minimum of \textbf{four} primary literature sources in
 your report, with at least two sources in both the introduction and
@@ -381,10 +385,10 @@ more than just a surface level. For example, if your lab report is on
 the distribution of cottonwoods at BLF, a paper about the cottonwood's
 genomic structure is probably not going to be relevant.
 
-\subsection{Common Mistakes for particular
+\section{Common Mistakes for particular
 sections}\label{common-mistakes-for-particular-sections}
 
-\subsubsection{Introduction and
+\subsection{Introduction and
 Discussion}\label{introduction-and-discussion}
 
 Null hypotheses are statistical tools used for certain tests (e.g., a
@@ -398,7 +402,7 @@ introduction as well (e.g., ``BFL is undergoing succession, which will
 be indicated by a differences in the relative abundances of canopy and
 sapling trees'').
 
-\subsubsection{Results}\label{results-1}
+\subsection{Results}\label{results-1}
 
 Don't cite papers in the results. You are presenting your results, not
 somebody else's. If you want to do this, it's probably something that
@@ -409,7 +413,7 @@ present, it can usually just be presented in the text of the results. If
 there's a lot of data, it is worth considering if a figure would be
 better.
 
-\section{Writing Lab Reports: Style}\label{style}
+\chapter{Writing Lab Reports: Style}\label{style}
 
 It's easy to write a scientific report that confuses or bores the
 audience. Developing a style that keeps the reader following along can
@@ -419,7 +423,7 @@ This chapter contains a number of stylistic suggestions that can improve
 your lab reports. There isn't `one true style' for scientific writing,
 but I've found that these guidelines can help when you're starting out.
 
-\subsection{Be Concise}\label{be-concise}
+\section{Be Concise}\label{be-concise}
 
 Parsimony is often held up as an ideal in science; if the evidence
 equally supports two explanations, we tend to prefer the simpler one.
@@ -505,7 +509,7 @@ You should consolidate:
 
 Similar advice applies to figures.
 
-\subsection{Sentence Structure}\label{sentence-structure}
+\section{Sentence Structure}\label{sentence-structure}
 
 Your writing should flow. When moving between topics (or sub-topics), it
 is helpful to include transitional elements (words, phrases, or
@@ -525,7 +529,7 @@ Avoid
 sentences} and lengthy sentences that require multiple reads to
 understand.
 
-\subsection{Passive Voice}\label{passive-voice}
+\section{Passive Voice}\label{passive-voice}
 
 While there are circumstances in which
 \href{https://www.quickanddirtytips.com/education/grammar/active-voice-versus-passive-voice}{passive
@@ -543,7 +547,7 @@ effectively used alongside active voice when appropriate. However, I'd
 recommend taking a look at your passive sentences and considering if
 active voice would make them more straightforward.
 
-\subsection{Word Choice}\label{word-choice}
+\section{Word Choice}\label{word-choice}
 
 It's tempting to use longer, more technical sounding words when writing
 a scientific paper. This tends to make papers harder to read with no
@@ -561,8 +565,7 @@ stick to ``use.''
 
 \textbf{Approximately}: use \textbf{``about.''}
 
-\subsection{Scientific and Common
-Names}\label{scientific-and-common-names}
+\section{Scientific and Common Names}\label{scientific-and-common-names}
 
 \begin{itemize}
 \tightlist
@@ -592,7 +595,7 @@ Names}\label{scientific-and-common-names}
   to\ldots{}.
 \end{itemize}
 
-\subsection{Other Grammar}\label{other-grammar}
+\section{Other Grammar}\label{other-grammar}
 
 \begin{itemize}
 \tightlist
@@ -608,7 +611,7 @@ Names}\label{scientific-and-common-names}
   parts of scientific names.
 \end{itemize}
 
-\subsection{Commonoy Confused
+\section{Commonoy Confused
 Definitions}\label{commonoy-confused-definitions}
 
 \begin{itemize}
@@ -639,7 +642,7 @@ Definitions}\label{commonoy-confused-definitions}
   exceptions}, affect is generally a verb and effect is usually noun.
 \end{itemize}
 
-\subsection{Significant Digits}\label{significant-digits}
+\section{Significant Digits}\label{significant-digits}
 
 We generally aren't using high-precision instruments. As such, you
 should round numbers with a large number of decimal places to an
@@ -650,9 +653,9 @@ Generally, p-values should be rounded to four digits (and noted as
 should probably have no more than two decimal places. For everything
 else, use your judgment.
 
-\subsection{Tenses}\label{tenses}
+\section{Tenses}\label{tenses}
 
-\section{Figures and Tables}\label{figures}
+\chapter{Figures and Tables}\label{figures}
 
 Good figures are some of the most important part of a manuscript. When
 learning to write scientific papers, it's often common to view figures
@@ -664,7 +667,7 @@ general sense of what's going on.
 Tables are also an important part of a paper's results, but good figures
 are usually easier to interpret by the reader.
 
-\subsection{Captions}\label{captions}
+\section{Captions}\label{captions}
 
 Figures and tables require captions that explain what they represent.
 Captions should be below figures and above captions. The first
@@ -683,7 +686,7 @@ details.
 Note that figures in your manuscript \textbf{should not have titles}.
 This information belongs in the caption.
 
-\subsection{Figures}\label{figures}
+\section{Figures}\label{figures}
 
 Make sure the legend gives enough information that the reader can
 understand exactly what the figure/table represents without having to
@@ -696,7 +699,7 @@ Figures should communicate your results, not just present/summarize your
 data. A good figure tells a story. If there is a trend or pattern, it
 should be designed to emphasize it.
 
-\subsubsection{Specific Figure
+\subsection{Specific Figure
 Guidelines}\label{specific-figure-guidelines}
 
 Figure design is communication, so you want to make the result/message
@@ -751,7 +754,7 @@ caring.
 Please remember that you should be writing your lab reports as if the
 reader (i.e., me) didn't know exactly what you did.
 
-\subsubsection{Be Concise}\label{be-concise-1}
+\subsection{Be Concise}\label{be-concise-1}
 
 If you have multiple figures that conceptually belong together (e.g.,
 the same measurements taken in three years), you should turn them into a
@@ -759,9 +762,9 @@ single multi-panel figure. Label your the panels with letters in the
 upper left corner; the caption should explain how the panels are
 different.
 
-\subsection{Some Example Figures}\label{some-example-figures}
+\section{Some Example Figures}\label{some-example-figures}
 
-\subsubsection{General Formatting}\label{general-formatting}
+\subsection{General Formatting}\label{general-formatting}
 
 Figure \ref{fig:irisBad} is poorly formatted:
 
@@ -833,7 +836,7 @@ virginica}. The association is not statistically significant ((Sepal
 Length) = 6.5 + -0.2*(Sepal Width); \(R^2 = 0.01\); \(p = 0.152\)).}
 \end{figure}
 
-\subsubsection{Continuous response, categorical
+\subsection{Continuous response, categorical
 predictors}\label{continuous-response-categorical-predictors}
 
 There are a number of options for representing continuous data grouped
@@ -891,7 +894,7 @@ with standard errors. Sepal length differs significantly among species
 significantly among species \((p < 0.0001)\).}
 \end{figure}
 
-\subsubsection{Categorical, count, or frequency
+\subsection{Categorical, count, or frequency
 responses}\label{categorical-count-or-frequency-responses}
 
 These sorts of data usually involve examining how counts or frequencies
@@ -982,7 +985,7 @@ perch the species was more common at, and the size of the colored
 regions indicates the difference between perches.}
 \end{figure}
 
-\subsection{Tables}\label{tables}
+\section{Tables}\label{tables}
 
 Tables are an effective addition to a manuscript when you have a lot of
 data in the text and want to present it to the reader in an organized
@@ -1009,6 +1012,8 @@ C & 12 & 22.00 & 2.97 & 17.99 & 26.38\\
 \bottomrule
 \end{tabular}
 \end{table}
+
+\bibliography{book.bib,packages.bib}
 
 
 \end{document}
