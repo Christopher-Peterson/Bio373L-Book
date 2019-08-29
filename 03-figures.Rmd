@@ -1,0 +1,372 @@
+# Figures and Tables {#figures}
+
+Good figures are some of the most important part of a manuscript.  When learning to write scientific papers, it's often common to view  figures as an afterthought.  This is a mistake. The figure should tell a fairly complete story.  Combined with its caption, the reader should be able to look at the figure immediately after reading the abstract and have a general sense of what's going on.  
+
+Tables are also an important part of a paper's results, but good figures are usually easier to interpret by the reader.
+
+```{r setup_figures, include = FALSE, message=FALSE, warning=FALSE, echo = FALSE}
+library(ggplot2)
+library(cowplot)
+library(tidyr)
+library(forcats)
+library(tibble)
+library(ggforce)
+library(dplyr)
+library(purrr)
+library(glue)
+theme_set(theme_cowplot())
+```
+
+## Captions
+
+Figures and tables require captions that explain what they represent.  Captions should be below figures and above captions.  The first "sentence" of a caption shouldn't actually be a sentence; it's more of a description. See the various examples in this chapter for more details.  
+
+The caption should help the figure or table stand alone from everything else. If there are abbreviations or acronyms in the figure, they should be defined in the caption. If your figure is related to a statistical test, you should present the results of the test in the figure caption. If there's a line of best fit in a scatterplot figure, this means that a linear regression was performed behind the scenes; you should report the details.  
+
+
+Note that figures in your manuscript **should not have titles**. This information belongs in the caption.
+
+## Figures
+
+Make sure the legend gives enough information that the reader can understand exactly what the figure/table represents without having to look at the text.  DO refer to all tables/figures in the body of the text, and include them in order (i.e. the first table/figure the reader comes across should be called table 1/figure 1 and should be the first one referred to in the text).
+
+Figures should communicate your results, not just present/summarize your data.  A good figure tells a story.  If there is a trend or pattern, it should be designed to emphasize it. 
+
+### Specific Figure Guidelines
+
+Figure design is communication, so you want to make the result/message as obvious as you can. The longer a reader has to stare at your figure before "getting it," the more likely they are to get bored or stop caring. 
+
+- Avoid large amounts of empty white space.  For categorical data, you should remove categories that have no data unless their absence is somehow important and interesting. 
+  - For example, if you are surveying trees and a species is not observed, there's no reason for it to be in the figure.
+- Is your figure emphasizing what it should?
+  - If you're contrasting two groups, are they clearly contrasted? Could re-ordering the groups improve the contrast?
+  - If you're comparing groups of frequencies, you should have them ordered so that the first group goes from highest to lowest frequency.
+  - If you are trying to show a trend, is it being adequately emphasized?
+  - Please note that this doesn't mean cheating, or changing the data.
+- The axes and legends should be be clear.
+  - Often, the default axis or legend names will be the label of a specific cell or column.  You can change these defaults.
+- Consider how your figure will look to other people.
+  - How will it look if printed from a black and white printer?
+    - Hint: the default blue and orange colors in Excel are indistinguishable in gray scale; the same is true for the default ggplot2 palette in R.
+  - [How would it look](https://venngage.com/blog/color-blind-friendly-palette/) to someone with color blindness?
+    -If using R, the Viridis color scales work nicely for this.
+
+Please remember that you should be writing your lab reports as if the reader (i.e., me) didn't know exactly what you did.  
+
+### Be Concise
+
+If you have multiple figures that conceptually belong together (e.g., the same measurements taken in three years), you should turn them into a single multi-panel figure.  Label your the panels with letters in the upper left corner; the caption should explain how the panels are different. 
+
+## Some Example Figures
+
+### General Formatting
+```{r iris_eqn, include = FALSE}
+iris_eqn = lm(Petal.Length~Petal.Width, iris) %>% 
+  coef %>% as.list %>% 
+  map(~round(.x, 1)) %>% 
+  glue_data("(Petal Length) = {`(Intercept)`} + {Petal.Width}*(Petal Width)")
+
+iris_smry = summary(lm(Petal.Length~Petal.Width, iris))
+iris_smry
+anova(lm(Petal.Length~Petal.Width, iris))[["Pr(>F)"]]
+
+# For sepals, now
+iris_sep = lm(Sepal.Length~Sepal.Width, iris) 
+sep_eqn = iris_sep %>% 
+  coef %>% as.list %>% 
+  map(~round(.x, 1)) %>% 
+  glue_data("(Sepal Length) = {`(Intercept)`} + {Sepal.Width}*(Sepal Width)")
+
+iris_smry_sep = summary(iris_sep)
+iris_smry_sep
+anova(iris_sep)[["Pr(>F)"]][1]
+```
+
+Figure \@ref(fig:irisBad) is poorly formatted:
+
+- The colors are hard to distinguish when printed and black and white;
+- The axis and legend text are showing the default labels instead of informative values;
+- There is a lot of white space, partially due to a bad y axis scale;
+- The equation is in the figure instead of the caption;
+- The caption is vague and uninformative; 
+- There is an unnecessary title;
+- There are grid lines;
+
+(ref:irisBadCap) Petal width (X variable) vs petal length (Y variable).  The regression is significant ($R^2 = `r round(iris_smry$r.squared, 2)`$; $p<0.0001$).
+
+(ref:irisGoodCap) Association between petal width and petal length in three species of *Iris*. Petal length increases with petal width (`r iris_eqn`; $R^2 = `r round(iris_smry$r.squared, 2)`$; $p<0.0001$). 
+
+```{r irisBad, echo = FALSE, fig.cap='(ref:irisBadCap)'}
+# First, style guidelines
+# Bad legends
+
+ggplot(iris, aes(x = Petal.Width, y = Petal.Length)) +
+  geom_point(aes(color = Species)) + ylim(0, 9) +
+  theme(panel.grid.major.y  = element_line(color = grey(.8), size = .7),
+        panel.grid.minor.y  = element_line(color = grey(.8), size = .2), 
+        plot.title = element_text(hjust = .5)) +
+  geom_smooth(aes(), method = "lm", se = FALSE) + 
+  geom_text(label = iris_eqn, hjust = 0.05, data =   
+              data.frame(Petal.Width = 0, Petal.Length = 9)) +
+  ggtitle("Iris Petal Width vs. Petal Length")
+
+
+```
+
+Figure \@ref(fig:irisGood) contains the same data, but has been reformatted to address these issues. Note the use of units in the axis labels, the formatting of scientific species names, the positioning of the legend to minimize whitespace, and the lack of a title and gridlines. This is also an example of how to plot data with a continuous response and a combination of continuous and categorical predictors.  
+
+```{r irisGood, echo = FALSE, fig.cap = '(ref:irisGoodCap)'}
+iris %>% mutate(Species = glue("I. {Species}")) %>% 
+ggplot(aes(x = Petal.Width, y = Petal.Length)) +
+  geom_point(aes(color = Species, shape = Species)) + 
+  geom_smooth(aes(), method = "lm", se = FALSE) + 
+  ylab("Petal Length (cm)") + xlab("Petal Width (cm)") +
+  scale_color_viridis_d(end = .8, option = "inferno") + 
+  theme(legend.text = element_text(face = "italic"),
+        legend.position =c(0.02, .88))
+
+```
+
+Figure \@ref(fig:irisPanel) is an example of a multi-panel figure; in the text, you should refer to parts of it as Figure \@ref(fig:irisPanel)A, \@ref(fig:irisPanel)B, etc.
+
+(ref:irisPanelCap) Association between sepal width and sepal length for A) *Iris setosa*, B) *I. versicolor*, and C) *I. virginica*. The association is not statistically significant (`r sep_eqn`; $R^2 = `r round(iris_smry_sep$r.squared, 2)`$; $p = 0.152$). 
+
+
+```{r irisPanel, echo = FALSE, fig.cap = '(ref:irisPanelCap)'}
+iris %>% mutate(Species = glue("Iris {Species}")) %>% 
+ggplot(aes(x = Sepal.Width, y = Sepal.Length)) +
+  geom_point() + 
+  facet_grid(Species~.) + 
+  geom_smooth(aes(), method = "lm", se = FALSE) + 
+  ylab("Sepal Length (cm)") + xlab("Sepal Width (cm)") +
+  scale_color_viridis_d(end = .8, option = "inferno") + 
+  theme(strip.background = element_blank(), 
+        strip.text =element_text(face = "italic")) + 
+  geom_text(aes(label = label), data = tibble(
+    Sepal.Width = 1.95, Sepal.Length = 8, label = LETTERS[1:3], 
+    Species = glue("Iris {unique(iris$Species)}"))) + 
+  coord_cartesian(xlim = c(2, 4.5))
+```
+
+### Continuous response, categorical predictors
+
+There are a number of options for representing continuous data grouped into multiple categories.  You should avoid "dynamite" plots (Figure \@ref(fig:dynamite)), which use a bar with error lines to represent a mean and standard error; these figures use a lot of space to provide very little information.  A better option is to use box plots (Figure \@ref(fig:boxplot)), which show the median, quartiles, range, and outliers of each group.  Equivalently, you could use a group of histograms (Figure \@ref(fig:histoplot)).  A particularly effective way to visualize this type of dataset shows the distribution of the data and the summary statistics (Figure \@ref(fig:violin)).
+
+(ref:dynamiteCap) Mean sepal width for three species of *iris*, with standard errors. Sepal length differs significantly among species $(p < 0.0001)$.
+
+(ref:boxplotCap) Distribution of sepal width for three species of *iris*. Sepal length differs significantly among species $(p < 0.0001)$.
+
+(ref:violinCap) Distribution of sepal width, for three species of *iris*, with mean and standard errors in red. Sepal length differs significantly among species $(p < 0.0001)$.
+
+
+```{r dynamite, echo = FALSE, fig.cap = '(ref:dynamiteCap)'}
+iris_dyn = iris %>% group_by(Species) %>% 
+  summarize(y = mean(Sepal.Width), 
+          se = sd(Sepal.Width)/sqrt(n())) %>% 
+  mutate(Species = paste0("I. ", Species))
+ggplot(iris_dyn, aes(x = Species, y )) + 
+  geom_col(fill = "white", color = "black") + 
+  geom_errorbar(aes(ymin = y-se, ymax = y+se), width = .3) +
+  ylab("Sepal Width (cm)") + 
+  theme(axis.text.x = element_text(face = "italic"))
+
+```
+
+```{r boxplot, echo = FALSE, fig.cap = '(ref:boxplotCap)'}
+iris %>% mutate(Species = paste("I.", Species)) %>% 
+  ggplot(aes(x = Species, Sepal.Width )) + 
+  geom_boxplot() + 
+  ylab("Sepal Width (cm)") + 
+  theme(axis.text.x = element_text(face = "italic"))
+
+```
+
+```{r histoplot, echo = FALSE, fig.cap = '(ref:boxplotCap)'}
+iris %>% mutate(Species = paste("I.", Species)) %>% 
+  ggplot(aes(x = Sepal.Width )) + 
+  geom_histogram(fill = "white", color = "black", binwidth = .1) + 
+  facet_grid(Species~., switch = "both") + 
+  xlab("Sepal Width (cm)") + 
+  theme(strip.text = element_text(face = "italic"),
+        strip.background = element_blank(),
+        strip.placement = "outside") + ylab("")
+
+```
+
+```{r violin, echo = FALSE, warning = FALSE,fig.cap = '(ref:violinCap)'}
+iris %>% mutate(Species = paste("I.", Species)) %>% 
+  ggplot(aes(x = Species, Sepal.Width )) + 
+  geom_violin() + 
+  geom_sina() + 
+  geom_errorbar(aes(y = y, ymin = y - se, ymax = y + se), 
+                color = "red", data = iris_dyn, width = .15)+
+  geom_point(aes(y = y), color = "red", data = iris_dyn)+
+  ylab("Sepal Width (cm)") + 
+  theme(axis.text.x = element_text(face = "italic"))
+
+```
+
+
+### Categorical, count, or frequency responses
+
+These sorts of data usually involve examining how counts or frequencies differ among groups; they're often associated with $\chi^2$ tests. Generally, it's best to represent these sorts of data with bar graphs (avoid pie charts).  When making a bar graph, it's a good idea to arrange your data to emphasize any trends.  The species in Figure \@ref(fig:anoleBad) are organized alphabetically, which obscures any trend.  A better option is to organize by decreasing frequency of either total counts (like in Figure \@ref(fig:anoleCountStack)) or of one of the groups (Figure \@ref(fig:anoleCountDodge)). These make it easier to detect patterns.
+
+
+```{r make_anole_data, echo = FALSE }
+
+anole_classes = tribble(
+~"Species",          ~"Ecomorph",      
+"A. chlorocyanus",   "Trunk-crown",
+"A. cristatellus",   "Trunk-ground",
+"A. cybotes",        "Trunk-ground",
+"A. distichus",      "Trunk",
+"A. equestris",      "Crown Giant",
+"A. garmani",        "Crown Giant",
+"A. carolinensis",   "Trunk-crown",
+"A. sagrei",         "Trunk-ground",
+"A. trinitatus",     "Ground-ish")
+set.seed(123); anole_dat = anole_classes %>% 
+  distinct(Ecomorph) %>% 
+  mutate(ground_prob = c(.25, .75, .5, .1, .9)) %>% 
+  right_join(anole_classes, by = "Ecomorph") %>% 
+  mutate(count = rpois(9, 3.5)*5 + rpois(9, 6)) %>% 
+  mutate(Trunk = rbinom(9, count, ground_prob),
+         Canopy = count - Trunk) %>%
+  select(Species, Ecomorph, Trunk, Canopy) %>% 
+  # Add in trunk bias
+  mutate(Trunk = round(Trunk * 2.5)) %>% 
+  gather(key = "Perch", value = "Count", Trunk, Canopy) %>% 
+  mutate(Perch = factor(Perch, levels = c("Trunk", "Canopy")))
+
+```
+
+(ref:AnoleCountCap) Number of *Anolis* captured from canopy and trunk perches.
+
+```{r anoleBad, echo = FALSE, fig.cap = '(ref:AnoleCountCap)'}
+
+anole_dat %>% 
+  ggplot(aes(x = Species, y = Count, group = Perch)) + 
+  geom_col(aes(fill = Perch), color = "black", position = position_dodge()) +
+  scale_fill_manual(values = c(grey(.95), grey(.6)), 
+                    name = "Perch Position") +
+    theme(axis.text.x = element_text(face = "italic", 
+                                 angle = -20, hjust = 0.5, vjust = -.2),
+        legend.position = c(0.05,1), #legend.direction = "horizontal", 
+        legend.justification = c(0,1))
+```
+
+```{r anoleCountStack, echo = FALSE, fig.cap = '(ref:AnoleCountCap)'}
+
+desc_cnt_lvls = anole_dat %>% group_by(Species) %>% 
+  summarize(n = sum(Count)) %>% arrange(desc(n)) %>% pull(Species)
+anole_dat %>% arrange(desc(Count)) %>% 
+  mutate(Species = factor(Species, levels = desc_cnt_lvls)) %>% 
+  ggplot(aes(x = Species, y = Count, group = Perch)) + 
+  geom_col(aes(fill = Perch), color = "black") +
+  scale_fill_manual(values = c(grey(.95), grey(.6)), 
+                    name = "Perch Position") +
+theme(axis.text.x = element_text(face = "italic", 
+                                 angle = -20, hjust = 0.5, vjust = -.2),
+        legend.position = c(1,1), legend.direction = "horizontal", 
+        legend.justification = c(1,1))
+```
+
+```{r anoleCountDodge, echo = FALSE, fig.cap = '(ref:AnoleCountCap)'}
+
+anole_dat %>% arrange(Perch, desc(Count)) %>% 
+  mutate(Species = fct_inorder(Species)) %>% 
+  ggplot(aes(x = Species, y = Count, group = Perch)) + 
+  geom_col(aes(fill = Perch), color = "black", position = position_dodge()) +
+  scale_fill_manual(values = c(grey(.95), grey(.6)), 
+                    name = "Perch Position") +
+  theme(axis.text.x = element_text(face = "italic", 
+                                 angle = -20, hjust = 0.5, vjust = -.2),
+        legend.position = c(1,1), legend.direction = "horizontal", 
+        legend.justification = c(1,1))
+```
+
+
+
+An important consideration is whether to represent your data with counts or proportions.  There are pros and cons to both approaches, but frequencies are usually better if the number of observations differs among your groups (compare Figure \@ref(fig:anoleFreqByPerch) with Figure \@ref(fig:anoleCountDodge)).  Be careful when calculating frequencies, because you may inadvertently end up making a graph that isn't answering the question you're trying to ask.  For example, Figure \@ref(fig:anoleFreqByPerch) shows how anole frequencies differ between perch types, but  Figure \@ref(fig:anoleBySppCap) shows the frequency at which each species occupies the two perches.
+
+(ref:anoleByPerchCap) Frequency of *Anolis* species captured from canopy and trunk perches.
+
+```{r anoleFreqByPerch, echo = FALSE, fig.cap = '(ref:anoleByPerchCap)'}
+
+anole_freq = anole_dat %>% group_by(Perch) %>% 
+  mutate(Frequency = Count/sum(Count)) %>% ungroup %>% 
+  arrange(Perch, desc(Frequency) )
+anole_freq %>%  
+  mutate(Species = fct_inorder(Species)) %>% 
+  ggplot(aes(x = Species, y = Frequency, group = Perch)) + 
+  geom_col(aes(fill = Perch), color = "black", position = position_dodge()) +
+  scale_fill_manual(values = c(grey(.95), grey(.6)), 
+                    name = "Perch Position") +
+  theme(axis.text.x = element_text(face = "italic", 
+                                 angle = -20, hjust = 0.5, vjust = -.2),
+        legend.position = c(0.05,1), legend.direction = "horizontal", 
+        legend.justification = c(.0,1)) +
+  ylab("Proportion of species\nat each perch position")
+```
+
+(ref:anoleBySppCap) Perch frequency for 9 species of *Anolis*.
+
+```{r anoleFreqBySpp, echo = FALSE, fig.cap = '(ref:anoleBySppCap)'}
+
+anole_freq1 = anole_dat %>% group_by(Species) %>% 
+  mutate(Frequency = Count/sum(Count)) %>% ungroup %>% 
+  arrange(Perch, Frequency) 
+anole_freq1 %>%  
+  mutate(Species = fct_inorder(Species)) %>% 
+  ggplot(aes(x = Species, y = Frequency, group = Perch)) + 
+  geom_col(aes(fill = Perch), color = "black") +
+  scale_fill_manual(values = c(grey(.95), grey(.6)), 
+                    name = "Perch\nPosition") +
+  theme(axis.text.x = element_text(face = "italic", 
+                                 angle = -20, hjust = 0, vjust = 1)) +
+  ylab("Frequency of each species at perch position")
+```
+
+If there is some aspect of your data that you'd like to really emphasize, it can help to get more creative with your figures. For example, the most visually striking parts of Figure \@ref(fig:anoleBarFreqDiff) are the colored sections of the bars, which correspond to the direction and magnatude of the difference between perches for each species. Do note that making more complicated figures may require extra explanation in the caption.   
+
+(ref:anoleDiffCap) Number of *Anolis* found at each perch position. The white bar indicates the count at the less frequent perch, the total height is the count at the more frequent perch, color indicates which perch the species was more common at, and the size of the colored regions indicates the difference between perches.
+
+```{r anoleBarFreqDiff, echo = FALSE, fig.cap='(ref:anoleDiffCap)'}
+
+# When comparing groups
+
+anole_diff_dat = anole_freq %>% group_by(Species) %>% 
+  summarize(lowest = min(Frequency), highest = max(Frequency),
+            which_higher = Perch[Frequency == highest]) %>% 
+  arrange(desc(lowest))
+anole_diff_dat %>%  
+  mutate(Species = fct_inorder(Species)) %>% 
+  ggplot(aes(x = Species)) + 
+  geom_col(aes(y = highest, fill = which_higher), color = "black") +
+  geom_col(aes(y = lowest), fill = "white", color = "black") +
+  scale_fill_viridis_d(begin = .2, end = .81,
+                    name = "More frequent\nperch position") +
+  theme(axis.text.x = element_text(face = "italic", 
+                                 angle = -20, hjust = 0.5, vjust = -.2),
+        legend.position = c(1,1), legend.direction = "vertical", 
+        legend.justification = c(1,1)) +
+  ylab("Proportion of species \nat each perch position")
+```
+
+## Tables
+
+Tables are an effective addition to a manuscript when you have a lot of data in the text and want to present it to the reader in an organized fashion. They are particularly helpful when you have a lot of different kinds of data that would be hard to plot together.  For example, see Table \@ref(tab:table1). 
+
+Tables are best for highly structured data.  If there isn't much data present, it can usually just be presented in the text of the results. If there's a lot of data, it is worth considering if a figure would be better.
+
+```{r table1, echo = FALSE}
+table_1_df = tibble::tibble(
+  Group = LETTERS[1:3], N = c(10, 15, 12), 
+  Mean = c(35.33, 42.61, 22.00), 
+  `Std. Dev.` = c(3.53, 4.62, 2.97),
+  Min. = c(30.74,36.36,17.99),
+  Max. = c(37.02, 49.17, 26.38)
+)
+knitr::kable(table_1_df, booktabs = TRUE,
+             caption = "Standard length of three populations of rainbow trout (*Oncorhynchus mykiss*) in Southern Appalachian streams.  Group A was collected from the New River, group B from the Watauga River and group C from Winkler Creek.", )
+```
