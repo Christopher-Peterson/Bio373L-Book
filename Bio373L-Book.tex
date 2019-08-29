@@ -1,0 +1,1014 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{natbib}
+\bibliographystyle{plainnat}
+\usepackage{longtable,booktabs}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\providecommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+
+  \title{}
+    \pretitle{\vspace{\droptitle}}
+  \posttitle{}
+    \author{}
+    \preauthor{}\postauthor{}
+    \date{}
+    \predate{}\postdate{}
+  
+\usepackage{booktabs}
+
+\begin{document}
+
+{
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\section*{Preface}\label{preface}
+\addcontentsline{toc}{section}{Preface}
+
+This book contains advice for students in the University of Texas at
+Austin's Field Ecology course. It will be updated throughout the
+semester. The first three chapters contain general guidelines for
+writing lab reports.
+
+\section{Writing Lab Reports: Structure}\label{structure}
+
+\subsection{Structure Overview}\label{structure-overview}
+
+The main goal of scientific writing is to effectively communicate
+complicated concepts. Scientific manuscripts tend to follow a
+traditional structure that is intended to help an experienced reader
+navigate these concepts. Each section should answer a question:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Abstract}: Why should I read this?
+\item
+  \textbf{Introduction}: Why did you do this?\\
+\item
+  \textbf{Methods}: What did you do and where/with what did you do it?
+\item
+  \textbf{Results}: What did you find?\\
+\item
+  \textbf{Discussion}: What does it mean and why does it matter?
+\item
+  \textbf{Literature Cited}: Doesn't really answer a question, but this
+  is where you list the citations you used.
+\end{itemize}
+
+Greater detail is provided in the following sections.
+
+\subsection{Abstract}\label{abstract}
+
+The abstract is a one paragraph summary that functions as an
+advertisement/elevator pitch for the rest of the paper. A reader should
+get a general idea about what you did and be interested in reading the
+rest of the paper. If it's more than 350 words, you need to shorten it.
+
+While this section should cover the intro, methods, results, and
+discussion, you shouldn't re-use any language from those sections here.
+Instead, write a sentence or two from each that hits the important
+points without going into all of the details. Don't cite any figures,
+tables, or other literature in here.
+
+Generally, this section is written last.
+
+\subsection{Introduction}\label{introduction}
+
+The introduction section sets the stage for the work you are about to
+describe and should tell your reader \emph{why} your research is
+interesting. You should begin by describing the broader ecological
+context that your research fits into, and review the relevant
+literature. It is a good idea to start generally and narrow the focus to
+the specific project you did.
+
+For example, let's say you're writing a paper about the temperature
+tolerance of the three-eyed sandslider (\emph{Trioptis cerastes}), a
+fictional snake species we're going to pretend is native to southwestern
+deserts. A reasonable introduction could discuss the following:
+
+\begin{itemize}
+\tightlist
+\item
+  Climate change in general.
+\item
+  Severity and effects of climate change in deserts.
+\item
+  Effects of higher temperature on ectotherm behavior.
+\item
+  How you're investigating temperature tolerance with three-eyed
+  sandslider.
+\end{itemize}
+
+Alternatively, you could introduce the same paper in a completely
+different context:
+
+\begin{itemize}
+\tightlist
+\item
+  The evolution of animal activity budgets.
+\item
+  Effects of temperature on foraging and reproductive behavior in
+  ectotherms.
+\item
+  How you're investigating temperature tolerance with three-eyed
+  sandslider.
+\end{itemize}
+
+There are many more potential ways to write this paper. The take home
+message is to set your specific project within the bigger picture of a
+large-scale concept, phenomenon, or issue.
+
+The introduction should contain at least two paragraphs (with a minimum
+of three sentences each). At the end of the section, you should
+explicitly state your hypotheses and predictions. For example, going
+back to the temperature tolerance experiment, I could write, `Thus, I
+hypothesize that \emph{Trioptis cerastes} will have a higher temperature
+tolerance in the summer than in the winter due to acclimation to higher
+temperatures in the warmer months''.
+
+You should cite at least two peer-reviewed papers in this section.
+Please ensure these papers are actually relevant to what you're talking
+about and aren't just tacked on to meet this requirement.
+
+\subsection{Methods}\label{methods}
+
+This section includes detailed information on your experimental setup,
+data collection procedures, and the statistical analyses you used. If
+your project focused on specific species or sites (e.g., BFL), you
+should start by describing these.
+
+It is often useful to organize the methods section into sub-sections.
+For example, for the temperature tolerance example could have the
+following sub-sections:
+
+\begin{itemize}
+\tightlist
+\item
+  Study Region
+\item
+  Study Organism
+\item
+  Housing Conditions
+\item
+  Experimental Design
+\item
+  Statistical Analyses
+\end{itemize}
+
+You should always include a description of \emph{all} of the statistical
+methods you used in the methods section. This includes the test(s)
+performed, the predictor (independent) and response (dependent)
+variables, the alpha level, and the program used.
+
+Write each sub-section in chronological order. This and the results
+section are often the easiest to write, so it might be a good idea to
+start with these two middle sections, and then work on the introduction
+and discussion.
+
+\subsection{Results}\label{results}
+
+This is where you describe your observations and the results of any
+analyses. Make sure you do not include new methods (\textbf{including
+new statistical analyses}) in this section; these belong in the previous
+section. The most important results should be presented as figures or
+tables. However, they must also be described in the paragraph.
+
+It is a good idea to organize this section into sub-sections as well,
+following the same system you used in the methods (some sub-sections
+from the methods may not need to be used in the results, but follow the
+organization as closely as possible).
+
+\subsubsection{Reporting statistics}\label{reporting-statistics}
+
+In general, you should begin by presenting the relevant summary
+statistics (such as means for measured data and frequencies for
+categorical data). For example, `The mean temperature tolerance of males
+was \(39.2 \pm 0.45 ºC\), while the females were \(37.1 \pm 0.25 ºC\)'.
+Notice that the temperature has units (degrees Celsius) and that I put
+the standard deviation after the mean. This is good practice when
+reporting means.
+
+When reporting statistical test results, state what they mean in words
+first, and then follow the statement with a parenthetical phrase
+containing the statistics. For example, `Males tolerated significantly
+higher temperatures than females (\(t = 1.96\), \(df = 6\),
+\(p = 0.04\))'. Notice that I included the computed t-statistic, the
+degrees of freedom and the p-value. All these should be reported when
+reporting t-test results. Note also that I indicated the direction of
+the difference, as well as its significance.
+
+Here is another example: `The number of escape behaviors performed
+increased significantly at high temperatures for all snakes
+(\(\chi^2 = 8.43\), \(df = 2\), \(p = 0.001\))'. This is an example of
+how you would report chi-square test results. Again, the results are
+stated in words that have biological meaning and are followed by the
+calculated test statistic, the degrees of freedom and the p-value in
+parentheses. If your statistical analyses did not find a significant
+difference, you still need to report this. For example: `Although
+temperature tolerance was slightly higher for males than females, this
+difference was not statistically significant (\(t = 0.657\), \(df = 6\),
+\(p = 0.14\)).' Do not use the word ``insignificant'' in this context.
+
+\emph{Be sure to state your results in a biologically meaningful
+manner.} A common mistake is to write out the results in statistical
+terminology without any reference to their biological meaning. For
+example: `A t-test resulted in a p-value of 0.03 meaning that we can
+reject the null hypothesis and accept the alternative.' While this is a
+correct statistical interpretation of the calculated p-value, it tells
+the reader nothing about the trees or ants or mushrooms that you were
+studying. Do not write up your results like this; it's unpleasant to
+read and you're just going to have to fix it in revisions.
+
+\subsubsection{Do not interpret your data
+here}\label{do-not-interpret-your-data-here}
+
+Do not interpret your data in the results. That belongs in the
+discussion.
+
+Do not consider discuss explanations for for your data in the results.
+That belongs in the discussion.
+
+Do not consider how your data relates to your hypothesis in the results.
+That belongs in the discussion.
+
+This is probably the most common mistake I've encountered in grading
+student lab reports.
+
+\subsection{Discussion}\label{discussion}
+
+The discussion is where you are should interpret your data and draw
+conclusions by comparing your data to what is known from the published
+literature. The organization of this section is a mirror-image of the
+introduction in terms of its organization: start narrowly, by discussing
+how your results relate to your original hypotheses and questions.
+Follow it up with a wider discussion of how these results fit into the
+broad concept with which you introduced the paper. This should not be a
+restatement of what you wrote in the introduction or in the results, but
+should be an exploration of the meaning of all those numbers you just
+crunched and what they might signify.
+
+Be careful not to make unfounded statements. There are often many
+potential explanations for obtaining a particular result. One may seem
+more likely than the others, but this does not exclude the other
+explanations from being true if you haven't actually tested them. A good
+way to handle this is to mention the multiple alternative
+interpretations, express support for the one you think is most likely
+and explain why, then suggest a future experiment that could be done to
+test whether or not that is correct.
+
+An example:
+
+\begin{quote}
+`Female temperature tolerance was lower than males. This could be due to
+the relative size of the two sexes. Females are the smaller sex meaning
+that they would heat up faster than males due to a greater surface
+area:volume ratio (Loblaw and Bluth, 2005). Alternatively, the males
+could have a higher tolerance because their overall activity levels were
+elevated in the experimental enclosures. This may have caused them to
+begin with a higher internal temperature that acclimatized them to
+higher temperatures to start; however, this seems unlikely. Future work
+could address this by taking internal temperature readings before and
+after temperature tolerance trials'.
+\end{quote}
+
+As in the introduction, you should cite at least two peer-reviewed
+papers in this section in a way that isn't obviously shoehorned in.
+
+\subsection{Literature Cited}\label{literature-cited}
+
+You must use a minimum of \textbf{four} primary literature sources in
+your report, with at least two sources in both the introduction and
+discussion (although some sources are suitable to use in both). Use the
+sources to provide background, to aid in justification of performing the
+project, support for your interpretation of results, etc. In some cases,
+you should also cite a reference in the methods section (e.g., for a
+non-standard data collection technique or to provide information on a
+study site/species). Do not cite papers in results. All thoughts, ideas,
+concepts, etc., that you didn't think up on your own must be cited in
+the text (Failure to do this is considered plagiarism).
+
+If you want to cite general facts or information from a study, it's
+generally best to present those facts with a parenthetical citation.
+E.g., ``The point-quarter technique is an effective and reliable way to
+estimate canopy cover in the field (Smith et al., 2018).'' Sometimes,
+you may want to discuss the specific details of a previous paper.
+Generally, it's a bad idea to start a sentence with ``In one study,
+\ldots{} (Hernandez et al., 2007). Instead, cite them
+directly:''Hernandez et al. (2007) discovered similar signs of
+succession in eastern hardwood forests\ldots{}``. If you have a couple
+of sentences that are all drawn from the same source, please don't end
+every sentence with that citation.
+
+Please note that while there is a minimum of four primary literature
+sources, you are encouraged to add more. Bringing in information from
+extra papers can really strengthen your introduction/discussion. There
+will be a weekly thread on canvas to share literature relevant to the
+lab report; you are expected to contribute two citations to it each
+week.
+
+Please note that your sources need to be relevant to your lab report at
+more than just a surface level. For example, if your lab report is on
+the distribution of cottonwoods at BLF, a paper about the cottonwood's
+genomic structure is probably not going to be relevant.
+
+\subsection{Common Mistakes for particular
+sections}\label{common-mistakes-for-particular-sections}
+
+\subsubsection{Introduction and
+Discussion}\label{introduction-and-discussion}
+
+Null hypotheses are statistical tools used for certain tests (e.g., a
+null hypothesis for a chi-squared test would be that the groups are
+independent, or that there is no difference in the species proportions
+between the two age classes). These don't belong in the introduction or
+discussion. For these sections, you should present your biological
+hypotheses (e.g., ``BFL is undergoing succession''). It is usually a
+good idea to include a concrete prediction of these hypotheses in the
+introduction as well (e.g., ``BFL is undergoing succession, which will
+be indicated by a differences in the relative abundances of canopy and
+sapling trees'').
+
+\subsubsection{Results}\label{results-1}
+
+Don't cite papers in the results. You are presenting your results, not
+somebody else's. If you want to do this, it's probably something that
+should be in the discussion.
+
+Tables are best for highly structured data. If there isn't much data
+present, it can usually just be presented in the text of the results. If
+there's a lot of data, it is worth considering if a figure would be
+better.
+
+\section{Writing Lab Reports: Style}\label{style}
+
+It's easy to write a scientific report that confuses or bores the
+audience. Developing a style that keeps the reader following along can
+be a challenge, but it is a necessary one.
+
+This chapter contains a number of stylistic suggestions that can improve
+your lab reports. There isn't `one true style' for scientific writing,
+but I've found that these guidelines can help when you're starting out.
+
+\subsection{Be Concise}\label{be-concise}
+
+Parsimony is often held up as an ideal in science; if the evidence
+equally supports two explanations, we tend to prefer the simpler one.
+The same applies to scientific writing.
+
+When grading previous student lab reports, I've noted a bad tendency to
+over-explain every single detail (particularly in the methods section).
+Avoid providing information that is unnecessary to understand the
+project, and don't over-describe straightforward tasks. If you have a
+long repetitive section, think of a way to express the same information
+in a shorter space.
+
+Here's an example from a methods section that needs to be trimmed:
+
+\begin{quote}
+``We created imaginary lines passing through each sample point that were
+parallel and perpendicular to the transect and used these lines to
+create four quadrants. One member of our group would carefully pace
+towards the closest canopy tree in each quadrant. This was repeated by
+the same group member for each sapling tree. Later, we converted our
+pace counts into meters by measuring the number of paces that group
+member took to walk ten meters. A different group member measured the
+diameter at breast height (DBH) of each canopy tree by holding up a
+ruler to the side of the tree. The third group member recorded the
+data.''
+\end{quote}
+
+The important information could be condensed into this:
+
+\begin{quote}
+``We divided the area around each point into four quadrants, which were
+parallel and perpendicular to the transect. For each quadrant, we
+estimated the distance to the nearest canopy and sapling trees and
+recorded the diameter at breast height (DBH) of the canopy tree.''
+\end{quote}
+
+The same details apply for describing calculations or analyses. For
+standard or widely used procedures (such as a chi-squared test, or
+calculating relative abundance), you do not need to provide the formula
+that you used. In general, focus on what you did:
+
+\begin{quote}
+``We used a chi-squared test to determine whether the proportions of the
+five most abundant species differed between canopy and sapling trees.''
+\end{quote}
+
+not the exact procedures you used to do it
+
+\begin{quote}
+``We created a contingency table in Excel using pivot tables by
+\ldots{}, then calculated the expected values by \ldots{} From this we
+calculated the chi-square test statistic with the formula\ldots{},
+determined the degrees of freedom from \ldots{}, and calculated the
+p-value with the Excel function\ldots{}''.
+\end{quote}
+
+A more specialized calculation may need to be explained (``The density
+at a point was estimated as \(N / \text{sum}(x^2)\), where N was the
+number of quadrants was trees and x is the distance to the tree.''), but
+should also not be over-explained.
+
+The same applies to the results. If you did three similar analyses to
+different data sets, you should try to describe the outcomes in
+parallel. Instead of doing this:
+
+\begin{quote}
+``Activity significantly increased with temperature in sample 1 (r =
+\ldots{}, t = \ldots{}, p = \ldots{}; Figure 1). \ldots{} Activity
+significantly increased with temperature in sample 2 (r = \ldots{}, t =
+\ldots{}, p = \ldots{}; Figure 2) \ldots{} Activity did not increase
+significantly in sample 3 (r = \ldots{}, t = \ldots{}, p = \ldots{};
+Figure 3).''
+\end{quote}
+
+You should consolidate:
+
+\begin{quote}
+``Activity significantly increased with temperature in sample 1 (r =
+\ldots{}, t = \ldots{}, p = \ldots{}; Figure 1A) and sample 2 (r =
+\ldots{}, t = \ldots{}, p = \ldots{}; Figure 1B), but not in sample 3 (r
+= \ldots{}, t = \ldots{}, p = \ldots{}; Figure 1C).''
+\end{quote}
+
+Similar advice applies to figures.
+
+\subsection{Sentence Structure}\label{sentence-structure}
+
+Your writing should flow. When moving between topics (or sub-topics), it
+is helpful to include transitional elements (words, phrases, or
+sometimes entire sentences) to help the reader follow your train of
+logic. This doesn't mean that you should start every few sentences in
+the Methods section with ``Then, we {[}did something{]} \ldots{}''. Note
+that this isn't necessary if you are switching between sections (e.g.,
+Methods to Results) or labeled sub-sections.
+
+Each sentence should serve a purpose (in terms of communicating
+information). If two or more sentences are doing the same job, it's
+worth considering if they should be combined. Conversely, sentences that
+are doing too much should probably be split.
+
+Avoid
+\href{https://en.wikipedia.org/wiki/Garden-path_sentence}{garden-path
+sentences} and lengthy sentences that require multiple reads to
+understand.
+
+\subsection{Passive Voice}\label{passive-voice}
+
+While there are circumstances in which
+\href{https://www.quickanddirtytips.com/education/grammar/active-voice-versus-passive-voice}{passive
+voice} is useful, it is often misused in scientific writing. Many
+students feel that passive voice conveys a sense of objectivity. In many
+cases, it just obscures and adds unnecessary wordiness. This is
+particularly common in methods and results sections. You (in either the
+singular or plural sense) performed the observations or experiment; you
+did the calculations and analysis. You should take credit for it. If you
+are worried about starting every sentence with I/we, there are other
+ways to restructure your writing.
+
+For the record, I am not banning the use of passive voice. It can be
+effectively used alongside active voice when appropriate. However, I'd
+recommend taking a look at your passive sentences and considering if
+active voice would make them more straightforward.
+
+\subsection{Word Choice}\label{word-choice}
+
+It's tempting to use longer, more technical sounding words when writing
+a scientific paper. This tends to make papers harder to read with no
+benefit. The same is doubly true for awkward multi-word phrases that can
+be replaced with one, simple word.
+
+Two particularly common offenders:
+
+\textbf{Utilize}: In almost every case, \textbf{``use''} is the better
+choice. ``Utilize'' is really only applicable for situations in which
+the object being used was not designed for the task to which it is being
+put. Even in that situation, ``use'' is still preferable. There are a
+few minor areas of biology where ``utilize'' is correct, but for now,
+stick to ``use.''
+
+\textbf{Approximately}: use \textbf{``about.''}
+
+\subsection{Scientific and Common
+Names}\label{scientific-and-common-names}
+
+\begin{itemize}
+\tightlist
+\item
+  Latin binomials should be italicized, with genus capitalized and
+  specific epithet in lowercase (e.g., \emph{Ulmus crassifolia}).\\
+\item
+  Only write the full scientific name the first time it appears in a
+  section; afterwards, you can abbreviate the genus (e.g., \emph{U.
+  crassifolia}).
+\item
+  Exception: You should never start a sentence with the abbreviated
+  form.
+\item
+  Don't capitalize common names except for proper nouns e.g., American
+  elm, cedar elm, Ashe juniper, sugar hackberry.\\
+\item
+  The first time a species is mentioned, its scientific name should be
+  given. If after that you want to just use the common name, that is
+  fine.\\
+\item
+  E.g., first time -- `\ldots{}..cedar elm (\emph{Ulmus crassifolia})
+  was found in all three habitats\ldots{}..'
+\item
+  Later `\ldots{}.the prevalence of cedar elm could be due to\ldots{}.'
+  OR `\ldots{}.the prevalence of \emph{U. crassifolia} could be due
+  to\ldots{}.
+\end{itemize}
+
+\subsection{Other Grammar}\label{other-grammar}
+
+\begin{itemize}
+\tightlist
+\item
+  Put a comma after an introductory prepositional phrase. E.g., `In the
+  pasture habitat, cedar elm was\ldots{}..' or `During the most recent
+  drought, laurel cherry has\ldots{}\ldots{}'
+\item
+  I generally prefer Oxford commas. While you aren't required to use
+  them, be consistent.
+\item
+  Please only capitalize proper nouns, acronyms, and the appropriate
+  parts of scientific names.
+\end{itemize}
+
+\subsection{Commonoy Confused
+Definitions}\label{commonoy-confused-definitions}
+
+\begin{itemize}
+\tightlist
+\item
+  Population and Community:
+\item
+  A population is a collection of individuals of the same species in a
+  particular geographic area. E.g., all the cedar elm individuals at BFL
+\item
+  A community is a collection of individuals of different species found
+  in a particular geographic area. E.g., all the trees found at BFL
+\item
+  Random and Haphazard
+\item
+  Truly random points would be pre-selected in the lab before heading
+  outside using a random number generator and using those randomly
+  selected numbers as our coordinates.
+\item
+  Haphazardly selected points follow the colloquial definition of
+  `random.' It's sort of like the scientific vs.~common usage of the
+  word ``theory.''
+\item
+  Affect and effect
+\item
+  While there are
+  \href{https://www.grammarly.com/blog/affect-vs-effect/}{nuances and
+  exceptions}, affect is generally a verb and effect is usually noun.
+\end{itemize}
+
+\subsection{Significant Digits}\label{significant-digits}
+
+We generally aren't using high-precision instruments. As such, you
+should round numbers with a large number of decimal places to an
+appropriate extent (Note that ecologists usually don't follow
+significant figures rules quite as strictly as chemists and physicists).
+Generally, p-values should be rounded to four digits (and noted as
+\textless{} 0.0001 if they're smaller than that), while test-statistics
+should probably have no more than two decimal places. For everything
+else, use your judgment.
+
+\subsection{Tenses}\label{tenses}
+
+\section{Figures and Tables}\label{figures}
+
+Good figures are some of the most important part of a manuscript. When
+learning to write scientific papers, it's often common to view figures
+as an afterthought. This is a mistake. The figure should tell a fairly
+complete story. Combined with its caption, the reader should be able to
+look at the figure immediately after reading the abstract and have a
+general sense of what's going on.
+
+Tables are also an important part of a paper's results, but good figures
+are usually easier to interpret by the reader.
+
+\subsection{Captions}\label{captions}
+
+Figures and tables require captions that explain what they represent.
+Captions should be below figures and above captions. The first
+``sentence'' of a caption shouldn't actually be a sentence; it's more of
+a description. See the various examples in this chapter for more
+details.
+
+The caption should help the figure or table stand alone from everything
+else. If there are abbreviations or acronyms in the figure, they should
+be defined in the caption. If your figure is related to a statistical
+test, you should present the results of the test in the figure caption.
+If there's a line of best fit in a scatterplot figure, this means that a
+linear regression was performed behind the scenes; you should report the
+details.
+
+Note that figures in your manuscript \textbf{should not have titles}.
+This information belongs in the caption.
+
+\subsection{Figures}\label{figures}
+
+Make sure the legend gives enough information that the reader can
+understand exactly what the figure/table represents without having to
+look at the text. DO refer to all tables/figures in the body of the
+text, and include them in order (i.e.~the first table/figure the reader
+comes across should be called table 1/figure 1 and should be the first
+one referred to in the text).
+
+Figures should communicate your results, not just present/summarize your
+data. A good figure tells a story. If there is a trend or pattern, it
+should be designed to emphasize it.
+
+\subsubsection{Specific Figure
+Guidelines}\label{specific-figure-guidelines}
+
+Figure design is communication, so you want to make the result/message
+as obvious as you can. The longer a reader has to stare at your figure
+before ``getting it,'' the more likely they are to get bored or stop
+caring.
+
+\begin{itemize}
+\tightlist
+\item
+  Avoid large amounts of empty white space. For categorical data, you
+  should remove categories that have no data unless their absence is
+  somehow important and interesting.
+\item
+  For example, if you are surveying trees and a species is not observed,
+  there's no reason for it to be in the figure.
+\item
+  Is your figure emphasizing what it should?
+\item
+  If you're contrasting two groups, are they clearly contrasted? Could
+  re-ordering the groups improve the contrast?
+\item
+  If you're comparing groups of frequencies, you should have them
+  ordered so that the first group goes from highest to lowest frequency.
+\item
+  If you are trying to show a trend, is it being adequately emphasized?
+\item
+  Please note that this doesn't mean cheating, or changing the data.
+\item
+  The axes and legends should be be clear.
+\item
+  Often, the default axis or legend names will be the label of a
+  specific cell or column. You can change these defaults.
+\item
+  Consider how your figure will look to other people.
+\item
+  How will it look if printed from a black and white printer?
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Hint: the default blue and orange colors in Excel are
+    indistinguishable in gray scale; the same is true for the default
+    ggplot2 palette in R.
+  \end{itemize}
+\item
+  \href{https://venngage.com/blog/color-blind-friendly-palette/}{How
+  would it look} to someone with color blindness? -If using R, the
+  Viridis color scales work nicely for this.
+\end{itemize}
+
+Please remember that you should be writing your lab reports as if the
+reader (i.e., me) didn't know exactly what you did.
+
+\subsubsection{Be Concise}\label{be-concise-1}
+
+If you have multiple figures that conceptually belong together (e.g.,
+the same measurements taken in three years), you should turn them into a
+single multi-panel figure. Label your the panels with letters in the
+upper left corner; the caption should explain how the panels are
+different.
+
+\subsection{Some Example Figures}\label{some-example-figures}
+
+\subsubsection{General Formatting}\label{general-formatting}
+
+Figure \ref{fig:irisBad} is poorly formatted:
+
+\begin{itemize}
+\tightlist
+\item
+  The colors are hard to distinguish when printed and black and white;
+\item
+  The axis and legend text are showing the default labels instead of
+  informative values;
+\item
+  There is a lot of white space, partially due to a bad y axis scale;
+\item
+  The equation is in the figure instead of the caption;
+\item
+  The caption is vague and uninformative;
+\item
+  There is an unnecessary title;
+\item
+  There are grid lines;
+\end{itemize}
+
+
+
+
+
+
+
+
+
+\begin{figure}
+\centering
+\includegraphics{Bio373L-Book_files/figure-latex/irisBad-1.pdf}
+\caption{\label{fig:irisBad}Petal width (X variable) vs petal length (Y variable).
+The regression is significant (\(R^2 = 0.93\); \(p<0.0001\)).}
+\end{figure}
+
+Figure \ref{fig:irisGood} contains the same data, but has been
+reformatted to address these issues. Note the use of units in the axis
+labels, the formatting of scientific species names, the positioning of
+the legend to minimize whitespace, and the lack of a title and
+gridlines. This is also an example of how to plot data with a continuous
+response and a combination of continuous and categorical predictors.
+
+\begin{figure}
+\centering
+\includegraphics{Bio373L-Book_files/figure-latex/irisGood-1.pdf}
+\caption{\label{fig:irisGood}Association between petal width and petal length in
+three species of \emph{Iris}. Petal length increases with petal width
+((Petal Length) = 1.1 + 2.2*(Petal Width); \(R^2 = 0.93\);
+\(p<0.0001\)).}
+\end{figure}
+
+Figure \ref{fig:irisPanel} is an example of a multi-panel figure; in the
+text, you should refer to parts of it as Figure \ref{fig:irisPanel}A,
+\ref{fig:irisPanel}B, etc.
+
+
+
+
+
+
+\begin{figure}
+\centering
+\includegraphics{Bio373L-Book_files/figure-latex/irisPanel-1.pdf}
+\caption{\label{fig:irisPanel}Association between sepal width and sepal length for
+A) \emph{Iris setosa}, B) \emph{I. versicolor}, and C) \emph{I.
+virginica}. The association is not statistically significant ((Sepal
+Length) = 6.5 + -0.2*(Sepal Width); \(R^2 = 0.01\); \(p = 0.152\)).}
+\end{figure}
+
+\subsubsection{Continuous response, categorical
+predictors}\label{continuous-response-categorical-predictors}
+
+There are a number of options for representing continuous data grouped
+into multiple categories. You should avoid ``dynamite'' plots (Figure
+\ref{fig:dynamite}), which use a bar with error lines to represent a
+mean and standard error; these figures use a lot of space to provide
+very little information. A better option is to use box plots (Figure
+\ref{fig:boxplot}), which show the median, quartiles, range, and
+outliers of each group. Equivalently, you could use a group of
+histograms (Figure \ref{fig:histoplot}). A particularly effective way to
+visualize this type of dataset shows the distribution of the data and
+the summary statistics (Figure \ref{fig:violin}).
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{figure}
+\centering
+\includegraphics{Bio373L-Book_files/figure-latex/dynamite-1.pdf}
+\caption{\label{fig:dynamite}Mean sepal width for three species of \emph{iris},
+with standard errors. Sepal length differs significantly among species
+\((p < 0.0001)\).}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics{Bio373L-Book_files/figure-latex/boxplot-1.pdf}
+\caption{\label{fig:boxplot}Distribution of sepal width for three species of
+\emph{iris}. Sepal length differs significantly among species
+\((p < 0.0001)\).}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics{Bio373L-Book_files/figure-latex/histoplot-1.pdf}
+\caption{\label{fig:histoplot}Distribution of sepal width for three species of
+\emph{iris}. Sepal length differs significantly among species
+\((p < 0.0001)\).}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics{Bio373L-Book_files/figure-latex/violin-1.pdf}
+\caption{\label{fig:violin}Distribution of sepal width, for three species of
+\emph{iris}, with mean and standard errors in red. Sepal length differs
+significantly among species \((p < 0.0001)\).}
+\end{figure}
+
+\subsubsection{Categorical, count, or frequency
+responses}\label{categorical-count-or-frequency-responses}
+
+These sorts of data usually involve examining how counts or frequencies
+differ among groups; they're often associated with \(\chi^2\) tests.
+Generally, it's best to represent these sorts of data with bar graphs
+(avoid pie charts). When making a bar graph, it's a good idea to arrange
+your data to emphasize any trends. The species in Figure
+\ref{fig:anoleBad} are organized alphabetically, which obscures any
+trend. A better option is to organize by decreasing frequency of either
+total counts (like in Figure \ref{fig:anoleCountStack}) or of one of the
+groups (Figure \ref{fig:anoleCountDodge}). These make it easier to
+detect patterns.
+
+
+
+
+\begin{figure}
+\centering
+\includegraphics{Bio373L-Book_files/figure-latex/anoleBad-1.pdf}
+\caption{\label{fig:anoleBad}Number of \emph{Anolis} captured from canopy and
+trunk perches.}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics{Bio373L-Book_files/figure-latex/anoleCountStack-1.pdf}
+\caption{\label{fig:anoleCountStack}Number of \emph{Anolis} captured from canopy and
+trunk perches.}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics{Bio373L-Book_files/figure-latex/anoleCountDodge-1.pdf}
+\caption{\label{fig:anoleCountDodge}Number of \emph{Anolis} captured from canopy and
+trunk perches.}
+\end{figure}
+
+An important consideration is whether to represent your data with counts
+or proportions. There are pros and cons to both approaches, but
+frequencies are usually better if the number of observations differs
+among your groups (compare Figure \ref{fig:anoleFreqByPerch} with Figure
+\ref{fig:anoleCountDodge}). Be careful when calculating frequencies,
+because you may inadvertently end up making a graph that isn't answering
+the question you're trying to ask. For example, Figure
+\ref{fig:anoleFreqByPerch} shows how anole frequencies differ between
+perch types, but Figure \ref{fig:anoleFreqBySpp} shows the frequency at
+which each species occupies the two perches.
+
+
+
+
+\begin{figure}
+\centering
+\includegraphics{Bio373L-Book_files/figure-latex/anoleFreqByPerch-1.pdf}
+\caption{\label{fig:anoleFreqByPerch}Frequency of \emph{Anolis} species captured from
+canopy and trunk perches.}
+\end{figure}
+
+
+
+\begin{figure}
+\centering
+\includegraphics{Bio373L-Book_files/figure-latex/anoleFreqBySpp-1.pdf}
+\caption{\label{fig:anoleFreqBySpp}Perch frequency for 9 species of \emph{Anolis}.}
+\end{figure}
+
+If there is some aspect of your data that you'd like to really
+emphasize, it can help to get more creative with your figures. For
+example, the most visually striking parts of Figure
+\ref{fig:anoleBarFreqDiff} are the colored sections of the bars, which
+correspond to the direction and magnatude of the difference between
+perches for each species. Do note that making more complicated figures
+may require extra explanation in the caption.
+
+
+
+
+
+
+
+\begin{figure}
+\centering
+\includegraphics{Bio373L-Book_files/figure-latex/anoleBarFreqDiff-1.pdf}
+\caption{\label{fig:anoleBarFreqDiff}Number of \emph{Anolis} found at each perch position.
+The white bar indicates the count at the less frequent perch, the total
+height is the count at the more frequent perch, color indicates which
+perch the species was more common at, and the size of the colored
+regions indicates the difference between perches.}
+\end{figure}
+
+\subsection{Tables}\label{tables}
+
+Tables are an effective addition to a manuscript when you have a lot of
+data in the text and want to present it to the reader in an organized
+fashion. They are particularly helpful when you have a lot of different
+kinds of data that would be hard to plot together. For example, see
+Table \ref{tab:table1}.
+
+Tables are best for highly structured data. If there isn't much data
+present, it can usually just be presented in the text of the results. If
+there's a lot of data, it is worth considering if a figure would be
+better.
+
+\begin{table}[t]
+
+\caption{\label{tab:table1}Standard length of three populations of rainbow trout (*Oncorhynchus mykiss*) in Southern Appalachian streams.  Group A was collected from the New River, group B from the Watauga River and group C from Winkler Creek.}
+\centering
+\begin{tabular}{lrrrrr}
+\toprule
+Group & N & Mean & Std. Dev. & Min. & Max.\\
+\midrule
+A & 10 & 35.33 & 3.53 & 30.74 & 37.02\\
+B & 15 & 42.61 & 4.62 & 36.36 & 49.17\\
+C & 12 & 22.00 & 2.97 & 17.99 & 26.38\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+\end{document}
