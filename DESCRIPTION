@@ -1,0 +1,10 @@
+Package: placeholder
+Type: Book
+Title: Does not matter.
+Version: 0.0.1
+Imports: bookdown, ggplot2, cowplot, tidyr, forcats, tibble, 
+         ggforce, dplyr, purrr, glue
+Remotes: rstudio/bookdown
+
+
+ggplot2,
