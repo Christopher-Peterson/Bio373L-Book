@@ -1,0 +1,43 @@
+# Lab 1: Succession
+
+## Results
+
+You should provide data and analyses to address the following questions:
+
+ - What are the qualitative trends and characteristics of each habitat?
+ - How does the total density of canopy trees differ between habitats?
+ - Does relative abundance of each species differ between canopy and sapling trees?  How consistent is this among habitats?
+
+### Canopy tree density
+
+You can use the point-quarter method to estimate tree density at each site with a bit of math.  Let $x_i$ be the distance from your point to a sampled canopy tree. If you sampled 4 trees at a point, then the density in trees per square meters would be $\frac{4}{x_1^2 + x_2^2 + x_3^2 + x_4^2}$. More generally, the density is $1 / \text{mean}(x)$.  
+
+Calculate density for each sample point, and convert it to hectares (multiply by $10,000 \text{ m}^2/\text{ha}$).  How do densities compare between habitat types?  Create a figure and compare the averages. Note that you won't be able to claim that one group is different unless you use statistical tests, such as a one-way ANOVA (this is optional).
+
+### Species by habitat and life stage
+
+For each habitat, you will want to calculate the relative abundance of each tree species for canopy and sapling trees (i.e., number of Canopy species *x* in habitat *y* divided by total number of observed Canopy trees in *y*). Visualize the result for each habitat (a three-panel frequency plot would be the best way to go, with categories ordered by canopy abundance). 
+
+To test if the relative proportions in canopy and saplings are equivalent, you should construct contingency tables for each habitat (See Table \@ref(tab:contingency) for an example). 
+Restrict each table to the five most common species in each habitat.  
+Contingency tables can be constructed with pivot tables in Excel or the table() function in R.
+Use chi-square tests to see if the proportions of species are different between canopy and saplings for each habitat.
+
+```{r contingency, echo=FALSE, message=FALSE}
+library(dplyr)
+cont_dat = readr::read_csv("data/contingency_tbl_ex.r") %>% rename(` ` = "Tree_type")
+
+knitr::kable(cont_dat, caption = "Abundance of most common canopy and sapling trees in the BFL old pasture habitat, Fall 2018.")
+```
+
+
+## Discussion
+
+Some suggestions for discussion topics:
+
+  - How could differences in sapling/canopy relative abundances inform possible successional trends? Based on your results, what would you predict about future dominant species in the habitats?
+  - Did you observe anything else about the ecology or natural history of these areas that may help account for your results (e.g., drought stress, dead trees, invasive species, disease, etc)? 
+  - What may be driving the differences in the habitat types? Considering the history of BFL may be helpful in explaining some of this.
+  - Develop a likely scenario for the past and future decades of tree population dynamics in the woodlands of BFL.
+  - How has drought and oak wilt affected the tree community at BFL? How might a scenario for succession based on currently healthy trees be changed if we include the information on stressed/dead trees?
+  - How could this line of research be expanded upon in future work?  

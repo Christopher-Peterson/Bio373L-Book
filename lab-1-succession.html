@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 1 Lab 1: Succession | 04-lab_succession.utf8.md</title>
+  <meta name="description" content="" />
+  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 1 Lab 1: Succession | 04-lab_succession.utf8.md" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 1 Lab 1: Succession | 04-lab_succession.utf8.md" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Bio 373L Survival Guide</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path=""><a href="#lab-1-succession"><i class="fa fa-check"></i><b>1</b> Lab 1: Succession</a><ul>
+<li class="chapter" data-level="1.1" data-path=""><a href="#results"><i class="fa fa-check"></i><b>1.1</b> Results</a><ul>
+<li class="chapter" data-level="1.1.1" data-path=""><a href="#canopy-tree-density"><i class="fa fa-check"></i><b>1.1.1</b> Canopy tree density</a></li>
+<li class="chapter" data-level="1.1.2" data-path=""><a href="#species-by-habitat-and-life-stage"><i class="fa fa-check"></i><b>1.1.2</b> Species by habitat and life stage</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path=""><a href="#discussion"><i class="fa fa-check"></i><b>1.2</b> Discussion</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"></a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<!--bookdown:title:end-->
+<!--bookdown:title:start-->
+<div id="lab-1-succession" class="section level1">
+<h1><span class="header-section-number">Chapter 1</span> Lab 1: Succession</h1>
+<div id="results" class="section level2">
+<h2><span class="header-section-number">1.1</span> Results</h2>
+<p>You should provide data and analyses to address the following questions:</p>
+<ul>
+<li>What are the qualitative trends and characteristics of each habitat?</li>
+<li>How does the total density of canopy trees differ between habitats?</li>
+<li>Does relative abundance of each species differ between canopy and sapling trees? How consistent is this among habitats?</li>
+</ul>
+<div id="canopy-tree-density" class="section level3">
+<h3><span class="header-section-number">1.1.1</span> Canopy tree density</h3>
+<p>You can use the point-quarter method to estimate tree density at each site with a bit of math. Let <span class="math inline">\(x_i\)</span> be the distance from your point to a sampled canopy tree. If you sampled 4 trees at a point, then the density in trees per square meters would be <span class="math inline">\(\frac{4}{x_1^2 + x_2^2 + x_3^2 + x_4^2}\)</span>. More generally, the density is <span class="math inline">\(1 / \text{mean}(x)\)</span>.</p>
+<p>Calculate density for each sample point, and convert it to hectares (multiply by <span class="math inline">\(10,000 \text{ m}^2/\text{ha}\)</span>). How do densities compare between habitat types? Create a figure and compare the averages. Note that you won’t be able to claim that one group is different unless you use statistical tests, such as a one-way ANOVA (this is optional).</p>
+</div>
+<div id="species-by-habitat-and-life-stage" class="section level3">
+<h3><span class="header-section-number">1.1.2</span> Species by habitat and life stage</h3>
+<p>For each habitat, you will want to calculate the relative abundance of each tree species for canopy and sapling trees (i.e., number of Canopy species <em>x</em> in habitat <em>y</em> divided by total number of observed Canopy trees in <em>y</em>). Visualize the result for each habitat (a three-panel frequency plot would be the best way to go, with categories ordered by canopy abundance).</p>
+<p>To test if the relative proportions in canopy and saplings are equivalent, you should construct contingency tables for each habitat (See Table <a href="#tab:contingency">1.1</a> for an example).
+Restrict each table to the five most common species in each habitat.<br />
+Contingency tables can be constructed with pivot tables in Excel or the table() function in R.
+Use chi-square tests to see if the proportions of species are different between canopy and saplings for each habitat.</p>
+<table>
+<caption><span id="tab:contingency">Table 1.1: </span>Abundance of most common canopy and sapling trees in the BFL old pasture habitat, Fall 2018.</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right"><em>Carya illinoiensis</em></th>
+<th align="right"><em>Celtis spp.</em></th>
+<th align="right"><em>Juniperus spp.</em></th>
+<th align="right"><em>Quercus buckleyi</em></th>
+<th align="right"><em>Quercus fusiformis</em></th>
+<th align="right"><em>Ulmus crassifolia</em></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Canopy</td>
+<td align="right">7</td>
+<td align="right">2</td>
+<td align="right">17</td>
+<td align="right">3</td>
+<td align="right">2</td>
+<td align="right">9</td>
+</tr>
+<tr class="even">
+<td>Sapling</td>
+<td align="right">0</td>
+<td align="right">6</td>
+<td align="right">7</td>
+<td align="right">3</td>
+<td align="right">6</td>
+<td align="right">11</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="discussion" class="section level2">
+<h2><span class="header-section-number">1.2</span> Discussion</h2>
+<p>Some suggestions for discussion topics:</p>
+<ul>
+<li>How could differences in sapling/canopy relative abundances inform possible successional trends? Based on your results, what would you predict about future dominant species in the habitats?</li>
+<li>Did you observe anything else about the ecology or natural history of these areas that may help account for your results (e.g., drought stress, dead trees, invasive species, disease, etc)?</li>
+<li>What may be driving the differences in the habitat types? Considering the history of BFL may be helpful in explaining some of this.</li>
+<li>Develop a likely scenario for the past and future decades of tree population dynamics in the woodlands of BFL.</li>
+<li>How has drought and oak wilt affected the tree community at BFL? How might a scenario for succession based on currently healthy trees be changed if we include the information on stressed/dead trees?</li>
+<li>How could this line of research be expanded upon in future work?</li>
+</ul>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+},
+"search": false
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
