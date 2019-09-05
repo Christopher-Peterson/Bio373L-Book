@@ -3,7 +3,8 @@ title: "Bio 373L Survival Guide"
 author: "Christopher R. Peterson"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
- bookdown::gitbook:
+output: 
+  bookdown::gitbook:
     config:
       sharing:
         facebook: false

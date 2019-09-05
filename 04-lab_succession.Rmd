@@ -1,4 +1,6 @@
-# Lab 1: Succession
+# Lab 1: Succession {#lab1}
+
+Some guidelines 
 
 ## Results
 
