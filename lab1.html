@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Bio 373L Survival Guide</title>
+  <title>Chapter 4 Lab 1: Succession | Bio 373L Survival Guide</title>
   <meta name="description" content="Writing advice for Field Ecology." />
   <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Bio 373L Survival Guide" />
+  <meta property="og:title" content="Chapter 4 Lab 1: Succession | Bio 373L Survival Guide" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="Christopher-Peterson/Bio373L-Book" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Bio 373L Survival Guide" />
+  <meta name="twitter:title" content="Chapter 4 Lab 1: Succession | Bio 373L Survival Guide" />
   
   <meta name="twitter:description" content="Writing advice for Field Ecology." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
+<link rel="prev" href="figures.html"/>
 
-<link rel="next" href="structure.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -134,23 +134,84 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Bio 373L Survival Guide</h1>
-<p class="author"><em>Christopher R. Peterson</em></p>
-<p class="date"><em>2019-09-05</em></p>
+<div id="lab1" class="section level1">
+<h1><span class="header-section-number">Chapter 4</span> Lab 1: Succession</h1>
+<p>Some guidelines</p>
+<div id="results-2" class="section level2">
+<h2><span class="header-section-number">4.1</span> Results</h2>
+<p>You should provide data and analyses to address the following questions:</p>
+<ul>
+<li>What are the qualitative trends and characteristics of each habitat?</li>
+<li>How does the total density of canopy trees differ between habitats?</li>
+<li>Does relative abundance of each species differ between canopy and sapling trees? How consistent is this among habitats?</li>
+</ul>
+<div id="canopy-tree-density" class="section level3">
+<h3><span class="header-section-number">4.1.1</span> Canopy tree density</h3>
+<p>You can use the point-quarter method to estimate tree density at each site with a bit of math. Let <span class="math inline">\(x_i\)</span> be the distance from your point to a sampled canopy tree. If you sampled 4 trees at a point, then the density in trees per square meters would be <span class="math inline">\(\frac{4}{x_1^2 + x_2^2 + x_3^2 + x_4^2}\)</span>. More generally, the density is <span class="math inline">\(1 / \text{mean}(x)\)</span>.</p>
+<p>Calculate density for each sample point, and convert it to hectares (multiply by <span class="math inline">\(10,000 \text{ m}^2/\text{ha}\)</span>). How do densities compare between habitat types? Create a figure and compare the averages. Note that you won’t be able to claim that one group is different unless you use statistical tests, such as a one-way ANOVA (this is optional).</p>
 </div>
-<div id="preface" class="section level1 unnumbered">
-<h1>Preface</h1>
-<p>This book contains advice for students in the University of Texas at Austin’s Field Ecology course. It will be updated throughout the semester. The first three chapters contain general guidelines for writing lab reports.</p>
+<div id="species-by-habitat-and-life-stage" class="section level3">
+<h3><span class="header-section-number">4.1.2</span> Species by habitat and life stage</h3>
+<p>For each habitat, you will want to calculate the relative abundance of each tree species for canopy and sapling trees (i.e., number of Canopy species <em>x</em> in habitat <em>y</em> divided by total number of observed Canopy trees in <em>y</em>). Visualize the result for each habitat (a three-panel frequency plot would be the best way to go, with categories ordered by canopy abundance).</p>
+<p>To test if the relative proportions in canopy and saplings are equivalent, you should construct contingency tables for each habitat (See Table <a href="lab1.html#tab:contingency">4.1</a> for an example). Restrict each table to the five most common species in each habitat.<br />
+Contingency tables can be constructed with pivot tables in Excel or the table() function in R. Use chi-square tests to see if the proportions of species are different between canopy and saplings for each habitat.</p>
+<table>
+<caption><span id="tab:contingency">Table 4.1: </span>Abundance of most common canopy and sapling trees in the BFL old pasture habitat, Fall 2018.</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right"><em>Carya illinoiensis</em></th>
+<th align="right"><em>Celtis spp.</em></th>
+<th align="right"><em>Juniperus spp.</em></th>
+<th align="right"><em>Quercus buckleyi</em></th>
+<th align="right"><em>Quercus fusiformis</em></th>
+<th align="right"><em>Ulmus crassifolia</em></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Canopy</td>
+<td align="right">7</td>
+<td align="right">2</td>
+<td align="right">17</td>
+<td align="right">3</td>
+<td align="right">2</td>
+<td align="right">9</td>
+</tr>
+<tr class="even">
+<td>Sapling</td>
+<td align="right">0</td>
+<td align="right">6</td>
+<td align="right">7</td>
+<td align="right">3</td>
+<td align="right">6</td>
+<td align="right">11</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="discussion-1" class="section level2">
+<h2><span class="header-section-number">4.2</span> Discussion</h2>
+<p>Some suggestions for discussion topics:</p>
+<ul>
+<li>How could differences in sapling/canopy relative abundances inform possible successional trends? Based on your results, what would you predict about future dominant species in the habitats?</li>
+<li>Did you observe anything else about the ecology or natural history of these areas that may help account for your results (e.g., drought stress, dead trees, invasive species, disease, etc)?</li>
+<li>What may be driving the differences in the habitat types? Considering the history of BFL may be helpful in explaining some of this.</li>
+<li>Develop a likely scenario for the past and future decades of tree population dynamics in the woodlands of BFL.</li>
+<li>How has drought and oak wilt affected the tree community at BFL? How might a scenario for succession based on currently healthy trees be changed if we include the information on stressed/dead trees?</li>
+<li>How could this line of research be expanded upon in future work?</li>
+</ul>
 
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
+<a href="figures.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
-<a href="structure.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
