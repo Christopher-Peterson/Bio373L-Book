@@ -12,7 +12,7 @@ You should provide data and analyses to address the following questions:
 
 ### Canopy tree density
 
-You can use the point-quarter method to estimate tree density at each site with a bit of math.  Let $x_i$ be the distance from your point to a sampled canopy tree. If you sampled 4 trees at a point, then the density in trees per square meters would be $\frac{4}{x_1^2 + x_2^2 + x_3^2 + x_4^2}$. More generally, the density is $1 / \text{mean}(x)$.  
+You can use the point-quarter method to estimate tree density at each site with a bit of math.  Let $x_i$ be the distance from your point to a sampled canopy tree. If you sampled 4 trees at a point, then the density in trees per square meters would be $\frac{4}{x_1^2 + x_2^2 + x_3^2 + x_4^2}$. More generally, the density is $1 / \text{mean}(x^2)$.  
 
 Calculate density for each sample point, and convert it to hectares (multiply by $10,000 \text{ m}^2/\text{ha}$).  How do densities compare between habitat types?  Create a figure and compare the averages. Note that you won't be able to claim that one group is different unless you use statistical tests, such as a one-way ANOVA (this is optional).
 
