@@ -24,7 +24,7 @@
 <meta name="author" content="Christopher R. Peterson" />
 
 
-<meta name="date" content="2019-09-05" />
+<meta name="date" content="2019-09-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -147,7 +147,7 @@
 </ul>
 <div id="canopy-tree-density" class="section level3">
 <h3><span class="header-section-number">4.1.1</span> Canopy tree density</h3>
-<p>You can use the point-quarter method to estimate tree density at each site with a bit of math. Let <span class="math inline">\(x_i\)</span> be the distance from your point to a sampled canopy tree. If you sampled 4 trees at a point, then the density in trees per square meters would be <span class="math inline">\(\frac{4}{x_1^2 + x_2^2 + x_3^2 + x_4^2}\)</span>. More generally, the density is <span class="math inline">\(1 / \text{mean}(x)\)</span>.</p>
+<p>You can use the point-quarter method to estimate tree density at each site with a bit of math. Let <span class="math inline">\(x_i\)</span> be the distance from your point to a sampled canopy tree. If you sampled 4 trees at a point, then the density in trees per square meters would be <span class="math inline">\(\frac{4}{x_1^2 + x_2^2 + x_3^2 + x_4^2}\)</span>. More generally, the density is <span class="math inline">\(1 / \text{mean}(x^2)\)</span>.</p>
 <p>Calculate density for each sample point, and convert it to hectares (multiply by <span class="math inline">\(10,000 \text{ m}^2/\text{ha}\)</span>). How do densities compare between habitat types? Create a figure and compare the averages. Note that you won’t be able to claim that one group is different unless you use statistical tests, such as a one-way ANOVA (this is optional).</p>
 </div>
 <div id="species-by-habitat-and-life-stage" class="section level3">
