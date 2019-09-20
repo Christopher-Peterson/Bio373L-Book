@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Bio 373L Survival Guide</title>
+  <title>Chapter 5 Lab 2: Woodland Heterogeneity | Bio 373L Survival Guide</title>
   <meta name="description" content="Writing advice for Field Ecology." />
   <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Bio 373L Survival Guide" />
+  <meta property="og:title" content="Chapter 5 Lab 2: Woodland Heterogeneity | Bio 373L Survival Guide" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="Christopher-Peterson/Bio373L-Book" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Bio 373L Survival Guide" />
+  <meta name="twitter:title" content="Chapter 5 Lab 2: Woodland Heterogeneity | Bio 373L Survival Guide" />
   
   <meta name="twitter:description" content="Writing advice for Field Ecology." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
+<link rel="prev" href="lab1.html"/>
 
-<link rel="next" href="structure.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -188,23 +188,53 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Bio 373L Survival Guide</h1>
-<p class="author"><em>Christopher R. Peterson</em></p>
-<p class="date"><em>2019-09-20</em></p>
+<div id="Lab2" class="section level1">
+<h1><span class="header-section-number">Chapter 5</span> Lab 2: Woodland Heterogeneity</h1>
+<div id="questions-and-hypotheses" class="section level2">
+<h2><span class="header-section-number">5.1</span> Questions and Hypotheses</h2>
+<ol style="list-style-type: decimal">
+<li>What are the relationships between canopy, shrub, and ground cover?</li>
+<li>How have the relative abundance of Canopy, Shrub, and Ground cover categories changed over time?</li>
+<li>[Add one other hypothesis that you come up with]</li>
+<li>Quantify the spatial mosaic: Use a map of BFL and number/color the canopy level at each point. Connect adjacent areas of the same number. If you do this by hand, scan or photograph it and include it in the Canvas submission.</li>
+</ol>
+<p>Note that the “Calibration” step in the handout isn’t included in this section; this is still something you need to do (see below), but it’s a methods validation step, not a biological hypothesis.</p>
 </div>
-<div id="preface" class="section level1 unnumbered">
-<h1>Preface</h1>
-<p>This book contains advice for students in the University of Texas at Austin’s Field Ecology course. It will be updated throughout the semester. The first three chapters contain general guidelines for writing lab reports.</p>
+<div id="analysis" class="section level2">
+<h2><span class="header-section-number">5.2</span> Analysis</h2>
+<div id="calibrating-canopy-estimates" class="section level3">
+<h3><span class="header-section-number">5.2.1</span> Calibrating canopy estimates</h3>
+<p>Since most of our analyses rely on subjective measurements, it would be good to calibrate how well the subjective category categories predict light measurements estimated by Gap Light Analyzer? Use linear regression on the current datasets, with subjective score as the predictor and percent openness as the response. Note that the structure of the data will almost certainly violate some of the assumptions of a linear regression test.<br />
+We can still do this because this isn’t a hypothesis-driven analysis, but a prediction-driven one; provide the <span class="math inline">\(R^2\)</span> and fit equation, but not the p-values.</p>
+<p>Create a figure for this analysis corresponding to these analyses, including the data points and trend lines. If you’re using excel, please remember that the equation that appears after you add the trendline shouldn’t be included in the resulting graph (it belongs in the caption and main text). If you’re using <code>ggplot</code> in R, you can add a regression line to the graph by adding the following line to your figure code:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">  <span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="dt">se =</span> <span class="ot">FALSE</span>, <span class="dt">color =</span> <span class="st">&quot;grey&quot;</span>) 
+  <span class="co"># feel free to change color</span></code></pre></div>
+<p>One othe thing I’d recommend is spreading out the points on your x axis a little, since otherwise they will just be four vertical lines. In ggplot, you can do this by replacing <code>geom_point</code> with:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">  <span class="kw">geom_jitter</span>(<span class="dt">height =</span> <span class="dv">0</span>, <span class="dt">width =</span> .<span class="dv">25</span>) 
+  <span class="co"># changing width will spread the dots out more; just don&#39;t change height</span></code></pre></div>
+</div>
+<div id="relationship-between-canopy-and-ground-cover" class="section level3">
+<h3><span class="header-section-number">5.2.2</span> Relationship between canopy and ground cover</h3>
+<p>Create four contingency tables examining the ground &amp; shrub cover relationship; one for each level of canopy cover. Note that the cells of the tables should be a count (number of plots), not a relative proportion. Run chi-squared tests on each table. This is rather similar to what you did for the previous lab.</p>
+<p>Re-create these tables with the relative number of plots per canopy cover type for each ground/shrub combination. You need to visually present this information in some way; you could try making a graph of some sort, or you could color the cells of the table to indicate the strength of the proportion. Note that adding color information to a table would turn it into a figure, and it should be referred to as such.</p>
+</div>
+<div id="historical-trends" class="section level3">
+<h3><span class="header-section-number">5.2.3</span> Historical Trends</h3>
+<p>How have the relative abundances of each category within the three cover types changed over time?<br />
+You don’t need to do an analysis for this, but create a figure. Since this data changes over time, you should have time along the x axis of the figure.<br />
+Line plots and stacked box plots are two possible options.<br />
+Multiple panels may be warranted.</p>
 
+</div>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
+<a href="lab1.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
-<a href="structure.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
