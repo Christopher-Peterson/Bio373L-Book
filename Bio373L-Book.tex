@@ -124,7 +124,7 @@
   \postauthor{\par}
       \predate{\centering\large\emph}
   \postdate{\par}
-    \date{2019-09-20}
+    \date{2019-09-24}
 
 \usepackage{booktabs}
 
@@ -1354,10 +1354,20 @@ light measurements estimated by Gap Light Analyzer? Use linear
 regression on the current datasets, with subjective score as the
 predictor and percent openness as the response. Note that the structure
 of the data will almost certainly violate some of the assumptions of a
-linear regression test.\\
-We can still do this because this isn't a hypothesis-driven analysis,
-but a prediction-driven one; provide the \(R^2\) and fit equation, but
-not the p-values.
+linear regression test. We can still do this because this isn't a
+hypothesis-driven analysis, but a prediction-driven one; provide the
+\(R^2\) and fit equation, but not the p-values.
+
+To run a regression in R, modify this code:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{regression =}\StringTok{ }\KeywordTok{lm}\NormalTok{(y }\OperatorTok{~}\StringTok{ }\NormalTok{x, }\DataTypeTok{data =}\NormalTok{ your_data_set) }\CommentTok{# adjust this for your regression}
+\NormalTok{regression }\CommentTok{# this gives you the coefficients}
+\KeywordTok{summary}\NormalTok{(regression) }\CommentTok{# This includes R2 values}
+\CommentTok{# Note that you should go with the "Multiple R-squared," not "Adjusted R-squared"}
+\end{Highlighting}
+\end{Shaded}
 
 Create a figure for this analysis corresponding to these analyses,
 including the data points and trend lines. If you're using excel, please
