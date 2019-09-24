@@ -15,8 +15,18 @@ Note that the "Calibration" step in the handout isn't included in this section; 
 
 Since most of our analyses rely on subjective measurements, it would be good to calibrate how well the subjective category categories predict light measurements estimated by Gap Light Analyzer? 
 Use linear regression on the current datasets, with subjective score as the predictor and percent openness as the response. 
-Note that the structure of the data will almost certainly violate some of the assumptions of a linear regression test.  
+Note that the structure of the data will almost certainly violate some of the assumptions of a linear regression test.
 We can still do this because this isn’t a hypothesis-driven analysis, but a prediction-driven one; provide the $R^2$ and fit equation, but not the p-values.
+
+To run a regression in R, modify this code:
+
+```{r regressEx, eval = FALSE}
+regression = lm(y ~ x, data = your_data_set) # adjust this for your regression
+regression # this gives you the coefficients
+summary(regression) # This includes R2 values
+# Note that you should go with the "Multiple R-squared," not "Adjusted R-squared"
+```
+
 
 Create a figure for this analysis corresponding to these analyses, including the data points and trend lines. If you're using excel, please remember that the equation that appears after you add the trendline shouldn't be included in the resulting graph (it belongs in the caption and main text).  If you're using `ggplot` in R, you can add a regression line to the graph by adding the following line to your figure code:
 
