@@ -1,0 +1,77 @@
+# Lab 4: Mark-Release-Recapture with *Heliconius* {#Lab4}
+
+```{r echo = FALSE}
+n_buterflies = 41 # real number of butterflies
+```
+
+## Questions and hypotheses
+
+Primary Questions:
+
+1. How does sampling intensity improve MMR estimates? 
+3. ...Sex ratio stuff
+2. Does separating animals by sex alter our estimate of population size?
+3. How does the Lincoln-Pearson model compare with alternate MMR methods?
+4. Are the *Heliconius* populations in Hardy-Weinberg equilbrium for the Optix gene?
+
+### Wing Pattern and the Optix transcription factor
+
+In the lab, we scored the orange/red/brown wing patterns.
+The mimetic phenotypes generated are key to the diversification of the genus, to predator protection niches, and to mutualism between sympatric species (Mullerian mimicry).
+The the Optix supergene locus controls expression of a transcription factor that affects coloration in wing patterns.
+A supergene locus controls expression of a transcription factor called Optix.
+One allele ($F$) accounts for the red, orange, red or brown scales in the distal forewing band (beyond the large wing cell).
+Another allele ($H$) controls the presence of such scales on the hind wing and/or on the proximal forewing in the cell region.
+Since the link between phenotype and genotype is known, we can use observational data to infer whether the population is in Hardy-Weinberg equilibrium (HWE) for this trait.
+
+Hardy_Weinberg assumptions:
+
+- Mating is random
+- No migration
+- No natural selection
+- No genetic drift (a.k.a., large populations)
+- No mutation
+
+Note that while several of the above assumptions are essentially impossible, in practice you can achieve near-HWE if migration, selection, drift, and mutation are small/weak enough to be ignored. 
+
+## Analysis
+
+The Lincoln-Pearson model:
+
+If $S_2$ is the number of individuals collected in a sample period, $M_1$ is total number of previously marked individuals, and $R_2$ is the number of marked individuals who were recaptured, then you can estimate population size:
+
+$$\hat{N} = \frac{S_2 M_1}{R_2}$$
+
+
+### Effect of sampling intensity on Lincoln-Pearson $\hat{N}$ estimates
+
+We're going to simulate increased sampling estimates by pooling together estimates from each team.
+I'll be combining the the data from each group in all possible team combinations (e.g., one team: A, B, C, ...; two teams: AB, AC, AD, ...; three teams: ABC, ABD, BCD, ...).
+For each combination, you'll need to calculate the Lincoln-Pearson population size estimate $(\hat{N})$.
+Create a figure showing the effect of sample size on $\hat{N}$.
+
+### Sex ratios
+
+Estimate $\hat{N}$ separately for male and female butterflies; how does this sum compare with the estimate for all teams combined?
+
+What is the sex ratio of the population?  Does it differ from 50:50?  Use a chi-square test to test this.
+
+### Comparison of Lincoln-Pearson with alternative method
+
+In 1970-71, Larry Gilbert collected data on a natural population of Heliconius in Trinidad. We will use this method to estimate population sizes.
+
+For each of the three sample periods, use a regression to model the relationship between the daily recapture proportion $(x)$ and the cumulative number of individuals marked $(y)$.
+Intuitively, a recapture rate of 1.0 would suggest that you've sampled pretty much the entire population; you could thus use this regression equation to estimate $(\hat{N})$ by evaluating it when $x=1$. 
+Create a multi-panel regression plot to go along with these methods.
+
+Compare these estimates with the Lincoln-Pearson estimate from the day with the highest proportion of recaptures in the sampling period. 
+Note that for each row of the Trinidad data, $S_2$ = `total_captured`, $R_2$ = `recaptures`, and $M_1$ = `(cumulative_m - new_captures)`. 
+
+## Discussion
+
+You should address the following in your discussion:
+
+- Our MMR data came from a closed population; briefly speculate about some of the potential problems with these estimates in an open, natural population (how would emigration/immigration or birth/death affect the estimates)? How might our study compare with data from a natural population?
+- How well does the Lincoln-Pearson model compare with fractional reacpture estimation in a naural population?  How different were your population estimates? What factors could help explain them?
+- Think of some creative ways you could improve sampling in an MMR project? (Beyond just increasing the sample size).  
+- Don't forget to discuss your results from the sex ratio and genotype analyses.
