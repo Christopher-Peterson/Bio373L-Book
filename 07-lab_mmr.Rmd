@@ -67,6 +67,17 @@ Create a multi-panel regression plot to go along with these methods.
 Compare these estimates with the Lincoln-Pearson estimate from the day with the highest proportion of recaptures in the sampling period. 
 Note that for each row of the Trinidad data, $S_2$ = `total_captured`, $R_2$ = `recaptures`, and $M_1$ = `(cumulative_m - new_captures)`. 
 
+### Hardy-Weinberg
+
+First, you'll want to get the observed numbers for each genotype; we'll call these $N_{FF}$, $N_{FH}$, and $N_{HH}$; the total sample size $N$ is the sum of these. 
+You can use the `table` command in R to calculate this. 
+
+From these observed genotypes, you can calculate the genotype frequency of F, which is just $\frac{N_{FF} + 0.5 N_{FH} }{N}$  let's call this $p$.  
+
+You can get your HWE expected genotypes by using $p$ and $q=1-p$ to get your expected genotype frequencies, then multiplying them by $N$ to get your expected counts.
+
+From here, you have observed and expected counts and can run an chi-square test.
+
 ## Discussion
 
 You should address the following in your discussion:
