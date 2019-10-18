@@ -9,8 +9,7 @@ n_buterflies = 41 # real number of butterflies
 Primary Questions:
 
 1. How does sampling intensity improve MMR estimates? 
-3. ...Sex ratio stuff
-2. Does separating animals by sex alter our estimate of population size?
+2. Does separating animals by sex alter our estimate of population size? What's the Sex ratio?
 3. How does the Lincoln-Pearson model compare with alternate MMR methods?
 4. Are the *Heliconius* populations in Hardy-Weinberg equilbrium for the Optix gene?
 
