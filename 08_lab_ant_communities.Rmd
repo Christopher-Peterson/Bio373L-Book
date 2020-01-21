@@ -63,4 +63,4 @@ The exponential of the Shannon index is called the true Shannon diversity $(D_H 
 
 ## Discussion
 
-In progress
+In progress.  This is a test.
