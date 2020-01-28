@@ -59,21 +59,22 @@ It is often useful to organize the methods section into sub-sections. For exampl
 
 You should always include a description of *all* of the statistical methods you used in the methods section. This includes the test(s) performed, the predictor (independent) and response (dependent) variables, the alpha level, and the program used. 
 
-Write each sub-section in chronological order. This and the results section are often the easiest to write, so it might be a good idea to start with these two middle sections, and then work on the introduction and discussion.
+Write each sub-section in chronological order. This and the results section are often the easiest to write first, so it's best to start with these two middle sections, and then work on the introduction and discussion.
 
 ## Results
 
-This is where you describe your observations and the results of any analyses. Make sure you do not include new methods (**including new statistical analyses**) in this section; these belong in the previous section. The most important results should be presented as figures or tables.`r # Link to that chapter when it is writtern` However, they must also be described in the paragraph. 
+This is where you describe your observations and the results of any analyses. Make sure you do not include new methods (**including new statistical analyses**) in this section; these belong in the previous section. The most important results should be presented as figures or tables.`r # Link to that chapter when it is written` However, they must also be described in the paragraph. 
 
 It is a good idea to organize this section into sub-sections as well, following the same system you used in the methods (some sub-sections from the methods may not need to be used in the results, but follow the organization as closely as possible). 
 
 ### Reporting statistics
 
-In general, you should begin by presenting the relevant summary statistics (such as means for measured data and  frequencies for categorical data). For example, ‘The mean temperature tolerance of males was $39.2 \pm 0.45 ºC$, while the females were $37.1 \pm 0.25 ºC$’. Notice that the temperature has units (degrees Celsius) and that I put the standard deviation after the mean. This is good practice when reporting means. 
+In general, you should begin by presenting the relevant summary statistics (such as means for measured data and  frequencies for categorical data). For example, ‘The mean temperature tolerance was $39.2 \pm 0.45 ºC$ for males and $37.1 \pm 0.25 ºC$ for females.’ Notice that the temperature has units (degrees Celsius) and that I put the standard deviation after the mean. This is good practice when reporting means. 
 
 When reporting statistical test results, state what they mean in words first, and then follow the statement with a parenthetical phrase containing the statistics. For example, ‘Males tolerated significantly higher temperatures than females ($t = 1.96$, $df = 6$, $p = 0.04$)’. Notice that I included the computed t-statistic, the degrees of freedom and the p-value. All these should be reported when reporting t-test results. Note also that I indicated the direction of the difference, as well as its significance. 
 
 Here is another example: ‘The number of escape behaviors performed increased significantly at high temperatures for all snakes ($\chi^2 = 8.43$, $df = 2$, $p = 0.001$)’. This is an example of how you would report chi-square test results. Again, the results are stated in words that have biological meaning and are followed by the calculated test statistic, the degrees of freedom and the p-value in parentheses. 
+
 If your statistical analyses did not find a significant difference, you still need to report this. For example: ‘Although temperature tolerance was slightly higher for males than females, this difference was not statistically significant ($t = 0.657$, $df = 6$, $p = 0.14$).’ Do not use the word “insignificant” in this context.
 
 *Be sure to state your results in a biologically meaningful manner.*  A common mistake is to write out the results in statistical terminology without any reference to their biological meaning. For example: ‘A t-test resulted in a p-value of 0.03 meaning that we can reject the null hypothesis and accept the alternative.’ While this is a correct statistical interpretation of the calculated p-value, it tells the reader nothing about the trees or ants or mushrooms that you were studying. Do not write up your results like this; it's unpleasant to read and you're just going to have to fix it in revisions. 
@@ -84,7 +85,7 @@ If your statistical analyses did not find a significant difference, you still ne
 
 Do not interpret your data in the results. That belongs in the discussion.
 
-Do not consider discuss explanations for for your data in the results. That belongs in the discussion.
+Do not consider explanations for your data in the results. That belongs in the discussion.
 
 Do not consider how your data relates to your hypothesis in the results. That belongs in the discussion. 
 
@@ -92,38 +93,38 @@ This is probably the most common mistake I've encountered in grading student lab
 
 ## Discussion
 
-The discussion is where you are should interpret your data and draw conclusions by comparing your data to what is known from the published literature. The organization of this section is a mirror-image of the introduction in terms of its organization: start narrowly, by discussing how your results relate to your original hypotheses and questions. Follow it up with a wider discussion of how these results fit into the broad concept with which you introduced the paper. This should not be a restatement of what you wrote in the introduction or in the results, but should be an exploration of the meaning of all those numbers you just crunched and what they might signify. 
+The discussion is where you should interpret your data and draw conclusions by comparing your data to what is known from the published literature. The organization of this section is a mirror-image of the introduction in terms of its organization: start narrowly, by discussing how your results relate to your original hypotheses and questions. Follow it up with a wider discussion of how these results fit into the broad concept with which you introduced the paper. This should not be a restatement of what you wrote in the introduction or in the results, but should be an exploration of the meaning of all those numbers you just crunched and what they might signify. 
 
-Be careful not to make unfounded statements. There are often many potential explanations for obtaining a particular result. One may seem more likely than the others, but this does not exclude the other explanations from being true if you haven't actually tested them. A good way  to handle this is to mention the multiple alternative interpretations, express support for the one you think is most likely and explain why, then suggest a future experiment that could be done to test whether or not that is correct. 
+Be careful not to make unfounded statements. There are often many potential explanations for obtaining a particular result. One may seem more likely than the others, but this does not exclude the other explanations from being true if you haven't actually tested them. A good way to handle this is to mention the multiple alternative interpretations, express support for the one you think is most likely and explain why, then suggest a future experiment that could be done to test whether or not that is correct. 
 
 An example:
 
-> ‘Female temperature tolerance was lower than males. This could be due to the relative size of the two sexes. Females are the smaller sex meaning that they would heat up faster than males due to a greater surface area:volume ratio (Loblaw and Bluth, 2005). Alternatively, the males could have a higher tolerance because their overall activity levels were elevated in the experimental enclosures. This  may have caused them to begin with a higher internal temperature that acclimatized them to higher temperatures to start; however, this seems unlikely. Future work could address this by taking internal temperature readings before and after temperature tolerance trials’.
+> ‘Temperature tolerance was lower for females than for males. This could be due to the relative size of the two sexes. Females are the smaller sex, meaning that they would heat up faster than males due to a greater surface area:volume ratio (Loblaw and Bluth, 2005). Alternatively, the males could have a higher tolerance because their overall activity levels were elevated in the experimental enclosures. This  may have caused them to begin with a higher internal temperature that acclimatized them to higher temperatures to start; however, this seems unlikely. Future work could address this by taking internal temperature readings before and after temperature tolerance trials.’
 
 As in the introduction, you should cite at least two peer-reviewed papers in this section in a way that isn't obviously shoehorned in.  
 
 ## Literature Cited
 
-You must use a minimum of **four** primary literature sources in your report, with at least two sources in both the introduction and discussion (although some sources are suitable to use in both).  Use the sources to provide background, to aid in justification of performing the project, support for your interpretation of results, etc. In some cases, you should also cite a reference in the methods section (e.g., for a non-standard data collection technique or to provide information on a study site/species). Do not cite papers in results.  All thoughts, ideas, concepts, etc., that you didn't think up on your own must be cited in the text (Failure to do this is considered plagiarism). 
+You must use a minimum of **four** primary literature sources in your report, with at least two sources in both the introduction and discussion (although some sources are suitable to use in both).  Use the sources to provide background, to aid in justification of performing the project, support for your interpretation of results, etc. In some cases, you should also cite a reference in the methods section (e.g., for a non-standard data collection technique or to provide information on a study site/species). Do not cite papers in results. All thoughts, ideas, concepts, etc., that you didn't think up on your own must be cited in the text (failure to do this is considered plagiarism). 
 
-If you want to cite general facts or information from a study, it's generally best to present those facts with a parenthetical citation.  E.g., "The point-quarter technique is an effective and reliable way to estimate canopy cover in the field (Smith et al., 2018)." Sometimes, you may want to discuss the specific details of a previous paper.  Generally, it's a bad idea to start a sentence with "In one study, ... (Hernandez et al., 2007).  Instead, cite them directly: "Hernandez et al. (2007) discovered similar signs of succession in eastern hardwood forests...". If you have a couple of sentences that are all drawn from the same source, please don't end every sentence with that citation. 
+If you want to cite general facts or information from a study, it's generally best to present those facts with a parenthetical citation. E.g., "The point-quarter technique is an effective and reliable way to estimate canopy cover in the field (Smith et al., 2018)." Sometimes, you may want to discuss the specific details of a previous paper. Generally, it's a bad idea to start a sentence with "In one study, ... (Hernandez et al., 2007). Instead, cite them directly: "Hernandez et al. (2007) discovered similar signs of succession in eastern hardwood forests...". If you have multiple sentences all drawn from the same source, just put the citation once at the end of the last of those sentences. 
 
-Please note that while there is a minimum of four primary literature sources, you are encouraged to add more. Bringing in information from extra papers can really strengthen your introduction/discussion. There will be a weekly thread on canvas to share literature relevant to the lab report; you are expected to contribute two citations to it each week.
+Please note that while there is a minimum of four primary literature sources, you are encouraged to add more. Bringing in information from extra papers can really strengthen your introduction/discussion. There will be a weekly thread on Canvas to share literature relevant to the lab report; you are expected to contribute two citations to it each week.
 
-Please note that your sources need to be relevant to your lab report at more than just a surface level.  For example, if your lab report is on the distribution of cottonwoods at BLF, a paper about the cottonwood’s genomic structure is probably not going to be relevant. 
+Please note that your sources need to be relevant to your lab report at more than just a surface level. For example, if your lab report is on the distribution of cottonwoods at BFL, a paper about the cottonwood’s genomic structure is probably not going to be relevant. 
 
 ## Common Mistakes for particular sections
 
 ### Introduction and Discussion
 
-Null hypotheses are statistical tools used for certain tests (e.g., a null hypothesis for a chi-squared test would be that the groups are independent, or that there is no difference in the species proportions between the two age classes).  These don't belong in the introduction or discussion.  For these sections, you should present your biological hypotheses (e.g., "BFL is undergoing succession").  It is usually a good idea to include a concrete prediction of these hypotheses in the introduction as well (e.g., "BFL is undergoing succession, which will be indicated by a differences in the relative abundances of canopy and sapling trees").
+Null hypotheses are statistical tools used for certain tests (e.g., a null hypothesis for a chi-squared test would be that the groups are independent, or that there is no difference in the species proportions between the two age classes). These don't belong in the introduction or discussion. For these sections, you should present your biological hypotheses (e.g., "BFL is undergoing succession"). It is usually a good idea to include a concrete prediction of these hypotheses in the introduction as well (e.g., "BFL is undergoing succession, which will be indicated by a difference in the relative abundances of canopy and sapling trees").
 
 
 ### Results
 
-Don't cite papers in the results.  You are presenting your results, not somebody else's.  If you want to do this, it's probably something that should be in the discussion.
+Don't cite papers in the results. You are presenting your results, not somebody else's. If you want to do this, it's probably something that should be in the discussion.
 
-Tables are best for highly structured data.  If there isn't much data present, it can usually just be presented in the text of the results. If there's a lot of data, it is worth considering if a figure would be better.
+Tables are best for highly structured data. If there isn't much data to present, the data can usually just be presented in the text of the results. If there's a lot of data, it is worth considering if a figure would be better.
 
 
 
