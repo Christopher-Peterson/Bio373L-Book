@@ -2,7 +2,7 @@
 
 It's easy to write a scientific report that confuses or bores the audience.  Developing a style that keeps the reader following along can be a challenge, but it is a necessary one.
 
-This chapter contains a number of stylistic suggestions that can improve your lab reports.  There isn't 'one true style' for scientific writing, but I've found that these guidelines can help when you're starting out.
+This chapter contains a number of stylistic suggestions that can improve your lab reports. There isn't 'one true style' for scientific writing, but I've found that these guidelines can help when you're starting out.
 
 ## Be Concise
 
@@ -27,7 +27,7 @@ not the exact procedures you used to do it
 
 > "We created a contingency table in Excel using pivot tables by ..., then calculated the expected values by ... From this we calculated the chi-square test statistic with the formula..., determined the degrees of freedom from ..., and calculated the p-value with the Excel function...". 
 
-A more specialized calculation may need to be explained ("The density at a point was estimated as $N / \text{sum}(x^2)$, where N was the number of quadrants was trees and x is the distance to the tree."), but should also not be over-explained.
+A more specialized or non-standard calculation may need to be explained ("The density at a point was estimated as $N / \text{sum}(x^2)$, where N was the number of quadrants with trees and x is the distance to the tree."), but should also not be over-explained.
 
 The same applies to the results. If you did three similar analyses to different data sets, you should try to describe the outcomes in parallel. Instead of doing this:
 
@@ -45,9 +45,9 @@ Similar advice applies to figures.
 
 ## Sentence Structure
 
-Your writing should flow. When moving between topics (or sub-topics), it is helpful to include transitional elements (words, phrases, or sometimes entire sentences) to help the reader follow your train of logic. This doesn't mean that you should start every few sentences in the Methods section with "Then, we [did something] ...".  Note that this isn't necessary if you are switching between sections (e.g., Methods to Results) or labeled sub-sections. 
+Your writing should flow. When moving between topics (or sub-topics), it is helpful to include transitional elements (words, phrases, or sometimes entire sentences) to help the reader follow your train of logic. This doesn't mean that you should start every few sentences in the Methods section with "Then, we [did something] ...". Some good words and phrases to use include "Following ___," "Furthermore," "However," "Alternatively," and "Yet," etc. Note that transitions aren't necessary when you are starting a new section (e.g., Methods) or labeled sub-section. 
 
-Each sentence should serve a purpose (in terms of communicating information).  If two or more sentences are doing the same job, it's worth considering if they should be combined.  Conversely, sentences that are doing too much should probably be split.
+Each sentence should serve a purpose (in terms of communicating information).  If two or more sentences are doing the same job, try to combine them (or delete one).  Conversely, sentences that are doing too much should be split.
 
 Avoid [garden-path sentences](https://en.wikipedia.org/wiki/Garden-path_sentence) and lengthy sentences that require multiple reads to understand. 
 
@@ -61,7 +61,7 @@ For the record, I am not banning the use of passive voice.  It can be effectivel
 
 It's tempting to use longer, more technical sounding words when writing a scientific paper.  This tends to make papers harder to read with no benefit. The same is doubly true for awkward multi-word phrases that can be replaced with one, simple word. 
 
-Two particularly common offenders:
+Two common offenders:
 
 **Utilize**: In almost every case, **"use"** is the better choice.  "Utilize" is really only applicable for situations in which the object being used was not designed for the task to which it is being put.  Even in that situation, "use" is still preferable.  There are a few minor areas of biology where "utilize" is correct, but for now, stick to "use."
 
@@ -71,20 +71,20 @@ Two particularly common offenders:
 ## Scientific and Common Names
 
 - Latin binomials should be italicized, with genus capitalized and specific epithet in lowercase (e.g., *Ulmus crassifolia*).  
-  - Only write the full scientific name the first time it appears in a section; afterwards, you can abbreviate the genus (e.g., *U. crassifolia*). 
+  - Only write the full scientific name the first time it appears in a section; afterwards, you can abbreviate the genus (e.g., *U. crassifolia*). At that point, stick to the abbreviation; don't switch back and forth.
   - Exception: You should never start a sentence with the abbreviated form.
-- Don’t capitalize common names except for proper nouns e.g., American elm, cedar elm, Ashe juniper, sugar hackberry.  
-- The first time a species is mentioned, its scientific name should be given.  If after that you want to just use the common name, that is fine.  
+- Don’t capitalize common names except for proper nouns e.g., American elm, cedar elm, Ashe's juniper, sugar hackberry.  
+- The first time a species is mentioned, its scientific name should be given.  If after that you want to just use the common name, that is fine, as long as you also gave the common name the first time.  
   - E.g., first time – ‘…..cedar elm (*Ulmus crassifolia*) was found in all three habitats…..’ 
   - Later ‘….the prevalence of cedar elm could be due to….’ OR ‘….the prevalence of *U. crassifolia* could be due to….
 
 ## Other Grammar
 
-- Put a comma after an introductory prepositional phrase.  E.g., ‘In the pasture habitat, cedar elm was…..’ or ‘During the most recent drought, laurel cherry has……’
+- Put a comma after an introductory prepositional phrase.  E.g., ‘In the pasture habitat, cedar elm was...’ or ‘During the most recent drought, laurel cherry has...’
 - I generally prefer Oxford commas.  While you aren’t required to use them, be consistent.
 - Please only capitalize proper nouns, acronyms, and the appropriate parts of scientific names.  
 
-## Commonoy Confused Definitions
+## Commonly Confused Definitions
 
 - Population and Community: 
   - A population is a collection of individuals of the same species in a particular geographic area. E.g., all the cedar elm individuals at BFL
@@ -102,4 +102,4 @@ We generally aren't using high-precision instruments.  As such, you should round
 
 ## Tenses
 
-  
+Make sure to use the appropriate tense in each part of the report. If you're reporting what you did (e.g. in the Methods) or what someone did in another study (e.g. in the Introduction or Discussion) then use the past tense. Also use the past tense in the Results, because the results were recorded/found in the past. However, when discussing context and theory currently held to be true (in the Introduction and Discussion), make sure to use the present tense. Future tense will typically only be used when suggesting a potential future follow-up study/studies, usually in a small section at the end of the Discussion.
