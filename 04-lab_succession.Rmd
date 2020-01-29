@@ -59,7 +59,7 @@ Review the guidelines in the Figures chapter. Specifically:
   - Don't use bar plots for group means; boxplots or violin plots are usually better. This is a very inefficient way to present 3 data points, and it provides no information about the data's variability. Boxplots or violin plots are better options. (Note that bar plots are still fine for counts or proportions).
   - No gridlines (see below)
   
-To remove gridlines in excel, just click on them and delete them.  Base plots in R (with the `plot()` function) shouldn't have they by default.  To remove them with `ggplot2` figures, put this near the top of the code:
+To remove gridlines in excel, just click on them and delete them.  Base plots in R (with the `plot()` function) shouldn't have them by default.  To remove them with `ggplot2` figures, put this near the top of the code:
 
 ```{r, echo = TRUE, eval = FALSE}
 install.packages("cowplot") # if you don't have this installed; run once
@@ -78,7 +78,7 @@ Finally, you need to have a real title.
 
 ### Describe the habitats 
 
-Since the different habitat types are an important part of this paper, you should describe time in a reasonable amount of detail; this could go in the intro or methods section, depending on how you wrote it.  
+Since the different habitat types are an important part of this paper, you should describe them in a reasonable amount of detail; this could go in the intro or methods section, depending on how you wrote it.  
 
 ### The Analysis
 
@@ -89,7 +89,7 @@ This wouldn't work, because the chi-square test cannot tell you anything about t
 
 The Chi-square analysis was often described incorrectly in the methods; an unfamiliar reader would not know what you were testing. When you're describing the test, you don't necessarily need to state the null/alternative hypotheses, but you need to make it clear what question you're answering with it.
 
-It's also worth remembering that the data we collect is generally not incredibly high percision. Our measurements generaly don't have the ability to distinguish between a mean density of 437.11 and 437.14; depending on the sample size, we may not even be able to distinguish between 437 and 442. Being overly precise doesn't help matters.  If your p-values are less than 0.0001, just report "p < 0.0001."
+It's also worth remembering that the data we collect is generally not incredibly high precision. Our measurements generally don't have the ability to distinguish between a mean density of 437.11 and 437.14; depending on the sample size, we may not even be able to distinguish between 437 and 442. Being overly precise doesn't help.  If your p-values are less than 0.0001, just report "p < 0.0001."
 
 
 ### Keeping things in the right sections
@@ -116,5 +116,5 @@ Don't put anything in the intro or methods that is actually a result.  Many peop
   - The "fisher test" is properly called Fisher's exact test (with "Fisher" capitalized).
   - If you used a stats program for a bunch of different things (as you usually do w/ R or Excel), mention it at the end of the section, not the beginning.
   - RStudio is an interface for doing analysis with R; if you used it, you should say you did your analysis in R.
-  - Sample points selected differently in pond/old pasture than in other habitats 
-  - In the discussion, if you are listing several possible interpretations of your results, it's a good idea to put the most interesting one(s) ahead of the "this is all random noise" options.  
+  - Make sure to explain that sample points were selected differently in pond/old pasture than in other habitats. 
+  - In the discussion, if you are listing several possible interpretations of your results, it's a good idea to put the most interesting one(s) ahead of the "this is all random noise" option.  
