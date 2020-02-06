@@ -112,7 +112,7 @@
 
 \title{Bio 373L Survival Guide}
 \author{Christopher R. Peterson}
-\date{2020-01-29}
+\date{2020-02-06}
 
 \begin{document}
 \maketitle
@@ -1351,14 +1351,14 @@ methods validation step, not a biological hypothesis.
 estimates}\label{calibrating-canopy-estimates}
 
 Since most of our analyses rely on subjective measurements, it would be
-good to calibrate how well the subjective category categories predict
-light measurements estimated by Gap Light Analyzer? Use linear
-regression on the current datasets, with subjective score as the
-predictor and percent openness as the response. Note that the structure
-of the data will almost certainly violate some of the assumptions of a
-linear regression test. We can still do this because this isn't a
-hypothesis-driven analysis, but a prediction-driven one; provide the
-\(R^2\) and fit equation, but not the p-values.
+good to calibrate how well the subjective categories predict light
+measurements estimated by Gap Light Analyzer. Use linear regression on
+this class's dataset, with subjective score as the predictor and percent
+openness as the response. Note that the structure of the data will
+almost certainly violate some of the assumptions of a linear regression
+test. We can still do this because this isn't a hypothesis-driven
+analysis, but a prediction-driven one; provide the \(R^2\) and fit
+equation, but not the p-values.
 
 To run a regression in R, modify this code:
 
@@ -1371,13 +1371,12 @@ To run a regression in R, modify this code:
 \end{Highlighting}
 \end{Shaded}
 
-Create a figure for this analysis corresponding to these analyses,
-including the data points and trend lines. If you're using excel, please
-remember that the equation that appears after you add the trendline
-shouldn't be included in the resulting graph (it belongs in the caption
-and main text). If you're using \texttt{ggplot} in R, you can add a
-regression line to the graph by adding the following line to your figure
-code:
+Create a figure for this analysis, including the data points and trend
+line. If you're using Excel, please remember that the equation that
+appears after you add the trendline shouldn't be included in the
+resulting graph (it belongs in the caption and main text). If you're
+using \texttt{ggplot} in R, you can add a regression line to the graph
+by adding the following line to your figure code:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1386,7 +1385,7 @@ code:
 \end{Highlighting}
 \end{Shaded}
 
-One othe thing I'd recommend is spreading out the points on your x axis
+One other thing I'd recommend is spreading out the points on your x axis
 a little, since otherwise they will just be four vertical lines. In
 ggplot, you can do this by replacing \texttt{geom\_point} with:
 
