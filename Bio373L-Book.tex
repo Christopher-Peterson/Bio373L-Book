@@ -112,7 +112,7 @@
 
 \title{Bio 373L Survival Guide}
 \author{Christopher R. Peterson}
-\date{2020-02-06}
+\date{2020-02-13}
 
 \begin{document}
 \maketitle
@@ -1422,8 +1422,8 @@ the figure.\\
 Line plots and stacked box plots are two possible options.\\
 Multiple panels may be warranted.
 
-\chapter{\texorpdfstring{Lab 4: Mark-Release-Recapture with
-\emph{Heliconius}}{Lab 4: Mark-Release-Recapture with Heliconius}}\label{Lab4}
+\chapter{\texorpdfstring{Lab 3: Mark-Release-Recapture with
+\emph{Heliconius}}{Lab 3: Mark-Release-Recapture with Heliconius}}\label{Lab3}
 
 \section{Questions and hypotheses}\label{questions-and-hypotheses-1}
 
@@ -1433,12 +1433,13 @@ Primary Questions:
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  How does sampling intensity improve MMR estimates?
+  How does sampling intensity improve mark-release-recapture (MRR)
+  population size estimates?
 \item
   Does separating animals by sex alter our estimate of population size?
-  What's the Sex ratio?
+  What's the sex ratio?
 \item
-  How does the Lincoln-Pearson model compare with alternate MMR methods?
+  How does the Lincoln-Pearson model compare with alternate MRR methods?
 \item
   Are the \emph{Heliconius} populations in Hardy-Weinberg equilbrium for
   the Optix gene?
@@ -1447,21 +1448,20 @@ Primary Questions:
 \subsection{Wing Pattern and the Optix transcription
 factor}\label{wing-pattern-and-the-optix-transcription-factor}
 
-In the lab, we scored the orange/red/brown wing patterns. The mimetic
-phenotypes generated are key to the diversification of the genus, to
-predator protection niches, and to mutualism between sympatric species
-(Mullerian mimicry). The the Optix supergene locus controls expression
-of a transcription factor that affects coloration in wing patterns. A
-supergene locus controls expression of a transcription factor called
-Optix. One allele (\(F\)) accounts for the red, orange, red or brown
-scales in the distal forewing band (beyond the large wing cell). Another
-allele (\(H\)) controls the presence of such scales on the hind wing
-and/or on the proximal forewing in the cell region. Since the link
-between phenotype and genotype is known, we can use observational data
-to infer whether the population is in Hardy-Weinberg equilibrium (HWE)
-for this trait.
+Identify the butterflies' genotypes based on their orange/red/brown wing
+patterns. The mimetic phenotypes generated are key to the
+diversification of the genus, to predator protection niches, and to
+mutualism between sympatric species (Mullerian mimicry). The Optix
+supergene locus controls expression of a transcription factor that
+affects coloration in wing patterns. One allele (\(F\)) accounts for the
+red, orange, red or brown scales in the distal forewing band (the part
+of the wings further from the body). Another allele (\(H\)) controls the
+presence of such scales on the hind wing and/or on the proximal forewing
+in the cell region (close to the body). Since the link between phenotype
+and genotype is known, we can use observational data to infer whether
+the population is in Hardy-Weinberg equilibrium (HWE) for this trait.
 
-Hardy\_Weinberg assumptions:
+Hardy-Weinberg assumptions:
 
 \begin{itemize}
 \tightlist
@@ -1497,17 +1497,18 @@ Lincoln-Pearson \(\hat{N}\)
 estimates}{Effect of sampling intensity on Lincoln-Pearson \textbackslash{}hat\{N\} estimates}}\label{effect-of-sampling-intensity-on-lincoln-pearson-hatn-estimates}
 
 We're going to simulate increased sampling estimates by pooling together
-estimates from each team. I'll be combining the the data from each group
-in all possible team combinations (e.g., one team: A, B, C, \ldots{};
-two teams: AB, AC, AD, \ldots{}; three teams: ABC, ABD, BCD, \ldots{}).
-For each combination, you'll need to calculate the Lincoln-Pearson
+estimates from each team. I'll be combining the data from each group in
+all possible team combinations (i.e., one team: A, B, C, \ldots{}; two
+teams: AB, AC, AD, \ldots{}; three teams: ABC, ABD, BCD, \ldots{}). For
+each combination, you'll need to calculate the Lincoln-Pearson
 population size estimate \((\hat{N})\). Create a figure showing the
 effect of sample size on \(\hat{N}\).
 
 \subsection{Sex ratios}\label{sex-ratios}
 
-Estimate \(\hat{N}\) separately for male and female butterflies; how
-does this sum compare with the estimate for all teams combined?
+Using the combined data from all teams, estimate \(\hat{N}\) separately
+for male and female butterflies. How does the sum of these estimates
+compare with the estimate when the sexes are lumped together?
 
 What is the sex ratio of the population? Does it differ from 50:50? Use
 a chi-square test to test this.
@@ -1516,16 +1517,17 @@ a chi-square test to test this.
 method}\label{comparison-of-lincoln-pearson-with-alternative-method}
 
 In 1970-71, Larry Gilbert collected data on a natural population of
-Heliconius in Trinidad. We will use this method to estimate population
-sizes.
+\emph{Heliconius} in Trinidad (recall his paper spreadsheet from lecture
+with cells colored in to represent individuals). We will use this method
+to estimate population sizes.
 
 For each of the three sample periods, use a regression to model the
 relationship between the daily recapture proportion \((x)\) and the
 cumulative number of individuals marked \((y)\). Intuitively, a
-recapture rate of 1.0 would suggest that you've sampled pretty much the
-entire population; you could thus use this regression equation to
-estimate \((\hat{N})\) by evaluating it when \(x=1\). Create a
-multi-panel regression plot to go along with these methods.
+recapture rate of 1.0 would suggest that you've sampled the entire
+population; you could thus use this regression equation to estimate
+\((\hat{N})\) by evaluating it when \(x=1\). Create a multi-panel
+regression plot to go along with these methods.
 
 Compare these estimates with the Lincoln-Pearson estimate from the day
 with the highest proportion of recaptures in the sampling period. Note
@@ -1548,8 +1550,8 @@ You can get your HWE expected genotypes by using \(p\) and \(q=1-p\) to
 get your expected genotype frequencies, then multiplying them by \(N\)
 to get your expected counts.
 
-From here, you have observed and expected counts and can run an
-chi-square test.
+From here, you have observed and expected counts and can run a chi
+square test.
 
 \section{Discussion}\label{discussion-2}
 
@@ -1558,18 +1560,20 @@ You should address the following in your discussion:
 \begin{itemize}
 \tightlist
 \item
-  Our MMR data came from a closed population; briefly speculate about
+  How well did we meet the assumptions of MRR?
+\item
+  Our MRR data came from a closed population; briefly speculate about
   some of the potential problems with these estimates in an open,
   natural population (how would emigration/immigration or birth/death
   affect the estimates)? How might our study compare with data from a
   natural population?
 \item
   How well does the Lincoln-Pearson model compare with fractional
-  reacpture estimation in a naural population? How different were your
+  recapture estimation in a natural population? How different were your
   population estimates? What factors could help explain them?
 \item
-  Think of some creative ways you could improve sampling in an MMR
-  project? (Beyond just increasing the sample size).\\
+  Think of some creative ways you could improve sampling in an MRR
+  project (beyond just increasing the sample size).\\
 \item
   Don't forget to discuss your results from the sex ratio and genotype
   analyses.

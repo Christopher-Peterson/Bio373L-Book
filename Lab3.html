@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 7 Lab 5: Ant Community Ecology | Bio 373L Survival Guide</title>
+  <title>Chapter 6 Lab 3: Mark-Release-Recapture with Heliconius | Bio 373L Survival Guide</title>
   <meta name="description" content="Writing advice for Field Ecology." />
   <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 7 Lab 5: Ant Community Ecology | Bio 373L Survival Guide" />
+  <meta property="og:title" content="Chapter 6 Lab 3: Mark-Release-Recapture with Heliconius | Bio 373L Survival Guide" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="Christopher-Peterson/Bio373L-Book" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 7 Lab 5: Ant Community Ecology | Bio 373L Survival Guide" />
+  <meta name="twitter:title" content="Chapter 6 Lab 3: Mark-Release-Recapture with Heliconius | Bio 373L Survival Guide" />
   
   <meta name="twitter:description" content="Writing advice for Field Ecology." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="Lab3.html"/>
-
+<link rel="prev" href="Lab2.html"/>
+<link rel="next" href="Lab5.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -211,60 +211,70 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="Lab5" class="section level1">
-<h1><span class="header-section-number">Chapter 7</span> Lab 5: Ant Community Ecology</h1>
-<div id="questions-and-hypotheses-2" class="section level2">
-<h2><span class="header-section-number">7.1</span> Questions and hypotheses</h2>
-<p>There are two primary topics we’ll be investigating in this lab:</p>
+<div id="Lab3" class="section level1">
+<h1><span class="header-section-number">Chapter 6</span> Lab 3: Mark-Release-Recapture with <em>Heliconius</em></h1>
+<div id="questions-and-hypotheses-1" class="section level2">
+<h2><span class="header-section-number">6.1</span> Questions and hypotheses</h2>
+<p>Primary Questions:</p>
+<ol style="list-style-type: decimal">
+<li>How does sampling intensity improve mark-release-recapture (MRR) population size estimates?</li>
+<li>Does separating animals by sex alter our estimate of population size? What’s the sex ratio?</li>
+<li>How does the Lincoln-Pearson model compare with alternate MRR methods?</li>
+<li>Are the <em>Heliconius</em> populations in Hardy-Weinberg equilbrium for the Optix gene?</li>
+</ol>
+<div id="wing-pattern-and-the-optix-transcription-factor" class="section level3">
+<h3><span class="header-section-number">6.1.1</span> Wing Pattern and the Optix transcription factor</h3>
+<p>Identify the butterflies’ genotypes based on their orange/red/brown wing patterns. The mimetic phenotypes generated are key to the diversification of the genus, to predator protection niches, and to mutualism between sympatric species (Mullerian mimicry). The Optix supergene locus controls expression of a transcription factor that affects coloration in wing patterns. One allele (<span class="math inline">\(F\)</span>) accounts for the red, orange, red or brown scales in the distal forewing band (the part of the wings further from the body). Another allele (<span class="math inline">\(H\)</span>) controls the presence of such scales on the hind wing and/or on the proximal forewing in the cell region (close to the body). Since the link between phenotype and genotype is known, we can use observational data to infer whether the population is in Hardy-Weinberg equilibrium (HWE) for this trait.</p>
+<p>Hardy-Weinberg assumptions:</p>
 <ul>
-<li>What are the habitat preferences of imported fire ants (<em>Solenposis invicta</em>)?</li>
-<li>How do ant communities differ across habitats?</li>
+<li>Mating is random</li>
+<li>No migration</li>
+<li>No natural selection</li>
+<li>No genetic drift (a.k.a., large populations)</li>
+<li>No mutation</li>
 </ul>
+<p>Note that while several of the above assumptions are essentially impossible, in practice you can achieve near-HWE if migration, selection, drift, and mutation are small/weak enough to be ignored.</p>
 </div>
-<div id="analysis-2" class="section level2">
-<h2><span class="header-section-number">7.2</span> Analysis</h2>
-<p>We’ll be doing examining habitat differences with a couple of contrasts with our various methods:</p>
+</div>
+<div id="analysis-1" class="section level2">
+<h2><span class="header-section-number">6.2</span> Analysis</h2>
+<p>The Lincoln-Pearson model:</p>
+<p>If <span class="math inline">\(S_2\)</span> is the number of individuals collected in a sample period, <span class="math inline">\(M_1\)</span> is total number of previously marked individuals, and <span class="math inline">\(R_2\)</span> is the number of marked individuals who were recaptured, then you can estimate population size:</p>
+<p><span class="math display">\[\hat{N} = \frac{S_2 M_1}{R_2}\]</span></p>
+<div id="effect-of-sampling-intensity-on-lincoln-pearson-hatn-estimates" class="section level3">
+<h3><span class="header-section-number">6.2.1</span> Effect of sampling intensity on Lincoln-Pearson <span class="math inline">\(\hat{N}\)</span> estimates</h3>
+<p>We’re going to simulate increased sampling estimates by pooling together estimates from each team. I’ll be combining the data from each group in all possible team combinations (i.e., one team: A, B, C, …; two teams: AB, AC, AD, …; three teams: ABC, ABD, BCD, …). For each combination, you’ll need to calculate the Lincoln-Pearson population size estimate <span class="math inline">\((\hat{N})\)</span>. Create a figure showing the effect of sample size on <span class="math inline">\(\hat{N}\)</span>.</p>
+</div>
+<div id="sex-ratios" class="section level3">
+<h3><span class="header-section-number">6.2.2</span> Sex ratios</h3>
+<p>Using the combined data from all teams, estimate <span class="math inline">\(\hat{N}\)</span> separately for male and female butterflies. How does the sum of these estimates compare with the estimate when the sexes are lumped together?</p>
+<p>What is the sex ratio of the population? Does it differ from 50:50? Use a chi-square test to test this.</p>
+</div>
+<div id="comparison-of-lincoln-pearson-with-alternative-method" class="section level3">
+<h3><span class="header-section-number">6.2.3</span> Comparison of Lincoln-Pearson with alternative method</h3>
+<p>In 1970-71, Larry Gilbert collected data on a natural population of <em>Heliconius</em> in Trinidad (recall his paper spreadsheet from lecture with cells colored in to represent individuals). We will use this method to estimate population sizes.</p>
+<p>For each of the three sample periods, use a regression to model the relationship between the daily recapture proportion <span class="math inline">\((x)\)</span> and the cumulative number of individuals marked <span class="math inline">\((y)\)</span>. Intuitively, a recapture rate of 1.0 would suggest that you’ve sampled the entire population; you could thus use this regression equation to estimate <span class="math inline">\((\hat{N})\)</span> by evaluating it when <span class="math inline">\(x=1\)</span>. Create a multi-panel regression plot to go along with these methods.</p>
+<p>Compare these estimates with the Lincoln-Pearson estimate from the day with the highest proportion of recaptures in the sampling period. Note that for each row of the Trinidad data, <span class="math inline">\(S_2\)</span> = <code>total_captured</code>, <span class="math inline">\(R_2\)</span> = <code>recaptures</code>, and <span class="math inline">\(M_1\)</span> = <code>(cumulative_m - new_captures)</code>.</p>
+</div>
+<div id="hardy-weinberg" class="section level3">
+<h3><span class="header-section-number">6.2.4</span> Hardy-Weinberg</h3>
+<p>First, you’ll want to get the observed numbers for each genotype; we’ll call these <span class="math inline">\(N_{FF}\)</span>, <span class="math inline">\(N_{FH}\)</span>, and <span class="math inline">\(N_{HH}\)</span>; the total sample size <span class="math inline">\(N\)</span> is the sum of these. You can use the <code>table</code> command in R to calculate this.</p>
+<p>From these observed genotypes, you can calculate the genotype frequency of F, which is just <span class="math inline">\(\frac{N_{FF} + 0.5 N_{FH} }{N}\)</span> let’s call this <span class="math inline">\(p\)</span>.</p>
+<p>You can get your HWE expected genotypes by using <span class="math inline">\(p\)</span> and <span class="math inline">\(q=1-p\)</span> to get your expected genotype frequencies, then multiplying them by <span class="math inline">\(N\)</span> to get your expected counts.</p>
+<p>From here, you have observed and expected counts and can run a chi square test.</p>
+</div>
+</div>
+<div id="discussion-2" class="section level2">
+<h2><span class="header-section-number">6.3</span> Discussion</h2>
+<p>You should address the following in your discussion:</p>
 <ul>
-<li>Open (canopy cover 0 or 1) vs. Closed (canopy cover 2 or 3) canopies.</li>
-<li>Sparse (0/1) vs. dense (2/3) ground cover.</li>
-<li>Low vs. high disturbance</li>
-<li>Habitat types (Q/R/P)</li>
+<li>How well did we meet the assumptions of MRR?</li>
+<li>Our MRR data came from a closed population; briefly speculate about some of the potential problems with these estimates in an open, natural population (how would emigration/immigration or birth/death affect the estimates)? How might our study compare with data from a natural population?</li>
+<li>How well does the Lincoln-Pearson model compare with fractional recapture estimation in a natural population? How different were your population estimates? What factors could help explain them?</li>
+<li>Think of some creative ways you could improve sampling in an MRR project (beyond just increasing the sample size).<br />
+</li>
+<li>Don’t forget to discuss your results from the sex ratio and genotype analyses.</li>
 </ul>
-<div id="s.-invicta-habitat-preference" class="section level3">
-<h3><span class="header-section-number">7.2.1</span> <em>S. invicta</em> habitat preference</h3>
-<p>Compare the presence/absense of <em>S. invicta</em> for each contrast. For each, create a contingency table and run a chi-squared test. The columns should be the different habitat conditions; the table should have two rows (fire ants present, fire ants absent), and the cell contents should be the number of baits that meet those conditions.</p>
-<p>You should also test if there’s an interaction between canopy openness and disturbance (re: fire ant presence). This should also be tested with a chi-square test, with the contingency table’s columns being the four combinations of openness and disturbance.</p>
-</div>
-<div id="ant-community-differences" class="section level3">
-<h3><span class="header-section-number">7.2.2</span> Ant community differences</h3>
-<p>We’ll be using four methods to estimate and compare diversity of ants in different habitats at BFL: Jaccard’s index of similarity, Cumulative curves of species, Rank abundance curves and Shannon’s index of diversity. You can read about these methods in the Ecology Laboratory Manual by G.W. Cox or any other ecology book.</p>
-<p>In general, you should use these methods to compare the above habitat characteristics. You don’t have to do all of them for each method (that would be excessive), but I’d recommend using them to explore the data and report on some contrasts that you find interesting. For everything but the Jaccard, you should also look at the entire dataset as a whole. </p>
-<div id="jaccards-index-of-similarity" class="section level4">
-<h4><span class="header-section-number">7.2.2.1</span> Jaccard’s index of similarity</h4>
-<p>This index provides an estimation of how similar species composition is between two communities (e.g., two places or times).</p>
-<p><span class="math display">\[J = \frac{W}{A + B - W}\]</span> <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are the richness (number of species present) of the two communities in question, and <span class="math inline">\(W\)</span> is the number of species in common in both communities. <span class="math inline">\(J\)</span> varies from 0 (nothing in common) to 1 (identical communities). You can also interpret <span class="math inline">\(J\)</span> as the proportion of total species that are shared.</p>
-<p>For these analyses, you should treat the community as the</p>
-</div>
-<div id="species-accumulation-curve" class="section level4">
-<h4><span class="header-section-number">7.2.2.2</span> Species Accumulation Curve</h4>
-<p>These curves show the amount of time/effort spent sampling for species against the total number of species observed. They provide information about the actual and potential species richness of a community, as well as a sense of how well a place has been sampled. The details of how to calculate this are a bit complicated, and are explained in the attached R script.</p>
-<p>Plot each curve (for related curves, you should include them in the same figure). Does it appear that the habitat was fully sampled? Estimate the likely number of species in the habitat by extrapolating the curve.</p>
-</div>
-<div id="rank-abundance-curve" class="section level4">
-<h4><span class="header-section-number">7.2.2.3</span> Rank Abundance Curve</h4>
-<p>Rank abundance curves compare the abundance of each species to the rank-order of that abundance. These give you a visual representation of species richness and species evenness (measure of comparative relative abundance of species). Species evenness is derived from the slope of the line that fits the graph. A steep drop-off indicates low evenness as the high ranking species have much higher abundances than the low ranking species. A more gradual slope indicates high evenness as the abundances of different species are similar.</p>
-<p>To create these, plot the number of ants found in each species with log10 scale on Y-axis. Organize the species along the x-axis from most to least abundant (See more in Cox pg 197).</p>
-</div>
-<div id="shannon-index" class="section level4">
-<h4><span class="header-section-number">7.2.2.4</span> Shannon Index</h4>
-<p>This index estimates the diversity of a species in a single place, combining information about the richness and relative abundance. The Shannon index <span class="math inline">\((H^\prime)\)</span> is calculated as:</p>
-<p><span class="math display">\[H^{\prime} = -\sum_{i=1}^n p_i \ln(p_i)\]</span> where <span class="math inline">\(p_i\)</span> is the relative abundance of species <span class="math inline">\(i\)</span>. The larger <span class="math inline">\(H^{\prime}\)</span>, the higher the diversity. The exponential of the Shannon index is called the true Shannon diversity <span class="math inline">\((D_H = \exp(H^\prime))\)</span>; it can be interpreted as the number of species you’d expect in an equally diverse community that was perfectly even.</p>
-</div>
-</div>
-</div>
-<div id="discussion-3" class="section level2">
-<h2><span class="header-section-number">7.3</span> Discussion</h2>
-<p>In progress. This is a test.</p>
 
 </div>
 </div>
@@ -273,8 +283,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           </div>
         </div>
       </div>
-<a href="Lab3.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="Lab2.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="Lab5.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
