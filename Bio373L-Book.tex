@@ -112,7 +112,7 @@
 
 \title{Bio 373L Survival Guide}
 \author{Christopher R. Peterson}
-\date{2020-02-13}
+\date{2020-09-01}
 
 \begin{document}
 \maketitle
@@ -734,7 +734,10 @@ that the reader can understand exactly what the figure/table represents
 without having to look at the text. DO refer to all tables/figures in
 the body of the text, and include them in order (i.e.~the first
 table/figure the reader comes across should be called table 1/figure 1
-and should be the first one referred to in the text).
+and should be the first one referred to in the text). Note that in this
+chapter, the figures are numbered 3.1, 3.2, etc; this is appropriate for
+a multi-chapter book, but not for a paper/article/manuscript. Don't use
+decimals.
 
 Figures should communicate your results, not just present/summarize your
 data. A good figure tells a story. If there is a trend or pattern, it
@@ -795,7 +798,7 @@ caring.
 Please remember that you should be writing your lab reports as if the
 reader (i.e., me) didn't know exactly what you did.
 
-\subsection{Be Concise}\label{be-concise-1}
+\subsection{Be Concise}\label{be-concise}
 
 If you have multiple figures that conceptually belong together (e.g.,
 the same measurements taken in three years), you should turn them into a
@@ -807,7 +810,7 @@ different.
 
 \subsection{General Formatting}\label{general-formatting}
 
-Figure \ref{fig:irisBad} is poorly formatted:
+Figure \ref{fig:penguinBad} is poorly formatted:
 
 \begin{itemize}
 \tightlist
@@ -838,12 +841,12 @@ Figure \ref{fig:irisBad} is poorly formatted:
 
 \begin{figure}
 \centering
-\includegraphics{Bio373L-Book_files/figure-latex/irisBad-1.pdf}
-\caption{\label{fig:irisBad}Petal width (X variable) vs petal length (Y variable).
-The regression is significant (\(R^2 = 0.93\); \(p<0.0001\)).}
+\includegraphics{Bio373L-Book_files/figure-latex/penguinBad-1.pdf}
+\caption{\label{fig:penguinBad}Body mass (X variable) vs flipper length (Y
+variable). The regression is significant (\(R^2 = 0.76\); \(p<0.0001\)).}
 \end{figure}
 
-Figure \ref{fig:irisGood} contains the same data, but has been
+Figure \ref{fig:penguinGood} contains the same data, but has been
 reformatted to address these issues. Note the use of units in the axis
 labels, the formatting of scientific species names, the positioning of
 the legend to minimize whitespace, and the lack of a title and
@@ -852,16 +855,18 @@ response and a combination of continuous and categorical predictors.
 
 \begin{figure}
 \centering
-\includegraphics{Bio373L-Book_files/figure-latex/irisGood-1.pdf}
-\caption{\label{fig:irisGood}Association between petal width and petal length in
-three species of \emph{Iris}. Petal length increases with petal width
-((Petal Length) = 1.1 + 2.2*(Petal Width); \(R^2 = 0.93\);
+\includegraphics{Bio373L-Book_files/figure-latex/penguinGood-1.pdf}
+\caption{\label{fig:penguinGood}Association between body mass and flipper length in
+three species of penguin. Flipper length increases with body mass
+((Flipper Length) = 13.7 + 1.5*(Body Mass); \(R^2 = 0.76\);
 \(p<0.0001\)).}
 \end{figure}
 
-Figure \ref{fig:irisPanel} is an example of a multi-panel figure; in the
-text, you should refer to parts of it as Figure \ref{fig:irisPanel}A,
-\ref{fig:irisPanel}B, etc.
+Figure \ref{fig:penguinPanel} is an example of a multi-panel figure; in
+the text, you should refer to parts of it as Figure
+\ref{fig:penguinPanel}A, \ref{fig:penguinPanel}B, etc.
+
+
 
 
 
@@ -870,11 +875,13 @@ text, you should refer to parts of it as Figure \ref{fig:irisPanel}A,
 
 \begin{figure}
 \centering
-\includegraphics{Bio373L-Book_files/figure-latex/irisPanel-1.pdf}
-\caption{\label{fig:irisPanel}Association between sepal width and sepal length for
-A) \emph{Iris setosa}, B) \emph{I. versicolor}, and C) \emph{I.
-virginica}. The association is not statistically significant ((Sepal
-Length) = 6.5 + -0.2*(Sepal Width); \(R^2 = 0.01\); \(p = 0.152\)).}
+\includegraphics{Bio373L-Book_files/figure-latex/penguinPanel-1.pdf}
+\caption{\label{fig:penguinPanel}Association between bill length and bill depth for
+three species of penguins. The association is significant and different
+among species ((Bill Depth) = 10.6 + 0.2*(Bill Length) for Adelie, 5.5 +
+0.2*(Bill Length) for Gentoo, and 8.7 + 0.2*(Bill Length) for Chinstrap;
+\(R^2 = 0.77\); \(p_{\text{species}} < 0.0001\);
+\(p_{\text{length}} < 0.0001\);)}
 \end{figure}
 
 \subsection{Continuous response, categorical
@@ -902,37 +909,34 @@ the summary statistics (Figure \ref{fig:violin}).
 
 
 
-
 \begin{figure}
 \centering
 \includegraphics{Bio373L-Book_files/figure-latex/dynamite-1.pdf}
-\caption{\label{fig:dynamite}Mean sepal width for three species of \emph{iris},
-with standard errors. Sepal length differs significantly among species
+\caption{\label{fig:dynamite}Mean body mass for three species of penguin, with
+standard errors. Body mass differs significantly among species
 \((p < 0.0001)\).}
 \end{figure}
 
 \begin{figure}
 \centering
 \includegraphics{Bio373L-Book_files/figure-latex/boxplot-1.pdf}
-\caption{\label{fig:boxplot}Distribution of sepal width for three species of
-\emph{iris}. Sepal length differs significantly among species
-\((p < 0.0001)\).}
+\caption{\label{fig:boxplot}Distribution of body mass for three species of penguin.
+Body mass differs significantly among species \((p < 0.0001)\).}
 \end{figure}
 
 \begin{figure}
 \centering
 \includegraphics{Bio373L-Book_files/figure-latex/histoplot-1.pdf}
-\caption{\label{fig:histoplot}Distribution of sepal width for three species of
-\emph{iris}. Sepal length differs significantly among species
-\((p < 0.0001)\).}
+\caption{\label{fig:histoplot}Distribution of body mass for three species of penguin.
+Body mass differs significantly among species \((p < 0.0001)\).}
 \end{figure}
 
 \begin{figure}
 \centering
 \includegraphics{Bio373L-Book_files/figure-latex/violin-1.pdf}
-\caption{\label{fig:violin}Distribution of sepal width, for three species of
-\emph{iris}, with mean and standard errors in red. Sepal length differs
-significantly among species \((p < 0.0001)\).}
+\caption{\label{fig:violin}Distribution of body mass for three species of penguin,
+with mean and standard errors in red. Body mass differs significantly
+among species \((p < 0.0001)\).}
 \end{figure}
 
 \subsection{Categorical, count, or frequency
@@ -1059,7 +1063,7 @@ C & 12 & 22.00 & 2.97 & 17.99 & 26.38\\
 
 Some guidelines
 
-\section{Results}\label{results-2}
+\section{Results}\label{results}
 
 You should provide data and analyses to address the following questions:
 
@@ -1122,7 +1126,7 @@ Sapling & 0 & 6 & 7 & 3 & 6 & 11\\
 \end{tabular}
 \end{table}
 
-\section{Discussion}\label{discussion-1}
+\section{Discussion}\label{discussion}
 
 Some suggestions for discussion topics:
 
@@ -1153,7 +1157,7 @@ Some suggestions for discussion topics:
 \section{General Comments
 (Post-Review)}\label{general-comments-post-review}
 
-\subsection{Figures}\label{figures-1}
+\subsection{Figures}\label{figures}
 
 Review the guidelines in the Figures chapter. Specifically:
 
@@ -1425,7 +1429,7 @@ Multiple panels may be warranted.
 \chapter{\texorpdfstring{Lab 3: Mark-Release-Recapture with
 \emph{Heliconius}}{Lab 3: Mark-Release-Recapture with Heliconius}}\label{Lab3}
 
-\section{Questions and hypotheses}\label{questions-and-hypotheses-1}
+\section{Questions and hypotheses}\label{questions-and-hypotheses}
 
 Primary Questions:
 
@@ -1481,7 +1485,7 @@ Note that while several of the above assumptions are essentially
 impossible, in practice you can achieve near-HWE if migration,
 selection, drift, and mutation are small/weak enough to be ignored.
 
-\section{Analysis}\label{analysis-1}
+\section{Analysis}\label{analysis}
 
 The Lincoln-Pearson model:
 
@@ -1553,7 +1557,7 @@ to get your expected counts.
 From here, you have observed and expected counts and can run a chi
 square test.
 
-\section{Discussion}\label{discussion-2}
+\section{Discussion}\label{discussion}
 
 You should address the following in your discussion:
 
@@ -1581,7 +1585,7 @@ You should address the following in your discussion:
 
 \chapter{Lab 5: Ant Community Ecology}\label{Lab5}
 
-\section{Questions and hypotheses}\label{questions-and-hypotheses-2}
+\section{Questions and hypotheses}\label{questions-and-hypotheses}
 
 There are two primary topics we'll be investigating in this lab:
 
@@ -1594,7 +1598,7 @@ There are two primary topics we'll be investigating in this lab:
   How do ant communities differ across habitats?
 \end{itemize}
 
-\section{Analysis}\label{analysis-2}
+\section{Analysis}\label{analysis}
 
 We'll be doing examining habitat differences with a couple of contrasts
 with our various methods:
@@ -1695,7 +1699,7 @@ true Shannon diversity \((D_H = \exp(H^\prime))\); it can be interpreted
 as the number of species you'd expect in an equally diverse community
 that was perfectly even.
 
-\section{Discussion}\label{discussion-3}
+\section{Discussion}\label{discussion}
 
 In progress. This is a test.
 
