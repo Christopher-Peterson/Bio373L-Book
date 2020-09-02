@@ -161,6 +161,8 @@ If there is some aspect of your data that you'd like to really emphasize, it can
 quiet_plot(anole_diff_plt)
 ```
 
+The R code used to generate all of the figures in this chapter can be found [here](https://github.com/Christopher-Peterson/Bio373L-Book/blob/master/R/figures_chapter_scripts.r) (along with some annotations).  I've tried to explain what most of the components of each plot do, though I'd recommend learning some basic `ggplot2` first.
+
 ## Tables
 
 Tables are an effective addition to a manuscript when you have a lot of data in the text and want to present it to the reader in an organized fashion. They are particularly helpful when you have a lot of different kinds of data that would be hard to plot together.  For example, see Table \@ref(tab:table1). 
