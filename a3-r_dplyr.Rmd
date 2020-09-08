@@ -1,6 +1,6 @@
 # Data manipulation with `dplyr`
 
-Let's talk about data manipulation.  We'll be using the `dplyr` package, which is part of `tidyverse` First, we need to load our packages & data. 
+Let's talk about data manipulation.  We'll be using the `dplyr` package, which is part of `tidyverse`. You can find a quick reference page under **Help -> Cheatsheets** in RStudio. First, we need to load our packages & data. 
 
 ```{r tidyverse_workaround_a3, echo = FALSE, message = FALSE}
 # This invisible block is a workaround for Travis CI not having the tidyverse meta-package; 
@@ -170,9 +170,189 @@ Exercises:
  
 ## Subsetting by column (select)
 
+You can subset certain columns with the `select()` function. There are several ways to do this.  The simplest is by name:
+
+```{r select1}
+lizards %>% select(Site, Color_morph, SVL) %>% View()
+```
+
+You can also select by position:
+```{r select2}
+lizards %>% select(1, 2, 7) %>% View()
+```
+
+This is more useful for ranges of values:
+```{r select3}
+lizards %>% select(1:4, 7) %>% View()
+```
+
+You can also use character vectors:
+```{r select4}
+lizards %>% select("Site", "Color_morph", "SVL") %>% View()
+```
+
+Note that if you want to use a variable that has column names saved as a character vector, you'll need to use a helper function (`all_of`) to tell `select` that you want to look for the contents of the variable, not the name of the variable:
+```{r select5}
+select_vars = c("Site", "Color_morph", "SVL")
+lizards %>% 
+  select(all_of(select_vars)) %>% # without all_of, it would try to look for a column called "select_vars"
+  View()
+```
+
+You can remove columns by using a negative sign. (Note that negative signs are ignored if you have any names without negative signs).
+
+```{r select6}
+lizards %>% select(-Color_morph, -Limb) %>% View()
+```
+```{r select7}
+lizards %>% select(-(1:5)) %>% View()
+```
+
+You can also use the `where` helper function to select columns based on their characteristics.  For example, the `is.numeric` function returns TRUE if its argument is a number; you can use it to select all numeric columns.
+```{r select_num}
+lizards %>% 
+  select(where(is.numeric)) %>% 
+  View()
+```
+
+You could do the same for text or logical vectors with `is.character` or `is.logical`, respectively. Note that there aren't parentheses after `is.numeric` in the above code. that's because *we* aren't calling it on any particular value; instead, the `where` function calls it on every column of the data frame, and we're just telling it what function to use.
+
+There's a lot more you can do with this if you want to get fancy; the documentation is available at `?tidyselect::language`.  
+
+## Sorting by columns (arrange)
+
+You can use `arrange()` to sort by one or more column values.  To sort lizards from lowest to highest mass:
+
+```{r arrange1}
+lizards %>% arrange(Mass) %>% View()
+```
+
+If you wish to sort from highest to lowest, use the `desc()` helper function:
+```{r arrange2}
+lizards %>% arrange(desc(Mass)) %>% View()
+```
+
+When you have categorical variables, you'll often have ties:
+```{r arrange3}
+lizards %>% arrange(Site) %>% View()
+```
+
+In this case, it's helpful to sort by multiple variables; the following code orders by Site, then by color morph within site, then by SVL.  
+```{r arrange4}
+lizards %>% arrange(Site, Color_morph, SVL) %>% View()
+```
+
+One particularly useful thing you can do with this is create rankings. 
+```{r arrange5}
+lizards %>% 
+  arrange(desc(SVL)) %>% 
+  mutate(size_rank = 1:n()) %>%
+  View()
+```
+
+
+
+
+## Summarizing data
+
+Summarize is like mutate, but it generally produces columns that are shorter than the input.  It's typically used for summary stats.  For example, this calculates several characteristics of SVL.
+
+```{r smry1}
+lizards %>% 
+  summarize(mean_SVL = mean(SVL), 
+            sd_SVL = sd(SVL),
+            med_SVL = median(SVL), 
+            count = n()) %>% 
+  View()
+```
+
+A useful trick for summarize is to take the mean of a logical vector; `TRUE` and `FALSE` are interpreted as 1 and 0, so this gives you a frequency.  For example, if you wanted to get the proportion of color morphs:
+```{r smry_prop}
+lizards %>% 
+  summarize(freq_Blue = mean(Color_morph == "Blue"),
+            freq_Brown = mean(Color_morph == "Brown"),
+            freq_Green = mean(Color_morph == "Green")
+            )
+```
+
+You can use the `across` helper function to apply the same summary function to multiple rows.
+
+```{r smry_across}
+lizards %>% 
+  summarize(
+    across(.cols = c(SVL, Tail),
+           .fns = mean)
+    ) %>% View()
+```
+The `.cols` argument identifies the columns to use for the summary, using the same methods as `select()`, the .fns should be one or more functions to apply to each column. If you wish to use more than one summary function, you need to create a named vector:
+
+```{r smry_across}
+lizards %>% 
+  summarize(
+    across(.cols = where(is.numeric), # apply to all numeric functions
+           .fns = c(Mean = mean, StDev = sd)) # named vector (Mean and StDev)
+    ) %>% View()
+```
+
+This applies the functions `mean` and `sd` to all numeric columns; The results have the names `"Mean"` and `"StDev"` that we gave each function applied to the end of the column.
+
+## Group Operations
+
+The real power of the `dplyr` package comes from being able to apply all of the above functions to grouped subsets of a data frame. To create a grouped table use the `group_by` function:
+
+```{r grp1}
+lizards %>% group_by(Site)
+```
+
+This doesn't appear to do much on its own; however, look what happens when you combine it with `summarize`:
+
+```{r grp2}
+lizards %>% group_by(Site) %>% 
+  summarize(mean_SVL = mean(SVL),
+            sd_SVL = sd(SVL),
+            count = n()) %>% 
+  View()
+```
+
+This calculates the mean, SD of SVL for each site. You can group by multiple factors
+
+```{r grp3}
+lizards %>% group_by(Site, Color_morph) %>% 
+  summarize(mean_SVL = mean(SVL), 
+            count = n()) %>% 
+  ungroup() %>% # Removes grouping; usually a good idea at the end unless you want surprises
+  View()
+```
+
+
+
+Grouping doesn't just work with `summarize`; for example, you can use it with mutate to find the relative height of each lizard within its site:
+
+```{r grp4}
+lizards %>% group_by(Site) %>% 
+  mutate(
+    rel_height = Height/max(Height)) %>% 
+    # max(Height) returns the max height in each site
+  ungroup() %>% 
+  ggplot(aes(x = Site, y = rel_height)) + 
+  geom_jitter(width = .2, height = 0)
+```
+
+Some Exercises:
+
+ 5. Visualize the relationship between the maximum height at a site and the average limb length. Use this to help:
+ 
+```{r, eval = FALSE, error = TRUE}
+ lizards %>% 
+  # Put your summarize() code here
+  # You should name your new columns max_height and mean_limb
+    ggplot(aes(x = max_height, y = mean_limb)) + 
+    geom_smooth(method = "lm") + geom_point() 
+```
+
+ 6. For each site, what's the mean limb length of the five largest individuals by SVL?  What proportion of these individuals is blue?
 
 
 
 
 
-## Grouping & summarizing data
