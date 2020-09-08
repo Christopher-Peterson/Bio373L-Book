@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>A Working with R | Bio 373L Survival Guide</title>
+  <title>C Data manipulation with dplyr | Bio 373L Survival Guide</title>
   <meta name="description" content="Writing advice for Field Ecology." />
   <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="A Working with R | Bio 373L Survival Guide" />
+  <meta property="og:title" content="C Data manipulation with dplyr | Bio 373L Survival Guide" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="Christopher-Peterson/Bio373L-Book" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="A Working with R | Bio 373L Survival Guide" />
+  <meta name="twitter:title" content="C Data manipulation with dplyr | Bio 373L Survival Guide" />
   
   <meta name="twitter:description" content="Writing advice for Field Ecology." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="lab1.html"/>
-<link rel="next" href="making-graphs-in-r-with-ggplot2.html"/>
+<link rel="prev" href="making-graphs-in-r-with-ggplot2.html"/>
+
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -228,148 +228,392 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="working-with-r" class="section level1">
-<h1><span class="header-section-number">A</span> Working with R</h1>
-<p>The appendices will include a tutorial on some data analysis topics that will be helpful for this class. Please make sure you've installed R and RStudio, and some essential packages according to <a href="https://github.com/Christopher-Peterson/R-workshop-setup">this guide</a>. You can skip installing git for now.</p>
-<div id="introduction-to-rstudio" class="section level2">
-<h2><span class="header-section-number">A.1</span> Introduction to RStudio</h2>
-<p>RStudio is organized into four panels: scripts &amp; documents (upper left), the console (lower left), and two utility palens on the right that have various helpful functions. You may not see a document window on the left; if so, hit Ctrl+Shift+N to create a blank script. (Note that on Macs, Ctrl should pretty much always be replaced with Cmd). Generally, you write all of your code in the document window, then hit Ctrl+Enter (Cmd+Return) to send the R statement your cursor is on to the console window.</p>
-<div id="rstudio-projects" class="section level3">
-<h3><span class="header-section-number">A.1.1</span> RStudio Projects</h3>
-<p>RStudio's most useful feature is R projects, which automatically manage a lot of the tedious things that can normally cause problems when working with R. Most importantly, they make it easier to keep track of where your script, data, and output files are.</p>
-<p>Let's create a project for Bio 373L. In the upper right corner, click the down arrow next to <strong>Project: (None)</strong> (if it says something else, that's fine), then select <strong>New Project...</strong>. Select <strong>New Directory -&gt; New Project</strong>, then give it a name relevant to the class. I'd recommend making the project a subdirectory of where you keep the rest of your 373L files. Create the project; RStudio will take a moment to reset, then the upper-right corner of the screen should have the name of your project. Always make sure the project is loaded when you're working on material for this class; if it isn't, just click the project drop-down arrow and select it from the list.</p>
-<p>Now that your project is loaded, click the <strong>Files</strong> tab in one of the two utility panels; this shows everything in the project directory. All of the script &amp; data files you work should be put in this directory. I recommend creating a folder for each lab (click the <strong>New Folder</strong> button) to keep things organized. If you want to open the folder in Windows Explorer/Finder/whateverfile manager you use, click the <strong>More</strong> button, then <strong>Show Folder in New Window.</strong></p>
-</div>
-<div id="customizing-rstudio" class="section level3">
-<h3><span class="header-section-number">A.1.2</span> Customizing RStudio</h3>
-<p>I have a couple of recommendations for customizing RStudio to make it easier to use. Go to <strong>Tools -&gt; Global Options.</strong></p>
-<p>Under the <strong>General</strong> tab, make sure that the <strong>Workspace</strong> options are unchecked and set to Never; this will make sure you start with a fresh slate every time you start up R and prevent some weird errors from cropping up.</p>
-<p>Under <strong>Appearance</strong>, I'd take a look at some of the Editor themes. I'm rather fond of <strong>Vibrant Ink</strong>.</p>
-<p>Under <strong>Pane Layout</strong>, you can reorganize your panels. I like to put the Console in the lower right, and make sure that the lower left pane contains only History, Connections, Packages, and Tutorial. I generally find those four functions to be generally useless, so I can keep that pane minimized and have a larger document window on the left.</p>
-</div>
-</div>
-<div id="r-basics" class="section level2">
-<h2><span class="header-section-number">A.2</span> R basics</h2>
-<div id="statements-vectors" class="section level3">
-<h3><span class="header-section-number">A.2.1</span> Statements &amp; vectors</h3>
-<p>Let's take a look at some R basics. First, R can be used as an excessively fancy calculator. The following block contains R expressions, followed by the results of running them in the console (preceded with <code>##</code>). Try running it yourself.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dv">4</span><span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">8</span>)<span class="op">/</span><span class="dv">10</span>
-## [1] 2.4
-<span class="kw">log</span>(<span class="dv">5</span>) <span class="op">+</span><span class="st"> </span><span class="dv">12</span>
-## [1] 13.60944
-<span class="kw">sqrt</span>(<span class="kw">abs</span>(<span class="op">-</span><span class="dv">20</span>))
-## [1] 4.472136</code></pre></div>
-<p>R works naturally with vectors of numbers (or text).</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1</span><span class="op">:</span><span class="dv">10</span> <span class="co"># Create a sequence of numbers</span>
-##  [1]  1  2  3  4  5  6  7  8  9 10
-<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">9</span>, <span class="dv">12</span>, <span class="fl">98.7</span>) <span class="co"># use c() to make a vector</span>
-## [1]  1.0  4.0  9.0 12.0 98.7
-<span class="kw">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;D&quot;</span>) <span class="co"># Here&#39;s a character vector</span>
-## [1] &quot;A&quot; &quot;B&quot; &quot;C&quot; &quot;D&quot;
-
-<span class="co">#  Most operations work with vectors</span>
-(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>) <span class="op">+</span><span class="st"> </span><span class="dv">2</span>
-##  [1]  3  4  5  6  7  8  9 10 11 12
-(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>) <span class="op">+</span><span class="st"> </span><span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">50</span>)
-## [1] 11 22 33 44 55
-
-<span class="co"># Vectors can only be of one type; mixing numbers &amp; text will convert them all to text</span>
-<span class="kw">c</span>(<span class="st">&quot;I have been at UT for &quot;</span>, <span class="dv">5</span>, <span class="st">&quot;Years&quot;</span>)
-## [1] &quot;I have been at UT for &quot; &quot;5&quot;                      &quot;Years&quot;</code></pre></div>
-<p>Note that anything following a <code>#</code> is a comment, and ignored by R. I highly advise using comments to document your code.</p>
-</div>
-<div id="variables" class="section level3">
-<h3><span class="header-section-number">A.2.2</span> Variables</h3>
-<p>You can save values &amp; objects by creating variables.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># You can use either &lt;- or = to assign a variable</span>
-first_ten &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span>
-second_ten =<span class="st"> </span><span class="dv">11</span><span class="op">:</span><span class="dv">20</span> 
-
-<span class="co"># Run the variable&#39;s name to see it&#39;s value (this is callled printing)</span>
-first_ten
-##  [1]  1  2  3  4  5  6  7  8  9 10
-second_ten
-##  [1] 11 12 13 14 15 16 17 18 19 20
-
-<span class="co"># You can use variables just like you would use their values</span>
-first_ten <span class="op">+</span><span class="st"> </span><span class="dv">1</span> 
-##  [1]  2  3  4  5  6  7  8  9 10 11
-first_ten <span class="op">+</span><span class="st"> </span>second_ten
-##  [1] 12 14 16 18 20 22 24 26 28 30
-
-<span class="co"># Note that variable names are case-sensitive</span>
-first_Ten <span class="co"># doesn&#39;t work</span>
-## Error in eval(expr, envir, enclos): object &#39;first_Ten&#39; not found</code></pre></div>
-</div>
-<div id="reading-working-with-data-frames" class="section level3">
-<h3><span class="header-section-number">A.2.3</span> Reading &amp; working with data frames</h3>
-<p>Before we get started with this you'll need to download an example data file. From RStudio, create an <strong>example_data</strong> directory, then save <a href="https://raw.githubusercontent.com/Christopher-Peterson/Bio373L-Book/master/example_data/anoles.csv">this file</a> in it (make sure the name is still <code>anoles.csv</code>). Note that you may need to go to go to **File -&gt; Save Page As...* (or some variant) in your web browser to save it.</p>
-<p>Now, let's load the data into R. To do that, we need to load the <code>readr</code> package, which is part of the <code>tidyverse</code>. Note: RStudio has some built-in ways to load datasets; I would strongly advise not using them, because it makes it harder to go back &amp; repeat your analysis if something changes.</p>
+<div id="data-manipulation-with-dplyr" class="section level1">
+<h1><span class="header-section-number">C</span> Data manipulation with <code>dplyr</code></h1>
+<p>Let's talk about data manipulation. We'll be using the <code>dplyr</code> package, which is part of <code>tidyverse</code> First, we need to load our packages &amp; data.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse) 
-lizards &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;example_data/anoles.csv&quot;</span>) <span class="co"># Note that the path is relative to your project directory.</span></code></pre></div>
-<p>This is a data frame (effectively a spreadsheet). Technically, it's a type of data frame called a <code>tibble</code>, which doesn't really matter for what we're doing right now. Let's take a look at it:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># quick view of data frame; note that there&#39;s more columns and rows </span>
-lizards <span class="co"># listed than are displayed</span></code></pre></div>
-<pre><code>## # A tibble: 657 x 9
-##    Site  Color_morph  Limb  Mass Diameter Height   SVL  Tail Perch_type
-##    &lt;chr&gt; &lt;chr&gt;       &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;     
-##  1 A     Green        14.3  6.46        8    164  61.8  43.9 Other     
-##  2 A     Brown        12.3  5.82       18    151  57.1  42.2 Tree      
-##  3 A     Blue         10.5  4.29       36    130  49.1  25   Building  
-##  4 A     Brown        10.3  5.29       31    131  51.2  38.2 Tree      
-##  5 A     Brown        10.9  5.69       20    138  51.5  46.9 Shrub     
-##  6 A     Brown        10.4  5.84       25    137  45.3  59   Shrub     
-##  7 A     Green        11.1  5.91        7    138  49.7  47.6 Building  
-##  8 A     Brown        10    5.09       20    141  48    34.9 Tree      
-##  9 A     Brown        12.3  7.2        19    129  54.9  61   Tree      
-## 10 A     Brown        11.2  6.66       15    134  52.7  50.4 Tree      
-## # … with 647 more rows</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Look at the first few rows of each column</span>
-<span class="kw">glimpse</span>(lizards)</code></pre></div>
-<pre><code>## Rows: 657
-## Columns: 9
-## $ Site        &lt;chr&gt; &quot;A&quot;, &quot;A&quot;, &quot;A&quot;, &quot;A&quot;, &quot;A&quot;, &quot;A&quot;, &quot;A&quot;, &quot;A&quot;, &quot;A&quot;, &quot;A&quot;, &quot;A&quot;, &quot;A…
-## $ Color_morph &lt;chr&gt; &quot;Green&quot;, &quot;Brown&quot;, &quot;Blue&quot;, &quot;Brown&quot;, &quot;Brown&quot;, &quot;Brown&quot;, &quot;Gre…
-## $ Limb        &lt;dbl&gt; 14.3, 12.3, 10.5, 10.3, 10.9, 10.4, 11.1, 10.0, 12.3, 11.…
-## $ Mass        &lt;dbl&gt; 6.46, 5.82, 4.29, 5.29, 5.69, 5.84, 5.91, 5.09, 7.20, 6.6…
-## $ Diameter    &lt;dbl&gt; 8, 18, 36, 31, 20, 25, 7, 20, 19, 15, 31, 35, 10, 19, 30,…
-## $ Height      &lt;dbl&gt; 164, 151, 130, 131, 138, 137, 138, 141, 129, 134, 143, 15…
-## $ SVL         &lt;dbl&gt; 61.8, 57.1, 49.1, 51.2, 51.5, 45.3, 49.7, 48.0, 54.9, 52.…
-## $ Tail        &lt;dbl&gt; 43.9, 42.2, 25.0, 38.2, 46.9, 59.0, 47.6, 34.9, 61.0, 50.…
-## $ Perch_type  &lt;chr&gt; &quot;Other&quot;, &quot;Tree&quot;, &quot;Building&quot;, &quot;Tree&quot;, &quot;Shrub&quot;, &quot;Shrub&quot;, &quot;B…</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># View the data in an RStudio pane</span>
-<span class="kw">View</span>(lizards)</code></pre></div>
-<p>Each column of the data frame is a vector of the same length. We can pull our columns and work with them directly:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Let&#39;s extract the color column</span>
-lizards<span class="op">$</span>Color_morph
-lizards[[<span class="st">&quot;Color_morph&quot;</span>]] 
-<span class="kw">pull</span>(lizards, Color_morph) <span class="co"># requires dplyr package, which is in the tidyverse</span>
-<span class="co"># Note that some of these require quotes, some of them don&#39;t; this is </span>
-<span class="co"># I haven&#39;t included output here, because it&#39;s rather long</span></code></pre></div>
+<span class="kw">library</span>(cowplot)
+<span class="kw">theme_set</span>(<span class="kw">theme_cowplot</span>())
+lizards &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;example_data/anoles.csv&quot;</span>) <span class="co"># See Appendix A if you don&#39;t have this data</span></code></pre></div>
+<div id="the-pipe" class="section level2">
+<h2><span class="header-section-number">C.1</span> The Pipe (%&gt;%)</h2>
+<p>The <strong>pipe ( %&gt;% )</strong> operator strings functions together in a sequence. It takes the result of the function on its left and makes it the first argument to the function on the right. Let's say you wanted to calculate the base-12 log of the mean of the square root of the absolute value of numbers between -50 and 50. The traditional way to write that would be:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">log</span>(<span class="kw">mean</span>(<span class="kw">sqrt</span>(<span class="kw">abs</span>(<span class="op">-</span><span class="dv">50</span><span class="op">:</span><span class="dv">50</span>))), <span class="dt">base =</span> <span class="dv">12</span>)</code></pre></div>
+<pre><code>## [1] 0.6256332</code></pre>
+<p>This is rather difficult to read; it has a lot of nested parentheses, and you need to start from the inside and work your way out to see what's happening. With the pipe, you could re-write it like this:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="op">-</span><span class="dv">50</span><span class="op">:</span><span class="dv">50</span> <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">abs</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">sqrt</span>() <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">mean</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">log</span>(<span class="dt">base =</span> <span class="dv">12</span>)</code></pre></div>
+<pre><code>## [1] 0.6256332</code></pre>
+<p>Using pipes can make your code much clearer, and is quite helpful when creating a sequence of related transformations on data.</p>
+<p>In RStudio, you can insert the pipe by pressing Ctrl+Shift+M.</p>
 </div>
-<div id="functions" class="section level3">
-<h3><span class="header-section-number">A.2.4</span> Functions</h3>
-<p>Pretty much everything that isn't data is a function. Some of the examples we've used include <code>log</code>, <code>abs</code>, <code>read_csv</code>, and <code>mean</code>. Most functions have arguments, which tell the function what to work with. For example:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(<span class="dt">x =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>) <span class="co"># mean of 1 through 5</span>
-## [1] 3
-<span class="kw">sd</span>(<span class="dt">x =</span> lizards<span class="op">$</span>Mass) <span class="co"># standard deviation of lizard mass</span>
-## [1] 1.088521</code></pre></div>
-<p>Functions can have multiple arguments; for example <code>log</code> has the arguments <code>x</code> and <code>base</code>. Arguments can be matched by name or by their position. Some arguments have default values that are used if the argument isn't provided.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">log</span>(<span class="dt">x =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>) <span class="co"># argument is matched by name; base uses it&#39;s default value</span>
-## [1] 0.0000000 0.6931472 1.0986123 1.3862944 1.6094379
-<span class="kw">log</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">base =</span> <span class="dv">10</span>) <span class="co"># specifies a base; this overrides the default</span>
-## [1] 0.0000000 0.3010300 0.4771213 0.6020600 0.6989700
-<span class="kw">log</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dv">10</span>) <span class="co"># same as above, but matched by position</span>
-## [1] 0.0000000 0.3010300 0.4771213 0.6020600 0.6989700</code></pre></div>
+<div id="addingmodifying-columns-mutate" class="section level2">
+<h2><span class="header-section-number">C.2</span> Adding/modifying columns (mutate)</h2>
+<p>The <code>mutate()</code> function creates a new column in a data frame. For example, the total length of a lizard is defined as its snout-vent length (SVL) plus it's tail length.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mutate</span>(<span class="dt">.data =</span> lizards, <span class="dt">total_length =</span> SVL <span class="op">+</span><span class="st"> </span>Tail) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">View</span>() <span class="co"># Use View to look at the results in RStudio</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Site</th>
+<th align="left">Color_morph</th>
+<th align="right">Limb</th>
+<th align="right">Mass</th>
+<th align="right">Diameter</th>
+<th align="right">Height</th>
+<th align="right">SVL</th>
+<th align="right">Tail</th>
+<th align="left">Perch_type</th>
+<th align="right">total_length</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">A</td>
+<td align="left">Green</td>
+<td align="right">14.3</td>
+<td align="right">6.46</td>
+<td align="right">8</td>
+<td align="right">164</td>
+<td align="right">61.8</td>
+<td align="right">43.9</td>
+<td align="left">Other</td>
+<td align="right">105.7</td>
+</tr>
+<tr class="even">
+<td align="left">A</td>
+<td align="left">Brown</td>
+<td align="right">12.3</td>
+<td align="right">5.82</td>
+<td align="right">18</td>
+<td align="right">151</td>
+<td align="right">57.1</td>
+<td align="right">42.2</td>
+<td align="left">Tree</td>
+<td align="right">99.3</td>
+</tr>
+<tr class="odd">
+<td align="left">A</td>
+<td align="left">Blue</td>
+<td align="right">10.5</td>
+<td align="right">4.29</td>
+<td align="right">36</td>
+<td align="right">130</td>
+<td align="right">49.1</td>
+<td align="right">25.0</td>
+<td align="left">Building</td>
+<td align="right">74.1</td>
+</tr>
+<tr class="even">
+<td align="left">A</td>
+<td align="left">Brown</td>
+<td align="right">10.3</td>
+<td align="right">5.29</td>
+<td align="right">31</td>
+<td align="right">131</td>
+<td align="right">51.2</td>
+<td align="right">38.2</td>
+<td align="left">Tree</td>
+<td align="right">89.4</td>
+</tr>
+<tr class="odd">
+<td align="left">A</td>
+<td align="left">Brown</td>
+<td align="right">10.9</td>
+<td align="right">5.69</td>
+<td align="right">20</td>
+<td align="right">138</td>
+<td align="right">51.5</td>
+<td align="right">46.9</td>
+<td align="left">Shrub</td>
+<td align="right">98.4</td>
+</tr>
+<tr class="even">
+<td align="left">A</td>
+<td align="left">Brown</td>
+<td align="right">10.4</td>
+<td align="right">5.84</td>
+<td align="right">25</td>
+<td align="right">137</td>
+<td align="right">45.3</td>
+<td align="right">59.0</td>
+<td align="left">Shrub</td>
+<td align="right">104.3</td>
+</tr>
+</tbody>
+</table>
+<p>This uses the lizards data to create a new column, total_length. Within the mutate command, you can reference columns directly by their names (like you do for aes() in ggplot). Mutate can create multiple new columns in a single command.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mutate</span>(lizards, <span class="co"># generally, the .data argument is not named</span>
+       <span class="co"># All subsequent arguments refer to new columns</span>
+       <span class="dt">total_length =</span> SVL <span class="op">+</span><span class="st"> </span>Tail,
+       <span class="dt">rel_limb =</span> Limb<span class="op">/</span>SVL,
+       <span class="dt">log_total_length =</span> <span class="kw">log</span>(total_length),
+       <span class="co"># You can also change an existing column by saving something to its name</span>
+       <span class="dt">Color_morph =</span> <span class="kw">paste</span>(Color_morph, <span class="st">&quot;morph&quot;</span>) <span class="co"># add &quot;morph&quot; after each color</span>
+       ) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">View</span>()</code></pre></div>
+<table>
+<colgroup>
+<col width="5%" />
+<col width="11%" />
+<col width="5%" />
+<col width="5%" />
+<col width="8%" />
+<col width="6%" />
+<col width="5%" />
+<col width="5%" />
+<col width="10%" />
+<col width="12%" />
+<col width="9%" />
+<col width="15%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Site</th>
+<th align="left">Color_morph</th>
+<th align="right">Limb</th>
+<th align="right">Mass</th>
+<th align="right">Diameter</th>
+<th align="right">Height</th>
+<th align="right">SVL</th>
+<th align="right">Tail</th>
+<th align="left">Perch_type</th>
+<th align="right">total_length</th>
+<th align="right">rel_limb</th>
+<th align="right">log_total_length</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">A</td>
+<td align="left">Green morph</td>
+<td align="right">14.3</td>
+<td align="right">6.46</td>
+<td align="right">8</td>
+<td align="right">164</td>
+<td align="right">61.8</td>
+<td align="right">43.9</td>
+<td align="left">Other</td>
+<td align="right">105.7</td>
+<td align="right">0.2313916</td>
+<td align="right">4.660605</td>
+</tr>
+<tr class="even">
+<td align="left">A</td>
+<td align="left">Brown morph</td>
+<td align="right">12.3</td>
+<td align="right">5.82</td>
+<td align="right">18</td>
+<td align="right">151</td>
+<td align="right">57.1</td>
+<td align="right">42.2</td>
+<td align="left">Tree</td>
+<td align="right">99.3</td>
+<td align="right">0.2154116</td>
+<td align="right">4.598146</td>
+</tr>
+<tr class="odd">
+<td align="left">A</td>
+<td align="left">Blue morph</td>
+<td align="right">10.5</td>
+<td align="right">4.29</td>
+<td align="right">36</td>
+<td align="right">130</td>
+<td align="right">49.1</td>
+<td align="right">25.0</td>
+<td align="left">Building</td>
+<td align="right">74.1</td>
+<td align="right">0.2138493</td>
+<td align="right">4.305415</td>
+</tr>
+<tr class="even">
+<td align="left">A</td>
+<td align="left">Brown morph</td>
+<td align="right">10.3</td>
+<td align="right">5.29</td>
+<td align="right">31</td>
+<td align="right">131</td>
+<td align="right">51.2</td>
+<td align="right">38.2</td>
+<td align="left">Tree</td>
+<td align="right">89.4</td>
+<td align="right">0.2011719</td>
+<td align="right">4.493121</td>
+</tr>
+<tr class="odd">
+<td align="left">A</td>
+<td align="left">Brown morph</td>
+<td align="right">10.9</td>
+<td align="right">5.69</td>
+<td align="right">20</td>
+<td align="right">138</td>
+<td align="right">51.5</td>
+<td align="right">46.9</td>
+<td align="left">Shrub</td>
+<td align="right">98.4</td>
+<td align="right">0.2116505</td>
+<td align="right">4.589041</td>
+</tr>
+<tr class="even">
+<td align="left">A</td>
+<td align="left">Brown morph</td>
+<td align="right">10.4</td>
+<td align="right">5.84</td>
+<td align="right">25</td>
+<td align="right">137</td>
+<td align="right">45.3</td>
+<td align="right">59.0</td>
+<td align="left">Shrub</td>
+<td align="right">104.3</td>
+<td align="right">0.2295806</td>
+<td align="right">4.647271</td>
+</tr>
+</tbody>
+</table>
+<p>Note that this doesn't modify the <code>lizards</code> dataset. It creates a new data frame that has an additional column. You'll need to save it as a new variable to use it.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lizards_full =<span class="st"> </span>lizards <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># It&#39;s also traditional to pipe the data argument in</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">total_length =</span> SVL <span class="op">+</span><span class="st"> </span>Tail,
+         <span class="dt">rel_limb =</span> Limb<span class="op">/</span>SVL,
+         <span class="dt">log_total_length =</span> <span class="kw">log</span>(total_length)) </code></pre></div>
+<p>Tidyverse functions are designed to be piped together. For example:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lizards <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Total_length =</span> SVL <span class="op">+</span><span class="st"> </span>Tail) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> Site, <span class="dt">y =</span> Total_length)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_boxplot</span>()</code></pre></div>
+<p><img src="Bio373L-Book_files/figure-html/mutate_plot-1.png" width="672" /></p>
+<p>Creating a quick plot at the end of a data manipulation step can be a good way to get a visual idea of what you're doing.</p>
+<p>Here are a few other helpful things to do with <code>mutate()</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lizards <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(
+  <span class="dt">intercept =</span> <span class="dv">1</span>, <span class="co"># Add a constant</span>
+  <span class="dt">row_number =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">n</span>() <span class="co"># the n() function tells you how many rows are </span>
+    <span class="co"># in the current data frame (it only works in mutate &amp; related functions)</span>
+) <span class="op">%&gt;%</span><span class="st">  </span><span class="kw">View</span>()</code></pre></div>
+<table style="width:100%;">
+<colgroup>
+<col width="6%" />
+<col width="13%" />
+<col width="6%" />
+<col width="6%" />
+<col width="10%" />
+<col width="8%" />
+<col width="6%" />
+<col width="6%" />
+<col width="12%" />
+<col width="11%" />
+<col width="12%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Site</th>
+<th align="left">Color_morph</th>
+<th align="right">Limb</th>
+<th align="right">Mass</th>
+<th align="right">Diameter</th>
+<th align="right">Height</th>
+<th align="right">SVL</th>
+<th align="right">Tail</th>
+<th align="left">Perch_type</th>
+<th align="right">intercept</th>
+<th align="right">row_number</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">A</td>
+<td align="left">Green</td>
+<td align="right">14.3</td>
+<td align="right">6.46</td>
+<td align="right">8</td>
+<td align="right">164</td>
+<td align="right">61.8</td>
+<td align="right">43.9</td>
+<td align="left">Other</td>
+<td align="right">1</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="left">A</td>
+<td align="left">Brown</td>
+<td align="right">12.3</td>
+<td align="right">5.82</td>
+<td align="right">18</td>
+<td align="right">151</td>
+<td align="right">57.1</td>
+<td align="right">42.2</td>
+<td align="left">Tree</td>
+<td align="right">1</td>
+<td align="right">2</td>
+</tr>
+<tr class="odd">
+<td align="left">A</td>
+<td align="left">Blue</td>
+<td align="right">10.5</td>
+<td align="right">4.29</td>
+<td align="right">36</td>
+<td align="right">130</td>
+<td align="right">49.1</td>
+<td align="right">25.0</td>
+<td align="left">Building</td>
+<td align="right">1</td>
+<td align="right">3</td>
+</tr>
+<tr class="even">
+<td align="left">A</td>
+<td align="left">Brown</td>
+<td align="right">10.3</td>
+<td align="right">5.29</td>
+<td align="right">31</td>
+<td align="right">131</td>
+<td align="right">51.2</td>
+<td align="right">38.2</td>
+<td align="left">Tree</td>
+<td align="right">1</td>
+<td align="right">4</td>
+</tr>
+<tr class="odd">
+<td align="left">A</td>
+<td align="left">Brown</td>
+<td align="right">10.9</td>
+<td align="right">5.69</td>
+<td align="right">20</td>
+<td align="right">138</td>
+<td align="right">51.5</td>
+<td align="right">46.9</td>
+<td align="left">Shrub</td>
+<td align="right">1</td>
+<td align="right">5</td>
+</tr>
+<tr class="even">
+<td align="left">A</td>
+<td align="left">Brown</td>
+<td align="right">10.4</td>
+<td align="right">5.84</td>
+<td align="right">25</td>
+<td align="right">137</td>
+<td align="right">45.3</td>
+<td align="right">59.0</td>
+<td align="left">Shrub</td>
+<td align="right">1</td>
+<td align="right">6</td>
+</tr>
+</tbody>
+</table>
+<p>Here are a few exercises to try:</p>
+<ol style="list-style-type: decimal">
+<li>Add a column to the <code>lizards</code> dataset that gives the lizard's height relative to the maximum height of any lizard (hint: use max(Height) in a mutate command to find that value).<br />
+</li>
+<li>Calculate perch circumference <code>(Diameter * pi)</code>, then pipe that result into a scatter plot of relative limb length vs. circumference. Note that <code>pi</code> is a pre-defined variable in R.</li>
+</ol>
 </div>
-<div id="getting-help" class="section level3">
-<h3><span class="header-section-number">A.2.5</span> Getting Help</h3>
-<p>R has a built-in help system to look up functions, their arguments, and what they do:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">?read_csv
-?mean
-?log</code></pre></div>
+<div id="subsetting-by-row-filter" class="section level2">
+<h2><span class="header-section-number">C.3</span> Subsetting by row (filter)</h2>
+<p>(in progress)</p>
+</div>
+<div id="subsetting-by-column-select" class="section level2">
+<h2><span class="header-section-number">C.4</span> Subsetting by column (select)</h2>
+</div>
+<div id="grouping-summarizing-data" class="section level2">
+<h2><span class="header-section-number">C.5</span> Grouping &amp; summarizing data</h2>
 
-</div>
 </div>
 </div>
             </section>
@@ -377,8 +621,8 @@ lizards[[<span class="st">&quot;Color_morph&quot;</span>]]
           </div>
         </div>
       </div>
-<a href="lab1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="making-graphs-in-r-with-ggplot2.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="making-graphs-in-r-with-ggplot2.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
