@@ -209,7 +209,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="C.2" data-path="data-manipulation-with-dplyr.html"><a href="data-manipulation-with-dplyr.html#addingmodifying-columns-mutate"><i class="fa fa-check"></i><b>C.2</b> Adding/modifying columns (mutate)</a></li>
 <li class="chapter" data-level="C.3" data-path="data-manipulation-with-dplyr.html"><a href="data-manipulation-with-dplyr.html#subsetting-by-row-filter"><i class="fa fa-check"></i><b>C.3</b> Subsetting by row (filter)</a></li>
 <li class="chapter" data-level="C.4" data-path="data-manipulation-with-dplyr.html"><a href="data-manipulation-with-dplyr.html#subsetting-by-column-select"><i class="fa fa-check"></i><b>C.4</b> Subsetting by column (select)</a></li>
-<li class="chapter" data-level="C.5" data-path="data-manipulation-with-dplyr.html"><a href="data-manipulation-with-dplyr.html#grouping-summarizing-data"><i class="fa fa-check"></i><b>C.5</b> Grouping &amp; summarizing data</a></li>
+<li class="chapter" data-level="C.5" data-path="data-manipulation-with-dplyr.html"><a href="data-manipulation-with-dplyr.html#sorting-by-columns-arrange"><i class="fa fa-check"></i><b>C.5</b> Sorting by columns (arrange)</a></li>
+<li class="chapter" data-level="C.6" data-path="data-manipulation-with-dplyr.html"><a href="data-manipulation-with-dplyr.html#summarizing-data"><i class="fa fa-check"></i><b>C.6</b> Summarizing data</a></li>
+<li class="chapter" data-level="C.7" data-path="data-manipulation-with-dplyr.html"><a href="data-manipulation-with-dplyr.html#group-operations"><i class="fa fa-check"></i><b>C.7</b> Group Operations</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -469,6 +471,24 @@ regression_plot </code></pre></div>
       <span class="dt">fill =</span> Perch_type) <span class="op">+</span><span class="st"> </span><span class="co"># We&#39;ll talk about how to fix that in a bit</span>
 <span class="st">  </span><span class="kw">geom_bar</span>()</code></pre></div>
 <p><img src="Bio373L-Book_files/figure-html/geo_bars_infreq-1.png" width="672" /></p>
+<p>If you wish to use frequencies instead of counts along the y axis, it's usually a better idea to calculate them yourself and display those numbers. You can use <code>geom_col()</code> for these displays; it's like <code>geom_bar()</code>, but it takes a user-suplied <code>y</code> aesthetic.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># This code uses dplyr, which is discussed in the next appendix. Don&#39;t worry if it doesn&#39;t make sense now.</span>
+<span class="co"># Overal perch_height frequency</span>
+lizard_perch_freq =<span class="st"> </span>lizards <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">group_by</span>(Perch_type) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">summarize</span>(<span class="dt">count =</span> <span class="kw">n</span>()) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="co"># calculate frequencies per-group</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">frequency =</span> count<span class="op">/</span><span class="kw">sum</span>(count)) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="co"># sort by frequency</span>
+<span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(frequency)) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="co"># tell ggplot to plot Perch_type in its current order</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Perch_type =</span> <span class="kw">fct_inorder</span>(Perch_type))</code></pre></div>
+<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># feel free to use View() to look at this</span>
+<span class="kw">ggplot</span>(lizard_perch_freq) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">aes</span>(<span class="dt">x =</span> Perch_type, <span class="dt">y =</span> frequency) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_col</span>()</code></pre></div>
+<p><img src="Bio373L-Book_files/figure-html/geom_col_data-1.png" width="672" /></p>
 </div>
 </div>
 <div id="facets" class="section level2">

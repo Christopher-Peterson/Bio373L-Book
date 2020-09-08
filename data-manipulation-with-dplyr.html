@@ -209,7 +209,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="C.2" data-path="data-manipulation-with-dplyr.html"><a href="data-manipulation-with-dplyr.html#addingmodifying-columns-mutate"><i class="fa fa-check"></i><b>C.2</b> Adding/modifying columns (mutate)</a></li>
 <li class="chapter" data-level="C.3" data-path="data-manipulation-with-dplyr.html"><a href="data-manipulation-with-dplyr.html#subsetting-by-row-filter"><i class="fa fa-check"></i><b>C.3</b> Subsetting by row (filter)</a></li>
 <li class="chapter" data-level="C.4" data-path="data-manipulation-with-dplyr.html"><a href="data-manipulation-with-dplyr.html#subsetting-by-column-select"><i class="fa fa-check"></i><b>C.4</b> Subsetting by column (select)</a></li>
-<li class="chapter" data-level="C.5" data-path="data-manipulation-with-dplyr.html"><a href="data-manipulation-with-dplyr.html#grouping-summarizing-data"><i class="fa fa-check"></i><b>C.5</b> Grouping &amp; summarizing data</a></li>
+<li class="chapter" data-level="C.5" data-path="data-manipulation-with-dplyr.html"><a href="data-manipulation-with-dplyr.html#sorting-by-columns-arrange"><i class="fa fa-check"></i><b>C.5</b> Sorting by columns (arrange)</a></li>
+<li class="chapter" data-level="C.6" data-path="data-manipulation-with-dplyr.html"><a href="data-manipulation-with-dplyr.html#summarizing-data"><i class="fa fa-check"></i><b>C.6</b> Summarizing data</a></li>
+<li class="chapter" data-level="C.7" data-path="data-manipulation-with-dplyr.html"><a href="data-manipulation-with-dplyr.html#group-operations"><i class="fa fa-check"></i><b>C.7</b> Group Operations</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -232,7 +234,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="data-manipulation-with-dplyr" class="section level1">
 <h1><span class="header-section-number">C</span> Data manipulation with <code>dplyr</code></h1>
-<p>Let's talk about data manipulation. We'll be using the <code>dplyr</code> package, which is part of <code>tidyverse</code> First, we need to load our packages &amp; data.</p>
+<p>Let's talk about data manipulation. We'll be using the <code>dplyr</code> package, which is part of <code>tidyverse</code>. You can find a quick reference page under <strong>Help -&gt; Cheatsheets</strong> in RStudio. First, we need to load our packages &amp; data.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse) 
 <span class="kw">library</span>(cowplot)
 <span class="kw">theme_set</span>(<span class="kw">theme_cowplot</span>())
@@ -2566,9 +2568,3803 @@ Tree
 </div>
 <div id="subsetting-by-column-select" class="section level2">
 <h2><span class="header-section-number">C.4</span> Subsetting by column (select)</h2>
+<p>You can subset certain columns with the <code>select()</code> function. There are several ways to do this. The simplest is by name:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lizards <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(Site, Color_morph, SVL) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">View</span>()</code></pre></div>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
+<table class=" lightable-paper" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Site
+</th>
+<th style="text-align:left;">
+Color_morph
+</th>
+<th style="text-align:right;">
+SVL
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Green
+</td>
+<td style="text-align:right;">
+61.8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:right;">
+57.1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Blue
+</td>
+<td style="text-align:right;">
+49.1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:right;">
+51.2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:right;">
+51.5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:right;">
+45.3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Green
+</td>
+<td style="text-align:right;">
+49.7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:right;">
+48.0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:right;">
+54.9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:right;">
+52.7
+</td>
+</tr>
+</tbody>
+</table>
 </div>
-<div id="grouping-summarizing-data" class="section level2">
-<h2><span class="header-section-number">C.5</span> Grouping &amp; summarizing data</h2>
+<p>You can also select by position:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lizards <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">7</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">View</span>()</code></pre></div>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
+<table class=" lightable-paper" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Site
+</th>
+<th style="text-align:left;">
+Color_morph
+</th>
+<th style="text-align:right;">
+SVL
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Green
+</td>
+<td style="text-align:right;">
+61.8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:right;">
+57.1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Blue
+</td>
+<td style="text-align:right;">
+49.1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:right;">
+51.2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:right;">
+51.5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:right;">
+45.3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Green
+</td>
+<td style="text-align:right;">
+49.7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:right;">
+48.0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:right;">
+54.9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:right;">
+52.7
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>This is more useful for ranges of values:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lizards <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="dv">7</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">View</span>()</code></pre></div>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
+<table class=" lightable-paper" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Site
+</th>
+<th style="text-align:left;">
+Color_morph
+</th>
+<th style="text-align:right;">
+Limb
+</th>
+<th style="text-align:right;">
+Mass
+</th>
+<th style="text-align:right;">
+SVL
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Green
+</td>
+<td style="text-align:right;">
+14.3
+</td>
+<td style="text-align:right;">
+6.46
+</td>
+<td style="text-align:right;">
+61.8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:right;">
+12.3
+</td>
+<td style="text-align:right;">
+5.82
+</td>
+<td style="text-align:right;">
+57.1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Blue
+</td>
+<td style="text-align:right;">
+10.5
+</td>
+<td style="text-align:right;">
+4.29
+</td>
+<td style="text-align:right;">
+49.1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:right;">
+10.3
+</td>
+<td style="text-align:right;">
+5.29
+</td>
+<td style="text-align:right;">
+51.2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:right;">
+10.9
+</td>
+<td style="text-align:right;">
+5.69
+</td>
+<td style="text-align:right;">
+51.5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:right;">
+10.4
+</td>
+<td style="text-align:right;">
+5.84
+</td>
+<td style="text-align:right;">
+45.3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Green
+</td>
+<td style="text-align:right;">
+11.1
+</td>
+<td style="text-align:right;">
+5.91
+</td>
+<td style="text-align:right;">
+49.7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:right;">
+10.0
+</td>
+<td style="text-align:right;">
+5.09
+</td>
+<td style="text-align:right;">
+48.0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:right;">
+12.3
+</td>
+<td style="text-align:right;">
+7.20
+</td>
+<td style="text-align:right;">
+54.9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:right;">
+11.2
+</td>
+<td style="text-align:right;">
+6.66
+</td>
+<td style="text-align:right;">
+52.7
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>You can also use character vectors:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lizards <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(<span class="st">&quot;Site&quot;</span>, <span class="st">&quot;Color_morph&quot;</span>, <span class="st">&quot;SVL&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">View</span>()</code></pre></div>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
+<table class=" lightable-paper" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Site
+</th>
+<th style="text-align:left;">
+Color_morph
+</th>
+<th style="text-align:right;">
+SVL
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Green
+</td>
+<td style="text-align:right;">
+61.8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:right;">
+57.1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Blue
+</td>
+<td style="text-align:right;">
+49.1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:right;">
+51.2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:right;">
+51.5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:right;">
+45.3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Green
+</td>
+<td style="text-align:right;">
+49.7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:right;">
+48.0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:right;">
+54.9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:right;">
+52.7
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Note that if you want to use a variable that has column names saved as a character vector, you'll need to use a helper function (<code>all_of</code>) to tell <code>select</code> that you want to look for the contents of the variable, not the name of the variable:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">select_vars =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Site&quot;</span>, <span class="st">&quot;Color_morph&quot;</span>, <span class="st">&quot;SVL&quot;</span>)
+lizards <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">select</span>(<span class="kw">all_of</span>(select_vars)) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># without all_of, it would try to look for a column called &quot;select_vars&quot;</span>
+<span class="st">  </span><span class="kw">View</span>()</code></pre></div>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
+<table class=" lightable-paper" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Site
+</th>
+<th style="text-align:left;">
+Color_morph
+</th>
+<th style="text-align:right;">
+SVL
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Green
+</td>
+<td style="text-align:right;">
+61.8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:right;">
+57.1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Blue
+</td>
+<td style="text-align:right;">
+49.1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:right;">
+51.2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:right;">
+51.5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:right;">
+45.3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Green
+</td>
+<td style="text-align:right;">
+49.7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:right;">
+48.0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:right;">
+54.9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:right;">
+52.7
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>You can remove columns by using a negative sign. (Note that negative signs are ignored if you have any names without negative signs).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lizards <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(<span class="op">-</span>Color_morph, <span class="op">-</span>Limb) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">View</span>()</code></pre></div>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
+<table class=" lightable-paper" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Site
+</th>
+<th style="text-align:right;">
+Mass
+</th>
+<th style="text-align:right;">
+Diameter
+</th>
+<th style="text-align:right;">
+Height
+</th>
+<th style="text-align:right;">
+SVL
+</th>
+<th style="text-align:right;">
+Tail
+</th>
+<th style="text-align:left;">
+Perch_type
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+6.46
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+164
+</td>
+<td style="text-align:right;">
+61.8
+</td>
+<td style="text-align:right;">
+43.9
+</td>
+<td style="text-align:left;">
+Other
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+5.82
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+151
+</td>
+<td style="text-align:right;">
+57.1
+</td>
+<td style="text-align:right;">
+42.2
+</td>
+<td style="text-align:left;">
+Tree
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+4.29
+</td>
+<td style="text-align:right;">
+36
+</td>
+<td style="text-align:right;">
+130
+</td>
+<td style="text-align:right;">
+49.1
+</td>
+<td style="text-align:right;">
+25.0
+</td>
+<td style="text-align:left;">
+Building
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+5.29
+</td>
+<td style="text-align:right;">
+31
+</td>
+<td style="text-align:right;">
+131
+</td>
+<td style="text-align:right;">
+51.2
+</td>
+<td style="text-align:right;">
+38.2
+</td>
+<td style="text-align:left;">
+Tree
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+5.69
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+138
+</td>
+<td style="text-align:right;">
+51.5
+</td>
+<td style="text-align:right;">
+46.9
+</td>
+<td style="text-align:left;">
+Shrub
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+5.84
+</td>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:right;">
+137
+</td>
+<td style="text-align:right;">
+45.3
+</td>
+<td style="text-align:right;">
+59.0
+</td>
+<td style="text-align:left;">
+Shrub
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+5.91
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+138
+</td>
+<td style="text-align:right;">
+49.7
+</td>
+<td style="text-align:right;">
+47.6
+</td>
+<td style="text-align:left;">
+Building
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+5.09
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+141
+</td>
+<td style="text-align:right;">
+48.0
+</td>
+<td style="text-align:right;">
+34.9
+</td>
+<td style="text-align:left;">
+Tree
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+7.20
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+129
+</td>
+<td style="text-align:right;">
+54.9
+</td>
+<td style="text-align:right;">
+61.0
+</td>
+<td style="text-align:left;">
+Tree
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+6.66
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+134
+</td>
+<td style="text-align:right;">
+52.7
+</td>
+<td style="text-align:right;">
+50.4
+</td>
+<td style="text-align:left;">
+Tree
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lizards <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(<span class="op">-</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">View</span>()</code></pre></div>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
+<table class=" lightable-paper" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+Height
+</th>
+<th style="text-align:right;">
+SVL
+</th>
+<th style="text-align:right;">
+Tail
+</th>
+<th style="text-align:left;">
+Perch_type
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+164
+</td>
+<td style="text-align:right;">
+61.8
+</td>
+<td style="text-align:right;">
+43.9
+</td>
+<td style="text-align:left;">
+Other
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+151
+</td>
+<td style="text-align:right;">
+57.1
+</td>
+<td style="text-align:right;">
+42.2
+</td>
+<td style="text-align:left;">
+Tree
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+130
+</td>
+<td style="text-align:right;">
+49.1
+</td>
+<td style="text-align:right;">
+25.0
+</td>
+<td style="text-align:left;">
+Building
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+131
+</td>
+<td style="text-align:right;">
+51.2
+</td>
+<td style="text-align:right;">
+38.2
+</td>
+<td style="text-align:left;">
+Tree
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+138
+</td>
+<td style="text-align:right;">
+51.5
+</td>
+<td style="text-align:right;">
+46.9
+</td>
+<td style="text-align:left;">
+Shrub
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+137
+</td>
+<td style="text-align:right;">
+45.3
+</td>
+<td style="text-align:right;">
+59.0
+</td>
+<td style="text-align:left;">
+Shrub
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+138
+</td>
+<td style="text-align:right;">
+49.7
+</td>
+<td style="text-align:right;">
+47.6
+</td>
+<td style="text-align:left;">
+Building
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+141
+</td>
+<td style="text-align:right;">
+48.0
+</td>
+<td style="text-align:right;">
+34.9
+</td>
+<td style="text-align:left;">
+Tree
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+129
+</td>
+<td style="text-align:right;">
+54.9
+</td>
+<td style="text-align:right;">
+61.0
+</td>
+<td style="text-align:left;">
+Tree
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+134
+</td>
+<td style="text-align:right;">
+52.7
+</td>
+<td style="text-align:right;">
+50.4
+</td>
+<td style="text-align:left;">
+Tree
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>You can also use the <code>where</code> helper function to select columns based on their characteristics. For example, the <code>is.numeric</code> function returns TRUE if its argument is a number; you can use it to select all numeric columns.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lizards <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">select</span>(<span class="kw">where</span>(is.numeric)) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">View</span>()</code></pre></div>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
+<table class=" lightable-paper" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+Limb
+</th>
+<th style="text-align:right;">
+Mass
+</th>
+<th style="text-align:right;">
+Diameter
+</th>
+<th style="text-align:right;">
+Height
+</th>
+<th style="text-align:right;">
+SVL
+</th>
+<th style="text-align:right;">
+Tail
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+14.3
+</td>
+<td style="text-align:right;">
+6.46
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+164
+</td>
+<td style="text-align:right;">
+61.8
+</td>
+<td style="text-align:right;">
+43.9
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+12.3
+</td>
+<td style="text-align:right;">
+5.82
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+151
+</td>
+<td style="text-align:right;">
+57.1
+</td>
+<td style="text-align:right;">
+42.2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10.5
+</td>
+<td style="text-align:right;">
+4.29
+</td>
+<td style="text-align:right;">
+36
+</td>
+<td style="text-align:right;">
+130
+</td>
+<td style="text-align:right;">
+49.1
+</td>
+<td style="text-align:right;">
+25.0
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10.3
+</td>
+<td style="text-align:right;">
+5.29
+</td>
+<td style="text-align:right;">
+31
+</td>
+<td style="text-align:right;">
+131
+</td>
+<td style="text-align:right;">
+51.2
+</td>
+<td style="text-align:right;">
+38.2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10.9
+</td>
+<td style="text-align:right;">
+5.69
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+138
+</td>
+<td style="text-align:right;">
+51.5
+</td>
+<td style="text-align:right;">
+46.9
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10.4
+</td>
+<td style="text-align:right;">
+5.84
+</td>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:right;">
+137
+</td>
+<td style="text-align:right;">
+45.3
+</td>
+<td style="text-align:right;">
+59.0
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+11.1
+</td>
+<td style="text-align:right;">
+5.91
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+138
+</td>
+<td style="text-align:right;">
+49.7
+</td>
+<td style="text-align:right;">
+47.6
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10.0
+</td>
+<td style="text-align:right;">
+5.09
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+141
+</td>
+<td style="text-align:right;">
+48.0
+</td>
+<td style="text-align:right;">
+34.9
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+12.3
+</td>
+<td style="text-align:right;">
+7.20
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+129
+</td>
+<td style="text-align:right;">
+54.9
+</td>
+<td style="text-align:right;">
+61.0
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+11.2
+</td>
+<td style="text-align:right;">
+6.66
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+134
+</td>
+<td style="text-align:right;">
+52.7
+</td>
+<td style="text-align:right;">
+50.4
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>You could do the same for text or logical vectors with <code>is.character</code> or <code>is.logical</code>, respectively. Note that there aren't parentheses after <code>is.numeric</code> in the above code. that's because <em>we</em> aren't calling it on any particular value; instead, the <code>where</code> function calls it on every column of the data frame, and we're just telling it what function to use.</p>
+<p>There's a lot more you can do with this if you want to get fancy; the documentation is available at <code>?tidyselect::language</code>.</p>
+</div>
+<div id="sorting-by-columns-arrange" class="section level2">
+<h2><span class="header-section-number">C.5</span> Sorting by columns (arrange)</h2>
+<p>You can use <code>arrange()</code> to sort by one or more column values. To sort lizards from lowest to highest mass:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lizards <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">arrange</span>(Mass) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">View</span>()</code></pre></div>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
+<table class=" lightable-paper" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Site
+</th>
+<th style="text-align:left;">
+Color_morph
+</th>
+<th style="text-align:right;">
+Limb
+</th>
+<th style="text-align:right;">
+Mass
+</th>
+<th style="text-align:right;">
+Diameter
+</th>
+<th style="text-align:right;">
+Height
+</th>
+<th style="text-align:right;">
+SVL
+</th>
+<th style="text-align:right;">
+Tail
+</th>
+<th style="text-align:left;">
+Perch_type
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Blue
+</td>
+<td style="text-align:right;">
+10.5
+</td>
+<td style="text-align:right;">
+4.29
+</td>
+<td style="text-align:right;">
+36
+</td>
+<td style="text-align:right;">
+130
+</td>
+<td style="text-align:right;">
+49.1
+</td>
+<td style="text-align:right;">
+25.0
+</td>
+<td style="text-align:left;">
+Building
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+L
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:right;">
+9.5
+</td>
+<td style="text-align:right;">
+4.33
+</td>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:right;">
+209
+</td>
+<td style="text-align:right;">
+40.5
+</td>
+<td style="text-align:right;">
+34.7
+</td>
+<td style="text-align:left;">
+Other
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H
+</td>
+<td style="text-align:left;">
+Blue
+</td>
+<td style="text-align:right;">
+9.4
+</td>
+<td style="text-align:right;">
+4.42
+</td>
+<td style="text-align:right;">
+28
+</td>
+<td style="text-align:right;">
+161
+</td>
+<td style="text-align:right;">
+40.3
+</td>
+<td style="text-align:right;">
+41.5
+</td>
+<td style="text-align:left;">
+Tree
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H
+</td>
+<td style="text-align:left;">
+Green
+</td>
+<td style="text-align:right;">
+9.3
+</td>
+<td style="text-align:right;">
+4.82
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:right;">
+150
+</td>
+<td style="text-align:right;">
+44.5
+</td>
+<td style="text-align:right;">
+43.7
+</td>
+<td style="text-align:left;">
+Tree
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+L
+</td>
+<td style="text-align:left;">
+Blue
+</td>
+<td style="text-align:right;">
+9.2
+</td>
+<td style="text-align:right;">
+4.82
+</td>
+<td style="text-align:right;">
+31
+</td>
+<td style="text-align:right;">
+191
+</td>
+<td style="text-align:right;">
+42.6
+</td>
+<td style="text-align:right;">
+44.5
+</td>
+<td style="text-align:left;">
+Tree
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+L
+</td>
+<td style="text-align:left;">
+Blue
+</td>
+<td style="text-align:right;">
+10.5
+</td>
+<td style="text-align:right;">
+4.82
+</td>
+<td style="text-align:right;">
+31
+</td>
+<td style="text-align:right;">
+215
+</td>
+<td style="text-align:right;">
+44.6
+</td>
+<td style="text-align:right;">
+39.9
+</td>
+<td style="text-align:left;">
+Shrub
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+L
+</td>
+<td style="text-align:left;">
+Green
+</td>
+<td style="text-align:right;">
+10.2
+</td>
+<td style="text-align:right;">
+4.85
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+214
+</td>
+<td style="text-align:right;">
+45.2
+</td>
+<td style="text-align:right;">
+35.6
+</td>
+<td style="text-align:left;">
+Tree
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+K
+</td>
+<td style="text-align:left;">
+Green
+</td>
+<td style="text-align:right;">
+9.7
+</td>
+<td style="text-align:right;">
+4.89
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+58
+</td>
+<td style="text-align:right;">
+47.7
+</td>
+<td style="text-align:right;">
+23.7
+</td>
+<td style="text-align:left;">
+Other
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H
+</td>
+<td style="text-align:left;">
+Blue
+</td>
+<td style="text-align:right;">
+10.4
+</td>
+<td style="text-align:right;">
+4.96
+</td>
+<td style="text-align:right;">
+37
+</td>
+<td style="text-align:right;">
+174
+</td>
+<td style="text-align:right;">
+43.3
+</td>
+<td style="text-align:right;">
+40.0
+</td>
+<td style="text-align:left;">
+Shrub
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H
+</td>
+<td style="text-align:left;">
+Green
+</td>
+<td style="text-align:right;">
+10.8
+</td>
+<td style="text-align:right;">
+4.99
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+166
+</td>
+<td style="text-align:right;">
+47.8
+</td>
+<td style="text-align:right;">
+33.0
+</td>
+<td style="text-align:left;">
+Tree
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>If you wish to sort from highest to lowest, use the <code>desc()</code> helper function:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lizards <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">arrange</span>(<span class="kw">desc</span>(Mass)) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">View</span>()</code></pre></div>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
+<table class=" lightable-paper" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Site
+</th>
+<th style="text-align:left;">
+Color_morph
+</th>
+<th style="text-align:right;">
+Limb
+</th>
+<th style="text-align:right;">
+Mass
+</th>
+<th style="text-align:right;">
+Diameter
+</th>
+<th style="text-align:right;">
+Height
+</th>
+<th style="text-align:right;">
+SVL
+</th>
+<th style="text-align:right;">
+Tail
+</th>
+<th style="text-align:left;">
+Perch_type
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:left;">
+Green
+</td>
+<td style="text-align:right;">
+14.3
+</td>
+<td style="text-align:right;">
+13.30
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+179
+</td>
+<td style="text-align:right;">
+68.3
+</td>
+<td style="text-align:right;">
+74.0
+</td>
+<td style="text-align:left;">
+Tree
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+J
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:right;">
+16.7
+</td>
+<td style="text-align:right;">
+11.83
+</td>
+<td style="text-align:right;">
+31
+</td>
+<td style="text-align:right;">
+145
+</td>
+<td style="text-align:right;">
+80.4
+</td>
+<td style="text-align:right;">
+69.2
+</td>
+<td style="text-align:left;">
+Other
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+N
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:right;">
+15.8
+</td>
+<td style="text-align:right;">
+10.13
+</td>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:right;">
+130
+</td>
+<td style="text-align:right;">
+73.2
+</td>
+<td style="text-align:right;">
+90.0
+</td>
+<td style="text-align:left;">
+Tree
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+M
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:right;">
+11.9
+</td>
+<td style="text-align:right;">
+9.79
+</td>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:right;">
+210
+</td>
+<td style="text-align:right;">
+56.0
+</td>
+<td style="text-align:right;">
+70.7
+</td>
+<td style="text-align:left;">
+Tree
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+P
+</td>
+<td style="text-align:left;">
+Blue
+</td>
+<td style="text-align:right;">
+15.4
+</td>
+<td style="text-align:right;">
+9.74
+</td>
+<td style="text-align:right;">
+41
+</td>
+<td style="text-align:right;">
+221
+</td>
+<td style="text-align:right;">
+76.3
+</td>
+<td style="text-align:right;">
+95.7
+</td>
+<td style="text-align:left;">
+Tree
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+O
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:right;">
+16.4
+</td>
+<td style="text-align:right;">
+9.63
+</td>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:right;">
+217
+</td>
+<td style="text-align:right;">
+74.3
+</td>
+<td style="text-align:right;">
+65.7
+</td>
+<td style="text-align:left;">
+Tree
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+P
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:right;">
+15.4
+</td>
+<td style="text-align:right;">
+9.58
+</td>
+<td style="text-align:right;">
+29
+</td>
+<td style="text-align:right;">
+216
+</td>
+<td style="text-align:right;">
+70.4
+</td>
+<td style="text-align:right;">
+81.6
+</td>
+<td style="text-align:left;">
+Tree
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+N
+</td>
+<td style="text-align:left;">
+Blue
+</td>
+<td style="text-align:right;">
+14.9
+</td>
+<td style="text-align:right;">
+9.54
+</td>
+<td style="text-align:right;">
+38
+</td>
+<td style="text-align:right;">
+128
+</td>
+<td style="text-align:right;">
+68.4
+</td>
+<td style="text-align:right;">
+67.5
+</td>
+<td style="text-align:left;">
+Tree
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+J
+</td>
+<td style="text-align:left;">
+Green
+</td>
+<td style="text-align:right;">
+17.2
+</td>
+<td style="text-align:right;">
+9.35
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+166
+</td>
+<td style="text-align:right;">
+79.1
+</td>
+<td style="text-align:right;">
+79.9
+</td>
+<td style="text-align:left;">
+Tree
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+O
+</td>
+<td style="text-align:left;">
+Blue
+</td>
+<td style="text-align:right;">
+13.9
+</td>
+<td style="text-align:right;">
+9.35
+</td>
+<td style="text-align:right;">
+27
+</td>
+<td style="text-align:right;">
+203
+</td>
+<td style="text-align:right;">
+67.8
+</td>
+<td style="text-align:right;">
+77.8
+</td>
+<td style="text-align:left;">
+Shrub
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>When you have categorical variables, you'll often have ties:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lizards <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">arrange</span>(Site) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">View</span>()</code></pre></div>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
+<table class=" lightable-paper" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Site
+</th>
+<th style="text-align:left;">
+Color_morph
+</th>
+<th style="text-align:right;">
+Limb
+</th>
+<th style="text-align:right;">
+Mass
+</th>
+<th style="text-align:right;">
+Diameter
+</th>
+<th style="text-align:right;">
+Height
+</th>
+<th style="text-align:right;">
+SVL
+</th>
+<th style="text-align:right;">
+Tail
+</th>
+<th style="text-align:left;">
+Perch_type
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Green
+</td>
+<td style="text-align:right;">
+14.3
+</td>
+<td style="text-align:right;">
+6.46
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+164
+</td>
+<td style="text-align:right;">
+61.8
+</td>
+<td style="text-align:right;">
+43.9
+</td>
+<td style="text-align:left;">
+Other
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:right;">
+12.3
+</td>
+<td style="text-align:right;">
+5.82
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+151
+</td>
+<td style="text-align:right;">
+57.1
+</td>
+<td style="text-align:right;">
+42.2
+</td>
+<td style="text-align:left;">
+Tree
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Blue
+</td>
+<td style="text-align:right;">
+10.5
+</td>
+<td style="text-align:right;">
+4.29
+</td>
+<td style="text-align:right;">
+36
+</td>
+<td style="text-align:right;">
+130
+</td>
+<td style="text-align:right;">
+49.1
+</td>
+<td style="text-align:right;">
+25.0
+</td>
+<td style="text-align:left;">
+Building
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:right;">
+10.3
+</td>
+<td style="text-align:right;">
+5.29
+</td>
+<td style="text-align:right;">
+31
+</td>
+<td style="text-align:right;">
+131
+</td>
+<td style="text-align:right;">
+51.2
+</td>
+<td style="text-align:right;">
+38.2
+</td>
+<td style="text-align:left;">
+Tree
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:right;">
+10.9
+</td>
+<td style="text-align:right;">
+5.69
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+138
+</td>
+<td style="text-align:right;">
+51.5
+</td>
+<td style="text-align:right;">
+46.9
+</td>
+<td style="text-align:left;">
+Shrub
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:right;">
+10.4
+</td>
+<td style="text-align:right;">
+5.84
+</td>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:right;">
+137
+</td>
+<td style="text-align:right;">
+45.3
+</td>
+<td style="text-align:right;">
+59.0
+</td>
+<td style="text-align:left;">
+Shrub
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Green
+</td>
+<td style="text-align:right;">
+11.1
+</td>
+<td style="text-align:right;">
+5.91
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+138
+</td>
+<td style="text-align:right;">
+49.7
+</td>
+<td style="text-align:right;">
+47.6
+</td>
+<td style="text-align:left;">
+Building
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:right;">
+10.0
+</td>
+<td style="text-align:right;">
+5.09
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+141
+</td>
+<td style="text-align:right;">
+48.0
+</td>
+<td style="text-align:right;">
+34.9
+</td>
+<td style="text-align:left;">
+Tree
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:right;">
+12.3
+</td>
+<td style="text-align:right;">
+7.20
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+129
+</td>
+<td style="text-align:right;">
+54.9
+</td>
+<td style="text-align:right;">
+61.0
+</td>
+<td style="text-align:left;">
+Tree
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:right;">
+11.2
+</td>
+<td style="text-align:right;">
+6.66
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+134
+</td>
+<td style="text-align:right;">
+52.7
+</td>
+<td style="text-align:right;">
+50.4
+</td>
+<td style="text-align:left;">
+Tree
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>In this case, it's helpful to sort by multiple variables; the following code orders by Site, then by color morph within site, then by SVL.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lizards <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">arrange</span>(Site, Color_morph, SVL) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">View</span>()</code></pre></div>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
+<table class=" lightable-paper" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Site
+</th>
+<th style="text-align:left;">
+Color_morph
+</th>
+<th style="text-align:right;">
+Limb
+</th>
+<th style="text-align:right;">
+Mass
+</th>
+<th style="text-align:right;">
+Diameter
+</th>
+<th style="text-align:right;">
+Height
+</th>
+<th style="text-align:right;">
+SVL
+</th>
+<th style="text-align:right;">
+Tail
+</th>
+<th style="text-align:left;">
+Perch_type
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Blue
+</td>
+<td style="text-align:right;">
+10.6
+</td>
+<td style="text-align:right;">
+5.53
+</td>
+<td style="text-align:right;">
+36
+</td>
+<td style="text-align:right;">
+134
+</td>
+<td style="text-align:right;">
+46.1
+</td>
+<td style="text-align:right;">
+50.3
+</td>
+<td style="text-align:left;">
+Other
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Blue
+</td>
+<td style="text-align:right;">
+10.9
+</td>
+<td style="text-align:right;">
+5.73
+</td>
+<td style="text-align:right;">
+29
+</td>
+<td style="text-align:right;">
+146
+</td>
+<td style="text-align:right;">
+47.0
+</td>
+<td style="text-align:right;">
+56.5
+</td>
+<td style="text-align:left;">
+Other
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Blue
+</td>
+<td style="text-align:right;">
+10.1
+</td>
+<td style="text-align:right;">
+5.40
+</td>
+<td style="text-align:right;">
+27
+</td>
+<td style="text-align:right;">
+133
+</td>
+<td style="text-align:right;">
+48.2
+</td>
+<td style="text-align:right;">
+45.7
+</td>
+<td style="text-align:left;">
+Tree
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Blue
+</td>
+<td style="text-align:right;">
+10.5
+</td>
+<td style="text-align:right;">
+4.29
+</td>
+<td style="text-align:right;">
+36
+</td>
+<td style="text-align:right;">
+130
+</td>
+<td style="text-align:right;">
+49.1
+</td>
+<td style="text-align:right;">
+25.0
+</td>
+<td style="text-align:left;">
+Building
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Blue
+</td>
+<td style="text-align:right;">
+10.8
+</td>
+<td style="text-align:right;">
+6.02
+</td>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:right;">
+148
+</td>
+<td style="text-align:right;">
+50.1
+</td>
+<td style="text-align:right;">
+57.9
+</td>
+<td style="text-align:left;">
+Tree
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Blue
+</td>
+<td style="text-align:right;">
+11.4
+</td>
+<td style="text-align:right;">
+5.72
+</td>
+<td style="text-align:right;">
+32
+</td>
+<td style="text-align:right;">
+134
+</td>
+<td style="text-align:right;">
+50.7
+</td>
+<td style="text-align:right;">
+48.8
+</td>
+<td style="text-align:left;">
+Tree
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Blue
+</td>
+<td style="text-align:right;">
+12.1
+</td>
+<td style="text-align:right;">
+5.67
+</td>
+<td style="text-align:right;">
+35
+</td>
+<td style="text-align:right;">
+150
+</td>
+<td style="text-align:right;">
+50.8
+</td>
+<td style="text-align:right;">
+51.7
+</td>
+<td style="text-align:left;">
+Other
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Blue
+</td>
+<td style="text-align:right;">
+10.8
+</td>
+<td style="text-align:right;">
+5.27
+</td>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:right;">
+141
+</td>
+<td style="text-align:right;">
+51.2
+</td>
+<td style="text-align:right;">
+43.3
+</td>
+<td style="text-align:left;">
+Tree
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Blue
+</td>
+<td style="text-align:right;">
+12.5
+</td>
+<td style="text-align:right;">
+6.18
+</td>
+<td style="text-align:right;">
+28
+</td>
+<td style="text-align:right;">
+140
+</td>
+<td style="text-align:right;">
+52.9
+</td>
+<td style="text-align:right;">
+48.4
+</td>
+<td style="text-align:left;">
+Tree
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Blue
+</td>
+<td style="text-align:right;">
+11.0
+</td>
+<td style="text-align:right;">
+6.68
+</td>
+<td style="text-align:right;">
+31
+</td>
+<td style="text-align:right;">
+143
+</td>
+<td style="text-align:right;">
+53.8
+</td>
+<td style="text-align:right;">
+49.5
+</td>
+<td style="text-align:left;">
+Shrub
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>One particularly useful thing you can do with this is create rankings.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lizards <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(SVL)) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">size_rank =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">n</span>()) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">View</span>()</code></pre></div>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
+<table class=" lightable-paper" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Site
+</th>
+<th style="text-align:left;">
+Color_morph
+</th>
+<th style="text-align:right;">
+Limb
+</th>
+<th style="text-align:right;">
+Mass
+</th>
+<th style="text-align:right;">
+Diameter
+</th>
+<th style="text-align:right;">
+Height
+</th>
+<th style="text-align:right;">
+SVL
+</th>
+<th style="text-align:right;">
+Tail
+</th>
+<th style="text-align:left;">
+Perch_type
+</th>
+<th style="text-align:right;">
+size_rank
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+O
+</td>
+<td style="text-align:left;">
+Blue
+</td>
+<td style="text-align:right;">
+18.7
+</td>
+<td style="text-align:right;">
+9.33
+</td>
+<td style="text-align:right;">
+43
+</td>
+<td style="text-align:right;">
+230
+</td>
+<td style="text-align:right;">
+84.5
+</td>
+<td style="text-align:right;">
+88.9
+</td>
+<td style="text-align:left;">
+Tree
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+J
+</td>
+<td style="text-align:left;">
+Green
+</td>
+<td style="text-align:right;">
+18.2
+</td>
+<td style="text-align:right;">
+8.65
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+169
+</td>
+<td style="text-align:right;">
+84.3
+</td>
+<td style="text-align:right;">
+76.3
+</td>
+<td style="text-align:left;">
+Tree
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+J
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:right;">
+16.4
+</td>
+<td style="text-align:right;">
+9.21
+</td>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:right;">
+147
+</td>
+<td style="text-align:right;">
+81.0
+</td>
+<td style="text-align:right;">
+86.8
+</td>
+<td style="text-align:left;">
+Shrub
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+J
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:right;">
+16.7
+</td>
+<td style="text-align:right;">
+11.83
+</td>
+<td style="text-align:right;">
+31
+</td>
+<td style="text-align:right;">
+145
+</td>
+<td style="text-align:right;">
+80.4
+</td>
+<td style="text-align:right;">
+69.2
+</td>
+<td style="text-align:left;">
+Other
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+O
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:right;">
+17.3
+</td>
+<td style="text-align:right;">
+8.04
+</td>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:right;">
+223
+</td>
+<td style="text-align:right;">
+80.2
+</td>
+<td style="text-align:right;">
+56.6
+</td>
+<td style="text-align:left;">
+Other
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+R
+</td>
+<td style="text-align:left;">
+Green
+</td>
+<td style="text-align:right;">
+17.1
+</td>
+<td style="text-align:right;">
+8.83
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+231
+</td>
+<td style="text-align:right;">
+80.0
+</td>
+<td style="text-align:right;">
+71.1
+</td>
+<td style="text-align:left;">
+Tree
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+O
+</td>
+<td style="text-align:left;">
+Blue
+</td>
+<td style="text-align:right;">
+16.1
+</td>
+<td style="text-align:right;">
+8.50
+</td>
+<td style="text-align:right;">
+36
+</td>
+<td style="text-align:right;">
+221
+</td>
+<td style="text-align:right;">
+79.3
+</td>
+<td style="text-align:right;">
+73.8
+</td>
+<td style="text-align:left;">
+Tree
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+J
+</td>
+<td style="text-align:left;">
+Green
+</td>
+<td style="text-align:right;">
+17.2
+</td>
+<td style="text-align:right;">
+9.35
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+166
+</td>
+<td style="text-align:right;">
+79.1
+</td>
+<td style="text-align:right;">
+79.9
+</td>
+<td style="text-align:left;">
+Tree
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+J
+</td>
+<td style="text-align:left;">
+Blue
+</td>
+<td style="text-align:right;">
+17.0
+</td>
+<td style="text-align:right;">
+8.31
+</td>
+<td style="text-align:right;">
+41
+</td>
+<td style="text-align:right;">
+164
+</td>
+<td style="text-align:right;">
+78.6
+</td>
+<td style="text-align:right;">
+74.4
+</td>
+<td style="text-align:left;">
+Tree
+</td>
+<td style="text-align:right;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+R
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:right;">
+17.1
+</td>
+<td style="text-align:right;">
+8.30
+</td>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:right;">
+217
+</td>
+<td style="text-align:right;">
+78.5
+</td>
+<td style="text-align:right;">
+50.3
+</td>
+<td style="text-align:left;">
+Building
+</td>
+<td style="text-align:right;">
+10
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="summarizing-data" class="section level2">
+<h2><span class="header-section-number">C.6</span> Summarizing data</h2>
+<p>Summarize is like mutate, but it generally produces columns that are shorter than the input. It's typically used for summary stats. For example, this calculates several characteristics of SVL.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lizards <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">summarize</span>(<span class="dt">mean_SVL =</span> <span class="kw">mean</span>(SVL), 
+            <span class="dt">sd_SVL =</span> <span class="kw">sd</span>(SVL),
+            <span class="dt">med_SVL =</span> <span class="kw">median</span>(SVL), 
+            <span class="dt">count =</span> <span class="kw">n</span>()) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">View</span>()</code></pre></div>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
+<table class=" lightable-paper" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+mean_SVL
+</th>
+<th style="text-align:right;">
+sd_SVL
+</th>
+<th style="text-align:right;">
+med_SVL
+</th>
+<th style="text-align:right;">
+count
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+60.75282
+</td>
+<td style="text-align:right;">
+8.708924
+</td>
+<td style="text-align:right;">
+59.6
+</td>
+<td style="text-align:right;">
+657
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>A useful trick for summarize is to take the mean of a logical vector; <code>TRUE</code> and <code>FALSE</code> are interpreted as 1 and 0, so this gives you a frequency. For example, if you wanted to get the proportion of color morphs:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lizards <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">summarize</span>(<span class="dt">freq_Blue =</span> <span class="kw">mean</span>(Color_morph <span class="op">==</span><span class="st"> &quot;Blue&quot;</span>),
+            <span class="dt">freq_Brown =</span> <span class="kw">mean</span>(Color_morph <span class="op">==</span><span class="st"> &quot;Brown&quot;</span>),
+            <span class="dt">freq_Green =</span> <span class="kw">mean</span>(Color_morph <span class="op">==</span><span class="st"> &quot;Green&quot;</span>)
+            )</code></pre></div>
+<pre><code>## # A tibble: 1 x 3
+##   freq_Blue freq_Brown freq_Green
+##       &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;
+## 1     0.327      0.336      0.336</code></pre>
+<p>You can use the <code>across</code> helper function to apply the same summary function to multiple rows.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lizards <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">summarize</span>(
+    <span class="kw">across</span>(<span class="dt">.cols =</span> <span class="kw">c</span>(SVL, Tail),
+           <span class="dt">.fns =</span> mean)
+    ) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">View</span>()</code></pre></div>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
+<table class=" lightable-paper" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+SVL
+</th>
+<th style="text-align:right;">
+Tail
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+60.75282
+</td>
+<td style="text-align:right;">
+57.55205
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The <code>.cols</code> argument identifies the columns to use for the summary, using the same methods as <code>select()</code>, the .fns should be one or more functions to apply to each column. If you wish to use more than one summary function, you need to create a named vector:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lizards <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">summarize</span>(
+    <span class="kw">across</span>(<span class="dt">.cols =</span> <span class="kw">where</span>(is.numeric), <span class="co"># apply to all numeric functions</span>
+           <span class="dt">.fns =</span> <span class="kw">c</span>(<span class="dt">Mean =</span> mean, <span class="dt">StDev =</span> sd)) <span class="co"># named vector (Mean and StDev)</span>
+    ) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">View</span>()</code></pre></div>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
+<table class=" lightable-paper" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+Limb_Mean
+</th>
+<th style="text-align:right;">
+Limb_StDev
+</th>
+<th style="text-align:right;">
+Mass_Mean
+</th>
+<th style="text-align:right;">
+Mass_StDev
+</th>
+<th style="text-align:right;">
+Diameter_Mean
+</th>
+<th style="text-align:right;">
+Diameter_StDev
+</th>
+<th style="text-align:right;">
+Height_Mean
+</th>
+<th style="text-align:right;">
+Height_StDev
+</th>
+<th style="text-align:right;">
+SVL_Mean
+</th>
+<th style="text-align:right;">
+SVL_StDev
+</th>
+<th style="text-align:right;">
+Tail_Mean
+</th>
+<th style="text-align:right;">
+Tail_StDev
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+13.16088
+</td>
+<td style="text-align:right;">
+1.83096
+</td>
+<td style="text-align:right;">
+7.024368
+</td>
+<td style="text-align:right;">
+1.088521
+</td>
+<td style="text-align:right;">
+22.73364
+</td>
+<td style="text-align:right;">
+10.13449
+</td>
+<td style="text-align:right;">
+168.7382
+</td>
+<td style="text-align:right;">
+42.69773
+</td>
+<td style="text-align:right;">
+60.75282
+</td>
+<td style="text-align:right;">
+8.708924
+</td>
+<td style="text-align:right;">
+57.55205
+</td>
+<td style="text-align:right;">
+12.12895
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>This applies the functions <code>mean</code> and <code>sd</code> to all numeric columns; The results have the names <code>&quot;Mean&quot;</code> and <code>&quot;StDev&quot;</code> that we gave each function applied to the end of the column.</p>
+</div>
+<div id="group-operations" class="section level2">
+<h2><span class="header-section-number">C.7</span> Group Operations</h2>
+<p>The real power of the <code>dplyr</code> package comes from being able to apply all of the above functions to grouped subsets of a data frame. To create a grouped table use the <code>group_by</code> function:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lizards <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(Site)</code></pre></div>
+<pre><code>## # A tibble: 657 x 9
+## # Groups:   Site [19]
+##    Site  Color_morph  Limb  Mass Diameter Height   SVL  Tail Perch_type
+##    &lt;chr&gt; &lt;chr&gt;       &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;     
+##  1 A     Green        14.3  6.46        8    164  61.8  43.9 Other     
+##  2 A     Brown        12.3  5.82       18    151  57.1  42.2 Tree      
+##  3 A     Blue         10.5  4.29       36    130  49.1  25   Building  
+##  4 A     Brown        10.3  5.29       31    131  51.2  38.2 Tree      
+##  5 A     Brown        10.9  5.69       20    138  51.5  46.9 Shrub     
+##  6 A     Brown        10.4  5.84       25    137  45.3  59   Shrub     
+##  7 A     Green        11.1  5.91        7    138  49.7  47.6 Building  
+##  8 A     Brown        10    5.09       20    141  48    34.9 Tree      
+##  9 A     Brown        12.3  7.2        19    129  54.9  61   Tree      
+## 10 A     Brown        11.2  6.66       15    134  52.7  50.4 Tree      
+## # … with 647 more rows</code></pre>
+<p>This doesn't appear to do much on its own; however, look what happens when you combine it with <code>summarize</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lizards <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(Site) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">summarize</span>(<span class="dt">mean_SVL =</span> <span class="kw">mean</span>(SVL),
+            <span class="dt">sd_SVL =</span> <span class="kw">sd</span>(SVL),
+            <span class="dt">count =</span> <span class="kw">n</span>()) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">View</span>()</code></pre></div>
+<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
+<table class=" lightable-paper" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Site
+</th>
+<th style="text-align:right;">
+mean_SVL
+</th>
+<th style="text-align:right;">
+sd_SVL
+</th>
+<th style="text-align:right;">
+count
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+51.69615
+</td>
+<td style="text-align:right;">
+3.679944
+</td>
+<td style="text-align:right;">
+26
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:right;">
+66.92222
+</td>
+<td style="text-align:right;">
+2.182673
+</td>
+<td style="text-align:right;">
+36
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+C
+</td>
+<td style="text-align:right;">
+58.09722
+</td>
+<td style="text-align:right;">
+5.576250
+</td>
+<td style="text-align:right;">
+36
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+D
+</td>
+<td style="text-align:right;">
+70.70000
+</td>
+<td style="text-align:right;">
+3.058280
+</td>
+<td style="text-align:right;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+E
+</td>
+<td style="text-align:right;">
+53.17727
+</td>
+<td style="text-align:right;">
+2.776887
+</td>
+<td style="text-align:right;">
+44
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+F
+</td>
+<td style="text-align:right;">
+58.77955
+</td>
+<td style="text-align:right;">
+2.734583
+</td>
+<td style="text-align:right;">
+44
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+G
+</td>
+<td style="text-align:right;">
+63.87308
+</td>
+<td style="text-align:right;">
+6.027507
+</td>
+<td style="text-align:right;">
+26
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+H
+</td>
+<td style="text-align:right;">
+52.18571
+</td>
+<td style="text-align:right;">
+5.101008
+</td>
+<td style="text-align:right;">
+42
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+I
+</td>
+<td style="text-align:right;">
+57.04412
+</td>
+<td style="text-align:right;">
+4.973639
+</td>
+<td style="text-align:right;">
+34
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+J
+</td>
+<td style="text-align:right;">
+74.34857
+</td>
+<td style="text-align:right;">
+3.625512
+</td>
+<td style="text-align:right;">
+35
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>This calculates the mean, SD of SVL for each site. You can group by multiple factors</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lizards <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(Site, Color_morph) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">summarize</span>(<span class="dt">mean_SVL =</span> <span class="kw">mean</span>(SVL), 
+            <span class="dt">count =</span> <span class="kw">n</span>()) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">ungroup</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Removes grouping; usually a good idea at the end unless you want surprises</span>
+<span class="st">  </span><span class="kw">View</span>()</code></pre></div>
+<pre><code>## `summarise()` regrouping output by &#39;Site&#39; (override with `.groups` argument)</code></pre>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
+<table class=" lightable-paper" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Site
+</th>
+<th style="text-align:left;">
+Color_morph
+</th>
+<th style="text-align:right;">
+mean_SVL
+</th>
+<th style="text-align:right;">
+count
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Blue
+</td>
+<td style="text-align:right;">
+49.99000
+</td>
+<td style="text-align:right;">
+10
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:right;">
+52.01538
+</td>
+<td style="text-align:right;">
+13
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Green
+</td>
+<td style="text-align:right;">
+56.00000
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:left;">
+Blue
+</td>
+<td style="text-align:right;">
+67.54000
+</td>
+<td style="text-align:right;">
+10
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:right;">
+66.74667
+</td>
+<td style="text-align:right;">
+15
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:left;">
+Green
+</td>
+<td style="text-align:right;">
+66.60000
+</td>
+<td style="text-align:right;">
+11
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+C
+</td>
+<td style="text-align:left;">
+Blue
+</td>
+<td style="text-align:right;">
+58.96250
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+C
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:right;">
+57.03125
+</td>
+<td style="text-align:right;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+C
+</td>
+<td style="text-align:left;">
+Green
+</td>
+<td style="text-align:right;">
+58.94167
+</td>
+<td style="text-align:right;">
+12
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+D
+</td>
+<td style="text-align:left;">
+Blue
+</td>
+<td style="text-align:right;">
+70.43750
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Grouping doesn't just work with <code>summarize</code>; for example, you can use it with mutate to find the relative height of each lizard within its site:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lizards <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(Site) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">mutate</span>(
+    <span class="dt">rel_height =</span> Height<span class="op">/</span><span class="kw">max</span>(Height)) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">    </span><span class="co"># max(Height) returns the max height in each site</span>
+<span class="st">  </span><span class="kw">ungroup</span>() <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> Site, <span class="dt">y =</span> rel_height)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_jitter</span>(<span class="dt">width =</span> .<span class="dv">2</span>, <span class="dt">height =</span> <span class="dv">0</span>)</code></pre></div>
+<p><img src="Bio373L-Book_files/figure-html/grp4-1.png" width="672" /></p>
+<p>You can also use this to easily calculate frequencies:</p>
+<p>An alternate way to do this would be to combine <code>summarise</code> and <code>mutate</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lizards <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">group_by</span>(Site, Color_morph) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">summarize</span>(<span class="dt">count =</span> <span class="kw">n</span>()) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="co"># count is the total number of each morph at each site</span>
+<span class="st">  </span><span class="kw">group_by</span>(Site) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="co"># Calculate color morph frequency at each site</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">site_frequency =</span> count <span class="op">/</span><span class="st"> </span><span class="kw">sum</span>(count)) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">View</span>()</code></pre></div>
+<pre><code>## `summarise()` regrouping output by &#39;Site&#39; (override with `.groups` argument)</code></pre>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
+<table class=" lightable-paper" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Site
+</th>
+<th style="text-align:left;">
+Color_morph
+</th>
+<th style="text-align:right;">
+count
+</th>
+<th style="text-align:right;">
+site_frequency
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Blue
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+0.3846154
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:right;">
+0.5000000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Green
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+0.1153846
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:left;">
+Blue
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+0.2777778
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+0.4166667
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:left;">
+Green
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+0.3055556
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+C
+</td>
+<td style="text-align:left;">
+Blue
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+0.2222222
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+C
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:right;">
+0.4444444
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+C
+</td>
+<td style="text-align:left;">
+Green
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:right;">
+0.3333333
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+D
+</td>
+<td style="text-align:left;">
+Blue
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+0.2962963
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Some Exercises:</p>
+<ol start="5" style="list-style-type: decimal">
+<li>Visualize the relationship between the maximum height at a site and the average limb length. Use this to help:</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"> lizards <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="co"># Put your summarize() code here</span>
+<span class="st">  </span><span class="co"># You should name your new columns max_height and mean_limb</span>
+<span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> max_height, <span class="dt">y =</span> mean_limb)) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>() </code></pre></div>
+<ol start="6" style="list-style-type: decimal">
+<li>For each site, what's the mean limb length of the five largest individuals by SVL? What proportion of these individuals is blue?</li>
+</ol>
 
 </div>
 </div>
