@@ -305,7 +305,7 @@ lizards %>% group_by(Site)
 
 This doesn't appear to do much on its own; however, look what happens when you combine it with `summarize`:
 
-```{r grp2}
+```{r grp2, message = FALSE}
 lizards %>% group_by(Site) %>% 
   summarize(mean_SVL = mean(SVL),
             sd_SVL = sd(SVL),
@@ -315,7 +315,7 @@ lizards %>% group_by(Site) %>%
 
 This calculates the mean, SD of SVL for each site. You can group by multiple factors
 
-```{r grp3}
+```{r grp3, message = FALSE}
 lizards %>% group_by(Site, Color_morph) %>% 
   summarize(mean_SVL = mean(SVL), 
             count = n()) %>% 
@@ -325,7 +325,7 @@ lizards %>% group_by(Site, Color_morph) %>%
 
 Grouping doesn't just work with `summarize`; for example, you can use it with mutate to find the relative height of each lizard within its site:
 
-```{r grp4}
+```{r grp4, message = FALSE}
 lizards %>% group_by(Site) %>% 
   mutate(
     rel_height = Height/max(Height)) %>% 
