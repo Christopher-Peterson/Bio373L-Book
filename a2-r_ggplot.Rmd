@@ -1,4 +1,13 @@
 # Making graphs in R with `ggplot2`
+```{r tidyverse_workaround_a2, echo = FALSE, message = FALSE}
+library(ggplot2)
+library(dplyr)
+library(readr)
+library(tibble)
+library(forcats)
+library(cowplot)
+lizards <- read_csv("example_data/anoles.csv") # See Appendix A if you don't have this data
+```
 
 ## Components of a plot
 
@@ -12,8 +21,10 @@ The `ggplot2` package assembles a graph from several components. The important c
  - **Facets:** If you're splitting your figure into multiple panels, what data is informing that?
  
 Let's look at an example:
-
-```{r load_anoles_a2, echo = TRUE, message=FALSE}
+```{r, echo = FALSE}
+theme_set(theme_cowplot())
+```
+```{r load_anoles_a2, echo = TRUE, eval=FALSE}
 # Load packages & data
 library(tidyverse) 
 lizards <- read_csv("example_data/anoles.csv") 

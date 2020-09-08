@@ -81,8 +81,11 @@ first_Ten # doesn't work
 Before we get started with this you'll need to download an example data file. From RStudio, create an **example_data** directory, then save [this file](https://raw.githubusercontent.com/Christopher-Peterson/Bio373L-Book/master/example_data/anoles.csv) in it (make sure the name is still `anoles.csv`). Note that you may need to go to go to **File -> Save Page As...* (or some variant) in your web browser to save it.  
 
 Now, let's load the data into R. To do that, we need to load the `readr` package, which is part of the `tidyverse`. Note: RStudio has some built-in ways to load datasets; I would strongly advise not using them, because it makes it harder to go back & repeat your analysis if something changes.
-
-```{r load_anoles, echo = TRUE, message=FALSE}
+```{r tidyverse_workaround_a1, echo = FALSE, message = FALSE}
+library(tidyverse)
+lizards <- read_csv("example_data/anoles.csv") # Note that the 
+```
+```{r load_anoles_a1, echo = TRUE, eval=FALSE}
 library(tidyverse) 
 lizards <- read_csv("example_data/anoles.csv") # Note that the path is relative to your project directory.
 ```
@@ -105,6 +108,12 @@ View(lizards)
 ```
 
 Each column of the data frame is a vector of the same length. We can pull our columns and work with them directly:
+
+```{r tidyverse_workaround_a1, echo = FALSE, message = FALSE}
+library(tidyverse)
+library(tibble)
+lizards <- read_csv("example_data/anoles.csv") # See Appendix A if you don't have this data
+```
 
 ```{r column_extract, echo = TRUE, collapse = TRUE, eval = FALSE}
 # Let's extract the color column
