@@ -1,0 +1,106 @@
+# Data manipulation with `dplyr`
+
+Let's talk about data manipulation.  We'll be using the `dplyr` package, which is part of `tidyverse` First, we need to load our packages & data. 
+
+```{r tidyverse_workaround_a3, echo = FALSE, message = FALSE}
+# This invisible block is a workaround for Travis CI not having the tidyverse meta-package; 
+library(ggplot2)
+library(dplyr)
+library(readr)
+library(tibble)
+library(forcats)
+library(cowplot)
+theme_set(theme_cowplot())
+lizards <- read_csv("example_data/anoles.csv") # See Appendix A if you don't have this data
+# Capture View()
+real_view = View
+View = function(x,...) knitr::kable(head(x))
+```
+```{r load_anoles_a3, echo = TRUE, eval=FALSE}
+library(tidyverse) 
+library(cowplot)
+theme_set(theme_cowplot())
+lizards <- read_csv("example_data/anoles.csv") # See Appendix A if you don't have this data
+```
+
+## The Pipe (%>%)
+
+The **pipe ( %>% )** operator strings functions together in a sequence.  It takes the result of the function on its left and makes it the first argument to the function on the right. Let's say you wanted to calculate the base-12 log of the mean of the square root of the absolute value of numbers between -50 and 50. The traditional way to write that would be:
+
+```{r nopipe}
+log(mean(sqrt(abs(-50:50))), base = 12)
+```
+This is rather difficult to read; it has a lot of nested parentheses, and you need to start from the inside and work your way out to see what's happening.  With the pipe, you could re-write it like this:
+
+```{r with_pipe}
+-50:50 %>% abs() %>% sqrt() %>% 
+  mean() %>% log(base = 12)
+```
+Using pipes can make your code much clearer, and is quite helpful when creating a sequence of related transformations on data.
+
+In RStudio, you can insert the pipe by pressing Ctrl+Shift+M.
+
+## Adding/modifying columns (mutate)
+
+The `mutate()` function creates a new column in a data frame. For example, the total length of a lizard is defined as its snout-vent length (SVL) plus it's tail length.  
+
+```{r mutate1}
+mutate(.data = lizards, total_length = SVL + Tail) %>% 
+  View() # Use View to look at the results in RStudio
+```
+
+This uses the lizards data to create a new column, total_length. Within the mutate command, you can reference columns directly by their names (like you do for aes() in ggplot). Mutate can create multiple new columns in a single command.
+
+```{r mutate2}
+mutate(lizards, # generally, the .data argument is not named
+       # All subsequent arguments refer to new columns
+       total_length = SVL + Tail,
+       rel_limb = Limb/SVL,
+       log_total_length = log(total_length),
+       # You can also change an existing column by saving something to its name
+       Color_morph = paste(Color_morph, "morph") # add "morph" after each color
+       ) %>% View()
+```
+Note that this doesn't modify the `lizards` dataset.  It creates a new data frame that has an additional column. You'll need to save it as a new variable to use it.
+
+```{r mutate3}
+lizards_full = lizards %>% # It's also traditional to pipe the data argument in
+  mutate(total_length = SVL + Tail,
+         rel_limb = Limb/SVL,
+         log_total_length = log(total_length)) 
+```
+
+Tidyverse functions are designed to be piped together.  For example:
+
+```{r mutate_plot}
+lizards %>% 
+  mutate(Total_length = SVL + Tail) %>% 
+  ggplot(aes(x = Site, y = Total_length)) +
+  geom_boxplot()
+```
+
+Creating a quick plot at the end of a data manipulation step can be a good way to get a visual idea of what you're doing.  
+
+Here are a few other helpful things to do with `mutate()`:
+
+```{r mutate4, collect = TRUE}
+lizards %>% mutate(
+  intercept = 1, # Add a constant
+  row_number = 1:n() # the n() function tells you how many rows are 
+    # in the current data frame (it only works in mutate & related functions)
+) %>%  View()
+```
+
+
+Here are a few exercises to try:
+
+ 1. Add a column to the `lizards` dataset that gives the lizard's height relative to the maximum height of any lizard (hint: use max(Height) in a mutate command to find that value).  
+ 2. Calculate perch circumference `(Diameter * pi)`, then pipe that result into a scatter plot of relative limb length vs. circumference. Note that `pi` is a pre-defined variable in R.
+
+## Subsetting by row (filter)
+
+(in progress)
+
+## Subsetting by column (select)
+
+## Grouping & summarizing data
