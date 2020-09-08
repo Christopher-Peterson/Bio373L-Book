@@ -13,7 +13,7 @@ The `ggplot2` package assembles a graph from several components. The important c
  
 Let's look at an example:
 
-```{r load_anoles, echo = TRUE, message=FALSE}
+```{r load_anoles_a2, echo = TRUE, message=FALSE}
 # Load packages & data
 library(tidyverse) 
 lizards <- read_csv("example_data/anoles.csv") 
