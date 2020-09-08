@@ -50,6 +50,8 @@
 
 
 
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -252,96 +254,366 @@ lizards &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span cla
 <p>The <code>mutate()</code> function creates a new column in a data frame. For example, the total length of a lizard is defined as its snout-vent length (SVL) plus it's tail length.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mutate</span>(<span class="dt">.data =</span> lizards, <span class="dt">total_length =</span> SVL <span class="op">+</span><span class="st"> </span>Tail) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">View</span>() <span class="co"># Use View to look at the results in RStudio</span></code></pre></div>
-<table>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
+<table class=" lightable-paper" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; margin-left: auto; margin-right: auto;">
 <thead>
-<tr class="header">
-<th align="left">Site</th>
-<th align="left">Color_morph</th>
-<th align="right">Limb</th>
-<th align="right">Mass</th>
-<th align="right">Diameter</th>
-<th align="right">Height</th>
-<th align="right">SVL</th>
-<th align="right">Tail</th>
-<th align="left">Perch_type</th>
-<th align="right">total_length</th>
+<tr>
+<th style="text-align:left;">
+Site
+</th>
+<th style="text-align:left;">
+Color_morph
+</th>
+<th style="text-align:right;">
+Limb
+</th>
+<th style="text-align:right;">
+Mass
+</th>
+<th style="text-align:right;">
+Diameter
+</th>
+<th style="text-align:right;">
+Height
+</th>
+<th style="text-align:right;">
+SVL
+</th>
+<th style="text-align:right;">
+Tail
+</th>
+<th style="text-align:left;">
+Perch_type
+</th>
+<th style="text-align:right;">
+total_length
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td align="left">A</td>
-<td align="left">Green</td>
-<td align="right">14.3</td>
-<td align="right">6.46</td>
-<td align="right">8</td>
-<td align="right">164</td>
-<td align="right">61.8</td>
-<td align="right">43.9</td>
-<td align="left">Other</td>
-<td align="right">105.7</td>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Green
+</td>
+<td style="text-align:right;">
+14.3
+</td>
+<td style="text-align:right;">
+6.46
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+164
+</td>
+<td style="text-align:right;">
+61.8
+</td>
+<td style="text-align:right;">
+43.9
+</td>
+<td style="text-align:left;">
+Other
+</td>
+<td style="text-align:right;">
+105.7
+</td>
 </tr>
-<tr class="even">
-<td align="left">A</td>
-<td align="left">Brown</td>
-<td align="right">12.3</td>
-<td align="right">5.82</td>
-<td align="right">18</td>
-<td align="right">151</td>
-<td align="right">57.1</td>
-<td align="right">42.2</td>
-<td align="left">Tree</td>
-<td align="right">99.3</td>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:right;">
+12.3
+</td>
+<td style="text-align:right;">
+5.82
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+151
+</td>
+<td style="text-align:right;">
+57.1
+</td>
+<td style="text-align:right;">
+42.2
+</td>
+<td style="text-align:left;">
+Tree
+</td>
+<td style="text-align:right;">
+99.3
+</td>
 </tr>
-<tr class="odd">
-<td align="left">A</td>
-<td align="left">Blue</td>
-<td align="right">10.5</td>
-<td align="right">4.29</td>
-<td align="right">36</td>
-<td align="right">130</td>
-<td align="right">49.1</td>
-<td align="right">25.0</td>
-<td align="left">Building</td>
-<td align="right">74.1</td>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Blue
+</td>
+<td style="text-align:right;">
+10.5
+</td>
+<td style="text-align:right;">
+4.29
+</td>
+<td style="text-align:right;">
+36
+</td>
+<td style="text-align:right;">
+130
+</td>
+<td style="text-align:right;">
+49.1
+</td>
+<td style="text-align:right;">
+25.0
+</td>
+<td style="text-align:left;">
+Building
+</td>
+<td style="text-align:right;">
+74.1
+</td>
 </tr>
-<tr class="even">
-<td align="left">A</td>
-<td align="left">Brown</td>
-<td align="right">10.3</td>
-<td align="right">5.29</td>
-<td align="right">31</td>
-<td align="right">131</td>
-<td align="right">51.2</td>
-<td align="right">38.2</td>
-<td align="left">Tree</td>
-<td align="right">89.4</td>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:right;">
+10.3
+</td>
+<td style="text-align:right;">
+5.29
+</td>
+<td style="text-align:right;">
+31
+</td>
+<td style="text-align:right;">
+131
+</td>
+<td style="text-align:right;">
+51.2
+</td>
+<td style="text-align:right;">
+38.2
+</td>
+<td style="text-align:left;">
+Tree
+</td>
+<td style="text-align:right;">
+89.4
+</td>
 </tr>
-<tr class="odd">
-<td align="left">A</td>
-<td align="left">Brown</td>
-<td align="right">10.9</td>
-<td align="right">5.69</td>
-<td align="right">20</td>
-<td align="right">138</td>
-<td align="right">51.5</td>
-<td align="right">46.9</td>
-<td align="left">Shrub</td>
-<td align="right">98.4</td>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:right;">
+10.9
+</td>
+<td style="text-align:right;">
+5.69
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+138
+</td>
+<td style="text-align:right;">
+51.5
+</td>
+<td style="text-align:right;">
+46.9
+</td>
+<td style="text-align:left;">
+Shrub
+</td>
+<td style="text-align:right;">
+98.4
+</td>
 </tr>
-<tr class="even">
-<td align="left">A</td>
-<td align="left">Brown</td>
-<td align="right">10.4</td>
-<td align="right">5.84</td>
-<td align="right">25</td>
-<td align="right">137</td>
-<td align="right">45.3</td>
-<td align="right">59.0</td>
-<td align="left">Shrub</td>
-<td align="right">104.3</td>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:right;">
+10.4
+</td>
+<td style="text-align:right;">
+5.84
+</td>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:right;">
+137
+</td>
+<td style="text-align:right;">
+45.3
+</td>
+<td style="text-align:right;">
+59.0
+</td>
+<td style="text-align:left;">
+Shrub
+</td>
+<td style="text-align:right;">
+104.3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Green
+</td>
+<td style="text-align:right;">
+11.1
+</td>
+<td style="text-align:right;">
+5.91
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+138
+</td>
+<td style="text-align:right;">
+49.7
+</td>
+<td style="text-align:right;">
+47.6
+</td>
+<td style="text-align:left;">
+Building
+</td>
+<td style="text-align:right;">
+97.3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:right;">
+10.0
+</td>
+<td style="text-align:right;">
+5.09
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+141
+</td>
+<td style="text-align:right;">
+48.0
+</td>
+<td style="text-align:right;">
+34.9
+</td>
+<td style="text-align:left;">
+Tree
+</td>
+<td style="text-align:right;">
+82.9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:right;">
+12.3
+</td>
+<td style="text-align:right;">
+7.20
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+129
+</td>
+<td style="text-align:right;">
+54.9
+</td>
+<td style="text-align:right;">
+61.0
+</td>
+<td style="text-align:left;">
+Tree
+</td>
+<td style="text-align:right;">
+115.9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:right;">
+11.2
+</td>
+<td style="text-align:right;">
+6.66
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+134
+</td>
+<td style="text-align:right;">
+52.7
+</td>
+<td style="text-align:right;">
+50.4
+</td>
+<td style="text-align:left;">
+Tree
+</td>
+<td style="text-align:right;">
+103.1
+</td>
 </tr>
 </tbody>
 </table>
+</div>
 <p>This uses the lizards data to create a new column, total_length. Within the mutate command, you can reference columns directly by their names (like you do for aes() in ggplot). Mutate can create multiple new columns in a single command.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mutate</span>(lizards, <span class="co"># generally, the .data argument is not named</span>
        <span class="co"># All subsequent arguments refer to new columns</span>
@@ -351,124 +623,432 @@ lizards &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span cla
        <span class="co"># You can also change an existing column by saving something to its name</span>
        <span class="dt">Color_morph =</span> <span class="kw">paste</span>(Color_morph, <span class="st">&quot;morph&quot;</span>) <span class="co"># add &quot;morph&quot; after each color</span>
        ) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">View</span>()</code></pre></div>
-<table>
-<colgroup>
-<col width="5%" />
-<col width="11%" />
-<col width="5%" />
-<col width="5%" />
-<col width="8%" />
-<col width="6%" />
-<col width="5%" />
-<col width="5%" />
-<col width="10%" />
-<col width="12%" />
-<col width="9%" />
-<col width="15%" />
-</colgroup>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
+<table class=" lightable-paper" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; margin-left: auto; margin-right: auto;">
 <thead>
-<tr class="header">
-<th align="left">Site</th>
-<th align="left">Color_morph</th>
-<th align="right">Limb</th>
-<th align="right">Mass</th>
-<th align="right">Diameter</th>
-<th align="right">Height</th>
-<th align="right">SVL</th>
-<th align="right">Tail</th>
-<th align="left">Perch_type</th>
-<th align="right">total_length</th>
-<th align="right">rel_limb</th>
-<th align="right">log_total_length</th>
+<tr>
+<th style="text-align:left;">
+Site
+</th>
+<th style="text-align:left;">
+Color_morph
+</th>
+<th style="text-align:right;">
+Limb
+</th>
+<th style="text-align:right;">
+Mass
+</th>
+<th style="text-align:right;">
+Diameter
+</th>
+<th style="text-align:right;">
+Height
+</th>
+<th style="text-align:right;">
+SVL
+</th>
+<th style="text-align:right;">
+Tail
+</th>
+<th style="text-align:left;">
+Perch_type
+</th>
+<th style="text-align:right;">
+total_length
+</th>
+<th style="text-align:right;">
+rel_limb
+</th>
+<th style="text-align:right;">
+log_total_length
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td align="left">A</td>
-<td align="left">Green morph</td>
-<td align="right">14.3</td>
-<td align="right">6.46</td>
-<td align="right">8</td>
-<td align="right">164</td>
-<td align="right">61.8</td>
-<td align="right">43.9</td>
-<td align="left">Other</td>
-<td align="right">105.7</td>
-<td align="right">0.2313916</td>
-<td align="right">4.660605</td>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Green morph
+</td>
+<td style="text-align:right;">
+14.3
+</td>
+<td style="text-align:right;">
+6.46
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+164
+</td>
+<td style="text-align:right;">
+61.8
+</td>
+<td style="text-align:right;">
+43.9
+</td>
+<td style="text-align:left;">
+Other
+</td>
+<td style="text-align:right;">
+105.7
+</td>
+<td style="text-align:right;">
+0.2313916
+</td>
+<td style="text-align:right;">
+4.660605
+</td>
 </tr>
-<tr class="even">
-<td align="left">A</td>
-<td align="left">Brown morph</td>
-<td align="right">12.3</td>
-<td align="right">5.82</td>
-<td align="right">18</td>
-<td align="right">151</td>
-<td align="right">57.1</td>
-<td align="right">42.2</td>
-<td align="left">Tree</td>
-<td align="right">99.3</td>
-<td align="right">0.2154116</td>
-<td align="right">4.598146</td>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Brown morph
+</td>
+<td style="text-align:right;">
+12.3
+</td>
+<td style="text-align:right;">
+5.82
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+151
+</td>
+<td style="text-align:right;">
+57.1
+</td>
+<td style="text-align:right;">
+42.2
+</td>
+<td style="text-align:left;">
+Tree
+</td>
+<td style="text-align:right;">
+99.3
+</td>
+<td style="text-align:right;">
+0.2154116
+</td>
+<td style="text-align:right;">
+4.598146
+</td>
 </tr>
-<tr class="odd">
-<td align="left">A</td>
-<td align="left">Blue morph</td>
-<td align="right">10.5</td>
-<td align="right">4.29</td>
-<td align="right">36</td>
-<td align="right">130</td>
-<td align="right">49.1</td>
-<td align="right">25.0</td>
-<td align="left">Building</td>
-<td align="right">74.1</td>
-<td align="right">0.2138493</td>
-<td align="right">4.305415</td>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Blue morph
+</td>
+<td style="text-align:right;">
+10.5
+</td>
+<td style="text-align:right;">
+4.29
+</td>
+<td style="text-align:right;">
+36
+</td>
+<td style="text-align:right;">
+130
+</td>
+<td style="text-align:right;">
+49.1
+</td>
+<td style="text-align:right;">
+25.0
+</td>
+<td style="text-align:left;">
+Building
+</td>
+<td style="text-align:right;">
+74.1
+</td>
+<td style="text-align:right;">
+0.2138493
+</td>
+<td style="text-align:right;">
+4.305415
+</td>
 </tr>
-<tr class="even">
-<td align="left">A</td>
-<td align="left">Brown morph</td>
-<td align="right">10.3</td>
-<td align="right">5.29</td>
-<td align="right">31</td>
-<td align="right">131</td>
-<td align="right">51.2</td>
-<td align="right">38.2</td>
-<td align="left">Tree</td>
-<td align="right">89.4</td>
-<td align="right">0.2011719</td>
-<td align="right">4.493121</td>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Brown morph
+</td>
+<td style="text-align:right;">
+10.3
+</td>
+<td style="text-align:right;">
+5.29
+</td>
+<td style="text-align:right;">
+31
+</td>
+<td style="text-align:right;">
+131
+</td>
+<td style="text-align:right;">
+51.2
+</td>
+<td style="text-align:right;">
+38.2
+</td>
+<td style="text-align:left;">
+Tree
+</td>
+<td style="text-align:right;">
+89.4
+</td>
+<td style="text-align:right;">
+0.2011719
+</td>
+<td style="text-align:right;">
+4.493121
+</td>
 </tr>
-<tr class="odd">
-<td align="left">A</td>
-<td align="left">Brown morph</td>
-<td align="right">10.9</td>
-<td align="right">5.69</td>
-<td align="right">20</td>
-<td align="right">138</td>
-<td align="right">51.5</td>
-<td align="right">46.9</td>
-<td align="left">Shrub</td>
-<td align="right">98.4</td>
-<td align="right">0.2116505</td>
-<td align="right">4.589041</td>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Brown morph
+</td>
+<td style="text-align:right;">
+10.9
+</td>
+<td style="text-align:right;">
+5.69
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+138
+</td>
+<td style="text-align:right;">
+51.5
+</td>
+<td style="text-align:right;">
+46.9
+</td>
+<td style="text-align:left;">
+Shrub
+</td>
+<td style="text-align:right;">
+98.4
+</td>
+<td style="text-align:right;">
+0.2116505
+</td>
+<td style="text-align:right;">
+4.589041
+</td>
 </tr>
-<tr class="even">
-<td align="left">A</td>
-<td align="left">Brown morph</td>
-<td align="right">10.4</td>
-<td align="right">5.84</td>
-<td align="right">25</td>
-<td align="right">137</td>
-<td align="right">45.3</td>
-<td align="right">59.0</td>
-<td align="left">Shrub</td>
-<td align="right">104.3</td>
-<td align="right">0.2295806</td>
-<td align="right">4.647271</td>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Brown morph
+</td>
+<td style="text-align:right;">
+10.4
+</td>
+<td style="text-align:right;">
+5.84
+</td>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:right;">
+137
+</td>
+<td style="text-align:right;">
+45.3
+</td>
+<td style="text-align:right;">
+59.0
+</td>
+<td style="text-align:left;">
+Shrub
+</td>
+<td style="text-align:right;">
+104.3
+</td>
+<td style="text-align:right;">
+0.2295806
+</td>
+<td style="text-align:right;">
+4.647271
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Green morph
+</td>
+<td style="text-align:right;">
+11.1
+</td>
+<td style="text-align:right;">
+5.91
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+138
+</td>
+<td style="text-align:right;">
+49.7
+</td>
+<td style="text-align:right;">
+47.6
+</td>
+<td style="text-align:left;">
+Building
+</td>
+<td style="text-align:right;">
+97.3
+</td>
+<td style="text-align:right;">
+0.2233400
+</td>
+<td style="text-align:right;">
+4.577799
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Brown morph
+</td>
+<td style="text-align:right;">
+10.0
+</td>
+<td style="text-align:right;">
+5.09
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+141
+</td>
+<td style="text-align:right;">
+48.0
+</td>
+<td style="text-align:right;">
+34.9
+</td>
+<td style="text-align:left;">
+Tree
+</td>
+<td style="text-align:right;">
+82.9
+</td>
+<td style="text-align:right;">
+0.2083333
+</td>
+<td style="text-align:right;">
+4.417635
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Brown morph
+</td>
+<td style="text-align:right;">
+12.3
+</td>
+<td style="text-align:right;">
+7.20
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+129
+</td>
+<td style="text-align:right;">
+54.9
+</td>
+<td style="text-align:right;">
+61.0
+</td>
+<td style="text-align:left;">
+Tree
+</td>
+<td style="text-align:right;">
+115.9
+</td>
+<td style="text-align:right;">
+0.2240437
+</td>
+<td style="text-align:right;">
+4.752728
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Brown morph
+</td>
+<td style="text-align:right;">
+11.2
+</td>
+<td style="text-align:right;">
+6.66
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+134
+</td>
+<td style="text-align:right;">
+52.7
+</td>
+<td style="text-align:right;">
+50.4
+</td>
+<td style="text-align:left;">
+Tree
+</td>
+<td style="text-align:right;">
+103.1
+</td>
+<td style="text-align:right;">
+0.2125237
+</td>
+<td style="text-align:right;">
+4.635699
+</td>
 </tr>
 </tbody>
 </table>
+</div>
 <p>Note that this doesn't modify the <code>lizards</code> dataset. It creates a new data frame that has an additional column. You'll need to save it as a new variable to use it.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lizards_full =<span class="st"> </span>lizards <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># It&#39;s also traditional to pipe the data argument in</span>
 <span class="st">  </span><span class="kw">mutate</span>(<span class="dt">total_length =</span> SVL <span class="op">+</span><span class="st"> </span>Tail,
@@ -487,116 +1067,399 @@ lizards &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span cla
   <span class="dt">row_number =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">n</span>() <span class="co"># the n() function tells you how many rows are </span>
     <span class="co"># in the current data frame (it only works in mutate &amp; related functions)</span>
 ) <span class="op">%&gt;%</span><span class="st">  </span><span class="kw">View</span>()</code></pre></div>
-<table style="width:100%;">
-<colgroup>
-<col width="6%" />
-<col width="13%" />
-<col width="6%" />
-<col width="6%" />
-<col width="10%" />
-<col width="8%" />
-<col width="6%" />
-<col width="6%" />
-<col width="12%" />
-<col width="11%" />
-<col width="12%" />
-</colgroup>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
+<table class=" lightable-paper" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; margin-left: auto; margin-right: auto;">
 <thead>
-<tr class="header">
-<th align="left">Site</th>
-<th align="left">Color_morph</th>
-<th align="right">Limb</th>
-<th align="right">Mass</th>
-<th align="right">Diameter</th>
-<th align="right">Height</th>
-<th align="right">SVL</th>
-<th align="right">Tail</th>
-<th align="left">Perch_type</th>
-<th align="right">intercept</th>
-<th align="right">row_number</th>
+<tr>
+<th style="text-align:left;">
+Site
+</th>
+<th style="text-align:left;">
+Color_morph
+</th>
+<th style="text-align:right;">
+Limb
+</th>
+<th style="text-align:right;">
+Mass
+</th>
+<th style="text-align:right;">
+Diameter
+</th>
+<th style="text-align:right;">
+Height
+</th>
+<th style="text-align:right;">
+SVL
+</th>
+<th style="text-align:right;">
+Tail
+</th>
+<th style="text-align:left;">
+Perch_type
+</th>
+<th style="text-align:right;">
+intercept
+</th>
+<th style="text-align:right;">
+row_number
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td align="left">A</td>
-<td align="left">Green</td>
-<td align="right">14.3</td>
-<td align="right">6.46</td>
-<td align="right">8</td>
-<td align="right">164</td>
-<td align="right">61.8</td>
-<td align="right">43.9</td>
-<td align="left">Other</td>
-<td align="right">1</td>
-<td align="right">1</td>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Green
+</td>
+<td style="text-align:right;">
+14.3
+</td>
+<td style="text-align:right;">
+6.46
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+164
+</td>
+<td style="text-align:right;">
+61.8
+</td>
+<td style="text-align:right;">
+43.9
+</td>
+<td style="text-align:left;">
+Other
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
 </tr>
-<tr class="even">
-<td align="left">A</td>
-<td align="left">Brown</td>
-<td align="right">12.3</td>
-<td align="right">5.82</td>
-<td align="right">18</td>
-<td align="right">151</td>
-<td align="right">57.1</td>
-<td align="right">42.2</td>
-<td align="left">Tree</td>
-<td align="right">1</td>
-<td align="right">2</td>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:right;">
+12.3
+</td>
+<td style="text-align:right;">
+5.82
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+151
+</td>
+<td style="text-align:right;">
+57.1
+</td>
+<td style="text-align:right;">
+42.2
+</td>
+<td style="text-align:left;">
+Tree
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2
+</td>
 </tr>
-<tr class="odd">
-<td align="left">A</td>
-<td align="left">Blue</td>
-<td align="right">10.5</td>
-<td align="right">4.29</td>
-<td align="right">36</td>
-<td align="right">130</td>
-<td align="right">49.1</td>
-<td align="right">25.0</td>
-<td align="left">Building</td>
-<td align="right">1</td>
-<td align="right">3</td>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Blue
+</td>
+<td style="text-align:right;">
+10.5
+</td>
+<td style="text-align:right;">
+4.29
+</td>
+<td style="text-align:right;">
+36
+</td>
+<td style="text-align:right;">
+130
+</td>
+<td style="text-align:right;">
+49.1
+</td>
+<td style="text-align:right;">
+25.0
+</td>
+<td style="text-align:left;">
+Building
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3
+</td>
 </tr>
-<tr class="even">
-<td align="left">A</td>
-<td align="left">Brown</td>
-<td align="right">10.3</td>
-<td align="right">5.29</td>
-<td align="right">31</td>
-<td align="right">131</td>
-<td align="right">51.2</td>
-<td align="right">38.2</td>
-<td align="left">Tree</td>
-<td align="right">1</td>
-<td align="right">4</td>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:right;">
+10.3
+</td>
+<td style="text-align:right;">
+5.29
+</td>
+<td style="text-align:right;">
+31
+</td>
+<td style="text-align:right;">
+131
+</td>
+<td style="text-align:right;">
+51.2
+</td>
+<td style="text-align:right;">
+38.2
+</td>
+<td style="text-align:left;">
+Tree
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+4
+</td>
 </tr>
-<tr class="odd">
-<td align="left">A</td>
-<td align="left">Brown</td>
-<td align="right">10.9</td>
-<td align="right">5.69</td>
-<td align="right">20</td>
-<td align="right">138</td>
-<td align="right">51.5</td>
-<td align="right">46.9</td>
-<td align="left">Shrub</td>
-<td align="right">1</td>
-<td align="right">5</td>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:right;">
+10.9
+</td>
+<td style="text-align:right;">
+5.69
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+138
+</td>
+<td style="text-align:right;">
+51.5
+</td>
+<td style="text-align:right;">
+46.9
+</td>
+<td style="text-align:left;">
+Shrub
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+5
+</td>
 </tr>
-<tr class="even">
-<td align="left">A</td>
-<td align="left">Brown</td>
-<td align="right">10.4</td>
-<td align="right">5.84</td>
-<td align="right">25</td>
-<td align="right">137</td>
-<td align="right">45.3</td>
-<td align="right">59.0</td>
-<td align="left">Shrub</td>
-<td align="right">1</td>
-<td align="right">6</td>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:right;">
+10.4
+</td>
+<td style="text-align:right;">
+5.84
+</td>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:right;">
+137
+</td>
+<td style="text-align:right;">
+45.3
+</td>
+<td style="text-align:right;">
+59.0
+</td>
+<td style="text-align:left;">
+Shrub
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Green
+</td>
+<td style="text-align:right;">
+11.1
+</td>
+<td style="text-align:right;">
+5.91
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+138
+</td>
+<td style="text-align:right;">
+49.7
+</td>
+<td style="text-align:right;">
+47.6
+</td>
+<td style="text-align:left;">
+Building
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:right;">
+10.0
+</td>
+<td style="text-align:right;">
+5.09
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+141
+</td>
+<td style="text-align:right;">
+48.0
+</td>
+<td style="text-align:right;">
+34.9
+</td>
+<td style="text-align:left;">
+Tree
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:right;">
+12.3
+</td>
+<td style="text-align:right;">
+7.20
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+129
+</td>
+<td style="text-align:right;">
+54.9
+</td>
+<td style="text-align:right;">
+61.0
+</td>
+<td style="text-align:left;">
+Tree
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:right;">
+11.2
+</td>
+<td style="text-align:right;">
+6.66
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+134
+</td>
+<td style="text-align:right;">
+52.7
+</td>
+<td style="text-align:right;">
+50.4
+</td>
+<td style="text-align:left;">
+Tree
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+10
+</td>
 </tr>
 </tbody>
 </table>
+</div>
 <p>Here are a few exercises to try:</p>
 <ol style="list-style-type: decimal">
 <li>Add a column to the <code>lizards</code> dataset that gives the lizard's height relative to the maximum height of any lizard (hint: use max(Height) in a mutate command to find that value).<br />
@@ -606,7 +1469,1100 @@ lizards &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span cla
 </div>
 <div id="subsetting-by-row-filter" class="section level2">
 <h2><span class="header-section-number">C.3</span> Subsetting by row (filter)</h2>
-<p>(in progress)</p>
+<p>Let's define &quot;large lizards&quot; as:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lizards <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">large =</span> SVL <span class="op">&gt;</span><span class="st"> </span><span class="dv">60</span>) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">View</span>()</code></pre></div>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
+<table class=" lightable-paper" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Site
+</th>
+<th style="text-align:left;">
+Color_morph
+</th>
+<th style="text-align:right;">
+Limb
+</th>
+<th style="text-align:right;">
+Mass
+</th>
+<th style="text-align:right;">
+Diameter
+</th>
+<th style="text-align:right;">
+Height
+</th>
+<th style="text-align:right;">
+SVL
+</th>
+<th style="text-align:right;">
+Tail
+</th>
+<th style="text-align:left;">
+Perch_type
+</th>
+<th style="text-align:left;">
+large
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Green
+</td>
+<td style="text-align:right;">
+14.3
+</td>
+<td style="text-align:right;">
+6.46
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+164
+</td>
+<td style="text-align:right;">
+61.8
+</td>
+<td style="text-align:right;">
+43.9
+</td>
+<td style="text-align:left;">
+Other
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:right;">
+12.3
+</td>
+<td style="text-align:right;">
+5.82
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+151
+</td>
+<td style="text-align:right;">
+57.1
+</td>
+<td style="text-align:right;">
+42.2
+</td>
+<td style="text-align:left;">
+Tree
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Blue
+</td>
+<td style="text-align:right;">
+10.5
+</td>
+<td style="text-align:right;">
+4.29
+</td>
+<td style="text-align:right;">
+36
+</td>
+<td style="text-align:right;">
+130
+</td>
+<td style="text-align:right;">
+49.1
+</td>
+<td style="text-align:right;">
+25.0
+</td>
+<td style="text-align:left;">
+Building
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:right;">
+10.3
+</td>
+<td style="text-align:right;">
+5.29
+</td>
+<td style="text-align:right;">
+31
+</td>
+<td style="text-align:right;">
+131
+</td>
+<td style="text-align:right;">
+51.2
+</td>
+<td style="text-align:right;">
+38.2
+</td>
+<td style="text-align:left;">
+Tree
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:right;">
+10.9
+</td>
+<td style="text-align:right;">
+5.69
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+138
+</td>
+<td style="text-align:right;">
+51.5
+</td>
+<td style="text-align:right;">
+46.9
+</td>
+<td style="text-align:left;">
+Shrub
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:right;">
+10.4
+</td>
+<td style="text-align:right;">
+5.84
+</td>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:right;">
+137
+</td>
+<td style="text-align:right;">
+45.3
+</td>
+<td style="text-align:right;">
+59.0
+</td>
+<td style="text-align:left;">
+Shrub
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Green
+</td>
+<td style="text-align:right;">
+11.1
+</td>
+<td style="text-align:right;">
+5.91
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+138
+</td>
+<td style="text-align:right;">
+49.7
+</td>
+<td style="text-align:right;">
+47.6
+</td>
+<td style="text-align:left;">
+Building
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:right;">
+10.0
+</td>
+<td style="text-align:right;">
+5.09
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+141
+</td>
+<td style="text-align:right;">
+48.0
+</td>
+<td style="text-align:right;">
+34.9
+</td>
+<td style="text-align:left;">
+Tree
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:right;">
+12.3
+</td>
+<td style="text-align:right;">
+7.20
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+129
+</td>
+<td style="text-align:right;">
+54.9
+</td>
+<td style="text-align:right;">
+61.0
+</td>
+<td style="text-align:left;">
+Tree
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:right;">
+11.2
+</td>
+<td style="text-align:right;">
+6.66
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+134
+</td>
+<td style="text-align:right;">
+52.7
+</td>
+<td style="text-align:right;">
+50.4
+</td>
+<td style="text-align:left;">
+Tree
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The <strong>large</strong> column is a logical vector, with <code>TRUE</code> &amp; <code>FALSE</code> values. We can use logical vectors to get a subset of the data frame where the vector is <code>TRUE</code> with the <code>filter()</code> function.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lizards <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">large =</span> SVL <span class="op">&gt;</span><span class="st"> </span><span class="dv">60</span>) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">filter</span>(large) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">View</span>()</code></pre></div>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
+<table class=" lightable-paper" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Site
+</th>
+<th style="text-align:left;">
+Color_morph
+</th>
+<th style="text-align:right;">
+Limb
+</th>
+<th style="text-align:right;">
+Mass
+</th>
+<th style="text-align:right;">
+Diameter
+</th>
+<th style="text-align:right;">
+Height
+</th>
+<th style="text-align:right;">
+SVL
+</th>
+<th style="text-align:right;">
+Tail
+</th>
+<th style="text-align:left;">
+Perch_type
+</th>
+<th style="text-align:left;">
+large
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Green
+</td>
+<td style="text-align:right;">
+14.3
+</td>
+<td style="text-align:right;">
+6.46
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+164
+</td>
+<td style="text-align:right;">
+61.8
+</td>
+<td style="text-align:right;">
+43.9
+</td>
+<td style="text-align:left;">
+Other
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:right;">
+13.7
+</td>
+<td style="text-align:right;">
+7.57
+</td>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:right;">
+162
+</td>
+<td style="text-align:right;">
+67.0
+</td>
+<td style="text-align:right;">
+73.8
+</td>
+<td style="text-align:left;">
+Building
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:left;">
+Green
+</td>
+<td style="text-align:right;">
+14.4
+</td>
+<td style="text-align:right;">
+7.75
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+174
+</td>
+<td style="text-align:right;">
+68.8
+</td>
+<td style="text-align:right;">
+65.4
+</td>
+<td style="text-align:left;">
+Tree
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:left;">
+Blue
+</td>
+<td style="text-align:right;">
+13.8
+</td>
+<td style="text-align:right;">
+7.61
+</td>
+<td style="text-align:right;">
+35
+</td>
+<td style="text-align:right;">
+163
+</td>
+<td style="text-align:right;">
+63.5
+</td>
+<td style="text-align:right;">
+69.7
+</td>
+<td style="text-align:left;">
+Building
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:left;">
+Green
+</td>
+<td style="text-align:right;">
+15.2
+</td>
+<td style="text-align:right;">
+8.27
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:right;">
+188
+</td>
+<td style="text-align:right;">
+67.0
+</td>
+<td style="text-align:right;">
+50.6
+</td>
+<td style="text-align:left;">
+Tree
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:left;">
+Green
+</td>
+<td style="text-align:right;">
+14.1
+</td>
+<td style="text-align:right;">
+6.73
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:right;">
+176
+</td>
+<td style="text-align:right;">
+64.8
+</td>
+<td style="text-align:right;">
+49.0
+</td>
+<td style="text-align:left;">
+Tree
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:left;">
+Blue
+</td>
+<td style="text-align:right;">
+14.2
+</td>
+<td style="text-align:right;">
+8.43
+</td>
+<td style="text-align:right;">
+29
+</td>
+<td style="text-align:right;">
+177
+</td>
+<td style="text-align:right;">
+69.6
+</td>
+<td style="text-align:right;">
+85.3
+</td>
+<td style="text-align:left;">
+Tree
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:left;">
+Green
+</td>
+<td style="text-align:right;">
+14.3
+</td>
+<td style="text-align:right;">
+13.30
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+179
+</td>
+<td style="text-align:right;">
+68.3
+</td>
+<td style="text-align:right;">
+74.0
+</td>
+<td style="text-align:left;">
+Tree
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:left;">
+Blue
+</td>
+<td style="text-align:right;">
+14.4
+</td>
+<td style="text-align:right;">
+7.71
+</td>
+<td style="text-align:right;">
+33
+</td>
+<td style="text-align:right;">
+182
+</td>
+<td style="text-align:right;">
+65.5
+</td>
+<td style="text-align:right;">
+59.6
+</td>
+<td style="text-align:left;">
+Shrub
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:right;">
+14.1
+</td>
+<td style="text-align:right;">
+7.95
+</td>
+<td style="text-align:right;">
+32
+</td>
+<td style="text-align:right;">
+178
+</td>
+<td style="text-align:right;">
+70.1
+</td>
+<td style="text-align:right;">
+69.0
+</td>
+<td style="text-align:left;">
+Tree
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Note that only <code>TRUE</code> values of <strong>large</strong> remain the the data frame. It's not actually necessary to create a column before filtering:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lizards <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(SVL <span class="op">&gt;</span><span class="st"> </span><span class="dv">60</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">View</span>()</code></pre></div>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
+<table class=" lightable-paper" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Site
+</th>
+<th style="text-align:left;">
+Color_morph
+</th>
+<th style="text-align:right;">
+Limb
+</th>
+<th style="text-align:right;">
+Mass
+</th>
+<th style="text-align:right;">
+Diameter
+</th>
+<th style="text-align:right;">
+Height
+</th>
+<th style="text-align:right;">
+SVL
+</th>
+<th style="text-align:right;">
+Tail
+</th>
+<th style="text-align:left;">
+Perch_type
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Green
+</td>
+<td style="text-align:right;">
+14.3
+</td>
+<td style="text-align:right;">
+6.46
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+164
+</td>
+<td style="text-align:right;">
+61.8
+</td>
+<td style="text-align:right;">
+43.9
+</td>
+<td style="text-align:left;">
+Other
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:right;">
+13.7
+</td>
+<td style="text-align:right;">
+7.57
+</td>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:right;">
+162
+</td>
+<td style="text-align:right;">
+67.0
+</td>
+<td style="text-align:right;">
+73.8
+</td>
+<td style="text-align:left;">
+Building
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:left;">
+Green
+</td>
+<td style="text-align:right;">
+14.4
+</td>
+<td style="text-align:right;">
+7.75
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+174
+</td>
+<td style="text-align:right;">
+68.8
+</td>
+<td style="text-align:right;">
+65.4
+</td>
+<td style="text-align:left;">
+Tree
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:left;">
+Blue
+</td>
+<td style="text-align:right;">
+13.8
+</td>
+<td style="text-align:right;">
+7.61
+</td>
+<td style="text-align:right;">
+35
+</td>
+<td style="text-align:right;">
+163
+</td>
+<td style="text-align:right;">
+63.5
+</td>
+<td style="text-align:right;">
+69.7
+</td>
+<td style="text-align:left;">
+Building
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:left;">
+Green
+</td>
+<td style="text-align:right;">
+15.2
+</td>
+<td style="text-align:right;">
+8.27
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:right;">
+188
+</td>
+<td style="text-align:right;">
+67.0
+</td>
+<td style="text-align:right;">
+50.6
+</td>
+<td style="text-align:left;">
+Tree
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:left;">
+Green
+</td>
+<td style="text-align:right;">
+14.1
+</td>
+<td style="text-align:right;">
+6.73
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:right;">
+176
+</td>
+<td style="text-align:right;">
+64.8
+</td>
+<td style="text-align:right;">
+49.0
+</td>
+<td style="text-align:left;">
+Tree
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:left;">
+Blue
+</td>
+<td style="text-align:right;">
+14.2
+</td>
+<td style="text-align:right;">
+8.43
+</td>
+<td style="text-align:right;">
+29
+</td>
+<td style="text-align:right;">
+177
+</td>
+<td style="text-align:right;">
+69.6
+</td>
+<td style="text-align:right;">
+85.3
+</td>
+<td style="text-align:left;">
+Tree
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:left;">
+Green
+</td>
+<td style="text-align:right;">
+14.3
+</td>
+<td style="text-align:right;">
+13.30
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+179
+</td>
+<td style="text-align:right;">
+68.3
+</td>
+<td style="text-align:right;">
+74.0
+</td>
+<td style="text-align:left;">
+Tree
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:left;">
+Blue
+</td>
+<td style="text-align:right;">
+14.4
+</td>
+<td style="text-align:right;">
+7.71
+</td>
+<td style="text-align:right;">
+33
+</td>
+<td style="text-align:right;">
+182
+</td>
+<td style="text-align:right;">
+65.5
+</td>
+<td style="text-align:right;">
+59.6
+</td>
+<td style="text-align:left;">
+Shrub
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:left;">
+Brown
+</td>
+<td style="text-align:right;">
+14.1
+</td>
+<td style="text-align:right;">
+7.95
+</td>
+<td style="text-align:right;">
+32
+</td>
+<td style="text-align:right;">
+178
+</td>
+<td style="text-align:right;">
+70.1
+</td>
+<td style="text-align:right;">
+69.0
+</td>
+<td style="text-align:left;">
+Tree
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The <code>filter()</code> command returns every row where its logical conditions are <code>TRUE</code>. Conditional statements that create logical statements include the following:</p>
+<ul>
+<li><code>x == y</code>: TRUE if x equals y (This is not the same as <code>x = y</code>)!</li>
+<li><code>x != y</code>: TRUE if x does not equal y</li>
+<li><code>x &gt; y</code>: x &gt;= y;</li>
+<li><code>x &lt; y</code>: x &lt;= y;</li>
+<li><code>between(x, y, z)</code>: TRUE if x &gt;= y AND x &lt;= z</li>
+<li><code>is.na(x)</code>: TRUE if x is a missing value (NA)</li>
+<li><code>x %in% y</code>: TRUE if x is an element in y</li>
+</ul>
+<p>Note that all of these (except for <code>x %in% y</code>) are vectorized.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>) <span class="op">==</span><span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">3</span>) <span class="op">-</span><span class="st"> </span><span class="dv">1</span>
+## [1] TRUE TRUE
+<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>) <span class="op">==</span><span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">9</span>)
+## [1]  TRUE FALSE FALSE
+<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>) <span class="op">==</span><span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">1</span>) <span class="co"># positions don&#39;t match</span>
+## [1] FALSE FALSE
+<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>) <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>) <span class="co"># for %in%, position only matters for the left argument</span>
+## [1]  TRUE  TRUE FALSE FALSE FALSE</code></pre></div>
+<p>You can also combine and modify logical values:</p>
+<ul>
+<li><code>x &amp; y</code>: returns TRUE if both x and y are TRUE</li>
+<li><code>x | y</code>: returns TRUE if either x or y are TRUE</li>
+<li><code>!x</code>: returns the opposite of x; this one is particularly useful to combine with other logical functions; for example <code>filter(data, !is.na(x))</code> will return all rows where <code>x</code> is not a missing value.</li>
+</ul>
+<p>If you give <code>filter()</code> more than one condition, it applies all of them by combining them with <code>&amp;</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lizards <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">filter</span>(Color_morph <span class="op">==</span><span class="st"> &quot;Blue&quot;</span>,
+         Site <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;D&quot;</span>, <span class="st">&quot;E&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> SVL, <span class="dt">y =</span> Height, <span class="dt">color =</span> Site)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</code></pre></div>
+<p><img src="Bio373L-Book_files/figure-html/filter3-1.png" width="672" /></p>
+<p>Exercises:</p>
+<ol start="3" style="list-style-type: decimal">
+<li>Print a dataframe that shows only the lizards higher than 150 cm. How many are there (the console printout should tell you).</li>
+<li>How many lizards perching on trees or shrubs are not brown? Visualize the height to diameter relationship between them. Hint: you can use either <code>%in%</code> or a combination of <code>==</code> and <code>|</code> to meet the first condition.</li>
+</ol>
 </div>
 <div id="subsetting-by-column-select" class="section level2">
 <h2><span class="header-section-number">C.4</span> Subsetting by column (select)</h2>
