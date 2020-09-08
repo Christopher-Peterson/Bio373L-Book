@@ -332,6 +332,27 @@ ggplot(data = lizards) +
   geom_bar()
 ```
 
+If you wish to use frequencies instead of counts along the y axis, it's usually a better idea to calculate them yourself and display those numbers.  You can use `geom_col()` for these displays; it's like `geom_bar()`, but it takes a user-suplied `y` aesthetic. 
+
+```{r geom_col_data}
+# This code uses dplyr, which is discussed in the next appendix. Don't worry if it doesn't make sense now.
+# Overal perch_height frequency
+lizard_perch_freq = lizards %>% 
+  group_by(Perch_type) %>% 
+  summarize(count = n()) %>% 
+  # calculate frequencies per-group
+  mutate(frequency = count/sum(count)) %>% 
+  # sort by frequency
+  arrange(desc(frequency)) %>% 
+  # tell ggplot to plot Perch_type in its current order
+  mutate(Perch_type = fct_inorder(Perch_type))
+# feel free to use View() to look at this
+ggplot(lizard_perch_freq) + 
+  aes(x = Perch_type, y = frequency) + 
+  geom_col()
+
+```
+
 ## Facets
 
 You can use facets to make multi-panel figures. This can highlight differences between groups if including them in the same panel is too busy or messy. Let's start by taking our previous regression plot and separating it by color morph.
