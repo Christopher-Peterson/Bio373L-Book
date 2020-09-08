@@ -274,7 +274,6 @@ lizards %>%
             freq_Green = mean(Color_morph == "Green")
             )
 ```
-
 You can use the `across` helper function to apply the same summary function to multiple rows.
 
 ```{r smry_across}
@@ -286,7 +285,7 @@ lizards %>%
 ```
 The `.cols` argument identifies the columns to use for the summary, using the same methods as `select()`, the .fns should be one or more functions to apply to each column. If you wish to use more than one summary function, you need to create a named vector:
 
-```{r smry_across}
+```{r smry_across2}
 lizards %>% 
   summarize(
     across(.cols = where(is.numeric), # apply to all numeric functions
@@ -324,8 +323,6 @@ lizards %>% group_by(Site, Color_morph) %>%
   View()
 ```
 
-
-
 Grouping doesn't just work with `summarize`; for example, you can use it with mutate to find the relative height of each lizard within its site:
 
 ```{r grp4}
@@ -337,6 +334,22 @@ lizards %>% group_by(Site) %>%
   ggplot(aes(x = Site, y = rel_height)) + 
   geom_jitter(width = .2, height = 0)
 ```
+
+You can also use this to easily calculate frequencies:
+
+An alternate way to do this would be to combine `summarise` and `mutate`.
+
+```{r smry_mut_freq}
+lizards %>% 
+  group_by(Site, Color_morph) %>% 
+  summarize(count = n()) %>% 
+  # count is the total number of each morph at each site
+  group_by(Site) %>% 
+  # Calculate color morph frequency at each site
+  mutate(site_frequency = count / sum(count)) %>% 
+  View()
+```
+
 
 Some Exercises:
 
