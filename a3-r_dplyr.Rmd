@@ -339,7 +339,7 @@ You can also use this to easily calculate frequencies:
 
 An alternate way to do this would be to combine `summarise` and `mutate`.
 
-```{r smry_mut_freq}
+```{r smry_mut_freq, message = FALSE}
 lizards %>% 
   group_by(Site, Color_morph) %>% 
   summarize(count = n()) %>% 
