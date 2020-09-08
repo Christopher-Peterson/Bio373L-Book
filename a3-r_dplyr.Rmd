@@ -99,8 +99,73 @@ Here are a few exercises to try:
 
 ## Subsetting by row (filter)
 
-(in progress)
+Let's define "large lizards" as:
 
+```{r mutate_large}
+lizards %>% 
+  mutate(large = SVL > 60) %>% 
+  View()
+```
+
+The **large** column is a logical vector, with `TRUE` & `FALSE` values.  We can use logical vectors to get a subset of the data frame where the vector is `TRUE` with the `filter()` function.
+
+```{r filter_intro}
+lizards %>%
+  mutate(large = SVL > 60) %>% 
+  filter(large) %>% 
+  View()
+```
+
+Note that only `TRUE` values of **large** remain the the data frame. It's not actually necessary to create a column before filtering:
+
+```{r filter_2}
+lizards %>% filter(SVL > 60) %>% View()
+```
+
+The `filter()` command returns every row where its logical conditions are `TRUE`.  Conditional statements that create logical statements include the following:
+
+ - `x == y`: TRUE if x equals y (This is not the same as `x = y`)!
+ - `x != y`: TRUE if x does not equal y
+ - `x > y`: x >= y; 
+ - `x < y`: x <= y; 
+ - `between(x, y, z)`: TRUE if x >= y AND x <= z
+ - `is.na(x)`: TRUE if x is a missing value (NA)
+ - `x %in% y`: TRUE if x is an element in y
+
+Note that all of these (except for `x %in% y`) are vectorized.
+
+```{r conditional_vectorized, collapse = TRUE}
+c(1, 2) == c(2, 3) - 1
+c(1, 2, 3) == c(1, 4, 9)
+c(1, 2) == c(2, 1) # positions don't match
+c(1, 2, 3, 4, 5) %in% c(1, 2) # for %in%, position only matters for the left argument
+```
+
+You can also combine and modify logical values:
+
+ - `x & y`: returns TRUE if both x and y are TRUE
+ - `x | y`: returns TRUE if either x or y are TRUE
+ - `!x`: returns the opposite of x; this one is particularly useful to combine with other logical functions; for example `filter(data, !is.na(x))` will return all rows where `x` is not a missing value.
+
+If you give `filter()` more than one condition, it applies all of them by combining them with `&`.
+
+```{r filter3}
+lizards %>% 
+  filter(Color_morph == "Blue",
+         Site %in% c("A", "B", "C", "D", "E")) %>% 
+  ggplot(aes(x = SVL, y = Height, color = Site)) + geom_point()
+```
+
+Exercises:
+
+ 3. Print a dataframe that shows only the lizards higher than 150 cm. How many are there (the console printout should tell you).
+ 4. How many lizards perching on trees or shrubs are not brown? Visualize the height to diameter relationship between them. Hint: you can use either `%in%` or a combination of `==` and `|` to meet the first condition.
+ 
 ## Subsetting by column (select)
+
+
+
+
+
 
 ## Grouping & summarizing data
