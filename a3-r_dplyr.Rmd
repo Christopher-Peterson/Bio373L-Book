@@ -14,7 +14,14 @@ theme_set(theme_cowplot())
 lizards <- read_csv("example_data/anoles.csv") # See Appendix A if you don't have this data
 # Capture View()
 real_view = View
-View = function(x,...) knitr::kable(head(x))
+View = function(x,...){
+  # Scrollable table output
+  # knitr::kable(head(x))
+  x %>% head(n = 10) %>% 
+  kableExtra::kbl() %>% 
+  kableExtra::kable_paper() %>% 
+  kableExtra::scroll_box(width = "100%")
+} 
 ```
 ```{r load_anoles_a3, echo = TRUE, eval=FALSE}
 library(tidyverse) 
