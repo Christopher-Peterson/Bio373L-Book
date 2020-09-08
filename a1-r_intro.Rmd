@@ -82,7 +82,8 @@ Before we get started with this you'll need to download an example data file. Fr
 
 Now, let's load the data into R. To do that, we need to load the `readr` package, which is part of the `tidyverse`. Note: RStudio has some built-in ways to load datasets; I would strongly advise not using them, because it makes it harder to go back & repeat your analysis if something changes.
 ```{r tidyverse_workaround_a1, echo = FALSE, message = FALSE}
-library(tidyverse)
+library(readr)
+library(tibble)
 lizards <- read_csv("example_data/anoles.csv") # Note that the 
 ```
 ```{r load_anoles_a1, echo = TRUE, eval=FALSE}
