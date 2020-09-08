@@ -5839,7 +5839,6 @@ Tail_StDev
             <span class="dt">sd_SVL =</span> <span class="kw">sd</span>(SVL),
             <span class="dt">count =</span> <span class="kw">n</span>()) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">View</span>()</code></pre></div>
-<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
 <table class=" lightable-paper" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; margin-left: auto; margin-right: auto;">
 <thead>
@@ -6008,7 +6007,6 @@ J
             <span class="dt">count =</span> <span class="kw">n</span>()) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">ungroup</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Removes grouping; usually a good idea at the end unless you want surprises</span>
 <span class="st">  </span><span class="kw">View</span>()</code></pre></div>
-<pre><code>## `summarise()` regrouping output by &#39;Site&#39; (override with `.groups` argument)</code></pre>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
 <table class=" lightable-paper" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; margin-left: auto; margin-right: auto;">
 <thead>
@@ -6190,7 +6188,6 @@ Blue
 <span class="st">  </span><span class="co"># Calculate color morph frequency at each site</span>
 <span class="st">  </span><span class="kw">mutate</span>(<span class="dt">site_frequency =</span> count <span class="op">/</span><span class="st"> </span><span class="kw">sum</span>(count)) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">View</span>()</code></pre></div>
-<pre><code>## `summarise()` regrouping output by &#39;Site&#39; (override with `.groups` argument)</code></pre>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
 <table class=" lightable-paper" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; margin-left: auto; margin-right: auto;">
 <thead>
