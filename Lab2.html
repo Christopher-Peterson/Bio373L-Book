@@ -24,7 +24,7 @@
 <meta name="author" content="Christopher R. Peterson" />
 
 
-<meta name="date" content="2020-09-01" />
+<meta name="date" content="2020-09-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="lab1.html"/>
-<link rel="next" href="Lab3.html"/>
+<link rel="next" href="working-with-r.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -50,6 +50,8 @@
 
 
 
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -148,52 +150,82 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="3.4" data-path="figures.html"><a href="figures.html#tables"><i class="fa fa-check"></i><b>3.4</b> Tables</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="lab1.html"><a href="lab1.html"><i class="fa fa-check"></i><b>4</b> Lab 1: Succession</a><ul>
-<li class="chapter" data-level="4.1" data-path="structure.html"><a href="structure.html#results"><i class="fa fa-check"></i><b>4.1</b> Results</a><ul>
-<li class="chapter" data-level="4.1.1" data-path="lab1.html"><a href="lab1.html#canopy-tree-density"><i class="fa fa-check"></i><b>4.1.1</b> Canopy tree density</a></li>
-<li class="chapter" data-level="4.1.2" data-path="lab1.html"><a href="lab1.html#species-by-habitat-and-life-stage"><i class="fa fa-check"></i><b>4.1.2</b> Species by habitat and life stage</a></li>
+<li class="chapter" data-level="4.1" data-path="lab1.html"><a href="lab1.html#introduction-to-the-lab"><i class="fa fa-check"></i><b>4.1</b> Introduction to the lab</a></li>
+<li class="chapter" data-level="4.2" data-path="lab1.html"><a href="lab1.html#materials-and-methods"><i class="fa fa-check"></i><b>4.2</b> Materials and Methods</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="lab1.html"><a href="lab1.html#bfl-habitat-regions"><i class="fa fa-check"></i><b>4.2.1</b> BFL habitat regions</a></li>
+<li class="chapter" data-level="4.2.2" data-path="lab1.html"><a href="lab1.html#data-collection"><i class="fa fa-check"></i><b>4.2.2</b> Data Collection</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="structure.html"><a href="structure.html#discussion"><i class="fa fa-check"></i><b>4.2</b> Discussion</a></li>
-<li class="chapter" data-level="4.3" data-path="lab1.html"><a href="lab1.html#general-comments-post-review"><i class="fa fa-check"></i><b>4.3</b> General Comments (Post-Review)</a><ul>
-<li class="chapter" data-level="4.3.1" data-path="figures.html"><a href="figures.html#figures"><i class="fa fa-check"></i><b>4.3.1</b> Figures</a></li>
-<li class="chapter" data-level="4.3.2" data-path="lab1.html"><a href="lab1.html#write-this-like-youre-trying-to-publish-it"><i class="fa fa-check"></i><b>4.3.2</b> Write this like you're trying to publish it</a></li>
-<li class="chapter" data-level="4.3.3" data-path="lab1.html"><a href="lab1.html#describe-the-habitats"><i class="fa fa-check"></i><b>4.3.3</b> Describe the habitats</a></li>
-<li class="chapter" data-level="4.3.4" data-path="lab1.html"><a href="lab1.html#the-analysis"><i class="fa fa-check"></i><b>4.3.4</b> The Analysis</a></li>
-<li class="chapter" data-level="4.3.5" data-path="lab1.html"><a href="lab1.html#keeping-things-in-the-right-sections"><i class="fa fa-check"></i><b>4.3.5</b> Keeping things in the right sections</a></li>
-<li class="chapter" data-level="4.3.6" data-path="lab1.html"><a href="lab1.html#basic-style-and-format-rules"><i class="fa fa-check"></i><b>4.3.6</b> Basic style and format rules</a></li>
-<li class="chapter" data-level="4.3.7" data-path="lab1.html"><a href="lab1.html#other-comments"><i class="fa fa-check"></i><b>4.3.7</b> Other Comments</a></li>
+<li class="chapter" data-level="4.3" data-path="lab1.html"><a href="lab1.html#analysis-to-perform"><i class="fa fa-check"></i><b>4.3</b> Analysis to perform</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="lab1.html"><a href="lab1.html#canopy-tree-density"><i class="fa fa-check"></i><b>4.3.1</b> Canopy tree density</a></li>
+<li class="chapter" data-level="4.3.2" data-path="lab1.html"><a href="lab1.html#species-by-habitat-and-life-stage"><i class="fa fa-check"></i><b>4.3.2</b> Species by habitat and life stage</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="structure.html"><a href="structure.html#discussion"><i class="fa fa-check"></i><b>4.4</b> Discussion</a></li>
+<li class="chapter" data-level="4.5" data-path="lab1.html"><a href="lab1.html#general-comments-post-review"><i class="fa fa-check"></i><b>4.5</b> General Comments (Post-Review)</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="figures.html"><a href="figures.html#figures"><i class="fa fa-check"></i><b>4.5.1</b> Figures</a></li>
+<li class="chapter" data-level="4.5.2" data-path="lab1.html"><a href="lab1.html#write-this-like-youre-trying-to-publish-it"><i class="fa fa-check"></i><b>4.5.2</b> Write this like you're trying to publish it</a></li>
+<li class="chapter" data-level="4.5.3" data-path="lab1.html"><a href="lab1.html#describe-the-habitats"><i class="fa fa-check"></i><b>4.5.3</b> Describe the habitats</a></li>
+<li class="chapter" data-level="4.5.4" data-path="lab1.html"><a href="lab1.html#the-analysis"><i class="fa fa-check"></i><b>4.5.4</b> The Analysis</a></li>
+<li class="chapter" data-level="4.5.5" data-path="lab1.html"><a href="lab1.html#keeping-things-in-the-right-sections"><i class="fa fa-check"></i><b>4.5.5</b> Keeping things in the right sections</a></li>
+<li class="chapter" data-level="4.5.6" data-path="lab1.html"><a href="lab1.html#basic-style-and-format-rules"><i class="fa fa-check"></i><b>4.5.6</b> Basic style and format rules</a></li>
+<li class="chapter" data-level="4.5.7" data-path="lab1.html"><a href="lab1.html#other-comments"><i class="fa fa-check"></i><b>4.5.7</b> Other Comments</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="Lab2.html"><a href="Lab2.html"><i class="fa fa-check"></i><b>5</b> Lab 2: Woodland Heterogeneity</a><ul>
-<li class="chapter" data-level="5.1" data-path="Lab2.html"><a href="Lab2.html#questions-and-hypotheses"><i class="fa fa-check"></i><b>5.1</b> Questions and Hypotheses</a></li>
-<li class="chapter" data-level="5.2" data-path="Lab2.html"><a href="Lab2.html#analysis"><i class="fa fa-check"></i><b>5.2</b> Analysis</a><ul>
-<li class="chapter" data-level="5.2.1" data-path="Lab2.html"><a href="Lab2.html#calibrating-canopy-estimates"><i class="fa fa-check"></i><b>5.2.1</b> Calibrating canopy estimates</a></li>
-<li class="chapter" data-level="5.2.2" data-path="Lab2.html"><a href="Lab2.html#relationship-between-canopy-and-ground-cover"><i class="fa fa-check"></i><b>5.2.2</b> Relationship between canopy and ground cover</a></li>
-<li class="chapter" data-level="5.2.3" data-path="Lab2.html"><a href="Lab2.html#historical-trends"><i class="fa fa-check"></i><b>5.2.3</b> Historical Trends</a></li>
+<li class="chapter" data-level="5.1" data-path="Lab2.html"><a href="Lab2.html#introduction-background"><i class="fa fa-check"></i><b>5.1</b> Introduction &amp; background</a></li>
+<li class="chapter" data-level="5.2" data-path="Lab2.html"><a href="Lab2.html#questions-and-hypotheses"><i class="fa fa-check"></i><b>5.2</b> Questions and Hypotheses</a></li>
+<li class="chapter" data-level="5.3" data-path="Lab2.html"><a href="Lab2.html#field-methods"><i class="fa fa-check"></i><b>5.3</b> Field Methods</a></li>
+<li class="chapter" data-level="5.4" data-path="Lab2.html"><a href="Lab2.html#analyses"><i class="fa fa-check"></i><b>5.4</b> Analyses</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="Lab2.html"><a href="Lab2.html#calibrating-canopy-estimates"><i class="fa fa-check"></i><b>5.4.1</b> Calibrating canopy estimates</a></li>
+<li class="chapter" data-level="5.4.2" data-path="Lab2.html"><a href="Lab2.html#relationship-between-canopy-and-ground-cover"><i class="fa fa-check"></i><b>5.4.2</b> Relationship between canopy and ground cover</a></li>
+<li class="chapter" data-level="5.4.3" data-path="Lab2.html"><a href="Lab2.html#quantifying-the-spatial-mosaic"><i class="fa fa-check"></i><b>5.4.3</b> Quantifying the spatial mosaic</a></li>
+<li class="chapter" data-level="5.4.4" data-path="Lab2.html"><a href="Lab2.html#historical-trends"><i class="fa fa-check"></i><b>5.4.4</b> Historical Trends</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="Lab3.html"><a href="Lab3.html"><i class="fa fa-check"></i><b>6</b> Lab 3: Mark-Release-Recapture with <em>Heliconius</em></a><ul>
-<li class="chapter" data-level="6.1" data-path="Lab2.html"><a href="Lab2.html#questions-and-hypotheses"><i class="fa fa-check"></i><b>6.1</b> Questions and hypotheses</a><ul>
-<li class="chapter" data-level="6.1.1" data-path="Lab3.html"><a href="Lab3.html#wing-pattern-and-the-optix-transcription-factor"><i class="fa fa-check"></i><b>6.1.1</b> Wing Pattern and the Optix transcription factor</a></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="working-with-r.html"><a href="working-with-r.html"><i class="fa fa-check"></i><b>A</b> Working with R</a><ul>
+<li class="chapter" data-level="A.1" data-path="working-with-r.html"><a href="working-with-r.html#introduction-to-rstudio"><i class="fa fa-check"></i><b>A.1</b> Introduction to RStudio</a><ul>
+<li class="chapter" data-level="A.1.1" data-path="working-with-r.html"><a href="working-with-r.html#rstudio-projects"><i class="fa fa-check"></i><b>A.1.1</b> RStudio Projects</a></li>
+<li class="chapter" data-level="A.1.2" data-path="working-with-r.html"><a href="working-with-r.html#customizing-rstudio"><i class="fa fa-check"></i><b>A.1.2</b> Customizing RStudio</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="Lab2.html"><a href="Lab2.html#analysis"><i class="fa fa-check"></i><b>6.2</b> Analysis</a><ul>
-<li class="chapter" data-level="6.2.1" data-path="Lab3.html"><a href="Lab3.html#effect-of-sampling-intensity-on-lincoln-pearson-hatn-estimates"><i class="fa fa-check"></i><b>6.2.1</b> Effect of sampling intensity on Lincoln-Pearson <span class="math inline">\(\hat{N}\)</span> estimates</a></li>
-<li class="chapter" data-level="6.2.2" data-path="Lab3.html"><a href="Lab3.html#sex-ratios"><i class="fa fa-check"></i><b>6.2.2</b> Sex ratios</a></li>
-<li class="chapter" data-level="6.2.3" data-path="Lab3.html"><a href="Lab3.html#comparison-of-lincoln-pearson-with-alternative-method"><i class="fa fa-check"></i><b>6.2.3</b> Comparison of Lincoln-Pearson with alternative method</a></li>
-<li class="chapter" data-level="6.2.4" data-path="Lab3.html"><a href="Lab3.html#hardy-weinberg"><i class="fa fa-check"></i><b>6.2.4</b> Hardy-Weinberg</a></li>
+<li class="chapter" data-level="A.2" data-path="working-with-r.html"><a href="working-with-r.html#r-basics"><i class="fa fa-check"></i><b>A.2</b> R basics</a><ul>
+<li class="chapter" data-level="A.2.1" data-path="working-with-r.html"><a href="working-with-r.html#statements-vectors"><i class="fa fa-check"></i><b>A.2.1</b> Statements &amp; vectors</a></li>
+<li class="chapter" data-level="A.2.2" data-path="working-with-r.html"><a href="working-with-r.html#variables"><i class="fa fa-check"></i><b>A.2.2</b> Variables</a></li>
+<li class="chapter" data-level="A.2.3" data-path="working-with-r.html"><a href="working-with-r.html#reading-working-with-data-frames"><i class="fa fa-check"></i><b>A.2.3</b> Reading &amp; working with data frames</a></li>
+<li class="chapter" data-level="A.2.4" data-path="working-with-r.html"><a href="working-with-r.html#functions"><i class="fa fa-check"></i><b>A.2.4</b> Functions</a></li>
+<li class="chapter" data-level="A.2.5" data-path="working-with-r.html"><a href="working-with-r.html#getting-help"><i class="fa fa-check"></i><b>A.2.5</b> Getting Help</a></li>
 </ul></li>
-<li class="chapter" data-level="6.3" data-path="structure.html"><a href="structure.html#discussion"><i class="fa fa-check"></i><b>6.3</b> Discussion</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="Lab5.html"><a href="Lab5.html"><i class="fa fa-check"></i><b>7</b> Lab 5: Ant Community Ecology</a><ul>
-<li class="chapter" data-level="7.1" data-path="Lab2.html"><a href="Lab2.html#questions-and-hypotheses"><i class="fa fa-check"></i><b>7.1</b> Questions and hypotheses</a></li>
-<li class="chapter" data-level="7.2" data-path="Lab2.html"><a href="Lab2.html#analysis"><i class="fa fa-check"></i><b>7.2</b> Analysis</a><ul>
-<li class="chapter" data-level="7.2.1" data-path="Lab5.html"><a href="Lab5.html#s.-invicta-habitat-preference"><i class="fa fa-check"></i><b>7.2.1</b> <em>S. invicta</em> habitat preference</a></li>
-<li class="chapter" data-level="7.2.2" data-path="Lab5.html"><a href="Lab5.html#ant-community-differences"><i class="fa fa-check"></i><b>7.2.2</b> Ant community differences</a></li>
+<li class="chapter" data-level="B" data-path="making-graphs-in-r-with-ggplot2.html"><a href="making-graphs-in-r-with-ggplot2.html"><i class="fa fa-check"></i><b>B</b> Making graphs in R with <code>ggplot2</code></a><ul>
+<li class="chapter" data-level="B.1" data-path="making-graphs-in-r-with-ggplot2.html"><a href="making-graphs-in-r-with-ggplot2.html#components-of-a-plot"><i class="fa fa-check"></i><b>B.1</b> Components of a plot</a></li>
+<li class="chapter" data-level="B.2" data-path="making-graphs-in-r-with-ggplot2.html"><a href="making-graphs-in-r-with-ggplot2.html#aesthetics-and-scales"><i class="fa fa-check"></i><b>B.2</b> Aesthetics and scales</a><ul>
+<li class="chapter" data-level="B.2.1" data-path="making-graphs-in-r-with-ggplot2.html"><a href="making-graphs-in-r-with-ggplot2.html#color"><i class="fa fa-check"></i><b>B.2.1</b> Color</a></li>
+<li class="chapter" data-level="B.2.2" data-path="making-graphs-in-r-with-ggplot2.html"><a href="making-graphs-in-r-with-ggplot2.html#shape"><i class="fa fa-check"></i><b>B.2.2</b> Shape</a></li>
+<li class="chapter" data-level="B.2.3" data-path="making-graphs-in-r-with-ggplot2.html"><a href="making-graphs-in-r-with-ggplot2.html#size"><i class="fa fa-check"></i><b>B.2.3</b> Size</a></li>
+<li class="chapter" data-level="B.2.4" data-path="making-graphs-in-r-with-ggplot2.html"><a href="making-graphs-in-r-with-ggplot2.html#fixed-aesthetics"><i class="fa fa-check"></i><b>B.2.4</b> Fixed aesthetics</a></li>
+<li class="chapter" data-level="B.2.5" data-path="making-graphs-in-r-with-ggplot2.html"><a href="making-graphs-in-r-with-ggplot2.html#combining-aesthetics"><i class="fa fa-check"></i><b>B.2.5</b> Combining aesthetics</a></li>
 </ul></li>
-<li class="chapter" data-level="7.3" data-path="structure.html"><a href="structure.html#discussion"><i class="fa fa-check"></i><b>7.3</b> Discussion</a></li>
+<li class="chapter" data-level="B.3" data-path="making-graphs-in-r-with-ggplot2.html"><a href="making-graphs-in-r-with-ggplot2.html#geometry"><i class="fa fa-check"></i><b>B.3</b> Geometry</a><ul>
+<li class="chapter" data-level="B.3.1" data-path="making-graphs-in-r-with-ggplot2.html"><a href="making-graphs-in-r-with-ggplot2.html#continuous-x-no-y"><i class="fa fa-check"></i><b>B.3.1</b> Continuous X, no Y</a></li>
+<li class="chapter" data-level="B.3.2" data-path="making-graphs-in-r-with-ggplot2.html"><a href="making-graphs-in-r-with-ggplot2.html#discrete-x-continuous-y"><i class="fa fa-check"></i><b>B.3.2</b> Discrete X, continuous Y</a></li>
+<li class="chapter" data-level="B.3.3" data-path="making-graphs-in-r-with-ggplot2.html"><a href="making-graphs-in-r-with-ggplot2.html#continuous-x-and-y"><i class="fa fa-check"></i><b>B.3.3</b> Continuous X and Y</a></li>
+<li class="chapter" data-level="B.3.4" data-path="making-graphs-in-r-with-ggplot2.html"><a href="making-graphs-in-r-with-ggplot2.html#time-series-data"><i class="fa fa-check"></i><b>B.3.4</b> Time series data</a></li>
+<li class="chapter" data-level="B.3.5" data-path="making-graphs-in-r-with-ggplot2.html"><a href="making-graphs-in-r-with-ggplot2.html#discrete-x-and-y"><i class="fa fa-check"></i><b>B.3.5</b> Discrete X and Y</a></li>
+</ul></li>
+<li class="chapter" data-level="B.4" data-path="making-graphs-in-r-with-ggplot2.html"><a href="making-graphs-in-r-with-ggplot2.html#facets"><i class="fa fa-check"></i><b>B.4</b> Facets</a></li>
+<li class="chapter" data-level="B.5" data-path="making-graphs-in-r-with-ggplot2.html"><a href="making-graphs-in-r-with-ggplot2.html#changing-the-theme-axis-titles-other-visual-elements"><i class="fa fa-check"></i><b>B.5</b> Changing the theme, axis titles, &amp; other visual elements</a></li>
+<li class="chapter" data-level="B.6" data-path="making-graphs-in-r-with-ggplot2.html"><a href="making-graphs-in-r-with-ggplot2.html#more-references"><i class="fa fa-check"></i><b>B.6</b> More references</a></li>
+</ul></li>
+<li class="chapter" data-level="C" data-path="data-manipulation-with-dplyr.html"><a href="data-manipulation-with-dplyr.html"><i class="fa fa-check"></i><b>C</b> Data manipulation with <code>dplyr</code></a><ul>
+<li class="chapter" data-level="C.1" data-path="data-manipulation-with-dplyr.html"><a href="data-manipulation-with-dplyr.html#the-pipe"><i class="fa fa-check"></i><b>C.1</b> The Pipe (%&gt;%)</a></li>
+<li class="chapter" data-level="C.2" data-path="data-manipulation-with-dplyr.html"><a href="data-manipulation-with-dplyr.html#addingmodifying-columns-mutate"><i class="fa fa-check"></i><b>C.2</b> Adding/modifying columns (mutate)</a></li>
+<li class="chapter" data-level="C.3" data-path="data-manipulation-with-dplyr.html"><a href="data-manipulation-with-dplyr.html#subsetting-by-row-filter"><i class="fa fa-check"></i><b>C.3</b> Subsetting by row (filter)</a></li>
+<li class="chapter" data-level="C.4" data-path="data-manipulation-with-dplyr.html"><a href="data-manipulation-with-dplyr.html#subsetting-by-column-select"><i class="fa fa-check"></i><b>C.4</b> Subsetting by column (select)</a></li>
+<li class="chapter" data-level="C.5" data-path="data-manipulation-with-dplyr.html"><a href="data-manipulation-with-dplyr.html#sorting-by-columns-arrange"><i class="fa fa-check"></i><b>C.5</b> Sorting by columns (arrange)</a></li>
+<li class="chapter" data-level="C.6" data-path="data-manipulation-with-dplyr.html"><a href="data-manipulation-with-dplyr.html#summarizing-data"><i class="fa fa-check"></i><b>C.6</b> Summarizing data</a></li>
+<li class="chapter" data-level="C.7" data-path="data-manipulation-with-dplyr.html"><a href="data-manipulation-with-dplyr.html#group-operations"><i class="fa fa-check"></i><b>C.7</b> Group Operations</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
-
 </ul>
 
       </nav>
@@ -213,20 +245,45 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="Lab2" class="section level1">
 <h1><span class="header-section-number">Chapter 5</span> Lab 2: Woodland Heterogeneity</h1>
+<div id="introduction-background" class="section level2">
+<h2><span class="header-section-number">5.1</span> Introduction &amp; background</h2>
+<p>Apparent uniformity of grassland and woodland phases of a natural landscape as viewed from high altitudes (e.g., as seen on Google Earth images) typically disappears as we travel at ground level. Close observation reveals variation in plant form and stature as well as in species association that can create a mosaic of definable alternatives within basic woodland / shrub land / grassland themes.</p>
+<p>For example, within in a forest there is heterogeneity vertically in the density of foliage. As a student, ecologist Robert MacArthur predicted that habitats that are highly variable in the structure of foliage should would provide more distinctive niches, which would support more bird species like warblers that forage for insects moving about in forest understory bushes, small trees and canopy trees. He proceeded to show that bird species diversity is correlated with an arbitrary index termed “foliage height diversity” or F.H.D. MacArthur and MacArthur (1961) calculated F.H.D. using estimates of the proportion of total foliage in the ground, shrub and canopy in eastern deciduous forests. This is an example of being creative in developing ways to quantify habitat variation in to test ecological hypotheses.</p>
+<p>The structural heterogeneity present in an undisturbed forest can be greatly increased by disturbance. A common form of natural disturbance in forested habitat is the death or removal of canopy trees creating “light gaps.” These gaps drive changes (and increase heterogeneity) in previously shaded understory plant populations. An example of how and why ecologists study forest gaps is seen in Lertzman et.al (1996). Note: This author and colleagues later developed the technology we apply in this exercise. Different plants and animals specialize on or rely on particular microhabitats and/or relationships generated by habitat disturbances like treefalls, landslides, fire, and herbivory. Thus some degree of disruption is promotes the diversity of species. Check out the controversy surrounding the “intermediate disturbance hypothesis”.</p>
+<p>Since the first 373L classes took these kinds of data in the early 2000’s, there have been major changes in shrub cover in several areas of BFL. In 2002, deer density had peaked at 68 animals and browsing in the forest understory for just 10 years had reduced shrub cover (anecdotal observations). Meanwhile light availability in the understory has increased due to tree disease and drought-caused mortality. Thus in the last 17 years many large live oaks have died from oak wilt and in the past 9 years severe drought has killed large hackberry, elm and juniper trees across BFL. Between 2007 and 2015 coyote predation reduced the BFL deer population from 25 to 4 individuals. As of early 2016 deer are extinct within BFL for the first time since 1991, by which time the impact of this large herbivore on vegetative structure was in steep decline=. The cumulative effect of losing deer browsing appears to be a dramatic increase in the density of tree saplings (e.g., laurel cherry, Texas Ash) and invasive shrubs (e.g., Chinese privet) in the forest understory.</p>
+<p>In this week’s project, we will attempt to classify and characterize the heterogeneity of habitat at BFL based upon the density of vegetation at the ground, shrub and canopy levels. In addition to learning some methods to describe degree of canopy disturbance, we will use digital cameras and gap light analysis software to test our ability to subjectively categorize canopy cover in an ecologically meaningful way. For this project, we define “canopy” as that part of the vegetation that shades understory vegetation. This exercise will teach methods for rapid assessment of vegetative structure.</p>
+</div>
 <div id="questions-and-hypotheses" class="section level2">
-<h2><span class="header-section-number">5.1</span> Questions and Hypotheses</h2>
+<h2><span class="header-section-number">5.2</span> Questions and Hypotheses</h2>
 <ol style="list-style-type: decimal">
 <li>What are the relationships between canopy, shrub, and ground cover?</li>
 <li>How have the relative abundance of Canopy, Shrub, and Ground cover categories changed over time?</li>
-<li>[Add one other hypothesis that you come up with]</li>
-<li>Quantify the spatial mosaic: Use a map of BFL and number/color the canopy level at each point. Connect adjacent areas of the same number. If you do this by hand, scan or photograph it and include it in the Canvas submission.</li>
+<li>Come up with an additional hypotheses about how taxonomic or functional groups may affect cover levels, based on your field observations; do this <strong>before</strong> looking at your dataset. Some examples: Are juniper and hackberry associated with different cover levels? What types of canopy are associated with high levels of ground cover? Are ground-level dicots associated with particular canopy cover levels? Are exotic shrubs (e.g. <em>Ligustrum</em> or <em>Nandina</em>) more likely than native counter parts to eliminate ground cover?</li>
 </ol>
-<p>Note that the &quot;Calibration&quot; step in the handout isn't included in this section; this is still something you need to do (see below), but it's a methods validation step, not a biological hypothesis.</p>
+<p>You'll also be doing to other things that aren't specifically hypothesis or question driven, but should be presented in the results.</p>
+<ul>
+<li>Examining the spatial mosaic of canopy heterogeneity.</li>
+<li>Calibrating your subjective estimates of canopy estimates with the Gap Light Analyzer calculations. This in particular isn't a biological hypothesis, but comparing different methods for addressing the same question is a common feature of biological research.</li>
+</ul>
 </div>
-<div id="analysis" class="section level2">
-<h2><span class="header-section-number">5.2</span> Analysis</h2>
+<div id="field-methods" class="section level2">
+<h2><span class="header-section-number">5.3</span> Field Methods</h2>
+<p>After a review of the variety of ground covers, shrub covers and canopy covers encountered at BFL, we will utilize simple, easily distinguished categories for degree of coverage at each layer ranging from 0 (minimum cover) to 3 (maximum cover).</p>
+<p>At each site, we will</p>
+<ol style="list-style-type: lower-alpha">
+<li>score ground cover (0-3) and enter an estimate of percent dicots</li>
+<li>score shrub cover (0-3) and enter an estimate of percent evergreen shrubs</li>
+<li>score canopy cover (0-3) and enter an estimate of percent evergreens and note the tree species above.</li>
+</ol>
+<p>The shrub layer will be scored only below eye level. This level roughly corresponds with the top of the browse line when deer were present. We will compare present shrub layer scores with those in a similar drought year when deer were still a forces at BFL.</p>
+<p>Each team will walk along 3-4 of the ten permanent transects at BFL, taking a reading of canopy cover (0-3) at each of the numbered transect markers that occur at 20 m intervals. The cumulative data will include readings at approximately 140 sites across BFL. We will calibrate our subjective estimates of canopy cover using digital cameras and fish-eye lenses to record actual canopy cover and shrub layer density. “Gap Light Analyzer” (Frazer et al 1999) software available on the computers will allow us to calculate the “percent openness” in the hemisphere above each sample point. <strong>Make sure that you take the fish eye photo exactly where the estimate of canopy cover was taken.</strong> If a team member takes the photo after others made the visual estimates, a flag should be left as a reference for the photographer.</p>
+<p>To take the picture, the long axis of the camera should be oriented north south with the photographer’s right hand on the south side, i.e. you should face due east, then turn the camera toward the sky. This will ensure that the bottom of the picture points east. Make sure that the camera is on a full wide angle (no zoom) and with the flash suppressed. Those taking photos need to carry a compass. (See GLA handout)</p>
+<p>We will also record instantaneous inputs of light wavelength needed for plant growth at a representative sample of points using an Apogee quantum meter (It measures micromoles of photons per square meter per second between the wavelengths at 400-700 nm). We will assign two people from different teams to collect these data.</p>
+</div>
+<div id="analyses" class="section level2">
+<h2><span class="header-section-number">5.4</span> Analyses</h2>
 <div id="calibrating-canopy-estimates" class="section level3">
-<h3><span class="header-section-number">5.2.1</span> Calibrating canopy estimates</h3>
+<h3><span class="header-section-number">5.4.1</span> Calibrating canopy estimates</h3>
 <p>Since most of our analyses rely on subjective measurements, it would be good to calibrate how well the subjective categories predict light measurements estimated by Gap Light Analyzer. Use linear regression on this class's dataset, with subjective score as the predictor and percent openness as the response. Note that the structure of the data will almost certainly violate some of the assumptions of a linear regression test. We can still do this because this isn’t a hypothesis-driven analysis, but a prediction-driven one; provide the <span class="math inline">\(R^2\)</span> and fit equation, but not the p-values.</p>
 <p>To run a regression in R, modify this code:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">regression =<span class="st"> </span><span class="kw">lm</span>(y <span class="op">~</span><span class="st"> </span>x, <span class="dt">data =</span> your_data_set) <span class="co"># adjust this for your regression</span>
@@ -241,12 +298,17 @@ regression <span class="co"># this gives you the coefficients</span>
   <span class="co"># changing width will spread the dots out more; just don&#39;t change height</span></code></pre></div>
 </div>
 <div id="relationship-between-canopy-and-ground-cover" class="section level3">
-<h3><span class="header-section-number">5.2.2</span> Relationship between canopy and ground cover</h3>
+<h3><span class="header-section-number">5.4.2</span> Relationship between canopy and ground cover</h3>
 <p>Create four contingency tables examining the ground &amp; shrub cover relationship; one for each level of canopy cover. Note that the cells of the tables should be a count (number of plots), not a relative proportion. Run chi-squared tests on each table. This is rather similar to what you did for the previous lab.</p>
 <p>Re-create these tables with the relative number of plots per canopy cover type for each ground/shrub combination. You need to visually present this information in some way; you could try making a graph of some sort, or you could color the cells of the table to indicate the strength of the proportion. Note that adding color information to a table would turn it into a figure, and it should be referred to as such.</p>
 </div>
+<div id="quantifying-the-spatial-mosaic" class="section level3">
+<h3><span class="header-section-number">5.4.3</span> Quantifying the spatial mosaic</h3>
+<p>Use a <a href="https://bfl.utexas.edu/resources-facilities/maps/transect-tags">map of BFL</a> and number/color the canopy level at each point. Connect adjacent areas of the same number. Note whether any spatial patterns in cover vales can be associated with main habitat types based on past land use, substrate types, and history of natural disturbances.</p>
+<p>If you do this by hand, scan or photograph it and include it in the Canvas submission.</p>
+</div>
 <div id="historical-trends" class="section level3">
-<h3><span class="header-section-number">5.2.3</span> Historical Trends</h3>
+<h3><span class="header-section-number">5.4.4</span> Historical Trends</h3>
 <p>How have the relative abundances of each category within the three cover types changed over time?<br />
 You don't need to do an analysis for this, but create a figure. Since this data changes over time, you should have time along the x axis of the figure.<br />
 Line plots and stacked box plots are two possible options.<br />
@@ -255,13 +317,16 @@ Multiple panels may be warranted.</p>
 </div>
 </div>
 </div>
+
+
+
             </section>
 
           </div>
         </div>
       </div>
 <a href="lab1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="Lab3.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="working-with-r.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -303,7 +368,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["Bio373L-Book.pdf", "Bio373L-Book.epub"],
+"download": null,
 "toc": {
 "collapse": "subsection"
 }
