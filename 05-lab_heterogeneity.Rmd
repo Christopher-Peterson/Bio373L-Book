@@ -16,7 +16,7 @@ In this week’s  project, we will attempt to classify and characterize the hete
 
   1. What are the relationships between canopy, shrub, and ground cover? 
   2. How have the relative abundance of Canopy, Shrub, and Ground cover categories changed over time? 
-  3. Come up with an additional hypotheses about how taxonomic or functional groups may affect cover levels, based on your field observations; do this **before** looking at your dataset. Some examples: Are juniper and hackberry associated with different cover levels?  What types of canopy are associated with high levels of ground cover?  Are ground-level dicots associated with particular canopy cover levels?  Are exotic shrubs (e.g. *Ligustrum* or *Nandina*) more likely than native counter parts to eliminate ground cover? 
+  `r # disabled for now: t how taxonomic or functional groups may affect cover levels, based on your field observations; do this **before** looking at your dataset. Some examples: Are juniper and hackberry associated with different cover levels?  What types of canopy are associated with high levels of ground cover?  Are ground-level dicots associated with particular canopy cover levels?  Are exotic shrubs (e.g. *Ligustrum* or *Nandina*) more likely than native counter parts to eliminate ground cover? `
 
 You'll also be doing to other things that aren't specifically hypothesis or question driven, but should be presented in the results.
 
