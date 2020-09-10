@@ -236,6 +236,41 @@ ggplot(data = lizards) +
 
 Note that we've included two `geom_*` layers here, and that the one that was called second (`geom_sina`) was plotted on top of the one called first.
 
+Sometimes, you'll want to show means & confidence intervals of your different groups.  If possible, it's helpful to put those in the context of the raw data.  The below plot looks at differences in perch diameter among colors, with the raw data in grey and the means in black. The error bars (`geom_errorbar`) take aesthetics `ymin` and `ymax`, which indicate their range. We used plus & minus 1.96 standard errors because that's the definition of a 95% confidence interval for normally distributed data. Be sure to tell your reader/audience what an error bar represents in your figure captions.
+
+```{r mean_se_plot, message = FALSE}
+# We need to create a new data frame for mean & standard error of perch diameter
+# This uses dplyr commands, which are explained in the next appendix
+diameter_mean_se = lizards %>% 
+  group_by(Color_morph) %>% 
+  summarize(
+    Diameter_se = sd(Diameter) / sqrt(n()), # Standard error
+    Diameter = mean(Diameter)) # This mean diameter
+
+ggplot(lizards) + 
+  aes(x = Color_morph, y = Diameter) + 
+  # Show the raw data (from the lizards data frame)
+  geom_sina(, color = "grey60") +
+  # Show the Mean +/- standard error
+  geom_errorbar(
+    # Define the range as the mean diamter +/- 1.96 * se
+    aes(ymin = Diameter - 1.96 * Diameter_se, 
+        ymax = Diameter + 1.96 * Diameter_se),
+    color = "black", 
+    width = .3, # How wide the error bars are
+    data = diameter_mean_se # Use the summary data frame instead of lizards
+    # The column names should match with the global aesthetics (in this case, x and y)
+  ) + 
+  geom_point(color = "black", size = 2,
+             data = diameter_mean_se)
+             # This one also uses the summary data frame
+             # It keeps the global aesthetics, which match
+             # the color morph & mean value
+
+```
+
+In this example, we've also used two data frames in the plot. This can be useful if you're combining two different types of data (such as raw & summary, or individual & site-level). The important thing to remember is that any columns named in the global aesthetics (defined by an `aes()` call that isn't inside a `geom_*`) must be present in both data frames.  In this case, those aesthetics are `Color_morph` and `Diameter.` `Diameter_se` is a local aesthetic (in `geom_errorbar`), so it doesn't need to appear in all datasets.
+
 ### Continuous X and Y
 
 We've already seen `geom_point` used for continuous data.  Here are a few other options:
