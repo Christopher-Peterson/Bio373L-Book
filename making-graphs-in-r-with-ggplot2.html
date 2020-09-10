@@ -24,7 +24,7 @@
 <meta name="author" content="Christopher R. Peterson" />
 
 
-<meta name="date" content="2020-09-09" />
+<meta name="date" content="2020-09-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -406,6 +406,36 @@ box_plots</code></pre></div>
 <span class="st">  </span><span class="kw">geom_sina</span>(<span class="dt">color =</span> <span class="st">&quot;grey30&quot;</span>, <span class="dt">fill =</span> <span class="st">&quot;grey70&quot;</span>, <span class="dt">shape =</span> <span class="dv">21</span>) <span class="co"># Note that shape 21 uses both color a fill as aesthetics</span></code></pre></div>
 <p><img src="Bio373L-Book_files/figure-html/geo_sina-1.png" width="672" /></p>
 <p>Note that we've included two <code>geom_*</code> layers here, and that the one that was called second (<code>geom_sina</code>) was plotted on top of the one called first.</p>
+<p>Sometimes, you'll want to show means &amp; confidence intervals of your different groups. If possible, it's helpful to put those in the context of the raw data. The below plot looks at differences in perch diameter among colors, with the raw data in grey and the means in black. The error bars (<code>geom_errorbar</code>) take aesthetics <code>ymin</code> and <code>ymax</code>, which indicate their range. We used plus &amp; minus 1.96 standard errors because that's the definition of a 95% confidence interval for normally distributed data. Be sure to tell your reader/audience what an error bar represents in your figure captions.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># We need to create a new data frame for mean &amp; standard error of perch diameter</span>
+<span class="co"># This uses dplyr commands, which are explained in the next appendix</span>
+diameter_mean_se =<span class="st"> </span>lizards <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">group_by</span>(Color_morph) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">summarize</span>(
+    <span class="dt">Diameter_se =</span> <span class="kw">sd</span>(Diameter) <span class="op">/</span><span class="st"> </span><span class="kw">sqrt</span>(<span class="kw">n</span>()), <span class="co"># Standard error</span>
+    <span class="dt">Diameter =</span> <span class="kw">mean</span>(Diameter)) <span class="co"># This mean diameter</span>
+
+<span class="kw">ggplot</span>(lizards) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">aes</span>(<span class="dt">x =</span> Color_morph, <span class="dt">y =</span> Diameter) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="co"># Show the raw data (from the lizards data frame)</span>
+<span class="st">  </span><span class="kw">geom_sina</span>(, <span class="dt">color =</span> <span class="st">&quot;grey60&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="co"># Show the Mean +/- standard error</span>
+<span class="st">  </span><span class="kw">geom_errorbar</span>(
+    <span class="co"># Define the range as the mean diamter +/- 1.96 * se</span>
+    <span class="kw">aes</span>(<span class="dt">ymin =</span> Diameter <span class="op">-</span><span class="st"> </span><span class="fl">1.96</span> <span class="op">*</span><span class="st"> </span>Diameter_se, 
+        <span class="dt">ymax =</span> Diameter <span class="op">+</span><span class="st"> </span><span class="fl">1.96</span> <span class="op">*</span><span class="st"> </span>Diameter_se),
+    <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>, 
+    <span class="dt">width =</span> .<span class="dv">3</span>, <span class="co"># How wide the error bars are</span>
+    <span class="dt">data =</span> diameter_mean_se <span class="co"># Use the summary data frame instead of lizards</span>
+    <span class="co"># The column names should match with the global aesthetics (in this case, x and y)</span>
+  ) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">color =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">size =</span> <span class="dv">2</span>,
+             <span class="dt">data =</span> diameter_mean_se)</code></pre></div>
+<p><img src="Bio373L-Book_files/figure-html/mean_se_plot-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">             <span class="co"># This one also uses the summary data frame</span>
+             <span class="co"># It keeps the global aesthetics, which match</span>
+             <span class="co"># the color morph &amp; mean value</span></code></pre></div>
+<p>In this example, we've also used two data frames in the plot. This can be useful if you're combining two different types of data (such as raw &amp; summary, or individual &amp; site-level). The important thing to remember is that any columns named in the global aesthetics (defined by an <code>aes()</code> call that isn't inside a <code>geom_*</code>) must be present in both data frames. In this case, those aesthetics are <code>Color_morph</code> and <code>Diameter.</code> <code>Diameter_se</code> is a local aesthetic (in <code>geom_errorbar</code>), so it doesn't need to appear in all datasets.</p>
 </div>
 <div id="continuous-x-and-y" class="section level3">
 <h3><span class="header-section-number">B.3.3</span> Continuous X and Y</h3>
