@@ -1,0 +1,112 @@
+# Performing some useful analyses in R
+
+I'm going to give some examples of how to do common analyses you'll need for this class. I won't be spending much time on the statistical assumptions or diagnostics.
+
+```{r tidyverse_workaround_a4, echo = FALSE, message = FALSE}
+# This invisible block is a workaround for Travis CI not having the tidyverse meta-package; 
+library(ggplot2)
+library(dplyr)
+library(readr)
+library(tibble)
+library(forcats)
+library(cowplot)
+theme_set(theme_cowplot())
+lizards <- read_csv("example_data/anoles.csv") # See Appendix A if you don't have this data
+# Capture View()
+real_view = View
+View = function(x,...){
+  # Scrollable table output
+  # knitr::kable(head(x))
+  x %>% head(n = 10) %>% 
+    kableExtra::kbl() %>% 
+    kableExtra::kable_paper() %>% 
+    kableExtra::scroll_box(width = "100%")
+} 
+```
+```{r load_anoles_a4, echo = TRUE, eval=FALSE}
+library(tidyverse) 
+library(cowplot)
+theme_set(theme_cowplot())
+lizards <- read_csv("example_data/anoles.csv") # See Appendix A if you don't have this data
+```
+
+## A note on factors
+
+R has two ways of representing textual data: character vectors (also called strings) and factors. 
+
+ - Character vectors are just text; they have no inherent underlying meaning. 
+ - Factors are a data type with a specific number of levels; they're often used to represent different experimental treatments. Examples could include {low, medium, high} or {control, treatment}. Each level of a factor is associated with a number.
+
+For the most part, it's easier and safer to work with character vectors. Most functions we'll be using know how to convert them when it's necessary.
+
+One important thing to note is that `ggplot` arranges character vectors alphabetically on its categorical scales, but orders factors by their level number.  Thus, to change the order of categorical x-axes (and other scales), you need to make your categories into a factor.  This is done with the `fct_inorder`, `fct_infreq`, and related functions, which are part of the `forcats` package and loaded with tidyverse. The easiest one to use is `fct_inorder`, which changes the level values to be in the order of your data; when combined with `arrange()` and other `dplyr` functions, this is quite flexible and powerful. For more information on these and other factor functions, take a look at the [forcats website](http://forcats.tidyverse.org). 
+
+If you want to manually create a factor, you can use the `factor` command, which is in base R (no package).  
+
+```{r manual_factor, collapse = TRUE}
+color_levels = c("Red","Green","Blue")
+# Randomly select 20 colors from color_levels
+color_example = sample(color_levels, size = 20, replace = TRUE)
+color_example
+
+# Convert it into a factor
+color_as_factor = factor(color_example, levels = color_levels)
+color_as_factor
+```
+
+## Comparing categorical frequencies (Contingency Tables & related analyses)
+
+These tests generally compare the frequencies of count data.
+
+### Contingency Tables
+
+The easiest way to make a contingency table is from a data frame where each column is a categorical variable you want in the table & each row is an observation.  Let's say we wanted to create a color morph by perch type contingency with our lizard data.
+
+```{r contingency_lizard_1}
+color_by_perch_tbl = lizards %>% 
+  select(Color_morph, Perch_type) %>% # select only the columns you want
+  table()  # feed them into the table command
+color_by_perch_tbl
+```
+
+If you want to switch your contingency table from counts to frequencies, just divide it by its sum:
+
+```{r contingency_lizard_freq}
+color_by_perch_tbl / sum(color_by_perch_tbl)
+```
+
+### Chi-squared & Fisher's Exact Tests
+
+Once you have a contingency table, you can test for independence between the rows and columns. This provides you with your test statistic (`X-squared`), degrees of freedom, and p-value.  
+
+```{r chi_sq_1}
+chisq.test(color_by_perch_tbl)
+```
+
+Chi-squared tests assume that there's at least five observations in each cell of the contingency table.  If this fails, then the resulting values aren't accurate.  For example: 
+
+```{r contingency_lizard_small, collapse = TRUE}
+site_a_contingency = lizards %>% 
+  filter(Site == "A") %>% # cut down the data size
+  select(Color_morph, Perch_type) %>% # select only the columns you want
+  table()  # feed them into the table command
+print(site_a_contingency)
+chisq.test(site_a_contingency)
+```
+
+Note the warning that "Chi-squared approximation may be incorrect."  In this case, it's a good idea to run the Fisher's exact test, it investigates the same null hypotheses, but works with low counts. 
+
+```{r exact_test_lizards}
+fisher.test(site_a_contingency)
+```
+
+## Comparing two means (t-tests)
+
+(In progress)
+## Linear Regression and ANOVA
+
+(In progress)
+
+## Advanced workflow tips
+
+(In progress)
