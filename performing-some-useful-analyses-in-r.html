@@ -24,7 +24,7 @@
 <meta name="author" content="Christopher R. Peterson" />
 
 
-<meta name="date" content="2020-09-12" />
+<meta name="date" content="2020-09-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -230,8 +230,15 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="D.2.1" data-path="performing-some-useful-analyses-in-r.html"><a href="performing-some-useful-analyses-in-r.html#contingency-tables"><i class="fa fa-check"></i><b>D.2.1</b> Contingency Tables</a></li>
 <li class="chapter" data-level="D.2.2" data-path="performing-some-useful-analyses-in-r.html"><a href="performing-some-useful-analyses-in-r.html#chi-squared-fishers-exact-tests"><i class="fa fa-check"></i><b>D.2.2</b> Chi-squared &amp; Fisher's Exact Tests</a></li>
 </ul></li>
-<li class="chapter" data-level="D.3" data-path="performing-some-useful-analyses-in-r.html"><a href="performing-some-useful-analyses-in-r.html#comparing-two-means-t-tests"><i class="fa fa-check"></i><b>D.3</b> Comparing two means (t-tests)</a></li>
-<li class="chapter" data-level="D.4" data-path="performing-some-useful-analyses-in-r.html"><a href="performing-some-useful-analyses-in-r.html#advanced-workflow-tips"><i class="fa fa-check"></i><b>D.4</b> Advanced workflow tips</a></li>
+<li class="chapter" data-level="D.3" data-path="performing-some-useful-analyses-in-r.html"><a href="performing-some-useful-analyses-in-r.html#linear-models-regression-and-anova"><i class="fa fa-check"></i><b>D.3</b> Linear Models: Regression and ANOVA</a><ul>
+<li class="chapter" data-level="D.3.1" data-path="performing-some-useful-analyses-in-r.html"><a href="performing-some-useful-analyses-in-r.html#regression"><i class="fa fa-check"></i><b>D.3.1</b> Regression</a></li>
+<li class="chapter" data-level="D.3.2" data-path="performing-some-useful-analyses-in-r.html"><a href="performing-some-useful-analyses-in-r.html#anova"><i class="fa fa-check"></i><b>D.3.2</b> ANOVA</a></li>
+</ul></li>
+<li class="chapter" data-level="D.4" data-path="performing-some-useful-analyses-in-r.html"><a href="performing-some-useful-analyses-in-r.html#to-do-in-progress"><i class="fa fa-check"></i><b>D.4</b> To do (In progress)</a><ul>
+<li class="chapter" data-level="D.4.1" data-path="performing-some-useful-analyses-in-r.html"><a href="performing-some-useful-analyses-in-r.html#comparing-two-means-t-tests"><i class="fa fa-check"></i><b>D.4.1</b> Comparing two means (t-tests)</a></li>
+<li class="chapter" data-level="D.4.2" data-path="performing-some-useful-analyses-in-r.html"><a href="performing-some-useful-analyses-in-r.html#advanced-workflow-tips"><i class="fa fa-check"></i><b>D.4.2</b> Advanced workflow tips</a></li>
+<li class="chapter" data-level="D.4.3" data-path="performing-some-useful-analyses-in-r.html"><a href="performing-some-useful-analyses-in-r.html#model-comparisons"><i class="fa fa-check"></i><b>D.4.3</b> Model comparisons</a></li>
+</ul></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -293,29 +300,29 @@ color_as_factor
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">color_by_perch_tbl =<span class="st"> </span>lizards <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">select</span>(Color_morph, Perch_type) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># select only the columns you want</span>
 <span class="st">  </span><span class="kw">table</span>()  <span class="co"># feed them into the table command</span>
-color_by_perch_tbl</code></pre></div>
-<pre><code>##            Perch_type
+color_by_perch_tbl
+##            Perch_type
 ## Color_morph Building Other Shrub Tree
 ##       Blue        17    41    27  130
 ##       Brown       31    25    25  140
-##       Green       30    25    32  134</code></pre>
+##       Green       30    25    32  134</code></pre></div>
 <p>If you want to switch your contingency table from counts to frequencies, just divide it by its sum:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">color_by_perch_tbl <span class="op">/</span><span class="st"> </span><span class="kw">sum</span>(color_by_perch_tbl)</code></pre></div>
-<pre><code>##            Perch_type
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">color_by_perch_tbl <span class="op">/</span><span class="st"> </span><span class="kw">sum</span>(color_by_perch_tbl)
+##            Perch_type
 ## Color_morph   Building      Other      Shrub       Tree
 ##       Blue  0.02587519 0.06240487 0.04109589 0.19786910
 ##       Brown 0.04718417 0.03805175 0.03805175 0.21308980
-##       Green 0.04566210 0.03805175 0.04870624 0.20395738</code></pre>
+##       Green 0.04566210 0.03805175 0.04870624 0.20395738</code></pre></div>
 </div>
 <div id="chi-squared-fishers-exact-tests" class="section level3">
 <h3><span class="header-section-number">D.2.2</span> Chi-squared &amp; Fisher's Exact Tests</h3>
 <p>Once you have a contingency table, you can test for independence between the rows and columns. This provides you with your test statistic (<code>X-squared</code>), degrees of freedom, and p-value.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chisq.test</span>(color_by_perch_tbl)</code></pre></div>
-<pre><code>## 
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chisq.test</span>(color_by_perch_tbl)
+## 
 ##  Pearson&#39;s Chi-squared test
 ## 
 ## data:  color_by_perch_tbl
-## X-squared = 11.603, df = 6, p-value = 0.07143</code></pre>
+## X-squared = 11.603, df = 6, p-value = 0.07143</code></pre></div>
 <p>Chi-squared tests assume that there's at least five observations in each cell of the contingency table. If this fails, then the resulting values aren't accurate. For example:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">site_a_contingency =<span class="st"> </span>lizards <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">filter</span>(Site <span class="op">==</span><span class="st"> &quot;A&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># cut down the data size</span>
@@ -335,25 +342,330 @@ color_by_perch_tbl</code></pre></div>
 ## 
 ## data:  site_a_contingency
 ## X-squared = 9.752, df = 6, p-value = 0.1355</code></pre></div>
-<p>Note the warning that &quot;Chi-squared approximation may be incorrect.&quot; In this case, it's a good idea to run the Fisher's exact test, it investigates the same null hypotheses, but works with low counts.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">fisher.test</span>(site_a_contingency)</code></pre></div>
-<pre><code>## 
+<p>Note the warning that &quot;Chi-squared approximation may be incorrect.&quot; In this case, it's a good idea to run the Fisher's exact test, which investigates the same null hypotheses, but works with low counts. Fisher's test is less powerful than the Chi-squared test, so it should only be used when it's the only option.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">fisher.test</span>(site_a_contingency)
+## 
 ##  Fisher&#39;s Exact Test for Count Data
 ## 
 ## data:  site_a_contingency
 ## p-value = 0.06251
-## alternative hypothesis: two.sided</code></pre>
+## alternative hypothesis: two.sided</code></pre></div>
+<p>You can also run a chi-squared or Fisher's exact test directly on two vectors or data frame columns:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chisq.test</span>(lizards<span class="op">$</span>Color_morph, lizards<span class="op">$</span>Perch_type)
+## 
+##  Pearson&#39;s Chi-squared test
+## 
+## data:  lizards$Color_morph and lizards$Perch_type
+## X-squared = 11.603, df = 6, p-value = 0.07143</code></pre></div>
 </div>
 </div>
-<div id="comparing-two-means-t-tests" class="section level2">
-<h2><span class="header-section-number">D.3</span> Comparing two means (t-tests)</h2>
-<p>(In progress) ## Linear Regression and ANOVA</p>
+<div id="linear-models-regression-and-anova" class="section level2">
+<h2><span class="header-section-number">D.3</span> Linear Models: Regression and ANOVA</h2>
+<p>Linear regression and Analysis of Variance (ANOVA) are both special cases of the general linear model (LM), which fits a continuous response (y) to one or more predictors (x). You specify linear models in R with a <strong>formula</strong> syntax, which generally follows as: <code>response ~ predictor</code>. Combining this formula with the <code>lm()</code> function and a datset gives you the basis of a linear model.</p>
+<div id="regression" class="section level3">
+<h3><span class="header-section-number">D.3.1</span> Regression</h3>
+<p>Lets say we wanted to see how snout-vent length (SVL) affects mass:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">simple_reg =<span class="st"> </span><span class="kw">lm</span>(Mass <span class="op">~</span><span class="st"> </span>SVL, <span class="dt">data =</span> lizards)
+simple_reg
+## 
+## Call:
+## lm(formula = Mass ~ SVL, data = lizards)
+## 
+## Coefficients:
+## (Intercept)          SVL  
+##     1.62577      0.08886</code></pre></div>
+<p>By default, this creates an LM object, which tells us the regression coefficients. For a linear regression (continuous response), these tell us the regression equation; in this case, that for every <span class="math inline">\(1 \text{ mm}\)</span> increase in SVL, mass increases by <span class="math inline">\(0.089 \text{ g}\)</span>. Note that in this case, it may make sense to re-scale SVL to be in cm, so that the coefficient would be easier to interpret (e.g., use <code>lizards %&gt;% mutate(SVL_cm = SVL/10)</code>. To extract the coeficients directly, use:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">coef</span>(simple_reg)
+## (Intercept)         SVL 
+##   1.6257700   0.0888617</code></pre></div>
+<p>For more information, use the summary function:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(simple_reg)
+## 
+## Call:
+## lm(formula = Mass ~ SVL, data = lizards)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -2.2672 -0.4699 -0.0530  0.3959  5.6050 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 1.625770   0.210781   7.713 4.59e-14 ***
+## SVL         0.088862   0.003434  25.874  &lt; 2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.7661 on 655 degrees of freedom
+## Multiple R-squared:  0.5055, Adjusted R-squared:  0.5047 
+## F-statistic: 669.5 on 1 and 655 DF,  p-value: &lt; 2.2e-16</code></pre></div>
+<p>The most important components of this are the <span class="math inline">\(R^2\)</span> (which is listed as <code>Multiple R-squared</code>), the standard errors and p-values for each of your coefficients (<code>Coefficients</code> section), and the overall F-statistic and p-value (the last line).</p>
+<p>A quick note on p-values:</p>
+<ol style="list-style-type: decimal">
+<li>Don't base all of your interpretation on p-values; the <span class="math inline">\(R^2\)</span> and adjusted <span class="math inline">\(R^2\)</span> of a model are more important.</li>
+<li>The overall p-value relates to how the whole model explains the variance in the data; the coefficient p-value relates to whether the specific coefficient is different from zero.<br />
+</li>
+<li>Coefficient-level p-values tend to be rather fragile, and shouldn't be used.</li>
+</ol>
+<div id="plotting-linear-regressions" class="section level4">
+<h4><span class="header-section-number">D.3.1.1</span> Plotting linear regressions</h4>
+<p>For a simple linear regression, <code>ggplot</code> can automatically plot the trendline (a.k.a., fitted values) and confidence intervals with <code>geom_smooth()</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lizards <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">aes</span>(<span class="dt">x =</span> SVL, <span class="dt">y =</span> Mass) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="co"># use a linear regression</span>
+              <span class="dt">se =</span> <span class="ot">TRUE</span>, <span class="co"># Include a confidence interval around the line</span>
+              <span class="dt">level =</span> .<span class="dv">95</span>) <span class="co"># the level of the confidence interval; default = 95%</span></code></pre></div>
+<p><img src="Bio373L-Book_files/figure-html/a4_lin_reg_plot1-1.png" width="672" /></p>
+<p>For more complicated models, this approach may not work very well; it can be helpful to calculate the fitted values &amp; confidence intervals from the model object and plot them directly.</p>
+<p>You can get these values directly with the <code>predict()</code> function. The code below calculates the trendline and 95% confidence interval for the regression, and adds them to a data frame with the original data.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">simple_reg_preds =<span class="st"> </span>simple_reg <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="co"># Predict fitted values wish 95% confidence intervals</span>
+<span class="st">  </span><span class="kw">predict</span>(<span class="dt">interval =</span> <span class="st">&quot;confidence&quot;</span>, <span class="dt">level =</span> .<span class="dv">95</span>) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">as_tibble</span>() <span class="co"># convert the output of predict() from a matrix to a data frame</span>
+simple_reg_plot_data =<span class="st"> </span>lizards <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">select</span>(SVL, Mass) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># we only need these columns</span>
+<span class="st">  </span><span class="kw">bind_cols</span>(simple_reg_preds) <span class="co"># adds columns of simple_reg_preds to our lizards</span>
+<span class="kw">View</span>(simple_reg_plot_data)</code></pre></div>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
+<table class=" lightable-paper" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+SVL
+</th>
+<th style="text-align:right;">
+Mass
+</th>
+<th style="text-align:right;">
+fit
+</th>
+<th style="text-align:right;">
+lwr
+</th>
+<th style="text-align:right;">
+upr
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+61.8
+</td>
+<td style="text-align:right;">
+6.46
+</td>
+<td style="text-align:right;">
+7.117423
+</td>
+<td style="text-align:right;">
+7.058313
+</td>
+<td style="text-align:right;">
+7.176533
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+57.1
+</td>
+<td style="text-align:right;">
+5.82
+</td>
+<td style="text-align:right;">
+6.699773
+</td>
+<td style="text-align:right;">
+6.636126
+</td>
+<td style="text-align:right;">
+6.763420
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+49.1
+</td>
+<td style="text-align:right;">
+4.29
+</td>
+<td style="text-align:right;">
+5.988879
+</td>
+<td style="text-align:right;">
+5.890800
+</td>
+<td style="text-align:right;">
+6.086959
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+51.2
+</td>
+<td style="text-align:right;">
+5.29
+</td>
+<td style="text-align:right;">
+6.175489
+</td>
+<td style="text-align:right;">
+6.088343
+</td>
+<td style="text-align:right;">
+6.262634
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+51.5
+</td>
+<td style="text-align:right;">
+5.69
+</td>
+<td style="text-align:right;">
+6.202147
+</td>
+<td style="text-align:right;">
+6.116487
+</td>
+<td style="text-align:right;">
+6.287808
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+45.3
+</td>
+<td style="text-align:right;">
+5.84
+</td>
+<td style="text-align:right;">
+5.651205
+</td>
+<td style="text-align:right;">
+5.531606
+</td>
+<td style="text-align:right;">
+5.770804
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+49.7
+</td>
+<td style="text-align:right;">
+5.91
+</td>
+<td style="text-align:right;">
+6.042196
+</td>
+<td style="text-align:right;">
+5.947328
+</td>
+<td style="text-align:right;">
+6.137065
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+48.0
+</td>
+<td style="text-align:right;">
+5.09
+</td>
+<td style="text-align:right;">
+5.891132
+</td>
+<td style="text-align:right;">
+5.787013
+</td>
+<td style="text-align:right;">
+5.995249
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+54.9
+</td>
+<td style="text-align:right;">
+7.20
+</td>
+<td style="text-align:right;">
+6.504277
+</td>
+<td style="text-align:right;">
+6.433552
+</td>
+<td style="text-align:right;">
+6.575002
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+52.7
+</td>
+<td style="text-align:right;">
+6.66
+</td>
+<td style="text-align:right;">
+6.308782
+</td>
+<td style="text-align:right;">
+6.228823
+</td>
+<td style="text-align:right;">
+6.388740
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>To plot this, you'd use a combination of <code>geom_line()</code> for the fitted values and <code>geom_ribbon()</code>, which would create the confidence interval region.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(simple_reg_plot_data) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">aes</span>(<span class="dt">x =</span> SVL) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">y =</span> Mass), <span class="dt">color =</span> <span class="st">&quot;cornflowerblue&quot;</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_ribbon</span>(<span class="kw">aes</span>(<span class="dt">ymin =</span> lwr, <span class="dt">ymax =</span> upr), 
+              <span class="dt">fill =</span> <span class="kw">alpha</span>(<span class="st">&quot;black&quot;</span>, .<span class="dv">2</span>),  <span class="co"># dark fill with 80% transparency (alpha)</span>
+              <span class="dt">color =</span> <span class="kw">grey</span>(.<span class="dv">4</span>), <span class="co"># dark-ish grey border line</span>
+              <span class="dt">linetype =</span> <span class="dv">2</span>) <span class="op">+</span><span class="st">   </span><span class="co"># dotted border line</span>
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">y =</span> fit))</code></pre></div>
+<p><img src="Bio373L-Book_files/figure-html/a4_lm_plot_manual-1.png" width="672" /></p>
+<p>You can also use <code>predict()</code> to calculate the respected value of your response variable given new predictor(s); this is useful for interpolation and extrapolation.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Create a data frame with new predictors</span>
+svl_predictors =<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">SVL =</span> <span class="kw">c</span>(<span class="dv">20</span>, <span class="dv">150</span>, <span class="dv">600</span>)) <span class="co"># New predictors</span>
+mass_predictions =<span class="st"> </span><span class="kw">predict</span>(simple_reg, 
+                           <span class="dt">newdata =</span> svl_predictors)  <span class="co"># The newdata argument is key here</span>
+                                                      <span class="co"># If unspecified, it uses the original data</span>
+svl_predictors <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Mass_estimate =</span> mass_predictions)
+## # A tibble: 3 x 2
+##     SVL Mass_estimate
+##   &lt;dbl&gt;         &lt;dbl&gt;
+## 1    20          3.40
+## 2   150         15.0 
+## 3   600         54.9</code></pre></div>
+<p>For more information, see the help page <code>?predict.lm</code>.</p>
+</div>
+</div>
+<div id="anova" class="section level3">
+<h3><span class="header-section-number">D.3.2</span> ANOVA</h3>
 <p>(In progress)</p>
 </div>
-<div id="advanced-workflow-tips" class="section level2">
-<h2><span class="header-section-number">D.4</span> Advanced workflow tips</h2>
-<p>(In progress)</p>
+</div>
+<div id="to-do-in-progress" class="section level2">
+<h2><span class="header-section-number">D.4</span> To do (In progress)</h2>
+<div id="comparing-two-means-t-tests" class="section level3">
+<h3><span class="header-section-number">D.4.1</span> Comparing two means (t-tests)</h3>
+</div>
+<div id="advanced-workflow-tips" class="section level3">
+<h3><span class="header-section-number">D.4.2</span> Advanced workflow tips</h3>
+</div>
+<div id="model-comparisons" class="section level3">
+<h3><span class="header-section-number">D.4.3</span> Model comparisons</h3>
 
+</div>
 </div>
 </div>
             </section>
