@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>B Making graphs in R with ggplot2 {ggplot-tutorial} | Bio 373L Survival Guide</title>
+  <meta name="description" content="Writing advice for Field Ecology." />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="B Making graphs in R with ggplot2 {ggplot-tutorial} | Bio 373L Survival Guide" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Writing advice for Field Ecology." />
+  <meta name="github-repo" content="Christopher-Peterson/Bio373L-Book" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="B Making graphs in R with ggplot2 {ggplot-tutorial} | Bio 373L Survival Guide" />
+  
+  <meta name="twitter:description" content="Writing advice for Field Ecology." />
+  
+
+<meta name="author" content="Christopher R. Peterson" />
+
+
+<meta name="date" content="2020-09-14" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="working-with-r.html"/>
+<link rel="next" href="data-manipulation-with-dplyr.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Bio 373L Survival Guide</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="1" data-path="structure.html"><a href="structure.html"><i class="fa fa-check"></i><b>1</b> Writing Lab Reports: Structure</a><ul>
+<li class="chapter" data-level="1.1" data-path="structure.html"><a href="structure.html#structure-overview"><i class="fa fa-check"></i><b>1.1</b> Structure Overview</a></li>
+<li class="chapter" data-level="1.2" data-path="structure.html"><a href="structure.html#abstract"><i class="fa fa-check"></i><b>1.2</b> Abstract</a></li>
+<li class="chapter" data-level="1.3" data-path="structure.html"><a href="structure.html#introduction"><i class="fa fa-check"></i><b>1.3</b> Introduction</a></li>
+<li class="chapter" data-level="1.4" data-path="structure.html"><a href="structure.html#methods"><i class="fa fa-check"></i><b>1.4</b> Methods</a></li>
+<li class="chapter" data-level="1.5" data-path="structure.html"><a href="structure.html#results"><i class="fa fa-check"></i><b>1.5</b> Results</a><ul>
+<li class="chapter" data-level="1.5.1" data-path="structure.html"><a href="structure.html#reporting-statistics"><i class="fa fa-check"></i><b>1.5.1</b> Reporting statistics</a></li>
+<li class="chapter" data-level="1.5.2" data-path="structure.html"><a href="structure.html#do-not-interpret-your-data-here"><i class="fa fa-check"></i><b>1.5.2</b> Do not interpret your data here</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="structure.html"><a href="structure.html#discussion"><i class="fa fa-check"></i><b>1.6</b> Discussion</a></li>
+<li class="chapter" data-level="1.7" data-path="structure.html"><a href="structure.html#literature-cited"><i class="fa fa-check"></i><b>1.7</b> Literature Cited</a></li>
+<li class="chapter" data-level="1.8" data-path="structure.html"><a href="structure.html#common-mistakes-for-particular-sections"><i class="fa fa-check"></i><b>1.8</b> Common Mistakes for particular sections</a><ul>
+<li class="chapter" data-level="1.8.1" data-path="structure.html"><a href="structure.html#introduction-and-discussion"><i class="fa fa-check"></i><b>1.8.1</b> Introduction and Discussion</a></li>
+<li class="chapter" data-level="1.8.2" data-path="structure.html"><a href="structure.html#results-1"><i class="fa fa-check"></i><b>1.8.2</b> Results</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="style.html"><a href="style.html"><i class="fa fa-check"></i><b>2</b> Writing Lab Reports: Style</a><ul>
+<li class="chapter" data-level="2.1" data-path="style.html"><a href="style.html#be-concise"><i class="fa fa-check"></i><b>2.1</b> Be Concise</a></li>
+<li class="chapter" data-level="2.2" data-path="style.html"><a href="style.html#sentence-structure"><i class="fa fa-check"></i><b>2.2</b> Sentence Structure</a></li>
+<li class="chapter" data-level="2.3" data-path="style.html"><a href="style.html#passive-voice"><i class="fa fa-check"></i><b>2.3</b> Passive Voice</a></li>
+<li class="chapter" data-level="2.4" data-path="style.html"><a href="style.html#word-choice"><i class="fa fa-check"></i><b>2.4</b> Word Choice</a></li>
+<li class="chapter" data-level="2.5" data-path="style.html"><a href="style.html#scientific-and-common-names"><i class="fa fa-check"></i><b>2.5</b> Scientific and Common Names</a></li>
+<li class="chapter" data-level="2.6" data-path="style.html"><a href="style.html#other-grammar"><i class="fa fa-check"></i><b>2.6</b> Other Grammar</a></li>
+<li class="chapter" data-level="2.7" data-path="style.html"><a href="style.html#commonly-confused-definitions"><i class="fa fa-check"></i><b>2.7</b> Commonly Confused Definitions</a></li>
+<li class="chapter" data-level="2.8" data-path="style.html"><a href="style.html#significant-digits"><i class="fa fa-check"></i><b>2.8</b> Significant Digits</a></li>
+<li class="chapter" data-level="2.9" data-path="style.html"><a href="style.html#tenses"><i class="fa fa-check"></i><b>2.9</b> Tenses</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="figures.html"><a href="figures.html"><i class="fa fa-check"></i><b>3</b> Figures and Tables</a><ul>
+<li class="chapter" data-level="3.1" data-path="figures.html"><a href="figures.html#captions"><i class="fa fa-check"></i><b>3.1</b> Captions</a></li>
+<li class="chapter" data-level="3.2" data-path="figures.html"><a href="figures.html#figures"><i class="fa fa-check"></i><b>3.2</b> Figures</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="figures.html"><a href="figures.html#specific-figure-guidelines"><i class="fa fa-check"></i><b>3.2.1</b> Specific Figure Guidelines</a></li>
+<li class="chapter" data-level="3.2.2" data-path="style.html"><a href="style.html#be-concise"><i class="fa fa-check"></i><b>3.2.2</b> Be Concise</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="figures.html"><a href="figures.html#some-example-figures"><i class="fa fa-check"></i><b>3.3</b> Some Example Figures</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="figures.html"><a href="figures.html#general-formatting"><i class="fa fa-check"></i><b>3.3.1</b> General Formatting</a></li>
+<li class="chapter" data-level="3.3.2" data-path="figures.html"><a href="figures.html#continuous-response-categorical-predictors"><i class="fa fa-check"></i><b>3.3.2</b> Continuous response, categorical predictors</a></li>
+<li class="chapter" data-level="3.3.3" data-path="figures.html"><a href="figures.html#categorical-count-or-frequency-responses"><i class="fa fa-check"></i><b>3.3.3</b> Categorical, count, or frequency responses</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="figures.html"><a href="figures.html#tables"><i class="fa fa-check"></i><b>3.4</b> Tables</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="lab1.html"><a href="lab1.html"><i class="fa fa-check"></i><b>4</b> Lab 1: Succession</a><ul>
+<li class="chapter" data-level="4.1" data-path="lab1.html"><a href="lab1.html#introduction-to-the-lab"><i class="fa fa-check"></i><b>4.1</b> Introduction to the lab</a></li>
+<li class="chapter" data-level="4.2" data-path="lab1.html"><a href="lab1.html#materials-and-methods"><i class="fa fa-check"></i><b>4.2</b> Materials and Methods</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="lab1.html"><a href="lab1.html#bfl-habitat-regions"><i class="fa fa-check"></i><b>4.2.1</b> BFL habitat regions</a></li>
+<li class="chapter" data-level="4.2.2" data-path="lab1.html"><a href="lab1.html#data-collection"><i class="fa fa-check"></i><b>4.2.2</b> Data Collection</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="lab1.html"><a href="lab1.html#analysis-to-perform"><i class="fa fa-check"></i><b>4.3</b> Analysis to perform</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="lab1.html"><a href="lab1.html#canopy-tree-density"><i class="fa fa-check"></i><b>4.3.1</b> Canopy tree density</a></li>
+<li class="chapter" data-level="4.3.2" data-path="lab1.html"><a href="lab1.html#species-by-habitat-and-life-stage"><i class="fa fa-check"></i><b>4.3.2</b> Species by habitat and life stage</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="structure.html"><a href="structure.html#discussion"><i class="fa fa-check"></i><b>4.4</b> Discussion</a></li>
+<li class="chapter" data-level="4.5" data-path="lab1.html"><a href="lab1.html#general-comments-post-review"><i class="fa fa-check"></i><b>4.5</b> General Comments (Post-Review)</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="figures.html"><a href="figures.html#figures"><i class="fa fa-check"></i><b>4.5.1</b> Figures</a></li>
+<li class="chapter" data-level="4.5.2" data-path="lab1.html"><a href="lab1.html#write-this-like-youre-trying-to-publish-it"><i class="fa fa-check"></i><b>4.5.2</b> Write this like you're trying to publish it</a></li>
+<li class="chapter" data-level="4.5.3" data-path="lab1.html"><a href="lab1.html#describe-the-habitats"><i class="fa fa-check"></i><b>4.5.3</b> Describe the habitats</a></li>
+<li class="chapter" data-level="4.5.4" data-path="lab1.html"><a href="lab1.html#the-analysis"><i class="fa fa-check"></i><b>4.5.4</b> The Analysis</a></li>
+<li class="chapter" data-level="4.5.5" data-path="lab1.html"><a href="lab1.html#keeping-things-in-the-right-sections"><i class="fa fa-check"></i><b>4.5.5</b> Keeping things in the right sections</a></li>
+<li class="chapter" data-level="4.5.6" data-path="lab1.html"><a href="lab1.html#basic-style-and-format-rules"><i class="fa fa-check"></i><b>4.5.6</b> Basic style and format rules</a></li>
+<li class="chapter" data-level="4.5.7" data-path="lab1.html"><a href="lab1.html#other-comments"><i class="fa fa-check"></i><b>4.5.7</b> Other Comments</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="Lab2.html"><a href="Lab2.html"><i class="fa fa-check"></i><b>5</b> Lab 2: Woodland Heterogeneity</a><ul>
+<li class="chapter" data-level="5.1" data-path="Lab2.html"><a href="Lab2.html#introduction-background"><i class="fa fa-check"></i><b>5.1</b> Introduction &amp; background</a></li>
+<li class="chapter" data-level="5.2" data-path="Lab2.html"><a href="Lab2.html#questions-and-hypotheses"><i class="fa fa-check"></i><b>5.2</b> Questions and Hypotheses</a></li>
+<li class="chapter" data-level="5.3" data-path="Lab2.html"><a href="Lab2.html#field-methods"><i class="fa fa-check"></i><b>5.3</b> Field Methods</a></li>
+<li class="chapter" data-level="5.4" data-path="Lab2.html"><a href="Lab2.html#analyses"><i class="fa fa-check"></i><b>5.4</b> Analyses</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="Lab2.html"><a href="Lab2.html#calibrating-canopy-estimates"><i class="fa fa-check"></i><b>5.4.1</b> Calibrating canopy estimates</a></li>
+<li class="chapter" data-level="5.4.2" data-path="Lab2.html"><a href="Lab2.html#relationship-between-canopy-and-ground-cover"><i class="fa fa-check"></i><b>5.4.2</b> Relationship between canopy and ground cover</a></li>
+<li class="chapter" data-level="5.4.3" data-path="Lab2.html"><a href="Lab2.html#quantifying-the-spatial-mosaic"><i class="fa fa-check"></i><b>5.4.3</b> Quantifying the spatial mosaic</a></li>
+<li class="chapter" data-level="5.4.4" data-path="Lab2.html"><a href="Lab2.html#historical-trends"><i class="fa fa-check"></i><b>5.4.4</b> Historical Trends</a></li>
+</ul></li>
+</ul></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="working-with-r.html"><a href="working-with-r.html"><i class="fa fa-check"></i><b>A</b> Working with R</a><ul>
+<li class="chapter" data-level="A.1" data-path="working-with-r.html"><a href="working-with-r.html#introduction-to-rstudio"><i class="fa fa-check"></i><b>A.1</b> Introduction to RStudio</a><ul>
+<li class="chapter" data-level="A.1.1" data-path="working-with-r.html"><a href="working-with-r.html#rstudio-projects"><i class="fa fa-check"></i><b>A.1.1</b> RStudio Projects</a></li>
+<li class="chapter" data-level="A.1.2" data-path="working-with-r.html"><a href="working-with-r.html#customizing-rstudio"><i class="fa fa-check"></i><b>A.1.2</b> Customizing RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="A.2" data-path="working-with-r.html"><a href="working-with-r.html#r-basics"><i class="fa fa-check"></i><b>A.2</b> R basics</a><ul>
+<li class="chapter" data-level="A.2.1" data-path="working-with-r.html"><a href="working-with-r.html#statements-vectors"><i class="fa fa-check"></i><b>A.2.1</b> Statements &amp; vectors</a></li>
+<li class="chapter" data-level="A.2.2" data-path="working-with-r.html"><a href="working-with-r.html#variables"><i class="fa fa-check"></i><b>A.2.2</b> Variables</a></li>
+<li class="chapter" data-level="A.2.3" data-path="working-with-r.html"><a href="working-with-r.html#reading-working-with-data-frames"><i class="fa fa-check"></i><b>A.2.3</b> Reading &amp; working with data frames</a></li>
+<li class="chapter" data-level="A.2.4" data-path="working-with-r.html"><a href="working-with-r.html#functions"><i class="fa fa-check"></i><b>A.2.4</b> Functions</a></li>
+<li class="chapter" data-level="A.2.5" data-path="working-with-r.html"><a href="working-with-r.html#getting-help"><i class="fa fa-check"></i><b>A.2.5</b> Getting Help</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="making-graphs-in-r-with-ggplot2-ggplot-tutorial.html"><a href="making-graphs-in-r-with-ggplot2-ggplot-tutorial.html"><i class="fa fa-check"></i><b>B</b> Making graphs in R with <code>ggplot2</code> {ggplot-tutorial}</a><ul>
+<li class="chapter" data-level="B.1" data-path="making-graphs-in-r-with-ggplot2-ggplot-tutorial.html"><a href="making-graphs-in-r-with-ggplot2-ggplot-tutorial.html#components-of-a-plot"><i class="fa fa-check"></i><b>B.1</b> Components of a plot</a></li>
+<li class="chapter" data-level="B.2" data-path="making-graphs-in-r-with-ggplot2-ggplot-tutorial.html"><a href="making-graphs-in-r-with-ggplot2-ggplot-tutorial.html#aesthetics-and-scales"><i class="fa fa-check"></i><b>B.2</b> Aesthetics and scales</a><ul>
+<li class="chapter" data-level="B.2.1" data-path="making-graphs-in-r-with-ggplot2-ggplot-tutorial.html"><a href="making-graphs-in-r-with-ggplot2-ggplot-tutorial.html#color"><i class="fa fa-check"></i><b>B.2.1</b> Color</a></li>
+<li class="chapter" data-level="B.2.2" data-path="making-graphs-in-r-with-ggplot2-ggplot-tutorial.html"><a href="making-graphs-in-r-with-ggplot2-ggplot-tutorial.html#shape"><i class="fa fa-check"></i><b>B.2.2</b> Shape</a></li>
+<li class="chapter" data-level="B.2.3" data-path="making-graphs-in-r-with-ggplot2-ggplot-tutorial.html"><a href="making-graphs-in-r-with-ggplot2-ggplot-tutorial.html#size"><i class="fa fa-check"></i><b>B.2.3</b> Size</a></li>
+<li class="chapter" data-level="B.2.4" data-path="making-graphs-in-r-with-ggplot2-ggplot-tutorial.html"><a href="making-graphs-in-r-with-ggplot2-ggplot-tutorial.html#fixed-aesthetics"><i class="fa fa-check"></i><b>B.2.4</b> Fixed aesthetics</a></li>
+<li class="chapter" data-level="B.2.5" data-path="making-graphs-in-r-with-ggplot2-ggplot-tutorial.html"><a href="making-graphs-in-r-with-ggplot2-ggplot-tutorial.html#combining-aesthetics"><i class="fa fa-check"></i><b>B.2.5</b> Combining aesthetics</a></li>
+</ul></li>
+<li class="chapter" data-level="B.3" data-path="making-graphs-in-r-with-ggplot2-ggplot-tutorial.html"><a href="making-graphs-in-r-with-ggplot2-ggplot-tutorial.html#geometry"><i class="fa fa-check"></i><b>B.3</b> Geometry</a><ul>
+<li class="chapter" data-level="B.3.1" data-path="making-graphs-in-r-with-ggplot2-ggplot-tutorial.html"><a href="making-graphs-in-r-with-ggplot2-ggplot-tutorial.html#continuous-x-no-y"><i class="fa fa-check"></i><b>B.3.1</b> Continuous X, no Y</a></li>
+<li class="chapter" data-level="B.3.2" data-path="making-graphs-in-r-with-ggplot2-ggplot-tutorial.html"><a href="making-graphs-in-r-with-ggplot2-ggplot-tutorial.html#discrete-x-continuous-y"><i class="fa fa-check"></i><b>B.3.2</b> Discrete X, continuous Y</a></li>
+<li class="chapter" data-level="B.3.3" data-path="making-graphs-in-r-with-ggplot2-ggplot-tutorial.html"><a href="making-graphs-in-r-with-ggplot2-ggplot-tutorial.html#continuous-x-and-y"><i class="fa fa-check"></i><b>B.3.3</b> Continuous X and Y</a></li>
+<li class="chapter" data-level="B.3.4" data-path="making-graphs-in-r-with-ggplot2-ggplot-tutorial.html"><a href="making-graphs-in-r-with-ggplot2-ggplot-tutorial.html#time-series-data"><i class="fa fa-check"></i><b>B.3.4</b> Time series data</a></li>
+<li class="chapter" data-level="B.3.5" data-path="making-graphs-in-r-with-ggplot2-ggplot-tutorial.html"><a href="making-graphs-in-r-with-ggplot2-ggplot-tutorial.html#discrete-x-and-y"><i class="fa fa-check"></i><b>B.3.5</b> Discrete X and Y</a></li>
+</ul></li>
+<li class="chapter" data-level="B.4" data-path="making-graphs-in-r-with-ggplot2-ggplot-tutorial.html"><a href="making-graphs-in-r-with-ggplot2-ggplot-tutorial.html#facets"><i class="fa fa-check"></i><b>B.4</b> Facets</a></li>
+<li class="chapter" data-level="B.5" data-path="making-graphs-in-r-with-ggplot2-ggplot-tutorial.html"><a href="making-graphs-in-r-with-ggplot2-ggplot-tutorial.html#changing-the-theme-axis-titles-other-visual-elements"><i class="fa fa-check"></i><b>B.5</b> Changing the theme, axis titles, &amp; other visual elements</a></li>
+<li class="chapter" data-level="B.6" data-path="making-graphs-in-r-with-ggplot2-ggplot-tutorial.html"><a href="making-graphs-in-r-with-ggplot2-ggplot-tutorial.html#more-references"><i class="fa fa-check"></i><b>B.6</b> More references</a></li>
+</ul></li>
+<li class="chapter" data-level="C" data-path="data-manipulation-with-dplyr.html"><a href="data-manipulation-with-dplyr.html"><i class="fa fa-check"></i><b>C</b> Data manipulation with <code>dplyr</code></a><ul>
+<li class="chapter" data-level="C.1" data-path="data-manipulation-with-dplyr.html"><a href="data-manipulation-with-dplyr.html#the-pipe"><i class="fa fa-check"></i><b>C.1</b> The Pipe (%&gt;%)</a></li>
+<li class="chapter" data-level="C.2" data-path="data-manipulation-with-dplyr.html"><a href="data-manipulation-with-dplyr.html#addingmodifying-columns-mutate"><i class="fa fa-check"></i><b>C.2</b> Adding/modifying columns (mutate)</a></li>
+<li class="chapter" data-level="C.3" data-path="data-manipulation-with-dplyr.html"><a href="data-manipulation-with-dplyr.html#subsetting-by-row-filter"><i class="fa fa-check"></i><b>C.3</b> Subsetting by row (filter)</a></li>
+<li class="chapter" data-level="C.4" data-path="data-manipulation-with-dplyr.html"><a href="data-manipulation-with-dplyr.html#subsetting-by-column-select"><i class="fa fa-check"></i><b>C.4</b> Subsetting by column (select)</a></li>
+<li class="chapter" data-level="C.5" data-path="data-manipulation-with-dplyr.html"><a href="data-manipulation-with-dplyr.html#sorting-by-columns-arrange"><i class="fa fa-check"></i><b>C.5</b> Sorting by columns (arrange)</a></li>
+<li class="chapter" data-level="C.6" data-path="data-manipulation-with-dplyr.html"><a href="data-manipulation-with-dplyr.html#summarizing-data"><i class="fa fa-check"></i><b>C.6</b> Summarizing data</a></li>
+<li class="chapter" data-level="C.7" data-path="data-manipulation-with-dplyr.html"><a href="data-manipulation-with-dplyr.html#group-operations"><i class="fa fa-check"></i><b>C.7</b> Group Operations</a></li>
+</ul></li>
+<li class="chapter" data-level="D" data-path="performing-some-useful-analyses-in-r.html"><a href="performing-some-useful-analyses-in-r.html"><i class="fa fa-check"></i><b>D</b> Performing some useful analyses in R</a><ul>
+<li class="chapter" data-level="D.1" data-path="performing-some-useful-analyses-in-r.html"><a href="performing-some-useful-analyses-in-r.html#a-note-on-factors"><i class="fa fa-check"></i><b>D.1</b> A note on factors</a></li>
+<li class="chapter" data-level="D.2" data-path="performing-some-useful-analyses-in-r.html"><a href="performing-some-useful-analyses-in-r.html#comparing-categorical-frequencies-contingency-tables-related-analyses"><i class="fa fa-check"></i><b>D.2</b> Comparing categorical frequencies (Contingency Tables &amp; related analyses)</a><ul>
+<li class="chapter" data-level="D.2.1" data-path="performing-some-useful-analyses-in-r.html"><a href="performing-some-useful-analyses-in-r.html#contingency-tables"><i class="fa fa-check"></i><b>D.2.1</b> Contingency Tables</a></li>
+<li class="chapter" data-level="D.2.2" data-path="performing-some-useful-analyses-in-r.html"><a href="performing-some-useful-analyses-in-r.html#chi-squared-fishers-exact-tests"><i class="fa fa-check"></i><b>D.2.2</b> Chi-squared &amp; Fisher's Exact Tests</a></li>
+</ul></li>
+<li class="chapter" data-level="D.3" data-path="performing-some-useful-analyses-in-r.html"><a href="performing-some-useful-analyses-in-r.html#linear-models-regression-and-anova"><i class="fa fa-check"></i><b>D.3</b> Linear Models: Regression and ANOVA</a><ul>
+<li class="chapter" data-level="D.3.1" data-path="performing-some-useful-analyses-in-r.html"><a href="performing-some-useful-analyses-in-r.html#regression"><i class="fa fa-check"></i><b>D.3.1</b> Regression</a></li>
+<li class="chapter" data-level="D.3.2" data-path="performing-some-useful-analyses-in-r.html"><a href="performing-some-useful-analyses-in-r.html#anova"><i class="fa fa-check"></i><b>D.3.2</b> ANOVA</a></li>
+</ul></li>
+<li class="chapter" data-level="D.4" data-path="performing-some-useful-analyses-in-r.html"><a href="performing-some-useful-analyses-in-r.html#to-do-in-progress"><i class="fa fa-check"></i><b>D.4</b> To do (In progress)</a><ul>
+<li class="chapter" data-level="D.4.1" data-path="performing-some-useful-analyses-in-r.html"><a href="performing-some-useful-analyses-in-r.html#comparing-two-means-t-tests"><i class="fa fa-check"></i><b>D.4.1</b> Comparing two means (t-tests)</a></li>
+<li class="chapter" data-level="D.4.2" data-path="performing-some-useful-analyses-in-r.html"><a href="performing-some-useful-analyses-in-r.html#advanced-workflow-tips"><i class="fa fa-check"></i><b>D.4.2</b> Advanced workflow tips</a></li>
+<li class="chapter" data-level="D.4.3" data-path="performing-some-useful-analyses-in-r.html"><a href="performing-some-useful-analyses-in-r.html#model-comparisons"><i class="fa fa-check"></i><b>D.4.3</b> Model comparisons</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Bio 373L Survival Guide</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="making-graphs-in-r-with-ggplot2-ggplot-tutorial" class="section level1">
+<h1><span class="header-section-number">B</span> Making graphs in R with <code>ggplot2</code> {ggplot-tutorial}</h1>
+<div id="components-of-a-plot" class="section level2">
+<h2><span class="header-section-number">B.1</span> Components of a plot</h2>
+<p>In this chapter, we discuss the basics of making figures with with the <code>ggplot2</code> package in R (part of the <code>tidyverse</code>. The <code>ggplot2</code> package assembles a graph from several components. The important components are:</p>
+<ul>
+<li><strong>Data</strong>: You should have the data going into a plot organized into a data frame, where each row is an observation and each column is a different variable. This is called &quot;tidy data;&quot; we'll talk more about it later.</li>
+<li><strong>Aesthetics</strong>: Which variables (columns) in the data connect to visual components of the plot? E.g., what goes on the X &amp; Y axes, what does color mean, etc?</li>
+<li><strong>Scales</strong>: How do your aesthetics visually appear? For example, if your aesthetics say that &quot;Mass&quot; is represented by color, a scale would say what colors those actually are.<br />
+</li>
+<li><strong>Geometry</strong>: What's actually drawn on your graph (e.g., points, lines, bars, etc)</li>
+<li><strong>Facets</strong>: If you're splitting your figure into multiple panels, what data is informing that?</li>
+</ul>
+<p>Let's look at an example:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Load packages &amp; data</span>
+<span class="kw">library</span>(tidyverse) 
+lizards &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;example_data/anoles.csv&quot;</span>) 
+<span class="co"># If this throws an error, see Appendix A for how to download it.</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">base_plot &lt;-<span class="st"> </span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="dt">data =</span> lizards) <span class="op">+</span><span class="st"> </span><span class="co"># Data: sets up a plot around lizards</span>
+<span class="st">  </span><span class="kw">aes</span>(<span class="dt">x =</span> SVL, <span class="dt">y =</span> Tail) <span class="op">+</span><span class="st"> </span><span class="co"># Aesthetics: Connects columns of lizards to x and y</span>
+<span class="st">  </span><span class="kw">geom_point</span>() <span class="co"># Geometry: we&#39;re using points</span>
+  <span class="co"># Scales aren&#39;t listed, so they&#39;re using default values</span>
+base_plot <span class="co"># show results</span></code></pre></div>
+<p><img src="Bio373L-Book_files/figure-html/basic_plt-1.png" width="672" /></p>
+<p>This is a functional plot, but it doesn't look much like a scientific figure. One quick option to change some of the default values is to use a theme. For this class, I'd like everyone to use the <code>cowplot</code> theme. Setting the theme will apply until you restart R.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Include these two lines after loading tidyverse/ggplot2</span>
+<span class="co"># at the top of each script</span>
+<span class="kw">library</span>(cowplot)
+<span class="kw">theme_set</span>(<span class="kw">theme_cowplot</span>()) 
+
+<span class="co"># Now view the plot again, and see the results</span>
+base_plot</code></pre></div>
+<p><img src="Bio373L-Book_files/figure-html/use_cowplot-1.png" width="672" /></p>
+</div>
+<div id="aesthetics-and-scales" class="section level2">
+<h2><span class="header-section-number">B.2</span> Aesthetics and scales</h2>
+<p>Aesthetics connect a column of data to a visual representation on the plot. For example, x and y are aesthetics that correspond to axis positions.</p>
+<div id="color" class="section level3">
+<h3><span class="header-section-number">B.2.1</span> Color</h3>
+<p>Color is a commonly use aesthetic; let's add it to our <code>base_plot</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Connect the color aesthetic with the Color_morph column in the data</span>
+base_plot <span class="op">+</span><span class="st"> </span><span class="kw">aes</span>(<span class="dt">color =</span> Color_morph)  <span class="co"># This is a discrete color</span></code></pre></div>
+<p><img src="Bio373L-Book_files/figure-html/aes_color_d-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Connect the color aesthetic with the Limb column in the data</span>
+base_plot <span class="op">+</span><span class="st"> </span><span class="kw">aes</span>(<span class="dt">color =</span> Limb) <span class="co"># This is a continuous color</span></code></pre></div>
+<p><img src="Bio373L-Book_files/figure-html/aes_color_c-1.png" width="672" /></p>
+<p>These aren't particularly great color defaults; we can use scales to change them. The <code>viridis</code> color scale is a good default option, since it's generally colorblind friendly and isn't terrible when printed in black &amp; white.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">base_plot <span class="op">+</span><span class="st"> </span><span class="kw">aes</span>(<span class="dt">color =</span> Color_morph) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">scale_color_viridis_d</span>() <span class="co"># uses the &quot;Viridis&quot; colors, discrete scale</span></code></pre></div>
+<p><img src="Bio373L-Book_files/figure-html/aes_color_vir_d-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">base_plot <span class="op">+</span><span class="st"> </span><span class="kw">aes</span>(<span class="dt">color =</span> Limb) <span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_color_viridis_c</span>() <span class="co"># uses the &quot;Viridis&quot; colors, discrete scale</span></code></pre></div>
+<p><img src="Bio373L-Book_files/figure-html/aes_color_vir_c-1.png" width="672" /></p>
+<p>You can also define your own colors for discrete variables:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">my_morph_colors =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;#a06f00&quot;</span>, <span class="st">&quot;#004368&quot;</span>, <span class="st">&quot;#e0a1c4&quot;</span>) <span class="co"># Color Hex codes; if you&#39;re unfamiliar, google it.</span>
+base_plot <span class="op">+</span><span class="st"> </span><span class="kw">aes</span>(<span class="dt">color =</span> Color_morph) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">scale_color_manual</span>(<span class="dt">values =</span> my_morph_colors) </code></pre></div>
+<p><img src="Bio373L-Book_files/figure-html/aes_color_manual-1.png" width="672" /></p>
+</div>
+<div id="shape" class="section level3">
+<h3><span class="header-section-number">B.2.2</span> Shape</h3>
+<p>Shape only works for discrete variables</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">base_plot <span class="op">+</span><span class="st"> </span><span class="kw">aes</span>(<span class="dt">shape =</span> Color_morph) </code></pre></div>
+<p><img src="Bio373L-Book_files/figure-html/aes_shape1-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">base_plot <span class="op">+</span><span class="st"> </span><span class="kw">aes</span>(<span class="dt">shape =</span> Color_morph) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">scale_shape</span>(<span class="dt">solid =</span> <span class="ot">FALSE</span>)</code></pre></div>
+<p><img src="Bio373L-Book_files/figure-html/aes_shape2-1.png" width="672" /></p>
+<p>If you want to set manual shapes, look at <code>?pch</code> to see which the options.</p>
+</div>
+<div id="size" class="section level3">
+<h3><span class="header-section-number">B.2.3</span> Size</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">base_plot <span class="op">+</span><span class="st"> </span><span class="kw">aes</span>(<span class="dt">size =</span> Limb)</code></pre></div>
+<p><img src="Bio373L-Book_files/figure-html/aes_size1-1.png" width="672" /> This is kind of a mess in its current state. Let's fix that.</p>
+</div>
+<div id="fixed-aesthetics" class="section level3">
+<h3><span class="header-section-number">B.2.4</span> Fixed aesthetics</h3>
+<p>You can define an aesthetic value as a constant within a <code>geom_*</code> call, and it will refer to that literal value instead of a data column.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Note that I&#39;m including the aes() term with ggplot() instead</span>
+<span class="co"># of adding it; these are equivalent</span>
+<span class="kw">ggplot</span>(<span class="dt">data =</span> lizards, <span class="kw">aes</span>(<span class="dt">x =</span> SVL, <span class="dt">y =</span> Tail, <span class="dt">size =</span> Limb)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="co"># Define a default color &amp; shape for points</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">color =</span> <span class="st">&quot;cornflowerblue&quot;</span>, <span class="dt">shape =</span> <span class="dv">1</span>)</code></pre></div>
+<p><img src="Bio373L-Book_files/figure-html/aes_fixed-1.png" width="672" /></p>
+<p>This makes the previous cloud of points a bit easier to separate.</p>
+</div>
+<div id="combining-aesthetics" class="section level3">
+<h3><span class="header-section-number">B.2.5</span> Combining aesthetics</h3>
+<p>Aesthetics are particularly powerful when combined. It can be helpful to double-up the aesthetics for a variable (to help improve clarity to the reader).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> lizards) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">aes</span>(<span class="dt">x =</span> SVL, <span class="dt">y =</span> Tail, <span class="dt">shape =</span> Color_morph, <span class="dt">color =</span> Color_morph) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">size =</span> <span class="fl">2.5</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">scale_shape</span>(<span class="dt">solid =</span> <span class="ot">FALSE</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">scale_color_viridis_d</span>()</code></pre></div>
+<p><img src="Bio373L-Book_files/figure-html/ase_comb_double-1.png" width="672" /></p>
+<p>Or to use different aesthetics with different variables to explore different variable combinations</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">base_plot <span class="op">+</span><span class="st"> </span><span class="kw">aes</span>(<span class="dt">color =</span> Limb, <span class="dt">shape =</span> Color_morph) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">scale_shape</span>(<span class="dt">solid =</span> <span class="ot">FALSE</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_color_viridis_c</span>()</code></pre></div>
+<p><img src="Bio373L-Book_files/figure-html/ase_comb_multi-1.png" width="672" /></p>
+</div>
+</div>
+<div id="geometry" class="section level2">
+<h2><span class="header-section-number">B.3</span> Geometry</h2>
+<p>Geometry layers are different ways to visualize your data (primarly along the x and y aesthetics); different types of <code>geom_*</code> objects are suitable to different types of x and y data.</p>
+<div id="continuous-x-no-y" class="section level3">
+<h3><span class="header-section-number">B.3.1</span> Continuous X, no Y</h3>
+<p>Histograms:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> lizards) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">aes</span>(<span class="dt">x =</span> Diameter) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_histogram</span>()</code></pre></div>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<p><img src="Bio373L-Book_files/figure-html/geo_hist-1.png" width="672" /></p>
+<p>Note that this generates a warning. R automatically assigns the data into bins. To remove the warning, povide the <code>binwidth</code> argument.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> lizards) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">aes</span>(<span class="dt">x =</span> Diameter) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">binwidth =</span> <span class="fl">2.5</span>, 
+                 <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">fill =</span> <span class="st">&quot;white&quot;</span>) </code></pre></div>
+<p><img src="Bio373L-Book_files/figure-html/geo_hist2-1.png" width="672" /></p>
+<p>Note that we used the <code>color</code> and <code>fill</code> aesthetics; for solid objects (like bars), <code>color</code> refers to the outline and <code>fill</code> refers to the solid color.</p>
+<p>Density Plots do something similar, but with a smooth estimate.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> lizards) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">aes</span>(<span class="dt">x =</span> Diameter) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_density</span>()</code></pre></div>
+<p><img src="Bio373L-Book_files/figure-html/geo_dens-1.png" width="672" /></p>
+<p>If you wanted to separate the density estimates by color morph, all you'd need to do is add that aesthetic.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> lizards) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">aes</span>(<span class="dt">x =</span> Diameter, <span class="dt">color =</span> Color_morph) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_density</span>()</code></pre></div>
+<p><img src="Bio373L-Book_files/figure-html/geo_dens_color-1.png" width="672" /> Challenge: How would you do the same with a histogram?</p>
+</div>
+<div id="discrete-x-continuous-y" class="section level3">
+<h3><span class="header-section-number">B.3.2</span> Discrete X, continuous Y</h3>
+<p>Boxplots: these show the quartile distributions of datasets. Let's compare perch height distribution at each site:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">box_plots &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> lizards) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">aes</span>(<span class="dt">x =</span> Site, <span class="dt">y =</span> Height) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_boxplot</span>() 
+box_plots</code></pre></div>
+<p><img src="Bio373L-Book_files/figure-html/geo_boxplot-1.png" width="672" /></p>
+<p>Now let's break that down by color morph</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">box_plots <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">aes</span>(<span class="dt">fill =</span> Color_morph) <span class="op">+</span><span class="st"> </span><span class="co"># We&#39;re using fill because boxplots are solid</span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;bottom&quot;</span>) <span class="co"># Move the legend to the bottom to give us more room</span></code></pre></div>
+<p><img src="Bio373L-Book_files/figure-html/geo_boxplot2-1.png" width="672" /></p>
+<p>Violin plots are similar to density plots, but are more effective at comparing several groups.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> lizards) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">aes</span>(<span class="dt">x =</span> Site, <span class="dt">y =</span> Height) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_violin</span>()  </code></pre></div>
+<p><img src="Bio373L-Book_files/figure-html/geo_viol-1.png" width="672" /></p>
+<p>Jitter plots show individual data points for discrete groups; they add a bit of random noise to each x and y to prevent points from overlapping; the <strong>width</strong> and <strong>height</strong> arguments control how much in each direction. In this case, we only want jitter along the x.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> lizards) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">aes</span>(<span class="dt">x =</span> Site, <span class="dt">y =</span> Height) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_jitter</span>(<span class="dt">width =</span> .<span class="dv">25</span>, <span class="dt">height =</span> <span class="dv">0</span>)</code></pre></div>
+<p><img src="Bio373L-Book_files/figure-html/geo_jitt-1.png" width="672" /></p>
+<p>An alternate to the jitter plot is provided by <code>geom_sina</code> in the <code>ggforce</code> package (you'll need to install it to make this work). This jitters the points on the x axis so they'll fit within a violin plot.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># install.packages(&quot;ggforce&quot;) # Uncomment this to install</span>
+<span class="kw">library</span>(ggforce) 
+<span class="kw">ggplot</span>(<span class="dt">data =</span> lizards) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">aes</span>(<span class="dt">x =</span> Site, <span class="dt">y =</span> Height) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_violin</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_sina</span>(<span class="dt">color =</span> <span class="st">&quot;grey30&quot;</span>, <span class="dt">fill =</span> <span class="st">&quot;grey70&quot;</span>, <span class="dt">shape =</span> <span class="dv">21</span>) <span class="co"># Note that shape 21 uses both color a fill as aesthetics</span></code></pre></div>
+<p><img src="Bio373L-Book_files/figure-html/geo_sina-1.png" width="672" /></p>
+<p>Note that we've included two <code>geom_*</code> layers here, and that the one that was called second (<code>geom_sina</code>) was plotted on top of the one called first.</p>
+<p>Sometimes, you'll want to show means &amp; confidence intervals of your different groups. If possible, it's helpful to put those in the context of the raw data. The below plot looks at differences in perch diameter among colors, with the raw data in grey and the means in black. The error bars (<code>geom_errorbar</code>) take aesthetics <code>ymin</code> and <code>ymax</code>, which indicate their range. We used plus &amp; minus 1.96 standard errors because that's the definition of a 95% confidence interval for normally distributed data. Be sure to tell your reader/audience what an error bar represents in your figure captions.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># We need to create a new data frame for mean &amp; standard error of perch diameter</span>
+<span class="co"># This uses dplyr commands, which are explained in the next appendix</span>
+diameter_mean_se =<span class="st"> </span>lizards <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">group_by</span>(Color_morph) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">summarize</span>(
+    <span class="dt">Diameter_se =</span> <span class="kw">sd</span>(Diameter) <span class="op">/</span><span class="st"> </span><span class="kw">sqrt</span>(<span class="kw">n</span>()), <span class="co"># Standard error</span>
+    <span class="dt">Diameter =</span> <span class="kw">mean</span>(Diameter)) <span class="co"># This mean diameter</span>
+
+<span class="kw">ggplot</span>(lizards) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">aes</span>(<span class="dt">x =</span> Color_morph, <span class="dt">y =</span> Diameter) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="co"># Show the raw data (from the lizards data frame)</span>
+<span class="st">  </span><span class="kw">geom_sina</span>(, <span class="dt">color =</span> <span class="st">&quot;grey60&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="co"># Show the Mean +/- standard error</span>
+<span class="st">  </span><span class="kw">geom_errorbar</span>(
+    <span class="co"># Define the range as the mean diamter +/- 1.96 * se</span>
+    <span class="kw">aes</span>(<span class="dt">ymin =</span> Diameter <span class="op">-</span><span class="st"> </span><span class="fl">1.96</span> <span class="op">*</span><span class="st"> </span>Diameter_se, 
+        <span class="dt">ymax =</span> Diameter <span class="op">+</span><span class="st"> </span><span class="fl">1.96</span> <span class="op">*</span><span class="st"> </span>Diameter_se),
+    <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>, 
+    <span class="dt">width =</span> .<span class="dv">3</span>, <span class="co"># How wide the error bars are</span>
+    <span class="dt">data =</span> diameter_mean_se <span class="co"># Use the summary data frame instead of lizards</span>
+    <span class="co"># The column names should match with the global aesthetics (in this case, x and y)</span>
+  ) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">color =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">size =</span> <span class="dv">2</span>,
+             <span class="dt">data =</span> diameter_mean_se
+   <span class="co"># This one also uses the summary data frame</span>
+   <span class="co"># It keeps the global aesthetics, which match</span>
+   <span class="co"># the color morph &amp; mean value</span>
+  )</code></pre></div>
+<p><img src="Bio373L-Book_files/figure-html/mean_se_plot-1.png" width="672" /></p>
+<p>In this example, we've also used two data frames in the plot. This can be useful if you're combining two different types of data (such as raw &amp; summary, or individual &amp; site-level). The important thing to remember is that any columns named in the global aesthetics (defined by an <code>aes()</code> call that isn't inside a <code>geom_*</code>) must be present in both data frames. In this case, those aesthetics are <code>Color_morph</code> and <code>Diameter.</code> <code>Diameter_se</code> is a local aesthetic (in <code>geom_errorbar</code>), so it doesn't need to appear in all datasets.</p>
+</div>
+<div id="continuous-x-and-y" class="section level3">
+<h3><span class="header-section-number">B.3.3</span> Continuous X and Y</h3>
+<p>We've already seen <code>geom_point</code> used for continuous data. Here are a few other options:</p>
+<p>Heatmap: this is sort of a 2-d histogram, where the data is divided into bins along both the x and y axis; the fill indicates how many data points fall into that region. This is helpful if you have a lot of points that are all overlapping in the same area.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(lizards) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">aes</span>(<span class="dt">x =</span> SVL, <span class="dt">y =</span> Tail) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_bin2d</span>(<span class="dt">bins =</span> <span class="dv">25</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">scale_fill_viridis_c</span>()</code></pre></div>
+<p><img src="Bio373L-Book_files/figure-html/geo_heatmap-1.png" width="672" /></p>
+<p>It's often helpful to add regression lines to scatterpoint plots. This shows the the <code>Tail ~ SVL</code> regression, with the shaded region indicating the standard errors.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">regression_plot =<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> lizards) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">aes</span>(<span class="dt">x =</span> SVL, <span class="dt">y =</span> Tail) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="dt">se =</span> <span class="ot">TRUE</span>) <span class="op">+</span><span class="st"> </span><span class="co"># method = &quot;lm&quot; uses a linear regression</span>
+<span class="st">  </span><span class="co"># use se = FALSE to disable error regions</span>
+<span class="st">  </span><span class="kw">geom_point</span>()
+regression_plot </code></pre></div>
+<p><img src="Bio373L-Book_files/figure-html/geo_lm1-1.png" width="672" /></p>
+<p>You can also fit a regression to different groups of the data. This fits a separate one for each color:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> lizards) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">aes</span>(<span class="dt">x =</span> SVL, <span class="dt">y =</span> Tail, <span class="dt">color =</span> Color_morph) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="dt">se =</span> <span class="ot">TRUE</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">scale_color_viridis_d</span>()</code></pre></div>
+<p><img src="Bio373L-Book_files/figure-html/geo_lm2-1.png" width="672" /></p>
+<p>Given that these regression lines all seem to be mostly the same, it may be better to fit them as one, but still indicate the different color morphs of the individual fits. You can specify certain aesthetics that only apply to a single geometric layer by including an <code>aes()</code> statement inside the <code>geom_*</code> call.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> lizards) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">aes</span>(<span class="dt">x =</span> SVL, <span class="dt">y =</span> Tail) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="dt">se =</span> <span class="ot">TRUE</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">color =</span> Color_morph)) <span class="op">+</span><span class="st"> </span><span class="co"># call color here to only make it apply to points</span>
+<span class="st">  </span><span class="kw">scale_color_viridis_d</span>()</code></pre></div>
+<p><img src="Bio373L-Book_files/figure-html/geo_lm3-1.png" width="672" /></p>
+</div>
+<div id="time-series-data" class="section level3">
+<h3><span class="header-section-number">B.3.4</span> Time series data</h3>
+<p>If your x variable is related to time (or date), you'll probably want to use a line plot to visualize it. Our anole dataset doesn't work for this, so you'll need to save <a href="https://raw.githubusercontent.com/Christopher-Peterson/Bio373L-Book/master/example_data/anoles.csv">this</a> as <code>&quot;example_data/beavers.csv&quot;</code>. This data has info on the body temperature of two beavers over time.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">beavers =<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;example_data/beavers.csv&quot;</span>)</code></pre></div>
+<pre><code>## Parsed with column specification:
+## cols(
+##   Time = col_datetime(format = &quot;&quot;),
+##   Temperature = col_double(),
+##   activ = col_double(),
+##   beaver = col_character()
+## )</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(beavers) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">aes</span>(<span class="dt">x =</span> Time, <span class="dt">y =</span> Temperature, <span class="dt">color =</span> beaver) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">scale_x_datetime</span>(<span class="dt">date_labels =</span> <span class="st">&quot;%H:%M&quot;</span>) <span class="co"># This tells R that you&#39;ve got a time on the x axis</span></code></pre></div>
+<p><img src="Bio373L-Book_files/figure-html/beaver_ts-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">  <span class="co"># date_labels says to use hours:minutes as the axis format</span></code></pre></div>
+</div>
+<div id="discrete-x-and-y" class="section level3">
+<h3><span class="header-section-number">B.3.5</span> Discrete X and Y</h3>
+<p>Bar graphs are good for showing counts, frequencies, and proportions. This shows how many individual lizards were in each site; It works by counting the number of rows in which the Site column has each value.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> lizards) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">aes</span>(<span class="dt">x =</span> Site) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_bar</span>()</code></pre></div>
+<p><img src="Bio373L-Book_files/figure-html/geo_bar1-1.png" width="672" /></p>
+<p>If you use a grouping aesthetic, you'll get a stacked bar plot by default:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> lizards) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">aes</span>(<span class="dt">x =</span> Site, <span class="dt">fill =</span> Perch_type) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_bar</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_fill_viridis_d</span>()</code></pre></div>
+<p><img src="Bio373L-Book_files/figure-html/geo_bar_stacked-1.png" width="672" /></p>
+<p>Sometimes, stacking can be hard to interpret; you can have your categories lined next to each other by specifying the bar position as <strong>dodge</strong>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> lizards) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">aes</span>(<span class="dt">x =</span> Site, <span class="dt">fill =</span> Perch_type) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">position =</span> <span class="st">&quot;dodge&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_fill_viridis_d</span>()</code></pre></div>
+<p><img src="Bio373L-Book_files/figure-html/geo_bar_dodge-1.png" width="672" /></p>
+<p>It's usually a good idea to have your bars ordered in a descending frequency; you can do this by using <code>fct_infreq()</code> in your <code>aes()</code> statement.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> lizards) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">fct_infreq</span>(Site), <span class="co"># Note how this changes the axis label</span>
+      <span class="dt">fill =</span> Perch_type) <span class="op">+</span><span class="st"> </span><span class="co"># We&#39;ll talk about how to fix that in a bit</span>
+<span class="st">  </span><span class="kw">geom_bar</span>()</code></pre></div>
+<p><img src="Bio373L-Book_files/figure-html/geo_bars_infreq-1.png" width="672" /></p>
+<p>If you wish to use frequencies instead of counts along the y axis, it's usually a better idea to calculate them yourself and display those numbers. You can use <code>geom_col()</code> for these displays; it's like <code>geom_bar()</code>, but it takes a user-suplied <code>y</code> aesthetic.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># This code uses dplyr, which is discussed in the next appendix. Don&#39;t worry if it doesn&#39;t make sense now.</span>
+<span class="co"># Overal perch_height frequency</span>
+lizard_perch_freq =<span class="st"> </span>lizards <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">group_by</span>(Perch_type) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">summarize</span>(<span class="dt">count =</span> <span class="kw">n</span>()) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="co"># calculate frequencies per-group</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">frequency =</span> count<span class="op">/</span><span class="kw">sum</span>(count)) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="co"># sort by frequency</span>
+<span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(frequency)) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="co"># tell ggplot to plot Perch_type in its current order</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Perch_type =</span> <span class="kw">fct_inorder</span>(Perch_type))</code></pre></div>
+<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># feel free to use View() to look at this</span>
+<span class="kw">ggplot</span>(lizard_perch_freq) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">aes</span>(<span class="dt">x =</span> Perch_type, <span class="dt">y =</span> frequency) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_col</span>()</code></pre></div>
+<p><img src="Bio373L-Book_files/figure-html/geom_col_data-1.png" width="672" /></p>
+</div>
+</div>
+<div id="facets" class="section level2">
+<h2><span class="header-section-number">B.4</span> Facets</h2>
+<p>You can use facets to make multi-panel figures. This can highlight differences between groups if including them in the same panel is too busy or messy. Let's start by taking our previous regression plot and separating it by color morph.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">regression_plot <span class="op">+</span>
+<span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>Color_morph) <span class="co"># note the ~</span></code></pre></div>
+<p><img src="Bio373L-Book_files/figure-html/facet_reg_color-1.png" width="672" /></p>
+<p>It doesn't look like there's much there. What about faceting by site?</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">regression_plot <span class="op">+</span>
+<span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>Site) <span class="co"># note the ~</span></code></pre></div>
+<p><img src="Bio373L-Book_files/figure-html/facet_reg_site1-1.png" width="672" /></p>
+<p>In this case, it looks like the data ranges are quite a bit different among the sites. This leads to a large amount of unused space. You may wish to remove this whitespace.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">regression_plot <span class="op">+</span>
+<span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>Site, <span class="dt">scales =</span> <span class="st">&quot;free_x&quot;</span>) <span class="co"># scales can also be &#39;free_y&#39; or &#39;free&#39; (which does both x and y)</span></code></pre></div>
+<p><img src="Bio373L-Book_files/figure-html/facet_reg_site2-1.png" width="672" /></p>
+<p>You can also facet by two variables into rows &amp; columns with <code>facet_grid()</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">regression_plot <span class="op">+</span>
+<span class="st">  </span><span class="kw">facet_grid</span>(Perch_type<span class="op">~</span>Color_morph) <span class="co"># rows ~ columns</span></code></pre></div>
+<p><img src="Bio373L-Book_files/figure-html/facet_grd-1.png" width="672" /></p>
+</div>
+<div id="changing-the-theme-axis-titles-other-visual-elements" class="section level2">
+<h2><span class="header-section-number">B.5</span> Changing the theme, axis titles, &amp; other visual elements</h2>
+<p>By default, ggplot will name your axis labels &amp; legends by whatever you put in the <code>aes</code> string. You may wish to change that. For example, the labels on this plot could be improved:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(lizards) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">aes</span>(<span class="dt">x =</span> Limb, <span class="dt">y =</span> Diameter, <span class="dt">color =</span> Color_morph) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">scale_color_viridis_d</span>()</code></pre></div>
+<p><img src="Bio373L-Book_files/figure-html/no_theme_plot-1.png" width="672" /></p>
+<p>The <code>xlab()</code> and <code>ylab()</code> commands can provide labels for their respective axes, while the <code>name</code> argument can re-label scales.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(lizards) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">aes</span>(<span class="dt">x =</span> Limb, <span class="dt">y =</span> Diameter, <span class="dt">color =</span> Color_morph) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">scale_color_viridis_d</span>(<span class="dt">name =</span> <span class="st">&quot;Color Morph&quot;</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Hind Limb Length (mm)&quot;</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Perch Diameter (mm)&quot;</span>)</code></pre></div>
+<p><img src="Bio373L-Book_files/figure-html/with_labs-1.png" width="672" /></p>
+<p>More complicated options involve tweaking the theme. I'm not going to get into this right now, but I may update this later if conditions call for it. There is an example of using it to move the legend position several sections ago.</p>
+</div>
+<div id="more-references" class="section level2">
+<h2><span class="header-section-number">B.6</span> More references</h2>
+<p>You can find a cheatsheet for ggplot2 in RStudio under <strong>Help -&gt; Cheatsheets</strong>; this covers most of the basic functions. The <a href="https://ggplot2.tidyverse.org/reference/">official website</a> has a full list of geoms, scales, aesthetics, theme options, and everything else; it's a more developed version of R's built-in help mechanism. <em>R for Data Science</em> has a <a href="https://r4ds.had.co.nz/data-visualisation.html">chapter</a> on <code>ggplot2</code> that is also quite helpful. Finally, it's worth looking at the <a href="figures.html#figures">Figures</a> chapter of this book for more examples; the code used to make those figures is linked at the bottom of the chapter.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="working-with-r.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="data-manipulation-with-dplyr.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
