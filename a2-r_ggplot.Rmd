@@ -1,4 +1,4 @@
-# Making graphs in R with `ggplot2` {ggplot-tutorial}
+# Making graphs in R with `ggplot2` {#ggplot-tutorial}
 ```{r tidyverse_workaround_a2, echo = FALSE, message = FALSE}
 library(ggplot2)
 library(dplyr)
