@@ -1,4 +1,4 @@
-# Data manipulation with `dplyr`
+# Data manipulation with `dplyr` {#dplyr-tutorial}
 
 Let's talk about data manipulation.  We'll be using the `dplyr` package, which is part of `tidyverse`. You can find a quick reference page under **Help -> Cheatsheets** in RStudio. First, we need to load our packages & data. 
 
