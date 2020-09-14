@@ -1,4 +1,4 @@
-# Performing some useful analyses in R
+# Performing some useful analyses in R {#r-analysis-tutorial}
 
 I'm going to give some examples of how to do common analyses you'll need for this class. I won't be spending much time on the statistical assumptions or diagnostics.
 
@@ -161,7 +161,8 @@ You can get these values directly with the `predict()` function. The code below 
 simple_reg_preds = simple_reg %>% 
   # Predict fitted values wish 95% confidence intervals
   predict(interval = "confidence", level = .95) %>% 
-  as_tibble() # convert the output of predict() from a matrix to a data frame
+  # The output of predict() is a matrix; that's hard to work with, so...
+  as_tibble() # we convert the output of predict() to a data frame (tibble)
 simple_reg_plot_data = lizards %>% 
   select(SVL, Mass) %>% # we only need these columns
   bind_cols(simple_reg_preds) # adds columns of simple_reg_preds to our lizards
@@ -197,11 +198,112 @@ For more information, see the help page `?predict.lm`.
 
 ### ANOVA
 
-(In progress)
+Analysis of variance (ANOVA) is a special case of linear model where all of the predictors are all categorical. However, ANOVAs are usually treated differently from regressions for historical reasons. In R, you fit an ANOVA in the same way as a regression (with the `lm()` command); however, it's common to use the `aov()` command on the `lm`'s output to reformat the results into a more traditional style.  For the simple (one-way) ANOVA follows:
+
+```{r liz_anova_1way, collapse = TRUE}
+# Fit the model wtih a regression
+simple_anova_lm = lm(Diameter ~ Color_morph, data = lizards) 
+# Reformat into traditional ANOVA style; this is usually done with a pipe as part of the previous step
+simple_anova = aov(simple_anova_lm)
+
+# Look at the ANOVA table
+simple_anova %>% summary()
+```
+
+The ANOVA table gives us estimates of variation explained by the predictor and the residuals.  Note how different the output is from the summary of a regression, even though the underlying math is the same:
+
+```{r aov_as_lm_smry, collapse = TRUE}
+summary(simple_anova_lm)
+```
+
+Two quick notes about this: `r ss = anova(simple_anova)[["Sum Sq"]]`
+
+ 1. While $R^2$ isn't included in the `aov()` summary, it can be calculated as the total sum of squares of your predictors (in this case, Color_morph) divided by the total sum of squares including the residual; For this example, we have $`r ss[1]` / (`r ss[1]` + `r ss[2]`) = `r ss[1]/sum(ss)`$.  
+ 2. The `aov()` table provides a line for each predicting factor and the residuals; the `lm()` summary includes estimates for the intercept and the specific levels of the factors (e.g., `Color_morphBrown`). These represent the **dummy coded** variables that R uses under the hood; you don't need to worry about this, but I've got an explanation for them below if you're interested.
+ 
+**Dummy coding**: R converts an ANOVA into a (multiple) regression model by changing a categorical predictor with $n$ levels into $n-1$ predictor variables that can have values of 0 or 1. The first level of the factor doesn't get a dummy variable; its mean is represented by the regression's intercept. The other dummy coefficients represent the mean difference between the reference level and the level they represent. In our example, the reference category is Blue, so the regression's intercept is the mean Diameter for blue lizards.  The average value for brown lizards would be the intercept plus the `Color_morphBrown` coefficient (and similarly for green). The `aov()` function reinterprets the dummy coded results as a traditionally categorical analysis.  
+
+#### ANOVA means & confidence intervals
+
+```{r aov_predict, collapse = TRUE}
+# make a data frame with just your predictors (distinct removes duplicates)
+color_levels = lizards %>% distinct(Color_morph)
+color_levels
+
+simple_anova_means = 
+  # Calculate means & 95% CI
+  predict(simple_anova, newdata = color_levels, 
+                             interval = "confidence", level = 0.95) %>% 
+    as_tibble() %>%  # Convert to data frame
+    bind_cols(color_levels) # add the prediction data as more columns
+simple_anova_means
+```
+
+#### Post-hoc tests
+ 
+In general, the ANOVA tests whether a factor (such as color morph) explains a significant amount of variation in the response. To test whether there are significant differences between specific levels of a factor, you need to run post-hoc tests on your ANOVA. A common post-hoc is Tukey's HSD (honest significant difference).
+
+```{r anova_hsd1, collapse = TRUE}
+simple_anova %>% TukeyHSD()
+```
+ 
+You can use the `witch` argument to specify specific level comparisons, but by default it compares all of them. 
+
+A traditional way of summarizing post-hoc tests is to assign one or more letters to significantly different levels, where levels with different letters are significantly different from each other.  For example, the letter grouping `c("A", "AB", "B", "C")` would indicate that group 1 and group 3 are different from each other, but not from group 2; group 4 is different from everything.  In the above example, everything is different, so we could assign the letters A through C.
+
+```{r update_anova_mean_tbl}
+# We'll store these in a data frame for later use
+anova_means_letters = simple_anova_means %>% 
+  arrange(Color_morph) %>% # These will be plotted alphabetically, so we'll sort them that way to keep things easy
+  mutate(anova_labels = c("A", "B", "C"))
+anova_means_letters
+```
+
+
+ 
+#### Plotting ANOVAs
+
+The basics of plotting ANOVA results was covered in the last part of Section \@ref(ggp_discx_conty), but we'll refine them a bit here. The main additions are the use of `geom_text()` to include the labels above each category and `scale_y_continuous`, which we use to customize the y axis a bit so that it doesn't cut off the labels. Be sure to indicate in your figure captions what the letters mean.  
+
+```{r a4_anova_plt_1, message = FALSE}
+library(ggforce) # for geom_sina()
+# We're going to add post-hoc letters to this plot
+letter_y_position = max(lizards$Diameter) * 1.05 # Put letters at the top
+
+anova_plot = ggplot(lizards) + 
+  aes(x = Color_morph) + # Color_morph column is in both lizards AND anova_means_letters
+  # Show the raw data
+  geom_sina(aes(y = Diameter), # Diameter column is in lizards data frame
+            color = alpha("blue", .2)) +  # semi-transparent points
+  geom_errorbar(
+    aes(ymin = lwr, ymax = upr), # columns lwr and upr are in anova_means_letters
+    data = anova_means_letters,    # Use the summary data frame instead of lizards
+    color = "black", 
+    width = .3 # How wide the error bars are
+  ) + 
+  geom_point(aes(y = fit), # fit column is in anova_means_letters
+             color = "black", size = 2,
+             data = anova_means_letters) + 
+  geom_text(aes(label = anova_labels), # label is the aesthetic used to indicate text
+            y = letter_y_position, # This is a fixed spot, not an aesthetic
+            fontface = "bold",
+            size = 6, # font size
+            data = anova_means_letters) + 
+  scale_y_continuous(
+    # insure the letters aren't cut off at the top
+    limits = c(NA, letter_y_position), # This is the same as ylim()
+    breaks = seq(from = 0, to = 50, by = 10), # set axis ticks every 10 points
+    name = c("Perch Diameter (mm)") # this is the same as ylab()
+  ) + 
+  xlab("Color Morph")
+anova_plot
+```
 
 ## To do (In progress)
  
 ### Comparing two means (t-tests)
+
+If you have to do this and I haven't finished this section, just use an ANOVA; mathematically, it works out to more or less the same thing.  
 
 ### Advanced workflow tips
 

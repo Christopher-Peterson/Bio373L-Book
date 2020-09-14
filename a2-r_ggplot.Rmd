@@ -185,7 +185,7 @@ ggplot(data = lizards) +
 ```
 Challenge: How would you do the same with a histogram?
 
-### Discrete X, continuous Y
+### Discrete X, continuous Y {#ggp_discx_conty}
 
 Boxplots: these show the quartile distributions of datasets. Let's compare perch height distribution at each site:
 
@@ -252,9 +252,9 @@ ggplot(lizards) +
   aes(x = Color_morph, y = Diameter) + 
   # Show the raw data (from the lizards data frame)
   geom_sina(, color = "grey60") +
-  # Show the Mean +/- standard error
+  # Show the Mean +/- 95% confidence interval
   geom_errorbar(
-    # Define the range as the mean diamter +/- 1.96 * se
+    # 95% CI is the mean diamter +/- 1.96 * se
     aes(ymin = Diameter - 1.96 * Diameter_se, 
         ymax = Diameter + 1.96 * Diameter_se),
     color = "black", 
