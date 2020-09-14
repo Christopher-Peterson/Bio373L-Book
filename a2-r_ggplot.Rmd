@@ -1,4 +1,4 @@
-# Making graphs in R with `ggplot2`
+# Making graphs in R with `ggplot2` {ggplot-tutorial}
 ```{r tidyverse_workaround_a2, echo = FALSE, message = FALSE}
 library(ggplot2)
 library(dplyr)
@@ -14,11 +14,11 @@ lizards <- read_csv("example_data/anoles.csv") # See Appendix A if you don't hav
 In this chapter, we discuss the basics of making figures with with the `ggplot2` package in R (part of the `tidyverse`.
 The `ggplot2` package assembles a graph from several components. The important components are:
 
- - **Data:** You should have the data going into a plot organized into a data frame, where each row is an observation and each column is a different variable. This is called "tidy data;" we'll talk more about it later.
- - **Aesthetics:** Which variables (columns) in the data connect to visual components of the plot?  E.g., what goes on the X & Y axes, what does color mean, etc?
- - **Scales:** How do your aesthetics visually appear? For example, if your aesthetics say that "Mass" is represented by color, a scale would say what colors those actually are.  
- - **Geometry:** What's actually drawn on your graph (e.g., points, lines, bars, etc)
- - **Facets:** If you're splitting your figure into multiple panels, what data is informing that?
+ - **Data**: You should have the data going into a plot organized into a data frame, where each row is an observation and each column is a different variable. This is called "tidy data;" we'll talk more about it later.
+ - **Aesthetics**: Which variables (columns) in the data connect to visual components of the plot?  E.g., what goes on the X & Y axes, what does color mean, etc?
+ - **Scales**: How do your aesthetics visually appear? For example, if your aesthetics say that "Mass" is represented by color, a scale would say what colors those actually are.  
+ - **Geometry**: What's actually drawn on your graph (e.g., points, lines, bars, etc)
+ - **Facets**: If you're splitting your figure into multiple panels, what data is informing that?
  
 Let's look at an example:
 ```{r, echo = FALSE}
@@ -236,6 +236,7 @@ ggplot(data = lizards) +
 
 Note that we've included two `geom_*` layers here, and that the one that was called second (`geom_sina`) was plotted on top of the one called first.
 
+
 Sometimes, you'll want to show means & confidence intervals of your different groups.  If possible, it's helpful to put those in the context of the raw data.  The below plot looks at differences in perch diameter among colors, with the raw data in grey and the means in black. The error bars (`geom_errorbar`) take aesthetics `ymin` and `ymax`, which indicate their range. We used plus & minus 1.96 standard errors because that's the definition of a 95% confidence interval for normally distributed data. Be sure to tell your reader/audience what an error bar represents in your figure captions.
 
 ```{r mean_se_plot, message = FALSE}
@@ -262,10 +263,11 @@ ggplot(lizards) +
     # The column names should match with the global aesthetics (in this case, x and y)
   ) + 
   geom_point(color = "black", size = 2,
-             data = diameter_mean_se)
-             # This one also uses the summary data frame
-             # It keeps the global aesthetics, which match
-             # the color morph & mean value
+             data = diameter_mean_se
+   # This one also uses the summary data frame
+   # It keeps the global aesthetics, which match
+   # the color morph & mean value
+  )
 
 ```
 
