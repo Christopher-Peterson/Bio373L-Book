@@ -62,7 +62,7 @@ These tests generally compare the frequencies of count data.
 
 The easiest way to make a contingency table is from a data frame where each column is a categorical variable you want in the table & each row is an observation.  Let's say we wanted to create a color morph by perch type contingency with our lizard data.
 
-```{r contingency_lizard_1}
+```{r contingency_lizard_1, collapse = TRUE}
 color_by_perch_tbl = lizards %>% 
   select(Color_morph, Perch_type) %>% # select only the columns you want
   table()  # feed them into the table command
@@ -71,7 +71,7 @@ color_by_perch_tbl
 
 If you want to switch your contingency table from counts to frequencies, just divide it by its sum:
 
-```{r contingency_lizard_freq}
+```{r contingency_lizard_freq, collapse = TRUE}
 color_by_perch_tbl / sum(color_by_perch_tbl)
 ```
 
@@ -79,7 +79,7 @@ color_by_perch_tbl / sum(color_by_perch_tbl)
 
 Once you have a contingency table, you can test for independence between the rows and columns. This provides you with your test statistic (`X-squared`), degrees of freedom, and p-value.  
 
-```{r chi_sq_1}
+```{r chi_sq_1, collapse = TRUE}
 chisq.test(color_by_perch_tbl)
 ```
 
@@ -94,19 +94,115 @@ print(site_a_contingency)
 chisq.test(site_a_contingency)
 ```
 
-Note the warning that "Chi-squared approximation may be incorrect."  In this case, it's a good idea to run the Fisher's exact test, it investigates the same null hypotheses, but works with low counts. 
+Note the warning that "Chi-squared approximation may be incorrect."  In this case, it's a good idea to run the Fisher's exact test, which investigates the same null hypotheses, but works with low counts. Fisher's test is less powerful than the Chi-squared test, so it should only be used when it's the only option.
 
-```{r exact_test_lizards}
+```{r exact_test_lizards, collapse = TRUE}
 fisher.test(site_a_contingency)
 ```
 
-## Comparing two means (t-tests)
+You can also run a chi-squared or Fisher's exact test directly on two vectors or data frame columns:
+
+```{r chisq_exact_direct, collapse = TRUE}
+chisq.test(lizards$Color_morph, lizards$Perch_type)
+```
+
+## Linear Models: Regression and ANOVA
+
+Linear regression and Analysis of Variance (ANOVA) are both special cases of the general linear model (LM), which fits a continuous response (y) to one or more predictors (x). You specify linear models in R with a **formula** syntax, which generally follows as: `response ~ predictor`. Combining this formula with the `lm()` function and a datset gives you the basis of a linear model.
+
+### Regression
+
+Lets say we wanted to see how snout-vent length (SVL) affects mass:
+
+```{r lm_1, collapse = TRUE}
+simple_reg = lm(Mass ~ SVL, data = lizards)
+simple_reg
+```
+
+By default, this creates an LM object, which tells us the regression coefficients. For a linear regression (continuous response), these tell us the regression equation; in this case, that for every $1 \text{ mm}$ increase in SVL, mass increases by $`r coef(simple_reg)[2] %>% round(3) %>% as.numeric()` \text{ g}$.  Note that in this case, it may make sense to re-scale SVL to be in cm, so that the coefficient would be easier to interpret (e.g., use `lizards %>% mutate(SVL_cm = SVL/10)`. To extract the coeficients directly, use:
+
+```{r lm_2, collapse = TRUE}
+coef(simple_reg)
+```
+
+For more information, use the summary function:
+```{r lm_smry, collapse = TRUE}
+summary(simple_reg)
+```
+
+The most important components of this are the $R^2$ (which is listed as `Multiple R-squared`), the standard errors and p-values for each of your coefficients (`Coefficients` section), and the overall F-statistic and p-value (the last line).  
+
+A quick note on p-values:
+
+  1. Don't base all of your interpretation on p-values; the $R^2$ and adjusted $R^2$ of a model are more important.
+  2. The overall p-value relates to how the whole model explains the variance in the data; the coefficient p-value relates to whether the specific coefficient is different from zero.  
+  3. Coefficient-level p-values tend to be rather fragile, and shouldn't be used.  
+
+#### Plotting linear regressions
+
+For a simple linear regression, `ggplot` can automatically plot the trendline (a.k.a., fitted values) and confidence intervals with `geom_smooth()`. 
+
+```{r a4_lin_reg_plot1, collapse = TRUE, message = FALSE}
+lizards %>% 
+  ggplot() + 
+  aes(x = SVL, y = Mass) + 
+  geom_point() + 
+  geom_smooth(method = "lm", # use a linear regression
+              se = TRUE, # Include a confidence interval around the line
+              level = .95) # the level of the confidence interval; default = 95%
+
+```
+
+For more complicated models, this approach may not work very well; it can be helpful to calculate the fitted values & confidence intervals from the model object and plot them directly.  
+
+You can get these values directly with the `predict()` function. The code below calculates the trendline and 95% confidence interval for the regression, and adds them to a data frame with the original data.  
+
+```{r lm_predict, collapse = TRUE}
+simple_reg_preds = simple_reg %>% 
+  # Predict fitted values wish 95% confidence intervals
+  predict(interval = "confidence", level = .95) %>% 
+  as_tibble() # convert the output of predict() from a matrix to a data frame
+simple_reg_plot_data = lizards %>% 
+  select(SVL, Mass) %>% # we only need these columns
+  bind_cols(simple_reg_preds) # adds columns of simple_reg_preds to our lizards
+View(simple_reg_plot_data)
+```
+
+To plot this, you'd use a combination of `geom_line()` for the fitted values and `geom_ribbon()`, which would create the confidence interval region.  
+
+```{r a4_lm_plot_manual}
+ggplot(simple_reg_plot_data) + 
+  aes(x = SVL) + 
+  geom_point(aes(y = Mass), color = "cornflowerblue") + 
+  geom_ribbon(aes(ymin = lwr, ymax = upr), 
+              fill = alpha("black", .2),  # dark fill with 80% transparency (alpha)
+              color = grey(.4), # dark-ish grey border line
+              linetype = 2) +   # dotted border line
+  geom_line(aes(y = fit))
+```
+
+You can also use `predict()` to calculate the respected value of your response variable given new predictor(s); this is useful for interpolation and extrapolation.  
+
+```{r predict_lm_extrap, collapse = TRUE}
+# Create a data frame with new predictors
+svl_predictors = tibble(SVL = c(20, 150, 600)) # New predictors
+mass_predictions = predict(simple_reg, 
+                           newdata = svl_predictors)  # The newdata argument is key here
+                                                      # If unspecified, it uses the original data
+svl_predictors %>% 
+  mutate(Mass_estimate = mass_predictions)
+```
+
+For more information, see the help page `?predict.lm`.  
+
+### ANOVA
 
 (In progress)
-## Linear Regression and ANOVA
 
-(In progress)
+## To do (In progress)
+ 
+### Comparing two means (t-tests)
 
-## Advanced workflow tips
+### Advanced workflow tips
 
-(In progress)
+### Model comparisons
