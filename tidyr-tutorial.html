@@ -1,0 +1,2301 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>E Wrangling, reshaping, and tidying data with tidyr | Bio 373L Survival Guide</title>
+  <meta name="description" content="Writing advice for Field Ecology." />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="E Wrangling, reshaping, and tidying data with tidyr | Bio 373L Survival Guide" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Writing advice for Field Ecology." />
+  <meta name="github-repo" content="Christopher-Peterson/Bio373L-Book" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="E Wrangling, reshaping, and tidying data with tidyr | Bio 373L Survival Guide" />
+  
+  <meta name="twitter:description" content="Writing advice for Field Ecology." />
+  
+
+<meta name="author" content="Christopher R. Peterson" />
+
+
+<meta name="date" content="2020-09-15" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="r-analysis-tutorial.html"/>
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Bio 373L Survival Guide</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="1" data-path="structure.html"><a href="structure.html"><i class="fa fa-check"></i><b>1</b> Writing Lab Reports: Structure</a><ul>
+<li class="chapter" data-level="1.1" data-path="structure.html"><a href="structure.html#structure-overview"><i class="fa fa-check"></i><b>1.1</b> Structure Overview</a></li>
+<li class="chapter" data-level="1.2" data-path="structure.html"><a href="structure.html#abstract"><i class="fa fa-check"></i><b>1.2</b> Abstract</a></li>
+<li class="chapter" data-level="1.3" data-path="structure.html"><a href="structure.html#introduction"><i class="fa fa-check"></i><b>1.3</b> Introduction</a></li>
+<li class="chapter" data-level="1.4" data-path="structure.html"><a href="structure.html#methods"><i class="fa fa-check"></i><b>1.4</b> Methods</a></li>
+<li class="chapter" data-level="1.5" data-path="structure.html"><a href="structure.html#results"><i class="fa fa-check"></i><b>1.5</b> Results</a><ul>
+<li class="chapter" data-level="1.5.1" data-path="structure.html"><a href="structure.html#reporting-statistics"><i class="fa fa-check"></i><b>1.5.1</b> Reporting statistics</a></li>
+<li class="chapter" data-level="1.5.2" data-path="structure.html"><a href="structure.html#do-not-interpret-your-data-here"><i class="fa fa-check"></i><b>1.5.2</b> Do not interpret your data here</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="structure.html"><a href="structure.html#discussion"><i class="fa fa-check"></i><b>1.6</b> Discussion</a></li>
+<li class="chapter" data-level="1.7" data-path="structure.html"><a href="structure.html#literature-cited"><i class="fa fa-check"></i><b>1.7</b> Literature Cited</a></li>
+<li class="chapter" data-level="1.8" data-path="structure.html"><a href="structure.html#common-mistakes-for-particular-sections"><i class="fa fa-check"></i><b>1.8</b> Common Mistakes for particular sections</a><ul>
+<li class="chapter" data-level="1.8.1" data-path="structure.html"><a href="structure.html#introduction-and-discussion"><i class="fa fa-check"></i><b>1.8.1</b> Introduction and Discussion</a></li>
+<li class="chapter" data-level="1.8.2" data-path="structure.html"><a href="structure.html#results-1"><i class="fa fa-check"></i><b>1.8.2</b> Results</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="style.html"><a href="style.html"><i class="fa fa-check"></i><b>2</b> Writing Lab Reports: Style</a><ul>
+<li class="chapter" data-level="2.1" data-path="style.html"><a href="style.html#be-concise"><i class="fa fa-check"></i><b>2.1</b> Be Concise</a></li>
+<li class="chapter" data-level="2.2" data-path="style.html"><a href="style.html#sentence-structure"><i class="fa fa-check"></i><b>2.2</b> Sentence Structure</a></li>
+<li class="chapter" data-level="2.3" data-path="style.html"><a href="style.html#passive-voice"><i class="fa fa-check"></i><b>2.3</b> Passive Voice</a></li>
+<li class="chapter" data-level="2.4" data-path="style.html"><a href="style.html#word-choice"><i class="fa fa-check"></i><b>2.4</b> Word Choice</a></li>
+<li class="chapter" data-level="2.5" data-path="style.html"><a href="style.html#scientific-and-common-names"><i class="fa fa-check"></i><b>2.5</b> Scientific and Common Names</a></li>
+<li class="chapter" data-level="2.6" data-path="style.html"><a href="style.html#other-grammar"><i class="fa fa-check"></i><b>2.6</b> Other Grammar</a></li>
+<li class="chapter" data-level="2.7" data-path="style.html"><a href="style.html#commonly-confused-definitions"><i class="fa fa-check"></i><b>2.7</b> Commonly Confused Definitions</a></li>
+<li class="chapter" data-level="2.8" data-path="style.html"><a href="style.html#significant-digits"><i class="fa fa-check"></i><b>2.8</b> Significant Digits</a></li>
+<li class="chapter" data-level="2.9" data-path="style.html"><a href="style.html#tenses"><i class="fa fa-check"></i><b>2.9</b> Tenses</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="figures.html"><a href="figures.html"><i class="fa fa-check"></i><b>3</b> Figures and Tables</a><ul>
+<li class="chapter" data-level="3.1" data-path="figures.html"><a href="figures.html#captions"><i class="fa fa-check"></i><b>3.1</b> Captions</a></li>
+<li class="chapter" data-level="3.2" data-path="figures.html"><a href="figures.html#figures"><i class="fa fa-check"></i><b>3.2</b> Figures</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="figures.html"><a href="figures.html#specific-figure-guidelines"><i class="fa fa-check"></i><b>3.2.1</b> Specific Figure Guidelines</a></li>
+<li class="chapter" data-level="3.2.2" data-path="style.html"><a href="style.html#be-concise"><i class="fa fa-check"></i><b>3.2.2</b> Be Concise</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="figures.html"><a href="figures.html#some-example-figures"><i class="fa fa-check"></i><b>3.3</b> Some Example Figures</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="figures.html"><a href="figures.html#general-formatting"><i class="fa fa-check"></i><b>3.3.1</b> General Formatting</a></li>
+<li class="chapter" data-level="3.3.2" data-path="figures.html"><a href="figures.html#continuous-response-categorical-predictors"><i class="fa fa-check"></i><b>3.3.2</b> Continuous response, categorical predictors</a></li>
+<li class="chapter" data-level="3.3.3" data-path="figures.html"><a href="figures.html#categorical-count-or-frequency-responses"><i class="fa fa-check"></i><b>3.3.3</b> Categorical, count, or frequency responses</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="figures.html"><a href="figures.html#tables"><i class="fa fa-check"></i><b>3.4</b> Tables</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="lab1.html"><a href="lab1.html"><i class="fa fa-check"></i><b>4</b> Lab 1: Succession</a><ul>
+<li class="chapter" data-level="4.1" data-path="lab1.html"><a href="lab1.html#introduction-to-the-lab"><i class="fa fa-check"></i><b>4.1</b> Introduction to the lab</a></li>
+<li class="chapter" data-level="4.2" data-path="lab1.html"><a href="lab1.html#materials-and-methods"><i class="fa fa-check"></i><b>4.2</b> Materials and Methods</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="lab1.html"><a href="lab1.html#bfl-habitat-regions"><i class="fa fa-check"></i><b>4.2.1</b> BFL habitat regions</a></li>
+<li class="chapter" data-level="4.2.2" data-path="lab1.html"><a href="lab1.html#data-collection"><i class="fa fa-check"></i><b>4.2.2</b> Data Collection</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="lab1.html"><a href="lab1.html#analysis-to-perform"><i class="fa fa-check"></i><b>4.3</b> Analysis to perform</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="lab1.html"><a href="lab1.html#canopy-tree-density"><i class="fa fa-check"></i><b>4.3.1</b> Canopy tree density</a></li>
+<li class="chapter" data-level="4.3.2" data-path="lab1.html"><a href="lab1.html#species-by-habitat-and-life-stage"><i class="fa fa-check"></i><b>4.3.2</b> Species by habitat and life stage</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="structure.html"><a href="structure.html#discussion"><i class="fa fa-check"></i><b>4.4</b> Discussion</a></li>
+<li class="chapter" data-level="4.5" data-path="lab1.html"><a href="lab1.html#general-comments-post-review"><i class="fa fa-check"></i><b>4.5</b> General Comments (Post-Review)</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="figures.html"><a href="figures.html#figures"><i class="fa fa-check"></i><b>4.5.1</b> Figures</a></li>
+<li class="chapter" data-level="4.5.2" data-path="lab1.html"><a href="lab1.html#write-this-like-youre-trying-to-publish-it"><i class="fa fa-check"></i><b>4.5.2</b> Write this like you're trying to publish it</a></li>
+<li class="chapter" data-level="4.5.3" data-path="lab1.html"><a href="lab1.html#describe-the-habitats"><i class="fa fa-check"></i><b>4.5.3</b> Describe the habitats</a></li>
+<li class="chapter" data-level="4.5.4" data-path="lab1.html"><a href="lab1.html#the-analysis"><i class="fa fa-check"></i><b>4.5.4</b> The Analysis</a></li>
+<li class="chapter" data-level="4.5.5" data-path="lab1.html"><a href="lab1.html#keeping-things-in-the-right-sections"><i class="fa fa-check"></i><b>4.5.5</b> Keeping things in the right sections</a></li>
+<li class="chapter" data-level="4.5.6" data-path="lab1.html"><a href="lab1.html#basic-style-and-format-rules"><i class="fa fa-check"></i><b>4.5.6</b> Basic style and format rules</a></li>
+<li class="chapter" data-level="4.5.7" data-path="lab1.html"><a href="lab1.html#other-comments"><i class="fa fa-check"></i><b>4.5.7</b> Other Comments</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="Lab2.html"><a href="Lab2.html"><i class="fa fa-check"></i><b>5</b> Lab 2: Woodland Heterogeneity</a><ul>
+<li class="chapter" data-level="5.1" data-path="Lab2.html"><a href="Lab2.html#introduction-background"><i class="fa fa-check"></i><b>5.1</b> Introduction &amp; background</a></li>
+<li class="chapter" data-level="5.2" data-path="Lab2.html"><a href="Lab2.html#questions-and-hypotheses"><i class="fa fa-check"></i><b>5.2</b> Questions and Hypotheses</a></li>
+<li class="chapter" data-level="5.3" data-path="Lab2.html"><a href="Lab2.html#field-methods"><i class="fa fa-check"></i><b>5.3</b> Field Methods</a></li>
+<li class="chapter" data-level="5.4" data-path="Lab2.html"><a href="Lab2.html#analyses"><i class="fa fa-check"></i><b>5.4</b> Analyses</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="Lab2.html"><a href="Lab2.html#calibrating-canopy-estimates"><i class="fa fa-check"></i><b>5.4.1</b> Calibrating canopy estimates</a></li>
+<li class="chapter" data-level="5.4.2" data-path="Lab2.html"><a href="Lab2.html#relationship-between-canopy-and-ground-cover"><i class="fa fa-check"></i><b>5.4.2</b> Relationship between canopy and ground cover</a></li>
+<li class="chapter" data-level="5.4.3" data-path="Lab2.html"><a href="Lab2.html#quantifying-the-spatial-mosaic"><i class="fa fa-check"></i><b>5.4.3</b> Quantifying the spatial mosaic</a></li>
+<li class="chapter" data-level="5.4.4" data-path="Lab2.html"><a href="Lab2.html#historical-trends"><i class="fa fa-check"></i><b>5.4.4</b> Historical Trends</a></li>
+</ul></li>
+</ul></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="working-with-r.html"><a href="working-with-r.html"><i class="fa fa-check"></i><b>A</b> Working with R</a><ul>
+<li class="chapter" data-level="A.1" data-path="working-with-r.html"><a href="working-with-r.html#introduction-to-rstudio"><i class="fa fa-check"></i><b>A.1</b> Introduction to RStudio</a><ul>
+<li class="chapter" data-level="A.1.1" data-path="working-with-r.html"><a href="working-with-r.html#rstudio-projects"><i class="fa fa-check"></i><b>A.1.1</b> RStudio Projects</a></li>
+<li class="chapter" data-level="A.1.2" data-path="working-with-r.html"><a href="working-with-r.html#customizing-rstudio"><i class="fa fa-check"></i><b>A.1.2</b> Customizing RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="A.2" data-path="working-with-r.html"><a href="working-with-r.html#r-basics"><i class="fa fa-check"></i><b>A.2</b> R basics</a><ul>
+<li class="chapter" data-level="A.2.1" data-path="working-with-r.html"><a href="working-with-r.html#statements-vectors"><i class="fa fa-check"></i><b>A.2.1</b> Statements &amp; vectors</a></li>
+<li class="chapter" data-level="A.2.2" data-path="working-with-r.html"><a href="working-with-r.html#variables"><i class="fa fa-check"></i><b>A.2.2</b> Variables</a></li>
+<li class="chapter" data-level="A.2.3" data-path="working-with-r.html"><a href="working-with-r.html#reading-working-with-data-frames"><i class="fa fa-check"></i><b>A.2.3</b> Reading &amp; working with data frames</a></li>
+<li class="chapter" data-level="A.2.4" data-path="working-with-r.html"><a href="working-with-r.html#functions"><i class="fa fa-check"></i><b>A.2.4</b> Functions</a></li>
+<li class="chapter" data-level="A.2.5" data-path="working-with-r.html"><a href="working-with-r.html#getting-help"><i class="fa fa-check"></i><b>A.2.5</b> Getting Help</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="ggplot-tutorial.html"><a href="ggplot-tutorial.html"><i class="fa fa-check"></i><b>B</b> Making graphs in R with <code>ggplot2</code></a><ul>
+<li class="chapter" data-level="B.1" data-path="ggplot-tutorial.html"><a href="ggplot-tutorial.html#components-of-a-plot"><i class="fa fa-check"></i><b>B.1</b> Components of a plot</a></li>
+<li class="chapter" data-level="B.2" data-path="ggplot-tutorial.html"><a href="ggplot-tutorial.html#aesthetics-and-scales"><i class="fa fa-check"></i><b>B.2</b> Aesthetics and scales</a><ul>
+<li class="chapter" data-level="B.2.1" data-path="ggplot-tutorial.html"><a href="ggplot-tutorial.html#color"><i class="fa fa-check"></i><b>B.2.1</b> Color</a></li>
+<li class="chapter" data-level="B.2.2" data-path="ggplot-tutorial.html"><a href="ggplot-tutorial.html#shape"><i class="fa fa-check"></i><b>B.2.2</b> Shape</a></li>
+<li class="chapter" data-level="B.2.3" data-path="ggplot-tutorial.html"><a href="ggplot-tutorial.html#size"><i class="fa fa-check"></i><b>B.2.3</b> Size</a></li>
+<li class="chapter" data-level="B.2.4" data-path="ggplot-tutorial.html"><a href="ggplot-tutorial.html#fixed-aesthetics"><i class="fa fa-check"></i><b>B.2.4</b> Fixed aesthetics</a></li>
+<li class="chapter" data-level="B.2.5" data-path="ggplot-tutorial.html"><a href="ggplot-tutorial.html#combining-aesthetics"><i class="fa fa-check"></i><b>B.2.5</b> Combining aesthetics</a></li>
+</ul></li>
+<li class="chapter" data-level="B.3" data-path="ggplot-tutorial.html"><a href="ggplot-tutorial.html#geometry"><i class="fa fa-check"></i><b>B.3</b> Geometry</a><ul>
+<li class="chapter" data-level="B.3.1" data-path="ggplot-tutorial.html"><a href="ggplot-tutorial.html#continuous-x-no-y"><i class="fa fa-check"></i><b>B.3.1</b> Continuous X, no Y</a></li>
+<li class="chapter" data-level="B.3.2" data-path="ggplot-tutorial.html"><a href="ggplot-tutorial.html#ggp_discx_conty"><i class="fa fa-check"></i><b>B.3.2</b> Discrete X, continuous Y</a></li>
+<li class="chapter" data-level="B.3.3" data-path="ggplot-tutorial.html"><a href="ggplot-tutorial.html#continuous-x-and-y"><i class="fa fa-check"></i><b>B.3.3</b> Continuous X and Y</a></li>
+<li class="chapter" data-level="B.3.4" data-path="ggplot-tutorial.html"><a href="ggplot-tutorial.html#time-series-data"><i class="fa fa-check"></i><b>B.3.4</b> Time series data</a></li>
+<li class="chapter" data-level="B.3.5" data-path="ggplot-tutorial.html"><a href="ggplot-tutorial.html#discrete-x-and-y"><i class="fa fa-check"></i><b>B.3.5</b> Discrete X and Y</a></li>
+</ul></li>
+<li class="chapter" data-level="B.4" data-path="ggplot-tutorial.html"><a href="ggplot-tutorial.html#facets"><i class="fa fa-check"></i><b>B.4</b> Facets</a></li>
+<li class="chapter" data-level="B.5" data-path="ggplot-tutorial.html"><a href="ggplot-tutorial.html#changing-the-theme-axis-titles-other-visual-elements"><i class="fa fa-check"></i><b>B.5</b> Changing the theme, axis titles, &amp; other visual elements</a></li>
+<li class="chapter" data-level="B.6" data-path="ggplot-tutorial.html"><a href="ggplot-tutorial.html#more-references"><i class="fa fa-check"></i><b>B.6</b> More references</a></li>
+</ul></li>
+<li class="chapter" data-level="C" data-path="dplyr-tutorial.html"><a href="dplyr-tutorial.html"><i class="fa fa-check"></i><b>C</b> Data manipulation with <code>dplyr</code></a><ul>
+<li class="chapter" data-level="C.1" data-path="dplyr-tutorial.html"><a href="dplyr-tutorial.html#the-pipe"><i class="fa fa-check"></i><b>C.1</b> The Pipe (%&gt;%)</a></li>
+<li class="chapter" data-level="C.2" data-path="dplyr-tutorial.html"><a href="dplyr-tutorial.html#addingmodifying-columns-mutate"><i class="fa fa-check"></i><b>C.2</b> Adding/modifying columns (mutate)</a></li>
+<li class="chapter" data-level="C.3" data-path="dplyr-tutorial.html"><a href="dplyr-tutorial.html#subsetting-by-row-filter"><i class="fa fa-check"></i><b>C.3</b> Subsetting by row (filter)</a></li>
+<li class="chapter" data-level="C.4" data-path="dplyr-tutorial.html"><a href="dplyr-tutorial.html#subsetting-by-column-select"><i class="fa fa-check"></i><b>C.4</b> Subsetting by column (select)</a></li>
+<li class="chapter" data-level="C.5" data-path="dplyr-tutorial.html"><a href="dplyr-tutorial.html#sorting-by-columns-arrange"><i class="fa fa-check"></i><b>C.5</b> Sorting by columns (arrange)</a></li>
+<li class="chapter" data-level="C.6" data-path="dplyr-tutorial.html"><a href="dplyr-tutorial.html#summarizing-data"><i class="fa fa-check"></i><b>C.6</b> Summarizing data</a></li>
+<li class="chapter" data-level="C.7" data-path="dplyr-tutorial.html"><a href="dplyr-tutorial.html#group-operations"><i class="fa fa-check"></i><b>C.7</b> Group Operations</a></li>
+</ul></li>
+<li class="chapter" data-level="D" data-path="r-analysis-tutorial.html"><a href="r-analysis-tutorial.html"><i class="fa fa-check"></i><b>D</b> Performing some useful analyses in R</a><ul>
+<li class="chapter" data-level="D.1" data-path="r-analysis-tutorial.html"><a href="r-analysis-tutorial.html#a-note-on-factors"><i class="fa fa-check"></i><b>D.1</b> A note on factors</a></li>
+<li class="chapter" data-level="D.2" data-path="r-analysis-tutorial.html"><a href="r-analysis-tutorial.html#comparing-categorical-frequencies-contingency-tables-related-analyses"><i class="fa fa-check"></i><b>D.2</b> Comparing categorical frequencies (Contingency Tables &amp; related analyses)</a><ul>
+<li class="chapter" data-level="D.2.1" data-path="r-analysis-tutorial.html"><a href="r-analysis-tutorial.html#contingency-tables"><i class="fa fa-check"></i><b>D.2.1</b> Contingency Tables</a></li>
+<li class="chapter" data-level="D.2.2" data-path="r-analysis-tutorial.html"><a href="r-analysis-tutorial.html#chi-squared-fishers-exact-tests"><i class="fa fa-check"></i><b>D.2.2</b> Chi-squared &amp; Fisher's Exact Tests</a></li>
+</ul></li>
+<li class="chapter" data-level="D.3" data-path="r-analysis-tutorial.html"><a href="r-analysis-tutorial.html#linear-models-regression-and-anova"><i class="fa fa-check"></i><b>D.3</b> Linear Models: Regression and ANOVA</a><ul>
+<li class="chapter" data-level="D.3.1" data-path="r-analysis-tutorial.html"><a href="r-analysis-tutorial.html#regression"><i class="fa fa-check"></i><b>D.3.1</b> Regression</a></li>
+<li class="chapter" data-level="D.3.2" data-path="r-analysis-tutorial.html"><a href="r-analysis-tutorial.html#anova"><i class="fa fa-check"></i><b>D.3.2</b> ANOVA</a></li>
+</ul></li>
+<li class="chapter" data-level="D.4" data-path="r-analysis-tutorial.html"><a href="r-analysis-tutorial.html#to-do-in-progress"><i class="fa fa-check"></i><b>D.4</b> To do (In progress)</a><ul>
+<li class="chapter" data-level="D.4.1" data-path="r-analysis-tutorial.html"><a href="r-analysis-tutorial.html#comparing-two-means-t-tests"><i class="fa fa-check"></i><b>D.4.1</b> Comparing two means (t-tests)</a></li>
+<li class="chapter" data-level="D.4.2" data-path="r-analysis-tutorial.html"><a href="r-analysis-tutorial.html#advanced-workflow-tips"><i class="fa fa-check"></i><b>D.4.2</b> Advanced workflow tips</a></li>
+<li class="chapter" data-level="D.4.3" data-path="r-analysis-tutorial.html"><a href="r-analysis-tutorial.html#model-comparisons"><i class="fa fa-check"></i><b>D.4.3</b> Model comparisons</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="E" data-path="tidyr-tutorial.html"><a href="tidyr-tutorial.html"><i class="fa fa-check"></i><b>E</b> Wrangling, reshaping, and tidying data with <code>tidyr</code></a><ul>
+<li class="chapter" data-level="E.1" data-path="tidyr-tutorial.html"><a href="tidyr-tutorial.html#pivot-longer-tutorial"><i class="fa fa-check"></i><b>E.1</b> Going from many columns to many rows: <code>pivot_longer()</code></a></li>
+<li class="chapter" data-level="E.2" data-path="tidyr-tutorial.html"><a href="tidyr-tutorial.html#separate-tutorial"><i class="fa fa-check"></i><b>E.2</b> Splitting and merging columns: <code>separate() and unite()</code></a></li>
+<li class="chapter" data-level="E.3" data-path="tidyr-tutorial.html"><a href="tidyr-tutorial.html#pivot-longer-multi-tutorial"><i class="fa fa-check"></i><b>E.3</b> Pivoting multiple columns</a></li>
+<li class="chapter" data-level="E.4" data-path="tidyr-tutorial.html"><a href="tidyr-tutorial.html#pivot-wider-tutorial"><i class="fa fa-check"></i><b>E.4</b> Going from many rows to many columns: <code>pivot_wider()</code></a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Bio 373L Survival Guide</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="tidyr-tutorial" class="section level1">
+<h1><span class="header-section-number">E</span> Wrangling, reshaping, and tidying data with <code>tidyr</code></h1>
+<p>Most of the previous appendices have required you to have your data in a <strong>tidy</strong> format. Tidy data consist of data frames with the following characteristics:</p>
+<ol style="list-style-type: decimal">
+<li>Each column is a different variable</li>
+<li>Each row is a single observation</li>
+<li>Each cell is a single value</li>
+</ol>
+<p>The packages in the <code>tidyverse</code> are generally designed to operate on tidy data; however, other functions may require the data to be in a different shape. It's also frequently convenient to record field data in a non-tidy format. The <code>tidyr</code> package is designed to reshape your data. For more information on tidy data, please see <a href="https://tidyr.tidyverse.org/articles/tidy-data.html">this article</a>.</p>
+<p>We're going to be using some new datasets for this chapter; if you don't have them already, <a href="https://github.com/Christopher-Peterson/Bio373L-Book/tree/master/example_data">download them here</a> and put them in your &quot;example_data&quot; directory.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse) 
+<span class="kw">library</span>(cowplot)
+<span class="kw">theme_set</span>(<span class="kw">theme_cowplot</span>())
+lizards &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;example_data/anoles.csv&quot;</span>) <span class="co"># See Appendix A if you don&#39;t have this data</span>
+succession_data_wide &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;example_data/succession_wide.csv&quot;</span>)</code></pre></div>
+<div id="pivot-longer-tutorial" class="section level2">
+<h2><span class="header-section-number">E.1</span> Going from many columns to many rows: <code>pivot_longer()</code></h2>
+<p>Let's look at the succession data file; this is slightly modified data from Fall 2018, which was collected as part of the first lab (Section @ref(#lab1)).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">View</span>(succession_data_wide)</code></pre></div>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
+<table class=" lightable-paper" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Type
+</th>
+<th style="text-align:left;">
+Team
+</th>
+<th style="text-align:right;">
+Sample
+</th>
+<th style="text-align:left;">
+Quadrant
+</th>
+<th style="text-align:right;">
+Distance
+</th>
+<th style="text-align:right;">
+DBH
+</th>
+<th style="text-align:right;">
+Acer negundo (Boxwood elder)
+</th>
+<th style="text-align:right;">
+Bumelia lanuginosa (Gum elastic)
+</th>
+<th style="text-align:right;">
+Carya illinoiensis (Pecan)
+</th>
+<th style="text-align:right;">
+Celtis spp. (Hackberry)
+</th>
+<th style="text-align:right;">
+Fraxinus texana (Texas ash)
+</th>
+<th style="text-align:right;">
+Juniperus spp. (Juniper)
+</th>
+<th style="text-align:right;">
+Melia azederach (Chinaberry)
+</th>
+<th style="text-align:right;">
+Morus rubra (Red mulberry)
+</th>
+<th style="text-align:right;">
+Populus deltoides (Cottonwood)
+</th>
+<th style="text-align:right;">
+Prunus caroliniana (Laurel cherry)
+</th>
+<th style="text-align:right;">
+Quercus buckleyi (Spanish oak)
+</th>
+<th style="text-align:right;">
+Quercus fusiformis (Live oak)
+</th>
+<th style="text-align:right;">
+Quercus stellata (Post Oak)
+</th>
+<th style="text-align:right;">
+Triadica sebifera (Chinese Tallow)
+</th>
+<th style="text-align:right;">
+Ulmus americana (American elm)
+</th>
+<th style="text-align:right;">
+Ulmus crassifolia (Cedar elm)
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+P-C
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+a
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+15.0
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+P-U
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+a
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+P-C
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+b
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+16.5
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+P-U
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+b
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+P-C
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+c
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+15.0
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+P-U
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+c
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+P-C
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+d
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+14.0
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+P-U
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+d
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+P-C
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+a
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+21.5
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+P-U
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+a
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>A quick description of the columns:</p>
+<ul>
+<li><strong>Type</strong>: Contains information on both the habitat type and Canopy/Understory</li>
+<li><strong>Team</strong>, <strong>Sample</strong>, <strong>Quadrant</strong>: identifiers for where the data were collected</li>
+<li><strong>Distance</strong>: Distance in meters fromt the central point to the tree</li>
+<li><strong>DBH</strong>: Diameter at breast height for canopy trees</li>
+<li><strong>16 species columns</strong>: These indicate whether the named species is present with a 1; there should only be a single 1 per row.</li>
+</ul>
+<p>This clearly does not meet the definition of tidy data; the &quot;Species&quot; variable is split between columns, and the habitat type and tree type are both combined into a single &quot;type&quot; column.</p>
+<p>The first step to tidying this data is consolidate the last sixteen columns; we're going to use <code>pivot_longer()</code> for that. In its simplest form, <code>pivot_longer()</code> converts several columns into two: one with the original column names, and the other with the original column values. This will result in a data frame with more rows than the original (hence, &quot;longer&quot;).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">succession_data_wide <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">pivot_longer</span>(
+    <span class="co"># The first argument is the column names you want to reshape</span>
+    <span class="co"># This uses the same syntax of select() and across() from dplyr</span>
+    <span class="dt">cols =</span> <span class="op">-</span><span class="kw">c</span>(Type<span class="op">:</span>DBH), <span class="co"># minus sign grabs everything NOT between Type &amp; DBH: </span>
+    <span class="dt">names_to =</span> <span class="st">&quot;Species&quot;</span>, <span class="co"># Name of the column that stores the old column names</span>
+    <span class="dt">values_to =</span> <span class="st">&quot;is_present&quot;</span>) <span class="op">%&gt;%</span><span class="st">  </span><span class="co"># Name of the oclumn that stores old cell values</span>
+<span class="st">  </span><span class="kw">View</span>()</code></pre></div>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
+<table class=" lightable-paper" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Type
+</th>
+<th style="text-align:left;">
+Team
+</th>
+<th style="text-align:right;">
+Sample
+</th>
+<th style="text-align:left;">
+Quadrant
+</th>
+<th style="text-align:right;">
+Distance
+</th>
+<th style="text-align:right;">
+DBH
+</th>
+<th style="text-align:left;">
+Species
+</th>
+<th style="text-align:right;">
+is_present
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+P-C
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+a
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:left;">
+Acer negundo (Boxwood elder)
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+P-C
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+a
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:left;">
+Bumelia lanuginosa (Gum elastic)
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+P-C
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+a
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:left;">
+Carya illinoiensis (Pecan)
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+P-C
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+a
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:left;">
+Celtis spp. (Hackberry)
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+P-C
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+a
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:left;">
+Fraxinus texana (Texas ash)
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+P-C
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+a
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:left;">
+Juniperus spp. (Juniper)
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+P-C
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+a
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:left;">
+Melia azederach (Chinaberry)
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+P-C
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+a
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:left;">
+Morus rubra (Red mulberry)
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+P-C
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+a
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:left;">
+Populus deltoides (Cottonwood)
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+P-C
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+a
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:left;">
+Prunus caroliniana (Laurel cherry)
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>If you'll notice, the first 16 rows are identical in the <code>Type:DBH</code> columns, while <code>Species</code> and <code>is_present</code> vary. A few alternative ways to do the same thing:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># The only difference between these is the .cols argument</span>
+succession_data_wide <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pivot_longer</span>(
+    <span class="dt">.cols =</span> <span class="dv">7</span><span class="op">:</span><span class="dv">22</span>, <span class="co"># positions of the columns to pivot</span>
+    <span class="dt">names_to =</span> <span class="st">&quot;Species&quot;</span>, <span class="dt">values_to =</span> <span class="st">&quot;is_present&quot;</span>)
+succession_data_wide <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pivot_longer</span>(
+    <span class="op">-</span><span class="kw">c</span>(Type, Team, Sample, Quadrant, Distance, DBH), <span class="co"># explicitly list names</span>
+    <span class="dt">names_to =</span> <span class="st">&quot;Species&quot;</span>, <span class="dt">values_to =</span> <span class="st">&quot;is_present&quot;</span>)
+succession_data_wide <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pivot_longer</span>(
+  <span class="co"># You can use ranges of column names to keep, though that&#39;s not practical here</span>
+    <span class="st">`</span><span class="dt">Acer negundo (Boxwood elder)</span><span class="st">`</span><span class="op">:</span><span class="st">`</span><span class="dt">Ulmus crassifolia (Cedar elm)</span><span class="st">`</span>,
+    <span class="dt">names_to =</span> <span class="st">&quot;Species&quot;</span>, <span class="dt">values_to =</span> <span class="st">&quot;is_present&quot;</span>)
+succession_data_wide <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pivot_longer</span>(
+  <span class="dt">.cols =</span> <span class="kw">contains</span>(<span class="st">&quot;(&quot;</span>), <span class="co"># graps all columns with an open parentheses in them</span>
+  <span class="dt">names_to =</span> <span class="st">&quot;Species&quot;</span>, <span class="dt">values_to =</span> <span class="st">&quot;is_present&quot;</span>)</code></pre></div>
+<p>Note that the <code>.cols</code> argument generally doesn't have quotations around its column names, while the <code>names_to</code> and <code>values_to</code> do. The simplest explanation for it is that the <code>.cols</code> columns already exist in the data, so R knows how to find them; the others don't, so we use quotes to create the names (This isn't entirely true, but the full details are quite complicated and it's a useful rule of thumb for <code>tidyverse</code> functions).</p>
+<p>One thing to note about our output is that there's a lot of <code>NA</code> values in <code>is_present</code>, indicating species that were not found at each point. We don't really care about those, so let's get rid of them.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">succession_longer =<span class="st"> </span>
+<span class="st">  </span>succession_data_wide <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pivot_longer</span>(
+    <span class="dt">cols =</span> <span class="op">-</span><span class="kw">c</span>(Type<span class="op">:</span>DBH), <span class="dt">names_to =</span> <span class="st">&quot;Species&quot;</span>, <span class="dt">values_to =</span> <span class="st">&quot;is_present&quot;</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(is_present)) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Remove missing values</span>
+<span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>is_present) <span class="co"># This column is no longer useful</span>
+<span class="kw">View</span>(succession_longer)</code></pre></div>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
+<table class=" lightable-paper" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Type
+</th>
+<th style="text-align:left;">
+Team
+</th>
+<th style="text-align:right;">
+Sample
+</th>
+<th style="text-align:left;">
+Quadrant
+</th>
+<th style="text-align:right;">
+Distance
+</th>
+<th style="text-align:right;">
+DBH
+</th>
+<th style="text-align:left;">
+Species
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+P-C
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+a
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+15.0
+</td>
+<td style="text-align:left;">
+Juniperus spp. (Juniper)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+P-U
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+a
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+Quercus fusiformis (Live oak)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+P-C
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+b
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+16.5
+</td>
+<td style="text-align:left;">
+Juniperus spp. (Juniper)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+P-U
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+b
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+Quercus fusiformis (Live oak)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+P-C
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+c
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+15.0
+</td>
+<td style="text-align:left;">
+Juniperus spp. (Juniper)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+P-U
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+c
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+Juniperus spp. (Juniper)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+P-C
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+d
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+14.0
+</td>
+<td style="text-align:left;">
+Celtis spp. (Hackberry)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+P-U
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+d
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+Celtis spp. (Hackberry)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+P-C
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+a
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+21.5
+</td>
+<td style="text-align:left;">
+Ulmus crassifolia (Cedar elm)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+P-U
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+a
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+Ulmus crassifolia (Cedar elm)
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>(( Add example to practice with genotype data))</p>
+</div>
+<div id="separate-tutorial" class="section level2">
+<h2><span class="header-section-number">E.2</span> Splitting and merging columns: <code>separate() and unite()</code></h2>
+<p>To fully tidy this, we need to split the &quot;Type&quot; column into habitat type and tree type columns. The <code>separate()</code> function is useful for this.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">succession_sep =<span class="st"> </span>succession_longer <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">separate</span>(<span class="dt">col =</span> Type, <span class="co"># Column to separate; note that the arg is col, not .col</span>
+           <span class="dt">into =</span> <span class="kw">c</span>(<span class="st">&quot;Habitat&quot;</span>, <span class="st">&quot;Tree_type&quot;</span>), <span class="co"># Names of the new columns to separate into</span>
+           <span class="dt">sep =</span> <span class="st">&quot;-&quot;</span>) <span class="co"># the character used to mark the separation</span>
+<span class="kw">View</span>(succession_sep)</code></pre></div>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
+<table class=" lightable-paper" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Habitat
+</th>
+<th style="text-align:left;">
+Tree_type
+</th>
+<th style="text-align:left;">
+Team
+</th>
+<th style="text-align:right;">
+Sample
+</th>
+<th style="text-align:left;">
+Quadrant
+</th>
+<th style="text-align:right;">
+Distance
+</th>
+<th style="text-align:right;">
+DBH
+</th>
+<th style="text-align:left;">
+Species
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+P
+</td>
+<td style="text-align:left;">
+C
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+a
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+15.0
+</td>
+<td style="text-align:left;">
+Juniperus spp. (Juniper)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+P
+</td>
+<td style="text-align:left;">
+U
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+a
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+Quercus fusiformis (Live oak)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+P
+</td>
+<td style="text-align:left;">
+C
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+b
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+16.5
+</td>
+<td style="text-align:left;">
+Juniperus spp. (Juniper)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+P
+</td>
+<td style="text-align:left;">
+U
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+b
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+Quercus fusiformis (Live oak)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+P
+</td>
+<td style="text-align:left;">
+C
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+c
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+15.0
+</td>
+<td style="text-align:left;">
+Juniperus spp. (Juniper)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+P
+</td>
+<td style="text-align:left;">
+U
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+c
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+Juniperus spp. (Juniper)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+P
+</td>
+<td style="text-align:left;">
+C
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+d
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+14.0
+</td>
+<td style="text-align:left;">
+Celtis spp. (Hackberry)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+P
+</td>
+<td style="text-align:left;">
+U
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+d
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+Celtis spp. (Hackberry)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+P
+</td>
+<td style="text-align:left;">
+C
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+a
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+21.5
+</td>
+<td style="text-align:left;">
+Ulmus crassifolia (Cedar elm)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+P
+</td>
+<td style="text-align:left;">
+U
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+a
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+Ulmus crassifolia (Cedar elm)
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>It would also be useful to have a column that specifically identifies the each sample point; currenlty, that information is split between the <code>Habitat</code>, <code>Team</code>, and <code>Sample</code> columns. The <code>unite()</code> function does this (it's the complement of <code>separate</code>).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">succession_tidy =<span class="st"> </span>succession_sep <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">unite</span>(<span class="dt">col =</span> <span class="st">&quot;sample_point&quot;</span>, <span class="co"># Name of new colum</span>
+        Habitat, Team, Sample, <span class="co"># columns to unite (note; these are all seaprate args)</span>
+        <span class="dt">sep =</span> <span class="st">&quot;-&quot;</span>, <span class="co"># separate the columns with a dash</span>
+        <span class="dt">remove =</span> <span class="ot">FALSE</span> <span class="co"># by default, unite() removes the columns to separate; this disables that because we want to keep Habitat</span>
+        ) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>Team, <span class="op">-</span>Sample) 
+succession_tidy <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">View</span>()</code></pre></div>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
+<table class=" lightable-paper" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+sample_point
+</th>
+<th style="text-align:left;">
+Habitat
+</th>
+<th style="text-align:left;">
+Tree_type
+</th>
+<th style="text-align:left;">
+Quadrant
+</th>
+<th style="text-align:right;">
+Distance
+</th>
+<th style="text-align:right;">
+DBH
+</th>
+<th style="text-align:left;">
+Species
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+P-A-1
+</td>
+<td style="text-align:left;">
+P
+</td>
+<td style="text-align:left;">
+C
+</td>
+<td style="text-align:left;">
+a
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+15.0
+</td>
+<td style="text-align:left;">
+Juniperus spp. (Juniper)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+P-A-1
+</td>
+<td style="text-align:left;">
+P
+</td>
+<td style="text-align:left;">
+U
+</td>
+<td style="text-align:left;">
+a
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+Quercus fusiformis (Live oak)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+P-A-1
+</td>
+<td style="text-align:left;">
+P
+</td>
+<td style="text-align:left;">
+C
+</td>
+<td style="text-align:left;">
+b
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+16.5
+</td>
+<td style="text-align:left;">
+Juniperus spp. (Juniper)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+P-A-1
+</td>
+<td style="text-align:left;">
+P
+</td>
+<td style="text-align:left;">
+U
+</td>
+<td style="text-align:left;">
+b
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+Quercus fusiformis (Live oak)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+P-A-1
+</td>
+<td style="text-align:left;">
+P
+</td>
+<td style="text-align:left;">
+C
+</td>
+<td style="text-align:left;">
+c
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+15.0
+</td>
+<td style="text-align:left;">
+Juniperus spp. (Juniper)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+P-A-1
+</td>
+<td style="text-align:left;">
+P
+</td>
+<td style="text-align:left;">
+U
+</td>
+<td style="text-align:left;">
+c
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+Juniperus spp. (Juniper)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+P-A-1
+</td>
+<td style="text-align:left;">
+P
+</td>
+<td style="text-align:left;">
+C
+</td>
+<td style="text-align:left;">
+d
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+14.0
+</td>
+<td style="text-align:left;">
+Celtis spp. (Hackberry)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+P-A-1
+</td>
+<td style="text-align:left;">
+P
+</td>
+<td style="text-align:left;">
+U
+</td>
+<td style="text-align:left;">
+d
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+Celtis spp. (Hackberry)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+P-A-2
+</td>
+<td style="text-align:left;">
+P
+</td>
+<td style="text-align:left;">
+C
+</td>
+<td style="text-align:left;">
+a
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+21.5
+</td>
+<td style="text-align:left;">
+Ulmus crassifolia (Cedar elm)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+P-A-2
+</td>
+<td style="text-align:left;">
+P
+</td>
+<td style="text-align:left;">
+U
+</td>
+<td style="text-align:left;">
+a
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+Ulmus crassifolia (Cedar elm)
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>An alternative option to <code>unite()</code> is to use a combination of <code>mutate()</code> and <code>paste()</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">succession_sep <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">sample_point =</span> <span class="kw">paste</span>(Habitat, Team, Sample, <span class="dt">sep =</span> <span class="st">&quot;-&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>Team, <span class="op">-</span>Sample) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">View</span>() <span class="co"># The column order will be different, but otherwise it&#39;s the same.</span></code></pre></div>
+</div>
+<div id="pivot-longer-multi-tutorial" class="section level2">
+<h2><span class="header-section-number">E.3</span> Pivoting multiple columns</h2>
+<p>(In progress)</p>
+</div>
+<div id="pivot-wider-tutorial" class="section level2">
+<h2><span class="header-section-number">E.4</span> Going from many rows to many columns: <code>pivot_wider()</code></h2>
+<p>(In progress)(In progress)</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="r-analysis-tutorial.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
