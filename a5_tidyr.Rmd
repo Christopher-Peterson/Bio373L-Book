@@ -1,0 +1,152 @@
+# Wrangling, reshaping, and tidying data with `tidyr` {#tidyr-tutorial}
+
+Most of the previous appendices have required you to have your data in a **tidy** format. Tidy data consist of data frames with the following characteristics:
+
+ 1. Each column is a different variable
+ 2. Each row is a single observation
+ 3. Each cell is a single value
+
+The packages in the `tidyverse` are generally designed to operate on tidy data; however, other functions may require the data to be in a different shape. It's also frequently convenient to record field data in a non-tidy format.  The `tidyr` package is designed to reshape your data. For more information on tidy data, please see [this article](https://tidyr.tidyverse.org/articles/tidy-data.html).
+
+We're going to be using some new datasets for this chapter: [succession_wide.csv]() (which is a modified version of a previous semester's lab1 data), ...
+Please download and put all of them in your "example_data" directory.  
+
+```{r tidyverse_workaround_a5, echo = FALSE, message = FALSE}
+# This invisible block is a workaround for Travis CI not having the tidyverse meta-package; 
+library(ggplot2)
+library(dplyr)
+library(readr)
+library(tibble)
+library(tidyr)
+library(forcats)
+library(cowplot)
+theme_set(theme_cowplot())
+lizards <- read_csv("example_data/anoles.csv") # See Appendix A if you don't have this
+succession_data_wide <- read_csv("example_data/succession_wide.csv")
+# Capture View()
+real_view = View
+View = function(x,...){
+  # Scrollable table output
+  # knitr::kable(head(x))
+  x %>% head(n = 10) %>% 
+    kableExtra::kbl() %>% 
+    kableExtra::kable_paper() %>% 
+    kableExtra::scroll_box(width = "100%")
+} 
+```
+```{r load_anoles_a5, echo = TRUE, eval=FALSE}
+library(tidyverse) 
+library(cowplot)
+theme_set(theme_cowplot())
+lizards <- read_csv("example_data/anoles.csv") # See Appendix A if you don't have this data
+succession_data_wide <- read_csv("example_data/succession_wide.csv")
+```
+
+
+
+## Going from many columns to many rows: `pivot_longer()` {#pivot-longer-tutorial}
+
+Let's look at the succession data:
+
+```{r view_succession_wide}
+View(succession_data_wide)
+```
+
+A quick description of the columns:
+
+ - **Type**: Contains information on both the habitat type and Canopy/Understory
+ - **Team**, **Sample**, **Quadrant**: identifiers for where the data were collected
+ - **Distance**: Distance in meters fromt the central point to the tree
+ - **DBH**: Diameter at breast height for canopy trees
+ - **16 species columns**: These indicate whether the named species is present with a 1; there should only be a single 1 per row.  
+ 
+This clearly does not meet the definition of tidy data; the "Species" variable is split between columns, and the habitat type and tree type are both combined into a single "type" column.  
+
+The first step to tidying this data is consolidate the last sixteen columns; we're going to use `pivot_longer()` for that.  In its simplest form, `pivot_longer()` converts several columns into two: one with the original column names, and the other with the original column values. This will result in a data frame with more rows than the original (hence, "longer").  
+
+```{r pivot_longer_ex1}
+succession_data_wide %>% 
+  pivot_longer(
+    # The first argument is the column names you want to reshape
+    # This uses the same syntax of select() and across() from dplyr
+    cols = -c(Type:DBH), # minus sign grabs everything NOT between Type & DBH: 
+    names_to = "Species", # Name of the column that stores the old column names
+    values_to = "is_present") %>%  # Name of the oclumn that stores old cell values
+  View()
+```
+
+If you'll notice, the first 16 rows are identical in the `Type:DBH` columns, while `Species` and `is_present` vary. A few alternative ways to do the same thing:
+
+```{r pivot_longer_alt_select, eval = FALSE, echo = TRUE}
+# The only difference between these is the .cols argument
+succession_data_wide %>% pivot_longer(
+    .cols = 7:22, # positions of the columns to pivot
+    names_to = "Species", values_to = "is_present")
+succession_data_wide %>% pivot_longer(
+    -c(Type, Team, Sample, Quadrant, Distance, DBH), # explicitly list names
+    names_to = "Species", values_to = "is_present")
+succession_data_wide %>% pivot_longer(
+  # You can use ranges of column names to keep, though that's not practical here
+    `Acer negundo (Boxwood elder)`:`Ulmus crassifolia (Cedar elm)`,
+    names_to = "Species", values_to = "is_present")
+succession_data_wide %>% pivot_longer(
+  .cols = contains("("), # graps all columns with an open parentheses in them
+  names_to = "Species", values_to = "is_present")
+```
+
+Note that the `.cols` argument generally doesn't have quotations around its column names, while the `names_to` and `values_to` do. The simplest explanation for it is that the `.cols` columns already exist in the data, so R knows how to find them; the others don't, so we use quotes to create the names (This isn't entirely true, but the full details are quite complicated and it's a useful rule of thumb for `tidyverse` functions).
+
+One thing to note about our output is that there's a lot of `NA` values in `is_present`, indicating species that were not found at each point.  We don't really care about those, so let's get rid of them.
+
+```{r pivot_longer_filter}
+succession_longer = 
+  succession_data_wide %>% pivot_longer(
+    cols = -c(Type:DBH), names_to = "Species", values_to = "is_present") %>%
+  filter(!is.na(is_present)) %>% # Remove missing values
+  select(-is_present) # This column is no longer useful
+View(succession_longer)
+```
+
+(( Add example to practice with genotype data))
+
+## Splitting and merging columns: `separate() and unite()` {#separate-tutorial}
+
+To fully tidy this, we need to split the "Type" column into habitat type and tree type columns.  The `separate()` function is useful for this.  
+
+```{r separate_ex1}
+succession_sep = succession_longer %>% 
+    separate(col = Type, # Column to separate; note that the arg is col, not .col
+           into = c("Habitat", "Tree_type"), # Names of the new columns to separate into
+           sep = "-") # the character used to mark the separation
+View(succession_sep)
+```
+
+It would also be useful to have a column that specifically identifies the each sample point; currenlty, that information is split between the `Habitat`, `Team`, and `Sample` columns. The `unite()` function does this (it's the complement of `separate`).
+
+```{r unit_ex1}
+succession_tidy = succession_sep %>% 
+  unite(col = "sample_point", # Name of new colum
+        Habitat, Team, Sample, # columns to unite (note; these are all seaprate args)
+        sep = "-", # separate the columns with a dash
+        remove = FALSE # by default, unite() removes the columns to separate; this disables that because we want to keep Habitat
+        ) %>% 
+  select(-Team, -Sample) 
+succession_tidy %>% View()
+```
+
+An alternative option to `unite()` is to use a combination of `mutate()` and `paste()`:
+
+```{r unite_alt1, eval = FALSE}
+succession_sep %>% 
+  mutate(sample_point = paste(Habitat, Team, Sample, sep = "-")) %>% 
+  select(-Team, -Sample) %>% 
+  View() # The column order will be different, but otherwise it's the same.
+```
+
+## Pivoting multiple columns {#pivot-longer-multi}
+
+
+
+## Going from many rows to many columns: `pivot_wider()` {#pivot-wider-tutorial}
+
+(In progress)
