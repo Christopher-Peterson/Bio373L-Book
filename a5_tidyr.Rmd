@@ -25,7 +25,9 @@ theme_set(theme_cowplot())
 lizards <- read_csv("example_data/anoles.csv") # See Appendix A if you don't have this
 succession_data_wide <- read_csv("example_data/succession_wide.csv")
 yeast_data <- read_csv("example_data/yeast_data_partial.csv")
+knitr::opts_chunk$set(collapse = TRUE)
 # Capture View()
+# rm(View)
 real_view = View
 View = function(x,...){
   # Scrollable table output
@@ -174,24 +176,25 @@ yeast_data %>%
 
 The `names_sep` argument works exactly like `sep` in `separate()`.  
 
-Notice that `Concentration` is listed as a character vector (`<chr>`). It's probably a good idea to have it as a numeric vector instead. The `names_ptypes` argument lets you specify what type of value each name should be split into (*ptype* stands for "prototype", which is used in `tidyverse` to mean a data type with structure but no values). 
+Notice that `Concentration` is listed as a character vector (`<chr>`). It's probably a good idea to have it as a numeric vector instead. The `names_transform` argument lets you specify a function that can be applied to the names column(s) after they're re-shaped.  In this case, we're going to use `as.numeric()` to convert it into a number.
 
 ```{r a5_pivot_wider_multi2}
 
-# We're going to create a list that defines the data types of Substrate & Concentration
+# We're going to create a list that tells pivot_longer to use the 
+  # as.numeric() function on Concentration
   # a list() is basically a big box you can put any other kind of data structure into
-  # Each iterm in a list is called an elements; elements can be named or not
-yeast_name_ptypes = list(
-  Substrate = character(),
-  Concentration = numeric()
-) # This list has 2 elements with names that match the names_to argument of pivot_longer()
+  # Each item in a list is called an elements; elements can be named or not
+  # This list has one named element; if we wanted to transform more columns, we could include them here as well
+convert_concentration = list(
+  Concentration = as.numeric # Note there's no parentheses; this is because we're identifying the function, not calling it.
+  ) 
 
 # We'll talk more about lists later
 
 tidy_yeast = yeast_data %>% 
   pivot_longer(G0.05:U0.3,
     names_to = c("Substrate", "Concentration"), names_sep = 1, 
-    names_ptypes = yeast_name_ptypes, # We could also have defined the list here
+    names_transform = convert_concentration, # We could also have defined the list here
     values_to = "Gene_expression") 
 tidy_yeast %>% glimpse()
 ```
@@ -244,4 +247,12 @@ lizard_smry_tidy %>%
 
 ## Going from many rows to many columns: `pivot_wider()` {#pivot-wider-tutorial}
 
-(In progress)(In progress)
+(In progress)
+
+## Combining data frames (In Progress)
+
+### Binding rows
+
+### Binding columns by position
+
+### Joining rows by value
