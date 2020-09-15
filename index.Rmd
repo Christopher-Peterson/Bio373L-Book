@@ -19,4 +19,4 @@ description: "Writing advice for Field Ecology."
 # Preface {-}
 
 
-This book contains advice for students in the University of Texas at Austin's Field Ecology course.  It will be updated throughout the semester. The first three chapters contain general guidelines for writing lab reports.
+This book contains advice for students in the University of Texas at Austin's Field Ecology course.  It will be updated throughout the semester. The first three chapters contain general guidelines for writing lab reports.  The subsequent chapters cover the details of specific field problems.  The appendices are an extensive tutorial on working with and analyzing data using R.
