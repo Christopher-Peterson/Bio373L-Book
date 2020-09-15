@@ -8,8 +8,7 @@ Most of the previous appendices have required you to have your data in a **tidy*
 
 The packages in the `tidyverse` are generally designed to operate on tidy data; however, other functions may require the data to be in a different shape. It's also frequently convenient to record field data in a non-tidy format.  The `tidyr` package is designed to reshape your data. For more information on tidy data, please see [this article](https://tidyr.tidyverse.org/articles/tidy-data.html).
 
-We're going to be using some new datasets for this chapter: [succession_wide.csv]() (which is a modified version of a previous semester's lab1 data), ...
-Please download and put all of them in your "example_data" directory.  
+We're going to be using some new datasets for this chapter; if you don't have them already, [download them here](https://github.com/Christopher-Peterson/Bio373L-Book/tree/master/example_data) and put them in your "example_data" directory.  
 
 ```{r tidyverse_workaround_a5, echo = FALSE, message = FALSE}
 # This invisible block is a workaround for Travis CI not having the tidyverse meta-package; 
@@ -42,11 +41,9 @@ lizards <- read_csv("example_data/anoles.csv") # See Appendix A if you don't hav
 succession_data_wide <- read_csv("example_data/succession_wide.csv")
 ```
 
-
-
 ## Going from many columns to many rows: `pivot_longer()` {#pivot-longer-tutorial}
 
-Let's look at the succession data:
+Let's look at the succession data file; this is slightly modified data from Fall 2018, which was collected as part of the first lab (Section \@ref(#lab1)).
 
 ```{r view_succession_wide}
 View(succession_data_wide)
@@ -143,10 +140,12 @@ succession_sep %>%
   View() # The column order will be different, but otherwise it's the same.
 ```
 
-## Pivoting multiple columns {#pivot-longer-multi}
+## Pivoting multiple columns {#pivot-longer-multi-tutorial}
+
+(In progress)
 
 
 
 ## Going from many rows to many columns: `pivot_wider()` {#pivot-wider-tutorial}
 
-(In progress)
+(In progress)(In progress)
