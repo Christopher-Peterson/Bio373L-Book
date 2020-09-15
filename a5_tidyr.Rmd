@@ -1,5 +1,7 @@
 # Wrangling, reshaping, and tidying data with `tidyr` {#tidyr-tutorial}
 
+## Tidy data
+
 Most of the previous appendices have required you to have your data in a **tidy** format. Tidy data consist of data frames with the following characteristics:
 
  1. Each column is a different variable
@@ -22,6 +24,7 @@ library(cowplot)
 theme_set(theme_cowplot())
 lizards <- read_csv("example_data/anoles.csv") # See Appendix A if you don't have this
 succession_data_wide <- read_csv("example_data/succession_wide.csv")
+yeast_data <- read_csv("example_data/yeast_data_partial.csv")
 # Capture View()
 real_view = View
 View = function(x,...){
@@ -33,12 +36,14 @@ View = function(x,...){
     kableExtra::scroll_box(width = "100%")
 } 
 ```
-```{r load_anoles_a5, echo = TRUE, eval=FALSE}
+```{r load_data_a5, echo = TRUE, eval=FALSE}
 library(tidyverse) 
 library(cowplot)
 theme_set(theme_cowplot())
 lizards <- read_csv("example_data/anoles.csv") # See Appendix A if you don't have this data
 succession_data_wide <- read_csv("example_data/succession_wide.csv")
+yeast_data <- read_csv("example_data/yeast_data_partial.csv")
+
 ```
 
 ## Going from many columns to many rows: `pivot_longer()` {#pivot-longer-tutorial}
@@ -118,9 +123,11 @@ succession_sep = succession_longer %>%
 View(succession_sep)
 ```
 
+Note that the `sep` argument can be either text or a integer(s); if it's a character vector, the character(s) are removed during the split (as with above).  If `sep` is an integer (or integer vector), then the split is made after that/those position(s) in the text without removing anything.
+
 It would also be useful to have a column that specifically identifies the each sample point; currenlty, that information is split between the `Habitat`, `Team`, and `Sample` columns. The `unite()` function does this (it's the complement of `separate`).
 
-```{r unit_ex1}
+```{r unite_ex1}
 succession_tidy = succession_sep %>% 
   unite(col = "sample_point", # Name of new colum
         Habitat, Team, Sample, # columns to unite (note; these are all seaprate args)
@@ -142,9 +149,98 @@ succession_sep %>%
 
 ## Pivoting multiple columns {#pivot-longer-multi-tutorial}
 
-(In progress)
+We're going to take a look a dataset from [Brauer et al (2008)](https://www.molbiolcell.org/doi/full/10.1091/mbc.e07-08-0779). The experiment tested yeast gene expression under nutrient limitation (for several different nutrients & several different concentrations).  
 
+```{r a5_view_yeast}
+View(yeast_data)
+```
 
+The first four columns are single variables (gene name, biological process, molecular function, and systematic_id). The remaining columns (`G0.05` through `U0.3`) contain TWO variables in their name: the nutrient that was added to the substrate (first letter) and rate at which it was added (the rest). The values in these columns is the gene expression level. To tidy the data, we need to convert these into three columns:
+
+ - Substrate
+ - Concentration
+ - Gene expression
+ 
+While we could do this with a combination of `pivot_longer()` and `separate()`,  `pivot_longer()` can do both tasks at once with a few extra arguments. 
+
+```{r a5_pivot_wider_multi1}
+yeast_data %>% 
+  pivot_longer(G0.05:U0.3,
+    names_to = c("Substrate", "Concentration"), # The names will go into these columns
+    names_sep = 1, # separate the names between columns after the first character
+    values_to = "Gene_expression") %>% 
+  glimpse()
+```
+
+The `names_sep` argument works exactly like `sep` in `separate()`.  
+
+Notice that `Concentration` is listed as a character vector (`<chr>`). It's probably a good idea to have it as a numeric vector instead. The `names_ptypes` argument lets you specify what type of value each name should be split into (*ptype* stands for "prototype", which is used in `tidyverse` to mean a data type with structure but no values). 
+
+```{r a5_pivot_wider_multi2}
+
+# We're going to create a list that defines the data types of Substrate & Concentration
+  # a list() is basically a big box you can put any other kind of data structure into
+  # Each iterm in a list is called an elements; elements can be named or not
+yeast_name_ptypes = list(
+  Substrate = character(),
+  Concentration = numeric()
+) # This list has 2 elements with names that match the names_to argument of pivot_longer()
+
+# We'll talk more about lists later
+
+tidy_yeast = yeast_data %>% 
+  pivot_longer(G0.05:U0.3,
+    names_to = c("Substrate", "Concentration"), names_sep = 1, 
+    names_ptypes = yeast_name_ptypes, # We could also have defined the list here
+    values_to = "Gene_expression") 
+tidy_yeast %>% glimpse()
+```
+
+### Combining `pivot_longer()` with `summarise()`
+
+Here's a particularly powerful combination of `tidyverse()` functions you can use when you're exploring a new dataset: calculate summary statistics on all of your variables with `summarise(across(...))`, tidy the results with `pivot_longer()`, then create a faceted `ggplot`.  
+
+```{r pivot_summarize_1, collapse = TRUE}
+lizard_smry_by_color = lizards %>% 
+  # Group the data by color morph
+  group_by(Color_morph) %>% 
+  summarize(
+    across(where(is.numeric), # For all numeric columns...
+           list(Mean = mean, Med = median, SD = sd)
+           # run mean(), meidan(), and sd() on each group & variable
+           # Note that the list elements follows the pattern Name = function
+    ),N = n() ) # This is outside of across, since it's only run once per group
+glimpse(lizard_smry_by_color)
+```
+
+This creates a data frame with columns for the color, the sample size, and a bunch that follow the pattern `Trait_statistic`.  An ideal way to tidy these data would be reduce these columns into `Trait`, `Mean`, `Median`, and `SD`. We can do that like this:
+
+```{r pivot_summarize_2, collapse = TRUE}
+lizard_smry_tidy = lizard_smry_by_color %>% 
+  pivot_longer(-c(Color_morph, N), # exclude the columns
+               names_to = c("Trait", ".value"),
+               names_sep = "_") %>% 
+  mutate(SE = SD/sqrt(N)) # may as well calculate standard error while we're here
+View(lizard_smry_tidy)
+```
+
+This call didn't have a `values_to` argument in it; instead, one of the `names_to` was listed as `".value"`.  This is a special indicator that tells pivot_longer to create one column for each matching name and place the corresponding values into it.  
+
+From here, you can make a nice little summary statistic plot:
+
+```{r pivot_sumarise_3, collapse = TRUE}
+lizard_smry_tidy %>% 
+  ggplot(aes(x = Color_morph)) + 
+  facet_wrap(~Trait, scales = "free_y") +
+  # SD:
+  geom_linerange(aes(ymin = Mean - SD, ymax = Mean + SD), color = "cornflowerblue") + 
+  # Confidence Interval:
+  geom_errorbar(aes(ymin = Mean - SE * 1.96, ymax = Mean + SE * 1.96), 
+                color = "red", width = .3) + 
+  # Mean
+  geom_point(aes(y = Mean), size = 2) + 
+  ylab("Trait Mean, SD, and 95% CI") 
+```
 
 ## Going from many rows to many columns: `pivot_wider()` {#pivot-wider-tutorial}
 
