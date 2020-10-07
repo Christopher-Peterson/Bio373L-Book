@@ -1,0 +1,432 @@
+Habitat,Site,Canopy_cover,Ground_cover,Nearest_canopy_spp,Disturbance,Drought,Phorids,Notes,GPS_Easting,GPS_Northing,name,Acre,Total_ants,S_invicta_present,Species,N
+R,1,3,0,American Elm,high,1,1,,105,815,aalundmadison,52,250,1,Solenopsis invicta,250
+R,2,3,1,pecan,high,0,0,yellow jackets,96,826,aalundmadison,52,5,0,Pheidole floridana,5
+R,3,2,0,hackberry,high,1,0,yellow jackets,86,848,aalundmadison,52,5,0,Pheidole tetra,5
+R,4,2,0,pecan,high,1,1,yellow jackets,76,848,aalundmadison,52,10,0,Pheidole tetra,10
+R,5,3,1,pecan,low,1,1,,87,862,aalundmadison,52,62,1,Solenopsis invicta,62
+R,6,1,3,pecan,high,0,1,,104,842,aalundmadison,52,20,0,Pheidole tetra,5
+R,6,1,3,pecan,high,0,1,,104,842,aalundmadison,52,20,0,Solenopsis texana,15
+R,7,0,2,pecan,high,2,0,,109,836,aalundmadison,52,175,1,Solenopsis invicta,175
+R,8,3,0,hackberry,high,1,0,,97,858,aalundmadison,52,350,1,Solenopsis invicta,350
+R,9,3,0,hackberry,high,1,0,flies,107,859,aalundmadison,52,31,0,Camponotus texanus,1
+R,9,3,0,hackberry,high,1,0,flies,107,859,aalundmadison,52,31,0,Pheidole floridana,30
+R,10,3,0,pecan,high,1,1,,108,877,aalundmadison,52,200,1,Solenopsis invicta,200
+R,11,2,1,pecan,high,1,0,beetle stole bait,123,885,aalundmadison,52,30,0,Pheidole floridana,30
+R,12,3,3,hackberry,low,2,0,,123,866,aalundmadison,52,150,0,Pheidole floridana,150
+R,13,3,3,hackberry,low,2,0,yellow jackets,137,846,aalundmadison,52,25,0,Pheidole tetra,25
+R,14,0,3,pecan,high,1,1,,115,833,aalundmadison,52,400,1,Solenopsis invicta,400
+R,15,0,2,pecan,high,1,1,,102,832,aalundmadison,52,350,1,Solenopsis invicta,350
+R,16,3,0,American Elm,low,1,0,,113,853,aalundmadison,52,250,1,Solenopsis invicta,250
+P,1,2,1,Sugar Hackberry,high,2,,leafcutter mound,617328,3350857,almeidaryan,10,0,0,Aphenogaster texana,0
+P,1,2,1,Sugar Hackberry,high,2,,leafcutter mound,617328,3350857,almeidaryan,10,0,0,Brachymyermex,0
+P,1,2,1,Sugar Hackberry,high,2,,leafcutter mound,617328,3350857,almeidaryan,10,0,0,Camponotus texanus,0
+P,1,2,1,Sugar Hackberry,high,2,,leafcutter mound,617328,3350857,almeidaryan,10,0,0,Crematogaster laeviuscula,0
+P,1,2,1,Sugar Hackberry,high,2,,leafcutter mound,617328,3350857,almeidaryan,10,0,0,Forelius mccooki,0
+P,1,2,1,Sugar Hackberry,high,2,,leafcutter mound,617328,3350857,almeidaryan,10,0,0,Forelius pruinosis,0
+P,1,2,1,Sugar Hackberry,high,2,,leafcutter mound,617328,3350857,almeidaryan,10,0,0,Monomorium minimum,0
+P,1,2,1,Sugar Hackberry,high,2,,leafcutter mound,617328,3350857,almeidaryan,10,0,0,Odontomachus clarus,0
+P,1,2,1,Sugar Hackberry,high,2,,leafcutter mound,617328,3350857,almeidaryan,10,0,0,Paratrechina terricola,0
+P,1,2,1,Sugar Hackberry,high,2,,leafcutter mound,617328,3350857,almeidaryan,10,0,0,Pheidole bicarinata,0
+P,1,2,1,Sugar Hackberry,high,2,,leafcutter mound,617328,3350857,almeidaryan,10,0,0,Pheidole dentata,0
+P,1,2,1,Sugar Hackberry,high,2,,leafcutter mound,617328,3350857,almeidaryan,10,0,0,Pheidole floridana,0
+P,1,2,1,Sugar Hackberry,high,2,,leafcutter mound,617328,3350857,almeidaryan,10,0,0,Pheidole lamia,0
+P,1,2,1,Sugar Hackberry,high,2,,leafcutter mound,617328,3350857,almeidaryan,10,0,0,Pheidole metallescens,0
+P,1,2,1,Sugar Hackberry,high,2,,leafcutter mound,617328,3350857,almeidaryan,10,0,0,Pheidole pelor,0
+P,1,2,1,Sugar Hackberry,high,2,,leafcutter mound,617328,3350857,almeidaryan,10,0,0,Pheidole tetra,0
+P,1,2,1,Sugar Hackberry,high,2,,leafcutter mound,617328,3350857,almeidaryan,10,0,0,Pheilode hyati,0
+P,1,2,1,Sugar Hackberry,high,2,,leafcutter mound,617328,3350857,almeidaryan,10,0,0,Pseudomyrmex brunneus,0
+P,1,2,1,Sugar Hackberry,high,2,,leafcutter mound,617328,3350857,almeidaryan,10,0,0,Solenopsis geminata,0
+P,1,2,1,Sugar Hackberry,high,2,,leafcutter mound,617328,3350857,almeidaryan,10,0,0,Solenopsis texana,0
+P,1,2,1,Sugar Hackberry,high,2,,leafcutter mound,617328,3350857,almeidaryan,10,0,0,Atta texana,0
+P,1,2,1,Sugar Hackberry,high,2,,leafcutter mound,617328,3350857,almeidaryan,10,0,0,Camponotus sansabeaneus,0
+P,1,2,1,Sugar Hackberry,high,2,,leafcutter mound,617328,3350857,almeidaryan,10,0,0,Other species,0
+P,1,2,1,Sugar Hackberry,high,2,,leafcutter mound,617328,3350857,almeidaryan,10,0,0,Solenopsis invicta,0
+P,2,2,2,Ashe Juniper,high,2,,,617300,3350841,almeidaryan,10,100,1,Solenopsis invicta,100
+P,3,2,1,Ashe Juniper,high,1,,,617296,3350834,almeidaryan,10,0,0,Aphenogaster texana,0
+P,3,2,1,Ashe Juniper,high,1,,,617296,3350834,almeidaryan,10,0,0,Brachymyermex,0
+P,3,2,1,Ashe Juniper,high,1,,,617296,3350834,almeidaryan,10,0,0,Camponotus texanus,0
+P,3,2,1,Ashe Juniper,high,1,,,617296,3350834,almeidaryan,10,0,0,Crematogaster laeviuscula,0
+P,3,2,1,Ashe Juniper,high,1,,,617296,3350834,almeidaryan,10,0,0,Forelius mccooki,0
+P,3,2,1,Ashe Juniper,high,1,,,617296,3350834,almeidaryan,10,0,0,Forelius pruinosis,0
+P,3,2,1,Ashe Juniper,high,1,,,617296,3350834,almeidaryan,10,0,0,Monomorium minimum,0
+P,3,2,1,Ashe Juniper,high,1,,,617296,3350834,almeidaryan,10,0,0,Odontomachus clarus,0
+P,3,2,1,Ashe Juniper,high,1,,,617296,3350834,almeidaryan,10,0,0,Paratrechina terricola,0
+P,3,2,1,Ashe Juniper,high,1,,,617296,3350834,almeidaryan,10,0,0,Pheidole bicarinata,0
+P,3,2,1,Ashe Juniper,high,1,,,617296,3350834,almeidaryan,10,0,0,Pheidole dentata,0
+P,3,2,1,Ashe Juniper,high,1,,,617296,3350834,almeidaryan,10,0,0,Pheidole floridana,0
+P,3,2,1,Ashe Juniper,high,1,,,617296,3350834,almeidaryan,10,0,0,Pheidole lamia,0
+P,3,2,1,Ashe Juniper,high,1,,,617296,3350834,almeidaryan,10,0,0,Pheidole metallescens,0
+P,3,2,1,Ashe Juniper,high,1,,,617296,3350834,almeidaryan,10,0,0,Pheidole pelor,0
+P,3,2,1,Ashe Juniper,high,1,,,617296,3350834,almeidaryan,10,0,0,Pheidole tetra,0
+P,3,2,1,Ashe Juniper,high,1,,,617296,3350834,almeidaryan,10,0,0,Pheilode hyati,0
+P,3,2,1,Ashe Juniper,high,1,,,617296,3350834,almeidaryan,10,0,0,Pseudomyrmex brunneus,0
+P,3,2,1,Ashe Juniper,high,1,,,617296,3350834,almeidaryan,10,0,0,Solenopsis geminata,0
+P,3,2,1,Ashe Juniper,high,1,,,617296,3350834,almeidaryan,10,0,0,Solenopsis texana,0
+P,3,2,1,Ashe Juniper,high,1,,,617296,3350834,almeidaryan,10,0,0,Atta texana,0
+P,3,2,1,Ashe Juniper,high,1,,,617296,3350834,almeidaryan,10,0,0,Camponotus sansabeaneus,0
+P,3,2,1,Ashe Juniper,high,1,,,617296,3350834,almeidaryan,10,0,0,Other species,0
+P,3,2,1,Ashe Juniper,high,1,,,617296,3350834,almeidaryan,10,0,0,Solenopsis invicta,0
+P,4,2,1,Ashe Juniper,high,1,,leafcutter mound,617332,3350821,almeidaryan,10,21,1,Atta texana,1
+P,4,2,1,Ashe Juniper,high,1,,leafcutter mound,617332,3350821,almeidaryan,10,21,1,Solenopsis invicta,20
+P,5,2,2,Chinese Tallow,low,1,,,617306,3350819,almeidaryan,10,3,0,Camponotus sansabeaneus,3
+P,6,2,1,Ashe Juniper,high,1,,,617346,3350804,almeidaryan,10,140,0,Monomorium minimum,140
+P,7,2,1,Ashe Juniper,high,1,,,617353,3350801,almeidaryan,10,6,0,Camponotus sansabeaneus,6
+P,8,1,2,Ashe Juniper,high,1,1,,617362,3350839,almeidaryan,10,87,1,Solenopsis invicta,87
+P,9,2,1,Ashe Juniper,high,0,,,617344,3350831,almeidaryan,10,200,1,Solenopsis invicta,200
+P,10,2,2,Chinese Tallow,high,0,,,617342,3350843,almeidaryan,10,0,0,Aphenogaster texana,0
+P,10,2,2,Chinese Tallow,high,0,,,617342,3350843,almeidaryan,10,0,0,Brachymyermex,0
+P,10,2,2,Chinese Tallow,high,0,,,617342,3350843,almeidaryan,10,0,0,Camponotus texanus,0
+P,10,2,2,Chinese Tallow,high,0,,,617342,3350843,almeidaryan,10,0,0,Crematogaster laeviuscula,0
+P,10,2,2,Chinese Tallow,high,0,,,617342,3350843,almeidaryan,10,0,0,Forelius mccooki,0
+P,10,2,2,Chinese Tallow,high,0,,,617342,3350843,almeidaryan,10,0,0,Forelius pruinosis,0
+P,10,2,2,Chinese Tallow,high,0,,,617342,3350843,almeidaryan,10,0,0,Monomorium minimum,0
+P,10,2,2,Chinese Tallow,high,0,,,617342,3350843,almeidaryan,10,0,0,Odontomachus clarus,0
+P,10,2,2,Chinese Tallow,high,0,,,617342,3350843,almeidaryan,10,0,0,Paratrechina terricola,0
+P,10,2,2,Chinese Tallow,high,0,,,617342,3350843,almeidaryan,10,0,0,Pheidole bicarinata,0
+P,10,2,2,Chinese Tallow,high,0,,,617342,3350843,almeidaryan,10,0,0,Pheidole dentata,0
+P,10,2,2,Chinese Tallow,high,0,,,617342,3350843,almeidaryan,10,0,0,Pheidole floridana,0
+P,10,2,2,Chinese Tallow,high,0,,,617342,3350843,almeidaryan,10,0,0,Pheidole lamia,0
+P,10,2,2,Chinese Tallow,high,0,,,617342,3350843,almeidaryan,10,0,0,Pheidole metallescens,0
+P,10,2,2,Chinese Tallow,high,0,,,617342,3350843,almeidaryan,10,0,0,Pheidole pelor,0
+P,10,2,2,Chinese Tallow,high,0,,,617342,3350843,almeidaryan,10,0,0,Pheidole tetra,0
+P,10,2,2,Chinese Tallow,high,0,,,617342,3350843,almeidaryan,10,0,0,Pheilode hyati,0
+P,10,2,2,Chinese Tallow,high,0,,,617342,3350843,almeidaryan,10,0,0,Pseudomyrmex brunneus,0
+P,10,2,2,Chinese Tallow,high,0,,,617342,3350843,almeidaryan,10,0,0,Solenopsis geminata,0
+P,10,2,2,Chinese Tallow,high,0,,,617342,3350843,almeidaryan,10,0,0,Solenopsis texana,0
+P,10,2,2,Chinese Tallow,high,0,,,617342,3350843,almeidaryan,10,0,0,Atta texana,0
+P,10,2,2,Chinese Tallow,high,0,,,617342,3350843,almeidaryan,10,0,0,Camponotus sansabeaneus,0
+P,10,2,2,Chinese Tallow,high,0,,,617342,3350843,almeidaryan,10,0,0,Other species,0
+P,10,2,2,Chinese Tallow,high,0,,,617342,3350843,almeidaryan,10,0,0,Solenopsis invicta,0
+P,11,2,2,Chinese tallow,high,0,,,617820,3351190,almeidaryan,10,276,0,Pheidole floridana,276
+P,12,2,1,Ashe Juniper,high,0,,,617812,3351184,almeidaryan,10,6,0,Camponotus sansabeaneus,6
+P,13,2,2,Ashe Juniper,low,0,,,617325,3350826,almeidaryan,10,1,0,Camponotus sansabeaneus,1
+P,14,2,2,Ashe Juniper,high,0,,,617809,3351181,almeidaryan,10,40,1,Solenopsis invicta,40
+P,15,3,1,Ashe Juniper,low,0,,,617766,3351148,almeidaryan,10,4,0,Camponotus sansabeaneus,4
+P,16,3,2,Sugar Hackberry,low,0,,,617820,3351190,almeidaryan,10,51,1,Camponotus sansabeaneus,1
+P,16,3,2,Sugar Hackberry,low,0,,,617820,3351190,almeidaryan,10,51,1,Solenopsis invicta,50
+P,1,3,0,Cedar elm,high,1,0,,254,872,blairalec,4,21,0,Aphenogaster texana,1
+P,1,3,0,Cedar elm,high,1,0,,254,872,blairalec,4,21,0,Pheidole dentata,20
+P,2,2,1,Cedar elm,high,1,0,wasps,252,882,blairalec,4,4,0,Pheidole floridana,4
+P,3,2,0,Sugar hackberry,high,1,0,,253,903,blairalec,4,88,0,Forelius pruinosis,88
+P,4,2,1,Sugar hackberry,high,1,0,,280,872,blairalec,4,4,0,Camponotus texanus,1
+P,4,2,1,Sugar hackberry,high,1,0,,280,872,blairalec,4,4,0,Pheidole floridana,3
+P,5,2,2,Ashe Juniper,high,2,0,,254,872,blairalec,4,65,0,Pheidole dentata,65
+P,6,3,2,Cedar elm,low,1,0,,360,904,blairalec,4,57,0,Pheidole dentata,57
+P,7,3,0,Cedar elm,low,0,0,,280,880,blairalec,4,94,1,Solenopsis invicta,94
+P,8,2,0,Ashe Juniper,high,0,0,leaf cutter mound,333,904,blairalec,4,76,0,Pheidole dentata,76
+P,9,3,0,Ashe Juniper,high,0,0,wasps,227,841,blairalec,4,7,0,Pheidole dentata,7
+P,10,2,1,Bald cypress,high,0,0,,228,810,blairalec,4,121,0,Forelius pruinosis,121
+P,11,2,0,Ashe Juniper,high,0,0,,226,820,blairalec,4,180,1,Solenopsis invicta,180
+P,12,2,2,Sugar hackberry,low,0,0,,224,832,blairalec,4,42,0,Pheidole dentata,42
+P,13,3,0,Ashe Juniper,high,0,0,wasps,200,902,blairalec,4,32,0,Pheidole floridana,32
+P,14,3,1,Cedar elm,high,2,0,,307,872,blairalec,4,65,0,Forelius pruinosis,65
+P,15,2,1,Pecan,high,1,1,,200,871,blairalec,4,4,0,Pheidole floridana,4
+P,16,2,2,Pecan,low,1,1,,227,872,blairalec,4,48,0,Forelius pruinosis,48
+P,1,1,1,Cedar Elm,high,2,0,N/A,617620.38,3351419.54,coxlinda,13,5,1,Solenopsis invicta,5
+P,2,1,1,Oak (not sure what kind),low,2,0,N/A,617410.6,3350773.87,coxlinda,13,2,1,Solenopsis invicta,2
+P,3,2,0,Ashe Juniper,low,1,0,N/A,617378.16,3350758.67,coxlinda,13,17,1,Solenopsis invicta,17
+P,4,2,0,Ashe Juniper,low,1,0,N/A,617360.67,3350756.26,coxlinda,13,125,1,Solenopsis invicta,125
+P,5,0,0,Ashe Juniper,high,2,0,N/A,617589.2,3351348.93,coxlinda,13,150,1,Solenopsis invicta,150
+P,6,3,2,Ashe Juniper,low,1,0,N/A,617343.04,3350749.65,coxlinda,13,75,0,Pheidole dentata,75
+P,7,1,0,Ashe Juniper,high,2,0,N/A,617361.23,3350829.64,coxlinda,13,100,1,Solenopsis invicta,100
+P,8,3,1,Cedar Elm,low,1,0,N/A,617356.27,3350745.13,coxlinda,13,86,1,Solenopsis invicta,86
+P,9,2,1,Ashe Juniper,low,1,0,N/A,617136.36,3351032.84,coxlinda,13,75,1,Solenopsis invicta,75
+P,10,0,1,Oak,high,2,0,N/A,617372.32,3350800.83,coxlinda,13,150,1,Solenopsis invicta,150
+P,11,1,2,Ashe Juniper,high,2,0,N/A,617388.93,3350802.9,coxlinda,13,26,1,Solenopsis invicta,26
+P,12,2,1,Oak,low,1,0,N/A,617375.87,3350810.07,coxlinda,13,3,0,Pheidole floridana,3
+P,13,2,1,Ashe Juniper,high,2,0,N/A,617378.53,3350804.23,coxlinda,13,53,1,Solenopsis invicta,53
+P,14,3,1,Cedar Elm,low,0,0,N/A,617364.59,3350794.32,coxlinda,13,32,0,Pheidole floridana,32
+P,15,1,2,Ashe Juniper,high,1,0,N/A,617358.66,3350773.75,coxlinda,13,30,1,Solenopsis invicta,30
+P,16,3,1,Cedar Elm,low,0,0,N/A,617341.73,3350746.86,coxlinda,13,100,0,Pheidole floridana,100
+P,1,2,1,Juniperus asheii,high,2,0,,17302,50922,shahrakiroxanna,,,,,
+P,2,3,1,Juniperus asheii,high,2,0,2 wasps,17321,50917,shahrakiroxanna,,,,,
+P,3,3,1,Juniperus asheii,high,2,1,wasp and one other ant species,17269,50902,shahrakiroxanna,,,,,
+P,4,3,0,Ulmus crassifolia,high,2,1,hemipterid,17293,50845,shahrakiroxanna,,,,,
+P,5,3,0,Ulmus crassifolia,high,2,0,,17274,50876,shahrakiroxanna,,,,,
+P,6,3,0,Ulmus crassifolia,low,2,0,wasp,17295,50849,shahrakiroxanna,,,,,
+P,7,2,1,Ulmus crassifolia,high,2,0,fly,17308,50849,shahrakiroxanna,,,,,
+P,8,2,0,Ulmus crassifolia,high,2,0,hemipterid,17292,50883,shahrakiroxanna,,,,,
+P,9,1,0,Quercus virginiana,high,2,0,,17305,50871,shahrakiroxanna,,,,,
+P,10,2,0,Quercus virginiana,high,2,0,wasp,17292,50888,shahrakiroxanna,,,,,
+P,11,3,0,Celtis occidentalis,high,2,0,wasp,17337,50869,shahrakiroxanna,,,,,
+P,12,2,0,Ulmus crassifolia,high,2,0,wasp,17319,50860,shahrakiroxanna,,,,,
+P,13,0,2,Juniperus asheii,low,3,0,,17308,50891,shahrakiroxanna,,,,,
+P,14,3,0,Juniperus asheii,high,2,0,wasp,17301,50898,shahrakiroxanna,,,,,
+P,15,1,1,Salix negra,high,2,0,,17316,50877,shahrakiroxanna,,,,,
+P,16,2,0,Juniperus asheii,high,2,0,spider,17318,50884,shahrakiroxanna,,,,,
+P,1,1,1,cedar elm,high,1,0,,617427.07,3350709.76,wadmanjenna,14,53,1,Solenopsis invicta,53
+P,2,1,0,ashe juniper,high,1,0,,617433.17,3350714.48,wadmanjenna,14,1,0,Atta texana,1
+P,3,2,1,cedar elm,high,1,0,,617414.77,3350708.41,wadmanjenna,14,43,1,Solenopsis invicta,43
+P,4,1,1,pecan,high,1,0,,617394.16,3350692.45,wadmanjenna,14,18,1,Solenopsis invicta,18
+P,5,2,1,bald cypress,high,0,0,,617404.51,3350722.93,wadmanjenna,14,60,1,Solenopsis invicta,60
+P,6,2,1,ashe juniper,low,0,0,,617407.09,3350733.49,wadmanjenna,14,65,1,Solenopsis invicta,65
+P,7,2,1,ashe juniper,low,1,0,,617399.66,3350745.04,wadmanjenna,14,1,0,Camponotus texanus,1
+P,8,3,1,ashe juniper,low,1,0,,617401,3350727.66,wadmanjenna,14,2,0,Camponotus texanus,2
+P,9,1,1,ashe juniper,high,0,0,,617359.89,3350739.74,wadmanjenna,14,150,1,Solenopsis invicta,150
+P,10,3,1,pecan,low,1,0,,617374.54,3350710.08,wadmanjenna,14,15,0,Pheidole floridana,15
+P,11,1,1,pecan,high,1,0,,617395.02,3350684.48,wadmanjenna,14,60,0,Pheidole floridana,60
+P,12,3,2,pecan,low,1,0,,617380.95,3350713.81,wadmanjenna,14,50,1,Solenopsis invicta,50
+P,13,3,1,cottonwood,low,1,0,,617388.84,3350749.25,wadmanjenna,14,38,0,Pheidole floridana,38
+P,14,2,2,chinese tallow,low,0,0,,617406.94,3350720.96,wadmanjenna,14,7,0,Camponotus texanus,2
+P,14,2,2,chinese tallow,low,0,0,,617406.94,3350720.96,wadmanjenna,14,7,0,Pheidole floridana,5
+P,15,3,1,ashe juniper,low,0,0,,617394.79,3350714.62,wadmanjenna,14,6,0,Camponotus texanus,2
+P,15,3,1,ashe juniper,low,0,0,,617394.79,3350714.62,wadmanjenna,14,6,0,Pheidole floridana,4
+P,16,3,1,cedar elm,high,1,0,,617388.81,3350733.73,wadmanjenna,14,1,0,Camponotus texanus,1
+P,1,0,2,sugar hackberry,low,2,0,,,,barnetterica,19,375,1,Solenopsis invicta,375
+P,2,2,3,cedar elm,low,0,0,,,,barnetterica,19,25,1,Solenopsis invicta,25
+P,3,2,0,sugar hackberry,high,2,1,,,,barnetterica,19,50,1,Solenopsis invicta,50
+P,4,0,2,sugar hackberry,low,0,0,,,,barnetterica,19,130,1,Solenopsis invicta,130
+P,5,3,1,cedar elm,low,1,0,,,,barnetterica,19,52,0,Pheidole dentata,52
+P,6,3,2,Ashe juniper,low,1,0,,,,barnetterica,19,55,0,Crematogaster laeviuscula,55
+P,7,1,1,cedar elm,high,0,0,,,,barnetterica,19,350,1,Solenopsis invicta,350
+P,8,3,0,sugar hackberry,low,1,0,,,,barnetterica,19,125,1,Solenopsis invicta,125
+P,9,2,1,cedar elm,low,1,0,,,,barnetterica,19,110,0,Pheidole tetra,110
+P,10,0,1,cedar elm,high,1,0,,,,barnetterica,19,25,0,Pheidole dentata,25
+P,11,2,3,sugar hackberry,low,0,0,,,,barnetterica,19,4,0,Pheidole dentata,4
+P,12,3,2,sugar hackberry,high,0,0,,,,barnetterica,19,40,0,Crematogaster laeviuscula,40
+P,13,3,3,sugar hackberry,low,0,0,,,,barnetterica,19,10,0,Pheidole dentata,10
+P,14,3,2,sugar hackberry,low,0,0,,,,barnetterica,19,150,1,Solenopsis invicta,150
+P,15,1,3,sugar hackberry,high,3,0,,,,barnetterica,19,40,1,Solenopsis invicta,40
+P,16,1,1,sugar hackberry,high,3,0,,,,barnetterica,19,275,0,Pheidole floridana,275
+,1,3,1,hackberry,high,1,0,yellow jacket,,,boothalexxa,34,60,0,Pheidole floridana,59
+,1,3,1,hackberry,high,1,0,yellow jacket,,,boothalexxa,34,60,0,Campontus sansabeanus,1
+,2,3,1,hackberry,high,0,0,yellow jacket,,,boothalexxa,34,10,0,Pheidole dentata,10
+,3,2,2,live oak,low,1,0,,,,boothalexxa,34,300,0,Pheidole floridana,300
+,4,2,1,hackberry,high,1,0,big ant,,,boothalexxa,34,33,0,Pheidole floridana,33
+,5,2,2,texas ash,low,1,0,yellow jacket,,,boothalexxa,34,50,0,Pheidole dentata,50
+,6,1,2,ashe juniper,low,0,0,,,,boothalexxa,34,40,0,Pheidole tetra,40
+,7,3,0,ashe juniper,high,1,0,,,,boothalexxa,34,5,0,Pheidole floridana,5
+,8,0,2,ashe juniper,high,0,0,many,,,boothalexxa,34,450,1,Solenopsis invicta,450
+,9,1,2,ashe juniper,high,0,0,few,,,boothalexxa,34,13,0,Pheidole tetra,13
+,10,0,1,ashe juniper,high,0,0,tiny ants,,,boothalexxa,34,90,0,Pheidole floridana,90
+,11,1,1,ashe juniper,low,1,0,,,,boothalexxa,34,100,0,Pheidole tetra,100
+,12,1,0,ashe juniper,low,0,0,yellow jackets,,,boothalexxa,34,140,0,Pheidole tetra,140
+,13,1,3,ashe juniper,low,1,0,little ants,,,boothalexxa,34,8,0,Pheidole floridana,8
+,14,0,0,ashe juniper,low,1,0,still,,,boothalexxa,34,175,1,Solenopsis invicta,175
+,15,1,1,ashe juniper,low,0,0,yellow jacket,,,boothalexxa,34,200,0,Pheidole tetra,200
+,16,1,2,ashe juniper,low,0,0,yellow jacket,,,boothalexxa,34,9,0,Pheidole floridana,9
+P,1,2,2,hackberry,low,0,0,,617211,3350859,dunhamkatherine,1,65,0,Monomorium minimum,65
+P,2,2,1,pecan,low,1,0,,617218,3350847,dunhamkatherine,1,6,0,Monomorium minimum,5
+P,2,2,1,pecan,low,1,0,,617218,3350847,dunhamkatherine,1,6,0,Pachychondyla harpax,1
+P,3,2,2,bald cypress,low,0,0,,617226,3350831,dunhamkatherine,1,4,0,Monomorium minimum,4
+P,4,1,2,pecan,low,0,0,,617238,3350813,dunhamkatherine,1,3,0,Monomorium minimum,3
+P,5,2,1,hackberry,low,0,0,by water,617219,3350800,dunhamkatherine,1,83,0,Monomorium minimum,83
+P,6,2,1,cottonwood,high,0,0,,617213,3350819,dunhamkatherine,1,186,1,Solenopsis invicta,186
+P,7,1,1,chinese tallow,high,2,0,,617206,3350828,dunhamkatherine,1,49,1,Solenopsis invicta,49
+P,8,2,1,hackberry,low,1,0,,617196,3350842,dunhamkatherine,1,23,0,Crematogaster laeviuscula,23
+P,9,2,1,hackberry,low,1,0,,617177,3350840,dunhamkatherine,1,11,0,Crematogaster laeviuscula,11
+P,10,2,0,paper mulberry,low,2,0,,617190,3350827,dunhamkatherine,1,5,0,Pheidole dentata,4
+P,10,2,0,paper mulberry,low,2,0,,617190,3350827,dunhamkatherine,1,5,0,Atta texana,1
+P,11,1,1,hackberry,low,1,0,,617200,3350807,dunhamkatherine,1,3,1,Solenopsis invicta,3
+P,12,1,1,hackberry,low,1,0,,617209,3350797,dunhamkatherine,1,216,0,Pheidole dentata,216
+P,13,3,1,hackberry,low,1,0,,617193,3350790,dunhamkatherine,1,209,0,Pheidole dentata,209
+P,14,3,0,hackberry,low,1,0,,617183,3350802,dunhamkatherine,1,45,1,Solenopsis invicta,45
+P,15,3,0,hackberry,low,1,0,,617176,3350818,dunhamkatherine,1,12,1,Monomorium minimum,7
+P,15,3,0,hackberry,low,1,0,,617176,3350818,dunhamkatherine,1,12,1,Solenopsis invicta,5
+P,16,2,2,hackberry,low,2,0,,617165,3350832,dunhamkatherine,1,2,0,Pheidole dentata,2
+R,1,2,1,Red Mulberry,high,0,0,"Easting was 351
+Suspect erroneous bc outlier",,691,johnsonwilliam,53,46,0,Pheidole dentata,46
+R,2,2,2,Pecan,high,0,0,,146,770,johnsonwilliam,53,0,0,Aphenogaster texana,0
+R,2,2,2,Pecan,high,0,0,,146,770,johnsonwilliam,53,0,0,Brachymyermex,0
+R,2,2,2,Pecan,high,0,0,,146,770,johnsonwilliam,53,0,0,Camponotus texanus,0
+R,2,2,2,Pecan,high,0,0,,146,770,johnsonwilliam,53,0,0,Crematogaster laeviuscula,0
+R,2,2,2,Pecan,high,0,0,,146,770,johnsonwilliam,53,0,0,Forelius mccooki,0
+R,2,2,2,Pecan,high,0,0,,146,770,johnsonwilliam,53,0,0,Forelius pruinosis,0
+R,2,2,2,Pecan,high,0,0,,146,770,johnsonwilliam,53,0,0,Monomorium minimum,0
+R,2,2,2,Pecan,high,0,0,,146,770,johnsonwilliam,53,0,0,Odontomachus clarus,0
+R,2,2,2,Pecan,high,0,0,,146,770,johnsonwilliam,53,0,0,Paratrechina terricola,0
+R,2,2,2,Pecan,high,0,0,,146,770,johnsonwilliam,53,0,0,Pheidole bicarinata,0
+R,2,2,2,Pecan,high,0,0,,146,770,johnsonwilliam,53,0,0,Pheidole dentata,0
+R,2,2,2,Pecan,high,0,0,,146,770,johnsonwilliam,53,0,0,Pheidole floridana,0
+R,2,2,2,Pecan,high,0,0,,146,770,johnsonwilliam,53,0,0,Pheidole lamia,0
+R,2,2,2,Pecan,high,0,0,,146,770,johnsonwilliam,53,0,0,Pheidole metallescens,0
+R,2,2,2,Pecan,high,0,0,,146,770,johnsonwilliam,53,0,0,Pheidole pelor,0
+R,2,2,2,Pecan,high,0,0,,146,770,johnsonwilliam,53,0,0,Pheidole tetra,0
+R,2,2,2,Pecan,high,0,0,,146,770,johnsonwilliam,53,0,0,Pheilode hyati,0
+R,2,2,2,Pecan,high,0,0,,146,770,johnsonwilliam,53,0,0,Pseudomyrmex brunneus,0
+R,2,2,2,Pecan,high,0,0,,146,770,johnsonwilliam,53,0,0,Solenopsis geminata,0
+R,2,2,2,Pecan,high,0,0,,146,770,johnsonwilliam,53,0,0,Solenopsis texana,0
+R,2,2,2,Pecan,high,0,0,,146,770,johnsonwilliam,53,0,0,Other species,0
+R,2,2,2,Pecan,high,0,0,,146,770,johnsonwilliam,53,0,0,Solenopsis invicta,0
+R,3,3,1,Pecan,high,0,0,Dropped hotdog,133,788,johnsonwilliam,53,0,0,Aphenogaster texana,0
+R,3,3,1,Pecan,high,0,0,Dropped hotdog,133,788,johnsonwilliam,53,0,0,Brachymyermex,0
+R,3,3,1,Pecan,high,0,0,Dropped hotdog,133,788,johnsonwilliam,53,0,0,Camponotus texanus,0
+R,3,3,1,Pecan,high,0,0,Dropped hotdog,133,788,johnsonwilliam,53,0,0,Crematogaster laeviuscula,0
+R,3,3,1,Pecan,high,0,0,Dropped hotdog,133,788,johnsonwilliam,53,0,0,Forelius mccooki,0
+R,3,3,1,Pecan,high,0,0,Dropped hotdog,133,788,johnsonwilliam,53,0,0,Forelius pruinosis,0
+R,3,3,1,Pecan,high,0,0,Dropped hotdog,133,788,johnsonwilliam,53,0,0,Monomorium minimum,0
+R,3,3,1,Pecan,high,0,0,Dropped hotdog,133,788,johnsonwilliam,53,0,0,Odontomachus clarus,0
+R,3,3,1,Pecan,high,0,0,Dropped hotdog,133,788,johnsonwilliam,53,0,0,Paratrechina terricola,0
+R,3,3,1,Pecan,high,0,0,Dropped hotdog,133,788,johnsonwilliam,53,0,0,Pheidole bicarinata,0
+R,3,3,1,Pecan,high,0,0,Dropped hotdog,133,788,johnsonwilliam,53,0,0,Pheidole dentata,0
+R,3,3,1,Pecan,high,0,0,Dropped hotdog,133,788,johnsonwilliam,53,0,0,Pheidole floridana,0
+R,3,3,1,Pecan,high,0,0,Dropped hotdog,133,788,johnsonwilliam,53,0,0,Pheidole lamia,0
+R,3,3,1,Pecan,high,0,0,Dropped hotdog,133,788,johnsonwilliam,53,0,0,Pheidole metallescens,0
+R,3,3,1,Pecan,high,0,0,Dropped hotdog,133,788,johnsonwilliam,53,0,0,Pheidole pelor,0
+R,3,3,1,Pecan,high,0,0,Dropped hotdog,133,788,johnsonwilliam,53,0,0,Pheidole tetra,0
+R,3,3,1,Pecan,high,0,0,Dropped hotdog,133,788,johnsonwilliam,53,0,0,Pheilode hyati,0
+R,3,3,1,Pecan,high,0,0,Dropped hotdog,133,788,johnsonwilliam,53,0,0,Pseudomyrmex brunneus,0
+R,3,3,1,Pecan,high,0,0,Dropped hotdog,133,788,johnsonwilliam,53,0,0,Solenopsis geminata,0
+R,3,3,1,Pecan,high,0,0,Dropped hotdog,133,788,johnsonwilliam,53,0,0,Solenopsis texana,0
+R,3,3,1,Pecan,high,0,0,Dropped hotdog,133,788,johnsonwilliam,53,0,0,Other species,0
+R,3,3,1,Pecan,high,0,0,Dropped hotdog,133,788,johnsonwilliam,53,0,0,Solenopsis invicta,0
+R,4,3,1,Red Mulberry,high,0,0,,115,804,johnsonwilliam,53,3,1,Solenopsis invicta,3
+R,5,3,2,Sugar Hackberry,high,0,0,,129,808,johnsonwilliam,53,25,0,Solenopsis texana,25
+R,6,1,2,Pecan,high,0,0,,141,795,johnsonwilliam,53,120,1,Solenopsis invicta,120
+R,7,2,2,Sugar Hackberry,high,0,1,,157,773,johnsonwilliam,53,62,1,Solenopsis invicta,62
+R,8,2,1,American Elm,high,0,0,,167,768,johnsonwilliam,53,264,1,Solenopsis invicta,264
+R,9,2,2,Sugar Hackberry,low,0,0,,150,814,johnsonwilliam,53,99,0,Pheidole floridana,99
+R,10,3,0,Sugar Hackberry,high,0,0,,155,795,johnsonwilliam,53,26,0,Pheidole dentata,26
+R,11,3,1,Sugar Hackberry,high,0,0,,165,785,johnsonwilliam,53,126,0,Pheidole bicarinata,126
+R,12,3,0,Paper Mulberry,low,0,0,,191,780,johnsonwilliam,53,20,0,Pheidole pelor,20
+R,13,2,2,Sugar Hackberry,low,0,0,,154,827,johnsonwilliam,53,1,0,Pheidole dentata,1
+R,14,3,1,Pecan,high,0,0,,166,807,johnsonwilliam,53,137,0,Pheidole floridana,137
+R,15,3,2,Sugar Hackberry,high,0,0,,182,800,johnsonwilliam,53,40,0,Pheidole floridana,40
+R,16,2,2,Paper Mulberry,high,0,0,,187,779,johnsonwilliam,53,6,0,Pheidole bicarinata,6
+R,1,2,2,sugar hackberry,high,2,0,wasp at hotdog,617485,3350902,jungjieun,55,60,0,Pheidole dentata,60
+R,2,3,2,sugar hackberry,low,2,0,,617508,3350462,jungjieun,55,70,1,Solenopsis invicta,70
+R,3,3,3,sugar hackberry,low,2,0,right at fence,617489,3350454,jungjieun,55,65,0,Other species,65
+R,4,0,0,sugar hackberry,high,2,0,path,617521,3350459,jungjieun,55,200,1,Solenopsis invicta,200
+R,5,0,3,sugar hackberry,low,0,0,in turk field,617534,3350438,jungjieun,55,60,1,Solenopsis invicta,60
+R,6,1,3,sugar hackberry,low,1,0,near pond,617547,3350430,jungjieun,55,170,1,Solenopsis invicta,170
+R,7,1,3,sugar hackberry,low,0,0,near pond,617544,3350424,jungjieun,55,300,1,Solenopsis invicta,300
+R,8,2,3,sugar hackberry,low,0,0,near pond,617538,3350421,jungjieun,55,141,0,Pheidole floridana,141
+R,9,3,1,sugar hackberry,low,0,0,,617531,3350415,jungjieun,55,8,0,Pheidole dentata,8
+R,10,3,0,sugar hackberry,low,0,0,,617521,3350426,jungjieun,55,250,0,Pheidole floridana,250
+R,11,3,0,pecan,high,1,0,path,617502,3350439,jungjieun,55,80,0,Pheidole dentata,80
+R,12,1,3,sugar hackberry,high,2,0,path,617487,3350456,jungjieun,55,400,1,Solenopsis invicta,400
+R,13,2,3,sugar hackberry,high,3,0,,617502,3350470,jungjieun,55,17,0,Pheidole dentata,17
+R,14,2,2,sugar hackberry,high,2,0,,617520,3350466,jungjieun,55,48,0,Pheidole dentata,48
+R,15,1,2,sugar hackberry,high,3,0,,617532,3350453,jungjieun,55,300,0,Other species,300
+R,16,1,3,sugar hackberry,low,0,0,near fallen cottonwood,,,jungjieun,55,39,0,Pheidole floridana,39
+P,1,2,1,hackberry,high,1,0,,,,kenyonmorgan,64,105,0,Pheidole dentata,105
+P,2,3,0,hackberry,high,0,0,,,,kenyonmorgan,64,140,1,Solenopsis invicta,140
+P,3,3,1,hackberry,high,0,0,,,,kenyonmorgan,64,75,1,Solenopsis invicta,75
+P,4,3,0,hackberry,high,2,1,,,,kenyonmorgan,64,214,1,Solenopsis invicta,214
+P,5,1,1,mesquite,high,2,0,,,,kenyonmorgan,64,185,1,Solenopsis invicta,185
+P,6,3,0,hackberry,low,0,0,,,,kenyonmorgan,64,115,0,Forelius pruinosis,115
+P,7,1,1,hackberry,high,1,0,,,,kenyonmorgan,64,65,0,Pheidole dentata,65
+P,8,2,0,Ashe Juniper,high,2,1,,,,kenyonmorgan,64,110,1,Solenopsis invicta,110
+P,9,2,2,Ashe Juniper,high,2,1,,,,kenyonmorgan,64,120,1,Solenopsis invicta,120
+P,10,0,1,Mesquite,high,3,0,,,,kenyonmorgan,64,105,0,Forelius pruinosis,105
+P,11,0,1,Mesquite,high,3,0,,,,kenyonmorgan,64,95,1,Solenopsis invicta,95
+P,12,0,1,Mesquite,low,3,0,,,,kenyonmorgan,64,70,1,Solenopsis invicta,70
+P,13,0,1,laurel cherry,low,3,1,,,,kenyonmorgan,64,337,1,Solenopsis invicta,337
+P,14,0,0,persimmon,high,2,0,,,,kenyonmorgan,64,60,1,Solenopsis invicta,60
+P,15,0,1,none- just vines,high,2,0,,,,kenyonmorgan,64,75,1,Solenopsis invicta,75
+P,16,0,1,none- just vines,high,3,0,,,,kenyonmorgan,64,130,1,Solenopsis invicta,130
+Q,1,0,3,Ashe Juniper,low,2,1,,617180,3351180,marekjake,9,200,1,Solenopsis invicta,200
+Q,2,0,3,Ashe Juniper,low,2,1,,617184,3351180,marekjake,9,12,1,Solenopsis invicta,12
+Q,3,0,3,Ashe Juniper,low,2,0,,617188,3351180,marekjake,9,3,0,Other species,3
+Q,4,3,2,Live Oak,low,0,0,,617192,3351180,marekjake,9,100,1,Solenopsis invicta,100
+Q,5,3,1,Ashe Juniper,low,0,0,,617192,3351176,marekjake,9,0,0,Aphenogaster texana,0
+Q,5,3,1,Ashe Juniper,low,0,0,,617192,3351176,marekjake,9,0,0,Brachymyermex,0
+Q,5,3,1,Ashe Juniper,low,0,0,,617192,3351176,marekjake,9,0,0,Camponotus texanus,0
+Q,5,3,1,Ashe Juniper,low,0,0,,617192,3351176,marekjake,9,0,0,Crematogaster laeviuscula,0
+Q,5,3,1,Ashe Juniper,low,0,0,,617192,3351176,marekjake,9,0,0,Forelius mccooki,0
+Q,5,3,1,Ashe Juniper,low,0,0,,617192,3351176,marekjake,9,0,0,Forelius pruinosis,0
+Q,5,3,1,Ashe Juniper,low,0,0,,617192,3351176,marekjake,9,0,0,Monomorium minimum,0
+Q,5,3,1,Ashe Juniper,low,0,0,,617192,3351176,marekjake,9,0,0,Odontomachus clarus,0
+Q,5,3,1,Ashe Juniper,low,0,0,,617192,3351176,marekjake,9,0,0,Paratrechina terricola,0
+Q,5,3,1,Ashe Juniper,low,0,0,,617192,3351176,marekjake,9,0,0,Pheidole bicarinata,0
+Q,5,3,1,Ashe Juniper,low,0,0,,617192,3351176,marekjake,9,0,0,Pheidole dentata,0
+Q,5,3,1,Ashe Juniper,low,0,0,,617192,3351176,marekjake,9,0,0,Pheidole floridana,0
+Q,5,3,1,Ashe Juniper,low,0,0,,617192,3351176,marekjake,9,0,0,Pheidole lamia,0
+Q,5,3,1,Ashe Juniper,low,0,0,,617192,3351176,marekjake,9,0,0,Pheidole metallescens,0
+Q,5,3,1,Ashe Juniper,low,0,0,,617192,3351176,marekjake,9,0,0,Pheidole pelor,0
+Q,5,3,1,Ashe Juniper,low,0,0,,617192,3351176,marekjake,9,0,0,Pheidole tetra,0
+Q,5,3,1,Ashe Juniper,low,0,0,,617192,3351176,marekjake,9,0,0,Pheilode hyati,0
+Q,5,3,1,Ashe Juniper,low,0,0,,617192,3351176,marekjake,9,0,0,Pseudomyrmex brunneus,0
+Q,5,3,1,Ashe Juniper,low,0,0,,617192,3351176,marekjake,9,0,0,Solenopsis geminata,0
+Q,5,3,1,Ashe Juniper,low,0,0,,617192,3351176,marekjake,9,0,0,Solenopsis texana,0
+Q,5,3,1,Ashe Juniper,low,0,0,,617192,3351176,marekjake,9,0,0,Other species,0
+Q,5,3,1,Ashe Juniper,low,0,0,,617192,3351176,marekjake,9,0,0,Solenopsis invicta,0
+Q,6,3,1,Ashe Juniper,low,0,0,,617192,3351172,marekjake,9,44,0,Pheidole floridana,44
+Q,7,3,2,Ashe Juniper,low,0,0,,617192,3351168,marekjake,9,150,0,Pheidole floridana,150
+Q,8,3,1,Ashe Juniper,low,0,0,,617192,3351164,marekjake,9,16,0,Pheidole dentata,16
+Q,9,3,2,Ashe Juniper,low,0,0,,617192,3351184,marekjake,9,6,0,Pheidole tetra,6
+Q,10,3,2,Reticulated Hackberry,low,0,0,,617192,3351188,marekjake,9,11,0,Pheidole floridana,11
+Q,11,3,2,Youpon,low,0,0,,617192,3351192,marekjake,9,49,0,Pheidole dentata,49
+Q,12,3,2,Cherry Laurel,low,0,0,,617192,3351196,marekjake,9,21,0,Pheidole dentata,21
+Q,13,3,2,Post Oak,low,0,0,,617196,3351180,marekjake,9,60,0,Pheidole floridana,60
+Q,14,3,2,Ashe Juniper,low,0,0,,617200,3351180,marekjake,9,4,0,Pheidole dentata,4
+Q,15,3,2,Ashe Juniper,low,0,0,,617204,3351180,marekjake,9,0,0,Aphenogaster texana,0
+Q,15,3,2,Ashe Juniper,low,0,0,,617204,3351180,marekjake,9,0,0,Brachymyermex,0
+Q,15,3,2,Ashe Juniper,low,0,0,,617204,3351180,marekjake,9,0,0,Camponotus texanus,0
+Q,15,3,2,Ashe Juniper,low,0,0,,617204,3351180,marekjake,9,0,0,Crematogaster laeviuscula,0
+Q,15,3,2,Ashe Juniper,low,0,0,,617204,3351180,marekjake,9,0,0,Forelius mccooki,0
+Q,15,3,2,Ashe Juniper,low,0,0,,617204,3351180,marekjake,9,0,0,Forelius pruinosis,0
+Q,15,3,2,Ashe Juniper,low,0,0,,617204,3351180,marekjake,9,0,0,Monomorium minimum,0
+Q,15,3,2,Ashe Juniper,low,0,0,,617204,3351180,marekjake,9,0,0,Odontomachus clarus,0
+Q,15,3,2,Ashe Juniper,low,0,0,,617204,3351180,marekjake,9,0,0,Paratrechina terricola,0
+Q,15,3,2,Ashe Juniper,low,0,0,,617204,3351180,marekjake,9,0,0,Pheidole bicarinata,0
+Q,15,3,2,Ashe Juniper,low,0,0,,617204,3351180,marekjake,9,0,0,Pheidole dentata,0
+Q,15,3,2,Ashe Juniper,low,0,0,,617204,3351180,marekjake,9,0,0,Pheidole floridana,0
+Q,15,3,2,Ashe Juniper,low,0,0,,617204,3351180,marekjake,9,0,0,Pheidole lamia,0
+Q,15,3,2,Ashe Juniper,low,0,0,,617204,3351180,marekjake,9,0,0,Pheidole metallescens,0
+Q,15,3,2,Ashe Juniper,low,0,0,,617204,3351180,marekjake,9,0,0,Pheidole pelor,0
+Q,15,3,2,Ashe Juniper,low,0,0,,617204,3351180,marekjake,9,0,0,Pheidole tetra,0
+Q,15,3,2,Ashe Juniper,low,0,0,,617204,3351180,marekjake,9,0,0,Pheilode hyati,0
+Q,15,3,2,Ashe Juniper,low,0,0,,617204,3351180,marekjake,9,0,0,Pseudomyrmex brunneus,0
+Q,15,3,2,Ashe Juniper,low,0,0,,617204,3351180,marekjake,9,0,0,Solenopsis geminata,0
+Q,15,3,2,Ashe Juniper,low,0,0,,617204,3351180,marekjake,9,0,0,Solenopsis texana,0
+Q,15,3,2,Ashe Juniper,low,0,0,,617204,3351180,marekjake,9,0,0,Other species,0
+Q,15,3,2,Ashe Juniper,low,0,0,,617204,3351180,marekjake,9,0,0,Solenopsis invicta,0
+Q,16,3,1,Ashe Juniper,low,0,1,,617208,3351180,marekjake,9,91,0,Pheidole tetra,91
+P,1,2,1,Pecan,high,2,0,,362,679,pringlecole,15,170,0,Pheidole dentata,170
+P,2,2,0,Cedar Elm,low,1,1,,367,685,pringlecole,15,120,0,Pheidole dentata,120
+P,3,2,0,Hackberry,low,2,0,Yellow jacket at hotdog,352,676,pringlecole,15,39,0,Pheidole dentata,39
+P,4,2,1,Pecan,high,0,0,,351,686,pringlecole,15,450,1,Solenopsis invicta,450
+P,5,3,1,Ashe Juniper,high,2,0,Large ants escaped,364,693,pringlecole,15,5,0,Pheidole dentata,5
+P,6,3,1,Ashe Juniper,low,2,0,,359,703,pringlecole,15,200,0,Pheidole floridana,200
+P,7,3,0,Pecan,high,1,0,,353,713,pringlecole,15,16,0,Pheidole dentata,1
+P,7,3,0,Pecan,high,1,0,,353,713,pringlecole,15,16,0,Pheidole floridana,15
+P,8,3,0,Ashe Juniper,low,0,0,,344,716,pringlecole,15,160,0,Pheidole floridana,160
+P,9,2,1,Hackberry,high,0,0,,343,726,pringlecole,15,85,0,Pheidole dentata,85
+P,10,2,0,Pecan,high,0,0,,343,710,pringlecole,15,51,0,Crematogaster laeviuscula,49
+P,10,2,0,Pecan,high,0,0,,343,710,pringlecole,15,51,0,Pheidole floridana,2
+P,11,1,2,American Elm,high,2,0,,331,723,pringlecole,15,3,0,Camponotus texanus,2
+P,11,1,2,American Elm,high,2,0,,331,723,pringlecole,15,3,0,Pheidole dentata,1
+P,12,1,1,Cottonwood,high,0,0,,338,702,pringlecole,15,1,0,Camponotus texanus,1
+P,13,3,2,Hackberry,low,0,1,,325,692,pringlecole,15,8,0,Crematogaster laeviuscula,8
+P,14,3,0,Hackberry,low,1,1,,335,683,pringlecole,15,100,0,Pheidole floridana,100
+P,15,2,0,Pecan,high,1,0,,345,687,pringlecole,15,30,0,Aphenogaster texana,30
+P,16,2,1,Pecan,low,0,0,,348,684,pringlecole,15,5,0,Pheidole dentata,4
+P,16,2,1,Pecan,low,0,0,,348,684,pringlecole,15,5,0,Pachycondlya harpax,1
+P,1,1,2,Cedar Elm,high,1,,,571,517,williamswesley,20,238,1,Solenopsis invicta,238
+P,2,3,2,Cedar Elm,low,0,,,567,524,williamswesley,20,68,0,Pheidole tetra,68
+P,3,3,1,Hackberry,low,0,,,579,526,williamswesley,20,34,1,Solenopsis invicta,34
+P,4,1,3,Cedar Elm,high,2,,,583,534,williamswesley,20,308,1,Solenopsis invicta,308
+P,5,3,1,Hackberry,low,0,,,593,532,williamswesley,20,63,0,Pheidole tetra,63
+P,6,1,2,Cedar Elm,high,1,,,607,537,williamswesley,20,186,1,Solenopsis invicta,186
+P,7,0,3,Ashe Juniper,high,2,,,592,546,williamswesley,20,412,1,Solenopsis invicta,412
+P,8,3,1,Ashe Juniper,low,0,1,,605,550,williamswesley,20,38,1,Solenopsis invicta,38
+P,9,1,2,Hackberry,high,2,,,622,542,williamswesley,20,52,1,Solenopsis invicta,52
+P,10,0,3,Cedar Elm,high,2,,,613,527,williamswesley,20,212,1,Solenopsis invicta,212
+P,11,3,1,Hackberry,low,0,,,629,528,williamswesley,20,104,0,Pheidole dentata,104
+P,12,1,2,Hackberry,high,2,,,622,510,williamswesley,20,0,0,Aphenogaster texana,0
+P,12,1,2,Hackberry,high,2,,,622,510,williamswesley,20,0,0,Brachymyermex,0
+P,12,1,2,Hackberry,high,2,,,622,510,williamswesley,20,0,0,Camponotus texanus,0
+P,12,1,2,Hackberry,high,2,,,622,510,williamswesley,20,0,0,Crematogaster laeviuscula,0
+P,12,1,2,Hackberry,high,2,,,622,510,williamswesley,20,0,0,Forelius mccooki,0
+P,12,1,2,Hackberry,high,2,,,622,510,williamswesley,20,0,0,Forelius pruinosis,0
+P,12,1,2,Hackberry,high,2,,,622,510,williamswesley,20,0,0,Monomorium minimum,0
+P,12,1,2,Hackberry,high,2,,,622,510,williamswesley,20,0,0,Odontomachus clarus,0
+P,12,1,2,Hackberry,high,2,,,622,510,williamswesley,20,0,0,Paratrechina terricola,0
+P,12,1,2,Hackberry,high,2,,,622,510,williamswesley,20,0,0,Pheidole bicarinata,0
+P,12,1,2,Hackberry,high,2,,,622,510,williamswesley,20,0,0,Pheidole dentata,0
+P,12,1,2,Hackberry,high,2,,,622,510,williamswesley,20,0,0,Pheidole floridana,0
+P,12,1,2,Hackberry,high,2,,,622,510,williamswesley,20,0,0,Pheidole lamia,0
+P,12,1,2,Hackberry,high,2,,,622,510,williamswesley,20,0,0,Pheidole metallescens,0
+P,12,1,2,Hackberry,high,2,,,622,510,williamswesley,20,0,0,Pheidole pelor,0
+P,12,1,2,Hackberry,high,2,,,622,510,williamswesley,20,0,0,Pheidole tetra,0
+P,12,1,2,Hackberry,high,2,,,622,510,williamswesley,20,0,0,Pheilode hyati,0
+P,12,1,2,Hackberry,high,2,,,622,510,williamswesley,20,0,0,Pseudomyrmex brunneus,0
+P,12,1,2,Hackberry,high,2,,,622,510,williamswesley,20,0,0,Solenopsis geminata,0
+P,12,1,2,Hackberry,high,2,,,622,510,williamswesley,20,0,0,Solenopsis texana,0
+P,12,1,2,Hackberry,high,2,,,622,510,williamswesley,20,0,0,Other species,0
+P,12,1,2,Hackberry,high,2,,,622,510,williamswesley,20,0,0,Solenopsis invicta,0
+P,13,3,0,Cedar Elm,low,0,,,614,501,williamswesley,20,58,0,Pheidole dentata,58
+P,14,1,3,Ashe Juniper,high,1,,,605,490,williamswesley,20,317,1,Solenopsis invicta,317
+P,15,3,1,Cedar Elm,low,1,,,603,505,williamswesley,20,243,0,Pheidole dentata,243
+P,16,2,1,Cedar Elm,high,1,,,591,518,williamswesley,20,85,0,Pheidole dentata,85
