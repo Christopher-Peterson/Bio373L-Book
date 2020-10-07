@@ -24,7 +24,7 @@
 <meta name="author" content="Christopher R. Peterson" />
 
 
-<meta name="date" content="2020-09-30" />
+<meta name="date" content="2020-10-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -298,15 +298,15 @@ lizards &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span cla
 <span class="co"># Randomly select 20 colors from color_levels</span>
 color_example =<span class="st"> </span><span class="kw">sample</span>(color_levels, <span class="dt">size =</span> <span class="dv">20</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)
 color_example
-##  [1] &quot;Green&quot; &quot;Blue&quot;  &quot;Green&quot; &quot;Green&quot; &quot;Blue&quot;  &quot;Green&quot; &quot;Green&quot; &quot;Green&quot; &quot;Blue&quot; 
-## [10] &quot;Blue&quot;  &quot;Red&quot;   &quot;Blue&quot;  &quot;Green&quot; &quot;Green&quot; &quot;Blue&quot;  &quot;Green&quot; &quot;Red&quot;   &quot;Blue&quot; 
-## [19] &quot;Blue&quot;  &quot;Blue&quot;
+##  [1] &quot;Blue&quot;  &quot;Blue&quot;  &quot;Blue&quot;  &quot;Red&quot;   &quot;Red&quot;   &quot;Green&quot; &quot;Red&quot;   &quot;Blue&quot;  &quot;Green&quot;
+## [10] &quot;Blue&quot;  &quot;Blue&quot;  &quot;Blue&quot;  &quot;Blue&quot;  &quot;Green&quot; &quot;Green&quot; &quot;Red&quot;   &quot;Green&quot; &quot;Blue&quot; 
+## [19] &quot;Red&quot;   &quot;Green&quot;
 
 <span class="co"># Convert it into a factor</span>
 color_as_factor =<span class="st"> </span><span class="kw">factor</span>(color_example, <span class="dt">levels =</span> color_levels)
 color_as_factor
-##  [1] Green Blue  Green Green Blue  Green Green Green Blue  Blue  Red   Blue 
-## [13] Green Green Blue  Green Red   Blue  Blue  Blue 
+##  [1] Blue  Blue  Blue  Red   Red   Green Red   Blue  Green Blue  Blue  Blue 
+## [13] Blue  Green Green Red   Green Blue  Red   Green
 ## Levels: Red Green Blue</code></pre></div>
 </div>
 <div id="comparing-categorical-frequencies-contingency-tables-related-analyses" class="section level2">
