@@ -23,7 +23,6 @@ There are two primary topics we'll be investigating in this lab:
 - What are the habitat preferences of imported fire ants (*Solenposis invicta*), and do fire ants have an effect on ant diversity.
 - How does the diversity and composition of ant communities differ across habitats (wooded or open) and disturbalnce levels (high and low)?
 
-<!-- d 
 
 ## Methods
 
@@ -53,14 +52,13 @@ Compare the presence/absense of *S. invicta* for each contrast.
 For each, create a contingency table and run a chi-squared test.
 The columns should be the different habitat conditions; the table should have two rows (fire ants present, fire ants absent), and the cell contents should be the number of baits that meet those conditions.
 
-You should also test if there's an interaction between canopy openness and disturbance (re: fire ant presence).
-This should also be tested with a chi-square test, with the contingency table's columns being the four combinations of openness and disturbance.
+You should also test if fire ant presence is affected by an interaction between canopy openness and disturbance.  This should also be tested with a chi-square test, with the contingency table's columns being the four combinations of openness and disturbance and the rows being the presence and absence of fire ants; the values in the contingency tables will be the number of sample points that meet the criteria. 
 
 ### Ant community differences
 
 We'll be using four methods to estimate and compare diversity of ants in different habitats at BFL: Jaccard’s index of similarity, Cumulative curves of species, Rank abundance curves and Shannon’s index of diversity. You can read about these methods in the Ecology Laboratory Manual by G.W. Cox or any other ecology book.
 
-In general, you should use these methods to compare the above habitat characteristics.  You don't have to do all of them for each method (that would be excessive), but I'd recommend using them to explore the data and report on some contrasts that you find interesting. For everything but the Jaccard, you should also look at the entire dataset as a whole. 
+In general, you should use these methods to compare the above habitat characteristics.  You don't have to do all of them for each method (that would be excessive), but I'd recommend using them to explore the data and report on some contrasts that you find interesting. For everything but the Jaccard, you should also look at the entire dataset as a whole.
 
 #### Jaccard's index of similarity
 
@@ -70,7 +68,7 @@ $$J = \frac{W}{A + B - W}$$
 $A$ and $B$ are the richness (number of species present) of the two communities in question, and $W$ is the number of species in common in both communities.  $J$ varies from 0 (nothing in common) to 1 (identical communities).
 You can also interpret $J$ as the proportion of total species that are shared.
 
-For these analyses, you should treat the community as the 
+For these analyses, you should treat the "community" as the habitat condition you're testing.
 
 #### Species Accumulation Curve
 
@@ -82,7 +80,7 @@ Plot each curve (for related curves, you should include them in the same figure)
 
 Rank abundance curves compare the abundance of each species to the rank-order of that abundance. These give you a visual representation of species richness and species evenness (measure of comparative relative abundance of species). Species evenness is derived from the slope of the line that fits the graph. A steep drop-off indicates low evenness as the high ranking species have much higher abundances than the low ranking species. A more gradual slope indicates high evenness as the abundances of different species are similar. 
 
-To create these, plot the number of ants found in each species with log10 scale on Y-axis. Organize the species along the x-axis from most to least abundant (See more in Cox pg 197).
+To create these, plot the number of ants found in each species with log10 scale on Y-axis. Organize the species along the x-axis from most to least abundant (See more in Cox pg 197).
 
 #### Shannon Index
 
@@ -92,8 +90,3 @@ $$H^{\prime} = -\sum_{i=1}^n p_i \ln(p_i)$$
 where $p_i$ is the relative abundance of species $i$.  The larger $H^{\prime}$, the higher the diversity. 
 The exponential of the Shannon index is called the true Shannon diversity $(D_H = \exp(H^\prime))$; it can be interpreted as the number of species you'd expect in an equally diverse community that was perfectly even.  
 
-## Discussion
-
-In progress.  This is a test.
-
--->
