@@ -1,0 +1,312 @@
+# Community ecology analyses with `vegan` {#vegan-tutorial}
+
+This appendix is a companion to the ant community ecology lab. If you haven't already, please install the `vegan` package with `install.packages("vegan")` and put the [ant_data_F18.csv](https://github.com/Christopher-Peterson/Bio373L-Book/tree/master/example_data) file in your `example_data` directory.  
+
+```{r tidyverse_workaround_a6, echo = FALSE, message = FALSE}
+library(ggplot2)
+library(dplyr)
+library(vegan)
+library(readr)
+library(tibble)
+library(forcats)
+library(cowplot)
+library(stringr)
+theme_set(theme_cowplot())
+View = function(x,...){
+  # Scrollable table output
+  # knitr::kable(head(x))
+  x %>% head(n = 10) %>% 
+  kableExtra::kbl() %>% 
+  kableExtra::kable_paper() %>% 
+  kableExtra::scroll_box(width = "100%")
+} 
+```
+```{r load_tidyverse_a6, echo = TRUE, eval=FALSE}
+# Load packages & data
+library(tidyverse) 
+# install.packages("vegan") # uncomment if necessary
+library(vegan) 
+library(cowplot)
+theme_set(theme_cowplot())
+```
+
+## Setting up the data
+
+Read in the new dataset.
+
+```{r a6_read_ants, message = FALSE}
+wide_ant_data = read_csv("example_data/ant_data_F19.csv") 
+View(wide_ant_data)
+```
+
+Looking at the dataset, there's a bunch of columns that indicate the number of species present. Let's make a tidy version of this dataset, which will be easier to work with for some of the functions we're using. We'll be using the `pivot_longer()` function from the `tidyr` package.
+
+```{r a6_tidy_ants, message = FALSE}
+tidy_ant_data = wide_ant_data %>% 
+  pivot_longer(cols = Solenopsis_invicta:Other_species, # These are the species columns
+               names_to = "Species", # Put the column name in a "Species" column
+               values_to = "N") %>% # Cell values are counts, so make that an N column
+  # replace the underscores in species names with a space:
+  mutate(Species = str_replace(Species, "_", " ")) %>% # str_replace is in the stringr package, which is part of tidyverse
+  filter(N > 0) # Remove species that aren't present
+View(tidy_ant_data)
+```
+
+## Jaccard similarity
+
+To calculate the Jaccard similarity of two communities, you need to divide the number of shared species by the total number of species. This can be done with a combination of the `intersect()`, `union()`, and `length()` functions.
+
+```{r a6_int_un, collapse=TRUE}
+# Let's say these are the species in our two communities:
+com_a = LETTERS[1:5]
+com_b = LETTERS[3:8]
+print(com_a); print(com_b)
+
+# Species in common:
+intersect(com_a, com_b)
+
+# Species present in either:
+union(com_a, com_b)
+
+# Total number of species present:
+length(union(com_a, com_b))
+
+# Jaccard similarity:
+length(intersect(com_a, com_b)) / 
+length(union(com_a, com_b))
+
+```
+
+Since you'll be doing this for several groups, it's a good idea to write a function that will do this for us.  
+
+```{r a6_jaccard_func1, collapse = TRUE}
+
+jaccard_similarity = function(com_1, com_2) {
+  # com_1 and com_2 are the arguments of the function, 
+  # they should be the names in different communities
+  
+  # Create local variables for the intersection and union;
+  common_spp = intersect(com_1, com_2) 
+  total_spp = union(com_1, com_2) 
+  # these variables are created while the function runs & destroyed when it ends
+  # The last value of the function is its output (a.k.a., return value)
+  length(common_spp) / length(total_spp) # return this
+}
+
+jaccard_similarity(com_1 = com_a, com_2 = com_b)
+```
+
+How would we make this work with the dataset?  Here's one possibility:
+
+```{r a6_jaccard_cumbersome, collapse = TRUE}
+# Define the community comparison as disturbed river terrace vs undisturbed river terrace
+
+com_r_lo = tidy_ant_data %>% 
+  # Subset the data to get the "community" you want
+  filter(Habitat == "R", Disturbance == "low") %>% 
+  # Get the list of species as a vector
+  pull(Species) %>% unique()
+com_r_hi = tidy_ant_data %>% 
+  filter(Habitat == "R", Disturbance == "high") %>% 
+  pull(Species) %>% unique()
+com_r_lo
+
+com_r_hi
+
+jaccard_similarity(com_r_lo, com_r_hi)
+```
+
+There are more elegant & efficient ways to do this, but they rely on some R techniques we haven't talked about yet; I'll be updating this chapter once I get the appropriate information into the book.
+
+## Species Accumulation Curves
+
+Species accumulation curves are calculated by the `specaccum()` function in `vegan`.  This function requires a data set where each column is a species, each_row is a site, and each cell is a 1 (indicating presence) or 0 (indicating absence).  Let's create a function that will format the data for this:
+
+```{r a6_format_sac_data, collapse = TRUE}
+# Create a function that converts a number to presence-absense
+to_presence_absense = function(x) if_else(x > 0, 1, 0)
+
+# Format data for the species accumulation curve
+format_sac_data = function(wide_data) {
+    wide_data %>% 
+      # Select only species columns
+      select(Solenopsis_invicta:Other_species) %>% 
+      # We don't want to include this "other species"
+      select(-Other_species) %>% 
+      # use to_presence_absense() on all columns
+      mutate(across(everything(), to_presence_absense))
+}
+
+# Test it on quarry data:
+wide_ant_data %>% 
+  filter(Habitat == "Q") %>% 
+  format_sac_data() %>% 
+  View()
+```
+
+From here, you can 
+
+```{r a6_sac_run, collapse = TRUE}
+sac_r = wide_ant_data %>% 
+  filter(Habitat == "R") %>% 
+  format_sac_data() %>% 
+  specaccum(method = "random", permutations = 500)   # Use these argument options
+```
+
+Use `print(sac_r)` to look at the output. The results are basically a tidy data frame turned on its side: one row for the number of sites sampled, one for the estimated richness, and one for the error around the richness estimate.  To plot this, we need to re-format the output.
+
+```{r a6_sac_tidy, collapse = TRUE}
+sac_r_tidy = 
+  tibble(
+    sites = sac_r$sites,
+    richness = sac_r$richness,
+    se = sac_r$sd # the "SD" column is actually a standard error measure
+  ) 
+View(sac_r_tidy)
+```
+
+From this, it's relatively simple to create the actual plot:
+
+```{r a6_sac_plot1}
+sac_r_plot = sac_r_tidy %>% 
+  # Define the confidence intervals based on mean richness & standard errors
+  mutate(lower_ci = richness - se * 1.96,
+         upper_ci = richness + se * 1.96) %>% 
+  ggplot() + aes(x = sites, y = richness) +
+  geom_line(size = 1) + # line for richness
+  # The lines below add in confidence intervals
+  geom_line(aes(y = lower_ci), linetype = 2, alpha = .7) + 
+  geom_line(aes(y = upper_ci), linetype = 2, alpha = .7) +
+  # alpha adds a bit of transparency
+  xlab("Sampling intensity (number of sites)") +
+  ylab("Number of ant species")
+sac_r_plot
+```
+Let's combine these last few steps into a pair of functions, for re-use with different data sub-sets:
+
+```{r a6_get_sac}
+get_sac = function(wide_data) {
+  # wide_data is data in the wide format, probably subset or filtered
+  sac = format_sac_data(wide_data) %>% # Convert to SAC format
+    specaccum(method = "random", permutations = 500) # calculate SAC
+  tibble( # Tidy output
+    sites = sac$sites,
+    richness = sac$richness,
+    se = sac$sd
+  ) %>%   
+    mutate(lower_ci = richness - se * 1.96,
+           upper_ci = richness + se * 1.96)
+}
+plot_sac = function(sac_data) {
+  # sac_data is the output of get_sac()
+  sac_data %>% ggplot() + 
+    aes(x = sites, y = richness) +
+    geom_line(size = 1) + # line for richness
+    # The lines below add in confidence intervals
+    geom_line(aes(y = lower_ci), linetype = 2, alpha = .7) + 
+    geom_line(aes(y = upper_ci), linetype = 2, alpha = .7) +
+    # alpha adds a bit of transparency
+    xlab("Sampling intensity (number of sites)") +
+    ylab("Number of ant species")
+}
+```
+
+From here, we easily try different combinations
+
+```{r a6_sac_expt1}
+wide_ant_data %>% 
+  filter(Habitat == "P") %>% 
+  get_sac() %>% 
+  plot_sac()
+```
+
+```{r a6_sac_expt1}
+bind_rows( # calculate SAC for high & low disturbance, then plot together
+  wide_ant_data %>% 
+    filter(Disturbance == "high") %>% 
+    get_sac() %>% 
+    mutate(Disturbance = "high"), # Add disturbance column back to sac results
+  wide_ant_data %>% 
+    filter(Disturbance == "low") %>% 
+    get_sac() %>% 
+    mutate(Disturbance = "low")) %>% # Add disturbance column back to sac results
+  plot_sac() +
+    aes(color=Disturbance) + scale_color_viridis_d()
+```
+
+## Rank Abundance Curves
+
+This is really just an exercise in data manipulation: we want to get the total number of individuals of each species, then display them in decreasing frequency. You need to summarize your data frame so that there's one row per species, with columns Species and N (which is the species-level sum of the already existing N column in `tidy_ant_data`). I'm not providing the code for this; you should be able to piece it together from the dplyr and/or ggplot appendices.  I would recommend creating a function that does the work, so that you can reuse it.
+
+To make the plot itself, you can use this function:
+
+```{r a6_plot_rank_abund}
+
+plot_rank_abundance = function(summarized_data, right_margin = 2.8) {
+  # Make the rank abundance plot
+  # The right_margin argument is used to make sure that 
+  # the angled axis labels don't go of the page
+  # make it larger or smaller to suit your tastes
+  ggplot(summarized_data, aes(x = Species, y = N)) +
+    geom_line(group = 1) + # Create a descending line
+    scale_y_log10() + # puts y axis on log scale
+    theme(axis.text.x = # cleans up appearance of x axis labels
+            element_text(angle = -20, hjust = 0.05, # angled, justified text
+                         vjust = 1, face = "italic"), # also in italics
+          # makes sure that the axis labels don't go off the page
+          plot.margin = unit(c(0,right_margin,0,0)+.1, "cm"))
+  # Be sure sure that Species has been coded as a factor, in decreasing order of N!
+}
+```
+
+Your resulting plot should look something like this:
+
+```{r a6_plot_rank_abund_hidden, echo = FALSE}
+tidy_ant_data %>% filter(Disturbance == "low") %>% 
+  group_by(Species) %>% summarize(N = sum(N)) %>% 
+  arrange(desc(N)) %>% mutate(Species = fct_inorder(Species)) %>% 
+  ungroup() %>% plot_rank_abundance()
+```
+
+
+## Shannon Index & Diversity
+
+Let's make a function that calculates the Shannon index of a community:
+
+```{r a6 shannon_indx, collapse = TRUE, warning=FALSE}
+
+shannon_diversity = function(species, count) {
+  # species: vector of species names; 
+  # count: how many of each species are present
+  
+  # Create p, a vector of relative frequencies
+  p = tibble(species, count) %>% 
+    # Merge duplicate species 
+    group_by(species) %>% 
+    summarize(count = sum(count)) %>% 
+    ungroup() %>% 
+    # Remove zeroes
+    filter(count > 0) %>% 
+    # Convert to frequencies
+    mutate(p = count / sum(count)) %>% 
+    # Extract column p
+    pull(p) 
+  if(length(p) < 2) return(0) # one or 0 species has an H of 0
+  exp( -sum(p * log(p)) ) # exponential of shannon index
+}
+
+# Calculate the shannon diversity
+shannon_diversity(LETTERS[1:5], # Species names, A : E
+                 c(100, 5, 30, 22, 140)) # Species counts
+```
+
+This function should work well with a grouped summarize function:
+
+```{r a6_shannon_grouped, collapse = TRUE}
+tidy_ant_data %>% 
+  group_by(Acre, Habitat) %>% # group by Acre & habitat
+  summarize(shannon = shannon_diversity(Species, N)) %>% 
+  View()
+```
+
+
