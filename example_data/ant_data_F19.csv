@@ -1,4 +1,4 @@
-Habitat,Site,Canopy_cover,Ground_cover,Nearest_canopy_spp,Disturbance,Drought,Phorids,Notes,GPS_Easting,GPS_Northing,name,Acre,Total_ants,S_invicta_present,Solenopsis_invicta,Pheidole_floridana,Pheidole_tetra,Solenopsis_texana,Camponotus_texanus,Aphenogaster_texana,Brachymyermex,Crematogaster_laeviuscula,Forelius_mccooki,Forelius_pruinosis,Monomorium_minimum,Odontomachus_clarus,Paratrechina_terricola,Pheidole_bicarinata,Pheidole_dentata,Pheidole_lamia,Pheidole_metallescens,Pheidole_pelor,Pheilode_hyati,Pseudomyrmex_brunneus,Solenopsis_geminata,Atta_texana,Camponotus_sansabeaneus,Other_species,Pachycondyla_harpax
+Habitat,Site,Canopy_cover,Ground_cover,Nearest_canopy_spp,Disturbance,Drought,Phorids,Notes,GPS_Easting,GPS_Northing,name,Acre,Total_ants,S_invicta_present,Solenopsis_invicta,Pheidole_floridana,Pheidole_tetra,Solenopsis_texana,Camponotus_texanus,Aphenogaster_texana,Brachymyermex,Crematogaster_laeviuscula,Forelius_mccooki,Forelius_pruinosis,Monomorium_minimum,Odontomachus_clarus,Paratrechina_terricola,Pheidole_bicarinata,Pheidole_dentata,Pheidole_lamia,Pheidole_metallescens,Pheidole_pelor,Pheilode_hyati,Pseudomyrmex_brunneus,Solenopsis_geminata,Atta_texana,Camponotus_sansabeaneus,Pachycondyla_harpax,Other_species
 R,1,3,0,American Elm,high,1,1,NA,105,815,student_1,52,250,1,250,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 R,2,3,1,pecan,high,0,0,yellow jackets,96,826,student_1,52,5,0,0,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 R,3,2,0,hackberry,high,1,0,yellow jackets,86,848,student_1,52,5,0,0,0,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
@@ -112,7 +112,7 @@ NA,14,0,0,ashe juniper,low,1,0,still,NA,NA,student_5,34,175,1,175,0,0,0,0,0,0,0,
 NA,15,1,1,ashe juniper,low,0,0,yellow jacket,NA,NA,student_5,34,200,0,0,0,200,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 NA,16,1,2,ashe juniper,low,0,0,yellow jacket,NA,NA,student_5,34,9,0,0,9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 P,1,2,2,hackberry,low,0,0,NA,617211,3350859,student_7,1,65,0,0,0,0,0,0,0,0,0,0,0,65,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-P,2,2,1,pecan,low,1,0,NA,617218,3350847,student_7,1,6,0,0,0,0,0,0,0,0,0,0,0,5,0,0,0,0,0,0,0,0,0,0,0,0,0,1
+P,2,2,1,pecan,low,1,0,NA,617218,3350847,student_7,1,6,0,0,0,0,0,0,0,0,0,0,0,5,0,0,0,0,0,0,0,0,0,0,0,0,1,0
 P,3,2,2,bald cypress,low,0,0,NA,617226,3350831,student_7,1,4,0,0,0,0,0,0,0,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 P,4,1,2,pecan,low,0,0,NA,617238,3350813,student_7,1,3,0,0,0,0,0,0,0,0,0,0,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 P,5,2,1,hackberry,low,0,0,by water,617219,3350800,student_7,1,83,0,0,0,0,0,0,0,0,0,0,0,83,0,0,0,0,0,0,0,0,0,0,0,0,0,0
@@ -146,7 +146,7 @@ R,15,3,2,Sugar Hackberry,high,0,0,NA,182,800,student_8,53,40,0,0,40,0,0,0,0,0,0,
 R,16,2,2,Paper Mulberry,high,0,0,NA,187,779,student_8,53,6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,6,0,0,0,0,0,0,0,0,0,0,0
 R,1,2,2,sugar hackberry,high,2,0,wasp at hotdog,617485,3350902,student_9,55,60,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,60,0,0,0,0,0,0,0,0,0,0
 R,2,3,2,sugar hackberry,low,2,0,NA,617508,3350462,student_9,55,70,1,70,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-R,3,3,3,sugar hackberry,low,2,0,right at fence,617489,3350454,student_9,55,65,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,65,0
+R,3,3,3,sugar hackberry,low,2,0,right at fence,617489,3350454,student_9,55,65,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,65
 R,4,0,0,sugar hackberry,high,2,0,path,617521,3350459,student_9,55,200,1,200,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 R,5,0,3,sugar hackberry,low,0,0,in turk field,617534,3350438,student_9,55,60,1,60,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 R,6,1,3,sugar hackberry,low,1,0,near pond,617547,3350430,student_9,55,170,1,170,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
@@ -158,7 +158,7 @@ R,11,3,0,pecan,high,1,0,path,617502,3350439,student_9,55,80,0,0,0,0,0,0,0,0,0,0,
 R,12,1,3,sugar hackberry,high,2,0,path,617487,3350456,student_9,55,400,1,400,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 R,13,2,3,sugar hackberry,high,3,0,NA,617502,3350470,student_9,55,17,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,17,0,0,0,0,0,0,0,0,0,0
 R,14,2,2,sugar hackberry,high,2,0,NA,617520,3350466,student_9,55,48,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,48,0,0,0,0,0,0,0,0,0,0
-R,15,1,2,sugar hackberry,high,3,0,NA,617532,3350453,student_9,55,300,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,300,0
+R,15,1,2,sugar hackberry,high,3,0,NA,617532,3350453,student_9,55,300,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,300
 R,16,1,3,sugar hackberry,low,0,0,near fallen cottonwood,NA,NA,student_9,55,39,0,0,39,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 P,1,2,1,hackberry,high,1,0,NA,NA,NA,student_10,64,105,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,105,0,0,0,0,0,0,0,0,0,0
 P,2,3,0,hackberry,high,0,0,NA,NA,NA,student_10,64,140,1,140,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
@@ -178,7 +178,7 @@ P,15,0,1,none- just vines,high,2,0,NA,NA,NA,student_10,64,75,1,75,0,0,0,0,0,0,0,
 P,16,0,1,none- just vines,high,3,0,NA,NA,NA,student_10,64,130,1,130,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 Q,1,0,3,Ashe Juniper,low,2,1,NA,617180,3351180,student_11,9,200,1,200,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 Q,2,0,3,Ashe Juniper,low,2,1,NA,617184,3351180,student_11,9,12,1,12,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-Q,3,0,3,Ashe Juniper,low,2,0,NA,617188,3351180,student_11,9,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,0
+Q,3,0,3,Ashe Juniper,low,2,0,NA,617188,3351180,student_11,9,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3
 Q,4,3,2,Live Oak,low,0,0,NA,617192,3351180,student_11,9,100,1,100,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 Q,5,3,1,Ashe Juniper,low,0,0,NA,617192,3351176,student_11,9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 Q,6,3,1,Ashe Juniper,low,0,0,NA,617192,3351172,student_11,9,44,0,0,44,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
@@ -207,7 +207,7 @@ P,12,1,1,Cottonwood,high,0,0,NA,338,702,student_12,15,1,0,0,0,0,0,1,0,0,0,0,0,0,
 P,13,3,2,Hackberry,low,0,1,NA,325,692,student_12,15,8,0,0,0,0,0,0,0,0,8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 P,14,3,0,Hackberry,low,1,1,NA,335,683,student_12,15,100,0,0,100,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 P,15,2,0,Pecan,high,1,0,NA,345,687,student_12,15,30,0,0,0,0,0,0,30,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-P,16,2,1,Pecan,low,0,0,NA,348,684,student_12,15,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,0,0,0,0,0,0,0,0,0,1
+P,16,2,1,Pecan,low,0,0,NA,348,684,student_12,15,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,0,0,0,0,0,0,0,0,1,0
 P,1,1,2,Cedar Elm,high,1,NA,NA,571,517,student_15,20,238,1,238,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 P,2,3,2,Cedar Elm,low,0,NA,NA,567,524,student_15,20,68,0,0,0,68,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 P,3,3,1,Hackberry,low,0,NA,NA,579,526,student_15,20,34,1,34,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
