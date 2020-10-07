@@ -220,7 +220,7 @@ wide_ant_data %>%
   plot_sac()
 ```
 
-```{r a6_sac_expt1}
+```{r a6_sac_expt2}
 bind_rows( # calculate SAC for high & low disturbance, then plot together
   wide_ant_data %>% 
     filter(Disturbance == "high") %>% 
