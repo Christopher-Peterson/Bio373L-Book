@@ -26,7 +26,7 @@ There are two primary topics we'll be investigating in this lab:
 
 ## Methods
 
-You will be surveying ants in your acres, then identifying them in the lab.
+You will be surveying ants in your acres, then identifying them in the lab. There is a key for BFL ants available on Canvas; additionally, you can find identification help on [AntWeb](https://www.antweb.org/) (from the California Academy of Science) and [Discover Life](https://www.discoverlife.org/) (from the University of Georgia and others).
 
 ### Bait Survey
 
@@ -35,7 +35,6 @@ You will create a 4 by 4 grid of baits (hot dog pieces), with bait sites at roug
   - At each point, scuff the ground to clear a small area of 10x10 cm of bare soil (ants respond to small disturbances).
   - Write the sample number on a small paper square & on a flag; place the flag at the site.
   - Record the GPS coordinates, to as high an accuracy as you can. If possible, record a few items in your acre that have a known position so that we can use them to correct for errors.
-
   
 ## Analysis
 
