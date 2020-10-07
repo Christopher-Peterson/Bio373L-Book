@@ -184,6 +184,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="6" data-path="Lab3.html"><a href="Lab3.html"><i class="fa fa-check"></i><b>6</b> Lab 3: Ant Community Ecology</a><ul>
 <li class="chapter" data-level="6.1" data-path="Lab3.html"><a href="Lab3.html#background"><i class="fa fa-check"></i><b>6.1</b> Background</a></li>
 <li class="chapter" data-level="6.2" data-path="Lab2.html"><a href="Lab2.html#questions-and-hypotheses"><i class="fa fa-check"></i><b>6.2</b> Questions and hypotheses</a></li>
+<li class="chapter" data-level="6.3" data-path="structure.html"><a href="structure.html#methods"><i class="fa fa-check"></i><b>6.3</b> Methods</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="Lab3.html"><a href="Lab3.html#bait-survey"><i class="fa fa-check"></i><b>6.3.1</b> Bait Survey</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="Lab3.html"><a href="Lab3.html#analysis"><i class="fa fa-check"></i><b>6.4</b> Analysis</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="Lab3.html"><a href="Lab3.html#s.-invicta-habitat-preference"><i class="fa fa-check"></i><b>6.4.1</b> <em>S. invicta</em> habitat preference</a></li>
+<li class="chapter" data-level="6.4.2" data-path="Lab3.html"><a href="Lab3.html#ant-community-differences"><i class="fa fa-check"></i><b>6.4.2</b> Ant community differences</a></li>
+</ul></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="working-with-r.html"><a href="working-with-r.html"><i class="fa fa-check"></i><b>A</b> Working with R</a><ul>
@@ -296,81 +303,61 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li>What are the habitat preferences of imported fire ants (<em>Solenposis invicta</em>), and do fire ants have an effect on ant diversity.</li>
 <li>How does the diversity and composition of ant communities differ across habitats (wooded or open) and disturbalnce levels (high and low)?</li>
 </ul>
-<!-- d 
+</div>
+<div id="methods" class="section level2">
+<h2><span class="header-section-number">6.3</span> Methods</h2>
+<p>You will be surveying ants in your acres, then identifying them in the lab.</p>
+<div id="bait-survey" class="section level3">
+<h3><span class="header-section-number">6.3.1</span> Bait Survey</h3>
+<p>You will create a 4 by 4 grid of baits (hot dog pieces), with bait sites at roughly 15 meter intervals.</p>
+<ul>
+<li>At each point, scuff the ground to clear a small area of 10x10 cm of bare soil (ants respond to small disturbances).</li>
+<li>Write the sample number on a small paper square &amp; on a flag; place the flag at the site.</li>
+<li>Record the GPS coordinates, to as high an accuracy as you can. If possible, record a few items in your acre that have a known position so that we can use them to correct for errors.</li>
+</ul>
+</div>
+</div>
+<div id="analysis" class="section level2">
+<h2><span class="header-section-number">6.4</span> Analysis</h2>
+<p>We'll be doing examining habitat differences with a couple of contrasts with our various methods:</p>
+<ul>
+<li>Open (canopy cover 0 or 1) vs. Closed (canopy cover 2 or 3) canopies.</li>
+<li>Sparse (0/1) vs. dense (2/3) ground cover.</li>
+<li>Low vs. high disturbance</li>
+<li>Habitat types (Q/R/P)</li>
+</ul>
+<div id="s.-invicta-habitat-preference" class="section level3">
+<h3><span class="header-section-number">6.4.1</span> <em>S. invicta</em> habitat preference</h3>
+<p>Compare the presence/absense of <em>S. invicta</em> for each contrast. For each, create a contingency table and run a chi-squared test. The columns should be the different habitat conditions; the table should have two rows (fire ants present, fire ants absent), and the cell contents should be the number of baits that meet those conditions.</p>
+<p>You should also test if fire ant presence is affected by an interaction between canopy openness and disturbance. This should also be tested with a chi-square test, with the contingency table's columns being the four combinations of openness and disturbance and the rows being the presence and absence of fire ants; the values in the contingency tables will be the number of sample points that meet the criteria.</p>
+</div>
+<div id="ant-community-differences" class="section level3">
+<h3><span class="header-section-number">6.4.2</span> Ant community differences</h3>
+<p>We'll be using four methods to estimate and compare diversity of ants in different habitats at BFL: Jaccard’s index of similarity, Cumulative curves of species, Rank abundance curves and Shannon’s index of diversity. You can read about these methods in the Ecology Laboratory Manual by G.W. Cox or any other ecology book.</p>
+<p>In general, you should use these methods to compare the above habitat characteristics. You don't have to do all of them for each method (that would be excessive), but I'd recommend using them to explore the data and report on some contrasts that you find interesting. For everything but the Jaccard, you should also look at the entire dataset as a whole.</p>
+<div id="jaccards-index-of-similarity" class="section level4">
+<h4><span class="header-section-number">6.4.2.1</span> Jaccard's index of similarity</h4>
+<p>This index provides an estimation of how similar species composition is between two communities (e.g., two places or times).</p>
+<p><span class="math display">\[J = \frac{W}{A + B - W}\]</span> <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are the richness (number of species present) of the two communities in question, and <span class="math inline">\(W\)</span> is the number of species in common in both communities. <span class="math inline">\(J\)</span> varies from 0 (nothing in common) to 1 (identical communities). You can also interpret <span class="math inline">\(J\)</span> as the proportion of total species that are shared.</p>
+<p>For these analyses, you should treat the &quot;community&quot; as the habitat condition you're testing.</p>
+</div>
+<div id="species-accumulation-curve" class="section level4">
+<h4><span class="header-section-number">6.4.2.2</span> Species Accumulation Curve</h4>
+<p>These curves show the amount of time/effort spent sampling for species against the total number of species observed. They provide information about the actual and potential species richness of a community, as well as a sense of how well a place has been sampled. The details of how to calculate this are a bit complicated, and are explained in the attached R script.</p>
+<p>Plot each curve (for related curves, you should include them in the same figure). Does it appear that the habitat was fully sampled? Estimate the likely number of species in the habitat by extrapolating the curve.</p>
+</div>
+<div id="rank-abundance-curve" class="section level4">
+<h4><span class="header-section-number">6.4.2.3</span> Rank Abundance Curve</h4>
+<p>Rank abundance curves compare the abundance of each species to the rank-order of that abundance. These give you a visual representation of species richness and species evenness (measure of comparative relative abundance of species). Species evenness is derived from the slope of the line that fits the graph. A steep drop-off indicates low evenness as the high ranking species have much higher abundances than the low ranking species. A more gradual slope indicates high evenness as the abundances of different species are similar.</p>
+<p>To create these, plot the number of ants found in each species with log10 scale on Y-axis. Organize the species along the x-axis from most to least abundant (See more in Cox pg 197).</p>
+</div>
+<div id="shannon-index" class="section level4">
+<h4><span class="header-section-number">6.4.2.4</span> Shannon Index</h4>
+<p>This index estimates the diversity of a species in a single place, combining information about the richness and relative abundance. The Shannon index <span class="math inline">\((H^\prime)\)</span> is calculated as:</p>
+<p><span class="math display">\[H^{\prime} = -\sum_{i=1}^n p_i \ln(p_i)\]</span> where <span class="math inline">\(p_i\)</span> is the relative abundance of species <span class="math inline">\(i\)</span>. The larger <span class="math inline">\(H^{\prime}\)</span>, the higher the diversity. The exponential of the Shannon index is called the true Shannon diversity <span class="math inline">\((D_H = \exp(H^\prime))\)</span>; it can be interpreted as the number of species you'd expect in an equally diverse community that was perfectly even.</p>
 
-## Methods
-
-You will be surveying ants in your acres, then identifying them in the lab.
-
-### Bait Survey
-
-You will create a 4 by 4 grid of baits (hot dog pieces), with bait sites at roughly 15 meter intervals.
-
-  - At each point, scuff the ground to clear a small area of 10x10 cm of bare soil (ants respond to small disturbances).
-  - Write the sample number on a small paper square & on a flag; place the flag at the site.
-  - Record the GPS coordinates, to as high an accuracy as you can. If possible, record a few items in your acre that have a known position so that we can use them to correct for errors.
-
-  
-## Analysis
-
-We'll be doing examining habitat differences with a couple of contrasts with our various methods:
-
-- Open (canopy cover 0 or 1) vs. Closed (canopy cover 2 or 3) canopies.
-- Sparse (0/1) vs. dense (2/3) ground cover.
-- Low vs. high disturbance
-- Habitat types (Q/R/P)
-
-### *S. invicta* habitat preference
-
-Compare the presence/absense of *S. invicta* for each contrast.
-For each, create a contingency table and run a chi-squared test.
-The columns should be the different habitat conditions; the table should have two rows (fire ants present, fire ants absent), and the cell contents should be the number of baits that meet those conditions.
-
-You should also test if there's an interaction between canopy openness and disturbance (re: fire ant presence).
-This should also be tested with a chi-square test, with the contingency table's columns being the four combinations of openness and disturbance.
-
-### Ant community differences
-
-We'll be using four methods to estimate and compare diversity of ants in different habitats at BFL: Jaccard’s index of similarity, Cumulative curves of species, Rank abundance curves and Shannon’s index of diversity. You can read about these methods in the Ecology Laboratory Manual by G.W. Cox or any other ecology book.
-
-In general, you should use these methods to compare the above habitat characteristics.  You don't have to do all of them for each method (that would be excessive), but I'd recommend using them to explore the data and report on some contrasts that you find interesting. For everything but the Jaccard, you should also look at the entire dataset as a whole. 
-
-#### Jaccard's index of similarity
-
-This index provides an estimation of how similar species composition is between two communities (e.g., two places or times).
-
-$$J = \frac{W}{A + B - W}$$
-$A$ and $B$ are the richness (number of species present) of the two communities in question, and $W$ is the number of species in common in both communities.  $J$ varies from 0 (nothing in common) to 1 (identical communities).
-You can also interpret $J$ as the proportion of total species that are shared.
-
-For these analyses, you should treat the community as the 
-
-#### Species Accumulation Curve
-
-These curves show the amount of time/effort spent sampling for species against the total number of species observed. They provide information about the actual and potential species richness of a community, as well as a sense of how well a place has been sampled.  The details of how to calculate this are a bit complicated, and are explained in the attached R script.
-
-Plot each curve (for related curves, you should include them in the same figure).  Does it appear that the habitat was fully sampled?  Estimate the likely number of species in the habitat by extrapolating the curve.  
-
-#### Rank Abundance Curve
-
-Rank abundance curves compare the abundance of each species to the rank-order of that abundance. These give you a visual representation of species richness and species evenness (measure of comparative relative abundance of species). Species evenness is derived from the slope of the line that fits the graph. A steep drop-off indicates low evenness as the high ranking species have much higher abundances than the low ranking species. A more gradual slope indicates high evenness as the abundances of different species are similar. 
-
-To create these, plot the number of ants found in each species with log10 scale on Y-axis. Organize the species along the x-axis from most to least abundant (See more in Cox pg 197).
-
-#### Shannon Index
-
-This index estimates the diversity of a species in a single place, combining information about the richness and relative abundance.  The Shannon index $(H^\prime)$ is calculated as:
-
-$$H^{\prime} = -\sum_{i=1}^n p_i \ln(p_i)$$
-where $p_i$ is the relative abundance of species $i$.  The larger $H^{\prime}$, the higher the diversity. 
-The exponential of the Shannon index is called the true Shannon diversity $(D_H = \exp(H^\prime))$; it can be interpreted as the number of species you'd expect in an equally diverse community that was perfectly even.  
-
-## Discussion
-
-In progress.  This is a test.
-
--->
-
+</div>
+</div>
 </div>
 </div>
 
