@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>E Wrangling, reshaping, and tidying data with tidyr | Bio 373L Survival Guide</title>
+  <title>F Community ecology analyses with vegan | Bio 373L Survival Guide</title>
   <meta name="description" content="Writing advice for Field Ecology." />
   <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="E Wrangling, reshaping, and tidying data with tidyr | Bio 373L Survival Guide" />
+  <meta property="og:title" content="F Community ecology analyses with vegan | Bio 373L Survival Guide" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="Christopher-Peterson/Bio373L-Book" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="E Wrangling, reshaping, and tidying data with tidyr | Bio 373L Survival Guide" />
+  <meta name="twitter:title" content="F Community ecology analyses with vegan | Bio 373L Survival Guide" />
   
   <meta name="twitter:description" content="Writing advice for Field Ecology." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="r-analysis-tutorial.html"/>
-<link rel="next" href="vegan-tutorial.html"/>
+<link rel="prev" href="tidyr-tutorial.html"/>
+
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -291,3703 +291,3284 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="tidyr-tutorial" class="section level1">
-<h1><span class="header-section-number">E</span> Wrangling, reshaping, and tidying data with <code>tidyr</code></h1>
-<div id="tidy-data" class="section level2">
-<h2><span class="header-section-number">E.1</span> Tidy data</h2>
-<p>Most of the previous appendices have required you to have your data in a <strong>tidy</strong> format. Tidy data consist of data frames with the following characteristics:</p>
-<ol style="list-style-type: decimal">
-<li>Each column is a different variable</li>
-<li>Each row is a single observation</li>
-<li>Each cell is a single value</li>
-</ol>
-<p>The packages in the <code>tidyverse</code> are generally designed to operate on tidy data; however, other functions may require the data to be in a different shape. It's also frequently convenient to record field data in a non-tidy format. The <code>tidyr</code> package is designed to reshape your data. For more information on tidy data, please see <a href="https://tidyr.tidyverse.org/articles/tidy-data.html">this article</a>.</p>
-<p>We're going to be using some new datasets for this chapter; if you don't have them already, <a href="https://github.com/Christopher-Peterson/Bio373L-Book/tree/master/example_data">download them here</a> and put them in your &quot;example_data&quot; directory.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse) 
+<div id="vegan-tutorial" class="section level1">
+<h1><span class="header-section-number">F</span> Community ecology analyses with <code>vegan</code></h1>
+<p>This appendix is a companion to the ant community ecology lab. If you haven't already, please install the <code>vegan</code> package with <code>install.packages(&quot;vegan&quot;)</code> and put the <a href="https://github.com/Christopher-Peterson/Bio373L-Book/tree/master/example_data">ant_data_F18.csv</a> file in your <code>example_data</code> directory.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Load packages &amp; data</span>
+<span class="kw">library</span>(tidyverse) 
+<span class="co"># install.packages(&quot;vegan&quot;) # uncomment if necessary</span>
+<span class="kw">library</span>(vegan) 
 <span class="kw">library</span>(cowplot)
-<span class="kw">theme_set</span>(<span class="kw">theme_cowplot</span>())
-lizards &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;example_data/anoles.csv&quot;</span>) <span class="co"># See Appendix A if you don&#39;t have this data</span>
-succession_data_wide &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;example_data/succession_wide.csv&quot;</span>)
-yeast_data &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;example_data/yeast_data_partial.csv&quot;</span>)</code></pre></div>
-</div>
-<div id="pivot-longer-tutorial" class="section level2">
-<h2><span class="header-section-number">E.2</span> Going from many columns to many rows: <code>pivot_longer()</code></h2>
-<p>Let's look at the succession data file; this is slightly modified data from Fall 2018, which was collected as part of the first lab (Section @ref(#lab1)).</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">View</span>(succession_data_wide)</code></pre></div>
+<span class="kw">theme_set</span>(<span class="kw">theme_cowplot</span>())</code></pre></div>
+<div id="setting-up-the-data" class="section level2">
+<h2><span class="header-section-number">F.1</span> Setting up the data</h2>
+<p>Read in the new dataset.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">wide_ant_data =<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;example_data/ant_data_F19.csv&quot;</span>) 
+<span class="kw">View</span>(wide_ant_data)</code></pre></div>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
 <table class=" lightable-paper" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
-Type
+Habitat
+</th>
+<th style="text-align:right;">
+Site
+</th>
+<th style="text-align:right;">
+Canopy_cover
+</th>
+<th style="text-align:right;">
+Ground_cover
 </th>
 <th style="text-align:left;">
-Team
-</th>
-<th style="text-align:right;">
-Sample
+Nearest_canopy_spp
 </th>
 <th style="text-align:left;">
-Quadrant
+Disturbance
 </th>
 <th style="text-align:right;">
-Distance
+Drought
 </th>
 <th style="text-align:right;">
-DBH
+Phorids
+</th>
+<th style="text-align:left;">
+Notes
 </th>
 <th style="text-align:right;">
-Acer negundo (Boxwood elder)
+GPS_Easting
 </th>
 <th style="text-align:right;">
-Bumelia lanuginosa (Gum elastic)
+GPS_Northing
+</th>
+<th style="text-align:left;">
+name
 </th>
 <th style="text-align:right;">
-Carya illinoiensis (Pecan)
+Acre
 </th>
 <th style="text-align:right;">
-Celtis spp. (Hackberry)
+Total_ants
 </th>
 <th style="text-align:right;">
-Fraxinus texana (Texas ash)
+S_invicta_present
 </th>
 <th style="text-align:right;">
-Juniperus spp. (Juniper)
+Solenopsis_invicta
 </th>
 <th style="text-align:right;">
-Melia azederach (Chinaberry)
+Pheidole_floridana
 </th>
 <th style="text-align:right;">
-Morus rubra (Red mulberry)
+Pheidole_tetra
 </th>
 <th style="text-align:right;">
-Populus deltoides (Cottonwood)
+Solenopsis_texana
 </th>
 <th style="text-align:right;">
-Prunus caroliniana (Laurel cherry)
+Camponotus_texanus
 </th>
 <th style="text-align:right;">
-Quercus buckleyi (Spanish oak)
+Aphenogaster_texana
 </th>
 <th style="text-align:right;">
-Quercus fusiformis (Live oak)
+Brachymyermex
 </th>
 <th style="text-align:right;">
-Quercus stellata (Post Oak)
+Crematogaster_laeviuscula
 </th>
 <th style="text-align:right;">
-Triadica sebifera (Chinese Tallow)
+Forelius_mccooki
 </th>
 <th style="text-align:right;">
-Ulmus americana (American elm)
+Forelius_pruinosis
 </th>
 <th style="text-align:right;">
-Ulmus crassifolia (Cedar elm)
+Monomorium_minimum
+</th>
+<th style="text-align:right;">
+Odontomachus_clarus
+</th>
+<th style="text-align:right;">
+Paratrechina_terricola
+</th>
+<th style="text-align:right;">
+Pheidole_bicarinata
+</th>
+<th style="text-align:right;">
+Pheidole_dentata
+</th>
+<th style="text-align:right;">
+Pheidole_lamia
+</th>
+<th style="text-align:right;">
+Pheidole_metallescens
+</th>
+<th style="text-align:right;">
+Pheidole_pelor
+</th>
+<th style="text-align:right;">
+Pheilode_hyati
+</th>
+<th style="text-align:right;">
+Pseudomyrmex_brunneus
+</th>
+<th style="text-align:right;">
+Solenopsis_geminata
+</th>
+<th style="text-align:right;">
+Atta_texana
+</th>
+<th style="text-align:right;">
+Camponotus_sansabeaneus
+</th>
+<th style="text-align:right;">
+Pachycondyla_harpax
+</th>
+<th style="text-align:right;">
+Other_species
 </th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align:left;">
-P-C
-</td>
-<td style="text-align:left;">
-A
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:left;">
-a
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-15.0
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
+R
 </td>
 <td style="text-align:right;">
 1
 </td>
 <td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+American Elm
+</td>
+<td style="text-align:left;">
+high
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
 NA
 </td>
 <td style="text-align:right;">
-NA
+105
 </td>
 <td style="text-align:right;">
-NA
+815
+</td>
+<td style="text-align:left;">
+student_1
 </td>
 <td style="text-align:right;">
-NA
+52
 </td>
 <td style="text-align:right;">
-NA
+250
 </td>
 <td style="text-align:right;">
-NA
+1
 </td>
 <td style="text-align:right;">
-NA
+250
 </td>
 <td style="text-align:right;">
-NA
+0
 </td>
 <td style="text-align:right;">
-NA
+0
 </td>
 <td style="text-align:right;">
-NA
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-P-U
+R
 </td>
-<td style="text-align:left;">
-A
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3
 </td>
 <td style="text-align:right;">
 1
 </td>
 <td style="text-align:left;">
-a
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-P-C
+pecan
 </td>
 <td style="text-align:left;">
-A
+high
 </td>
 <td style="text-align:right;">
-1
+0
+</td>
+<td style="text-align:right;">
+0
 </td>
 <td style="text-align:left;">
-b
+yellow jackets
+</td>
+<td style="text-align:right;">
+96
+</td>
+<td style="text-align:right;">
+826
+</td>
+<td style="text-align:left;">
+student_1
+</td>
+<td style="text-align:right;">
+52
 </td>
 <td style="text-align:right;">
 5
 </td>
 <td style="text-align:right;">
-16.5
+0
 </td>
 <td style="text-align:right;">
-NA
+0
 </td>
 <td style="text-align:right;">
-NA
+5
 </td>
 <td style="text-align:right;">
-NA
+0
 </td>
 <td style="text-align:right;">
-NA
+0
 </td>
 <td style="text-align:right;">
-NA
+0
 </td>
 <td style="text-align:right;">
-1
+0
 </td>
 <td style="text-align:right;">
-NA
+0
 </td>
 <td style="text-align:right;">
-NA
+0
 </td>
 <td style="text-align:right;">
-NA
+0
 </td>
 <td style="text-align:right;">
-NA
+0
 </td>
 <td style="text-align:right;">
-NA
+0
 </td>
 <td style="text-align:right;">
-NA
+0
 </td>
 <td style="text-align:right;">
-NA
+0
 </td>
 <td style="text-align:right;">
-NA
+0
 </td>
 <td style="text-align:right;">
-NA
+0
 </td>
 <td style="text-align:right;">
-NA
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-P-U
-</td>
-<td style="text-align:left;">
-A
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:left;">
-b
+R
 </td>
 <td style="text-align:right;">
 3
 </td>
 <td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-P-C
-</td>
-<td style="text-align:left;">
-A
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:left;">
-c
-</td>
-<td style="text-align:right;">
 2
 </td>
 <td style="text-align:right;">
-15.0
+0
 </td>
-<td style="text-align:right;">
-NA
+<td style="text-align:left;">
+hackberry
 </td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
+<td style="text-align:left;">
+high
 </td>
 <td style="text-align:right;">
 1
 </td>
 <td style="text-align:right;">
-NA
+0
+</td>
+<td style="text-align:left;">
+yellow jackets
 </td>
 <td style="text-align:right;">
-NA
+86
 </td>
 <td style="text-align:right;">
-NA
+848
+</td>
+<td style="text-align:left;">
+student_1
 </td>
 <td style="text-align:right;">
-NA
+52
 </td>
 <td style="text-align:right;">
-NA
+5
 </td>
 <td style="text-align:right;">
-NA
+0
 </td>
 <td style="text-align:right;">
-NA
+0
 </td>
 <td style="text-align:right;">
-NA
+0
 </td>
 <td style="text-align:right;">
-NA
+5
 </td>
 <td style="text-align:right;">
-NA
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-P-U
-</td>
-<td style="text-align:left;">
-A
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:left;">
-c
+R
 </td>
 <td style="text-align:right;">
 4
 </td>
 <td style="text-align:right;">
-NA
+2
 </td>
 <td style="text-align:right;">
-NA
+0
 </td>
-<td style="text-align:right;">
-NA
+<td style="text-align:left;">
+pecan
 </td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
+<td style="text-align:left;">
+high
 </td>
 <td style="text-align:right;">
 1
 </td>
 <td style="text-align:right;">
-NA
+1
+</td>
+<td style="text-align:left;">
+yellow jackets
 </td>
 <td style="text-align:right;">
-NA
+76
 </td>
 <td style="text-align:right;">
-NA
+848
+</td>
+<td style="text-align:left;">
+student_1
 </td>
 <td style="text-align:right;">
-NA
+52
 </td>
 <td style="text-align:right;">
-NA
+10
 </td>
 <td style="text-align:right;">
-NA
+0
 </td>
 <td style="text-align:right;">
-NA
+0
 </td>
 <td style="text-align:right;">
-NA
+0
 </td>
 <td style="text-align:right;">
-NA
+10
 </td>
 <td style="text-align:right;">
-NA
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-P-C
-</td>
-<td style="text-align:left;">
-A
+R
 </td>
 <td style="text-align:right;">
-1
-</td>
-<td style="text-align:left;">
-d
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-14.0
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-P-U
-</td>
-<td style="text-align:left;">
-A
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:left;">
-d
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-P-C
-</td>
-<td style="text-align:left;">
-A
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:left;">
-a
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-21.5
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-1
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-P-U
-</td>
-<td style="text-align:left;">
-A
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:left;">
-a
+5
 </td>
 <td style="text-align:right;">
 3
 </td>
 <td style="text-align:right;">
-NA
+1
 </td>
-<td style="text-align:right;">
-NA
+<td style="text-align:left;">
+pecan
 </td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
+<td style="text-align:left;">
+low
 </td>
 <td style="text-align:right;">
 1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+87
+</td>
+<td style="text-align:right;">
+862
+</td>
+<td style="text-align:left;">
+student_1
+</td>
+<td style="text-align:right;">
+52
+</td>
+<td style="text-align:right;">
+62
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+62
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+R
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+pecan
+</td>
+<td style="text-align:left;">
+high
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+104
+</td>
+<td style="text-align:right;">
+842
+</td>
+<td style="text-align:left;">
+student_1
+</td>
+<td style="text-align:right;">
+52
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+R
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+pecan
+</td>
+<td style="text-align:left;">
+high
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+109
+</td>
+<td style="text-align:right;">
+836
+</td>
+<td style="text-align:left;">
+student_1
+</td>
+<td style="text-align:right;">
+52
+</td>
+<td style="text-align:right;">
+175
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+175
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+R
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+hackberry
+</td>
+<td style="text-align:left;">
+high
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+97
+</td>
+<td style="text-align:right;">
+858
+</td>
+<td style="text-align:left;">
+student_1
+</td>
+<td style="text-align:right;">
+52
+</td>
+<td style="text-align:right;">
+350
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+350
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+R
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+hackberry
+</td>
+<td style="text-align:left;">
+high
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+flies
+</td>
+<td style="text-align:right;">
+107
+</td>
+<td style="text-align:right;">
+859
+</td>
+<td style="text-align:left;">
+student_1
+</td>
+<td style="text-align:right;">
+52
+</td>
+<td style="text-align:right;">
+31
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+R
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+pecan
+</td>
+<td style="text-align:left;">
+high
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+108
+</td>
+<td style="text-align:right;">
+877
+</td>
+<td style="text-align:left;">
+student_1
+</td>
+<td style="text-align:right;">
+52
+</td>
+<td style="text-align:right;">
+200
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+200
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
 </td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>A quick description of the columns:</p>
-<ul>
-<li><strong>Type</strong>: Contains information on both the habitat type and Canopy/Understory</li>
-<li><strong>Team</strong>, <strong>Sample</strong>, <strong>Quadrant</strong>: identifiers for where the data were collected</li>
-<li><strong>Distance</strong>: Distance in meters fromt the central point to the tree</li>
-<li><strong>DBH</strong>: Diameter at breast height for canopy trees</li>
-<li><strong>16 species columns</strong>: These indicate whether the named species is present with a 1; there should only be a single 1 per row.</li>
-</ul>
-<p>This clearly does not meet the definition of tidy data; the &quot;Species&quot; variable is split between columns, and the habitat type and tree type are both combined into a single &quot;type&quot; column.</p>
-<p>The first step to tidying this data is consolidate the last sixteen columns; we're going to use <code>pivot_longer()</code> for that. In its simplest form, <code>pivot_longer()</code> converts several columns into two: one with the original column names, and the other with the original column values. This will result in a data frame with more rows than the original (hence, &quot;longer&quot;).</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">succession_data_wide <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">pivot_longer</span>(
-    <span class="co"># The first argument is the column names you want to reshape</span>
-    <span class="co"># This uses the same syntax of select() and across() from dplyr</span>
-    <span class="dt">cols =</span> <span class="op">-</span><span class="kw">c</span>(Type<span class="op">:</span>DBH), <span class="co"># minus sign grabs everything NOT between Type &amp; DBH: </span>
-    <span class="dt">names_to =</span> <span class="st">&quot;Species&quot;</span>, <span class="co"># Name of the column that stores the old column names</span>
-    <span class="dt">values_to =</span> <span class="st">&quot;is_present&quot;</span>) <span class="op">%&gt;%</span><span class="st">  </span><span class="co"># Name of the oclumn that stores old cell values</span>
+<p>Looking at the dataset, there's a bunch of columns that indicate the number of species present. Let's make a tidy version of this dataset, which will be easier to work with for some of the functions we're using. We'll be using the <code>pivot_longer()</code> function from the <code>tidyr</code> package.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tidy_ant_data =<span class="st"> </span>wide_ant_data <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">pivot_longer</span>(<span class="dt">cols =</span> Solenopsis_invicta<span class="op">:</span>Other_species, <span class="co"># These are the species columns</span>
+               <span class="dt">names_to =</span> <span class="st">&quot;Species&quot;</span>, <span class="co"># Put the column name in a &quot;Species&quot; column</span>
+               <span class="dt">values_to =</span> <span class="st">&quot;N&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Cell values are counts, so make that an N column</span>
+<span class="st">  </span><span class="co"># replace the underscores in species names with a space:</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Species =</span> <span class="kw">str_replace</span>(Species, <span class="st">&quot;_&quot;</span>, <span class="st">&quot; &quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># str_replace is in the stringr package, which is part of tidyverse</span>
+<span class="st">  </span><span class="kw">filter</span>(N <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>) <span class="co"># Remove species that aren&#39;t present</span>
+<span class="kw">View</span>(tidy_ant_data)</code></pre></div>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
+<table class=" lightable-paper" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Habitat
+</th>
+<th style="text-align:right;">
+Site
+</th>
+<th style="text-align:right;">
+Canopy_cover
+</th>
+<th style="text-align:right;">
+Ground_cover
+</th>
+<th style="text-align:left;">
+Nearest_canopy_spp
+</th>
+<th style="text-align:left;">
+Disturbance
+</th>
+<th style="text-align:right;">
+Drought
+</th>
+<th style="text-align:right;">
+Phorids
+</th>
+<th style="text-align:left;">
+Notes
+</th>
+<th style="text-align:right;">
+GPS_Easting
+</th>
+<th style="text-align:right;">
+GPS_Northing
+</th>
+<th style="text-align:left;">
+name
+</th>
+<th style="text-align:right;">
+Acre
+</th>
+<th style="text-align:right;">
+Total_ants
+</th>
+<th style="text-align:right;">
+S_invicta_present
+</th>
+<th style="text-align:left;">
+Species
+</th>
+<th style="text-align:right;">
+N
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+R
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+American Elm
+</td>
+<td style="text-align:left;">
+high
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+105
+</td>
+<td style="text-align:right;">
+815
+</td>
+<td style="text-align:left;">
+student_1
+</td>
+<td style="text-align:right;">
+52
+</td>
+<td style="text-align:right;">
+250
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Solenopsis invicta
+</td>
+<td style="text-align:right;">
+250
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+R
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+pecan
+</td>
+<td style="text-align:left;">
+high
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+yellow jackets
+</td>
+<td style="text-align:right;">
+96
+</td>
+<td style="text-align:right;">
+826
+</td>
+<td style="text-align:left;">
+student_1
+</td>
+<td style="text-align:right;">
+52
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Pheidole floridana
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+R
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+hackberry
+</td>
+<td style="text-align:left;">
+high
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+yellow jackets
+</td>
+<td style="text-align:right;">
+86
+</td>
+<td style="text-align:right;">
+848
+</td>
+<td style="text-align:left;">
+student_1
+</td>
+<td style="text-align:right;">
+52
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Pheidole tetra
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+R
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+pecan
+</td>
+<td style="text-align:left;">
+high
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+yellow jackets
+</td>
+<td style="text-align:right;">
+76
+</td>
+<td style="text-align:right;">
+848
+</td>
+<td style="text-align:left;">
+student_1
+</td>
+<td style="text-align:right;">
+52
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Pheidole tetra
+</td>
+<td style="text-align:right;">
+10
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+R
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+pecan
+</td>
+<td style="text-align:left;">
+low
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+87
+</td>
+<td style="text-align:right;">
+862
+</td>
+<td style="text-align:left;">
+student_1
+</td>
+<td style="text-align:right;">
+52
+</td>
+<td style="text-align:right;">
+62
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Solenopsis invicta
+</td>
+<td style="text-align:right;">
+62
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+R
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+pecan
+</td>
+<td style="text-align:left;">
+high
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+104
+</td>
+<td style="text-align:right;">
+842
+</td>
+<td style="text-align:left;">
+student_1
+</td>
+<td style="text-align:right;">
+52
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Pheidole tetra
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+R
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+pecan
+</td>
+<td style="text-align:left;">
+high
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+104
+</td>
+<td style="text-align:right;">
+842
+</td>
+<td style="text-align:left;">
+student_1
+</td>
+<td style="text-align:right;">
+52
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Solenopsis texana
+</td>
+<td style="text-align:right;">
+15
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+R
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+pecan
+</td>
+<td style="text-align:left;">
+high
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+109
+</td>
+<td style="text-align:right;">
+836
+</td>
+<td style="text-align:left;">
+student_1
+</td>
+<td style="text-align:right;">
+52
+</td>
+<td style="text-align:right;">
+175
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Solenopsis invicta
+</td>
+<td style="text-align:right;">
+175
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+R
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+hackberry
+</td>
+<td style="text-align:left;">
+high
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+97
+</td>
+<td style="text-align:right;">
+858
+</td>
+<td style="text-align:left;">
+student_1
+</td>
+<td style="text-align:right;">
+52
+</td>
+<td style="text-align:right;">
+350
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Solenopsis invicta
+</td>
+<td style="text-align:right;">
+350
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+R
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+hackberry
+</td>
+<td style="text-align:left;">
+high
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+flies
+</td>
+<td style="text-align:right;">
+107
+</td>
+<td style="text-align:right;">
+859
+</td>
+<td style="text-align:left;">
+student_1
+</td>
+<td style="text-align:right;">
+52
+</td>
+<td style="text-align:right;">
+31
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Pheidole floridana
+</td>
+<td style="text-align:right;">
+30
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="jaccard-similarity" class="section level2">
+<h2><span class="header-section-number">F.2</span> Jaccard similarity</h2>
+<p>To calculate the Jaccard similarity of two communities, you need to divide the number of shared species by the total number of species. This can be done with a combination of the <code>intersect()</code>, <code>union()</code>, and <code>length()</code> functions.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Let&#39;s say these are the species in our two communities:</span>
+com_a =<span class="st"> </span>LETTERS[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]
+com_b =<span class="st"> </span>LETTERS[<span class="dv">3</span><span class="op">:</span><span class="dv">8</span>]
+<span class="kw">print</span>(com_a); <span class="kw">print</span>(com_b)
+## [1] &quot;A&quot; &quot;B&quot; &quot;C&quot; &quot;D&quot; &quot;E&quot;
+## [1] &quot;C&quot; &quot;D&quot; &quot;E&quot; &quot;F&quot; &quot;G&quot; &quot;H&quot;
+
+<span class="co"># Species in common:</span>
+<span class="kw">intersect</span>(com_a, com_b)
+## [1] &quot;C&quot; &quot;D&quot; &quot;E&quot;
+
+<span class="co"># Species present in either:</span>
+<span class="kw">union</span>(com_a, com_b)
+## [1] &quot;A&quot; &quot;B&quot; &quot;C&quot; &quot;D&quot; &quot;E&quot; &quot;F&quot; &quot;G&quot; &quot;H&quot;
+
+<span class="co"># Total number of species present:</span>
+<span class="kw">length</span>(<span class="kw">union</span>(com_a, com_b))
+## [1] 8
+
+<span class="co"># Jaccard similarity:</span>
+<span class="kw">length</span>(<span class="kw">intersect</span>(com_a, com_b)) <span class="op">/</span><span class="st"> </span>
+<span class="kw">length</span>(<span class="kw">union</span>(com_a, com_b))
+## [1] 0.375</code></pre></div>
+<p>Since you'll be doing this for several groups, it's a good idea to write a function that will do this for us.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
+jaccard_similarity =<span class="st"> </span><span class="cf">function</span>(com_<span class="dv">1</span>, com_<span class="dv">2</span>) {
+  <span class="co"># com_1 and com_2 are the arguments of the function, </span>
+  <span class="co"># they should be the names in different communities</span>
+  
+  <span class="co"># Create local variables for the intersection and union;</span>
+  common_spp =<span class="st"> </span><span class="kw">intersect</span>(com_<span class="dv">1</span>, com_<span class="dv">2</span>) 
+  total_spp =<span class="st"> </span><span class="kw">union</span>(com_<span class="dv">1</span>, com_<span class="dv">2</span>) 
+  <span class="co"># these variables are created while the function runs &amp; destroyed when it ends</span>
+  <span class="co"># The last value of the function is its output (a.k.a., return value)</span>
+  <span class="kw">length</span>(common_spp) <span class="op">/</span><span class="st"> </span><span class="kw">length</span>(total_spp) <span class="co"># return this</span>
+}
+
+<span class="kw">jaccard_similarity</span>(<span class="dt">com_1 =</span> com_a, <span class="dt">com_2 =</span> com_b)
+## [1] 0.375</code></pre></div>
+<p>How would we make this work with the dataset? Here's one possibility:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Define the community comparison as disturbed river terrace vs undisturbed river terrace</span>
+
+com_r_lo =<span class="st"> </span>tidy_ant_data <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="co"># Subset the data to get the &quot;community&quot; you want</span>
+<span class="st">  </span><span class="kw">filter</span>(Habitat <span class="op">==</span><span class="st"> &quot;R&quot;</span>, Disturbance <span class="op">==</span><span class="st"> &quot;low&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="co"># Get the list of species as a vector</span>
+<span class="st">  </span><span class="kw">pull</span>(Species) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">unique</span>()
+com_r_hi =<span class="st"> </span>tidy_ant_data <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">filter</span>(Habitat <span class="op">==</span><span class="st"> &quot;R&quot;</span>, Disturbance <span class="op">==</span><span class="st"> &quot;high&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">pull</span>(Species) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">unique</span>()
+com_r_lo
+## [1] &quot;Solenopsis invicta&quot; &quot;Pheidole floridana&quot; &quot;Pheidole tetra&quot;    
+## [4] &quot;Pheidole pelor&quot;     &quot;Pheidole dentata&quot;   &quot;Other species&quot;
+
+com_r_hi
+## [1] &quot;Solenopsis invicta&quot;  &quot;Pheidole floridana&quot;  &quot;Pheidole tetra&quot;     
+## [4] &quot;Solenopsis texana&quot;   &quot;Camponotus texanus&quot;  &quot;Pheidole dentata&quot;   
+## [7] &quot;Pheidole bicarinata&quot; &quot;Other species&quot;
+
+<span class="kw">jaccard_similarity</span>(com_r_lo, com_r_hi)
+## [1] 0.5555556</code></pre></div>
+<p>There are more elegant &amp; efficient ways to do this, but they rely on some R techniques we haven't talked about yet; I'll be updating this chapter once I get the appropriate information into the book.</p>
+</div>
+<div id="species-accumulation-curves" class="section level2">
+<h2><span class="header-section-number">F.3</span> Species Accumulation Curves</h2>
+<p>Species accumulation curves are calculated by the <code>specaccum()</code> function in <code>vegan</code>. This function requires a data set where each column is a species, each_row is a site, and each cell is a 1 (indicating presence) or 0 (indicating absence). Let's create a function that will format the data for this:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Create a function that converts a number to presence-absense</span>
+to_presence_absense =<span class="st"> </span><span class="cf">function</span>(x) <span class="kw">if_else</span>(x <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>)
+
+<span class="co"># Format data for the species accumulation curve</span>
+format_sac_data =<span class="st"> </span><span class="cf">function</span>(wide_data) {
+    wide_data <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">      </span><span class="co"># Select only species columns</span>
+<span class="st">      </span><span class="kw">select</span>(Solenopsis_invicta<span class="op">:</span>Other_species) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">      </span><span class="co"># We don&#39;t want to include this &quot;other species&quot;</span>
+<span class="st">      </span><span class="kw">select</span>(<span class="op">-</span>Other_species) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">      </span><span class="co"># use to_presence_absense() on all columns</span>
+<span class="st">      </span><span class="kw">mutate</span>(<span class="kw">across</span>(<span class="kw">everything</span>(), to_presence_absense))
+}
+
+<span class="co"># Test it on quarry data:</span>
+wide_ant_data <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">filter</span>(Habitat <span class="op">==</span><span class="st"> &quot;Q&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">format_sac_data</span>() <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">View</span>()</code></pre></div>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
 <table class=" lightable-paper" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
-<th style="text-align:left;">
-Type
-</th>
-<th style="text-align:left;">
-Team
+<th style="text-align:right;">
+Solenopsis_invicta
 </th>
 <th style="text-align:right;">
-Sample
-</th>
-<th style="text-align:left;">
-Quadrant
+Pheidole_floridana
 </th>
 <th style="text-align:right;">
-Distance
+Pheidole_tetra
 </th>
 <th style="text-align:right;">
-DBH
-</th>
-<th style="text-align:left;">
-Species
+Solenopsis_texana
 </th>
 <th style="text-align:right;">
-is_present
+Camponotus_texanus
+</th>
+<th style="text-align:right;">
+Aphenogaster_texana
+</th>
+<th style="text-align:right;">
+Brachymyermex
+</th>
+<th style="text-align:right;">
+Crematogaster_laeviuscula
+</th>
+<th style="text-align:right;">
+Forelius_mccooki
+</th>
+<th style="text-align:right;">
+Forelius_pruinosis
+</th>
+<th style="text-align:right;">
+Monomorium_minimum
+</th>
+<th style="text-align:right;">
+Odontomachus_clarus
+</th>
+<th style="text-align:right;">
+Paratrechina_terricola
+</th>
+<th style="text-align:right;">
+Pheidole_bicarinata
+</th>
+<th style="text-align:right;">
+Pheidole_dentata
+</th>
+<th style="text-align:right;">
+Pheidole_lamia
+</th>
+<th style="text-align:right;">
+Pheidole_metallescens
+</th>
+<th style="text-align:right;">
+Pheidole_pelor
+</th>
+<th style="text-align:right;">
+Pheilode_hyati
+</th>
+<th style="text-align:right;">
+Pseudomyrmex_brunneus
+</th>
+<th style="text-align:right;">
+Solenopsis_geminata
+</th>
+<th style="text-align:right;">
+Atta_texana
+</th>
+<th style="text-align:right;">
+Camponotus_sansabeaneus
+</th>
+<th style="text-align:right;">
+Pachycondyla_harpax
 </th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left;">
-P-C
-</td>
-<td style="text-align:left;">
-A
-</td>
 <td style="text-align:right;">
 1
 </td>
-<td style="text-align:left;">
-a
+<td style="text-align:right;">
+0
 </td>
 <td style="text-align:right;">
-4
+0
 </td>
 <td style="text-align:right;">
-15
-</td>
-<td style="text-align:left;">
-Acer negundo (Boxwood elder)
+0
 </td>
 <td style="text-align:right;">
-NA
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
-P-C
-</td>
-<td style="text-align:left;">
-A
-</td>
 <td style="text-align:right;">
 1
 </td>
-<td style="text-align:left;">
-a
+<td style="text-align:right;">
+0
 </td>
 <td style="text-align:right;">
-4
+0
 </td>
 <td style="text-align:right;">
-15
-</td>
-<td style="text-align:left;">
-Bumelia lanuginosa (Gum elastic)
+0
 </td>
 <td style="text-align:right;">
-NA
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
-P-C
-</td>
-<td style="text-align:left;">
-A
+<td style="text-align:right;">
+0
 </td>
 <td style="text-align:right;">
-1
-</td>
-<td style="text-align:left;">
-a
+0
 </td>
 <td style="text-align:right;">
-4
+0
 </td>
 <td style="text-align:right;">
-15
-</td>
-<td style="text-align:left;">
-Carya illinoiensis (Pecan)
+0
 </td>
 <td style="text-align:right;">
-NA
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
-P-C
-</td>
-<td style="text-align:left;">
-A
-</td>
 <td style="text-align:right;">
 1
 </td>
-<td style="text-align:left;">
-a
+<td style="text-align:right;">
+0
 </td>
 <td style="text-align:right;">
-4
+0
 </td>
 <td style="text-align:right;">
-15
-</td>
-<td style="text-align:left;">
-Celtis spp. (Hackberry)
+0
 </td>
 <td style="text-align:right;">
-NA
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
-P-C
-</td>
-<td style="text-align:left;">
-A
+<td style="text-align:right;">
+0
 </td>
 <td style="text-align:right;">
-1
-</td>
-<td style="text-align:left;">
-a
+0
 </td>
 <td style="text-align:right;">
-4
+0
 </td>
 <td style="text-align:right;">
-15
-</td>
-<td style="text-align:left;">
-Fraxinus texana (Texas ash)
+0
 </td>
 <td style="text-align:right;">
-NA
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
-P-C
-</td>
-<td style="text-align:left;">
-A
+<td style="text-align:right;">
+0
 </td>
 <td style="text-align:right;">
 1
 </td>
-<td style="text-align:left;">
-a
+<td style="text-align:right;">
+0
 </td>
 <td style="text-align:right;">
-4
+0
 </td>
 <td style="text-align:right;">
-15
-</td>
-<td style="text-align:left;">
-Juniperus spp. (Juniper)
+0
 </td>
 <td style="text-align:right;">
-1
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
-P-C
-</td>
-<td style="text-align:left;">
-A
+<td style="text-align:right;">
+0
 </td>
 <td style="text-align:right;">
 1
 </td>
-<td style="text-align:left;">
-a
+<td style="text-align:right;">
+0
 </td>
 <td style="text-align:right;">
-4
+0
 </td>
 <td style="text-align:right;">
-15
-</td>
-<td style="text-align:left;">
-Melia azederach (Chinaberry)
+0
 </td>
 <td style="text-align:right;">
-NA
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
-P-C
+<td style="text-align:right;">
+0
 </td>
-<td style="text-align:left;">
-A
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
 </td>
 <td style="text-align:right;">
 1
 </td>
-<td style="text-align:left;">
-a
+<td style="text-align:right;">
+0
 </td>
 <td style="text-align:right;">
-4
+0
 </td>
 <td style="text-align:right;">
-15
-</td>
-<td style="text-align:left;">
-Morus rubra (Red mulberry)
+0
 </td>
 <td style="text-align:right;">
-NA
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
-P-C
+<td style="text-align:right;">
+0
 </td>
-<td style="text-align:left;">
-A
+<td style="text-align:right;">
+0
 </td>
 <td style="text-align:right;">
 1
 </td>
-<td style="text-align:left;">
-a
+<td style="text-align:right;">
+0
 </td>
 <td style="text-align:right;">
-4
+0
 </td>
 <td style="text-align:right;">
-15
-</td>
-<td style="text-align:left;">
-Populus deltoides (Cottonwood)
+0
 </td>
 <td style="text-align:right;">
-NA
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
-P-C
-</td>
-<td style="text-align:left;">
-A
+<td style="text-align:right;">
+0
 </td>
 <td style="text-align:right;">
 1
 </td>
-<td style="text-align:left;">
-a
+<td style="text-align:right;">
+0
 </td>
 <td style="text-align:right;">
-4
+0
 </td>
 <td style="text-align:right;">
-15
-</td>
-<td style="text-align:left;">
-Prunus caroliniana (Laurel cherry)
+0
 </td>
 <td style="text-align:right;">
-NA
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
 </td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>If you'll notice, the first 16 rows are identical in the <code>Type:DBH</code> columns, while <code>Species</code> and <code>is_present</code> vary. A few alternative ways to do the same thing:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># The only difference between these is the .cols argument</span>
-succession_data_wide <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pivot_longer</span>(
-    <span class="dt">.cols =</span> <span class="dv">7</span><span class="op">:</span><span class="dv">22</span>, <span class="co"># positions of the columns to pivot</span>
-    <span class="dt">names_to =</span> <span class="st">&quot;Species&quot;</span>, <span class="dt">values_to =</span> <span class="st">&quot;is_present&quot;</span>)
-succession_data_wide <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pivot_longer</span>(
-    <span class="op">-</span><span class="kw">c</span>(Type, Team, Sample, Quadrant, Distance, DBH), <span class="co"># explicitly list names</span>
-    <span class="dt">names_to =</span> <span class="st">&quot;Species&quot;</span>, <span class="dt">values_to =</span> <span class="st">&quot;is_present&quot;</span>)
-succession_data_wide <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pivot_longer</span>(
-  <span class="co"># You can use ranges of column names to keep, though that&#39;s not practical here</span>
-    <span class="st">`</span><span class="dt">Acer negundo (Boxwood elder)</span><span class="st">`</span><span class="op">:</span><span class="st">`</span><span class="dt">Ulmus crassifolia (Cedar elm)</span><span class="st">`</span>,
-    <span class="dt">names_to =</span> <span class="st">&quot;Species&quot;</span>, <span class="dt">values_to =</span> <span class="st">&quot;is_present&quot;</span>)
-succession_data_wide <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pivot_longer</span>(
-  <span class="dt">.cols =</span> <span class="kw">contains</span>(<span class="st">&quot;(&quot;</span>), <span class="co"># graps all columns with an open parentheses in them</span>
-  <span class="dt">names_to =</span> <span class="st">&quot;Species&quot;</span>, <span class="dt">values_to =</span> <span class="st">&quot;is_present&quot;</span>)</code></pre></div>
-<p>Note that the <code>.cols</code> argument generally doesn't have quotations around its column names, while the <code>names_to</code> and <code>values_to</code> do. The simplest explanation for it is that the <code>.cols</code> columns already exist in the data, so R knows how to find them; the others don't, so we use quotes to create the names (This isn't entirely true, but the full details are quite complicated and it's a useful rule of thumb for <code>tidyverse</code> functions).</p>
-<p>One thing to note about our output is that there's a lot of <code>NA</code> values in <code>is_present</code>, indicating species that were not found at each point. We don't really care about those, so let's get rid of them.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">succession_longer =<span class="st"> </span>
-<span class="st">  </span>succession_data_wide <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pivot_longer</span>(
-    <span class="dt">cols =</span> <span class="op">-</span><span class="kw">c</span>(Type<span class="op">:</span>DBH), <span class="dt">names_to =</span> <span class="st">&quot;Species&quot;</span>, <span class="dt">values_to =</span> <span class="st">&quot;is_present&quot;</span>) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(is_present)) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Remove missing values</span>
-<span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>is_present) <span class="co"># This column is no longer useful</span>
-<span class="kw">View</span>(succession_longer)</code></pre></div>
-<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
-<table class=" lightable-paper" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; margin-left: auto; margin-right: auto;">
-<thead>
-<tr>
-<th style="text-align:left;">
-Type
-</th>
-<th style="text-align:left;">
-Team
-</th>
-<th style="text-align:right;">
-Sample
-</th>
-<th style="text-align:left;">
-Quadrant
-</th>
-<th style="text-align:right;">
-Distance
-</th>
-<th style="text-align:right;">
-DBH
-</th>
-<th style="text-align:left;">
-Species
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-P-C
-</td>
-<td style="text-align:left;">
-A
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:left;">
-a
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-15.0
-</td>
-<td style="text-align:left;">
-Juniperus spp. (Juniper)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-P-U
-</td>
-<td style="text-align:left;">
-A
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:left;">
-a
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:left;">
-Quercus fusiformis (Live oak)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-P-C
-</td>
-<td style="text-align:left;">
-A
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:left;">
-b
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-16.5
-</td>
-<td style="text-align:left;">
-Juniperus spp. (Juniper)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-P-U
-</td>
-<td style="text-align:left;">
-A
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:left;">
-b
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:left;">
-Quercus fusiformis (Live oak)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-P-C
-</td>
-<td style="text-align:left;">
-A
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:left;">
-c
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-15.0
-</td>
-<td style="text-align:left;">
-Juniperus spp. (Juniper)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-P-U
-</td>
-<td style="text-align:left;">
-A
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:left;">
-c
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:left;">
-Juniperus spp. (Juniper)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-P-C
-</td>
-<td style="text-align:left;">
-A
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:left;">
-d
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-14.0
-</td>
-<td style="text-align:left;">
-Celtis spp. (Hackberry)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-P-U
-</td>
-<td style="text-align:left;">
-A
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:left;">
-d
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:left;">
-Celtis spp. (Hackberry)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-P-C
-</td>
-<td style="text-align:left;">
-A
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:left;">
-a
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-21.5
-</td>
-<td style="text-align:left;">
-Ulmus crassifolia (Cedar elm)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-P-U
-</td>
-<td style="text-align:left;">
-A
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:left;">
-a
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:left;">
-Ulmus crassifolia (Cedar elm)
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>(( Add example to practice with genotype data))</p>
-</div>
-<div id="separate-tutorial" class="section level2">
-<h2><span class="header-section-number">E.3</span> Splitting and merging columns: <code>separate() and unite()</code></h2>
-<p>To fully tidy this, we need to split the &quot;Type&quot; column into habitat type and tree type columns. The <code>separate()</code> function is useful for this.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">succession_sep =<span class="st"> </span>succession_longer <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">separate</span>(<span class="dt">col =</span> Type, <span class="co"># Column to separate; note that the arg is col, not .col</span>
-           <span class="dt">into =</span> <span class="kw">c</span>(<span class="st">&quot;Habitat&quot;</span>, <span class="st">&quot;Tree_type&quot;</span>), <span class="co"># Names of the new columns to separate into</span>
-           <span class="dt">sep =</span> <span class="st">&quot;-&quot;</span>) <span class="co"># the character used to mark the separation</span>
-<span class="kw">View</span>(succession_sep)</code></pre></div>
-<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
-<table class=" lightable-paper" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; margin-left: auto; margin-right: auto;">
-<thead>
-<tr>
-<th style="text-align:left;">
-Habitat
-</th>
-<th style="text-align:left;">
-Tree_type
-</th>
-<th style="text-align:left;">
-Team
-</th>
-<th style="text-align:right;">
-Sample
-</th>
-<th style="text-align:left;">
-Quadrant
-</th>
-<th style="text-align:right;">
-Distance
-</th>
-<th style="text-align:right;">
-DBH
-</th>
-<th style="text-align:left;">
-Species
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-P
-</td>
-<td style="text-align:left;">
-C
-</td>
-<td style="text-align:left;">
-A
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:left;">
-a
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-15.0
-</td>
-<td style="text-align:left;">
-Juniperus spp. (Juniper)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-P
-</td>
-<td style="text-align:left;">
-U
-</td>
-<td style="text-align:left;">
-A
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:left;">
-a
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:left;">
-Quercus fusiformis (Live oak)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-P
-</td>
-<td style="text-align:left;">
-C
-</td>
-<td style="text-align:left;">
-A
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:left;">
-b
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-16.5
-</td>
-<td style="text-align:left;">
-Juniperus spp. (Juniper)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-P
-</td>
-<td style="text-align:left;">
-U
-</td>
-<td style="text-align:left;">
-A
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:left;">
-b
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:left;">
-Quercus fusiformis (Live oak)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-P
-</td>
-<td style="text-align:left;">
-C
-</td>
-<td style="text-align:left;">
-A
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:left;">
-c
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-15.0
-</td>
-<td style="text-align:left;">
-Juniperus spp. (Juniper)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-P
-</td>
-<td style="text-align:left;">
-U
-</td>
-<td style="text-align:left;">
-A
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:left;">
-c
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:left;">
-Juniperus spp. (Juniper)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-P
-</td>
-<td style="text-align:left;">
-C
-</td>
-<td style="text-align:left;">
-A
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:left;">
-d
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-14.0
-</td>
-<td style="text-align:left;">
-Celtis spp. (Hackberry)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-P
-</td>
-<td style="text-align:left;">
-U
-</td>
-<td style="text-align:left;">
-A
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:left;">
-d
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:left;">
-Celtis spp. (Hackberry)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-P
-</td>
-<td style="text-align:left;">
-C
-</td>
-<td style="text-align:left;">
-A
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:left;">
-a
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-21.5
-</td>
-<td style="text-align:left;">
-Ulmus crassifolia (Cedar elm)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-P
-</td>
-<td style="text-align:left;">
-U
-</td>
-<td style="text-align:left;">
-A
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:left;">
-a
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:left;">
-Ulmus crassifolia (Cedar elm)
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>Note that the <code>sep</code> argument can be either text or a integer(s); if it's a character vector, the character(s) are removed during the split (as with above). If <code>sep</code> is an integer (or integer vector), then the split is made after that/those position(s) in the text without removing anything.</p>
-<p>It would also be useful to have a column that specifically identifies the each sample point; currenlty, that information is split between the <code>Habitat</code>, <code>Team</code>, and <code>Sample</code> columns. The <code>unite()</code> function does this (it's the complement of <code>separate</code>).</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">succession_tidy =<span class="st"> </span>succession_sep <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">unite</span>(<span class="dt">col =</span> <span class="st">&quot;sample_point&quot;</span>, <span class="co"># Name of new colum</span>
-        Habitat, Team, Sample, <span class="co"># columns to unite (note; these are all seaprate args)</span>
-        <span class="dt">sep =</span> <span class="st">&quot;-&quot;</span>, <span class="co"># separate the columns with a dash</span>
-        <span class="dt">remove =</span> <span class="ot">FALSE</span> <span class="co"># by default, unite() removes the columns to separate; this disables that because we want to keep Habitat</span>
-        ) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>Team, <span class="op">-</span>Sample) 
-succession_tidy <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">View</span>()</code></pre></div>
-<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
-<table class=" lightable-paper" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; margin-left: auto; margin-right: auto;">
-<thead>
-<tr>
-<th style="text-align:left;">
-sample_point
-</th>
-<th style="text-align:left;">
-Habitat
-</th>
-<th style="text-align:left;">
-Tree_type
-</th>
-<th style="text-align:left;">
-Quadrant
-</th>
-<th style="text-align:right;">
-Distance
-</th>
-<th style="text-align:right;">
-DBH
-</th>
-<th style="text-align:left;">
-Species
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-P-A-1
-</td>
-<td style="text-align:left;">
-P
-</td>
-<td style="text-align:left;">
-C
-</td>
-<td style="text-align:left;">
-a
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-15.0
-</td>
-<td style="text-align:left;">
-Juniperus spp. (Juniper)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-P-A-1
-</td>
-<td style="text-align:left;">
-P
-</td>
-<td style="text-align:left;">
-U
-</td>
-<td style="text-align:left;">
-a
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:left;">
-Quercus fusiformis (Live oak)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-P-A-1
-</td>
-<td style="text-align:left;">
-P
-</td>
-<td style="text-align:left;">
-C
-</td>
-<td style="text-align:left;">
-b
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-16.5
-</td>
-<td style="text-align:left;">
-Juniperus spp. (Juniper)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-P-A-1
-</td>
-<td style="text-align:left;">
-P
-</td>
-<td style="text-align:left;">
-U
-</td>
-<td style="text-align:left;">
-b
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:left;">
-Quercus fusiformis (Live oak)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-P-A-1
-</td>
-<td style="text-align:left;">
-P
-</td>
-<td style="text-align:left;">
-C
-</td>
-<td style="text-align:left;">
-c
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-15.0
-</td>
-<td style="text-align:left;">
-Juniperus spp. (Juniper)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-P-A-1
-</td>
-<td style="text-align:left;">
-P
-</td>
-<td style="text-align:left;">
-U
-</td>
-<td style="text-align:left;">
-c
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:left;">
-Juniperus spp. (Juniper)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-P-A-1
-</td>
-<td style="text-align:left;">
-P
-</td>
-<td style="text-align:left;">
-C
-</td>
-<td style="text-align:left;">
-d
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-14.0
-</td>
-<td style="text-align:left;">
-Celtis spp. (Hackberry)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-P-A-1
-</td>
-<td style="text-align:left;">
-P
-</td>
-<td style="text-align:left;">
-U
-</td>
-<td style="text-align:left;">
-d
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:left;">
-Celtis spp. (Hackberry)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-P-A-2
-</td>
-<td style="text-align:left;">
-P
-</td>
-<td style="text-align:left;">
-C
-</td>
-<td style="text-align:left;">
-a
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-21.5
-</td>
-<td style="text-align:left;">
-Ulmus crassifolia (Cedar elm)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-P-A-2
-</td>
-<td style="text-align:left;">
-P
-</td>
-<td style="text-align:left;">
-U
-</td>
-<td style="text-align:left;">
-a
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:left;">
-Ulmus crassifolia (Cedar elm)
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>An alternative option to <code>unite()</code> is to use a combination of <code>mutate()</code> and <code>paste()</code>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">succession_sep <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">sample_point =</span> <span class="kw">paste</span>(Habitat, Team, Sample, <span class="dt">sep =</span> <span class="st">&quot;-&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>Team, <span class="op">-</span>Sample) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">View</span>() <span class="co"># The column order will be different, but otherwise it&#39;s the same.</span></code></pre></div>
-</div>
-<div id="pivot-longer-multi-tutorial" class="section level2">
-<h2><span class="header-section-number">E.4</span> Pivoting multiple columns</h2>
-<p>We're going to take a look a dataset from <a href="https://www.molbiolcell.org/doi/full/10.1091/mbc.e07-08-0779">Brauer et al (2008)</a>. The experiment tested yeast gene expression under nutrient limitation (for several different nutrients &amp; several different concentrations).</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">View</span>(yeast_data)</code></pre></div>
-<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
-<table class=" lightable-paper" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; margin-left: auto; margin-right: auto;">
-<thead>
-<tr>
-<th style="text-align:left;">
-gene_name
-</th>
-<th style="text-align:left;">
-bio_process
-</th>
-<th style="text-align:left;">
-mol_func
-</th>
-<th style="text-align:left;">
-syst_id
-</th>
-<th style="text-align:right;">
-G0.05
-</th>
-<th style="text-align:right;">
-G0.1
-</th>
-<th style="text-align:right;">
-G0.15
-</th>
-<th style="text-align:right;">
-G0.2
-</th>
-<th style="text-align:right;">
-G0.25
-</th>
-<th style="text-align:right;">
-G0.3
-</th>
-<th style="text-align:right;">
-N0.05
-</th>
-<th style="text-align:right;">
-N0.1
-</th>
-<th style="text-align:right;">
-N0.15
-</th>
-<th style="text-align:right;">
-N0.2
-</th>
-<th style="text-align:right;">
-N0.25
-</th>
-<th style="text-align:right;">
-N0.3
-</th>
-<th style="text-align:right;">
-P0.05
-</th>
-<th style="text-align:right;">
-P0.1
-</th>
-<th style="text-align:right;">
-P0.15
-</th>
-<th style="text-align:right;">
-P0.2
-</th>
-<th style="text-align:right;">
-P0.25
-</th>
-<th style="text-align:right;">
-P0.3
-</th>
-<th style="text-align:right;">
-S0.05
-</th>
-<th style="text-align:right;">
-S0.1
-</th>
-<th style="text-align:right;">
-S0.15
-</th>
-<th style="text-align:right;">
-S0.2
-</th>
-<th style="text-align:right;">
-S0.25
-</th>
-<th style="text-align:right;">
-S0.3
-</th>
-<th style="text-align:right;">
-L0.05
-</th>
-<th style="text-align:right;">
-L0.1
-</th>
-<th style="text-align:right;">
-L0.15
-</th>
-<th style="text-align:right;">
-L0.2
-</th>
-<th style="text-align:right;">
-L0.25
-</th>
-<th style="text-align:right;">
-L0.3
-</th>
-<th style="text-align:right;">
-U0.05
-</th>
-<th style="text-align:right;">
-U0.1
-</th>
-<th style="text-align:right;">
-U0.15
-</th>
-<th style="text-align:right;">
-U0.2
-</th>
-<th style="text-align:right;">
-U0.25
-</th>
-<th style="text-align:right;">
-U0.3
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-SFB2
-</td>
-<td style="text-align:left;">
-ER to Golgi transport
-</td>
-<td style="text-align:left;">
-molecular function unknown
-</td>
-<td style="text-align:left;">
-YNL049C
-</td>
-<td style="text-align:right;">
--0.24
-</td>
-<td style="text-align:right;">
--0.13
-</td>
-<td style="text-align:right;">
--0.21
-</td>
-<td style="text-align:right;">
--0.15
-</td>
-<td style="text-align:right;">
--0.05
-</td>
-<td style="text-align:right;">
--0.05
-</td>
-<td style="text-align:right;">
-0.20
-</td>
-<td style="text-align:right;">
-0.24
-</td>
-<td style="text-align:right;">
--0.20
-</td>
-<td style="text-align:right;">
--0.42
-</td>
-<td style="text-align:right;">
--0.14
-</td>
-<td style="text-align:right;">
-0.09
-</td>
-<td style="text-align:right;">
--0.26
-</td>
-<td style="text-align:right;">
--0.20
-</td>
-<td style="text-align:right;">
--0.22
-</td>
-<td style="text-align:right;">
--0.31
-</td>
-<td style="text-align:right;">
-0.04
-</td>
-<td style="text-align:right;">
-0.34
-</td>
-<td style="text-align:right;">
--0.51
-</td>
-<td style="text-align:right;">
--0.12
-</td>
-<td style="text-align:right;">
-0.09
-</td>
-<td style="text-align:right;">
-0.09
-</td>
-<td style="text-align:right;">
-0.20
-</td>
-<td style="text-align:right;">
-0.08
-</td>
-<td style="text-align:right;">
-0.18
-</td>
-<td style="text-align:right;">
-0.18
-</td>
-<td style="text-align:right;">
-0.13
-</td>
-<td style="text-align:right;">
-0.20
-</td>
-<td style="text-align:right;">
-0.17
-</td>
-<td style="text-align:right;">
-0.11
-</td>
-<td style="text-align:right;">
--0.06
-</td>
-<td style="text-align:right;">
--0.26
-</td>
-<td style="text-align:right;">
--0.05
-</td>
-<td style="text-align:right;">
--0.28
-</td>
-<td style="text-align:right;">
--0.19
-</td>
-<td style="text-align:right;">
-0.09
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-biological process unknown
-</td>
-<td style="text-align:left;">
-molecular function unknown
-</td>
-<td style="text-align:left;">
-YNL095C
-</td>
-<td style="text-align:right;">
-0.28
-</td>
-<td style="text-align:right;">
-0.13
-</td>
-<td style="text-align:right;">
--0.40
-</td>
-<td style="text-align:right;">
--0.48
-</td>
-<td style="text-align:right;">
--0.11
-</td>
-<td style="text-align:right;">
-0.17
-</td>
-<td style="text-align:right;">
-0.31
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
--0.63
-</td>
-<td style="text-align:right;">
--0.44
-</td>
-<td style="text-align:right;">
--0.26
-</td>
-<td style="text-align:right;">
-0.21
-</td>
-<td style="text-align:right;">
--0.09
-</td>
-<td style="text-align:right;">
--0.04
-</td>
-<td style="text-align:right;">
--0.10
-</td>
-<td style="text-align:right;">
-0.15
-</td>
-<td style="text-align:right;">
-0.20
-</td>
-<td style="text-align:right;">
-0.63
-</td>
-<td style="text-align:right;">
-0.53
-</td>
-<td style="text-align:right;">
-0.15
-</td>
-<td style="text-align:right;">
--0.01
-</td>
-<td style="text-align:right;">
-0.12
-</td>
-<td style="text-align:right;">
--0.15
-</td>
-<td style="text-align:right;">
-0.32
-</td>
-<td style="text-align:right;">
-0.16
-</td>
-<td style="text-align:right;">
-0.09
-</td>
-<td style="text-align:right;">
-0.02
-</td>
-<td style="text-align:right;">
-0.04
-</td>
-<td style="text-align:right;">
-0.03
-</td>
-<td style="text-align:right;">
-0.01
-</td>
-<td style="text-align:right;">
--1.02
-</td>
-<td style="text-align:right;">
--0.91
-</td>
-<td style="text-align:right;">
--0.59
-</td>
-<td style="text-align:right;">
--0.61
-</td>
-<td style="text-align:right;">
--0.17
-</td>
-<td style="text-align:right;">
-0.18
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-QRI7
-</td>
-<td style="text-align:left;">
-proteolysis and peptidolysis
-</td>
-<td style="text-align:left;">
-metalloendopeptidase activity
-</td>
-<td style="text-align:left;">
-YDL104C
-</td>
-<td style="text-align:right;">
--0.02
-</td>
-<td style="text-align:right;">
--0.27
-</td>
-<td style="text-align:right;">
--0.27
-</td>
-<td style="text-align:right;">
--0.02
-</td>
-<td style="text-align:right;">
-0.24
-</td>
-<td style="text-align:right;">
-0.25
-</td>
-<td style="text-align:right;">
-0.23
-</td>
-<td style="text-align:right;">
-0.06
-</td>
-<td style="text-align:right;">
--0.66
-</td>
-<td style="text-align:right;">
--0.40
-</td>
-<td style="text-align:right;">
--0.46
-</td>
-<td style="text-align:right;">
--0.43
-</td>
-<td style="text-align:right;">
-0.18
-</td>
-<td style="text-align:right;">
-0.22
-</td>
-<td style="text-align:right;">
-0.33
-</td>
-<td style="text-align:right;">
-0.34
-</td>
-<td style="text-align:right;">
-0.13
-</td>
-<td style="text-align:right;">
-0.44
-</td>
-<td style="text-align:right;">
-1.29
-</td>
-<td style="text-align:right;">
--0.32
-</td>
-<td style="text-align:right;">
--0.47
-</td>
-<td style="text-align:right;">
--0.50
-</td>
-<td style="text-align:right;">
--0.42
-</td>
-<td style="text-align:right;">
--0.33
-</td>
-<td style="text-align:right;">
--0.30
-</td>
-<td style="text-align:right;">
-0.02
-</td>
-<td style="text-align:right;">
--0.07
-</td>
-<td style="text-align:right;">
--0.05
-</td>
-<td style="text-align:right;">
--0.13
-</td>
-<td style="text-align:right;">
--0.04
-</td>
-<td style="text-align:right;">
--0.91
-</td>
-<td style="text-align:right;">
--0.94
-</td>
-<td style="text-align:right;">
--0.42
-</td>
-<td style="text-align:right;">
--0.36
-</td>
-<td style="text-align:right;">
--0.49
-</td>
-<td style="text-align:right;">
--0.47
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-CFT2
-</td>
-<td style="text-align:left;">
-mRNA polyadenylylation*
-</td>
-<td style="text-align:left;">
-RNA binding
-</td>
-<td style="text-align:left;">
-YLR115W
-</td>
-<td style="text-align:right;">
--0.33
-</td>
-<td style="text-align:right;">
--0.41
-</td>
-<td style="text-align:right;">
--0.24
-</td>
-<td style="text-align:right;">
--0.03
-</td>
-<td style="text-align:right;">
--0.03
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-0.20
-</td>
-<td style="text-align:right;">
--0.25
-</td>
-<td style="text-align:right;">
--0.49
-</td>
-<td style="text-align:right;">
--0.49
-</td>
-<td style="text-align:right;">
--0.43
-</td>
-<td style="text-align:right;">
--0.26
-</td>
-<td style="text-align:right;">
-0.05
-</td>
-<td style="text-align:right;">
-0.04
-</td>
-<td style="text-align:right;">
-0.03
-</td>
-<td style="text-align:right;">
--0.04
-</td>
-<td style="text-align:right;">
-0.08
-</td>
-<td style="text-align:right;">
-0.21
-</td>
-<td style="text-align:right;">
-0.41
-</td>
-<td style="text-align:right;">
--0.43
-</td>
-<td style="text-align:right;">
--0.21
-</td>
-<td style="text-align:right;">
--0.33
-</td>
-<td style="text-align:right;">
--0.05
-</td>
-<td style="text-align:right;">
--0.24
-</td>
-<td style="text-align:right;">
--0.27
-</td>
-<td style="text-align:right;">
--0.28
-</td>
-<td style="text-align:right;">
--0.05
-</td>
-<td style="text-align:right;">
-0.02
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-0.08
-</td>
-<td style="text-align:right;">
--0.53
-</td>
-<td style="text-align:right;">
--0.51
-</td>
-<td style="text-align:right;">
--0.26
-</td>
-<td style="text-align:right;">
-0.05
-</td>
-<td style="text-align:right;">
--0.14
-</td>
-<td style="text-align:right;">
--0.01
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-SSO2
-</td>
-<td style="text-align:left;">
-vesicle fusion*
-</td>
-<td style="text-align:left;">
-t-SNARE activity
-</td>
-<td style="text-align:left;">
-YMR183C
-</td>
-<td style="text-align:right;">
-0.05
-</td>
-<td style="text-align:right;">
-0.02
-</td>
-<td style="text-align:right;">
-0.40
-</td>
-<td style="text-align:right;">
-0.34
-</td>
-<td style="text-align:right;">
--0.13
-</td>
-<td style="text-align:right;">
--0.14
-</td>
-<td style="text-align:right;">
--0.35
-</td>
-<td style="text-align:right;">
--0.09
-</td>
-<td style="text-align:right;">
--0.08
-</td>
-<td style="text-align:right;">
--0.58
-</td>
-<td style="text-align:right;">
--0.14
-</td>
-<td style="text-align:right;">
--0.12
-</td>
-<td style="text-align:right;">
--0.16
-</td>
-<td style="text-align:right;">
-0.18
-</td>
-<td style="text-align:right;">
-0.21
-</td>
-<td style="text-align:right;">
-0.08
-</td>
-<td style="text-align:right;">
-0.23
-</td>
-<td style="text-align:right;">
--0.29
-</td>
-<td style="text-align:right;">
--0.70
-</td>
-<td style="text-align:right;">
-0.05
-</td>
-<td style="text-align:right;">
-0.10
-</td>
-<td style="text-align:right;">
--0.07
-</td>
-<td style="text-align:right;">
--0.10
-</td>
-<td style="text-align:right;">
--0.32
-</td>
-<td style="text-align:right;">
--0.59
-</td>
-<td style="text-align:right;">
--0.13
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
--0.11
-</td>
-<td style="text-align:right;">
-0.04
-</td>
-<td style="text-align:right;">
-0.01
-</td>
-<td style="text-align:right;">
--0.45
-</td>
-<td style="text-align:right;">
--0.09
-</td>
-<td style="text-align:right;">
--0.13
-</td>
-<td style="text-align:right;">
-0.02
-</td>
-<td style="text-align:right;">
--0.09
-</td>
-<td style="text-align:right;">
--0.03
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-PSP2
-</td>
-<td style="text-align:left;">
-biological process unknown
-</td>
-<td style="text-align:left;">
-molecular function unknown
-</td>
-<td style="text-align:left;">
-YML017W
-</td>
-<td style="text-align:right;">
--0.69
-</td>
-<td style="text-align:right;">
--0.03
-</td>
-<td style="text-align:right;">
-0.23
-</td>
-<td style="text-align:right;">
-0.20
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
--0.27
-</td>
-<td style="text-align:right;">
-0.17
-</td>
-<td style="text-align:right;">
--0.40
-</td>
-<td style="text-align:right;">
--0.54
-</td>
-<td style="text-align:right;">
--1.19
-</td>
-<td style="text-align:right;">
--0.42
-</td>
-<td style="text-align:right;">
-1.89
-</td>
-<td style="text-align:right;">
--0.32
-</td>
-<td style="text-align:right;">
--0.06
-</td>
-<td style="text-align:right;">
--0.62
-</td>
-<td style="text-align:right;">
--0.50
-</td>
-<td style="text-align:right;">
--0.37
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
--0.20
-</td>
-<td style="text-align:right;">
--0.09
-</td>
-<td style="text-align:right;">
-0.06
-</td>
-<td style="text-align:right;">
--0.19
-</td>
-<td style="text-align:right;">
--0.14
-</td>
-<td style="text-align:right;">
--0.17
-</td>
-<td style="text-align:right;">
--0.07
-</td>
-<td style="text-align:right;">
-0.25
-</td>
-<td style="text-align:right;">
--0.21
-</td>
-<td style="text-align:right;">
-0.12
-</td>
-<td style="text-align:right;">
--0.11
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
--0.65
-</td>
-<td style="text-align:right;">
-0.09
-</td>
-<td style="text-align:right;">
-0.06
-</td>
-<td style="text-align:right;">
--0.07
-</td>
-<td style="text-align:right;">
--0.10
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-RIB2
-</td>
-<td style="text-align:left;">
-riboflavin biosynthesis
-</td>
-<td style="text-align:left;">
-pseudouridylate synthase activity*
-</td>
-<td style="text-align:left;">
-YOL066C
-</td>
-<td style="text-align:right;">
--0.55
-</td>
-<td style="text-align:right;">
--0.30
-</td>
-<td style="text-align:right;">
--0.12
-</td>
-<td style="text-align:right;">
--0.03
-</td>
-<td style="text-align:right;">
--0.16
-</td>
-<td style="text-align:right;">
--0.11
-</td>
-<td style="text-align:right;">
-0.04
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
--0.63
-</td>
-<td style="text-align:right;">
--0.51
-</td>
-<td style="text-align:right;">
--0.37
-</td>
-<td style="text-align:right;">
--0.24
-</td>
-<td style="text-align:right;">
--0.35
-</td>
-<td style="text-align:right;">
--0.32
-</td>
-<td style="text-align:right;">
--0.39
-</td>
-<td style="text-align:right;">
--0.60
-</td>
-<td style="text-align:right;">
--0.29
-</td>
-<td style="text-align:right;">
--0.25
-</td>
-<td style="text-align:right;">
--0.14
-</td>
-<td style="text-align:right;">
--0.50
-</td>
-<td style="text-align:right;">
--0.19
-</td>
-<td style="text-align:right;">
--0.13
-</td>
-<td style="text-align:right;">
--0.01
-</td>
-<td style="text-align:right;">
--0.04
-</td>
-<td style="text-align:right;">
--0.02
-</td>
-<td style="text-align:right;">
--0.05
-</td>
-<td style="text-align:right;">
-0.27
-</td>
-<td style="text-align:right;">
-0.24
-</td>
-<td style="text-align:right;">
-0.05
-</td>
-<td style="text-align:right;">
-0.19
-</td>
-<td style="text-align:right;">
-0.07
-</td>
-<td style="text-align:right;">
--0.31
-</td>
-<td style="text-align:right;">
--0.08
-</td>
-<td style="text-align:right;">
-0.12
-</td>
-<td style="text-align:right;">
-0.05
-</td>
-<td style="text-align:right;">
-0.06
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-VMA13
-</td>
-<td style="text-align:left;">
-vacuolar acidification
-</td>
-<td style="text-align:left;">
-hydrogen-transporting ATPase activity, rotational mechanism
-</td>
-<td style="text-align:left;">
-YPR036W
-</td>
-<td style="text-align:right;">
--0.75
-</td>
-<td style="text-align:right;">
--0.12
-</td>
-<td style="text-align:right;">
--0.07
-</td>
-<td style="text-align:right;">
-0.02
-</td>
-<td style="text-align:right;">
--0.32
-</td>
-<td style="text-align:right;">
--0.41
-</td>
-<td style="text-align:right;">
-0.11
-</td>
-<td style="text-align:right;">
--0.16
-</td>
-<td style="text-align:right;">
--0.26
-</td>
-<td style="text-align:right;">
--0.42
-</td>
-<td style="text-align:right;">
-0.18
-</td>
-<td style="text-align:right;">
-0.13
-</td>
-<td style="text-align:right;">
--0.19
-</td>
-<td style="text-align:right;">
--0.25
-</td>
-<td style="text-align:right;">
--0.25
-</td>
-<td style="text-align:right;">
--0.47
-</td>
-<td style="text-align:right;">
--0.24
-</td>
-<td style="text-align:right;">
--0.49
-</td>
-<td style="text-align:right;">
-0.09
-</td>
-<td style="text-align:right;">
-0.13
-</td>
-<td style="text-align:right;">
-0.15
-</td>
-<td style="text-align:right;">
--0.02
-</td>
-<td style="text-align:right;">
-0.24
-</td>
-<td style="text-align:right;">
--0.08
-</td>
-<td style="text-align:right;">
--0.11
-</td>
-<td style="text-align:right;">
--0.01
-</td>
-<td style="text-align:right;">
-0.15
-</td>
-<td style="text-align:right;">
-0.15
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-0.03
-</td>
-<td style="text-align:right;">
--0.40
-</td>
-<td style="text-align:right;">
--0.02
-</td>
-<td style="text-align:right;">
-0.26
-</td>
-<td style="text-align:right;">
-0.31
-</td>
-<td style="text-align:right;">
-0.14
-</td>
-<td style="text-align:right;">
-0.11
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-EDC3
-</td>
-<td style="text-align:left;">
-deadenylylation-independent decapping
-</td>
-<td style="text-align:left;">
-molecular function unknown
-</td>
-<td style="text-align:left;">
-YEL015W
-</td>
-<td style="text-align:right;">
--0.24
-</td>
-<td style="text-align:right;">
--0.22
-</td>
-<td style="text-align:right;">
-0.14
-</td>
-<td style="text-align:right;">
-0.06
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
--0.13
-</td>
-<td style="text-align:right;">
-0.30
-</td>
-<td style="text-align:right;">
-0.07
-</td>
-<td style="text-align:right;">
--0.30
-</td>
-<td style="text-align:right;">
--0.01
-</td>
-<td style="text-align:right;">
-0.15
-</td>
-<td style="text-align:right;">
-0.13
-</td>
-<td style="text-align:right;">
--0.26
-</td>
-<td style="text-align:right;">
--0.20
-</td>
-<td style="text-align:right;">
--0.22
-</td>
-<td style="text-align:right;">
--0.17
-</td>
-<td style="text-align:right;">
--0.23
-</td>
-<td style="text-align:right;">
--0.38
-</td>
-<td style="text-align:right;">
--0.35
-</td>
-<td style="text-align:right;">
--0.14
-</td>
-<td style="text-align:right;">
-0.10
-</td>
-<td style="text-align:right;">
--0.04
-</td>
-<td style="text-align:right;">
-0.22
-</td>
-<td style="text-align:right;">
-0.02
-</td>
-<td style="text-align:right;">
-0.12
-</td>
-<td style="text-align:right;">
--0.01
-</td>
-<td style="text-align:right;">
-0.17
-</td>
-<td style="text-align:right;">
-0.07
-</td>
-<td style="text-align:right;">
-0.10
-</td>
-<td style="text-align:right;">
-0.11
-</td>
-<td style="text-align:right;">
-0.01
-</td>
-<td style="text-align:right;">
--0.16
-</td>
-<td style="text-align:right;">
-0.07
-</td>
-<td style="text-align:right;">
-0.20
-</td>
-<td style="text-align:right;">
-0.02
-</td>
-<td style="text-align:right;">
-0.10
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-VPS5
-</td>
-<td style="text-align:left;">
-protein retention in Golgi*
-</td>
-<td style="text-align:left;">
-protein transporter activity
-</td>
-<td style="text-align:left;">
-YOR069W
-</td>
-<td style="text-align:right;">
--0.16
-</td>
-<td style="text-align:right;">
--0.38
-</td>
-<td style="text-align:right;">
-0.05
-</td>
-<td style="text-align:right;">
-0.14
-</td>
-<td style="text-align:right;">
--0.04
-</td>
-<td style="text-align:right;">
--0.01
-</td>
-<td style="text-align:right;">
-0.39
-</td>
-<td style="text-align:right;">
-0.20
-</td>
-<td style="text-align:right;">
-0.27
-</td>
-<td style="text-align:right;">
-0.19
-</td>
-<td style="text-align:right;">
-0.20
-</td>
-<td style="text-align:right;">
-0.06
-</td>
-<td style="text-align:right;">
--0.23
-</td>
-<td style="text-align:right;">
--0.20
-</td>
-<td style="text-align:right;">
--0.07
-</td>
-<td style="text-align:right;">
--0.13
-</td>
-<td style="text-align:right;">
--0.14
-</td>
-<td style="text-align:right;">
--0.42
-</td>
-<td style="text-align:right;">
--0.38
-</td>
-<td style="text-align:right;">
--0.14
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
--0.06
-</td>
-<td style="text-align:right;">
-0.16
-</td>
-<td style="text-align:right;">
--0.15
-</td>
-<td style="text-align:right;">
--0.20
-</td>
-<td style="text-align:right;">
--0.18
-</td>
-<td style="text-align:right;">
-0.11
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-0.02
-</td>
-<td style="text-align:right;">
-0.09
-</td>
-<td style="text-align:right;">
--0.26
-</td>
-<td style="text-align:right;">
--0.13
-</td>
-<td style="text-align:right;">
--0.10
-</td>
-<td style="text-align:right;">
-0.07
-</td>
-<td style="text-align:right;">
--0.04
-</td>
-<td style="text-align:right;">
--0.12
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>The first four columns are single variables (gene name, biological process, molecular function, and systematic_id). The remaining columns (<code>G0.05</code> through <code>U0.3</code>) contain TWO variables in their name: the nutrient that was added to the substrate (first letter) and rate at which it was added (the rest). The values in these columns is the gene expression level. To tidy the data, we need to convert these into three columns:</p>
-<ul>
-<li>Substrate</li>
-<li>Concentration</li>
-<li>Gene expression</li>
-</ul>
-<p>While we could do this with a combination of <code>pivot_longer()</code> and <code>separate()</code>, <code>pivot_longer()</code> can do both tasks at once with a few extra arguments.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">yeast_data <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">pivot_longer</span>(G0.<span class="dv">05</span><span class="op">:</span>U0.<span class="dv">3</span>,
-    <span class="dt">names_to =</span> <span class="kw">c</span>(<span class="st">&quot;Substrate&quot;</span>, <span class="st">&quot;Concentration&quot;</span>), <span class="co"># The names will go into these columns</span>
-    <span class="dt">names_sep =</span> <span class="dv">1</span>, <span class="co"># separate the names between columns after the first character</span>
-    <span class="dt">values_to =</span> <span class="st">&quot;Gene_expression&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">glimpse</span>()
-## Rows: 199,332
-## Columns: 7
-## $ gene_name       &lt;chr&gt; &quot;SFB2&quot;, &quot;SFB2&quot;, &quot;SFB2&quot;, &quot;SFB2&quot;, &quot;SFB2&quot;, &quot;SFB2&quot;, &quot;SFB2…
-## $ bio_process     &lt;chr&gt; &quot;ER to Golgi transport&quot;, &quot;ER to Golgi transport&quot;, &quot;ER…
-## $ mol_func        &lt;chr&gt; &quot;molecular function unknown&quot;, &quot;molecular function unk…
-## $ syst_id         &lt;chr&gt; &quot;YNL049C&quot;, &quot;YNL049C&quot;, &quot;YNL049C&quot;, &quot;YNL049C&quot;, &quot;YNL049C&quot;…
-## $ Substrate       &lt;chr&gt; &quot;G&quot;, &quot;G&quot;, &quot;G&quot;, &quot;G&quot;, &quot;G&quot;, &quot;G&quot;, &quot;N&quot;, &quot;N&quot;, &quot;N&quot;, &quot;N&quot;, &quot;N&quot;…
-## $ Concentration   &lt;chr&gt; &quot;0.05&quot;, &quot;0.1&quot;, &quot;0.15&quot;, &quot;0.2&quot;, &quot;0.25&quot;, &quot;0.3&quot;, &quot;0.05&quot;, …
-## $ Gene_expression &lt;dbl&gt; -0.24, -0.13, -0.21, -0.15, -0.05, -0.05, 0.20, 0.24,…</code></pre></div>
-<p>The <code>names_sep</code> argument works exactly like <code>sep</code> in <code>separate()</code>.</p>
-<p>Notice that <code>Concentration</code> is listed as a character vector (<code>&lt;chr&gt;</code>). It's probably a good idea to have it as a numeric vector instead. The <code>names_transform</code> argument lets you specify a function that can be applied to the names column(s) after they're re-shaped. In this case, we're going to use <code>as.numeric()</code> to convert it into a number.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-<span class="co"># We&#39;re going to create a list that tells pivot_longer to use the </span>
-  <span class="co"># as.numeric() function on Concentration</span>
-  <span class="co"># a list() is basically a big box you can put any other kind of data structure into</span>
-  <span class="co"># Each item in a list is called an elements; elements can be named or not</span>
-  <span class="co"># This list has one named element; if we wanted to transform more columns, we could include them here as well</span>
-convert_concentration =<span class="st"> </span><span class="kw">list</span>(
-  <span class="dt">Concentration =</span> as.numeric <span class="co"># Note there&#39;s no parentheses; this is because we&#39;re identifying the function, not calling it.</span>
+<p>From here, you can</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sac_r =<span class="st"> </span>wide_ant_data <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">filter</span>(Habitat <span class="op">==</span><span class="st"> &quot;R&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">format_sac_data</span>() <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">specaccum</span>(<span class="dt">method =</span> <span class="st">&quot;random&quot;</span>, <span class="dt">permutations =</span> <span class="dv">500</span>)   <span class="co"># Use these argument options</span></code></pre></div>
+<p>Use <code>print(sac_r)</code> to look at the output. The results are basically a tidy data frame turned on its side: one row for the number of sites sampled, one for the estimated richness, and one for the error around the richness estimate. To plot this, we need to re-format the output.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sac_r_tidy =<span class="st"> </span>
+<span class="st">  </span><span class="kw">tibble</span>(
+    <span class="dt">sites =</span> sac_r<span class="op">$</span>sites,
+    <span class="dt">richness =</span> sac_r<span class="op">$</span>richness,
+    <span class="dt">se =</span> sac_r<span class="op">$</span>sd <span class="co"># the &quot;SD&quot; column is actually a standard error measure</span>
   ) 
-
-<span class="co"># We&#39;ll talk more about lists later</span>
-
-tidy_yeast =<span class="st"> </span>yeast_data <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">pivot_longer</span>(G0.<span class="dv">05</span><span class="op">:</span>U0.<span class="dv">3</span>,
-    <span class="dt">names_to =</span> <span class="kw">c</span>(<span class="st">&quot;Substrate&quot;</span>, <span class="st">&quot;Concentration&quot;</span>), <span class="dt">names_sep =</span> <span class="dv">1</span>, 
-    <span class="dt">names_transform =</span> convert_concentration, <span class="co"># We could also have defined the list here</span>
-    <span class="dt">values_to =</span> <span class="st">&quot;Gene_expression&quot;</span>) 
-tidy_yeast <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">glimpse</span>()
-## Rows: 199,332
-## Columns: 7
-## $ gene_name       &lt;chr&gt; &quot;SFB2&quot;, &quot;SFB2&quot;, &quot;SFB2&quot;, &quot;SFB2&quot;, &quot;SFB2&quot;, &quot;SFB2&quot;, &quot;SFB2…
-## $ bio_process     &lt;chr&gt; &quot;ER to Golgi transport&quot;, &quot;ER to Golgi transport&quot;, &quot;ER…
-## $ mol_func        &lt;chr&gt; &quot;molecular function unknown&quot;, &quot;molecular function unk…
-## $ syst_id         &lt;chr&gt; &quot;YNL049C&quot;, &quot;YNL049C&quot;, &quot;YNL049C&quot;, &quot;YNL049C&quot;, &quot;YNL049C&quot;…
-## $ Substrate       &lt;chr&gt; &quot;G&quot;, &quot;G&quot;, &quot;G&quot;, &quot;G&quot;, &quot;G&quot;, &quot;G&quot;, &quot;N&quot;, &quot;N&quot;, &quot;N&quot;, &quot;N&quot;, &quot;N&quot;…
-## $ Concentration   &lt;dbl&gt; 0.05, 0.10, 0.15, 0.20, 0.25, 0.30, 0.05, 0.10, 0.15,…
-## $ Gene_expression &lt;dbl&gt; -0.24, -0.13, -0.21, -0.15, -0.05, -0.05, 0.20, 0.24,…</code></pre></div>
-<div id="combining-pivot_longer-with-summarise" class="section level3">
-<h3><span class="header-section-number">E.4.1</span> Combining <code>pivot_longer()</code> with <code>summarise()</code></h3>
-<p>Here's a particularly powerful combination of <code>tidyverse()</code> functions you can use when you're exploring a new dataset: calculate summary statistics on all of your variables with <code>summarise(across(...))</code>, tidy the results with <code>pivot_longer()</code>, then create a faceted <code>ggplot</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lizard_smry_by_color =<span class="st"> </span>lizards <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="co"># Group the data by color morph</span>
-<span class="st">  </span><span class="kw">group_by</span>(Color_morph) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">summarize</span>(
-    <span class="kw">across</span>(<span class="kw">where</span>(is.numeric), <span class="co"># For all numeric columns...</span>
-           <span class="kw">list</span>(<span class="dt">Mean =</span> mean, <span class="dt">Med =</span> median, <span class="dt">SD =</span> sd)
-           <span class="co"># run mean(), meidan(), and sd() on each group &amp; variable</span>
-           <span class="co"># Note that the list elements follows the pattern Name = function</span>
-    ),<span class="dt">N =</span> <span class="kw">n</span>() ) <span class="co"># This is outside of across, since it&#39;s only run once per group</span>
-## `summarise()` ungrouping output (override with `.groups` argument)
-<span class="kw">glimpse</span>(lizard_smry_by_color)
-## Rows: 3
-## Columns: 20
-## $ Color_morph   &lt;chr&gt; &quot;Blue&quot;, &quot;Brown&quot;, &quot;Green&quot;
-## $ Limb_Mean     &lt;dbl&gt; 13.08791, 13.27692, 13.11584
-## $ Limb_Med      &lt;dbl&gt; 13.1, 13.1, 12.8
-## $ Limb_SD       &lt;dbl&gt; 1.802216, 1.778345, 1.911442
-## $ Mass_Mean     &lt;dbl&gt; 6.955116, 7.118371, 6.997738
-## $ Mass_Med      &lt;dbl&gt; 6.92, 7.09, 6.99
-## $ Mass_SD       &lt;dbl&gt; 1.067424, 1.097275, 1.098401
-## $ Diameter_Mean &lt;dbl&gt; 32.88372, 24.11765, 11.47511
-## $ Diameter_Med  &lt;dbl&gt; 33, 24, 11
-## $ Diameter_SD   &lt;dbl&gt; 5.495152, 4.539194, 5.132390
-## $ Height_Mean   &lt;dbl&gt; 171.2744, 167.2534, 167.7557
-## $ Height_Med    &lt;dbl&gt; 184, 172, 175
-## $ Height_SD     &lt;dbl&gt; 43.11129, 41.40915, 43.63552
-## $ SVL_Mean      &lt;dbl&gt; 60.28000, 61.55928, 60.40633
-## $ SVL_Med       &lt;dbl&gt; 59.5, 60.9, 57.9
-## $ SVL_SD        &lt;dbl&gt; 8.741475, 8.349435, 9.006788
-## $ Tail_Mean     &lt;dbl&gt; 56.90837, 57.97647, 57.75385
-## $ Tail_Med      &lt;dbl&gt; 56.3, 58.0, 58.2
-## $ Tail_SD       &lt;dbl&gt; 12.46141, 11.69319, 12.25767
-## $ N             &lt;int&gt; 215, 221, 221</code></pre></div>
-<p>This creates a data frame with columns for the color, the sample size, and a bunch that follow the pattern <code>Trait_statistic</code>. An ideal way to tidy these data would be reduce these columns into <code>Trait</code>, <code>Mean</code>, <code>Median</code>, and <code>SD</code>. We can do that like this:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lizard_smry_tidy =<span class="st"> </span>lizard_smry_by_color <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">pivot_longer</span>(<span class="op">-</span><span class="kw">c</span>(Color_morph, N), <span class="co"># exclude the columns</span>
-               <span class="dt">names_to =</span> <span class="kw">c</span>(<span class="st">&quot;Trait&quot;</span>, <span class="st">&quot;.value&quot;</span>),
-               <span class="dt">names_sep =</span> <span class="st">&quot;_&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">SE =</span> SD<span class="op">/</span><span class="kw">sqrt</span>(N)) <span class="co"># may as well calculate standard error while we&#39;re here</span>
-<span class="kw">View</span>(lizard_smry_tidy)</code></pre></div>
+<span class="kw">View</span>(sac_r_tidy)</code></pre></div>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
 <table class=" lightable-paper" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
-<th style="text-align:left;">
-Color_morph
+<th style="text-align:right;">
+sites
 </th>
 <th style="text-align:right;">
-N
-</th>
-<th style="text-align:left;">
-Trait
+richness
 </th>
 <th style="text-align:right;">
-Mean
-</th>
-<th style="text-align:right;">
-Med
-</th>
-<th style="text-align:right;">
-SD
-</th>
-<th style="text-align:right;">
-SE
+se
 </th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left;">
-Blue
+<td style="text-align:right;">
+1
 </td>
 <td style="text-align:right;">
-215
-</td>
-<td style="text-align:left;">
-Limb
+0.950
 </td>
 <td style="text-align:right;">
-13.087907
-</td>
-<td style="text-align:right;">
-13.10
-</td>
-<td style="text-align:right;">
-1.802216
-</td>
-<td style="text-align:right;">
-0.1229101
+0.3517776
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
-Blue
+<td style="text-align:right;">
+2
 </td>
 <td style="text-align:right;">
-215
-</td>
-<td style="text-align:left;">
-Mass
+1.710
 </td>
 <td style="text-align:right;">
-6.955116
-</td>
-<td style="text-align:right;">
-6.92
-</td>
-<td style="text-align:right;">
-1.067424
-</td>
-<td style="text-align:right;">
-0.0727977
+0.5643909
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
-Blue
+<td style="text-align:right;">
+3
 </td>
 <td style="text-align:right;">
-215
-</td>
-<td style="text-align:left;">
-Diameter
+2.328
 </td>
 <td style="text-align:right;">
-32.883721
-</td>
-<td style="text-align:right;">
-33.00
-</td>
-<td style="text-align:right;">
-5.495152
-</td>
-<td style="text-align:right;">
-0.3747663
+0.7466800
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
-Blue
+<td style="text-align:right;">
+4
 </td>
 <td style="text-align:right;">
-215
-</td>
-<td style="text-align:left;">
-Height
+2.800
 </td>
 <td style="text-align:right;">
-171.274419
-</td>
-<td style="text-align:right;">
-184.00
-</td>
-<td style="text-align:right;">
-43.111289
-</td>
-<td style="text-align:right;">
-2.9401655
+0.8817909
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
-Blue
+<td style="text-align:right;">
+5
 </td>
 <td style="text-align:right;">
-215
-</td>
-<td style="text-align:left;">
-SVL
+3.200
 </td>
 <td style="text-align:right;">
-60.280000
-</td>
-<td style="text-align:right;">
-59.50
-</td>
-<td style="text-align:right;">
-8.741475
-</td>
-<td style="text-align:right;">
-0.5961636
+0.9411544
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
-Blue
+<td style="text-align:right;">
+6
 </td>
 <td style="text-align:right;">
-215
-</td>
-<td style="text-align:left;">
-Tail
+3.536
 </td>
 <td style="text-align:right;">
-56.908372
-</td>
-<td style="text-align:right;">
-56.30
-</td>
-<td style="text-align:right;">
-12.461410
-</td>
-<td style="text-align:right;">
-0.8498611
+0.9872453
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
-Brown
+<td style="text-align:right;">
+7
 </td>
 <td style="text-align:right;">
-221
-</td>
-<td style="text-align:left;">
-Limb
+3.842
 </td>
 <td style="text-align:right;">
-13.276923
-</td>
-<td style="text-align:right;">
-13.10
-</td>
-<td style="text-align:right;">
-1.778345
-</td>
-<td style="text-align:right;">
-0.1196244
+0.9975099
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
-Brown
+<td style="text-align:right;">
+8
 </td>
 <td style="text-align:right;">
-221
-</td>
-<td style="text-align:left;">
-Mass
+4.108
 </td>
 <td style="text-align:right;">
-7.118371
-</td>
-<td style="text-align:right;">
-7.09
-</td>
-<td style="text-align:right;">
-1.097275
-</td>
-<td style="text-align:right;">
-0.0738107
+1.0170569
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
-Brown
+<td style="text-align:right;">
+9
 </td>
 <td style="text-align:right;">
-221
-</td>
-<td style="text-align:left;">
-Diameter
+4.336
 </td>
 <td style="text-align:right;">
-24.117647
-</td>
-<td style="text-align:right;">
-24.00
-</td>
-<td style="text-align:right;">
-4.539193
-</td>
-<td style="text-align:right;">
-0.3053392
+1.0065437
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
-Brown
+<td style="text-align:right;">
+10
 </td>
 <td style="text-align:right;">
-221
-</td>
-<td style="text-align:left;">
-Height
+4.584
 </td>
 <td style="text-align:right;">
-167.253394
-</td>
-<td style="text-align:right;">
-172.00
-</td>
-<td style="text-align:right;">
-41.409145
-</td>
-<td style="text-align:right;">
-2.7854805
+1.0024739
 </td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>This call didn't have a <code>values_to</code> argument in it; instead, one of the <code>names_to</code> was listed as <code>&quot;.value&quot;</code>. This is a special indicator that tells pivot_longer to create one column for each matching name and place the corresponding values into it.</p>
-<p>From here, you can make a nice little summary statistic plot:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lizard_smry_tidy <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> Color_morph)) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>Trait, <span class="dt">scales =</span> <span class="st">&quot;free_y&quot;</span>) <span class="op">+</span>
-<span class="st">  </span><span class="co"># SD:</span>
-<span class="st">  </span><span class="kw">geom_linerange</span>(<span class="kw">aes</span>(<span class="dt">ymin =</span> Mean <span class="op">-</span><span class="st"> </span>SD, <span class="dt">ymax =</span> Mean <span class="op">+</span><span class="st"> </span>SD), <span class="dt">color =</span> <span class="st">&quot;cornflowerblue&quot;</span>) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="co"># Confidence Interval:</span>
-<span class="st">  </span><span class="kw">geom_errorbar</span>(<span class="kw">aes</span>(<span class="dt">ymin =</span> Mean <span class="op">-</span><span class="st"> </span>SE <span class="op">*</span><span class="st"> </span><span class="fl">1.96</span>, <span class="dt">ymax =</span> Mean <span class="op">+</span><span class="st"> </span>SE <span class="op">*</span><span class="st"> </span><span class="fl">1.96</span>), 
-                <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">width =</span> .<span class="dv">3</span>) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="co"># Mean</span>
-<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">y =</span> Mean), <span class="dt">size =</span> <span class="dv">2</span>) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Trait Mean, SD, and 95% CI&quot;</span>) </code></pre></div>
-<p><img src="Bio373L-Book_files/figure-html/pivot_sumarise_3-1.png" width="672" /></p>
+<p>From this, it's relatively simple to create the actual plot:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sac_r_plot =<span class="st"> </span>sac_r_tidy <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="co"># Define the confidence intervals based on mean richness &amp; standard errors</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">lower_ci =</span> richness <span class="op">-</span><span class="st"> </span>se <span class="op">*</span><span class="st"> </span><span class="fl">1.96</span>,
+         <span class="dt">upper_ci =</span> richness <span class="op">+</span><span class="st"> </span>se <span class="op">*</span><span class="st"> </span><span class="fl">1.96</span>) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span><span class="kw">aes</span>(<span class="dt">x =</span> sites, <span class="dt">y =</span> richness) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">size =</span> <span class="dv">1</span>) <span class="op">+</span><span class="st"> </span><span class="co"># line for richness</span>
+<span class="st">  </span><span class="co"># The lines below add in confidence intervals</span>
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">y =</span> lower_ci), <span class="dt">linetype =</span> <span class="dv">2</span>, <span class="dt">alpha =</span> .<span class="dv">7</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">y =</span> upper_ci), <span class="dt">linetype =</span> <span class="dv">2</span>, <span class="dt">alpha =</span> .<span class="dv">7</span>) <span class="op">+</span>
+<span class="st">  </span><span class="co"># alpha adds a bit of transparency</span>
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Sampling intensity (number of sites)&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Number of ant species&quot;</span>)
+sac_r_plot</code></pre></div>
+<p><img src="Bio373L-Book_files/figure-html/a6_sac_plot1-1.png" width="672" /> Let's combine these last few steps into a pair of functions, for re-use with different data sub-sets:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">get_sac =<span class="st"> </span><span class="cf">function</span>(wide_data) {
+  <span class="co"># wide_data is data in the wide format, probably subset or filtered</span>
+  sac =<span class="st"> </span><span class="kw">format_sac_data</span>(wide_data) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Convert to SAC format</span>
+<span class="st">    </span><span class="kw">specaccum</span>(<span class="dt">method =</span> <span class="st">&quot;random&quot;</span>, <span class="dt">permutations =</span> <span class="dv">500</span>) <span class="co"># calculate SAC</span>
+  <span class="kw">tibble</span>( <span class="co"># Tidy output</span>
+    <span class="dt">sites =</span> sac<span class="op">$</span>sites,
+    <span class="dt">richness =</span> sac<span class="op">$</span>richness,
+    <span class="dt">se =</span> sac<span class="op">$</span>sd
+  ) <span class="op">%&gt;%</span><span class="st">   </span>
+<span class="st">    </span><span class="kw">mutate</span>(<span class="dt">lower_ci =</span> richness <span class="op">-</span><span class="st"> </span>se <span class="op">*</span><span class="st"> </span><span class="fl">1.96</span>,
+           <span class="dt">upper_ci =</span> richness <span class="op">+</span><span class="st"> </span>se <span class="op">*</span><span class="st"> </span><span class="fl">1.96</span>)
+}
+plot_sac =<span class="st"> </span><span class="cf">function</span>(sac_data) {
+  <span class="co"># sac_data is the output of get_sac()</span>
+  sac_data <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">aes</span>(<span class="dt">x =</span> sites, <span class="dt">y =</span> richness) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_line</span>(<span class="dt">size =</span> <span class="dv">1</span>) <span class="op">+</span><span class="st"> </span><span class="co"># line for richness</span>
+<span class="st">    </span><span class="co"># The lines below add in confidence intervals</span>
+<span class="st">    </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">y =</span> lower_ci), <span class="dt">linetype =</span> <span class="dv">2</span>, <span class="dt">alpha =</span> .<span class="dv">7</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">y =</span> upper_ci), <span class="dt">linetype =</span> <span class="dv">2</span>, <span class="dt">alpha =</span> .<span class="dv">7</span>) <span class="op">+</span>
+<span class="st">    </span><span class="co"># alpha adds a bit of transparency</span>
+<span class="st">    </span><span class="kw">xlab</span>(<span class="st">&quot;Sampling intensity (number of sites)&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">ylab</span>(<span class="st">&quot;Number of ant species&quot;</span>)
+}</code></pre></div>
+<p>From here, we easily try different combinations</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">wide_ant_data <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">filter</span>(Habitat <span class="op">==</span><span class="st"> &quot;P&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">get_sac</span>() <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">plot_sac</span>()</code></pre></div>
+<p><img src="Bio373L-Book_files/figure-html/a6_sac_expt1-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">bind_rows</span>( <span class="co"># calculate SAC for high &amp; low disturbance, then plot together</span>
+  wide_ant_data <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">filter</span>(Disturbance <span class="op">==</span><span class="st"> &quot;high&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">get_sac</span>() <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">mutate</span>(<span class="dt">Disturbance =</span> <span class="st">&quot;high&quot;</span>), <span class="co"># Add disturbance column back to sac results</span>
+  wide_ant_data <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">filter</span>(Disturbance <span class="op">==</span><span class="st"> &quot;low&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">get_sac</span>() <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">mutate</span>(<span class="dt">Disturbance =</span> <span class="st">&quot;low&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Add disturbance column back to sac results</span>
+<span class="st">  </span><span class="kw">plot_sac</span>() <span class="op">+</span>
+<span class="st">    </span><span class="kw">aes</span>(<span class="dt">color=</span>Disturbance) <span class="op">+</span><span class="st"> </span><span class="kw">scale_color_viridis_d</span>()</code></pre></div>
+<p><img src="Bio373L-Book_files/figure-html/a6_sac_expt2-1.png" width="672" /></p>
 </div>
+<div id="rank-abundance-curves" class="section level2">
+<h2><span class="header-section-number">F.4</span> Rank Abundance Curves</h2>
+<p>This is really just an exercise in data manipulation: we want to get the total number of individuals of each species, then display them in decreasing frequency. You need to summarize your data frame so that there's one row per species, with columns Species and N (which is the species-level sum of the already existing N column in <code>tidy_ant_data</code>). I'm not providing the code for this; you should be able to piece it together from the dplyr and/or ggplot appendices. I would recommend creating a function that does the work, so that you can reuse it.</p>
+<p>To make the plot itself, you can use this function:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
+plot_rank_abundance =<span class="st"> </span><span class="cf">function</span>(summarized_data, <span class="dt">right_margin =</span> <span class="fl">2.8</span>) {
+  <span class="co"># Make the rank abundance plot</span>
+  <span class="co"># The right_margin argument is used to make sure that </span>
+  <span class="co"># the angled axis labels don&#39;t go of the page</span>
+  <span class="co"># make it larger or smaller to suit your tastes</span>
+  <span class="kw">ggplot</span>(summarized_data, <span class="kw">aes</span>(<span class="dt">x =</span> Species, <span class="dt">y =</span> N)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_line</span>(<span class="dt">group =</span> <span class="dv">1</span>) <span class="op">+</span><span class="st"> </span><span class="co"># Create a descending line</span>
+<span class="st">    </span><span class="kw">scale_y_log10</span>() <span class="op">+</span><span class="st"> </span><span class="co"># puts y axis on log scale</span>
+<span class="st">    </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="co"># cleans up appearance of x axis labels</span>
+            <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="op">-</span><span class="dv">20</span>, <span class="dt">hjust =</span> <span class="fl">0.05</span>, <span class="co"># angled, justified text</span>
+                         <span class="dt">vjust =</span> <span class="dv">1</span>, <span class="dt">face =</span> <span class="st">&quot;italic&quot;</span>), <span class="co"># also in italics</span>
+          <span class="co"># makes sure that the axis labels don&#39;t go off the page</span>
+          <span class="dt">plot.margin =</span> <span class="kw">unit</span>(<span class="kw">c</span>(<span class="dv">0</span>,right_margin,<span class="dv">0</span>,<span class="dv">0</span>)<span class="op">+</span>.<span class="dv">1</span>, <span class="st">&quot;cm&quot;</span>))
+  <span class="co"># Be sure sure that Species has been coded as a factor, in decreasing order of N!</span>
+}</code></pre></div>
+<p>Your resulting plot should look something like this:</p>
+<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
+<p><img src="Bio373L-Book_files/figure-html/a6_plot_rank_abund_hidden-1.png" width="672" /></p>
 </div>
-<div id="pivot-wider-tutorial" class="section level2">
-<h2><span class="header-section-number">E.5</span> Going from many rows to many columns: <code>pivot_wider()</code></h2>
-<p>(In progress)</p>
-</div>
-<div id="combining-data-frames-in-progress" class="section level2">
-<h2><span class="header-section-number">E.6</span> Combining data frames (In Progress)</h2>
-<div id="binding-rows" class="section level3">
-<h3><span class="header-section-number">E.6.1</span> Binding rows</h3>
-</div>
-<div id="binding-columns-by-position" class="section level3">
-<h3><span class="header-section-number">E.6.2</span> Binding columns by position</h3>
-</div>
-<div id="joining-rows-by-value" class="section level3">
-<h3><span class="header-section-number">E.6.3</span> Joining rows by value</h3>
+<div id="shannon-index-diversity" class="section level2">
+<h2><span class="header-section-number">F.5</span> Shannon Index &amp; Diversity</h2>
+<p>Let's make a function that calculates the Shannon index of a community:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
+shannon_diversity =<span class="st"> </span><span class="cf">function</span>(species, count) {
+  <span class="co"># species: vector of species names; </span>
+  <span class="co"># count: how many of each species are present</span>
+  
+  <span class="co"># Create p, a vector of relative frequencies</span>
+  p =<span class="st"> </span><span class="kw">tibble</span>(species, count) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">    </span><span class="co"># Merge duplicate species </span>
+<span class="st">    </span><span class="kw">group_by</span>(species) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">summarize</span>(<span class="dt">count =</span> <span class="kw">sum</span>(count)) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">ungroup</span>() <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">    </span><span class="co"># Remove zeroes</span>
+<span class="st">    </span><span class="kw">filter</span>(count <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">    </span><span class="co"># Convert to frequencies</span>
+<span class="st">    </span><span class="kw">mutate</span>(<span class="dt">p =</span> count <span class="op">/</span><span class="st"> </span><span class="kw">sum</span>(count)) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">    </span><span class="co"># Extract column p</span>
+<span class="st">    </span><span class="kw">pull</span>(p) 
+  <span class="cf">if</span>(<span class="kw">length</span>(p) <span class="op">&lt;</span><span class="st"> </span><span class="dv">2</span>) <span class="kw">return</span>(<span class="dv">0</span>) <span class="co"># one or 0 species has an H of 0</span>
+  <span class="kw">exp</span>( <span class="op">-</span><span class="kw">sum</span>(p <span class="op">*</span><span class="st"> </span><span class="kw">log</span>(p)) ) <span class="co"># exponential of shannon index</span>
+}
 
+<span class="co"># Calculate the shannon diversity</span>
+<span class="kw">shannon_diversity</span>(LETTERS[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>], <span class="co"># Species names, A : E</span>
+                 <span class="kw">c</span>(<span class="dv">100</span>, <span class="dv">5</span>, <span class="dv">30</span>, <span class="dv">22</span>, <span class="dv">140</span>)) <span class="co"># Species counts</span>
+## `summarise()` ungrouping output (override with `.groups` argument)
+## [1] 3.367463</code></pre></div>
+<p>This function should work well with a grouped summarize function:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tidy_ant_data <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">group_by</span>(Acre, Habitat) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># group by Acre &amp; habitat</span>
+<span class="st">  </span><span class="kw">summarize</span>(<span class="dt">shannon =</span> <span class="kw">shannon_diversity</span>(Species, N)) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">View</span>()
+## `summarise()` ungrouping output (override with `.groups` argument)
+## `summarise()` ungrouping output (override with `.groups` argument)
+## `summarise()` ungrouping output (override with `.groups` argument)
+## `summarise()` ungrouping output (override with `.groups` argument)
+## `summarise()` ungrouping output (override with `.groups` argument)
+## `summarise()` ungrouping output (override with `.groups` argument)
+## `summarise()` ungrouping output (override with `.groups` argument)
+## `summarise()` ungrouping output (override with `.groups` argument)
+## `summarise()` ungrouping output (override with `.groups` argument)
+## `summarise()` ungrouping output (override with `.groups` argument)
+## `summarise()` ungrouping output (override with `.groups` argument)
+## `summarise()` ungrouping output (override with `.groups` argument)
+## `summarise()` ungrouping output (override with `.groups` argument)
+## `summarise()` ungrouping output (override with `.groups` argument)
+## `summarise()` regrouping output by &#39;Acre&#39; (override with `.groups` argument)</code></pre></div>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
+<table class=" lightable-paper" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+Acre
+</th>
+<th style="text-align:left;">
+Habitat
+</th>
+<th style="text-align:right;">
+shannon
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+P
+</td>
+<td style="text-align:right;">
+3.205639
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+P
+</td>
+<td style="text-align:right;">
+3.485273
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:left;">
+Q
+</td>
+<td style="text-align:right;">
+3.552628
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+P
+</td>
+<td style="text-align:right;">
+2.924111
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:left;">
+P
+</td>
+<td style="text-align:right;">
+1.894624
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:left;">
+P
+</td>
+<td style="text-align:right;">
+1.825931
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:left;">
+P
+</td>
+<td style="text-align:right;">
+3.726142
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:left;">
+P
+</td>
+<td style="text-align:right;">
+2.769997
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:left;">
+P
+</td>
+<td style="text-align:right;">
+2.017839
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+34
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+3.359807
+</td>
+</tr>
+</tbody>
+</table>
 </div>
+
 </div>
 </div>
             </section>
@@ -3995,8 +3576,8 @@ Height
           </div>
         </div>
       </div>
-<a href="r-analysis-tutorial.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="vegan-tutorial.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="tidyr-tutorial.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
