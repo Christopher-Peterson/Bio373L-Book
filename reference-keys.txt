@@ -91,6 +91,7 @@ fire-ants-natural-history
 objectives
 methods-2
 phorid-impact-on-fire-ant-foraging
+using-the-hobo-mx2303-data-logger
 analysis-1
 effect-of-phorids-on-ant-foraging
 a-note-on-running-an-ancova
