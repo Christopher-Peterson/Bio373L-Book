@@ -85,6 +85,31 @@ The effects of attacking female phorids on the foraging rates of S. invicta at f
   2. After the third count, phorids will be released by Dr. Gilbert into the experimental arena.  Watch closely for the first attack and reset the time to zero immediately after the first attack.
   3. Make five more two-minute counts at five-minute intervals after the first attack – (i.e., one at five minutes after the first attack, the next at ten minutes after the first attack, etc. There will be 3 minutes between counts). Partners should rotate between control and experimental sites so that each person has a chance to observe phorid attacks. Make sure that counts are made simultaneously in control and experimental arenas.
   
+### Using the HOBO MX2303 data logger
+
+For initial setup:
+
+  1. Download the HOBOConnect app onto your phone
+  2. Press the button on the logger to wake it up.
+  3. In the app, press the "devices" tab at the bottom, then select the logger that matches your serial number.
+  4. Tap the edit (pencil) button to configure the device.
+  5. Edit the name to add your group name (be sure that the serial number is still there, though).
+  6. Change the logging interval to 0 Minutes, 15 Seconds.
+  7. Under "Stop Logging", check "On Button Push" and save.
+  8. For the two temperature channels, enter "Control" or "Experimental" under the Sensor/Channel name (depending on which arena the channel is measuring).
+  9. Tap the save button at the bottom.
+
+To view the data that's been collected, click the "Live Data" tab at the top.
+
+Exporting your data:
+
+  1. From the device configuration, click the export button at the bottom (it's the one that isn't a pencil).
+  2. Once the readout is complete, go back to the app's main screen, then tap to the HOBO Files tab on the bottom.
+  3.  Tap the three dot menu in the upper right corner, then tap the export button (it has the arrow pointing up and right).
+  4. Click "Export to CSV."
+  5. Upload the file to Canvas. One way to do this is to click "Share" in the app, then email the file to yourself & upload it from there.
+
+In your methods section, be sure to identify the model of HOBO logger used (MX2303), manufacturer, and the interval at which the data were collected.  For example, "We collected the temperature of each arena every 15 seconds with HOBO MX2303 data loggers (Onset Computer Corporation)."  
 
 ## Analysis
 
