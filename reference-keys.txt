@@ -98,6 +98,15 @@ a-note-on-running-an-ancova
 effects-of-environmental-conditions
 discussion-2
 some-questions-from-previou-semesters
+Lab_MRR
+questions-and-hypotheses-2
+wing-pattern-and-the-optix-transcription-factor
+analysis-2
+effect-of-sampling-intensity-on-lincoln-pearson-hatn-estimates
+sex-ratios
+comparison-of-lincoln-pearson-with-alternative-method
+hardy-weinberg
+discussion-3
 working-with-r
 introduction-to-rstudio
 rstudio-projects
