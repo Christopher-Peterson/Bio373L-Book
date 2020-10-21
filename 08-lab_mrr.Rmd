@@ -1,4 +1,4 @@
-# Lab 3: Mark-Release-Recapture with *Heliconius* {#Lab3}
+# Lab 3: Mark-Release-Recapture with *Heliconius* {#Lab_MRR}
 
 ```{r echo = FALSE}
 #n_butterflies =  # real number of butterflies
