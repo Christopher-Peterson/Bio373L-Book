@@ -99,8 +99,13 @@ effects-of-environmental-conditions
 discussion-2
 some-questions-from-previou-semesters
 Lab_MRR
+introduction-1
+the-lincoln-pearson-model
+heliconius-butterflies
+hardy-weinberg-equilbrium
+genotype-frequencies-at-equilbrium
+detecting-violations-of-hwe
 questions-and-hypotheses-2
-wing-pattern-and-the-optix-transcription-factor
 analysis-2
 effect-of-sampling-intensity-on-lincoln-pearson-hatn-estimates
 sex-ratios
