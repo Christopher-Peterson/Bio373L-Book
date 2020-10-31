@@ -24,7 +24,7 @@
 <meta name="author" content="Christopher R. Peterson" />
 
 
-<meta name="date" content="2020-10-21" />
+<meta name="date" content="2020-10-31" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -3387,17 +3387,23 @@ plot_sac =<span class="st"> </span><span class="cf">function</span>(sac_data) {
 <span class="st">  </span><span class="kw">get_sac</span>() <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">plot_sac</span>()</code></pre></div>
 <p><img src="Bio373L-Book_files/figure-html/a6_sac_expt1-1.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">bind_rows</span>( <span class="co"># calculate SAC for high &amp; low disturbance, then plot together</span>
-  wide_ant_data <span class="op">%&gt;%</span><span class="st"> </span>
+<p>When comparing multiple groups, it's best to put them together in a single plot. The easiest way to do that is to calculate the SAC data, then combine the resulting data frames</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Create the SAC data frames for each group in your comparison</span>
+sac_dist_hi =<span class="st"> </span>wide_ant_data <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">    </span><span class="kw">filter</span>(Disturbance <span class="op">==</span><span class="st"> &quot;high&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">    </span><span class="kw">get_sac</span>() <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">mutate</span>(<span class="dt">Disturbance =</span> <span class="st">&quot;high&quot;</span>), <span class="co"># Add disturbance column back to sac results</span>
-  wide_ant_data <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">mutate</span>(<span class="dt">Disturbance =</span> <span class="st">&quot;high&quot;</span>) <span class="co"># Use the Mutate Add disturbance column to sac results</span>
+sac_dist_low =<span class="st"> </span>wide_ant_data <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">    </span><span class="kw">filter</span>(Disturbance <span class="op">==</span><span class="st"> &quot;low&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">    </span><span class="kw">get_sac</span>() <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">mutate</span>(<span class="dt">Disturbance =</span> <span class="st">&quot;low&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># Add disturbance column back to sac results</span>
-<span class="st">  </span><span class="kw">plot_sac</span>() <span class="op">+</span>
-<span class="st">    </span><span class="kw">aes</span>(<span class="dt">color=</span>Disturbance) <span class="op">+</span><span class="st"> </span><span class="kw">scale_color_viridis_d</span>()</code></pre></div>
+<span class="st">    </span><span class="kw">mutate</span>(<span class="dt">Disturbance =</span> <span class="st">&quot;low&quot;</span>) <span class="co"># Add disturbance column back to sac results</span>
+
+sac_dist_combined =<span class="st"> </span><span class="co"># Combine them into one data frame</span>
+<span class="st">  </span><span class="kw">bind_rows</span>(sac_dist_hi, sac_dist_low) <span class="co"># Note that bind_rows() can combine more than two data frames, if you&#39;re doing a 3+ part comparison</span>
+
+<span class="kw">plot_sac</span>(sac_dist_combined) <span class="op">+</span><span class="st"> </span><span class="co"># Creates a standard SAC Plot</span>
+<span class="st">  </span><span class="kw">aes</span>(<span class="dt">color=</span>Disturbance) <span class="op">+</span><span class="st">    </span><span class="co"># Separates out the lines by color based on the Disturbance column</span>
+<span class="st">  </span><span class="kw">scale_color_viridis_d</span>()     <span class="co"># Make the colors look nice</span></code></pre></div>
 <p><img src="Bio373L-Book_files/figure-html/a6_sac_expt2-1.png" width="672" /></p>
 </div>
 <div id="rank-abundance-curves" class="section level2">
