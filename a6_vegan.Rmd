@@ -220,18 +220,25 @@ wide_ant_data %>%
   plot_sac()
 ```
 
+When comparing multiple groups, it's best to put them together in a single plot.  The easiest way to do that is to calculate the SAC data, then combine the resulting data frames
+
 ```{r a6_sac_expt2}
-bind_rows( # calculate SAC for high & low disturbance, then plot together
-  wide_ant_data %>% 
+# Create the SAC data frames for each group in your comparison
+sac_dist_hi = wide_ant_data %>% 
     filter(Disturbance == "high") %>% 
     get_sac() %>% 
-    mutate(Disturbance = "high"), # Add disturbance column back to sac results
-  wide_ant_data %>% 
+    mutate(Disturbance = "high") # Use the Mutate Add disturbance column to sac results
+sac_dist_low = wide_ant_data %>% 
     filter(Disturbance == "low") %>% 
     get_sac() %>% 
-    mutate(Disturbance = "low")) %>% # Add disturbance column back to sac results
-  plot_sac() +
-    aes(color=Disturbance) + scale_color_viridis_d()
+    mutate(Disturbance = "low") # Add disturbance column back to sac results
+
+sac_dist_combined = # Combine them into one data frame
+  bind_rows(sac_dist_hi, sac_dist_low) # Note that bind_rows() can combine more than two data frames, if you're doing a 3+ part comparison
+
+plot_sac(sac_dist_combined) + # Creates a standard SAC Plot
+  aes(color=Disturbance) +    # Separates out the lines by color based on the Disturbance column
+  scale_color_viridis_d()     # Make the colors look nice
 ```
 
 ## Rank Abundance Curves
