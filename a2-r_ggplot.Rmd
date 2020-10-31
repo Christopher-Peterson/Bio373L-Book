@@ -21,9 +21,6 @@ The `ggplot2` package assembles a graph from several components. The important c
  - **Facets**: If you're splitting your figure into multiple panels, what data is informing that?
  
 Let's look at an example:
-```{r, echo = FALSE}
-theme_set(theme_cowplot())
-```
 ```{r load_anoles_a2, echo = TRUE, eval=FALSE}
 # Load packages & data
 library(tidyverse) 
@@ -31,6 +28,9 @@ lizards <- read_csv("example_data/anoles.csv")
 # If this throws an error, see Appendix A for how to download it.
 ```
 
+```{r, echo = FALSE}
+theme_set(theme_grey()) # default ggplot theme
+```
 ```{r basic_plt, echo = TRUE}
 base_plot <- 
   ggplot(data = lizards) + # Data: sets up a plot around lizards
@@ -321,7 +321,7 @@ ggplot(data = lizards) +
 
 ### Time series data
 
-If your x variable is related to time (or date), you'll probably want to use a line plot to visualize it.  Our anole dataset doesn't work for this, so you'll need to save [this](https://raw.githubusercontent.com/Christopher-Peterson/Bio373L-Book/master/example_data/anoles.csv) as `"example_data/beavers.csv"`. This data has info on the body temperature of two beavers over time.
+If your x variable is related to time (or date), you'll probably want to use a line plot to visualize it.  Our anole dataset doesn't work for this, so you'll need to save [this](https://raw.githubusercontent.com/Christopher-Peterson/Bio373L-Book/master/example_data/beavers.csv) as `"example_data/beavers.csv"`. This data has info on the body temperature of two beavers over time.
 
 ```{r beaver_ts}
 beavers = read_csv("example_data/beavers.csv")
