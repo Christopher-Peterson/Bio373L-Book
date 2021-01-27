@@ -29,22 +29,46 @@ Given the brief time allowed by the class period, we don’t count absolute numb
 We will use the Point-Quarter Technique to collect data (Cox p. 66). The beauty of this method is that it allows us to quickly estimate the density of selected species in the community while gathering information on their relative abundances. 
 
 Each team will perform a survey in each of 3 apparently distinctive habitats. 
-In each habitat, each team will establish 3 sample points which are randomly determined along a transect line. 
-Transect lines will be set by the instructors.
-Note: Areas recently cleared or plowed will be excluded.
+
+#### Point-quarter for quarry and river terrace habitats
+
+**Sample Point selection:**
+
+  - Starting with an existing transect marker in the zone your team is assigned, flip a coin (or use a random number generator) to determine direction (left or right) that you will take
+perpendicular to the trail. 
+  - Use a random number generator app to pick a number between 10 and 39 (alternatively, have one team member think of a number between 1 and 3 and another between 0 and 9).  Your first point will this many meters
+from the trail in the predetermined direction. 
+  - Repeat this process at
+the next transect tag, but in the opposite direction. 
+  - Repeat it a third time for a total of 3 sample points in the habitat.
+
+Note: Areas recently cleared or plowed should be excluded.
 
 Each sample point is to be temporarily marked with a flag (do not leave any flags behind!!). The 3 sample points along each transect represent the center of four quadrants with sides along and perpendicular to the transect line.
+
 In each quadrant, you will determine the nearest canopy tree and sapling to the center point.
 **Canopy trees** are defined as having a crown that is exposed directly to sunlight and forms part of the overhead canopy.
 **Saplings** occur under the crown of canopy and are assumed to be potential canopy replacements when the canopy tree dies.
 
 Data to collect from each point:
 
- - Location (with GPS)
+ - Location (with UTM)
  - Species of nearest canopy trees & saplings
  - Distance of these trees from the center point
  - Diameter at breast height (dbh) of canopy trees
  - Note signs of drought stress (leaves are wilted or dead/brown)
+ 
+#### Point quarter for old pasture habitat (pond enclosures)
+
+**Sample Point selection:**
+
+Because there are edge effects around enclosure walls and there is a pond in the center, we are primarily concerned with the forest that came into the sapce between the path around the wall and the pond dam, replacing the pasture that Dr. Gilbert saw as a student in 1964.
+
+  - Divide the enclosure into 12 sections (like an analog clock face). 
+  - Randomly choose 6 of these sections; your sample point will be along the path near the enclosure wall.
+
+
+For each of the six points, you will sample two quarters (facing away from the enclosure wall), not four; this will give you the same overall amount of data as the other two habitats. Otherwise, the procedure is the same as that of the other two habitats.  
 
 ## Analysis to perform
 
