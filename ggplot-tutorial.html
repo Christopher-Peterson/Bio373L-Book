@@ -24,7 +24,7 @@
 <meta name="author" content="Christopher R. Peterson" />
 
 
-<meta name="date" content="2020-10-31" />
+<meta name="date" content="2021-01-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -50,8 +50,6 @@
 
 
 
-<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
@@ -607,9 +605,8 @@ lizard_perch_freq =<span class="st"> </span>lizards <span class="op">%&gt;%</spa
 <span class="st">  </span><span class="co"># sort by frequency</span>
 <span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(frequency)) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="co"># tell ggplot to plot Perch_type in its current order</span>
-<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Perch_type =</span> <span class="kw">fct_inorder</span>(Perch_type))</code></pre></div>
-<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># feel free to use View() to look at this</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Perch_type =</span> <span class="kw">fct_inorder</span>(Perch_type))
+<span class="co"># feel free to use View() to look at this</span>
 <span class="kw">ggplot</span>(lizard_perch_freq) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">aes</span>(<span class="dt">x =</span> Perch_type, <span class="dt">y =</span> frequency) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_col</span>()</code></pre></div>

@@ -51,6 +51,8 @@ introduction-to-the-lab
 materials-and-methods
 bfl-habitat-regions
 data-collection
+point-quarter-for-quarry-and-river-terrace-habitats
+point-quarter-for-old-pasture-habitat-pond-enclosures
 analysis-to-perform
 canopy-tree-density
 species-by-habitat-and-life-stage
