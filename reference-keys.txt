@@ -82,6 +82,7 @@ hardy-weinberg-equilbrium
 genotype-frequencies-at-equilbrium
 detecting-violations-of-hwe
 questions-and-hypotheses-1
+field-methods-1
 analysis
 effect-of-sampling-intensity-on-lincoln-pearson-hatn-estimates
 sex-ratios
