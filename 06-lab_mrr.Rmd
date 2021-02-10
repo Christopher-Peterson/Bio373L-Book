@@ -131,6 +131,18 @@ Primary Questions:
 3. How does the Lincoln-Pearson model compare with alternate MRR methods?
 4. Are the *Heliconius* populations in Hardy-Weinberg equilbrium for the Optix gene?
 
+## Field Methods
+
+For the MRR exercise, your team will enter the greenhouse capture butterflies for two distinct periods.  
+
+For the first period, your group will  capture 5 different butterflies.  re-mixes with the population. At least thirty minutes after you've completed the first period, return to the greenhouse for the second period and capture five more. The delay should give the butterflies time to mix with the population.
+
+  - Space yourselves out and move slowly around your area of the greenhouse when searching.
+  - For each butterfly, record its number (or bring it to Dr. Gilbert if it doesn't have one).
+  - Butterflies often land and sit after capture; don’t resample these. Instead, scare them into flight (by gently waving your hand) to insure mixing of individuals in the population.
+
+After you've completed your data collection, you will be given a photo album of the marked butterflies; you will need to identify the genotype and sex of the butterflies in the images for the Hardy-Weinberg exercise.
+
 ## Analysis
 
 The Lincoln-Pearson model:
