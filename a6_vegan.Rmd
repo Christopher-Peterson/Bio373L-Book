@@ -124,7 +124,7 @@ Species accumulation curves are calculated by the `specaccum()` function in `veg
 
 ```{r a6_format_sac_data, collapse = TRUE}
 # Create a function that converts a number to presence-absense
-to_presence_absense = function(x) if_else(x > 0, 1, 0)
+to_presence_absense = function(x) if_else(x <= 0 | is.na(x), 0, 1) # Recodes data as 0 if it's 0 or missing or 1 otherwise
 
 # Format data for the species accumulation curve
 format_sac_data = function(wide_data) {
