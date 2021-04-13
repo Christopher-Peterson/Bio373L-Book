@@ -24,7 +24,7 @@
 <meta name="author" content="Christopher R. Peterson" />
 
 
-<meta name="date" content="2021-02-10" />
+<meta name="date" content="2021-04-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -2359,7 +2359,7 @@ com_r_hi
 <h2><span class="header-section-number">F.3</span> Species Accumulation Curves</h2>
 <p>Species accumulation curves are calculated by the <code>specaccum()</code> function in <code>vegan</code>. This function requires a data set where each column is a species, each_row is a site, and each cell is a 1 (indicating presence) or 0 (indicating absence). Let's create a function that will format the data for this:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Create a function that converts a number to presence-absense</span>
-to_presence_absense =<span class="st"> </span><span class="cf">function</span>(x) <span class="kw">if_else</span>(x <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>)
+to_presence_absense =<span class="st"> </span><span class="cf">function</span>(x) <span class="kw">if_else</span>(x <span class="op">&lt;=</span><span class="st"> </span><span class="dv">0</span> <span class="op">|</span><span class="st"> </span><span class="kw">is.na</span>(x), <span class="dv">0</span>, <span class="dv">1</span>) <span class="co"># Recodes data as 0 if it&#39;s 0 or missing or 1 otherwise</span>
 
 <span class="co"># Format data for the species accumulation curve</span>
 format_sac_data =<span class="st"> </span><span class="cf">function</span>(wide_data) {
