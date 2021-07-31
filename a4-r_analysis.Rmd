@@ -63,7 +63,7 @@ These tests generally compare the frequencies of count data.
 The easiest way to make a contingency table is from a data frame where each column is a categorical variable you want in the table & each row is an observation.  Let's say we wanted to create a color morph by perch type contingency with our lizard data.
 
 ```{r contingency_lizard_1, collapse = TRUE}
-color_by_perch_tbl = lizards %>% 
+color_by_perch_tbl <- lizards %>% 
   select(Color_morph, Perch_type) %>% # select only the columns you want
   table()  # feed them into the table command
 color_by_perch_tbl
@@ -86,7 +86,7 @@ chisq.test(color_by_perch_tbl)
 Chi-squared tests assume that there's at least five observations in each cell of the contingency table.  If this fails, then the resulting values aren't accurate.  For example: 
 
 ```{r contingency_lizard_small, collapse = TRUE}
-site_a_contingency = lizards %>% 
+site_a_contingency <- lizards %>% 
   filter(Site == "A") %>% # cut down the data size
   select(Color_morph, Perch_type) %>% # select only the columns you want
   table()  # feed them into the table command
@@ -115,7 +115,7 @@ Linear regression and Analysis of Variance (ANOVA) are both special cases of the
 Lets say we wanted to see how snout-vent length (SVL) affects mass:
 
 ```{r lm_1, collapse = TRUE}
-simple_reg = lm(Mass ~ SVL, data = lizards)
+simple_reg <- lm(Mass ~ SVL, data = lizards)
 simple_reg
 ```
 
@@ -158,14 +158,14 @@ For more complicated models, this approach may not work very well; it can be hel
 You can get these values directly with the `predict()` function. The code below calculates the trendline and 95% confidence interval for the regression, and adds them to a data frame with the original data.  
 
 ```{r lm_predict, collapse = TRUE}
-simple_reg_preds = simple_reg %>% 
+simple_reg_predictions <- simple_reg %>% 
   # Predict fitted values wish 95% confidence intervals
   predict(interval = "confidence", level = .95) %>% 
   # The output of predict() is a matrix; that's hard to work with, so...
   as_tibble() # we convert the output of predict() to a data frame (tibble)
-simple_reg_plot_data = lizards %>% 
+simple_reg_plot_data <- lizards %>% 
   select(SVL, Mass) %>% # we only need these columns
-  bind_cols(simple_reg_preds) # adds columns of simple_reg_preds to our lizards
+  bind_cols(simple_reg_predictions) # adds columns of simple_reg_preds to our lizards
 View(simple_reg_plot_data)
 ```
 
@@ -187,7 +187,7 @@ You can also use `predict()` to calculate the respected value of your response v
 ```{r predict_lm_extrap, collapse = TRUE}
 # Create a data frame with new predictors
 svl_predictors = tibble(SVL = c(20, 150, 600)) # New predictors
-mass_predictions = predict(simple_reg, 
+mass_predictions <- predict(simple_reg, 
                            newdata = svl_predictors)  # The newdata argument is key here
                                                       # If unspecified, it uses the original data
 svl_predictors %>% 
@@ -202,9 +202,9 @@ Analysis of variance (ANOVA) is a special case of linear model where all of the 
 
 ```{r liz_anova_1way, collapse = TRUE}
 # Fit the model wtih a regression
-simple_anova_lm = lm(Diameter ~ Color_morph, data = lizards) 
+simple_anova_lm <- lm(Diameter ~ Color_morph, data = lizards) 
 # Reformat into traditional ANOVA style; this is usually done with a pipe as part of the previous step
-simple_anova = aov(simple_anova_lm)
+simple_anova <- aov(simple_anova_lm)
 
 # Look at the ANOVA table
 simple_anova %>% summary()
@@ -227,10 +227,10 @@ Two quick notes about this: `r ss = anova(simple_anova)[["Sum Sq"]]`
 
 ```{r aov_predict, collapse = TRUE}
 # make a data frame with just your predictors (distinct removes duplicates)
-color_levels = lizards %>% distinct(Color_morph)
+color_levels <- lizards %>% distinct(Color_morph)
 color_levels
 
-simple_anova_means = 
+simple_anova_means <- 
   # Calculate means & 95% CI
   predict(simple_anova, newdata = color_levels, 
                              interval = "confidence", level = 0.95) %>% 
@@ -253,7 +253,7 @@ A traditional way of summarizing post-hoc tests is to assign one or more letters
 
 ```{r update_anova_mean_tbl}
 # We'll store these in a data frame for later use
-anova_means_letters = simple_anova_means %>% 
+anova_means_letters <- simple_anova_means %>% 
   arrange(Color_morph) %>% # These will be plotted alphabetically, so we'll sort them that way to keep things easy
   mutate(anova_labels = c("A", "B", "C"))
 anova_means_letters
@@ -268,9 +268,9 @@ The basics of plotting ANOVA results was covered in the last part of Section \@r
 ```{r a4_anova_plt_1, message = FALSE}
 library(ggforce) # for geom_sina()
 # We're going to add post-hoc letters to this plot
-letter_y_position = max(lizards$Diameter) * 1.05 # Put letters at the top
+letter_y_position <- max(lizards$Diameter) * 1.05 # Put letters at the top
 
-anova_plot = ggplot(lizards) + 
+anova_plot <- ggplot(lizards) + 
   aes(x = Color_morph) + # Color_morph column is in both lizards AND anova_means_letters
   # Show the raw data
   geom_sina(aes(y = Diameter), # Diameter column is in lizards data frame
@@ -299,12 +299,52 @@ anova_plot = ggplot(lizards) +
 anova_plot
 ```
 
-## To do (In progress)
- 
 ### Comparing two means (t-tests)
 
-If you have to do this and I haven't finished this section, just use an ANOVA; mathematically, it works out to more or less the same thing.  
+While it's perfectly valid to use an ANOVA to compare the means of two samples, the t-test is a more traditional approach. You can do this with the `t-test()` function.  
 
-### Advanced workflow tips
+First, let's create a 2-level categorical variable to work with.  Normally, this would be done during data collection, but there aren't any in this data source.  Let's define lizards as big (SVL >= 65 mm) or small (SVL <= 55 mm) and remove the intermediates.
 
-### Model comparisons
+```{r a4_make_binary_variable, message = FALSE}
+lizards_by_size <- lizards %>%
+  filter(SVL <= 55 | SVL >= 65) %>%  # Remove the lizards of intermediate size
+  mutate(Size_class = if_else (SVL >= 65, "big", "small") )# Define Size_class as big or small, based on SVL
+```
+
+Next, let's use a t-test to see if limb length differs between big and small lizards. First, we should look at the mean and standard deviation of each group.  The classic t-test requires that the variances of the two groups are equal; if not, an adjustment will need to be applied.  In practice, this adjustment has no ill effect if the variances are equal, so you may as well apply it.  In any case, it's a good idea to look at data summaries before running a test.
+
+```{r a4 t_test_smry_table, message = FALSE}
+lizard_size_sumary_table <- lizards_by_size %>%
+  group_by(Size_class) %>% # We want to summarize each size class
+  summarize(mean = mean(Limb), sd = sd(Limb), var = var(Limb), n = n()) %>%
+  ungroup()
+lizard_size_sumary_table
+```
+
+In this case, the standard deviations are somewhat different, but not particularly.  In any case, we'll run the test without assuming for equal variances.
+
+```{r a4_t_test, message = FALSE}
+lizard_t_test <-  t.test(Limb ~ Size_class, # formula specifies response (on left) and predictor (on right)
+                         data = lizards_by_size, 
+                         var.equal = FALSE) # Assume unequal variances; this is the default option.
+print(lizard_t_test)
+```
+
+When reporting a t-test, you should *t*, the degrees of freedom, the p-value, the effect size (Cohen's *d*).  The effect size isnt' provided for you directly, so you'll need to calculate it yourself.
+
+#### Effect size: Cohen's *d*
+
+Cohen's *d* is essentially a standardized way of measuring the difference between two groups.  Conceptually, it's the number of standard deviations of difference between the two groups.  You can calculate it by taking the difference in the group means and dividing by the pooled standard deviation. To get the pooled standard deviation, calculate the weighted average of the variance (weighted by population size) and take the square root.
+
+```{r a4_cohen_d}
+lizard_size_sumary_table %>% 
+  summarize(mean_diff = diff(mean),
+            pooled_variance = sum(var * n) / sum(n) ) %>% #weighted mean of variance
+  mutate(cohen_d = abs(mean_diff) / sqrt(pooled_variance) ) # COhen's d is always positive, so take abs() of mean_diff 
+```
+
+You could report your results as follows (assuming that figure 1 compared the two groups):
+
+> Big lizards have significantly longer limbs than small lizards (d = 4.27, t = 45.7, df = 442.7, p < 0.0001; Figure 1)
+
+
