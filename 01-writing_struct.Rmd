@@ -63,7 +63,7 @@ Write each sub-section in chronological order. This and the results section are 
 
 ## Results
 
-This is where you describe your observations and the results of any analyses. Make sure you do not include new methods (**including new statistical analyses**) in this section; these belong in the previous section. The most important results should be presented as figures or tables.`r # Link to that chapter when it is written` However, they must also be described in the paragraph. 
+This is where you describe your observations and the results of any analyses. Make sure you do not include new methods (**including new statistical analyses**) in this section; these belong in the previous section. The most important results should be presented as figures or tables (see chapter 3).`r # Figure out how to make this a link` However, they must also be described in the paragraph. 
 
 It is a good idea to organize this section into sub-sections as well, following the same system you used in the methods (some sub-sections from the methods may not need to be used in the results, but follow the organization as closely as possible). 
 

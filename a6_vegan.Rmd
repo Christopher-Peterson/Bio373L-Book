@@ -140,6 +140,10 @@ format_sac_data = function(wide_data) {
 # Test it on quarry data:
 wide_ant_data %>% 
   filter(Habitat == "Q") %>% 
+  # Note: depending on the dataset, the Habitat variable may be recoded 
+  # as "Quarry", "River Terrace", etc instead of "Q", "R"
+  # You'll need to change the previous line of code so that it matches
+  # what's in the dataset.
   format_sac_data() %>% 
   View()
 ```
