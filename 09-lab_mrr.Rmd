@@ -8,9 +8,9 @@ How population size varies with respect to weather, resources, or competing popu
 While plants and sessile animals are relatively easy to census, the mobility of most animals makes population studies very difficult.
 Therefore when one attempts to estimate the size of such populations it is necessary to use indirect methods such as Mark-Release-Recapture (MRR).
 
-### The Lincoln-Pearson model
+### The Lincoln-Petersen model
 
-The basic method, from which most modern population size estimation procedures have evolved (Lincoln-Pearson), involves at least two sampling periods.
+The basic method, from which most modern population size estimation procedures have evolved (Lincoln-Petersen), involves at least two sampling periods.
 During the first period, all animals captured are given marks.
 If the population size is $N$ and $M_1$ animals were caught and marked during the first period, then the fraction $(M_1 / N)$ represents the proportion of the population actually marked.
 
@@ -30,7 +30,7 @@ In other words, $R_2/M_1$ estimates the fraction of $N$ marked on the first day.
 
 ![MRR Diagram](images/mrr_diagram.png)
 
-Assumptions of the Lincoln-Pearson method:
+Assumptions of the Lincoln-Petersen method:
 
   1. Marks do not affect animals.
   2. Marked animals are mixed in the population.
@@ -130,7 +130,7 @@ Primary Questions:
 
 1. How does sampling intensity improve mark-release-recapture (MRR) population size estimates? 
 2. Does separating animals by sex alter our estimate of population size? What's the sex ratio?
-3. How does the Lincoln-Pearson model compare with alternate MRR methods?
+3. How does the Lincoln-Petersen model compare with alternate MRR methods?
 4. Are the *Heliconius* populations in Hardy-Weinberg equilbrium for the Optix gene?
 
 ## Field Methods
@@ -147,18 +147,18 @@ After you've completed your data collection, you will be given a photo album of 
 
 ## Analysis
 
-The Lincoln-Pearson model:
+The Lincoln-Petersen model:
 
 If $S_2$ is the number of individuals collected in a sample period, $M_1$ is total number of previously marked individuals, and $R_2$ is the number of marked individuals who were recaptured, then you can estimate population size:
 
 $$\hat{N} = \frac{S_2 M_1}{R_2}$$
 
 
-### Effect of sampling intensity on Lincoln-Pearson $\hat{N}$ estimates
+### Effect of sampling intensity on Lincoln-Petersen $\hat{N}$ estimates
 
 We're going to simulate increased sampling estimates by pooling together estimates from each team.
 I'll be combining the data from each group in all possible team combinations (i.e., one team: A, B, C, ...; two teams: AB, AC, AD, ...; three teams: ABC, ABD, BCD, ...).
-For each combination, you'll need to calculate the Lincoln-Pearson population size estimate $(\hat{N})$.
+For each combination, you'll need to calculate the Lincoln-Petersen population size estimate $(\hat{N})$.
 Create a figure showing the effect of sample size on $\hat{N}$.
 
 ### Sex ratios
@@ -167,7 +167,7 @@ Using the combined data from all teams, estimate $\hat{N}$ separately for male a
 
 What is the sex ratio of the population?  Does it differ from 50:50?  Use a chi-square test to test this.
 
-### Comparison of Lincoln-Pearson with alternative method
+### Comparison of Lincoln-Petersen with alternative method
 
 In 1970-71, Larry Gilbert collected data on a natural population of *Heliconius* in Trinidad (recall his paper spreadsheet from lecture with cells colored in to represent individuals). We will use this method to estimate population sizes.
 
@@ -175,7 +175,7 @@ For each of the three sample periods, use a regression to model the relationship
 Intuitively, a recapture rate of 1.0 would suggest that you've sampled the entire population; you could thus use this regression equation to estimate $(\hat{N})$ by evaluating it when $x=1$. 
 Create a multi-panel regression plot to go along with these methods.
 
-Compare these estimates with the Lincoln-Pearson estimate from the day with the highest proportion of recaptures in the sampling period. 
+Compare these estimates with the Lincoln-Petersen estimate from the day with the highest proportion of recaptures in the sampling period. 
 Note that for each row of the Trinidad data, $S_2$ = `total_captured`, $R_2$ = `recaptures`, and $M_1$ = `(cumulative_m - new_captures)`. 
 
 ### Hardy-Weinberg
@@ -193,6 +193,6 @@ You should address the following in your discussion:
 
 - How well did we meet the assumptions of MRR?
 - Our MRR data came from a closed population; briefly speculate about some of the potential problems with these estimates in an open, natural population (how would emigration/immigration or birth/death affect the estimates)? How might our study compare with data from a natural population?
-- How well does the Lincoln-Pearson model compare with fractional recapture estimation in a natural population? How different were your population estimates? What factors could help explain them?
+- How well does the Lincoln-Petersen model compare with fractional recapture estimation in a natural population? How different were your population estimates? What factors could help explain them?
 - Think of some creative ways you could improve sampling in an MRR project (beyond just increasing the sample size).  
 - Don't forget to discuss your results from the sex ratio and genotype analyses.
