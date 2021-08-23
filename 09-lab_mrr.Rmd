@@ -54,6 +54,8 @@ In the 1980s, Dr. Gilbert carried out studies of hybridization in *H. cydno* and
 Now that genomic studies verify his hypotheses on the origin of such species, Dr. Gilbert has recreated a hybrid population according to the likely mode of origin of *H. timareta*.
 This population is large and diverse in color pattern phenotypes for which we know the genetics of major pattern elements.  
 
+![Distribution of some *Heliconius* species](images/heliconius_distribution.jpg)
+
 With the hybrid *H. cydno X H. melpomene* population, you will be able to combine ecology and population genetics by applying Hardy-Weinberg law to test whether a force like selection or non-random mating is acting on wing pattern genes.
 Larry will photograph each numbered butterfly and post in a web album so that you can record the proportion of phenotypes and determine whether they are in Hardy-Weinberg equilibrium. 
 
