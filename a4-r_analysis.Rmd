@@ -106,7 +106,7 @@ You can also run a chi-squared or Fisher's exact test directly on two vectors or
 chisq.test(lizards$Color_morph, lizards$Perch_type)
 ```
 
-## Linear Models: Regression and ANOVA
+## Linear Models: Regression, ANOVA, and t-tests
 
 Linear regression and Analysis of Variance (ANOVA) are both special cases of the general linear model (LM), which fits a continuous response (y) to one or more predictors (x). You specify linear models in R with a **formula** syntax, which generally follows as: `response ~ predictor`. Combining this formula with the `lm()` function and a datset gives you the basis of a linear model.
 
