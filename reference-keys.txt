@@ -46,7 +46,7 @@ general-formatting
 continuous-response-categorical-predictors
 categorical-count-or-frequency-responses
 tables
-lab1
+lab_succession
 introduction-to-the-lab
 materials-and-methods
 bfl-habitat-regions
@@ -65,7 +65,7 @@ the-analysis
 keeping-things-in-the-right-sections
 basic-style-and-format-rules
 other-comments
-Lab2
+Lab_heterogeneity
 introduction-background
 questions-and-hypotheses
 field-methods
@@ -74,7 +74,7 @@ calibrating-canopy-estimates
 relationship-between-canopy-and-ground-cover
 quantifying-the-spatial-mosaic
 historical-trends
-Lab3
+Lab_ants
 background
 questions-and-hypotheses-1
 methods-1
