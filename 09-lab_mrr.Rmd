@@ -1,4 +1,4 @@
-# Lab 3: Mark-Release-Recapture with *Heliconius* {#Lab_MRR}
+# Lab 5: Mark-Release-Recapture with *Heliconius* {#Lab_MRR}
 
 ## Introduction
 
