@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>D Performing some useful analyses in R | Bio 373L Survival Guide</title>
   <meta name="description" content="Writing advice for Field Ecology." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
 
   <meta property="og:title" content="D Performing some useful analyses in R | Bio 373L Survival Guide" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Christopher R. Peterson" />
 
 
-<meta name="date" content="2021-04-13" />
+<meta name="date" content="2021-08-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,7 @@
   
 <link rel="prev" href="dplyr-tutorial.html"/>
 <link rel="next" href="tidyr-tutorial.html"/>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,6 +50,8 @@
 
 
 
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
@@ -91,6 +93,7 @@ code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Ann
 code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
 code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 </style>
+
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -181,49 +184,49 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="5.4.4" data-path="Lab2.html"><a href="Lab2.html#historical-trends"><i class="fa fa-check"></i><b>5.4.4</b> Historical Trends</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="Lab-MRR.html"><a href="Lab-MRR.html"><i class="fa fa-check"></i><b>6</b> Lab 3: Mark-Release-Recapture with <em>Heliconius</em></a><ul>
-<li class="chapter" data-level="6.1" data-path="Lab-MRR.html"><a href="Lab-MRR.html#introduction-1"><i class="fa fa-check"></i><b>6.1</b> Introduction</a><ul>
-<li class="chapter" data-level="6.1.1" data-path="Lab-MRR.html"><a href="Lab-MRR.html#the-lincoln-pearson-model"><i class="fa fa-check"></i><b>6.1.1</b> The Lincoln-Pearson model</a></li>
-<li class="chapter" data-level="6.1.2" data-path="Lab-MRR.html"><a href="Lab-MRR.html#heliconius-butterflies"><i class="fa fa-check"></i><b>6.1.2</b> <em>Heliconius</em> butterflies</a></li>
-<li class="chapter" data-level="6.1.3" data-path="Lab-MRR.html"><a href="Lab-MRR.html#hardy-weinberg-equilbrium"><i class="fa fa-check"></i><b>6.1.3</b> Hardy-Weinberg Equilbrium</a></li>
+<li class="chapter" data-level="6" data-path="Lab3.html"><a href="Lab3.html"><i class="fa fa-check"></i><b>6</b> Lab 3: Ant Community Ecology</a><ul>
+<li class="chapter" data-level="6.1" data-path="Lab3.html"><a href="Lab3.html#background"><i class="fa fa-check"></i><b>6.1</b> Background</a></li>
+<li class="chapter" data-level="6.2" data-path="Lab3.html"><a href="Lab3.html#questions-and-hypotheses-1"><i class="fa fa-check"></i><b>6.2</b> Questions and hypotheses</a></li>
+<li class="chapter" data-level="6.3" data-path="Lab3.html"><a href="Lab3.html#methods-1"><i class="fa fa-check"></i><b>6.3</b> Methods</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="Lab3.html"><a href="Lab3.html#bait-survey"><i class="fa fa-check"></i><b>6.3.1</b> Bait Survey</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="Lab-MRR.html"><a href="Lab-MRR.html#questions-and-hypotheses-1"><i class="fa fa-check"></i><b>6.2</b> Questions and hypotheses</a></li>
-<li class="chapter" data-level="6.3" data-path="Lab-MRR.html"><a href="Lab-MRR.html#field-methods-1"><i class="fa fa-check"></i><b>6.3</b> Field Methods</a></li>
-<li class="chapter" data-level="6.4" data-path="Lab-MRR.html"><a href="Lab-MRR.html#analysis"><i class="fa fa-check"></i><b>6.4</b> Analysis</a><ul>
-<li class="chapter" data-level="6.4.1" data-path="Lab-MRR.html"><a href="Lab-MRR.html#effect-of-sampling-intensity-on-lincoln-pearson-hatn-estimates"><i class="fa fa-check"></i><b>6.4.1</b> Effect of sampling intensity on Lincoln-Pearson <span class="math inline">\(\hat{N}\)</span> estimates</a></li>
-<li class="chapter" data-level="6.4.2" data-path="Lab-MRR.html"><a href="Lab-MRR.html#sex-ratios"><i class="fa fa-check"></i><b>6.4.2</b> Sex ratios</a></li>
-<li class="chapter" data-level="6.4.3" data-path="Lab-MRR.html"><a href="Lab-MRR.html#comparison-of-lincoln-pearson-with-alternative-method"><i class="fa fa-check"></i><b>6.4.3</b> Comparison of Lincoln-Pearson with alternative method</a></li>
-<li class="chapter" data-level="6.4.4" data-path="Lab-MRR.html"><a href="Lab-MRR.html#hardy-weinberg"><i class="fa fa-check"></i><b>6.4.4</b> Hardy-Weinberg</a></li>
-</ul></li>
-<li class="chapter" data-level="6.5" data-path="Lab-MRR.html"><a href="Lab-MRR.html#discussion-2"><i class="fa fa-check"></i><b>6.5</b> Discussion</a></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="Lab3.html"><a href="Lab3.html"><i class="fa fa-check"></i><b>7</b> Lab 3: Ant Community Ecology</a><ul>
-<li class="chapter" data-level="7.1" data-path="Lab3.html"><a href="Lab3.html#background"><i class="fa fa-check"></i><b>7.1</b> Background</a></li>
-<li class="chapter" data-level="7.2" data-path="Lab3.html"><a href="Lab3.html#questions-and-hypotheses-2"><i class="fa fa-check"></i><b>7.2</b> Questions and hypotheses</a></li>
-<li class="chapter" data-level="7.3" data-path="Lab3.html"><a href="Lab3.html#methods-1"><i class="fa fa-check"></i><b>7.3</b> Methods</a><ul>
-<li class="chapter" data-level="7.3.1" data-path="Lab3.html"><a href="Lab3.html#bait-survey"><i class="fa fa-check"></i><b>7.3.1</b> Bait Survey</a></li>
-</ul></li>
-<li class="chapter" data-level="7.4" data-path="Lab3.html"><a href="Lab3.html#analysis-1"><i class="fa fa-check"></i><b>7.4</b> Analysis</a><ul>
-<li class="chapter" data-level="7.4.1" data-path="Lab3.html"><a href="Lab3.html#s.-invicta-habitat-preference"><i class="fa fa-check"></i><b>7.4.1</b> <em>S. invicta</em> habitat preference</a></li>
-<li class="chapter" data-level="7.4.2" data-path="Lab3.html"><a href="Lab3.html#ant-community-differences"><i class="fa fa-check"></i><b>7.4.2</b> Ant community differences</a></li>
+<li class="chapter" data-level="6.4" data-path="Lab3.html"><a href="Lab3.html#analysis"><i class="fa fa-check"></i><b>6.4</b> Analysis</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="Lab3.html"><a href="Lab3.html#s.-invicta-habitat-preference"><i class="fa fa-check"></i><b>6.4.1</b> <em>S. invicta</em> habitat preference</a></li>
+<li class="chapter" data-level="6.4.2" data-path="Lab3.html"><a href="Lab3.html#ant-community-differences"><i class="fa fa-check"></i><b>6.4.2</b> Ant community differences</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="Lab-phorid.html"><a href="Lab-phorid.html"><i class="fa fa-check"></i><b>8</b> Lab 4: Parasitoid impacts on host foraging behavior: Phorid flies and fire ants</a><ul>
-<li class="chapter" data-level="8.1" data-path="Lab-phorid.html"><a href="Lab-phorid.html#background-1"><i class="fa fa-check"></i><b>8.1</b> Background</a><ul>
-<li class="chapter" data-level="8.1.1" data-path="Lab-phorid.html"><a href="Lab-phorid.html#fire-ants-and-phorid-flies"><i class="fa fa-check"></i><b>8.1.1</b> Fire ants and phorid flies</a></li>
-<li class="chapter" data-level="8.1.2" data-path="Lab-phorid.html"><a href="Lab-phorid.html#fire-ants-natural-history"><i class="fa fa-check"></i><b>8.1.2</b> Fire ants natural history</a></li>
+<li class="chapter" data-level="7" data-path="Lab_phorid.html"><a href="Lab_phorid.html"><i class="fa fa-check"></i><b>7</b> Lab 4: Parasitoid impacts on host foraging behavior: Phorid flies and fire ants</a><ul>
+<li class="chapter" data-level="7.1" data-path="Lab_phorid.html"><a href="Lab_phorid.html#background-1"><i class="fa fa-check"></i><b>7.1</b> Background</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="Lab_phorid.html"><a href="Lab_phorid.html#fire-ants-and-phorid-flies"><i class="fa fa-check"></i><b>7.1.1</b> Fire ants and phorid flies</a></li>
+<li class="chapter" data-level="7.1.2" data-path="Lab_phorid.html"><a href="Lab_phorid.html#fire-ants-natural-history"><i class="fa fa-check"></i><b>7.1.2</b> Fire ants natural history</a></li>
 </ul></li>
-<li class="chapter" data-level="8.2" data-path="Lab-phorid.html"><a href="Lab-phorid.html#objectives"><i class="fa fa-check"></i><b>8.2</b> Objectives</a></li>
-<li class="chapter" data-level="8.3" data-path="Lab-phorid.html"><a href="Lab-phorid.html#methods-2"><i class="fa fa-check"></i><b>8.3</b> Methods</a><ul>
-<li class="chapter" data-level="8.3.1" data-path="Lab-phorid.html"><a href="Lab-phorid.html#phorid-impact-on-fire-ant-foraging"><i class="fa fa-check"></i><b>8.3.1</b> Phorid impact on fire ant foraging</a></li>
-<li class="chapter" data-level="8.3.2" data-path="Lab-phorid.html"><a href="Lab-phorid.html#using-the-hobo-mx2303-data-logger"><i class="fa fa-check"></i><b>8.3.2</b> Using the HOBO MX2303 data logger</a></li>
+<li class="chapter" data-level="7.2" data-path="Lab_phorid.html"><a href="Lab_phorid.html#objectives"><i class="fa fa-check"></i><b>7.2</b> Objectives</a></li>
+<li class="chapter" data-level="7.3" data-path="Lab_phorid.html"><a href="Lab_phorid.html#methods-2"><i class="fa fa-check"></i><b>7.3</b> Methods</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="Lab_phorid.html"><a href="Lab_phorid.html#phorid-impact-on-fire-ant-foraging"><i class="fa fa-check"></i><b>7.3.1</b> Phorid impact on fire ant foraging</a></li>
+<li class="chapter" data-level="7.3.2" data-path="Lab_phorid.html"><a href="Lab_phorid.html#using-the-hobo-mx2303-data-logger"><i class="fa fa-check"></i><b>7.3.2</b> Using the HOBO MX2303 data logger</a></li>
 </ul></li>
-<li class="chapter" data-level="8.4" data-path="Lab-phorid.html"><a href="Lab-phorid.html#analysis-2"><i class="fa fa-check"></i><b>8.4</b> Analysis</a><ul>
-<li class="chapter" data-level="8.4.1" data-path="Lab-phorid.html"><a href="Lab-phorid.html#effect-of-phorids-on-ant-foraging"><i class="fa fa-check"></i><b>8.4.1</b> Effect of phorids on ant foraging</a></li>
-<li class="chapter" data-level="8.4.2" data-path="Lab-phorid.html"><a href="Lab-phorid.html#effects-of-environmental-conditions"><i class="fa fa-check"></i><b>8.4.2</b> Effects of environmental conditions</a></li>
+<li class="chapter" data-level="7.4" data-path="Lab_phorid.html"><a href="Lab_phorid.html#analysis-1"><i class="fa fa-check"></i><b>7.4</b> Analysis</a><ul>
+<li class="chapter" data-level="7.4.1" data-path="Lab_phorid.html"><a href="Lab_phorid.html#effect-of-phorids-on-ant-foraging"><i class="fa fa-check"></i><b>7.4.1</b> Effect of phorids on ant foraging</a></li>
+<li class="chapter" data-level="7.4.2" data-path="Lab_phorid.html"><a href="Lab_phorid.html#effects-of-environmental-conditions"><i class="fa fa-check"></i><b>7.4.2</b> Effects of environmental conditions</a></li>
 </ul></li>
-<li class="chapter" data-level="8.5" data-path="Lab-phorid.html"><a href="Lab-phorid.html#discussion-3"><i class="fa fa-check"></i><b>8.5</b> Discussion</a></li>
-<li class="chapter" data-level="8.6" data-path="Lab-phorid.html"><a href="Lab-phorid.html#some-questions-from-previou-semesters"><i class="fa fa-check"></i><b>8.6</b> Some questions from previou semesters:</a></li>
+<li class="chapter" data-level="7.5" data-path="Lab_phorid.html"><a href="Lab_phorid.html#discussion-2"><i class="fa fa-check"></i><b>7.5</b> Discussion</a></li>
+<li class="chapter" data-level="7.6" data-path="Lab_phorid.html"><a href="Lab_phorid.html#some-questions-from-previou-semesters"><i class="fa fa-check"></i><b>7.6</b> Some questions from previou semesters:</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="Lab_MRR.html"><a href="Lab_MRR.html"><i class="fa fa-check"></i><b>8</b> Lab 5: Mark-Release-Recapture with <em>Heliconius</em></a><ul>
+<li class="chapter" data-level="8.1" data-path="Lab_MRR.html"><a href="Lab_MRR.html#introduction-1"><i class="fa fa-check"></i><b>8.1</b> Introduction</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="Lab_MRR.html"><a href="Lab_MRR.html#the-lincoln-pearson-model"><i class="fa fa-check"></i><b>8.1.1</b> The Lincoln-Pearson model</a></li>
+<li class="chapter" data-level="8.1.2" data-path="Lab_MRR.html"><a href="Lab_MRR.html#heliconius-butterflies"><i class="fa fa-check"></i><b>8.1.2</b> <em>Heliconius</em> butterflies</a></li>
+<li class="chapter" data-level="8.1.3" data-path="Lab_MRR.html"><a href="Lab_MRR.html#hardy-weinberg-equilbrium"><i class="fa fa-check"></i><b>8.1.3</b> Hardy-Weinberg Equilbrium</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="Lab_MRR.html"><a href="Lab_MRR.html#questions-and-hypotheses-2"><i class="fa fa-check"></i><b>8.2</b> Questions and hypotheses</a></li>
+<li class="chapter" data-level="8.3" data-path="Lab_MRR.html"><a href="Lab_MRR.html#field-methods-1"><i class="fa fa-check"></i><b>8.3</b> Field Methods</a></li>
+<li class="chapter" data-level="8.4" data-path="Lab_MRR.html"><a href="Lab_MRR.html#analysis-2"><i class="fa fa-check"></i><b>8.4</b> Analysis</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="Lab_MRR.html"><a href="Lab_MRR.html#effect-of-sampling-intensity-on-lincoln-pearson-hatn-estimates"><i class="fa fa-check"></i><b>8.4.1</b> Effect of sampling intensity on Lincoln-Pearson <span class="math inline">\(\hat{N}\)</span> estimates</a></li>
+<li class="chapter" data-level="8.4.2" data-path="Lab_MRR.html"><a href="Lab_MRR.html#sex-ratios"><i class="fa fa-check"></i><b>8.4.2</b> Sex ratios</a></li>
+<li class="chapter" data-level="8.4.3" data-path="Lab_MRR.html"><a href="Lab_MRR.html#comparison-of-lincoln-pearson-with-alternative-method"><i class="fa fa-check"></i><b>8.4.3</b> Comparison of Lincoln-Pearson with alternative method</a></li>
+<li class="chapter" data-level="8.4.4" data-path="Lab_MRR.html"><a href="Lab_MRR.html#hardy-weinberg"><i class="fa fa-check"></i><b>8.4.4</b> Hardy-Weinberg</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="Lab_MRR.html"><a href="Lab_MRR.html#discussion-3"><i class="fa fa-check"></i><b>8.5</b> Discussion</a></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="working-with-r.html"><a href="working-with-r.html"><i class="fa fa-check"></i><b>A</b> Working with R</a><ul>
@@ -274,14 +277,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="D.2.1" data-path="r-analysis-tutorial.html"><a href="r-analysis-tutorial.html#contingency-tables"><i class="fa fa-check"></i><b>D.2.1</b> Contingency Tables</a></li>
 <li class="chapter" data-level="D.2.2" data-path="r-analysis-tutorial.html"><a href="r-analysis-tutorial.html#chi-squared-fishers-exact-tests"><i class="fa fa-check"></i><b>D.2.2</b> Chi-squared &amp; Fisher's Exact Tests</a></li>
 </ul></li>
-<li class="chapter" data-level="D.3" data-path="r-analysis-tutorial.html"><a href="r-analysis-tutorial.html#linear-models-regression-and-anova"><i class="fa fa-check"></i><b>D.3</b> Linear Models: Regression and ANOVA</a><ul>
+<li class="chapter" data-level="D.3" data-path="r-analysis-tutorial.html"><a href="r-analysis-tutorial.html#linear-models-regression-anova-and-t-tests"><i class="fa fa-check"></i><b>D.3</b> Linear Models: Regression, ANOVA, and t-tests</a><ul>
 <li class="chapter" data-level="D.3.1" data-path="r-analysis-tutorial.html"><a href="r-analysis-tutorial.html#regression"><i class="fa fa-check"></i><b>D.3.1</b> Regression</a></li>
 <li class="chapter" data-level="D.3.2" data-path="r-analysis-tutorial.html"><a href="r-analysis-tutorial.html#anova"><i class="fa fa-check"></i><b>D.3.2</b> ANOVA</a></li>
-</ul></li>
-<li class="chapter" data-level="D.4" data-path="r-analysis-tutorial.html"><a href="r-analysis-tutorial.html#to-do-in-progress"><i class="fa fa-check"></i><b>D.4</b> To do (In progress)</a><ul>
-<li class="chapter" data-level="D.4.1" data-path="r-analysis-tutorial.html"><a href="r-analysis-tutorial.html#comparing-two-means-t-tests"><i class="fa fa-check"></i><b>D.4.1</b> Comparing two means (t-tests)</a></li>
-<li class="chapter" data-level="D.4.2" data-path="r-analysis-tutorial.html"><a href="r-analysis-tutorial.html#advanced-workflow-tips"><i class="fa fa-check"></i><b>D.4.2</b> Advanced workflow tips</a></li>
-<li class="chapter" data-level="D.4.3" data-path="r-analysis-tutorial.html"><a href="r-analysis-tutorial.html#model-comparisons"><i class="fa fa-check"></i><b>D.4.3</b> Model comparisons</a></li>
+<li class="chapter" data-level="D.3.3" data-path="r-analysis-tutorial.html"><a href="r-analysis-tutorial.html#comparing-two-means-t-tests"><i class="fa fa-check"></i><b>D.3.3</b> Comparing two means (t-tests)</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="E" data-path="tidyr-tutorial.html"><a href="tidyr-tutorial.html"><i class="fa fa-check"></i><b>E</b> Wrangling, reshaping, and tidying data with <code>tidyr</code></a><ul>
@@ -345,15 +344,15 @@ lizards &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span cla
 <span class="co"># Randomly select 20 colors from color_levels</span>
 color_example =<span class="st"> </span><span class="kw">sample</span>(color_levels, <span class="dt">size =</span> <span class="dv">20</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)
 color_example
-##  [1] &quot;Blue&quot;  &quot;Blue&quot;  &quot;Blue&quot;  &quot;Red&quot;   &quot;Red&quot;   &quot;Green&quot; &quot;Red&quot;   &quot;Blue&quot;  &quot;Green&quot;
-## [10] &quot;Blue&quot;  &quot;Blue&quot;  &quot;Blue&quot;  &quot;Blue&quot;  &quot;Green&quot; &quot;Green&quot; &quot;Red&quot;   &quot;Green&quot; &quot;Blue&quot; 
-## [19] &quot;Red&quot;   &quot;Green&quot;
+##  [1] &quot;Green&quot; &quot;Blue&quot;  &quot;Green&quot; &quot;Green&quot; &quot;Blue&quot;  &quot;Green&quot; &quot;Green&quot; &quot;Green&quot; &quot;Blue&quot; 
+## [10] &quot;Blue&quot;  &quot;Red&quot;   &quot;Blue&quot;  &quot;Green&quot; &quot;Green&quot; &quot;Blue&quot;  &quot;Green&quot; &quot;Red&quot;   &quot;Blue&quot; 
+## [19] &quot;Blue&quot;  &quot;Blue&quot;
 
 <span class="co"># Convert it into a factor</span>
 color_as_factor =<span class="st"> </span><span class="kw">factor</span>(color_example, <span class="dt">levels =</span> color_levels)
 color_as_factor
-##  [1] Blue  Blue  Blue  Red   Red   Green Red   Blue  Green Blue  Blue  Blue 
-## [13] Blue  Green Green Red   Green Blue  Red   Green
+##  [1] Green Blue  Green Green Blue  Green Green Green Blue  Blue  Red   Blue 
+## [13] Green Green Blue  Green Red   Blue  Blue  Blue 
 ## Levels: Red Green Blue</code></pre></div>
 </div>
 <div id="comparing-categorical-frequencies-contingency-tables-related-analyses" class="section level2">
@@ -362,7 +361,7 @@ color_as_factor
 <div id="contingency-tables" class="section level3">
 <h3><span class="header-section-number">D.2.1</span> Contingency Tables</h3>
 <p>The easiest way to make a contingency table is from a data frame where each column is a categorical variable you want in the table &amp; each row is an observation. Let's say we wanted to create a color morph by perch type contingency with our lizard data.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">color_by_perch_tbl =<span class="st"> </span>lizards <span class="op">%&gt;%</span><span class="st"> </span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">color_by_perch_tbl &lt;-<span class="st"> </span>lizards <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">select</span>(Color_morph, Perch_type) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># select only the columns you want</span>
 <span class="st">  </span><span class="kw">table</span>()  <span class="co"># feed them into the table command</span>
 color_by_perch_tbl
@@ -389,7 +388,7 @@ color_by_perch_tbl
 ## data:  color_by_perch_tbl
 ## X-squared = 11.603, df = 6, p-value = 0.07143</code></pre></div>
 <p>Chi-squared tests assume that there's at least five observations in each cell of the contingency table. If this fails, then the resulting values aren't accurate. For example:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">site_a_contingency =<span class="st"> </span>lizards <span class="op">%&gt;%</span><span class="st"> </span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">site_a_contingency &lt;-<span class="st"> </span>lizards <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">filter</span>(Site <span class="op">==</span><span class="st"> &quot;A&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># cut down the data size</span>
 <span class="st">  </span><span class="kw">select</span>(Color_morph, Perch_type) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># select only the columns you want</span>
 <span class="st">  </span><span class="kw">table</span>()  <span class="co"># feed them into the table command</span>
@@ -424,13 +423,13 @@ color_by_perch_tbl
 ## X-squared = 11.603, df = 6, p-value = 0.07143</code></pre></div>
 </div>
 </div>
-<div id="linear-models-regression-and-anova" class="section level2">
-<h2><span class="header-section-number">D.3</span> Linear Models: Regression and ANOVA</h2>
+<div id="linear-models-regression-anova-and-t-tests" class="section level2">
+<h2><span class="header-section-number">D.3</span> Linear Models: Regression, ANOVA, and t-tests</h2>
 <p>Linear regression and Analysis of Variance (ANOVA) are both special cases of the general linear model (LM), which fits a continuous response (y) to one or more predictors (x). You specify linear models in R with a <strong>formula</strong> syntax, which generally follows as: <code>response ~ predictor</code>. Combining this formula with the <code>lm()</code> function and a datset gives you the basis of a linear model.</p>
 <div id="regression" class="section level3">
 <h3><span class="header-section-number">D.3.1</span> Regression</h3>
 <p>Lets say we wanted to see how snout-vent length (SVL) affects mass:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">simple_reg =<span class="st"> </span><span class="kw">lm</span>(Mass <span class="op">~</span><span class="st"> </span>SVL, <span class="dt">data =</span> lizards)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">simple_reg &lt;-<span class="st"> </span><span class="kw">lm</span>(Mass <span class="op">~</span><span class="st"> </span>SVL, <span class="dt">data =</span> lizards)
 simple_reg
 ## 
 ## Call:
@@ -484,14 +483,14 @@ simple_reg
 <p><img src="Bio373L-Book_files/figure-html/a4_lin_reg_plot1-1.png" width="672" /></p>
 <p>For more complicated models, this approach may not work very well; it can be helpful to calculate the fitted values &amp; confidence intervals from the model object and plot them directly.</p>
 <p>You can get these values directly with the <code>predict()</code> function. The code below calculates the trendline and 95% confidence interval for the regression, and adds them to a data frame with the original data.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">simple_reg_preds =<span class="st"> </span>simple_reg <span class="op">%&gt;%</span><span class="st"> </span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">simple_reg_predictions &lt;-<span class="st"> </span>simple_reg <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="co"># Predict fitted values wish 95% confidence intervals</span>
 <span class="st">  </span><span class="kw">predict</span>(<span class="dt">interval =</span> <span class="st">&quot;confidence&quot;</span>, <span class="dt">level =</span> .<span class="dv">95</span>) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="co"># The output of predict() is a matrix; that&#39;s hard to work with, so...</span>
 <span class="st">  </span><span class="kw">as_tibble</span>() <span class="co"># we convert the output of predict() to a data frame (tibble)</span>
-simple_reg_plot_data =<span class="st"> </span>lizards <span class="op">%&gt;%</span><span class="st"> </span>
+simple_reg_plot_data &lt;-<span class="st"> </span>lizards <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">select</span>(SVL, Mass) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># we only need these columns</span>
-<span class="st">  </span><span class="kw">bind_cols</span>(simple_reg_preds) <span class="co"># adds columns of simple_reg_preds to our lizards</span>
+<span class="st">  </span><span class="kw">bind_cols</span>(simple_reg_predictions) <span class="co"># adds columns of simple_reg_preds to our lizards</span>
 <span class="kw">View</span>(simple_reg_plot_data)</code></pre></div>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
 <table class=" lightable-paper" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; margin-left: auto; margin-right: auto;">
@@ -701,12 +700,12 @@ upr
 <p>You can also use <code>predict()</code> to calculate the respected value of your response variable given new predictor(s); this is useful for interpolation and extrapolation.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Create a data frame with new predictors</span>
 svl_predictors =<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">SVL =</span> <span class="kw">c</span>(<span class="dv">20</span>, <span class="dv">150</span>, <span class="dv">600</span>)) <span class="co"># New predictors</span>
-mass_predictions =<span class="st"> </span><span class="kw">predict</span>(simple_reg, 
+mass_predictions &lt;-<span class="st"> </span><span class="kw">predict</span>(simple_reg, 
                            <span class="dt">newdata =</span> svl_predictors)  <span class="co"># The newdata argument is key here</span>
                                                       <span class="co"># If unspecified, it uses the original data</span>
 svl_predictors <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Mass_estimate =</span> mass_predictions)
-## # A tibble: 3 x 2
+## # A tibble: 3 × 2
 ##     SVL Mass_estimate
 ##   &lt;dbl&gt;         &lt;dbl&gt;
 ## 1    20          3.40
@@ -719,9 +718,9 @@ svl_predictors <span class="op">%&gt;%</span><span class="st"> </span>
 <h3><span class="header-section-number">D.3.2</span> ANOVA</h3>
 <p>Analysis of variance (ANOVA) is a special case of linear model where all of the predictors are all categorical. However, ANOVAs are usually treated differently from regressions for historical reasons. In R, you fit an ANOVA in the same way as a regression (with the <code>lm()</code> command); however, it's common to use the <code>aov()</code> command on the <code>lm</code>'s output to reformat the results into a more traditional style. For the simple (one-way) ANOVA follows:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Fit the model wtih a regression</span>
-simple_anova_lm =<span class="st"> </span><span class="kw">lm</span>(Diameter <span class="op">~</span><span class="st"> </span>Color_morph, <span class="dt">data =</span> lizards) 
+simple_anova_lm &lt;-<span class="st"> </span><span class="kw">lm</span>(Diameter <span class="op">~</span><span class="st"> </span>Color_morph, <span class="dt">data =</span> lizards) 
 <span class="co"># Reformat into traditional ANOVA style; this is usually done with a pipe as part of the previous step</span>
-simple_anova =<span class="st"> </span><span class="kw">aov</span>(simple_anova_lm)
+simple_anova &lt;-<span class="st"> </span><span class="kw">aov</span>(simple_anova_lm)
 
 <span class="co"># Look at the ANOVA table</span>
 simple_anova <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summary</span>()
@@ -761,23 +760,23 @@ simple_anova <span class="op">%&gt;%</span><span class="st"> </span><span class=
 <div id="anova-means-confidence-intervals" class="section level4">
 <h4><span class="header-section-number">D.3.2.1</span> ANOVA means &amp; confidence intervals</h4>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># make a data frame with just your predictors (distinct removes duplicates)</span>
-color_levels =<span class="st"> </span>lizards <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">distinct</span>(Color_morph)
+color_levels &lt;-<span class="st"> </span>lizards <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">distinct</span>(Color_morph)
 color_levels
-## # A tibble: 3 x 1
+## # A tibble: 3 × 1
 ##   Color_morph
 ##   &lt;chr&gt;      
 ## 1 Green      
 ## 2 Brown      
 ## 3 Blue
 
-simple_anova_means =<span class="st"> </span>
+simple_anova_means &lt;-<span class="st"> </span>
 <span class="st">  </span><span class="co"># Calculate means &amp; 95% CI</span>
 <span class="st">  </span><span class="kw">predict</span>(simple_anova, <span class="dt">newdata =</span> color_levels, 
                              <span class="dt">interval =</span> <span class="st">&quot;confidence&quot;</span>, <span class="dt">level =</span> <span class="fl">0.95</span>) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">    </span><span class="kw">as_tibble</span>() <span class="op">%&gt;%</span><span class="st">  </span><span class="co"># Convert to data frame</span>
 <span class="st">    </span><span class="kw">bind_cols</span>(color_levels) <span class="co"># add the prediction data as more columns</span>
 simple_anova_means
-## # A tibble: 3 x 4
+## # A tibble: 3 × 4
 ##     fit   lwr   upr Color_morph
 ##   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;      
 ## 1  11.5  10.8  12.1 Green      
@@ -801,11 +800,11 @@ simple_anova_means
 <p>You can use the <code>witch</code> argument to specify specific level comparisons, but by default it compares all of them.</p>
 <p>A traditional way of summarizing post-hoc tests is to assign one or more letters to significantly different levels, where levels with different letters are significantly different from each other. For example, the letter grouping <code>c(&quot;A&quot;, &quot;AB&quot;, &quot;B&quot;, &quot;C&quot;)</code> would indicate that group 1 and group 3 are different from each other, but not from group 2; group 4 is different from everything. In the above example, everything is different, so we could assign the letters A through C.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># We&#39;ll store these in a data frame for later use</span>
-anova_means_letters =<span class="st"> </span>simple_anova_means <span class="op">%&gt;%</span><span class="st"> </span>
+anova_means_letters &lt;-<span class="st"> </span>simple_anova_means <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">arrange</span>(Color_morph) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># These will be plotted alphabetically, so we&#39;ll sort them that way to keep things easy</span>
 <span class="st">  </span><span class="kw">mutate</span>(<span class="dt">anova_labels =</span> <span class="kw">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>))
 anova_means_letters</code></pre></div>
-<pre><code>## # A tibble: 3 x 5
+<pre><code>## # A tibble: 3 × 5
 ##     fit   lwr   upr Color_morph anova_labels
 ##   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;       
 ## 1  32.9  32.2  33.6 Blue        A           
@@ -817,9 +816,9 @@ anova_means_letters</code></pre></div>
 <p>The basics of plotting ANOVA results was covered in the last part of Section @ref(ggp_discx_conty), but we'll refine them a bit here. The main additions are the use of <code>geom_text()</code> to include the labels above each category and <code>scale_y_continuous</code>, which we use to customize the y axis a bit so that it doesn't cut off the labels. Be sure to indicate in your figure captions what the letters mean.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggforce) <span class="co"># for geom_sina()</span>
 <span class="co"># We&#39;re going to add post-hoc letters to this plot</span>
-letter_y_position =<span class="st"> </span><span class="kw">max</span>(lizards<span class="op">$</span>Diameter) <span class="op">*</span><span class="st"> </span><span class="fl">1.05</span> <span class="co"># Put letters at the top</span>
+letter_y_position &lt;-<span class="st"> </span><span class="kw">max</span>(lizards<span class="op">$</span>Diameter) <span class="op">*</span><span class="st"> </span><span class="fl">1.05</span> <span class="co"># Put letters at the top</span>
 
-anova_plot =<span class="st"> </span><span class="kw">ggplot</span>(lizards) <span class="op">+</span><span class="st"> </span>
+anova_plot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(lizards) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">aes</span>(<span class="dt">x =</span> Color_morph) <span class="op">+</span><span class="st"> </span><span class="co"># Color_morph column is in both lizards AND anova_means_letters</span>
 <span class="st">  </span><span class="co"># Show the raw data</span>
 <span class="st">  </span><span class="kw">geom_sina</span>(<span class="kw">aes</span>(<span class="dt">y =</span> Diameter), <span class="co"># Diameter column is in lizards data frame</span>
@@ -849,19 +848,58 @@ anova_plot</code></pre></div>
 <p><img src="Bio373L-Book_files/figure-html/a4_anova_plt_1-1.png" width="672" /></p>
 </div>
 </div>
-</div>
-<div id="to-do-in-progress" class="section level2">
-<h2><span class="header-section-number">D.4</span> To do (In progress)</h2>
 <div id="comparing-two-means-t-tests" class="section level3">
-<h3><span class="header-section-number">D.4.1</span> Comparing two means (t-tests)</h3>
-<p>If you have to do this and I haven't finished this section, just use an ANOVA; mathematically, it works out to more or less the same thing.</p>
-</div>
-<div id="advanced-workflow-tips" class="section level3">
-<h3><span class="header-section-number">D.4.2</span> Advanced workflow tips</h3>
-</div>
-<div id="model-comparisons" class="section level3">
-<h3><span class="header-section-number">D.4.3</span> Model comparisons</h3>
+<h3><span class="header-section-number">D.3.3</span> Comparing two means (t-tests)</h3>
+<p>While it's perfectly valid to use an ANOVA to compare the means of two samples, the t-test is a more traditional approach. You can do this with the <code>t-test()</code> function.</p>
+<p>First, let's create a 2-level categorical variable to work with. Normally, this would be done during data collection, but there aren't any in this data source. Let's define lizards as big (SVL &gt;= 65 mm) or small (SVL &lt;= 55 mm) and remove the intermediates.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lizards_by_size &lt;-<span class="st"> </span>lizards <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">filter</span>(SVL <span class="op">&lt;=</span><span class="st"> </span><span class="dv">55</span> <span class="op">|</span><span class="st"> </span>SVL <span class="op">&gt;=</span><span class="st"> </span><span class="dv">65</span>) <span class="op">%&gt;%</span><span class="st">  </span><span class="co"># Remove the lizards of intermediate size</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Size_class =</span> <span class="kw">if_else</span> (SVL <span class="op">&gt;=</span><span class="st"> </span><span class="dv">65</span>, <span class="st">&quot;big&quot;</span>, <span class="st">&quot;small&quot;</span>) )<span class="co"># Define Size_class as big or small, based on SVL</span></code></pre></div>
+<p>Next, let's use a t-test to see if limb length differs between big and small lizards. First, we should look at the mean and standard deviation of each group. The classic t-test requires that the variances of the two groups are equal; if not, an adjustment will need to be applied. In practice, this adjustment has no ill effect if the variances are equal, so you may as well apply it. In any case, it's a good idea to look at data summaries before running a test.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lizard_size_sumary_table &lt;-<span class="st"> </span>lizards_by_size <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(Size_class) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># We want to summarize each size class</span>
+<span class="st">  </span><span class="kw">summarize</span>(<span class="dt">mean =</span> <span class="kw">mean</span>(Limb), <span class="dt">sd =</span> <span class="kw">sd</span>(Limb), <span class="dt">var =</span> <span class="kw">var</span>(Limb), <span class="dt">n =</span> <span class="kw">n</span>()) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">ungroup</span>()
+lizard_size_sumary_table</code></pre></div>
+<pre><code>## # A tibble: 2 × 5
+##   Size_class  mean    sd   var     n
+##   &lt;chr&gt;      &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt;
+## 1 big         15.1 0.984 0.969   240
+## 2 small       11.2 0.800 0.641   206</code></pre>
+<p>In this case, the standard deviations are somewhat different, but not particularly. In any case, we'll run the test without assuming for equal variances.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lizard_t_test &lt;-<span class="st">  </span><span class="kw">t.test</span>(Limb <span class="op">~</span><span class="st"> </span>Size_class, <span class="co"># formula specifies response (on left) and predictor (on right)</span>
+                         <span class="dt">data =</span> lizards_by_size, 
+                         <span class="dt">var.equal =</span> <span class="ot">FALSE</span>) <span class="co"># Assume unequal variances; this is the default option.</span>
+<span class="kw">print</span>(lizard_t_test)</code></pre></div>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  Limb by Size_class
+## t = 45.668, df = 442.74, p-value &lt; 2.2e-16
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  3.694599 4.026898
+## sample estimates:
+##   mean in group big mean in group small 
+##            15.09958            11.23883</code></pre>
+<p>When reporting a t-test, you should <em>t</em>, the degrees of freedom, the p-value, the effect size (Cohen's <em>d</em>). The effect size isnt' provided for you directly, so you'll need to calculate it yourself.</p>
+<div id="effect-size-cohens-d" class="section level4">
+<h4><span class="header-section-number">D.3.3.1</span> Effect size: Cohen's <em>d</em></h4>
+<p>Cohen's <em>d</em> is essentially a standardized way of measuring the difference between two groups. Conceptually, it's the number of standard deviations of difference between the two groups. You can calculate it by taking the difference in the group means and dividing by the pooled standard deviation. To get the pooled standard deviation, calculate the weighted average of the variance (weighted by population size) and take the square root.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lizard_size_sumary_table <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">summarize</span>(<span class="dt">mean_diff =</span> <span class="kw">diff</span>(mean),
+            <span class="dt">pooled_variance =</span> <span class="kw">sum</span>(var <span class="op">*</span><span class="st"> </span>n) <span class="op">/</span><span class="st"> </span><span class="kw">sum</span>(n) ) <span class="op">%&gt;%</span><span class="st"> </span><span class="co">#weighted mean of variance</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">cohen_d =</span> <span class="kw">abs</span>(mean_diff) <span class="op">/</span><span class="st"> </span><span class="kw">sqrt</span>(pooled_variance) ) <span class="co"># COhen&#39;s d is always positive, so take abs() of mean_diff </span></code></pre></div>
+<pre><code>## # A tibble: 1 × 3
+##   mean_diff pooled_variance cohen_d
+##       &lt;dbl&gt;           &lt;dbl&gt;   &lt;dbl&gt;
+## 1     -3.86           0.817    4.27</code></pre>
+<p>You could report your results as follows (assuming that figure 1 compared the two groups):</p>
+<blockquote>
+<p>Big lizards have significantly longer limbs than small lizards (d = 4.27, t = 45.7, df = 442.7, p &lt; 0.0001; Figure 1)</p>
+</blockquote>
 
+</div>
 </div>
 </div>
 </div>
@@ -894,6 +932,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -914,6 +953,10 @@ gitbook.start({
 "text": null
 },
 "download": null,
+"search": {
+"engine": "lunr",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }

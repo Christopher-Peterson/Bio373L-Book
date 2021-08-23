@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 8 Lab 5: Mark-Release-Recapture with Heliconius | Bio 373L Survival Guide</title>
+  <meta name="description" content="Writing advice for Field Ecology." />
+  <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 8 Lab 5: Mark-Release-Recapture with Heliconius | Bio 373L Survival Guide" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Writing advice for Field Ecology." />
+  <meta name="github-repo" content="Christopher-Peterson/Bio373L-Book" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 8 Lab 5: Mark-Release-Recapture with Heliconius | Bio 373L Survival Guide" />
+  
+  <meta name="twitter:description" content="Writing advice for Field Ecology." />
+  
+
+<meta name="author" content="Christopher R. Peterson" />
+
+
+<meta name="date" content="2021-08-23" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="Lab_phorid.html"/>
+<link rel="next" href="working-with-r.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Bio 373L Survival Guide</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="1" data-path="structure.html"><a href="structure.html"><i class="fa fa-check"></i><b>1</b> Writing Lab Reports: Structure</a><ul>
+<li class="chapter" data-level="1.1" data-path="structure.html"><a href="structure.html#structure-overview"><i class="fa fa-check"></i><b>1.1</b> Structure Overview</a></li>
+<li class="chapter" data-level="1.2" data-path="structure.html"><a href="structure.html#abstract"><i class="fa fa-check"></i><b>1.2</b> Abstract</a></li>
+<li class="chapter" data-level="1.3" data-path="structure.html"><a href="structure.html#introduction"><i class="fa fa-check"></i><b>1.3</b> Introduction</a></li>
+<li class="chapter" data-level="1.4" data-path="structure.html"><a href="structure.html#methods"><i class="fa fa-check"></i><b>1.4</b> Methods</a></li>
+<li class="chapter" data-level="1.5" data-path="structure.html"><a href="structure.html#results"><i class="fa fa-check"></i><b>1.5</b> Results</a><ul>
+<li class="chapter" data-level="1.5.1" data-path="structure.html"><a href="structure.html#reporting-statistics"><i class="fa fa-check"></i><b>1.5.1</b> Reporting statistics</a></li>
+<li class="chapter" data-level="1.5.2" data-path="structure.html"><a href="structure.html#do-not-interpret-your-data-here"><i class="fa fa-check"></i><b>1.5.2</b> Do not interpret your data here</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="structure.html"><a href="structure.html#discussion"><i class="fa fa-check"></i><b>1.6</b> Discussion</a></li>
+<li class="chapter" data-level="1.7" data-path="structure.html"><a href="structure.html#literature-cited"><i class="fa fa-check"></i><b>1.7</b> Literature Cited</a></li>
+<li class="chapter" data-level="1.8" data-path="structure.html"><a href="structure.html#common-mistakes-for-particular-sections"><i class="fa fa-check"></i><b>1.8</b> Common Mistakes for particular sections</a><ul>
+<li class="chapter" data-level="1.8.1" data-path="structure.html"><a href="structure.html#introduction-and-discussion"><i class="fa fa-check"></i><b>1.8.1</b> Introduction and Discussion</a></li>
+<li class="chapter" data-level="1.8.2" data-path="structure.html"><a href="structure.html#results-1"><i class="fa fa-check"></i><b>1.8.2</b> Results</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="style.html"><a href="style.html"><i class="fa fa-check"></i><b>2</b> Writing Lab Reports: Style</a><ul>
+<li class="chapter" data-level="2.1" data-path="style.html"><a href="style.html#be-concise"><i class="fa fa-check"></i><b>2.1</b> Be Concise</a></li>
+<li class="chapter" data-level="2.2" data-path="style.html"><a href="style.html#sentence-structure"><i class="fa fa-check"></i><b>2.2</b> Sentence Structure</a></li>
+<li class="chapter" data-level="2.3" data-path="style.html"><a href="style.html#passive-voice"><i class="fa fa-check"></i><b>2.3</b> Passive Voice</a></li>
+<li class="chapter" data-level="2.4" data-path="style.html"><a href="style.html#word-choice"><i class="fa fa-check"></i><b>2.4</b> Word Choice</a></li>
+<li class="chapter" data-level="2.5" data-path="style.html"><a href="style.html#scientific-and-common-names"><i class="fa fa-check"></i><b>2.5</b> Scientific and Common Names</a></li>
+<li class="chapter" data-level="2.6" data-path="style.html"><a href="style.html#other-grammar"><i class="fa fa-check"></i><b>2.6</b> Other Grammar</a></li>
+<li class="chapter" data-level="2.7" data-path="style.html"><a href="style.html#commonly-confused-definitions"><i class="fa fa-check"></i><b>2.7</b> Commonly Confused Definitions</a></li>
+<li class="chapter" data-level="2.8" data-path="style.html"><a href="style.html#significant-digits"><i class="fa fa-check"></i><b>2.8</b> Significant Digits</a></li>
+<li class="chapter" data-level="2.9" data-path="style.html"><a href="style.html#tenses"><i class="fa fa-check"></i><b>2.9</b> Tenses</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="figures.html"><a href="figures.html"><i class="fa fa-check"></i><b>3</b> Figures and Tables</a><ul>
+<li class="chapter" data-level="3.1" data-path="figures.html"><a href="figures.html#captions"><i class="fa fa-check"></i><b>3.1</b> Captions</a></li>
+<li class="chapter" data-level="3.2" data-path="figures.html"><a href="figures.html#figures"><i class="fa fa-check"></i><b>3.2</b> Figures</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="figures.html"><a href="figures.html#specific-figure-guidelines"><i class="fa fa-check"></i><b>3.2.1</b> Specific Figure Guidelines</a></li>
+<li class="chapter" data-level="3.2.2" data-path="figures.html"><a href="figures.html#be-concise-1"><i class="fa fa-check"></i><b>3.2.2</b> Be Concise</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="figures.html"><a href="figures.html#some-example-figures"><i class="fa fa-check"></i><b>3.3</b> Some Example Figures</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="figures.html"><a href="figures.html#general-formatting"><i class="fa fa-check"></i><b>3.3.1</b> General Formatting</a></li>
+<li class="chapter" data-level="3.3.2" data-path="figures.html"><a href="figures.html#continuous-response-categorical-predictors"><i class="fa fa-check"></i><b>3.3.2</b> Continuous response, categorical predictors</a></li>
+<li class="chapter" data-level="3.3.3" data-path="figures.html"><a href="figures.html#categorical-count-or-frequency-responses"><i class="fa fa-check"></i><b>3.3.3</b> Categorical, count, or frequency responses</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="figures.html"><a href="figures.html#tables"><i class="fa fa-check"></i><b>3.4</b> Tables</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="lab1.html"><a href="lab1.html"><i class="fa fa-check"></i><b>4</b> Lab 1: Succession</a><ul>
+<li class="chapter" data-level="4.1" data-path="lab1.html"><a href="lab1.html#introduction-to-the-lab"><i class="fa fa-check"></i><b>4.1</b> Introduction to the lab</a></li>
+<li class="chapter" data-level="4.2" data-path="lab1.html"><a href="lab1.html#materials-and-methods"><i class="fa fa-check"></i><b>4.2</b> Materials and Methods</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="lab1.html"><a href="lab1.html#bfl-habitat-regions"><i class="fa fa-check"></i><b>4.2.1</b> BFL habitat regions</a></li>
+<li class="chapter" data-level="4.2.2" data-path="lab1.html"><a href="lab1.html#data-collection"><i class="fa fa-check"></i><b>4.2.2</b> Data Collection</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="lab1.html"><a href="lab1.html#analysis-to-perform"><i class="fa fa-check"></i><b>4.3</b> Analysis to perform</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="lab1.html"><a href="lab1.html#canopy-tree-density"><i class="fa fa-check"></i><b>4.3.1</b> Canopy tree density</a></li>
+<li class="chapter" data-level="4.3.2" data-path="lab1.html"><a href="lab1.html#species-by-habitat-and-life-stage"><i class="fa fa-check"></i><b>4.3.2</b> Species by habitat and life stage</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="lab1.html"><a href="lab1.html#discussion-1"><i class="fa fa-check"></i><b>4.4</b> Discussion</a></li>
+<li class="chapter" data-level="4.5" data-path="lab1.html"><a href="lab1.html#general-comments-post-review"><i class="fa fa-check"></i><b>4.5</b> General Comments (Post-Review)</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="lab1.html"><a href="lab1.html#figures-1"><i class="fa fa-check"></i><b>4.5.1</b> Figures</a></li>
+<li class="chapter" data-level="4.5.2" data-path="lab1.html"><a href="lab1.html#write-this-like-youre-trying-to-publish-it"><i class="fa fa-check"></i><b>4.5.2</b> Write this like you're trying to publish it</a></li>
+<li class="chapter" data-level="4.5.3" data-path="lab1.html"><a href="lab1.html#describe-the-habitats"><i class="fa fa-check"></i><b>4.5.3</b> Describe the habitats</a></li>
+<li class="chapter" data-level="4.5.4" data-path="lab1.html"><a href="lab1.html#the-analysis"><i class="fa fa-check"></i><b>4.5.4</b> The Analysis</a></li>
+<li class="chapter" data-level="4.5.5" data-path="lab1.html"><a href="lab1.html#keeping-things-in-the-right-sections"><i class="fa fa-check"></i><b>4.5.5</b> Keeping things in the right sections</a></li>
+<li class="chapter" data-level="4.5.6" data-path="lab1.html"><a href="lab1.html#basic-style-and-format-rules"><i class="fa fa-check"></i><b>4.5.6</b> Basic style and format rules</a></li>
+<li class="chapter" data-level="4.5.7" data-path="lab1.html"><a href="lab1.html#other-comments"><i class="fa fa-check"></i><b>4.5.7</b> Other Comments</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="Lab2.html"><a href="Lab2.html"><i class="fa fa-check"></i><b>5</b> Lab 2: Woodland Heterogeneity</a><ul>
+<li class="chapter" data-level="5.1" data-path="Lab2.html"><a href="Lab2.html#introduction-background"><i class="fa fa-check"></i><b>5.1</b> Introduction &amp; background</a></li>
+<li class="chapter" data-level="5.2" data-path="Lab2.html"><a href="Lab2.html#questions-and-hypotheses"><i class="fa fa-check"></i><b>5.2</b> Questions and Hypotheses</a></li>
+<li class="chapter" data-level="5.3" data-path="Lab2.html"><a href="Lab2.html#field-methods"><i class="fa fa-check"></i><b>5.3</b> Field Methods</a></li>
+<li class="chapter" data-level="5.4" data-path="Lab2.html"><a href="Lab2.html#analyses"><i class="fa fa-check"></i><b>5.4</b> Analyses</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="Lab2.html"><a href="Lab2.html#calibrating-canopy-estimates"><i class="fa fa-check"></i><b>5.4.1</b> Calibrating canopy estimates</a></li>
+<li class="chapter" data-level="5.4.2" data-path="Lab2.html"><a href="Lab2.html#relationship-between-canopy-and-ground-cover"><i class="fa fa-check"></i><b>5.4.2</b> Relationship between canopy and ground cover</a></li>
+<li class="chapter" data-level="5.4.3" data-path="Lab2.html"><a href="Lab2.html#quantifying-the-spatial-mosaic"><i class="fa fa-check"></i><b>5.4.3</b> Quantifying the spatial mosaic</a></li>
+<li class="chapter" data-level="5.4.4" data-path="Lab2.html"><a href="Lab2.html#historical-trends"><i class="fa fa-check"></i><b>5.4.4</b> Historical Trends</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="Lab3.html"><a href="Lab3.html"><i class="fa fa-check"></i><b>6</b> Lab 3: Ant Community Ecology</a><ul>
+<li class="chapter" data-level="6.1" data-path="Lab3.html"><a href="Lab3.html#background"><i class="fa fa-check"></i><b>6.1</b> Background</a></li>
+<li class="chapter" data-level="6.2" data-path="Lab3.html"><a href="Lab3.html#questions-and-hypotheses-1"><i class="fa fa-check"></i><b>6.2</b> Questions and hypotheses</a></li>
+<li class="chapter" data-level="6.3" data-path="Lab3.html"><a href="Lab3.html#methods-1"><i class="fa fa-check"></i><b>6.3</b> Methods</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="Lab3.html"><a href="Lab3.html#bait-survey"><i class="fa fa-check"></i><b>6.3.1</b> Bait Survey</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="Lab3.html"><a href="Lab3.html#analysis"><i class="fa fa-check"></i><b>6.4</b> Analysis</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="Lab3.html"><a href="Lab3.html#s.-invicta-habitat-preference"><i class="fa fa-check"></i><b>6.4.1</b> <em>S. invicta</em> habitat preference</a></li>
+<li class="chapter" data-level="6.4.2" data-path="Lab3.html"><a href="Lab3.html#ant-community-differences"><i class="fa fa-check"></i><b>6.4.2</b> Ant community differences</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="Lab_phorid.html"><a href="Lab_phorid.html"><i class="fa fa-check"></i><b>7</b> Lab 4: Parasitoid impacts on host foraging behavior: Phorid flies and fire ants</a><ul>
+<li class="chapter" data-level="7.1" data-path="Lab_phorid.html"><a href="Lab_phorid.html#background-1"><i class="fa fa-check"></i><b>7.1</b> Background</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="Lab_phorid.html"><a href="Lab_phorid.html#fire-ants-and-phorid-flies"><i class="fa fa-check"></i><b>7.1.1</b> Fire ants and phorid flies</a></li>
+<li class="chapter" data-level="7.1.2" data-path="Lab_phorid.html"><a href="Lab_phorid.html#fire-ants-natural-history"><i class="fa fa-check"></i><b>7.1.2</b> Fire ants natural history</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="Lab_phorid.html"><a href="Lab_phorid.html#objectives"><i class="fa fa-check"></i><b>7.2</b> Objectives</a></li>
+<li class="chapter" data-level="7.3" data-path="Lab_phorid.html"><a href="Lab_phorid.html#methods-2"><i class="fa fa-check"></i><b>7.3</b> Methods</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="Lab_phorid.html"><a href="Lab_phorid.html#phorid-impact-on-fire-ant-foraging"><i class="fa fa-check"></i><b>7.3.1</b> Phorid impact on fire ant foraging</a></li>
+<li class="chapter" data-level="7.3.2" data-path="Lab_phorid.html"><a href="Lab_phorid.html#using-the-hobo-mx2303-data-logger"><i class="fa fa-check"></i><b>7.3.2</b> Using the HOBO MX2303 data logger</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="Lab_phorid.html"><a href="Lab_phorid.html#analysis-1"><i class="fa fa-check"></i><b>7.4</b> Analysis</a><ul>
+<li class="chapter" data-level="7.4.1" data-path="Lab_phorid.html"><a href="Lab_phorid.html#effect-of-phorids-on-ant-foraging"><i class="fa fa-check"></i><b>7.4.1</b> Effect of phorids on ant foraging</a></li>
+<li class="chapter" data-level="7.4.2" data-path="Lab_phorid.html"><a href="Lab_phorid.html#effects-of-environmental-conditions"><i class="fa fa-check"></i><b>7.4.2</b> Effects of environmental conditions</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="Lab_phorid.html"><a href="Lab_phorid.html#discussion-2"><i class="fa fa-check"></i><b>7.5</b> Discussion</a></li>
+<li class="chapter" data-level="7.6" data-path="Lab_phorid.html"><a href="Lab_phorid.html#some-questions-from-previou-semesters"><i class="fa fa-check"></i><b>7.6</b> Some questions from previou semesters:</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="Lab_MRR.html"><a href="Lab_MRR.html"><i class="fa fa-check"></i><b>8</b> Lab 5: Mark-Release-Recapture with <em>Heliconius</em></a><ul>
+<li class="chapter" data-level="8.1" data-path="Lab_MRR.html"><a href="Lab_MRR.html#introduction-1"><i class="fa fa-check"></i><b>8.1</b> Introduction</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="Lab_MRR.html"><a href="Lab_MRR.html#the-lincoln-pearson-model"><i class="fa fa-check"></i><b>8.1.1</b> The Lincoln-Pearson model</a></li>
+<li class="chapter" data-level="8.1.2" data-path="Lab_MRR.html"><a href="Lab_MRR.html#heliconius-butterflies"><i class="fa fa-check"></i><b>8.1.2</b> <em>Heliconius</em> butterflies</a></li>
+<li class="chapter" data-level="8.1.3" data-path="Lab_MRR.html"><a href="Lab_MRR.html#hardy-weinberg-equilbrium"><i class="fa fa-check"></i><b>8.1.3</b> Hardy-Weinberg Equilbrium</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="Lab_MRR.html"><a href="Lab_MRR.html#questions-and-hypotheses-2"><i class="fa fa-check"></i><b>8.2</b> Questions and hypotheses</a></li>
+<li class="chapter" data-level="8.3" data-path="Lab_MRR.html"><a href="Lab_MRR.html#field-methods-1"><i class="fa fa-check"></i><b>8.3</b> Field Methods</a></li>
+<li class="chapter" data-level="8.4" data-path="Lab_MRR.html"><a href="Lab_MRR.html#analysis-2"><i class="fa fa-check"></i><b>8.4</b> Analysis</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="Lab_MRR.html"><a href="Lab_MRR.html#effect-of-sampling-intensity-on-lincoln-pearson-hatn-estimates"><i class="fa fa-check"></i><b>8.4.1</b> Effect of sampling intensity on Lincoln-Pearson <span class="math inline">\(\hat{N}\)</span> estimates</a></li>
+<li class="chapter" data-level="8.4.2" data-path="Lab_MRR.html"><a href="Lab_MRR.html#sex-ratios"><i class="fa fa-check"></i><b>8.4.2</b> Sex ratios</a></li>
+<li class="chapter" data-level="8.4.3" data-path="Lab_MRR.html"><a href="Lab_MRR.html#comparison-of-lincoln-pearson-with-alternative-method"><i class="fa fa-check"></i><b>8.4.3</b> Comparison of Lincoln-Pearson with alternative method</a></li>
+<li class="chapter" data-level="8.4.4" data-path="Lab_MRR.html"><a href="Lab_MRR.html#hardy-weinberg"><i class="fa fa-check"></i><b>8.4.4</b> Hardy-Weinberg</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="Lab_MRR.html"><a href="Lab_MRR.html#discussion-3"><i class="fa fa-check"></i><b>8.5</b> Discussion</a></li>
+</ul></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="working-with-r.html"><a href="working-with-r.html"><i class="fa fa-check"></i><b>A</b> Working with R</a><ul>
+<li class="chapter" data-level="A.1" data-path="working-with-r.html"><a href="working-with-r.html#introduction-to-rstudio"><i class="fa fa-check"></i><b>A.1</b> Introduction to RStudio</a><ul>
+<li class="chapter" data-level="A.1.1" data-path="working-with-r.html"><a href="working-with-r.html#rstudio-projects"><i class="fa fa-check"></i><b>A.1.1</b> RStudio Projects</a></li>
+<li class="chapter" data-level="A.1.2" data-path="working-with-r.html"><a href="working-with-r.html#customizing-rstudio"><i class="fa fa-check"></i><b>A.1.2</b> Customizing RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="A.2" data-path="working-with-r.html"><a href="working-with-r.html#r-basics"><i class="fa fa-check"></i><b>A.2</b> R basics</a><ul>
+<li class="chapter" data-level="A.2.1" data-path="working-with-r.html"><a href="working-with-r.html#statements-vectors"><i class="fa fa-check"></i><b>A.2.1</b> Statements &amp; vectors</a></li>
+<li class="chapter" data-level="A.2.2" data-path="working-with-r.html"><a href="working-with-r.html#variables"><i class="fa fa-check"></i><b>A.2.2</b> Variables</a></li>
+<li class="chapter" data-level="A.2.3" data-path="working-with-r.html"><a href="working-with-r.html#reading-working-with-data-frames"><i class="fa fa-check"></i><b>A.2.3</b> Reading &amp; working with data frames</a></li>
+<li class="chapter" data-level="A.2.4" data-path="working-with-r.html"><a href="working-with-r.html#functions"><i class="fa fa-check"></i><b>A.2.4</b> Functions</a></li>
+<li class="chapter" data-level="A.2.5" data-path="working-with-r.html"><a href="working-with-r.html#getting-help"><i class="fa fa-check"></i><b>A.2.5</b> Getting Help</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="ggplot-tutorial.html"><a href="ggplot-tutorial.html"><i class="fa fa-check"></i><b>B</b> Making graphs in R with <code>ggplot2</code></a><ul>
+<li class="chapter" data-level="B.1" data-path="ggplot-tutorial.html"><a href="ggplot-tutorial.html#components-of-a-plot"><i class="fa fa-check"></i><b>B.1</b> Components of a plot</a></li>
+<li class="chapter" data-level="B.2" data-path="ggplot-tutorial.html"><a href="ggplot-tutorial.html#aesthetics-and-scales"><i class="fa fa-check"></i><b>B.2</b> Aesthetics and scales</a><ul>
+<li class="chapter" data-level="B.2.1" data-path="ggplot-tutorial.html"><a href="ggplot-tutorial.html#color"><i class="fa fa-check"></i><b>B.2.1</b> Color</a></li>
+<li class="chapter" data-level="B.2.2" data-path="ggplot-tutorial.html"><a href="ggplot-tutorial.html#shape"><i class="fa fa-check"></i><b>B.2.2</b> Shape</a></li>
+<li class="chapter" data-level="B.2.3" data-path="ggplot-tutorial.html"><a href="ggplot-tutorial.html#size"><i class="fa fa-check"></i><b>B.2.3</b> Size</a></li>
+<li class="chapter" data-level="B.2.4" data-path="ggplot-tutorial.html"><a href="ggplot-tutorial.html#fixed-aesthetics"><i class="fa fa-check"></i><b>B.2.4</b> Fixed aesthetics</a></li>
+<li class="chapter" data-level="B.2.5" data-path="ggplot-tutorial.html"><a href="ggplot-tutorial.html#combining-aesthetics"><i class="fa fa-check"></i><b>B.2.5</b> Combining aesthetics</a></li>
+</ul></li>
+<li class="chapter" data-level="B.3" data-path="ggplot-tutorial.html"><a href="ggplot-tutorial.html#geometry"><i class="fa fa-check"></i><b>B.3</b> Geometry</a><ul>
+<li class="chapter" data-level="B.3.1" data-path="ggplot-tutorial.html"><a href="ggplot-tutorial.html#continuous-x-no-y"><i class="fa fa-check"></i><b>B.3.1</b> Continuous X, no Y</a></li>
+<li class="chapter" data-level="B.3.2" data-path="ggplot-tutorial.html"><a href="ggplot-tutorial.html#ggp_discx_conty"><i class="fa fa-check"></i><b>B.3.2</b> Discrete X, continuous Y</a></li>
+<li class="chapter" data-level="B.3.3" data-path="ggplot-tutorial.html"><a href="ggplot-tutorial.html#continuous-x-and-y"><i class="fa fa-check"></i><b>B.3.3</b> Continuous X and Y</a></li>
+<li class="chapter" data-level="B.3.4" data-path="ggplot-tutorial.html"><a href="ggplot-tutorial.html#time-series-data"><i class="fa fa-check"></i><b>B.3.4</b> Time series data</a></li>
+<li class="chapter" data-level="B.3.5" data-path="ggplot-tutorial.html"><a href="ggplot-tutorial.html#discrete-x-and-y"><i class="fa fa-check"></i><b>B.3.5</b> Discrete X and Y</a></li>
+</ul></li>
+<li class="chapter" data-level="B.4" data-path="ggplot-tutorial.html"><a href="ggplot-tutorial.html#facets"><i class="fa fa-check"></i><b>B.4</b> Facets</a></li>
+<li class="chapter" data-level="B.5" data-path="ggplot-tutorial.html"><a href="ggplot-tutorial.html#changing-the-theme-axis-titles-other-visual-elements"><i class="fa fa-check"></i><b>B.5</b> Changing the theme, axis titles, &amp; other visual elements</a></li>
+<li class="chapter" data-level="B.6" data-path="ggplot-tutorial.html"><a href="ggplot-tutorial.html#more-references"><i class="fa fa-check"></i><b>B.6</b> More references</a></li>
+</ul></li>
+<li class="chapter" data-level="C" data-path="dplyr-tutorial.html"><a href="dplyr-tutorial.html"><i class="fa fa-check"></i><b>C</b> Data manipulation with <code>dplyr</code></a><ul>
+<li class="chapter" data-level="C.1" data-path="dplyr-tutorial.html"><a href="dplyr-tutorial.html#the-pipe"><i class="fa fa-check"></i><b>C.1</b> The Pipe (%&gt;%)</a></li>
+<li class="chapter" data-level="C.2" data-path="dplyr-tutorial.html"><a href="dplyr-tutorial.html#addingmodifying-columns-mutate"><i class="fa fa-check"></i><b>C.2</b> Adding/modifying columns (mutate)</a></li>
+<li class="chapter" data-level="C.3" data-path="dplyr-tutorial.html"><a href="dplyr-tutorial.html#subsetting-by-row-filter"><i class="fa fa-check"></i><b>C.3</b> Subsetting by row (filter)</a></li>
+<li class="chapter" data-level="C.4" data-path="dplyr-tutorial.html"><a href="dplyr-tutorial.html#subsetting-by-column-select"><i class="fa fa-check"></i><b>C.4</b> Subsetting by column (select)</a></li>
+<li class="chapter" data-level="C.5" data-path="dplyr-tutorial.html"><a href="dplyr-tutorial.html#sorting-by-columns-arrange"><i class="fa fa-check"></i><b>C.5</b> Sorting by columns (arrange)</a></li>
+<li class="chapter" data-level="C.6" data-path="dplyr-tutorial.html"><a href="dplyr-tutorial.html#summarizing-data"><i class="fa fa-check"></i><b>C.6</b> Summarizing data</a></li>
+<li class="chapter" data-level="C.7" data-path="dplyr-tutorial.html"><a href="dplyr-tutorial.html#group-operations"><i class="fa fa-check"></i><b>C.7</b> Group Operations</a></li>
+</ul></li>
+<li class="chapter" data-level="D" data-path="r-analysis-tutorial.html"><a href="r-analysis-tutorial.html"><i class="fa fa-check"></i><b>D</b> Performing some useful analyses in R</a><ul>
+<li class="chapter" data-level="D.1" data-path="r-analysis-tutorial.html"><a href="r-analysis-tutorial.html#a-note-on-factors"><i class="fa fa-check"></i><b>D.1</b> A note on factors</a></li>
+<li class="chapter" data-level="D.2" data-path="r-analysis-tutorial.html"><a href="r-analysis-tutorial.html#comparing-categorical-frequencies-contingency-tables-related-analyses"><i class="fa fa-check"></i><b>D.2</b> Comparing categorical frequencies (Contingency Tables &amp; related analyses)</a><ul>
+<li class="chapter" data-level="D.2.1" data-path="r-analysis-tutorial.html"><a href="r-analysis-tutorial.html#contingency-tables"><i class="fa fa-check"></i><b>D.2.1</b> Contingency Tables</a></li>
+<li class="chapter" data-level="D.2.2" data-path="r-analysis-tutorial.html"><a href="r-analysis-tutorial.html#chi-squared-fishers-exact-tests"><i class="fa fa-check"></i><b>D.2.2</b> Chi-squared &amp; Fisher's Exact Tests</a></li>
+</ul></li>
+<li class="chapter" data-level="D.3" data-path="r-analysis-tutorial.html"><a href="r-analysis-tutorial.html#linear-models-regression-anova-and-t-tests"><i class="fa fa-check"></i><b>D.3</b> Linear Models: Regression, ANOVA, and t-tests</a><ul>
+<li class="chapter" data-level="D.3.1" data-path="r-analysis-tutorial.html"><a href="r-analysis-tutorial.html#regression"><i class="fa fa-check"></i><b>D.3.1</b> Regression</a></li>
+<li class="chapter" data-level="D.3.2" data-path="r-analysis-tutorial.html"><a href="r-analysis-tutorial.html#anova"><i class="fa fa-check"></i><b>D.3.2</b> ANOVA</a></li>
+<li class="chapter" data-level="D.3.3" data-path="r-analysis-tutorial.html"><a href="r-analysis-tutorial.html#comparing-two-means-t-tests"><i class="fa fa-check"></i><b>D.3.3</b> Comparing two means (t-tests)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="E" data-path="tidyr-tutorial.html"><a href="tidyr-tutorial.html"><i class="fa fa-check"></i><b>E</b> Wrangling, reshaping, and tidying data with <code>tidyr</code></a><ul>
+<li class="chapter" data-level="E.1" data-path="tidyr-tutorial.html"><a href="tidyr-tutorial.html#tidy-data"><i class="fa fa-check"></i><b>E.1</b> Tidy data</a></li>
+<li class="chapter" data-level="E.2" data-path="tidyr-tutorial.html"><a href="tidyr-tutorial.html#pivot-longer-tutorial"><i class="fa fa-check"></i><b>E.2</b> Going from many columns to many rows: <code>pivot_longer()</code></a></li>
+<li class="chapter" data-level="E.3" data-path="tidyr-tutorial.html"><a href="tidyr-tutorial.html#separate-tutorial"><i class="fa fa-check"></i><b>E.3</b> Splitting and merging columns: <code>separate() and unite()</code></a></li>
+<li class="chapter" data-level="E.4" data-path="tidyr-tutorial.html"><a href="tidyr-tutorial.html#pivot-longer-multi-tutorial"><i class="fa fa-check"></i><b>E.4</b> Pivoting multiple columns</a><ul>
+<li class="chapter" data-level="E.4.1" data-path="tidyr-tutorial.html"><a href="tidyr-tutorial.html#combining-pivot_longer-with-summarise"><i class="fa fa-check"></i><b>E.4.1</b> Combining <code>pivot_longer()</code> with <code>summarise()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="E.5" data-path="tidyr-tutorial.html"><a href="tidyr-tutorial.html#pivot-wider-tutorial"><i class="fa fa-check"></i><b>E.5</b> Going from many rows to many columns: <code>pivot_wider()</code></a></li>
+<li class="chapter" data-level="E.6" data-path="tidyr-tutorial.html"><a href="tidyr-tutorial.html#combining-data-frames-in-progress"><i class="fa fa-check"></i><b>E.6</b> Combining data frames (In Progress)</a><ul>
+<li class="chapter" data-level="E.6.1" data-path="tidyr-tutorial.html"><a href="tidyr-tutorial.html#binding-rows"><i class="fa fa-check"></i><b>E.6.1</b> Binding rows</a></li>
+<li class="chapter" data-level="E.6.2" data-path="tidyr-tutorial.html"><a href="tidyr-tutorial.html#binding-columns-by-position"><i class="fa fa-check"></i><b>E.6.2</b> Binding columns by position</a></li>
+<li class="chapter" data-level="E.6.3" data-path="tidyr-tutorial.html"><a href="tidyr-tutorial.html#joining-rows-by-value"><i class="fa fa-check"></i><b>E.6.3</b> Joining rows by value</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="F" data-path="vegan-tutorial.html"><a href="vegan-tutorial.html"><i class="fa fa-check"></i><b>F</b> Community ecology analyses with <code>vegan</code></a><ul>
+<li class="chapter" data-level="F.1" data-path="vegan-tutorial.html"><a href="vegan-tutorial.html#setting-up-the-data"><i class="fa fa-check"></i><b>F.1</b> Setting up the data</a></li>
+<li class="chapter" data-level="F.2" data-path="vegan-tutorial.html"><a href="vegan-tutorial.html#jaccard-similarity"><i class="fa fa-check"></i><b>F.2</b> Jaccard similarity</a></li>
+<li class="chapter" data-level="F.3" data-path="vegan-tutorial.html"><a href="vegan-tutorial.html#species-accumulation-curves"><i class="fa fa-check"></i><b>F.3</b> Species Accumulation Curves</a></li>
+<li class="chapter" data-level="F.4" data-path="vegan-tutorial.html"><a href="vegan-tutorial.html#rank-abundance-curves"><i class="fa fa-check"></i><b>F.4</b> Rank Abundance Curves</a></li>
+<li class="chapter" data-level="F.5" data-path="vegan-tutorial.html"><a href="vegan-tutorial.html#shannon-index-diversity"><i class="fa fa-check"></i><b>F.5</b> Shannon Index &amp; Diversity</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Bio 373L Survival Guide</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="Lab_MRR" class="section level1">
+<h1><span class="header-section-number">Chapter 8</span> Lab 5: Mark-Release-Recapture with <em>Heliconius</em></h1>
+<div id="introduction-1" class="section level2">
+<h2><span class="header-section-number">8.1</span> Introduction</h2>
+<p>The size of an animal population is an important quantity to measure if we wish to understand its ecological and evolutionary interactions. How population size varies with respect to weather, resources, or competing populations provides clues about which factors are significant in the distribution and abundance of a species.</p>
+<p>While plants and sessile animals are relatively easy to census, the mobility of most animals makes population studies very difficult. Therefore when one attempts to estimate the size of such populations it is necessary to use indirect methods such as Mark-Release-Recapture (MRR).</p>
+<div id="the-lincoln-pearson-model" class="section level3">
+<h3><span class="header-section-number">8.1.1</span> The Lincoln-Pearson model</h3>
+<p>The basic method, from which most modern population size estimation procedures have evolved (Lincoln-Pearson), involves at least two sampling periods. During the first period, all animals captured are given marks. If the population size is <span class="math inline">\(N\)</span> and <span class="math inline">\(M_1\)</span> animals were caught and marked during the first period, then the fraction <span class="math inline">\((M_1 / N)\)</span> represents the proportion of the population actually marked.</p>
+<p>Ideally, the marked animals will have mixed randomly with the remaining unmarked population before the second sample is taken (first <strong>assumption</strong>). During this second capture period, it is also <strong>assumed</strong> that the chance of catching any marked animal is equal to the chance of catching any unmarked member of the population (this assumption is violated if, for example, marked animals are more wary and harder to catch, or if the marks make detection substantially easier). Simple methods also assume no gains or losses in the populations between sample periods.</p>
+<p>If the assumptions of random mixing and capture hold, the following should be true:</p>
+<ol style="list-style-type: decimal">
+<li>Some animals caught on the second sampling period (<strong>total number caught in second sample</strong> <span class="math inline">\(= S_2\)</span>) will be re-captures of those marked on period one; the <strong>number of recaptures</strong> is represented by <span class="math inline">\(R_2\)</span>.</li>
+<li><span class="math inline">\(\frac{R_2}{S_2} = \frac{M_1}{N}\)</span>.</li>
+</ol>
+<p>Thus, we can estimate the population size as: <span class="math display">\[\hat{N} = \frac{S_2 M_1}{R_2}\]</span></p>
+<p>In other words, <span class="math inline">\(R_2/M_1\)</span> estimates the fraction of <span class="math inline">\(N\)</span> marked on the first day. This can be shown graphically as follows (<span class="math inline">\(N\)</span> is the entire box, <span class="math inline">\(M_1\)</span> is the blue row, <span class="math inline">\(S_2\)</span> is the red column, and <span class="math inline">\(R_2\)</span> is their purple intersection):</p>
+<div class="figure">
+<img src="images/mrr_diagram.png" alt="MRR Diagram" />
+<p class="caption">MRR Diagram</p>
+</div>
+<p>Assumptions of the Lincoln-Pearson method:</p>
+<ol style="list-style-type: decimal">
+<li>Marks do not affect animals.</li>
+<li>Marked animals are mixed in the population.</li>
+<li>Marked and unmarked animals have the same probability of capture</li>
+<li>The population is closed (no birth/death/migration)</li>
+<li>Marks are not lost between samples</li>
+</ol>
+<p>Although we can never be sure that the estimated population size <span class="math inline">\((\hat{N})\)</span> equals the true value, <span class="math inline">\(\hat{N}\)</span> should approach <span class="math inline">\(N\)</span> as <span class="math inline">\(M_1\)</span> and <span class="math inline">\(S_2\)</span> get larger. Even though intense enough sampling could allow direct measure of <span class="math inline">\(N\)</span>, real habitats are too complex and mobile animals too elusive. In this exercise, we will study a hybrid population of <em>Heliconius</em> butterflies.</p>
+</div>
+<div id="heliconius-butterflies" class="section level3">
+<h3><span class="header-section-number">8.1.2</span> <em>Heliconius</em> butterflies</h3>
+<p>Our main focus for this exercise will be an enclosed hybrid population of <em>Heliconius melopomene x Heliconius cydno</em>. The exercise sits at the interface of population ecology and genetics since the study population is polymorphic for wing patterns reflecting a naturally occurring phenomenon in South America. It is known that males of <em>Heliconius melpomene</em> mate with females of <em>Heliconius cydno</em> in nature to yield species called <em>H. heurippa</em>, <em>H. timareta</em>, and likely others. <em>Heliconius timareta</em> displays a variety of color pattern types in different parts of its range. Such races are locally monomorphic (i.e. only one pattern exists in a particular place) However, genomic studies confirm that these populations share cydno mitochondrial haplotypes and a common mode of origination, in spite of diverse phenotypes. In the 1980s, Dr. Gilbert carried out studies of hybridization in <em>H. cydno</em> and <em>H. melpomene</em> in UT greenhouses and hypothesized the likely hybrid origin of species like <em>H. timerata</em>. Now that genomic studies verify his hypotheses on the origin of such species, Dr. Gilbert has recreated a hybrid population according to the likely mode of origin of <em>H. timareta</em>. This population is large and diverse in color pattern phenotypes for which we know the genetics of major pattern elements.</p>
+<p>With the hybrid <em>H. cydno X H. melpomene</em> population, you will be able to combine ecology and population genetics by applying Hardy-Weinberg law to test whether a force like selection or non-random mating is acting on wing pattern genes. Larry will photograph each numbered butterfly and post in a web album so that you can record the proportion of phenotypes and determine whether they are in Hardy-Weinberg equilibrium.</p>
+<div class="figure">
+<img src="images/optix_phenotypes.jpg" alt="Optix phenotypes" />
+<p class="caption">Optix phenotypes</p>
+</div>
+<p>We will score the orange/red/brown patterns for which the link between phenotype and genotype is now known. The mimetic phenotypes generated are key to the diversification of the genus, to predator protection niches, and to mutualism between sympatric species (Mullerian mimicry). A supergene locus controls expression of a transcription factor called <strong>Optix</strong>; this locus exhibits incomplete dominance, so the genotype can be directly determined from the phenotype. One allele (F) accounts for the red, orange, red or brown scales in the discal forewing band (beyond the large wing cell). Another allele (H) controls the presence of such scales on the hind wing and/or on the proximal FW in the cell region. We will use these genotypes to estimate whether the population is in <strong>Hardy-Weinberg Equilbirum</strong></p>
+</div>
+<div id="hardy-weinberg-equilbrium" class="section level3">
+<h3><span class="header-section-number">8.1.3</span> Hardy-Weinberg Equilbrium</h3>
+<p>A few definitions are in order:</p>
+<ul>
+<li><strong>Allele</strong>: one variant of a gene. For example, the <em>Optix</em> gene has the alleles <span class="math inline">\(F\)</span> and <span class="math inline">\(H\)</span>.</li>
+<li><strong>Genotype</strong>: in a diploid organism like <em>Heliconius</em> butterflies, there are two copies of most genes; the genotype is the combination of the alleles. For <em>Optix</em>, genotypes can be <span class="math inline">\(FF\)</span>, <span class="math inline">\(FH\)</span>, or <span class="math inline">\(HH\)</span>. An individual with 2 of the same alleles (<span class="math inline">\(FF\)</span> or <span class="math inline">\(HH\)</span>) is a homozygote, while an individual with different alleles (<span class="math inline">\(FH\)</span>) is a heterozygote.</li>
+<li><strong>Allele frequency</strong>: the proportion of each allele of a gene within a population. For 2-allele systems, we usually note these frequencies as <span class="math inline">\(p\)</span> and <span class="math inline">\(q\)</span>, where <span class="math inline">\(p + q = 1\)</span>. In <em>Optix</em>, <span class="math inline">\(p\)</span> is the frequency of <span class="math inline">\(F\)</span> and <span class="math inline">\(q\)</span> is the frequency of <span class="math inline">\(H\)</span>.</li>
+<li><strong>Genotype frequency</strong>: the proportion of each genotype within a population. For <em>Optix</em>, we will be noting these as <span class="math inline">\(f_{FF}\)</span>, <span class="math inline">\(f_{FH}\)</span>, and <span class="math inline">\(f_{HH}\)</span>. Genotype frequencies will also sum to 1.</li>
+</ul>
+<p>Allele frequencies can be directly calculated from genotype frequencies <span class="math inline">\((p=f_{FF}+0.5*f_{FH}\)</span>, <span class="math inline">\(q=1-p)\)</span>. However, the reverse is not necessarily true. There are many possible genotype frequencies that can correspond to the same allele frequencies; as an extreme example, a population with 100 heterozygotes (<span class="math inline">\(FH\)</span> genotypes) would have the same allele frequencies as one with 50 <span class="math inline">\(FF\)</span> and <span class="math inline">\(50\)</span> HH homozygotes. However, the two populations would look quite different. The relation between allele and genotype frequencies can help us understand a population's biology.</p>
+<div id="genotype-frequencies-at-equilbrium" class="section level4">
+<h4><span class="header-section-number">8.1.3.1</span> Genotype frequencies at equilbrium</h4>
+<p>If genotype frequencies are stable and unchanging from one generation to the next, then we can expect a certain relationship between genotype and allele frequencies:</p>
+<p><span class="math display">\[f_{FF}=p^{2};\,\,\,\,\,\,\,f_{FH}=2pq;\,\,\,\,\,\,\,f_{HH}=q^{2}\]</span> This is called <strong>Hardy-Weinberg Equilibrium</strong> (HWE). An easy way to remember this is that genotypes take two alleles, so expanding the equation <span class="math inline">\((p+q)^{2}=1\)</span> will give you these ratios. HWE only applies for a population that is not changing.</p>
+<p>What can affect allele or genotype frequencies?</p>
+<ul>
+<li>Natural selection: If one allele or genotype provides an advantage in the current environment, individuals with this allele are likely to produce more offspring, which will increase the allele frequency over time.</li>
+<li>Migration: Allele frequencies tend to vary between populations of the same species; individuals moving from one population to another will make the allele frequencies more similar to each other.</li>
+<li>Genetic drift: Variation in individual mating success will cause random changes in allele frequencies, in large populations, these are so small that they usually average out; however, small populations can have substantial change between generations.</li>
+<li>Mutation: Random events can introduce new alleles; while this is rare and most mutations disappear through drift shortly after popping up, mutation is ultimately the source of all genetic variation.</li>
+<li>Non-random mating: If individuals prefer to mate with like individuals, this can increase the frequencies of homozygous genotypes; conversely, a preference for different individuals can increase heterozygote frequencies. Unlike the previous four, non-random mating changes genotype frequencies without changing allele frequencies.</li>
+</ul>
+<p>Pretty much any natural population will violate at least one of these conditions. So why is HWE useful? It gives us a baseline expectation to compare our observed genotype frequencies to. If our data are significantly different from the HWE values, we can conclude that one of these processes is playing an important role in the population. If not, then these processes are minor enough that we can ignore them.</p>
+</div>
+<div id="detecting-violations-of-hwe" class="section level4">
+<h4><span class="header-section-number">8.1.3.2</span> Detecting violations of HWE</h4>
+<p>To test whether our genotype data is in Hardy-Weinberg equilibrium, we can use a chi-squared test of goodness-of-fit. First, we'll need to calculate a chi-squared test statistic, which measures how strongly our observed data <span class="math inline">\((O)\)</span> deviates from the HWE expectations <span class="math inline">\((E)\)</span>.</p>
+<p><span class="math display">\[\chi^{2}=\sum_{i}\frac{\left(O_{i}-E_{i}\right)^{2}}{E_{i}}\]</span></p>
+<p>In terms of our data, this is equal to</p>
+<p><span class="math display">\[\chi^{2}=\frac{\left(f_{FF}-p^{2}\right)^{2}}{p^{2}}+\frac{\left(f_{FH}-2pq\right)^{2}}{2pq}+\frac{\left(f_{HH}-q^{2}\right)^{2}}{q^{2}}\]</span></p>
+<p>This is somewhat different from the chi-squared tests we've done in previous labs (which are chi-squared tests of independence). I'll be providing some code that shows how to do this.</p>
+</div>
+</div>
+</div>
+<div id="questions-and-hypotheses-2" class="section level2">
+<h2><span class="header-section-number">8.2</span> Questions and hypotheses</h2>
+<p>Primary Questions:</p>
+<ol style="list-style-type: decimal">
+<li>How does sampling intensity improve mark-release-recapture (MRR) population size estimates?</li>
+<li>Does separating animals by sex alter our estimate of population size? What's the sex ratio?</li>
+<li>How does the Lincoln-Pearson model compare with alternate MRR methods?</li>
+<li>Are the <em>Heliconius</em> populations in Hardy-Weinberg equilbrium for the Optix gene?</li>
+</ol>
+</div>
+<div id="field-methods-1" class="section level2">
+<h2><span class="header-section-number">8.3</span> Field Methods</h2>
+<p>For the MRR exercise, your team will enter the greenhouse capture butterflies for two distinct periods.</p>
+<p>For the first period, your group will capture 5 different butterflies. re-mixes with the population. At least thirty minutes after you've completed the first period, return to the greenhouse for the second period and capture five more. The delay should give the butterflies time to mix with the population.</p>
+<ul>
+<li>Space yourselves out and move slowly around your area of the greenhouse when searching.</li>
+<li>For each butterfly, record its number (or bring it to Dr. Gilbert if it doesn't have one).</li>
+<li>Butterflies often land and sit after capture; don’t resample these. Instead, scare them into flight (by gently waving your hand) to insure mixing of individuals in the population.</li>
+</ul>
+<p>After you've completed your data collection, you will be given a photo album of the marked butterflies; you will need to identify the genotype and sex of the butterflies in the images for the Hardy-Weinberg exercise.</p>
+</div>
+<div id="analysis-2" class="section level2">
+<h2><span class="header-section-number">8.4</span> Analysis</h2>
+<p>The Lincoln-Pearson model:</p>
+<p>If <span class="math inline">\(S_2\)</span> is the number of individuals collected in a sample period, <span class="math inline">\(M_1\)</span> is total number of previously marked individuals, and <span class="math inline">\(R_2\)</span> is the number of marked individuals who were recaptured, then you can estimate population size:</p>
+<p><span class="math display">\[\hat{N} = \frac{S_2 M_1}{R_2}\]</span></p>
+<div id="effect-of-sampling-intensity-on-lincoln-pearson-hatn-estimates" class="section level3">
+<h3><span class="header-section-number">8.4.1</span> Effect of sampling intensity on Lincoln-Pearson <span class="math inline">\(\hat{N}\)</span> estimates</h3>
+<p>We're going to simulate increased sampling estimates by pooling together estimates from each team. I'll be combining the data from each group in all possible team combinations (i.e., one team: A, B, C, ...; two teams: AB, AC, AD, ...; three teams: ABC, ABD, BCD, ...). For each combination, you'll need to calculate the Lincoln-Pearson population size estimate <span class="math inline">\((\hat{N})\)</span>. Create a figure showing the effect of sample size on <span class="math inline">\(\hat{N}\)</span>.</p>
+</div>
+<div id="sex-ratios" class="section level3">
+<h3><span class="header-section-number">8.4.2</span> Sex ratios</h3>
+<p>Using the combined data from all teams, estimate <span class="math inline">\(\hat{N}\)</span> separately for male and female butterflies. How does the sum of these estimates compare with the estimate when the sexes are lumped together?</p>
+<p>What is the sex ratio of the population? Does it differ from 50:50? Use a chi-square test to test this.</p>
+</div>
+<div id="comparison-of-lincoln-pearson-with-alternative-method" class="section level3">
+<h3><span class="header-section-number">8.4.3</span> Comparison of Lincoln-Pearson with alternative method</h3>
+<p>In 1970-71, Larry Gilbert collected data on a natural population of <em>Heliconius</em> in Trinidad (recall his paper spreadsheet from lecture with cells colored in to represent individuals). We will use this method to estimate population sizes.</p>
+<p>For each of the three sample periods, use a regression to model the relationship between the daily recapture proportion <span class="math inline">\((x)\)</span> and the cumulative number of individuals marked <span class="math inline">\((y)\)</span>. Intuitively, a recapture rate of 1.0 would suggest that you've sampled the entire population; you could thus use this regression equation to estimate <span class="math inline">\((\hat{N})\)</span> by evaluating it when <span class="math inline">\(x=1\)</span>. Create a multi-panel regression plot to go along with these methods.</p>
+<p>Compare these estimates with the Lincoln-Pearson estimate from the day with the highest proportion of recaptures in the sampling period. Note that for each row of the Trinidad data, <span class="math inline">\(S_2\)</span> = <code>total_captured</code>, <span class="math inline">\(R_2\)</span> = <code>recaptures</code>, and <span class="math inline">\(M_1\)</span> = <code>(cumulative_m - new_captures)</code>.</p>
+</div>
+<div id="hardy-weinberg" class="section level3">
+<h3><span class="header-section-number">8.4.4</span> Hardy-Weinberg</h3>
+<p>First, you'll want to get the observed numbers for each genotype; we'll call these <span class="math inline">\(N_{FF}\)</span>, <span class="math inline">\(N_{FH}\)</span>, and <span class="math inline">\(N_{HH}\)</span>; the total sample size <span class="math inline">\(N\)</span> is the sum of these. You can use the <code>table</code> command in R to calculate this.</p>
+<p>From these observed genotypes, you can calculate the genotype frequency of F, which is just <span class="math inline">\(\frac{N_{FF} + 0.5 N_{FH} }{N}\)</span>l let's call this <span class="math inline">\(p\)</span>.</p>
+<p>You can get your HWE expected genotypes by using <span class="math inline">\(p\)</span> and <span class="math inline">\(q=1-p\)</span> to get your expected genotype frequencies; From here, you can run a chi-squared test.</p>
+</div>
+</div>
+<div id="discussion-3" class="section level2">
+<h2><span class="header-section-number">8.5</span> Discussion</h2>
+<p>You should address the following in your discussion:</p>
+<ul>
+<li>How well did we meet the assumptions of MRR?</li>
+<li>Our MRR data came from a closed population; briefly speculate about some of the potential problems with these estimates in an open, natural population (how would emigration/immigration or birth/death affect the estimates)? How might our study compare with data from a natural population?</li>
+<li>How well does the Lincoln-Pearson model compare with fractional recapture estimation in a natural population? How different were your population estimates? What factors could help explain them?</li>
+<li>Think of some creative ways you could improve sampling in an MRR project (beyond just increasing the sample size).<br />
+</li>
+<li>Don't forget to discuss your results from the sex ratio and genotype analyses.</li>
+</ul>
+
+</div>
+</div>
+
+
+
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="Lab_phorid.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="working-with-r.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "lunr",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
