@@ -14,12 +14,12 @@ The goal of this project is to acquaint you with some of the kinds of data ecolo
 
 ### BFL habitat regions
 
-To collect data we will establish transects in three areas of interest: the **lower river terrace**, the **old pastures (experimental plots)** and the **quarry zone** (see figure \@ref(fig:bflHabMapCap) for a map).
+To collect data we will establish transects in three areas of interest: the **lower river terrace**, the **old pastures (experimental plots)** and the **quarry zone** (see figure \@ref(fig:bflHabMap) for a map).
 
 (ref:bflHabMapCap) Habitat map of BFL; for the purposes of this lab, the river terrace corresponds to the pecan terrace and flood deposited terrace (near the bottom), the old pasture is the central area, and the old quarry is near the top.
 
 ```{r bflHabMap, echo = FALSE, fig.cap = '(ref:bflHabMapCap)'}
-knitr::include_graphics("https://bfl.utexas.edu/images/BFL/habitats_2013.jpg")
+knitr::include_graphics("images/bfl_habitats_2013.jpg")
 ```
 
 ### Data Collection
