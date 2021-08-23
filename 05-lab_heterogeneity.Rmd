@@ -1,4 +1,4 @@
-# Lab 2: Woodland Heterogeneity {#Lab2}
+# Lab 2: Woodland Heterogeneity {#Lab_heterogeneity}
 
 ## Introduction & background
 

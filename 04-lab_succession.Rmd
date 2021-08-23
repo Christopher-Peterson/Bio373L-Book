@@ -1,4 +1,4 @@
-# Lab 1: Succession {#lab1}
+# Lab 1: Succession {#lab_succession}
 
 ## Introduction to the lab
 
