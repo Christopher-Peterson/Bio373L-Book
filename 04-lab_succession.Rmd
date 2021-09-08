@@ -1,3 +1,5 @@
+# (PART) Field Problems {.unnumbered}
+
 # Lab 1: Succession {#lab_succession}
 
 ## Introduction to the lab

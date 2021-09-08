@@ -1,4 +1,6 @@
-# Writing Lab Reports: Structure {#structure}
+# (PART) Writing Lab Reports  {.unnumbered}
+
+# Structure {#structure}
 
 ## Structure Overview
 
