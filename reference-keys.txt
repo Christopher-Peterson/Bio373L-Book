@@ -27,6 +27,11 @@ literature-cited
 common-mistakes-for-particular-sections
 introduction-and-discussion
 results-1
+prelim_ms
+key-paragraphs
+list-of-methods-analyses
+figures-and-tables
+citationsreferences
 style
 be-concise
 sentence-structure
