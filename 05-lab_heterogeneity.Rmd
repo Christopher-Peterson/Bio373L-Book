@@ -15,7 +15,8 @@ In this week’s  project, we will attempt to classify and characterize the hete
 ## Questions and Hypotheses
 
   1. What are the relationships between canopy, shrub, and ground cover? 
-  2. How have the relative abundance of Canopy, Shrub, and Ground cover categories changed over time? 
+  <!-- 2. How have the relative abundance of Canopy, Shrub, and Ground cover categories changed over time?  -->
+  2. How do the relative abundances of Canopy, Shrub, and Ground cover compare with historical observations?
   `r # disabled for now: t how taxonomic or functional groups may affect cover levels, based on your field observations; do this **before** looking at your dataset. Some examples: Are juniper and hackberry associated with different cover levels?  What types of canopy are associated with high levels of ground cover?  Are ground-level dicots associated with particular canopy cover levels?  Are exotic shrubs (e.g. *Ligustrum* or *Nandina*) more likely than native counter parts to eliminate ground cover? `
 
 You'll also be doing to other things that aren't specifically hypothesis or question driven, but should be presented in the results.
@@ -39,7 +40,7 @@ Each team will walk along 3-4 of the ten permanent transects at BFL, taking a re
 
 To take the picture, the long axis of the camera should be oriented north south with the photographer’s right hand on the south side, i.e. you should face due east, then turn the camera toward the sky.  This will ensure that the bottom of the picture points east.  Make sure that the camera is on a full wide angle (no zoom) and with the flash suppressed. Those taking photos need to carry a compass. (See GLA handout)
 
-We will also record instantaneous inputs of light wavelength needed for plant growth at a representative sample of points using an Apogee quantum meter (It measures micromoles of photons per square meter per second between the wavelengths at 400-700 nm).  We will assign two people from different teams to collect these data.
+<!-- We will also record instantaneous inputs of light wavelength needed for plant growth at a representative sample of points using an Apogee quantum meter (It measures micromoles of photons per square meter per second between the wavelengths at 400-700 nm).  We will assign two people from different teams to collect these data. -->
 
 ## Analyses
 
@@ -87,11 +88,17 @@ Use a [map of BFL](https://bfl.utexas.edu/resources-facilities/maps/transect-tag
 
 If you do this by hand, scan or photograph it and include it in the Canvas submission. 
 
-### Historical Trends
+<!-- ### Historical Trends -->
 
-How have the relative abundances of each category within the three cover types changed over time?  
-You don't need to do an analysis for this, but create a figure. 
-Since this data changes over time, you should have time along the x axis of the figure.  
-Line plots and stacked box plots are two possible options.  
-Multiple panels may be warranted.
+<!-- How have the relative abundances of each category within the three cover types changed over time?   -->
+<!-- You don't need to do an analysis for this, but create a figure.  -->
+<!-- Since this data changes over time, you should have time along the x axis of the figure.   -->
+<!-- Line plots and stacked box plots are two possible options.   -->
+<!-- Multiple panels may be warranted. -->
+
+### Historical comparison
+How are the current levels of shrub, canopy, and ground cover different from prevoius years?
+We will be comparing current data with fall 2004, when deer populations were high.
+For each cover type (canopy, shrub, and ground), make a contingency table comparing present cover levels vs. those in 2004 and run a chi-squared test.
+
 
