@@ -24,7 +24,7 @@
 <meta name="author" content="Christopher R. Peterson" />
 
 
-<meta name="date" content="2021-09-08" />
+<meta name="date" content="2021-09-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -189,7 +189,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="6.4.1" data-path="Lab_heterogeneity.html"><a href="Lab_heterogeneity.html#calibrating-canopy-estimates"><i class="fa fa-check"></i><b>6.4.1</b> Calibrating canopy estimates</a></li>
 <li class="chapter" data-level="6.4.2" data-path="Lab_heterogeneity.html"><a href="Lab_heterogeneity.html#relationship-between-canopy-and-ground-cover"><i class="fa fa-check"></i><b>6.4.2</b> Relationship between canopy and ground cover</a></li>
 <li class="chapter" data-level="6.4.3" data-path="Lab_heterogeneity.html"><a href="Lab_heterogeneity.html#quantifying-the-spatial-mosaic"><i class="fa fa-check"></i><b>6.4.3</b> Quantifying the spatial mosaic</a></li>
-<li class="chapter" data-level="6.4.4" data-path="Lab_heterogeneity.html"><a href="Lab_heterogeneity.html#historical-trends"><i class="fa fa-check"></i><b>6.4.4</b> Historical Trends</a></li>
+<li class="chapter" data-level="6.4.4" data-path="Lab_heterogeneity.html"><a href="Lab_heterogeneity.html#historical-comparison"><i class="fa fa-check"></i><b>6.4.4</b> Historical comparison</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="Lab_ants.html"><a href="Lab_ants.html"><i class="fa fa-check"></i><b>7</b> Lab 3: Ant Community Ecology</a><ul>
@@ -3665,8 +3665,7 @@ YOR069W
 ## $ Gene_expression &lt;dbl&gt; -0.24, -0.13, -0.21, -0.15, -0.05, -0.05, 0.20, 0.24, …</code></pre></div>
 <p>The <code>names_sep</code> argument works exactly like <code>sep</code> in <code>separate()</code>.</p>
 <p>Notice that <code>Concentration</code> is listed as a character vector (<code>&lt;chr&gt;</code>). It's probably a good idea to have it as a numeric vector instead. The <code>names_transform</code> argument lets you specify a function that can be applied to the names column(s) after they're re-shaped. In this case, we're going to use <code>as.numeric()</code> to convert it into a number.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-<span class="co"># We&#39;re going to create a list that tells pivot_longer to use the </span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># We&#39;re going to create a list that tells pivot_longer to use the </span>
   <span class="co"># as.numeric() function on Concentration</span>
   <span class="co"># a list() is basically a big box you can put any other kind of data structure into</span>
   <span class="co"># Each item in a list is called an elements; elements can be named or not</span>

@@ -24,7 +24,7 @@
 <meta name="author" content="Christopher R. Peterson" />
 
 
-<meta name="date" content="2021-09-08" />
+<meta name="date" content="2021-09-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -189,7 +189,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="6.4.1" data-path="Lab_heterogeneity.html"><a href="Lab_heterogeneity.html#calibrating-canopy-estimates"><i class="fa fa-check"></i><b>6.4.1</b> Calibrating canopy estimates</a></li>
 <li class="chapter" data-level="6.4.2" data-path="Lab_heterogeneity.html"><a href="Lab_heterogeneity.html#relationship-between-canopy-and-ground-cover"><i class="fa fa-check"></i><b>6.4.2</b> Relationship between canopy and ground cover</a></li>
 <li class="chapter" data-level="6.4.3" data-path="Lab_heterogeneity.html"><a href="Lab_heterogeneity.html#quantifying-the-spatial-mosaic"><i class="fa fa-check"></i><b>6.4.3</b> Quantifying the spatial mosaic</a></li>
-<li class="chapter" data-level="6.4.4" data-path="Lab_heterogeneity.html"><a href="Lab_heterogeneity.html#historical-trends"><i class="fa fa-check"></i><b>6.4.4</b> Historical Trends</a></li>
+<li class="chapter" data-level="6.4.4" data-path="Lab_heterogeneity.html"><a href="Lab_heterogeneity.html#historical-comparison"><i class="fa fa-check"></i><b>6.4.4</b> Historical comparison</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="Lab_ants.html"><a href="Lab_ants.html"><i class="fa fa-check"></i><b>7</b> Lab 3: Ant Community Ecology</a><ul>
@@ -344,8 +344,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="questions-and-hypotheses" class="section level2">
 <h2><span class="header-section-number">6.2</span> Questions and Hypotheses</h2>
 <ol style="list-style-type: decimal">
-<li>What are the relationships between canopy, shrub, and ground cover?</li>
-<li>How have the relative abundance of Canopy, Shrub, and Ground cover categories changed over time?</li>
+<li>What are the relationships between canopy, shrub, and ground cover? <!-- 2. How have the relative abundance of Canopy, Shrub, and Ground cover categories changed over time?  --></li>
+<li>How do the relative abundances of Canopy, Shrub, and Ground cover compare with historical observations?</li>
 </ol>
 <p>You'll also be doing to other things that aren't specifically hypothesis or question driven, but should be presented in the results.</p>
 <ul>
@@ -365,7 +365,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>The shrub layer will be scored only below eye level. This level roughly corresponds with the top of the browse line when deer were present. We will compare present shrub layer scores with those in a similar drought year when deer were still a forces at BFL.</p>
 <p>Each team will walk along 3-4 of the ten permanent transects at BFL, taking a reading of canopy cover (0-3) at each of the numbered transect markers that occur at 20 m intervals. The cumulative data will include readings at approximately 140 sites across BFL. We will calibrate our subjective estimates of canopy cover using digital cameras and fish-eye lenses to record actual canopy cover and shrub layer density. “Gap Light Analyzer” (Frazer et al 1999) software available on the computers will allow us to calculate the “percent openness” in the hemisphere above each sample point. <strong>Make sure that you take the fish eye photo exactly where the estimate of canopy cover was taken.</strong> If a team member takes the photo after others made the visual estimates, a flag should be left as a reference for the photographer.</p>
 <p>To take the picture, the long axis of the camera should be oriented north south with the photographer’s right hand on the south side, i.e. you should face due east, then turn the camera toward the sky. This will ensure that the bottom of the picture points east. Make sure that the camera is on a full wide angle (no zoom) and with the flash suppressed. Those taking photos need to carry a compass. (See GLA handout)</p>
-<p>We will also record instantaneous inputs of light wavelength needed for plant growth at a representative sample of points using an Apogee quantum meter (It measures micromoles of photons per square meter per second between the wavelengths at 400-700 nm). We will assign two people from different teams to collect these data.</p>
+<!-- We will also record instantaneous inputs of light wavelength needed for plant growth at a representative sample of points using an Apogee quantum meter (It measures micromoles of photons per square meter per second between the wavelengths at 400-700 nm).  We will assign two people from different teams to collect these data. -->
 </div>
 <div id="analyses" class="section level2">
 <h2><span class="header-section-number">6.4</span> Analyses</h2>
@@ -393,13 +393,16 @@ regression <span class="co"># this gives you the coefficients</span>
 <h3><span class="header-section-number">6.4.3</span> Quantifying the spatial mosaic</h3>
 <p>Use a <a href="https://bfl.utexas.edu/resources-facilities/maps/transect-tags">map of BFL</a> and number/color the canopy level at each point. Connect adjacent areas of the same number. Note whether any spatial patterns in cover vales can be associated with main habitat types based on past land use, substrate types, and history of natural disturbances.</p>
 <p>If you do this by hand, scan or photograph it and include it in the Canvas submission.</p>
+<!-- ### Historical Trends -->
+<!-- How have the relative abundances of each category within the three cover types changed over time?   -->
+<!-- You don't need to do an analysis for this, but create a figure.  -->
+<!-- Since this data changes over time, you should have time along the x axis of the figure.   -->
+<!-- Line plots and stacked box plots are two possible options.   -->
+<!-- Multiple panels may be warranted. -->
 </div>
-<div id="historical-trends" class="section level3">
-<h3><span class="header-section-number">6.4.4</span> Historical Trends</h3>
-<p>How have the relative abundances of each category within the three cover types changed over time?<br />
-You don't need to do an analysis for this, but create a figure. Since this data changes over time, you should have time along the x axis of the figure.<br />
-Line plots and stacked box plots are two possible options.<br />
-Multiple panels may be warranted.</p>
+<div id="historical-comparison" class="section level3">
+<h3><span class="header-section-number">6.4.4</span> Historical comparison</h3>
+<p>How are the current levels of shrub, canopy, and ground cover different from prevoius years? We will be comparing current data with fall 2004, when deer populations were high. For each cover type (canopy, shrub, and ground), make a contingency table comparing present cover levels vs. those in 2004 and run a chi-squared test.</p>
 
 </div>
 </div>

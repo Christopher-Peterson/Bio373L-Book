@@ -24,7 +24,7 @@
 <meta name="author" content="Christopher R. Peterson" />
 
 
-<meta name="date" content="2021-09-08" />
+<meta name="date" content="2021-09-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -189,7 +189,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="6.4.1" data-path="Lab_heterogeneity.html"><a href="Lab_heterogeneity.html#calibrating-canopy-estimates"><i class="fa fa-check"></i><b>6.4.1</b> Calibrating canopy estimates</a></li>
 <li class="chapter" data-level="6.4.2" data-path="Lab_heterogeneity.html"><a href="Lab_heterogeneity.html#relationship-between-canopy-and-ground-cover"><i class="fa fa-check"></i><b>6.4.2</b> Relationship between canopy and ground cover</a></li>
 <li class="chapter" data-level="6.4.3" data-path="Lab_heterogeneity.html"><a href="Lab_heterogeneity.html#quantifying-the-spatial-mosaic"><i class="fa fa-check"></i><b>6.4.3</b> Quantifying the spatial mosaic</a></li>
-<li class="chapter" data-level="6.4.4" data-path="Lab_heterogeneity.html"><a href="Lab_heterogeneity.html#historical-trends"><i class="fa fa-check"></i><b>6.4.4</b> Historical Trends</a></li>
+<li class="chapter" data-level="6.4.4" data-path="Lab_heterogeneity.html"><a href="Lab_heterogeneity.html#historical-comparison"><i class="fa fa-check"></i><b>6.4.4</b> Historical comparison</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="Lab_ants.html"><a href="Lab_ants.html"><i class="fa fa-check"></i><b>7</b> Lab 3: Ant Community Ecology</a><ul>
@@ -2305,26 +2305,21 @@ com_b =<span class="st"> </span>LETTERS[<span class="dv">3</span><span class="op
 <span class="kw">print</span>(com_a); <span class="kw">print</span>(com_b)
 ## [1] &quot;A&quot; &quot;B&quot; &quot;C&quot; &quot;D&quot; &quot;E&quot;
 ## [1] &quot;C&quot; &quot;D&quot; &quot;E&quot; &quot;F&quot; &quot;G&quot; &quot;H&quot;
-
 <span class="co"># Species in common:</span>
 <span class="kw">intersect</span>(com_a, com_b)
 ## [1] &quot;C&quot; &quot;D&quot; &quot;E&quot;
-
 <span class="co"># Species present in either:</span>
 <span class="kw">union</span>(com_a, com_b)
 ## [1] &quot;A&quot; &quot;B&quot; &quot;C&quot; &quot;D&quot; &quot;E&quot; &quot;F&quot; &quot;G&quot; &quot;H&quot;
-
 <span class="co"># Total number of species present:</span>
 <span class="kw">length</span>(<span class="kw">union</span>(com_a, com_b))
 ## [1] 8
-
 <span class="co"># Jaccard similarity:</span>
 <span class="kw">length</span>(<span class="kw">intersect</span>(com_a, com_b)) <span class="op">/</span><span class="st"> </span>
 <span class="kw">length</span>(<span class="kw">union</span>(com_a, com_b))
 ## [1] 0.375</code></pre></div>
 <p>Since you'll be doing this for several groups, it's a good idea to write a function that will do this for us.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-jaccard_similarity =<span class="st"> </span><span class="cf">function</span>(com_<span class="dv">1</span>, com_<span class="dv">2</span>) {
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">jaccard_similarity =<span class="st"> </span><span class="cf">function</span>(com_<span class="dv">1</span>, com_<span class="dv">2</span>) {
   <span class="co"># com_1 and com_2 are the arguments of the function, </span>
   <span class="co"># they should be the names in different communities</span>
   
@@ -2352,12 +2347,10 @@ com_r_hi =<span class="st"> </span>tidy_ant_data <span class="op">%&gt;%</span><
 com_r_lo
 ## [1] &quot;Solenopsis invicta&quot; &quot;Pheidole floridana&quot; &quot;Pheidole tetra&quot;    
 ## [4] &quot;Pheidole pelor&quot;     &quot;Pheidole dentata&quot;   &quot;Other species&quot;
-
 com_r_hi
 ## [1] &quot;Solenopsis invicta&quot;  &quot;Pheidole floridana&quot;  &quot;Pheidole tetra&quot;     
 ## [4] &quot;Solenopsis texana&quot;   &quot;Camponotus texanus&quot;  &quot;Pheidole dentata&quot;   
 ## [7] &quot;Pheidole bicarinata&quot; &quot;Other species&quot;
-
 <span class="kw">jaccard_similarity</span>(com_r_lo, com_r_hi)
 ## [1] 0.5555556</code></pre></div>
 <p>There are more elegant &amp; efficient ways to do this, but they rely on some R techniques we haven't talked about yet; I'll be updating this chapter once I get the appropriate information into the book.</p>
@@ -3420,8 +3413,7 @@ sac_dist_combined =<span class="st"> </span><span class="co"># Combine them into
 <h2><span class="header-section-number">F.4</span> Rank Abundance Curves</h2>
 <p>This is really just an exercise in data manipulation: we want to get the total number of individuals of each species, then display them in decreasing frequency. You need to summarize your data frame so that there's one row per species, with columns Species and N (which is the species-level sum of the already existing N column in <code>tidy_ant_data</code>). I'm not providing the code for this; you should be able to piece it together from the dplyr and/or ggplot appendices. I would recommend creating a function that does the work, so that you can reuse it.</p>
 <p>To make the plot itself, you can use this function:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-plot_rank_abundance =<span class="st"> </span><span class="cf">function</span>(summarized_data, <span class="dt">right_margin =</span> <span class="fl">2.8</span>) {
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">plot_rank_abundance =<span class="st"> </span><span class="cf">function</span>(summarized_data, <span class="dt">right_margin =</span> <span class="fl">2.8</span>) {
   <span class="co"># Make the rank abundance plot</span>
   <span class="co"># The right_margin argument is used to make sure that </span>
   <span class="co"># the angled axis labels don&#39;t go of the page</span>
@@ -3442,8 +3434,7 @@ plot_rank_abundance =<span class="st"> </span><span class="cf">function</span>(s
 <div id="shannon-index-diversity" class="section level2">
 <h2><span class="header-section-number">F.5</span> Shannon Index &amp; Diversity</h2>
 <p>Let's make a function that calculates the Shannon index of a community:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-shannon_diversity =<span class="st"> </span><span class="cf">function</span>(species, count) {
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">shannon_diversity =<span class="st"> </span><span class="cf">function</span>(species, count) {
   <span class="co"># species: vector of species names; </span>
   <span class="co"># count: how many of each species are present</span>
   

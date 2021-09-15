@@ -78,7 +78,7 @@ analyses
 calibrating-canopy-estimates
 relationship-between-canopy-and-ground-cover
 quantifying-the-spatial-mosaic
-historical-trends
+historical-comparison
 Lab_ants
 background
 questions-and-hypotheses-1
