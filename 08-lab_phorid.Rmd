@@ -140,7 +140,7 @@ Note that your figure should match up with your analysis: the t-test tests optio
 
 #### A note on running an ANCOVA
 
-An ANCOVA is essentially a regression that also the slope and/or intercept of the fit line to vary between levels of a categorical variable.
+An ANCOVA is essentially a regression that also allows the slope and/or intercept of the fit line to vary between levels of a categorical variable.
 To run one in R, you can use the `lm()` function with a formula like `ant_activity ~ time * treatment`.
 The `*` indicates we want to look at the effects of time, the treatment (control vs. experimental), and the interaction of the two (i.e., if change over time has the same rate for both treatment groups).
 The `summary` of the ANCOVA will include terms for all three of these (the term that is something like `time:treatmentExperimental` is the interaction).
