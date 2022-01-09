@@ -17,6 +17,10 @@ jobs:
       - uses: r-lib/actions/setup-pandoc@v1
       - name: Install rmarkdown
         run: Rscript -e 'install.packages(c("rmarkdown","bookdown"))'
+      - name: Install Tidyverse packages 
+        run: Rscript -e 'install.packages(c("ggplot2",  "tibble","readr", "dplyr","purrr", "tidyr", "forcats",  "stringr"))'
+      - name: Install other packages 
+        run: Rscript -e 'install.packages(c("cowplot", "ggforce", "glue", "vegan"))'
       - name: Render Book
         run: Rscript -e 'bookdown::render_book("index.Rmd")'
       - uses: actions/upload-artifact@v1
