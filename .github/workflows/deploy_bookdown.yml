@@ -1,18 +1,17 @@
 on:
   push:
-     branches:
-       - [main, master]
-     pull_request:
-       - [main, master]
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
   workflow_dispatch:
 
 name: bookdown
- 
+
 jobs:
   bookdown:
     runs-on: ubuntu-latest
     env:
-      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+      GITHUB_PAT: ${{ secrets.GH_PAT }}
     steps:
       - uses: actions/checkout@v2
 
