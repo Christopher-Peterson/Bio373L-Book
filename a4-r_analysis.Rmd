@@ -10,6 +10,7 @@ library(readr)
 library(tibble)
 library(forcats)
 library(cowplot)
+library(kableExtra)
 theme_set(theme_cowplot())
 lizards <- read_csv("example_data/anoles.csv") # See Appendix A if you don't have this data
 # Capture View()
