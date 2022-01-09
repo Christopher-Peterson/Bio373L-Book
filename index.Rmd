@@ -4,6 +4,12 @@ author: "Christopher R. Peterson"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 output: 
+  bookdown::pdf_book:
+    toc_appendix: true
+    toc_depth: 3
+    fig_width: 6.5
+    classoption: oneside
+    df_print: kable
   bookdown::gitbook:
     config:
       sharing:
