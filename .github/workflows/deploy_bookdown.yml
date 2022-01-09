@@ -11,7 +11,7 @@ jobs:
   bookdown:
     runs-on: ubuntu-latest
     env:
-      GITHUB_PAT: ${{ secrets.GH_PAT }}
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/checkout@v2
 
@@ -29,12 +29,11 @@ jobs:
           path: _bookdown_files
           key: bookdown-${{ hashFiles('**/*Rmd') }}
           restore-keys: bookdown-
-      - uses: r-lib/actions/setup-r-dependencies@v2
-        with:
-          cache-version: 2
-      - name: Render Book
+
+      - name: Build site
         run: Rscript -e 'bookdown::render_book("index.Rmd", quiet = TRUE)'
-       - name: Deploy to GitHub pages 🚀
+
+      - name: Deploy to GitHub pages 🚀
         if: github.event_name != 'pull_request'
         uses: JamesIves/github-pages-deploy-action@4.1.4
         with:
