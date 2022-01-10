@@ -1,12 +1,12 @@
-# (APPENDIX) Appendix {-}
+# (PART) Data Analysis in R
 
-# Working with R
+# Working with R and RStudio
 
-The appendices will include a tutorial on some data analysis topics that will be helpful for this class. Please make sure you've installed R and RStudio, and some essential packages according to [this guide](https://github.com/Christopher-Peterson/R-workshop-setup). You can skip installing git for now.
+This section include a tutorial on some data analysis topics that will be helpful for this class. Please make sure you've installed R and RStudio, and some essential packages according to [this guide](https://github.com/Christopher-Peterson/R-workshop-setup). You can skip installing git for now.
 
 ## Introduction to RStudio
 
-RStudio is organized into four panels: scripts & documents (upper left), the console (lower left), and two utility palens on the right that have various helpful functions. You may not see a document window on the left; if so, hit Ctrl+Shift+N to create a blank script. (Note that on Macs, Ctrl should pretty much always be replaced with Cmd). Generally, you write all of your code in the document window, then hit Ctrl+Enter (Cmd+Return) to send the R statement your cursor is on to the console window.  
+RStudio is organized into four panels: scripts & documents (upper left), the console (lower left), and two utility panels on the right that have various helpful functions. You may not see a document window on the left; if so, hit Ctrl+Shift+N to create a blank script. (Note that on Macs, Ctrl should pretty much always be replaced with Cmd). Generally, you write all of your code in the document window, then hit Ctrl+Enter (Cmd+Return) to send the R statement your cursor is on to the console window.  
 
 ### RStudio Projects
 
@@ -80,7 +80,11 @@ first_Ten # doesn't work
 
 Before we get started with this you'll need to download an example data file. From RStudio, create an **example_data** directory, then save [this file](https://raw.githubusercontent.com/Christopher-Peterson/Bio373L-Book/master/example_data/anoles.csv) in it (make sure the name is still `anoles.csv`). Note that you may need to go to go to **File -> Save Page As...* (or some variant) in your web browser to save it.  
 
-Now, let's load the data into R. To do that, we need to load the `readr` package, which is part of the `tidyverse`. Note: RStudio has some built-in ways to load datasets; I would strongly advise not using them, because it makes it harder to go back & repeat your analysis if something changes.
+Now, let's load the data into R.
+To do that, we need to load the `readr` package, which is part of the `tidyverse`.
+We will be using the `read_csv()` function.
+Note that there's also a `read.csv()` function; don't use that one, it has a tendency to change the column names of your data.
+RStudio also has some built-in ways to load datasets; I would strongly advise not using them, because it makes it harder to go back & repeat your analysis if something changes.
 ```{r tidyverse_workaround_a1, echo = FALSE, message = FALSE}
 library(readr)
 library(tibble)

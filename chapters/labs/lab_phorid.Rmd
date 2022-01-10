@@ -1,4 +1,4 @@
-# Lab 4: Parasitoid impacts on host foraging behavior: Phorid flies and fire ants {#Lab_phorid}
+# Phorid Lab: Parasitoid impacts on host foraging behavior with Phorid flies and fire ants {#Lab_phorid}
 
 ## Background
 

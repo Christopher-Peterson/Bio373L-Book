@@ -1,14 +1,14 @@
 # (PART) Writing Lab Reports  {.unnumbered}
 
-# Structure {#structure}
+# The Structure of a Scientific Manuscript {#structure}
 
-## Structure Overview
+## Overview
 
 The main goal of scientific writing is to effectively communicate complicated concepts. Scientific manuscripts tend to follow a traditional structure that is intended to help an experienced reader navigate these concepts. Each section should answer a question:
 
 - **Abstract**: Why should I read this? 
 - **Introduction**: Why did you do this?  
-- **Methods**: What did you do and where/with what did you do it? 
+- **Methods**: What did you do, how did you do it, and what species/locations did yo use? 
 - **Results**: What did you find?  
 - **Discussion**: What does it mean and why does it matter?
 - **Literature Cited**: Doesn't really answer a question, but this is where you list the citations you used. 
@@ -19,16 +19,15 @@ Greater detail is provided in the following sections.
 
 The abstract is a one paragraph summary that functions as an advertisement/elevator pitch for the rest of the paper. A reader should get a general idea about what you did and be interested in reading the rest of the paper. If it's more than 350 words, you need to shorten it. 
 
-While this section should cover the intro, methods, results, and discussion, you shouldn't re-use any language from those sections here. Instead, write a sentence or two from each that hits the important points without going into all of the details. Don’t cite any figures, tables, or other literature in here. 
+While this section should cover the intro, methods, results, and discussion, you **shouldn't re-use any of your writing from those sections here**. Instead, write a sentence or two from each that hits the important points without going into all of the details. Don’t cite any figures, tables, or other literature in here. 
 
-Generally, this section is written last.
 `r # Add some examples here of good and bad abstracts.`
 
 ## Introduction
 
 The introduction section sets the stage for the work you are about to describe and should tell your reader *why* your research is interesting. You should begin by describing the broader ecological context that your research fits into, and review the relevant literature. It is a good idea to start generally and narrow the focus to the specific project you did. 
 
-For example, let's say you're writing a paper about the temperature tolerance of the three-eyed sandslider (*Trioptis cerastes*), a fictional snake species we're going to pretend is native to southwestern deserts. A reasonable introduction could discuss the following:
+For example, let's say you're writing a paper about the temperature tolerance of the three-eyed sandslider (*Trioptis cerastes*), a fictional snake species that is native to southwestern deserts. A reasonable introduction could discuss the following:
 
 - Climate change in general.
 - Severity and effects of climate change in deserts.
@@ -43,9 +42,10 @@ Alternatively, you could introduce the same paper in a completely different cont
 
 There are many more potential ways to write this paper. The take home message is to set your specific project within the bigger picture of a large-scale concept, phenomenon, or issue. 
 
-The introduction should contain at least two paragraphs (with a minimum of three sentences each). At the end of the section, you should explicitly state your hypotheses and predictions. For example, going back to the temperature tolerance experiment, I could write, ‘Thus, I hypothesize that *Trioptis cerastes* will have a higher temperature tolerance in the summer than in the winter due to acclimation to higher temperatures in the warmer months”. 
+The introduction should contain at least three paragraphs (with a minimum of four sentences each). At the end of the section, you should explicitly state your hypotheses and predictions. For example, going back to the temperature tolerance experiment, I could write, ‘Thus, I hypothesize that *Trioptis cerastes* will have a higher temperature tolerance in the summer than in the winter due to acclimation to higher temperatures in the warmer months”. 
 
-You should cite at least two peer-reviewed papers in this section. Please ensure these papers are actually relevant to what you're talking about and aren't just tacked on to meet this requirement. 
+You should cite at least four peer-reviewed papers in this section.
+See later in this chapter for details of how and what to cite.
 
 ## Methods
 

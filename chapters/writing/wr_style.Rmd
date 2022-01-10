@@ -1,4 +1,4 @@
-# Style {#style}
+# Content and Style of an Effective Manuscript {#style}
 
 It's easy to write a scientific report that confuses or bores the audience.  Developing a style that keeps the reader following along can be a challenge, but it is a necessary one.
 

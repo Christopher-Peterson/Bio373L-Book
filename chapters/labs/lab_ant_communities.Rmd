@@ -1,8 +1,8 @@
-# Lab 3: Ant Community Ecology {#Lab_ants}
+# Ant Lab: Ant Community Ecology and the Effects of Invasive Fire Ants {#Lab_ants}
 
 ## Background
 
-Ants are an important component of most terrestrial ecosystems both in terms of biomass and diversity.  They are reliably present and easily sampled in most habitats.  Ants have been selected as a focal baseline group for monitoring of biological diversity responses to global climate changes in the coming decades. See [Antbase](http://antbase.org/databases/publications_files/publications_20330.htm) for available pdfs on specific aspects.   Several of the authors have worked at BFL as students or post docs.
+Ants are an important component of most terrestrial ecosystems both in terms of biomass and diversity.  They are reliably present and easily sampled in most habitats.  Ants have been selected as a focal baseline group for monitoring of biological diversity responses to global climate changes in the coming decades. See [Antbase](http://antbase.org/databases/publications_files/publications_20330.htm) for available PDFs on specific aspects.   Several of the authors have worked at BFL as students or post docs.
 
 Ant sampling at BFL started in the 1970s (Feener, 1978), a few years prior to the invasion of imported fire ants.  BFL at the time had a diverse ant fauna of about 56 species, (as indicated on the list you are provided).  Baits placed around the area in the mid 1970’s attracted a variety of ants throughout BFL.  After the invasion of the red imported fire ant, *Solenopsis invicta*, in 1981, the ant and arthropod community changed rapidly, decreasing in diversity and abundance.  The initial spread of *S. invicta* was carefully documented between 1983 and 1987 (Porter et al. 1988).   
 

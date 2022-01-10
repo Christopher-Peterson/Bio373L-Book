@@ -1,6 +1,6 @@
-# (PART) Field Problems {.unnumbered}
+# (PART) Field Problems and Lab activities
 
-# Lab 1: Succession {#lab_succession}
+# Succession Lab {#lab_succession}
 
 ## Introduction to the lab
 
