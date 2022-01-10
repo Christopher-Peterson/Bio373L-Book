@@ -99,7 +99,7 @@ Use chi-square tests to see if the proportions of species are different between 
 
 ```{r contingency, echo=FALSE, message=FALSE}
 library(dplyr)
-cont_dat = readr::read_csv("data/contingency_tbl_ex.r") %>% rename(` ` = "Tree_type")
+cont_dat = readr::read_csv("example_data/contingency_tbl_ex.csv") %>% rename(` ` = "Tree_type")
 
 knitr::kable(cont_dat, caption = "Abundance of most common canopy and sapling trees in the BFL old pasture habitat, Fall 2018.")
 ```
