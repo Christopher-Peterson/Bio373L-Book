@@ -3,3 +3,17 @@ language:
   ui:
     chapter_name: "Chapter "
 delete_merged_file: true
+view: https://github.com/Christopher-Peterson/Bio373L-Book/blob/master/%s
+edit: https://github.com/Christopher-Peterson/Bio373L-Book/edit/master/%s
+rmd_subdir: ["chapters", "chapters/*" ]
+rmd_files: ["index.Rmd",
+  "wr_structure.Rmd", "wr_prelim.Rmd", 
+  "wr_style.Rmd", "wr_figures.Rmd",
+  
+  "r_intro.Rmd", "r_ggplot.Rmd", "r_dplyr.Rmd", 
+  "r_stats.Rmd", "r_vegan.Rmd", "r_tidyr.Rmd",
+  "lab_succession.Rmd", "lab_mrr.Rmd",
+  "lab_heterogeneity.Rmd", "lab_ant_communities.Rmd",
+  "lab_phorid.Rmd"
+  ]
+  
