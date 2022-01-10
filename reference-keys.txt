@@ -15,7 +15,7 @@ tab:table1
 fig:bflHabMap
 tab:contingency
 structure
-structure-overview
+overview
 abstract
 introduction
 methods
@@ -52,7 +52,8 @@ general-formatting
 continuous-response-categorical-predictors
 categorical-count-or-frequency-responses
 tables
-working-with-r
+part-data-analysis-in-r
+working-with-r-and-rstudio
 introduction-to-rstudio
 rstudio-projects
 customizing-rstudio
@@ -118,6 +119,7 @@ combining-data-frames-in-progress
 binding-rows
 binding-columns-by-position
 joining-rows-by-value
+part-field-problems-and-lab-activities
 lab_succession
 introduction-to-the-lab
 materials-and-methods
@@ -137,7 +139,7 @@ the-analysis
 keeping-things-in-the-right-sections
 basic-style-and-format-rules
 other-comments
-Lab_MRR
+mark-release-recapture-mrr-lab
 introduction-1
 the-lincoln-petersen-model
 heliconius-butterflies

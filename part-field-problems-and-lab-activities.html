@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 4 Figures and Tables | Bio 373L Survival Guide</title>
+  <title>Chapter 12 (PART) Field Problems and Lab activities | Bio 373L Survival Guide</title>
   <meta name="description" content="Writing advice for Field Ecology." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 4 Figures and Tables | Bio 373L Survival Guide" />
+  <meta property="og:title" content="Chapter 12 (PART) Field Problems and Lab activities | Bio 373L Survival Guide" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="Christopher-Peterson/Bio373L-Book" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 4 Figures and Tables | Bio 373L Survival Guide" />
+  <meta name="twitter:title" content="Chapter 12 (PART) Field Problems and Lab activities | Bio 373L Survival Guide" />
   
   <meta name="twitter:description" content="Writing advice for Field Ecology." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="style.html"/>
-<link rel="next" href="part-data-analysis-in-r.html"/>
+<link rel="prev" href="tidyr-tutorial.html"/>
+<link rel="next" href="lab-succession.html"/>
 <script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -394,226 +394,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="figures" class="section level1" number="4">
-<h1><span class="header-section-number">Chapter 4</span> Figures and Tables</h1>
-<p>Good figures are one of the most important parts of a manuscript. When learning to write scientific papers, some might view figures as an afterthought. This is a mistake. The figure should tell a fairly complete story. Combined with its caption, the reader should be able to look at the figure immediately after reading the abstract and have a general sense of what’s going on.</p>
-<p>Tables are also an important part of a paper’s results, but good figures are usually easier to interpret by the reader.</p>
-<div id="captions" class="section level2" number="4.1">
-<h2><span class="header-section-number">4.1</span> Captions</h2>
-<p>Figures and tables require captions that explain what they represent. Captions should be below figures and above captions. The first “sentence” of a caption shouldn’t actually be a sentence; it’s more of a description. See the various examples in this chapter for more details.</p>
-<p>The caption should help the figure or table stand alone from everything else. If there are abbreviations or acronyms in the figure, they should be defined in the caption. If your figure is related to a statistical test, you should present the results of the test in the figure caption. If there’s a line of best fit in a scatterplot figure, this means that a linear regression was performed behind the scenes; you should report the details.</p>
-<p>Note that figures in your manuscript <strong>should not have titles</strong>. This information belongs in the caption.</p>
-</div>
-<div id="figures-1" class="section level2" number="4.2">
-<h2><span class="header-section-number">4.2</span> Figures</h2>
-<p>Make sure the caption (and legend, if present) gives enough information that the reader can understand exactly what the figure/table represents without having to look at the text. DO refer to all tables/figures in the body of the text, and include them in order (i.e. the first table/figure the reader comes across should be called table 1/figure 1 and should be the first one referred to in the text). Note that in this chapter, the figures are numbered 3.1, 3.2, etc; this is appropriate for a multi-chapter book, but not for a paper/article/manuscript. Don’t use decimals.</p>
-<p>Figures should communicate your results, not just present/summarize your data. A good figure tells a story. If there is a trend or pattern, it should be designed to emphasize it.</p>
-<div id="specific-figure-guidelines" class="section level3" number="4.2.1">
-<h3><span class="header-section-number">4.2.1</span> Specific Figure Guidelines</h3>
-<p>Figure design is communication, so you want to make the result/message as obvious as you can. The longer a reader has to stare at your figure before “getting it,” the more likely they are to get bored or stop caring.</p>
-<ul>
-<li>Avoid large amounts of empty white space. For categorical data, you should remove categories that have no data unless their absence is somehow important and interesting.
-<ul>
-<li>For example, if you are surveying trees and a species is not observed, there’s no reason for it to be in the figure.</li>
-</ul></li>
-<li>Is your figure emphasizing what it should?
-<ul>
-<li>If you’re contrasting two groups, are they clearly contrasted? Could re-ordering the groups improve the contrast?</li>
-<li>If you’re comparing groups of frequencies, you should order them from highest to lowest frequency.</li>
-<li>If you are trying to show a trend, is it being adequately emphasized?</li>
-<li>Please note that this doesn’t mean cheating, or changing the data.</li>
-</ul></li>
-<li>The axes and legends should be clear.
-<ul>
-<li>Often, the default axis or legend names will be the label of a specific cell or column. You can change these defaults.</li>
-</ul></li>
-<li>Consider how your figure will look to other people.
-<ul>
-<li>How will it look if printed from a black and white printer?
-<ul>
-<li>Hint: the default blue and orange colors in Excel are indistinguishable in gray scale; the same is true for the default ggplot2 palette in R.</li>
-</ul></li>
-<li><a href="https://venngage.com/blog/color-blind-friendly-palette/">How would it look</a> to someone with color blindness?
--If using R, the Viridis color scales work nicely for this.</li>
-</ul></li>
-</ul>
-<p>Please remember that you should be writing your lab reports as if the reader (i.e., me) didn’t know exactly what you did.</p>
-</div>
-<div id="be-concise-1" class="section level3" number="4.2.2">
-<h3><span class="header-section-number">4.2.2</span> Be Concise</h3>
-<p>If you have multiple figures that conceptually belong together (e.g., the same measurements taken in three years), you should turn them into a single multi-panel figure. Label your the panels with letters in the upper left corner; the caption should explain how the panels are different.</p>
-</div>
-</div>
-<div id="some-example-figures" class="section level2" number="4.3">
-<h2><span class="header-section-number">4.3</span> Some Example Figures</h2>
-<div id="general-formatting" class="section level3" number="4.3.1">
-<h3><span class="header-section-number">4.3.1</span> General Formatting</h3>
-<p>Figure <a href="figures.html#fig:penguinBad">4.1</a> is poorly formatted:</p>
-<ul>
-<li>The colors are hard to distinguish when printed and black and white;</li>
-<li>The axis and legend text are showing the default labels instead of informative values;</li>
-<li>There is a lot of white space, partially due to a bad y axis scale;</li>
-<li>The equation is in the figure instead of the caption;</li>
-<li>The caption is vague and uninformative;</li>
-<li>There is an unnecessary title;</li>
-<li>There are grid lines;</li>
-</ul>
-
-
-<div class="figure"><span id="fig:penguinBad"></span>
-<img src="Bio373L-Book_files/figure-html/penguinBad-1.png" alt="Body mass (X variable) vs flipper length (Y variable). The regression is significant (\(R^2 = 0.76\); \(p&lt;0.0001\))." width="672" />
-<p class="caption">
-Figure 4.1: Body mass (X variable) vs flipper length (Y variable). The regression is significant (<span class="math inline">\(R^2 = 0.76\)</span>; <span class="math inline">\(p&lt;0.0001\)</span>).
-</p>
-</div>
-<p>Figure <a href="figures.html#fig:penguinGood">4.2</a> contains the same data, but has been reformatted to address these issues. Note the use of units in the axis labels, the formatting of scientific species names, the positioning of the legend to minimize whitespace, and the lack of a title and gridlines. This is also an example of how to plot data with a continuous response and a combination of continuous and categorical predictors.</p>
-<div class="figure"><span id="fig:penguinGood"></span>
-<img src="Bio373L-Book_files/figure-html/penguinGood-1.png" alt="Association between body mass and flipper length in three species of penguin. Flipper length increases with body mass ((Flipper Length) = 13.7 + 1.5*(Body Mass); \(R^2 = 0.76\); \(p&lt;0.0001\))." width="672" />
-<p class="caption">
-Figure 4.2: Association between body mass and flipper length in three species of penguin. Flipper length increases with body mass ((Flipper Length) = 13.7 + 1.5*(Body Mass); <span class="math inline">\(R^2 = 0.76\)</span>; <span class="math inline">\(p&lt;0.0001\)</span>).
-</p>
-</div>
-<p>Figure <a href="figures.html#fig:penguinPanel">4.3</a> is an example of a multi-panel figure; in the text, you should refer to parts of it as Figure <a href="figures.html#fig:penguinPanel">4.3</a>A, <a href="figures.html#fig:penguinPanel">4.3</a>B, etc.</p>
-
-<div class="figure"><span id="fig:penguinPanel"></span>
-<img src="Bio373L-Book_files/figure-html/penguinPanel-1.png" alt="Association between bill length and bill depth for three species of penguins. The association is significant and different among species ((Bill Depth) = 10.6 + 0.2*(Bill Length) for Adelie, 5.5 + 0.2*(Bill Length) for Gentoo, and 8.7 + 0.2*(Bill Length) for Chinstrap; \(R^2 = 0.77\); \(p_{\text{species}} &lt; 0.0001\); \(p_{\text{length}} &lt; 0.0001\);)" width="672" />
-<p class="caption">
-Figure 4.3: Association between bill length and bill depth for three species of penguins. The association is significant and different among species ((Bill Depth) = 10.6 + 0.2*(Bill Length) for Adelie, 5.5 + 0.2*(Bill Length) for Gentoo, and 8.7 + 0.2*(Bill Length) for Chinstrap; <span class="math inline">\(R^2 = 0.77\)</span>; <span class="math inline">\(p_{\text{species}} &lt; 0.0001\)</span>; <span class="math inline">\(p_{\text{length}} &lt; 0.0001\)</span>;)
-</p>
-</div>
-</div>
-<div id="continuous-response-categorical-predictors" class="section level3" number="4.3.2">
-<h3><span class="header-section-number">4.3.2</span> Continuous response, categorical predictors</h3>
-<p>There are a number of options for representing continuous data grouped into multiple categories. You should avoid “dynamite” plots (Figure <a href="figures.html#fig:dynamite">4.4</a>), which use a bar with error lines to represent a mean and standard error; these figures use a lot of space to provide very little information. A better option is to use box plots (Figure <a href="figures.html#fig:boxplot">4.5</a>), which show the median, quartiles, range, and outliers of each group. Equivalently, you could use a group of histograms (Figure <a href="figures.html#fig:histoplot">4.6</a>). A particularly effective way to visualize this type of dataset shows the distribution of the data and the summary statistics (Figure <a href="figures.html#fig:violin">4.7</a>).</p>
-
-
-
-<div class="figure"><span id="fig:dynamite"></span>
-<img src="Bio373L-Book_files/figure-html/dynamite-1.png" alt="Mean body mass for three species of penguin, with standard errors. Body mass differs significantly among species \((p &lt; 0.0001)\)." width="672" />
-<p class="caption">
-Figure 4.4: Mean body mass for three species of penguin, with standard errors. Body mass differs significantly among species <span class="math inline">\((p &lt; 0.0001)\)</span>.
-</p>
-</div>
-<div class="figure"><span id="fig:boxplot"></span>
-<img src="Bio373L-Book_files/figure-html/boxplot-1.png" alt="Distribution of body mass for three species of penguin. Body mass differs significantly among species \((p &lt; 0.0001)\)." width="672" />
-<p class="caption">
-Figure 4.5: Distribution of body mass for three species of penguin. Body mass differs significantly among species <span class="math inline">\((p &lt; 0.0001)\)</span>.
-</p>
-</div>
-<div class="figure"><span id="fig:histoplot"></span>
-<img src="Bio373L-Book_files/figure-html/histoplot-1.png" alt="Distribution of body mass for three species of penguin. Body mass differs significantly among species \((p &lt; 0.0001)\)." width="672" />
-<p class="caption">
-Figure 4.6: Distribution of body mass for three species of penguin. Body mass differs significantly among species <span class="math inline">\((p &lt; 0.0001)\)</span>.
-</p>
-</div>
-<div class="figure"><span id="fig:violin"></span>
-<img src="Bio373L-Book_files/figure-html/violin-1.png" alt="Distribution of body mass for three species of penguin, with mean and standard errors in red. Body mass differs significantly among species \((p &lt; 0.0001)\)." width="672" />
-<p class="caption">
-Figure 4.7: Distribution of body mass for three species of penguin, with mean and standard errors in red. Body mass differs significantly among species <span class="math inline">\((p &lt; 0.0001)\)</span>.
-</p>
-</div>
-</div>
-<div id="categorical-count-or-frequency-responses" class="section level3" number="4.3.3">
-<h3><span class="header-section-number">4.3.3</span> Categorical, count, or frequency responses</h3>
-<p>These sorts of data usually involve examining how counts or frequencies differ among groups; they’re often associated with <span class="math inline">\(\chi^2\)</span> tests. Generally, it’s best to represent these sorts of data with bar graphs (avoid pie charts). When making a bar graph, it’s a good idea to arrange your data to emphasize any trends. The species in Figure <a href="figures.html#fig:anoleBad">4.8</a> are organized alphabetically, which obscures any trend. A better option is to organize by decreasing frequency of either total counts (like in Figure <a href="figures.html#fig:anoleCountStack">4.9</a>) or of one of the groups (Figure <a href="figures.html#fig:anoleCountDodge">4.10</a>). These make it easier to detect patterns.</p>
-
-<div class="figure"><span id="fig:anoleBad"></span>
-<img src="Bio373L-Book_files/figure-html/anoleBad-1.png" alt="Number of Anolis captured from canopy and trunk perches." width="672" />
-<p class="caption">
-Figure 4.8: Number of <em>Anolis</em> captured from canopy and trunk perches.
-</p>
-</div>
-<div class="figure"><span id="fig:anoleCountStack"></span>
-<img src="Bio373L-Book_files/figure-html/anoleCountStack-1.png" alt="Number of Anolis captured from canopy and trunk perches." width="672" />
-<p class="caption">
-Figure 4.9: Number of <em>Anolis</em> captured from canopy and trunk perches.
-</p>
-</div>
-<div class="figure"><span id="fig:anoleCountDodge"></span>
-<img src="Bio373L-Book_files/figure-html/anoleCountDodge-1.png" alt="Number of Anolis captured from canopy and trunk perches." width="672" />
-<p class="caption">
-Figure 4.10: Number of <em>Anolis</em> captured from canopy and trunk perches.
-</p>
-</div>
-<p>An important consideration is whether to represent your data with counts or proportions (AKA frequencies – vary from 0 to 1). There are pros and cons to both approaches, but frequencies are usually better if the number of observations differs among your groups (compare Figure <a href="figures.html#fig:anoleFreqByPerch">4.11</a> with Figure <a href="figures.html#fig:anoleCountDodge">4.10</a>). Be careful when calculating frequencies, because you may inadvertently end up making a graph that isn’t answering the question you’re trying to ask. For example, Figure <a href="figures.html#fig:anoleFreqByPerch">4.11</a> shows how anole frequencies differ between perch types, but Figure <a href="figures.html#fig:anoleFreqBySpp">4.12</a> shows the frequency at which each species occupies the two perches.</p>
-
-<div class="figure"><span id="fig:anoleFreqByPerch"></span>
-<img src="Bio373L-Book_files/figure-html/anoleFreqByPerch-1.png" alt="Frequency of Anolis species captured from canopy and trunk perches." width="672" />
-<p class="caption">
-Figure 4.11: Frequency of <em>Anolis</em> species captured from canopy and trunk perches.
-</p>
-</div>
-
-<div class="figure"><span id="fig:anoleFreqBySpp"></span>
-<img src="Bio373L-Book_files/figure-html/anoleFreqBySpp-1.png" alt="Perch frequency for 9 species of Anolis." width="672" />
-<p class="caption">
-Figure 4.12: Perch frequency for 9 species of <em>Anolis</em>.
-</p>
-</div>
-<p>If there is some aspect of your data that you’d like to really emphasize, it can help to get more creative with your figures. For example, the most visually striking parts of Figure <a href="figures.html#fig:anoleBarFreqDiff">4.13</a> are the colored sections of the bars, which correspond to the direction and magnitude of the difference between perches for each species. Do note that making more complicated figures may require extra explanation in the caption.</p>
-
-<div class="figure"><span id="fig:anoleBarFreqDiff"></span>
-<img src="Bio373L-Book_files/figure-html/anoleBarFreqDiff-1.png" alt="Number of Anolis found at each perch position. The white bar indicates the count at the less frequent perch, the total height is the count at the more frequent perch, color indicates which perch the species was more common at, and the size of the colored regions indicates the difference between perches." width="672" />
-<p class="caption">
-Figure 4.13: Number of <em>Anolis</em> found at each perch position. The white bar indicates the count at the less frequent perch, the total height is the count at the more frequent perch, color indicates which perch the species was more common at, and the size of the colored regions indicates the difference between perches.
-</p>
-</div>
-<p>The R code used to generate all of the figures in this chapter can be found <a href="https://github.com/Christopher-Peterson/Bio373L-Book/blob/master/R/figures_chapter_scripts.r">here</a> (along with some annotations). I’ve tried to explain what most of the components of each plot do, though I’d recommend learning some basic <code>ggplot2</code> first.</p>
-</div>
-</div>
-<div id="tables" class="section level2" number="4.4">
-<h2><span class="header-section-number">4.4</span> Tables</h2>
-<p>Tables are an effective addition to a manuscript when you have a lot of data in the text and want to present it to the reader in an organized fashion. They are particularly helpful when you have a lot of different kinds of data that would be hard to plot together. For example, see Table <a href="figures.html#tab:table1">4.1</a>.</p>
-<p>Tables are best for highly structured data. If there isn’t much data to present, the data can usually just be presented in the text of the results. If there’s a lot of data, it is worth considering if a figure would be better.</p>
-<table>
-<caption><span id="tab:table1">Table 4.1: </span>Standard length of three populations of rainbow trout (<em>Oncorhynchus mykiss</em>) in Southern Appalachian streams. Group A was collected from the New River, group B from the Watauga River and group C from Winkler Creek.</caption>
-<thead>
-<tr class="header">
-<th align="left">Group</th>
-<th align="right">N</th>
-<th align="right">Mean</th>
-<th align="right">Std. Dev.</th>
-<th align="right">Min.</th>
-<th align="right">Max.</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">A</td>
-<td align="right">10</td>
-<td align="right">35.33</td>
-<td align="right">3.53</td>
-<td align="right">30.74</td>
-<td align="right">37.02</td>
-</tr>
-<tr class="even">
-<td align="left">B</td>
-<td align="right">15</td>
-<td align="right">42.61</td>
-<td align="right">4.62</td>
-<td align="right">36.36</td>
-<td align="right">49.17</td>
-</tr>
-<tr class="odd">
-<td align="left">C</td>
-<td align="right">12</td>
-<td align="right">22.00</td>
-<td align="right">2.97</td>
-<td align="right">17.99</td>
-<td align="right">26.38</td>
-</tr>
-</tbody>
-</table>
-
-</div>
+<div id="part-field-problems-and-lab-activities" class="section level1" number="12">
+<h1><span class="header-section-number">Chapter 12</span> (PART) Field Problems and Lab activities</h1>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="style.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="part-data-analysis-in-r.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="tidyr-tutorial.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="lab-succession.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -644,7 +434,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/Christopher-Peterson/Bio373L-Book/edit/master/chapters/writing/wr_figures.Rmd",
+"link": "https://github.com/Christopher-Peterson/Bio373L-Book/edit/master/chapters/labs/lab_succession.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -652,7 +442,7 @@ gitbook.start({
 "text": null
 },
 "view": {
-"link": "https://github.com/Christopher-Peterson/Bio373L-Book/blob/master/chapters/writing/wr_figures.Rmd",
+"link": "https://github.com/Christopher-Peterson/Bio373L-Book/blob/master/chapters/labs/lab_succession.Rmd",
 "text": null
 },
 "download": null,
