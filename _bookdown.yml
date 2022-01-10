@@ -5,17 +5,22 @@ language:
 delete_merged_file: true
 view: https://github.com/Christopher-Peterson/Bio373L-Book/blob/master/%s
 edit: https://github.com/Christopher-Peterson/Bio373L-Book/edit/master/%s
-rmd_subdir: ["chapters", "chapters/writing", 
-             "chapters/analysis", "chapters/labs"]
-rmd_files: ["index.Rmd",
-  "writing/wr_structure.Rmd", "writing/wr_prelim.Rmd", 
-  "writing/wr_style.Rmd", "writing/wr_figures.Rmd",
+rmd_files: 
+  - chapters/index.Rmd
+  - chapters/writing/wr_structure.Rmd
+  - chapters/writing/wr_prelim.Rmd
+  - chapters/writing/wr_style.Rmd
+  - chapters/writing/wr_figures.Rmd
+  - chapters/analysis/r_intro.Rmd
+  - chapters/analysis/r_ggplot.Rmd
+  - chapters/analysis/r_dplyr.Rmd
+  - chapters/analysis/r_stats.Rmd
+  - chapters/analysis/r_vegan.Rmd
+  - chapters/analysis/r_tidyr.Rmd
+  - chapters/labs/lab_succession.Rmd
+  - chapters/labs/lab_mrr.Rmd
+  - chapters/labs/lab_heterogeneity.Rmd
+  - chapters/labs/lab_ant_communities.Rmd
+  - chapters/labs/lab_phorid.Rmd
   
-  "analysis/r_intro.Rmd", "analysis/r_ggplot.Rmd", "analysis/r_dplyr.Rmd", 
-  "analysis/r_stats.Rmd", "analysis/r_vegan.Rmd", "analysis/r_tidyr.Rmd",
-  
-  "labs/lab_succession.Rmd", "labs/lab_mrr.Rmd",
-  "labs/lab_heterogeneity.Rmd", "labs/lab_ant_communities.Rmd",
-  "labs/lab_phorid.Rmd"
-  ]
   
