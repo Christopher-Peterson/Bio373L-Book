@@ -5,7 +5,8 @@ language:
 delete_merged_file: true
 view: https://github.com/Christopher-Peterson/Bio373L-Book/blob/master/%s
 edit: https://github.com/Christopher-Peterson/Bio373L-Book/edit/master/%s
-rmd_subdir: ["chapters", "chapters/*" ]
+rmd_subdir: ["chapters", "chapters/writing", 
+             "chapters/analysis", "chapters/labs"]
 rmd_files: ["index.Rmd",
   "wr_structure.Rmd", "wr_prelim.Rmd", 
   "wr_style.Rmd", "wr_figures.Rmd",
