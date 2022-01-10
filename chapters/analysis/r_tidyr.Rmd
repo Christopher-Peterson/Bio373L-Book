@@ -245,14 +245,14 @@ lizard_smry_tidy %>%
   ylab("Trait Mean, SD, and 95% CI") 
 ```
 
-## Going from many rows to many columns: `pivot_wider()` {#pivot-wider-tutorial}
+<!-- ## Going from many rows to many columns: `pivot_wider()` {#pivot-wider-tutorial} -->
 
-(In progress)
+<!-- (In progress) -->
 
-## Combining data frames (In Progress)
+<!-- ## Combining data frames (In Progress) -->
 
-### Binding rows
+<!-- ### Binding rows -->
 
-### Binding columns by position
+<!-- ### Binding columns by position -->
 
-### Joining rows by value
+<!-- ### Joining rows by value -->

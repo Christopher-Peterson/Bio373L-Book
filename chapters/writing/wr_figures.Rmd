@@ -10,6 +10,10 @@ source("R/figures_chapter_scripts.r")
 quiet_plot = function(...) suppressWarnings(plot(...))
 ```
 
+Note that this chapter focuses on general guidlines for figure design.
+For instructions on how to create figures in R using `ggplot2`, see Chapter \@ref(ggplot-tutorial).  
+The R code used to generate all of the figures in this chapter can be found [here](https://github.com/Christopher-Peterson/Bio373L-Book/blob/master/R/figures_chapter_scripts.r),  along with some annotations.  
+
 ## Captions
 
 Figures and tables require captions that explain what they represent.  Captions should be below figures and above captions.  The first "sentence" of a caption shouldn't actually be a sentence; it's more of a description. See the various examples in this chapter for more details.  
@@ -160,8 +164,6 @@ If there is some aspect of your data that you'd like to really emphasize, it can
 
 quiet_plot(anole_diff_plt)
 ```
-
-The R code used to generate all of the figures in this chapter can be found [here](https://github.com/Christopher-Peterson/Bio373L-Book/blob/master/R/figures_chapter_scripts.r) (along with some annotations).  I've tried to explain what most of the components of each plot do, though I'd recommend learning some basic `ggplot2` first.
 
 ## Tables
 
