@@ -44,6 +44,7 @@ significant-digits
 tenses
 figures
 captions
+figures-1
 specific-figure-guidelines
 be-concise-1
 some-example-figures
@@ -63,7 +64,7 @@ canopy-tree-density
 species-by-habitat-and-life-stage
 discussion-1
 general-comments-post-review
-figures-1
+figures-2
 write-this-like-youre-trying-to-publish-it
 describe-the-habitats
 the-analysis

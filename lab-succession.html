@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 9 Lab 5: Mark-Release-Recapture with Heliconius | Bio 373L Survival Guide</title>
+  <title>Chapter 5 Lab 1: Succession | Bio 373L Survival Guide</title>
   <meta name="description" content="Writing advice for Field Ecology." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 9 Lab 5: Mark-Release-Recapture with Heliconius | Bio 373L Survival Guide" />
+  <meta property="og:title" content="Chapter 5 Lab 1: Succession | Bio 373L Survival Guide" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="Christopher-Peterson/Bio373L-Book" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 9 Lab 5: Mark-Release-Recapture with Heliconius | Bio 373L Survival Guide" />
+  <meta name="twitter:title" content="Chapter 5 Lab 1: Succession | Bio 373L Survival Guide" />
   
   <meta name="twitter:description" content="Writing advice for Field Ecology." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="Lab-phorid.html"/>
-<link rel="next" href="working-with-r.html"/>
+<link rel="prev" href="figures.html"/>
+<link rel="next" href="Lab-heterogeneity.html"/>
 <script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -394,200 +394,226 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="Lab_MRR" class="section level1" number="9">
-<h1><span class="header-section-number">Chapter 9</span> Lab 5: Mark-Release-Recapture with <em>Heliconius</em></h1>
-<div id="introduction-1" class="section level2" number="9.1">
-<h2><span class="header-section-number">9.1</span> Introduction</h2>
-<p>The size of an animal population is an important quantity to measure if we wish to understand its ecological and evolutionary interactions.
-How population size varies with respect to weather, resources, or competing populations provides clues about which factors are significant in the distribution and abundance of a species.</p>
-<p>While plants and sessile animals are relatively easy to census, the mobility of most animals makes population studies very difficult.
-Therefore when one attempts to estimate the size of such populations it is necessary to use indirect methods such as Mark-Release-Recapture (MRR).</p>
-<div id="the-lincoln-petersen-model" class="section level3" number="9.1.1">
-<h3><span class="header-section-number">9.1.1</span> The Lincoln-Petersen model</h3>
-<p>The basic method, from which most modern population size estimation procedures have evolved (Lincoln-Petersen), involves at least two sampling periods.
-During the first period, all animals captured are given marks.
-If the population size is <span class="math inline">\(N\)</span> and <span class="math inline">\(M_1\)</span> animals were caught and marked during the first period, then the fraction <span class="math inline">\((M_1 / N)\)</span> represents the proportion of the population actually marked.</p>
-<p>Ideally, the marked animals will have mixed randomly with the remaining unmarked population before the second sample is taken (first <strong>assumption</strong>).
-During this second capture period, it is also <strong>assumed</strong> that the chance of catching any marked animal is equal to the chance of catching any unmarked member of the population (this assumption is violated if, for example, marked animals are more wary and harder to catch, or if the marks make detection substantially easier).
-Simple methods also assume no gains or losses in the populations between sample periods.</p>
-<p>If the assumptions of random mixing and capture hold, the following should be true:</p>
-<ol style="list-style-type: decimal">
-<li>Some animals caught on the second sampling period (<strong>total number caught in second sample</strong> <span class="math inline">\(= S_2\)</span>) will be re-captures of those marked on period one; the <strong>number of recaptures</strong> is represented by <span class="math inline">\(R_2\)</span>.</li>
-<li><span class="math inline">\(\frac{R_2}{S_2} = \frac{M_1}{N}\)</span>.</li>
-</ol>
-<p>Thus, we can estimate the population size as:
-<span class="math display">\[\hat{N} = \frac{S_2 M_1}{R_2}\]</span></p>
-<p>In other words, <span class="math inline">\(R_2/M_1\)</span> estimates the fraction of <span class="math inline">\(N\)</span> marked on the first day. This can be shown graphically as follows (<span class="math inline">\(N\)</span> is the entire box, <span class="math inline">\(M_1\)</span> is the blue row, <span class="math inline">\(S_2\)</span> is the red column, and <span class="math inline">\(R_2\)</span> is their purple intersection):</p>
-<div class="figure">
-<img src="images/mrr_diagram.png" alt="" />
-<p class="caption">MRR Diagram</p>
+<div id="lab_succession" class="section level1" number="5">
+<h1><span class="header-section-number">Chapter 5</span> Lab 1: Succession</h1>
+<div id="introduction-to-the-lab" class="section level2" number="5.1">
+<h2><span class="header-section-number">5.1</span> Introduction to the lab</h2>
+<p>Several habitat types can be discerned during a walk through BFL, each representing the integration of biotic and environmental factors with disturbance history. Here we look at species composition and age structure of trees that characterize some of these habitats.</p>
+<p>The relative abundance of different size classes of various tree species in a forest can provide clues about the history and future status of those species in that forest. For example, even if a tree species is abundant, yet represented only by large, older individuals, it is likely that the requirements for seed production or seedling establishment in the area have not been present in recent times. In order to predict the future status of that tree species in a given area we would need to find out about its requirements for regeneration and determine the likelihood that such conditions will be repeated during specified time periods. For example, for a species that requires a fire to germinate and establish, we would need to predict when fires are likely.</p>
+<p>In contrast, a tree species represented by a large population of saplings (presumed from their size) must have recently enjoyed favorable conditions for reproduction and establishment. Will such a species therefore dominate a future forest on the site? Possibly, but this may be difficult to answer since factors like disease, herbivory, fire, and/or shading by faster growing competitors may affect the survivorship of this cohort over time. Studying the size or age structure of a population helps ecologists make such projections. (Note that we generally assume that big trees are older than smaller individuals of the same species, but keep in mind that individuals of the same size may differ in age and vice versa. Local variation in microclimate edaphic factors (having to do with the soil) and light environment may result in rather different trajectories of growth for identical seedlings germinating the same year.)</p>
+<p>The goal of this project is to acquaint you with some of the kinds of data ecologists collect in attempting to answer questions about population trends. This exercise will also expose you to the always-messy issue of how to collect field data, and to give you insight and experience in statistical analyses appropriate for testing hypotheses about differences between species within different habitats in the age/size structure of trees. We will observe and quantify the distribution, abundance and size structure of dominant tree species at BFL. However, in collecting data to describe densities and size structures of these species at BFL, we are in position to test whether species have responded differently to major variations in the habitat at BFL. Once we have collected data on the trees with respect to variations in habitat at BFL, the patterns observed may stimulate additional questions and hypotheses.</p>
 </div>
-<p>Assumptions of the Lincoln-Petersen method:</p>
-<ol style="list-style-type: decimal">
-<li>Marks do not affect animals.</li>
-<li>Marked animals are mixed in the population.</li>
-<li>Marked and unmarked animals have the same probability of capture</li>
-<li>The population is closed (no birth/death/migration)</li>
-<li>Marks are not lost between samples</li>
-</ol>
-<p>Although we can never be sure that the estimated population size <span class="math inline">\((\hat{N})\)</span> equals the true value, <span class="math inline">\(\hat{N}\)</span> should approach <span class="math inline">\(N\)</span> as <span class="math inline">\(M_1\)</span> and <span class="math inline">\(S_2\)</span> get larger.
-Even though intense enough sampling could allow direct measure of <span class="math inline">\(N\)</span>, real habitats are too complex and mobile animals too elusive.
-In this exercise, we will study a hybrid population of <em>Heliconius</em> butterflies.</p>
+<div id="materials-and-methods" class="section level2" number="5.2">
+<h2><span class="header-section-number">5.2</span> Materials and Methods</h2>
+<div id="bfl-habitat-regions" class="section level3" number="5.2.1">
+<h3><span class="header-section-number">5.2.1</span> BFL habitat regions</h3>
+<p>To collect data we will establish transects in three areas of interest: the <strong>lower river terrace</strong>, the <strong>old pastures (experimental plots)</strong> and the <strong>quarry zone</strong> (see figure <a href="lab-succession.html#fig:bflHabMap">5.1</a> for a map).</p>
+
+<div class="figure"><span id="fig:bflHabMap"></span>
+<img src="images/bfl_habitats_2013.jpg" alt="Habitat map of BFL; for the purposes of this lab, the river terrace corresponds to the pecan terrace and flood deposited terrace (near the bottom), the old pasture is the central area, and the old quarry is near the top."  />
+<p class="caption">
+Figure 5.1: Habitat map of BFL; for the purposes of this lab, the river terrace corresponds to the pecan terrace and flood deposited terrace (near the bottom), the old pasture is the central area, and the old quarry is near the top.
+</p>
 </div>
-<div id="heliconius-butterflies" class="section level3" number="9.1.2">
-<h3><span class="header-section-number">9.1.2</span> <em>Heliconius</em> butterflies</h3>
-<p>Our main focus for this exercise will be an enclosed hybrid population of <em>Heliconius melopomene x Heliconius cydno</em>.
-The exercise sits at the interface of population ecology and genetics since the study population is polymorphic for wing patterns reflecting a naturally occurring phenomenon in South America.
-It is known that males of <em>Heliconius melpomene</em> mate with females of <em>Heliconius cydno</em> in nature to yield species called <em>H. heurippa</em>, <em>H. timareta</em>, and likely others.
-<em>Heliconius timareta</em> displays a variety of color pattern types in different parts of its range.
-Such races are locally monomorphic (i.e. only one pattern exists in a particular place)
-However, genomic studies confirm that these populations share cydno mitochondrial haplotypes and a common mode of origination, in spite of diverse phenotypes.
-In the 1980s, Dr. Gilbert carried out studies of hybridization in <em>H. cydno</em> and <em>H. melpomene</em> in UT greenhouses and hypothesized the likely hybrid origin of species like <em>H. timerata</em>.
-Now that genomic studies verify his hypotheses on the origin of such species, Dr. Gilbert has recreated a hybrid population according to the likely mode of origin of <em>H. timareta</em>.
-This population is large and diverse in color pattern phenotypes for which we know the genetics of major pattern elements.</p>
-<div class="figure">
-<img src="images/heliconius_distribution.jpg" alt="" />
-<p class="caption">Distribution of some <em>Heliconius</em> species</p>
 </div>
-<p>With the hybrid <em>H. cydno X H. melpomene</em> population, you will be able to combine ecology and population genetics by applying Hardy-Weinberg law to test whether a force like selection or non-random mating is acting on wing pattern genes.
-Larry will photograph each numbered butterfly and post in a web album so that you can record the proportion of phenotypes and determine whether they are in Hardy-Weinberg equilibrium.</p>
-<div class="figure">
-<img src="images/optix_phenotypes.jpg" alt="" />
-<p class="caption">Optix phenotypes</p>
-</div>
-<p>We will score the orange/red/brown patterns for which the link between phenotype and genotype is now known.
-The mimetic phenotypes generated are key to the diversification of the genus, to predator protection niches, and to mutualism between sympatric species (Mullerian mimicry).
-A supergene locus controls expression of a transcription factor called <strong>Optix</strong>; this locus exhibits incomplete dominance, so the genotype can be directly determined from the phenotype.
-One allele (F) accounts for the red, orange, red or brown scales in the discal forewing band (beyond the large wing cell).
-Another allele (H) controls the presence of such scales on the hind wing and/or on the proximal FW in the cell region.
-We will use these genotypes to estimate whether the population is in <strong>Hardy-Weinberg Equilbirum</strong></p>
-</div>
-<div id="hardy-weinberg-equilbrium" class="section level3" number="9.1.3">
-<h3><span class="header-section-number">9.1.3</span> Hardy-Weinberg Equilbrium</h3>
-<p>A few definitions are in order:</p>
+<div id="data-collection" class="section level3" number="5.2.2">
+<h3><span class="header-section-number">5.2.2</span> Data Collection</h3>
+<p>Given the brief time allowed by the class period, we don’t count absolute numbers, but instead use sampling techniques for describing tree populations and habitats.</p>
+<p>We will use the Point-Quarter Technique to collect data (Cox p. 66). The beauty of this method is that it allows us to quickly estimate the density of selected species in the community while gathering information on their relative abundances.</p>
+<p>Each team will perform a survey in each of 3 apparently distinctive habitats.</p>
+<div id="point-quarter-for-quarry-and-river-terrace-habitats" class="section level4" number="5.2.2.1">
+<h4><span class="header-section-number">5.2.2.1</span> Point-quarter for quarry and river terrace habitats</h4>
+<p><strong>Sample Point selection:</strong></p>
 <ul>
-<li><strong>Allele</strong>: one variant of a gene. For example, the <em>Optix</em> gene has the alleles <span class="math inline">\(F\)</span> and <span class="math inline">\(H\)</span>.</li>
-<li><strong>Genotype</strong>: in a diploid organism like <em>Heliconius</em> butterflies, there are two copies of most genes; the genotype is the combination of the alleles. For <em>Optix</em>, genotypes can be <span class="math inline">\(FF\)</span>, <span class="math inline">\(FH\)</span>, or <span class="math inline">\(HH\)</span>. An individual with 2 of the same alleles (<span class="math inline">\(FF\)</span> or <span class="math inline">\(HH\)</span>) is a homozygote, while an individual with different alleles (<span class="math inline">\(FH\)</span>) is a heterozygote.</li>
-<li><strong>Allele frequency</strong>: the proportion of each allele of a gene within a population. For 2-allele systems, we usually note these frequencies as <span class="math inline">\(p\)</span> and <span class="math inline">\(q\)</span>, where <span class="math inline">\(p + q = 1\)</span>. In <em>Optix</em>, <span class="math inline">\(p\)</span> is the frequency of <span class="math inline">\(F\)</span> and <span class="math inline">\(q\)</span> is the frequency of <span class="math inline">\(H\)</span>.</li>
-<li><strong>Genotype frequency</strong>: the proportion of each genotype within a population. For <em>Optix</em>, we will be noting these as <span class="math inline">\(f_{FF}\)</span>, <span class="math inline">\(f_{FH}\)</span>, and <span class="math inline">\(f_{HH}\)</span>. Genotype frequencies will also sum to 1.</li>
+<li>Starting with an existing transect marker in the zone your team is assigned, flip a coin (or use a random number generator) to determine direction (left or right) that you will take
+perpendicular to the trail.</li>
+<li>Use a random number generator app to pick a number between 10 and 39 (alternatively, have one team member think of a number between 1 and 3 and another between 0 and 9). Your first point will this many meters
+from the trail in the predetermined direction.</li>
+<li>Repeat this process at
+the next transect tag, but in the opposite direction.</li>
+<li>Repeat it a third time for a total of 3 sample points in the habitat.</li>
 </ul>
-<p>Allele frequencies can be directly calculated from genotype frequencies <span class="math inline">\((p=f_{FF}+0.5*f_{FH}\)</span>, <span class="math inline">\(q=1-p)\)</span>.
-However, the reverse is not necessarily true.
-There are many possible genotype frequencies that can correspond to the same allele frequencies; as an extreme example, a population with 100 heterozygotes (<span class="math inline">\(FH\)</span> genotypes) would have the same allele frequencies as one with 50 <span class="math inline">\(FF\)</span> and <span class="math inline">\(50\)</span> HH homozygotes.
-However, the two populations would look quite different.
-The relation between allele and genotype frequencies can help us understand a population’s biology.</p>
-<div id="genotype-frequencies-at-equilbrium" class="section level4" number="9.1.3.1">
-<h4><span class="header-section-number">9.1.3.1</span> Genotype frequencies at equilbrium</h4>
-<p>If genotype frequencies are stable and unchanging from one generation to the next, then we can expect a certain relationship between genotype and allele frequencies:</p>
-<p><span class="math display">\[f_{FF}=p^{2};\,\,\,\,\,\,\,f_{FH}=2pq;\,\,\,\,\,\,\,f_{HH}=q^{2}\]</span>
-This is called <strong>Hardy-Weinberg Equilibrium</strong> (HWE).
-An easy way to remember this is that genotypes take two alleles, so expanding the equation <span class="math inline">\((p+q)^{2}=1\)</span> will give you these ratios.
-HWE only applies for a population that is not changing.</p>
-<p>What can affect allele or genotype frequencies?</p>
+<p>Note: Areas recently cleared or plowed should be excluded.</p>
+<p>Each sample point is to be temporarily marked with a flag (do not leave any flags behind!!). The 3 sample points along each transect represent the center of four quadrants with sides along and perpendicular to the transect line.</p>
+<p>In each quadrant, you will determine the nearest canopy tree and sapling to the center point.
+<strong>Canopy trees</strong> are defined as having a crown that is exposed directly to sunlight and forms part of the overhead canopy.
+<strong>Saplings</strong> occur under the crown of canopy and are assumed to be potential canopy replacements when the canopy tree dies.</p>
+<p>Data to collect from each point:</p>
 <ul>
-<li>Natural selection: If one allele or genotype provides an advantage in the current environment, individuals with this allele are likely to produce more offspring, which will increase the allele frequency over time.</li>
-<li>Migration: Allele frequencies tend to vary between populations of the same species; individuals moving from one population to another will make the allele frequencies more similar to each other.</li>
-<li>Genetic drift: Variation in individual mating success will cause random changes in allele frequencies, in large populations, these are so small that they usually average out; however, small populations can have substantial change between generations.</li>
-<li>Mutation: Random events can introduce new alleles; while this is rare and most mutations disappear through drift shortly after popping up, mutation is ultimately the source of all genetic variation.</li>
-<li>Non-random mating: If individuals prefer to mate with like individuals, this can increase the frequencies of homozygous genotypes; conversely, a preference for different individuals can increase heterozygote frequencies. Unlike the previous four, non-random mating changes genotype frequencies without changing allele frequencies.</li>
+<li>Location (with UTM)</li>
+<li>Species of nearest canopy trees &amp; saplings</li>
+<li>Distance of these trees from the center point</li>
+<li>Diameter at breast height (dbh) of canopy trees</li>
+<li>Note signs of drought stress (leaves are wilted or dead/brown)</li>
 </ul>
-<p>Pretty much any natural population will violate at least one of these conditions.
-So why is HWE useful?
-It gives us a baseline expectation to compare our observed genotype frequencies to.
-If our data are significantly different from the HWE values, we can conclude that one of these processes is playing an important role in the population.
-If not, then these processes are minor enough that we can ignore them.</p>
 </div>
-<div id="detecting-violations-of-hwe" class="section level4" number="9.1.3.2">
-<h4><span class="header-section-number">9.1.3.2</span> Detecting violations of HWE</h4>
-<p>To test whether our genotype data is in Hardy-Weinberg equilibrium, we can use a chi-squared test of goodness-of-fit.
-First, we’ll need to calculate a chi-squared test statistic, which measures how strongly our observed data <span class="math inline">\((O)\)</span> deviates from the HWE expectations <span class="math inline">\((E)\)</span>.</p>
-<p><span class="math display">\[\chi^{2}=\sum_{i}\frac{\left(O_{i}-E_{i}\right)^{2}}{E_{i}}\]</span></p>
-<p>In terms of our data, this is equal to</p>
-<p><span class="math display">\[\chi^{2}=\frac{\left(f_{FF}-p^{2}\right)^{2}}{p^{2}}+\frac{\left(f_{FH}-2pq\right)^{2}}{2pq}+\frac{\left(f_{HH}-q^{2}\right)^{2}}{q^{2}}\]</span></p>
-<p>This is somewhat different from the chi-squared tests we’ve done in previous labs (which are chi-squared tests of independence).
-I’ll be providing some code that shows how to do this.</p>
-</div>
-</div>
-</div>
-<div id="questions-and-hypotheses-2" class="section level2" number="9.2">
-<h2><span class="header-section-number">9.2</span> Questions and hypotheses</h2>
-<p>Primary Questions:</p>
-<ol style="list-style-type: decimal">
-<li>How does sampling intensity improve mark-release-recapture (MRR) population size estimates?</li>
-<li>Does separating animals by sex alter our estimate of population size? What’s the sex ratio?</li>
-<li>How does the Lincoln-Petersen model compare with alternate MRR methods?</li>
-<li>Are the <em>Heliconius</em> populations in Hardy-Weinberg equilbrium for the Optix gene?</li>
-</ol>
-</div>
-<div id="field-methods-1" class="section level2" number="9.3">
-<h2><span class="header-section-number">9.3</span> Field Methods</h2>
-<p>For the MRR exercise, your team will enter the greenhouse capture butterflies for two distinct periods.</p>
-<p>For the first period, your group will capture 5 different butterflies. re-mixes with the population. At least thirty minutes after you’ve completed the first period, return to the greenhouse for the second period and capture five more. The delay should give the butterflies time to mix with the population.</p>
+<div id="point-quarter-for-old-pasture-habitat-pond-enclosures" class="section level4" number="5.2.2.2">
+<h4><span class="header-section-number">5.2.2.2</span> Point quarter for old pasture habitat (pond enclosures)</h4>
+<p><strong>Sample Point selection:</strong></p>
+<p>Because there are edge effects around enclosure walls and there is a pond in the center, we are primarily concerned with the forest that came into the sapce between the path around the wall and the pond dam, replacing the pasture that Dr. Gilbert saw as a student in 1964.</p>
 <ul>
-<li>Space yourselves out and move slowly around your area of the greenhouse when searching.</li>
-<li>For each butterfly, record its number (or bring it to Dr. Gilbert if it doesn’t have one).</li>
-<li>Butterflies often land and sit after capture; don’t resample these. Instead, scare them into flight (by gently waving your hand) to insure mixing of individuals in the population.</li>
+<li>Divide the enclosure into 12 sections (like an analog clock face).</li>
+<li>Randomly choose 6 of these sections; your sample point will be along the path near the enclosure wall.</li>
 </ul>
-<p>After you’ve completed your data collection, you will be given a photo album of the marked butterflies; you will need to identify the genotype and sex of the butterflies in the images for the Hardy-Weinberg exercise.</p>
-</div>
-<div id="analysis-2" class="section level2" number="9.4">
-<h2><span class="header-section-number">9.4</span> Analysis</h2>
-<p>The Lincoln-Petersen model:</p>
-<p>If <span class="math inline">\(S_2\)</span> is the number of individuals collected in a sample period, <span class="math inline">\(M_1\)</span> is total number of previously marked individuals, and <span class="math inline">\(R_2\)</span> is the number of marked individuals who were recaptured, then you can estimate population size:</p>
-<p><span class="math display">\[\hat{N} = \frac{S_2 M_1}{R_2}\]</span></p>
-<div id="effect-of-sampling-intensity-on-lincoln-petersen-hatn-estimates" class="section level3" number="9.4.1">
-<h3><span class="header-section-number">9.4.1</span> Effect of sampling intensity on Lincoln-Petersen <span class="math inline">\(\hat{N}\)</span> estimates</h3>
-<p>We’re going to simulate increased sampling estimates by pooling together estimates from each team.
-I’ll be combining the data from each group in all possible team combinations (i.e., one team: A, B, C, …; two teams: AB, AC, AD, …; three teams: ABC, ABD, BCD, …).
-For each combination, you’ll need to calculate the Lincoln-Petersen population size estimate <span class="math inline">\((\hat{N})\)</span>.
-Create a figure showing the effect of sample size on <span class="math inline">\(\hat{N}\)</span>.</p>
-</div>
-<div id="sex-ratios" class="section level3" number="9.4.2">
-<h3><span class="header-section-number">9.4.2</span> Sex ratios</h3>
-<p>Using the combined data from all teams, estimate <span class="math inline">\(\hat{N}\)</span> separately for male and female butterflies. How does the sum of these estimates compare with the estimate when the sexes are lumped together?</p>
-<p>What is the sex ratio of the population? Does it differ from 50:50? Use a chi-square test to test this.</p>
-</div>
-<div id="comparison-of-lincoln-petersen-with-alternative-method" class="section level3" number="9.4.3">
-<h3><span class="header-section-number">9.4.3</span> Comparison of Lincoln-Petersen with alternative method</h3>
-<p>In 1970-71, Larry Gilbert collected data on a natural population of <em>Heliconius</em> in Trinidad (recall his paper spreadsheet from lecture with cells colored in to represent individuals). We will use this method to estimate population sizes.</p>
-<p>For each of the three sample periods, use a regression to model the relationship between the daily recapture proportion <span class="math inline">\((x)\)</span> and the cumulative number of individuals marked <span class="math inline">\((y)\)</span>.
-Intuitively, a recapture rate of 1.0 would suggest that you’ve sampled the entire population; you could thus use this regression equation to estimate <span class="math inline">\((\hat{N})\)</span> by evaluating it when <span class="math inline">\(x=1\)</span>.
-Create a multi-panel regression plot to go along with these methods.</p>
-<p>Compare these estimates with the Lincoln-Petersen estimate from the day with the highest proportion of recaptures in the sampling period.
-Note that for each row of the Trinidad data, <span class="math inline">\(S_2\)</span> = <code>total_captured</code>, <span class="math inline">\(R_2\)</span> = <code>recaptures</code>, and <span class="math inline">\(M_1\)</span> = <code>(cumulative_m - new_captures)</code>.</p>
-</div>
-<div id="hardy-weinberg" class="section level3" number="9.4.4">
-<h3><span class="header-section-number">9.4.4</span> Hardy-Weinberg</h3>
-<p>First, you’ll want to get the observed numbers for each genotype; we’ll call these <span class="math inline">\(N_{FF}\)</span>, <span class="math inline">\(N_{FH}\)</span>, and <span class="math inline">\(N_{HH}\)</span>; the total sample size <span class="math inline">\(N\)</span> is the sum of these.
-You can use the <code>table</code> command in R to calculate this.</p>
-<p>From these observed genotypes, you can calculate the genotype frequency of F, which is just <span class="math inline">\(\frac{N_{FF} + 0.5 N_{FH} }{N}\)</span>l let’s call this <span class="math inline">\(p\)</span>.</p>
-<p>You can get your HWE expected genotypes by using <span class="math inline">\(p\)</span> and <span class="math inline">\(q=1-p\)</span> to get your expected genotype frequencies; From here, you can run a chi-squared test.</p>
+<p>For each of the six points, you will sample two quarters (facing away from the enclosure wall), not four; this will give you the same overall amount of data as the other two habitats. Otherwise, the procedure is the same as that of the other two habitats.</p>
 </div>
 </div>
-<div id="discussion-3" class="section level2" number="9.5">
-<h2><span class="header-section-number">9.5</span> Discussion</h2>
-<p>You should address the following in your discussion:</p>
+</div>
+<div id="analysis-to-perform" class="section level2" number="5.3">
+<h2><span class="header-section-number">5.3</span> Analysis to perform</h2>
+<p>You should provide data and analyses to address the following questions:</p>
 <ul>
-<li>How well did we meet the assumptions of MRR?</li>
-<li>Our MRR data came from a closed population; briefly speculate about some of the potential problems with these estimates in an open, natural population (how would emigration/immigration or birth/death affect the estimates)? How might our study compare with data from a natural population?</li>
-<li>How well does the Lincoln-Petersen model compare with fractional recapture estimation in a natural population? How different were your population estimates? What factors could help explain them?</li>
-<li>Think of some creative ways you could improve sampling in an MRR project (beyond just increasing the sample size).<br />
-</li>
-<li>Don’t forget to discuss your results from the sex ratio and genotype analyses.</li>
+<li>What are the qualitative trends and characteristics of each habitat?</li>
+<li>How does the total density of canopy trees differ between habitats?</li>
+<li>Does relative abundance of each species differ between canopy and sapling trees? How consistent is this among habitats?</li>
+</ul>
+<p>Remember: describe what analyses you did in the method section, present what your found in the results section, and talk about what it means in the discussion.</p>
+<div id="canopy-tree-density" class="section level3" number="5.3.1">
+<h3><span class="header-section-number">5.3.1</span> Canopy tree density</h3>
+<p>You can use the point-quarter method to estimate tree density at each site with a bit of math. Let <span class="math inline">\(x_i\)</span> be the distance from your point to a sampled canopy tree. If you sampled 4 trees at a point, then the density in trees per square meters would be <span class="math inline">\(\frac{4}{x_1^2 + x_2^2 + x_3^2 + x_4^2}\)</span>. More generally, the density is <span class="math inline">\(1 / \text{mean}(x^2)\)</span>.</p>
+<p>Calculate density for each sample point, and convert it to hectares (multiply by <span class="math inline">\(10,000 \text{ m}^2/\text{ha}\)</span>). How do densities compare between habitat types? Create a figure and compare the averages. Note that you won’t be able to claim that one group is different unless you use statistical tests, such as a one-way ANOVA (this is optional).</p>
+</div>
+<div id="species-by-habitat-and-life-stage" class="section level3" number="5.3.2">
+<h3><span class="header-section-number">5.3.2</span> Species by habitat and life stage</h3>
+<p>For each habitat, you will want to calculate the relative abundance of each tree species for canopy and sapling trees (i.e., number of Canopy species <em>x</em> in habitat <em>y</em> divided by total number of observed Canopy trees in <em>y</em>). Visualize the result for each habitat (a three-panel frequency plot would be the best way to go, with categories ordered by canopy abundance).</p>
+<p>To test if the relative proportions in canopy and saplings are equivalent, you should construct contingency tables for each habitat (See Table <a href="lab-succession.html#tab:contingency">5.1</a> for an example).
+Restrict each table to the five most common species in each habitat.
+Contingency tables can be constructed with pivot tables in Excel or the table() function in R.
+Use chi-square tests to see if the proportions of species are different between canopy and saplings for each habitat.</p>
+<table style="width:100%;">
+<caption><span id="tab:contingency">Table 5.1: </span>Abundance of most common canopy and sapling trees in the BFL old pasture habitat, Fall 2018.</caption>
+<colgroup>
+<col width="6%" />
+<col width="17%" />
+<col width="11%" />
+<col width="14%" />
+<col width="15%" />
+<col width="17%" />
+<col width="16%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right"><em>Carya illinoiensis</em></th>
+<th align="right"><em>Celtis spp.</em></th>
+<th align="right"><em>Juniperus spp.</em></th>
+<th align="right"><em>Quercus buckleyi</em></th>
+<th align="right"><em>Quercus fusiformis</em></th>
+<th align="right"><em>Ulmus crassifolia</em></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Canopy</td>
+<td align="right">7</td>
+<td align="right">2</td>
+<td align="right">17</td>
+<td align="right">3</td>
+<td align="right">2</td>
+<td align="right">9</td>
+</tr>
+<tr class="even">
+<td align="left">Sapling</td>
+<td align="right">0</td>
+<td align="right">6</td>
+<td align="right">7</td>
+<td align="right">3</td>
+<td align="right">6</td>
+<td align="right">11</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="discussion-1" class="section level2" number="5.4">
+<h2><span class="header-section-number">5.4</span> Discussion</h2>
+<p>Some suggestions for discussion topics:</p>
+<ul>
+<li>How could differences in sapling/canopy relative abundances inform possible successional trends? Based on your results, what would you predict about future dominant species in the habitats?</li>
+<li>Did you observe anything else about the ecology or natural history of these areas that may help account for your results (e.g., drought stress, dead trees, invasive species, disease, etc)?</li>
+<li>What may be driving the differences in the habitat types? Considering the history of BFL may be helpful in explaining some of this.</li>
+<li>Develop a likely scenario for the past and future decades of tree population dynamics in the woodlands of BFL.</li>
+<li>How has drought and oak wilt affected the tree community at BFL? How might a scenario for succession based on currently healthy trees be changed if we include the information on stressed/dead trees?</li>
+<li>How could this line of research be expanded upon in future work?</li>
+</ul>
+</div>
+<div id="general-comments-post-review" class="section level2" number="5.5">
+<h2><span class="header-section-number">5.5</span> General Comments (Post-Review)</h2>
+<p>These were some general comments I had on a previous year’s reports; I’d recommend reading them, since they’re common mistakes that it would be good to avoid.</p>
+<div id="figures-2" class="section level3" number="5.5.1">
+<h3><span class="header-section-number">5.5.1</span> Figures</h3>
+<p>Review the guidelines in the Figures chapter. Specifically:</p>
+<ul>
+<li>Don’t use figure titles; anything that could go there should be in the caption instead.</li>
+<li>Use colors that will work in black and white,</li>
+<li>Number figures in the order they’re cited in the main text; they should also be arranged in this order (e.g., figure 2 shouldn’t be placed before figure 1).</li>
+<li>If the figure contains new data (which all of these should), it should be cited in the results.</li>
+<li>Figure numbers shouldn’t have decimals in them (e.g., no Figures 1.1, 2.3, etc). If you have a multi-panel figure, refer to specific panels as Figure 1a, 1b, etc.</li>
+<li>If you have a multi-panel figure, there should be a single caption that explains what each of the panels are.</li>
+<li>Don’t use bar plots for group means; boxplots or violin plots are usually better. This is a very inefficient way to present 3 data points, and it provides no information about the data’s variability. Boxplots or violin plots are better options. (Note that bar plots are still fine for counts or proportions).</li>
+<li>No gridlines (see below)</li>
+</ul>
+<p>To remove gridlines in excel, just click on them and delete them. Base plots in R (with the <code>plot()</code> function) shouldn’t have them by default. To remove them with <code>ggplot2</code> figures, put this near the top of the code:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="lab-succession.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;cowplot&quot;</span>) <span class="co"># if you don&#39;t have this installed; run once</span></span>
+<span id="cb1-2"><a href="lab-succession.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cowplot)</span>
+<span id="cb1-3"><a href="lab-succession.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_cowplot</span>()) <span class="co"># this makes your ggplots look nicer until you restart R</span></span>
+<span id="cb1-4"><a href="lab-succession.html#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplot commands here</span></span></code></pre></div>
+</div>
+<div id="write-this-like-youre-trying-to-publish-it" class="section level3" number="5.5.2">
+<h3><span class="header-section-number">5.5.2</span> Write this like you’re trying to publish it</h3>
+<p>You should write these reports as if you were writing a manuscript for a journal. Pretend it’s not a class paper; don’t say “For this lab, our assignment was…” or “the other students…” Write like it’s a research project; you came up with the hypotheses and methods and the other students in the class are your collaborators.</p>
+<p>When describing the data collection, you need to describe how all of this year’s data was collected, for all groups. Instead of saying “we sampled three points in per habitat,” say “five groups each sampled three points per habitat.” As part of this, don’t talk about combining your group’s data with the rest.</p>
+<p>Finally, you need to have a real title.</p>
+</div>
+<div id="describe-the-habitats" class="section level3" number="5.5.3">
+<h3><span class="header-section-number">5.5.3</span> Describe the habitats</h3>
+<p>Since the different habitat types are an important part of this paper, you should describe them in a reasonable amount of detail; this could go in the intro or methods section, depending on how you wrote it.</p>
+</div>
+<div id="the-analysis" class="section level3" number="5.5.4">
+<h3><span class="header-section-number">5.5.4</span> The Analysis</h3>
+<p>Formally, the chi-squared test evaluates whether the rows and columns of a contingency table are independent of each other. In the context of this project, that’s equivalent to testing whether the Canopy:Sapling ratio was equal for each species OR if the prevalence of each species was the same for canopy and sapling trees.</p>
+<p>Several people misinterpreted the analysis as examining if there were more canopy or sapling trees.
+This wouldn’t work, because the chi-square test cannot tell you anything about the actual number of trees and because the way you collected the data (a fixed number of trees per point) was not set up to answer this question.</p>
+<p>The Chi-square analysis was often described incorrectly in the methods; an unfamiliar reader would not know what you were testing. When you’re describing the test, you don’t necessarily need to state the null/alternative hypotheses, but you need to make it clear what question you’re answering with it.</p>
+<p>It’s also worth remembering that the data we collect is generally not incredibly high precision. Our measurements generally don’t have the ability to distinguish between a mean density of 437.11 and 437.14; depending on the sample size, we may not even be able to distinguish between 437 and 442. Being overly precise doesn’t help. If your p-values are less than 0.0001, just report “p &lt; 0.0001.”</p>
+</div>
+<div id="keeping-things-in-the-right-sections" class="section level3" number="5.5.5">
+<h3><span class="header-section-number">5.5.5</span> Keeping things in the right sections</h3>
+<p>Many people restated the methods used for their statistical analyses in the results. For example:</p>
+<p>“I ran chi-squared tests, and they showed significant differences in the old quarry (chi-square = …, df = …, p = …), the old pasture (…) and the river terrace (…).”</p>
+<p>Don’t do this; instead, only provide the result. A better re-work of the above sentence would be:</p>
+<p>“Species composition was significantly different between canopy and sapling trees in the old quarry (…), the old pasture (…), and the river terrace (…).”</p>
+<p>Don’t put anything in the intro or methods that is actually a result. Many people listed the most common species found in each habitat in their “study area” sections. Since this was a major part of this lab, listing the dominant species should be accompanied by a citation to show evidence that this is already known. In general, if you find yourself saying that the most common species “were” something, then it sounds like you are talking about your own observations; if you say that they “are” or “have been” something, then it sounds like you’re talking about more general patterns.</p>
+</div>
+<div id="basic-style-and-format-rules" class="section level3" number="5.5.6">
+<h3><span class="header-section-number">5.5.6</span> Basic style and format rules</h3>
+<ul>
+<li>Don’t capitalize things that don’t need capitalization (e.g., the point-quarter technique).</li>
+<li>Most acronyms should be defined before their first use (though there are a few exceptions, like ANOVA).</li>
+<li>Don’t say (p-value = x), say (p = x).</li>
+<li>If a paper has more than two authors, cite it as “(Smith et al., 2009),” not “(Smith, Johnson, Franks, and Brown, 2009).</li>
+</ul>
+</div>
+<div id="other-comments" class="section level3" number="5.5.7">
+<h3><span class="header-section-number">5.5.7</span> Other Comments</h3>
+<ul>
+<li>The “fisher test” is properly called Fisher’s exact test (with “Fisher” capitalized).</li>
+<li>If you used a stats program for a bunch of different things (as you usually do w/ R or Excel), mention it at the end of the section, not the beginning.</li>
+<li>RStudio is an interface for doing analysis with R; if you used it, you should say you did your analysis in R.</li>
+<li>Make sure to explain that sample points were selected differently in pond/old pasture than in other habitats.</li>
+<li>In the discussion, if you are listing several possible interpretations of your results, it’s a good idea to put the most interesting one(s) ahead of the “this is all random noise” option.</li>
 </ul>
 
 </div>
 </div>
-
-
-
+</div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="Lab-phorid.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="working-with-r.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="figures.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="Lab-heterogeneity.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
