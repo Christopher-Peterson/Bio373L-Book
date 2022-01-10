@@ -7,8 +7,7 @@ view: https://github.com/Christopher-Peterson/Bio373L-Book/blob/master/%s
 edit: https://github.com/Christopher-Peterson/Bio373L-Book/edit/master/%s
 rmd_files: 
   - index.Rmd
-  - chapters/writing/wr_structure.Rmd
-  - chapters/writing/wr_prelim.Rmd
+  - chapters/writing/wr_structure.Rmd # - chapters/writing/wr_prelim.Rmd
   - chapters/writing/wr_style.Rmd
   - chapters/writing/wr_figures.Rmd
   - chapters/analysis/r_intro.Rmd

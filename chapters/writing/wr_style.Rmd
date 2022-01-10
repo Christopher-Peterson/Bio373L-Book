@@ -57,6 +57,52 @@ While there are circumstances in which [passive voice](https://www.quickanddirty
 
 For the record, I am not banning the use of passive voice.  It can be effectively used alongside active voice when appropriate.  However, I'd recommend taking a look at your passive sentences and considering if active voice would make them more straightforward.
 
+## Using the literature in your paper (This is a common source of mistakes) {#style_lit}
+
+### Be specific and concice with your citations 
+
+Most of the time, you cite a paper to inform the reader about specific facts or observations.
+You should focus on these facts when writing and use a parenthetical citation.
+For example:
+
+> The point-quarter technique is an effective and reliable way to estimate canopy cover in the field (Smith et al., 2018).
+
+You generally don't need to provide background on how the study you're citing was conducted or what else they found; only talk about the part that's relevant to what you're trying to communicate.
+The following are all variations on things I've seen:
+
+> **Bad:** In 2016, Garfield et al. conducted a study on the three-eyed sandslider (*Trioptis cerastes*) in southern Arizona, where they found that high temperatures decrease foraging activity.
+
+> **Bad:** In their paper "Effects of extreme temperatures on *Trioptis cerastes* activity patterns," researchers from the University of Fantasia found that sandsliders forage less in high temperatures (Garfield et al, 2016).
+
+> **Good:** For example, three-eyed sandsliders (*Trioptis cerastes*) forage less under high temperatures (Garfield et al, 2016).
+
+In general, if you find yourself writing "In a study...", you should see if you can reword it to focus on the important facts.  
+
+### Do not include direct quotes from the literature
+
+Do not include direct quotes from the literature.
+
+Do not include direct quotes from the literature.
+
+Do not include direct quotes from the literature.
+
+Do not include direct quotes from the literature.
+
+I understand that this is a common practice in some parts of the humanities and social sciences.
+It is not acceptable here.
+Pull out the information that's relevant to your paper and use that to support your broader point.  
+
+### Where citations belong
+
+There should be multiple citations throughout the introduction and discussion.
+Occasionally, you'll need to cite something in the methods.
+
+Don't cite papers in the results.
+You are presenting your results, not somebody else's.
+If you want to do this, it's probably something that should be in the discussion.
+
+Don't cite the literature in the abstract unless your entire manuscript is a response to another paper (which is unlikely to happen in this class).
+
 ## Word Choice
 
 It's tempting to use longer, more technical sounding words when writing a scientific paper.  This tends to make papers harder to read with no benefit. The same is doubly true for awkward multi-word phrases that can be replaced with one, simple word. 
@@ -103,3 +149,16 @@ We generally aren't using high-precision instruments.  As such, you should round
 ## Tenses
 
 Make sure to use the appropriate tense in each part of the report. If you're reporting what you did (e.g. in the Methods) or what someone did in another study (e.g. in the Introduction or Discussion) then use the past tense. Also use the past tense in the Results, because the results were recorded/found in the past. However, when discussing context and theory currently held to be true (in the Introduction and Discussion), make sure to use the present tense. Future tense will typically only be used when suggesting a potential future follow-up study/studies, usually in a small section at the end of the Discussion.
+## Hypotheses vs. Null Hypotheses
+
+Null hypotheses are statistical tools used for certain tests (e.g., a null hypothesis for a chi-squared test would be that the groups are independent, or that there is no difference in the species proportions between two age classes).
+These don't belong in the introduction or discussion.
+For these sections, you should present your biological hypotheses (e.g., "BFL is undergoing succession").
+It is usually a good idea to include a concrete prediction of these hypotheses in the introduction as well (e.g., "BFL is undergoing succession, which will be indicated by a difference in the relative abundances of canopy and sapling trees").
+
+
+
+
+
+
+
