@@ -52,7 +52,6 @@ general-formatting
 continuous-response-categorical-predictors
 categorical-count-or-frequency-responses
 tables
-part-data-analysis-in-r
 working-with-r-and-rstudio
 introduction-to-rstudio
 rstudio-projects
@@ -119,7 +118,6 @@ combining-data-frames-in-progress
 binding-rows
 binding-columns-by-position
 joining-rows-by-value
-part-field-problems-and-lab-activities
 lab_succession
 introduction-to-the-lab
 materials-and-methods
