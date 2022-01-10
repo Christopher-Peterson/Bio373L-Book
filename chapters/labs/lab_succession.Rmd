@@ -1,4 +1,4 @@
-# (PART) Field Problems and Lab activities
+# (PART) Field Problems and Lab activities  {.unnumbered}
 
 # Succession Lab {#lab_succession}
 
