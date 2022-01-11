@@ -197,5 +197,3 @@ You should address the following in your discussion:
 - How well does the Lincoln-Petersen model compare with fractional recapture estimation in a natural population? How different were your population estimates? What factors could help explain them?
 - Think of some creative ways you could improve sampling in an MRR project (beyond just increasing the sample size).  
 - Don't forget to discuss your results from the sex ratio and genotype analyses.
-
-## References {.unnumbered}
