@@ -17,6 +17,9 @@ output:
       sharing:
         facebook: false
         twitter: false
+      toc:
+        collapse: chapter
+        scroll_highlight: true
     split_by: chapter
     split_bib: true
 bibliography: [book.bib, packages.bib]
