@@ -1,28 +1,10 @@
---- 
-title: "Bio 373L Survival Guide"
-author: "Christopher R. Peterson"
-date: "`r Sys.Date()`"
-site: bookdown::bookdown_site
-output: 
-  bookdown::pdf_book:
-    toc_appendix: true
-    toc_depth: 3
-    fig_width: 6.5
-    classoption: oneside
-    df_print: kable
-  bookdown::gitbook:
-    config:
-      sharing:
-        facebook: false
-        twitter: false
-documentclass: book
-bibliography: [book.bib, packages.bib]
-biblio-style: apalike
-link-citations: yes
-github-repo: Christopher-Peterson/Bio373L-Book
-description: "Writing advice for Field Ecology."
----
 # Preface {-}
 
+This is the official lab manual for Bio 373L (Field Ecology) at the University of Texas at Austin.  
+It is split into three parts:
 
-This book contains advice for students in the University of Texas at Austin's Field Ecology course.  It will be updated throughout the semester. The first three chapters contain general guidelines for writing lab reports.  The subsequent chapters cover the details of specific field problems.  The appendices are an extensive tutorial on working with and analyzing data using R.
+  - Instructions and advice for scientific writing.
+  - A series of tutorials on data manipulation, visualization, and analysis using R.
+  - Instructions for field problems and major assignments in the class.
+
+This document will be updated throughout the semester.
