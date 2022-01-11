@@ -18,7 +18,7 @@ output:
         facebook: false
         twitter: false
       toc:
-        collapse: chapter
+        collapse: subsection
         scroll_highlight: true
     split_by: chapter
     split_bib: true
