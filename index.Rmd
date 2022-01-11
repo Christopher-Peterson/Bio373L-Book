@@ -20,7 +20,7 @@ output:
       toc:
         collapse: section
         scroll_highlight: true
-    split_by: Rmd
+    split_by: rmd
     split_bib: true
 bibliography: [book.bib, packages.bib]
 csl: copeia.csl
