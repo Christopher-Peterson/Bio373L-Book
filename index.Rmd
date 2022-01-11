@@ -6,22 +6,7 @@ description: "Lab Manual for Field Ecology (Bio 373L) at UT Austin."
 site: bookdown::bookdown_site
 output: 
   bookdown::pdf_book:
-    toc_appendix: true
-    toc_depth: 3
-    fig_width: 6.5
-    documentclass: book
-    classoption: oneside
-    df_print: kable
   bookdown::gitbook:
-    config:
-      sharing:
-        facebook: false
-        twitter: false
-      toc:
-        collapse: section
-        scroll_highlight: true
-    split_by: rmd
-    split_bib: true
 bibliography: [book.bib, packages.bib]
 csl: copeia.csl
 link-citations: yes
