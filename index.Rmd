@@ -5,8 +5,8 @@ date: "`r Sys.Date()`"
 description: "Lab Manual for Field Ecology (Bio 373L) at UT Austin."
 site: bookdown::bookdown_site
 output: 
-  bookdown::pdf_book:
-  bookdown::gitbook:
+  bookdown::pdf_book
+  bookdown::gitbook
 bibliography: [book.bib, packages.bib]
 csl: copeia.csl
 link-citations: yes
