@@ -146,3 +146,5 @@ If you do this by hand, scan or photograph it and include it in the Canvas submi
 How are the current levels of shrub, canopy, and ground cover different from previous years?
 We will be comparing current data with fall 2004, when deer populations were high.
 For each cover type (canopy, shrub, and ground), make a contingency table comparing present cover levels vs. those in 2004 and run a chi-squared test.
+
+## References {.unnumbered}

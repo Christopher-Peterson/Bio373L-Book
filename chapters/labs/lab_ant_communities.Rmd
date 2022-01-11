@@ -1,49 +1,83 @@
+---
+editor_options: 
+  markdown: 
+    wrap: sentence
+---
+
 # Ant Lab: Ant Community Ecology and the Effects of Invasive Fire Ants {#Lab_ants}
 
 ## Background
 
-Ants are an important component of most terrestrial ecosystems both in terms of biomass and diversity.  They are reliably present and easily sampled in most habitats.  Ants have been selected as a focal baseline group for monitoring of biological diversity responses to global climate changes in the coming decades. See [Antbase](http://antbase.org/databases/publications_files/publications_20330.htm) for available PDFs on specific aspects.   Several of the authors have worked at BFL as students or post docs.
+Ants are an important component of most terrestrial ecosystems both in terms of biomass and diversity.
+They are reliably present and easily sampled in most habitats.
+Ants have been selected as a focal baseline group for monitoring of biological diversity responses to global climate changes in the coming decades.
+See [Antbase](http://antbase.org/databases/publications_files/publications_20330.htm) for available PDFs on specific aspects.
+Several of the authors have worked at BFL as students or post docs.
 
-Ant sampling at BFL started in the 1970s (Feener, 1978), a few years prior to the invasion of imported fire ants.  BFL at the time had a diverse ant fauna of about 56 species, (as indicated on the list you are provided).  Baits placed around the area in the mid 1970’s attracted a variety of ants throughout BFL.  After the invasion of the red imported fire ant, *Solenopsis invicta*, in 1981, the ant and arthropod community changed rapidly, decreasing in diversity and abundance.  The initial spread of *S. invicta* was carefully documented between 1983 and 1987 (Porter et al. 1988).   
+Ant sampling at BFL started in the 1970s [@feener], a few years prior to the invasion of imported fire ants.
+BFL at the time had a diverse ant fauna of about 56 species, (as indicated on the list you are provided).
+Baits placed around the area in the mid 1970's attracted a variety of ants throughout BFL.
+After the invasion of the red imported fire ant, *Solenopsis invicta*, in 1981, the ant and arthropod community changed rapidly, decreasing in diversity and abundance.
+The initial spread of *S. invicta* was carefully documented between 1983 and 1987 [@porter1988].
 
-In 1987, researchers at BFL sampled ants and other arthropods with baits, pitfalls and sifting leaf litter both inside and outside of invasion zones (Porter and Savignano, 1990).  They found that ant species richness within the invasion zone was only 50% that of the un-invaded habitat (16:32).  Overall ant abundances were much greater in infested areas (by 10-30 fold) and *S. invicta* workers accounted for 99% of the increase.  Species diversity indices, which take both species numbers and relative abundance into account, decreased by an order of magnitude between non-infested and infested sites.  Hook and Porter (1990) soon documented that the demise of harvester ants (Pogonomyrmex) was due to direct effects of *S. invicta* as it invaded BFL.
+In 1987, researchers at BFL sampled ants and other arthropods with baits, pitfalls and sifting leaf litter both inside and outside of invasion zones [@porter1990].
+They found that ant species richness within the invasion zone was only 50% that of the un-invaded habitat (16:32).
+Overall ant abundances were much greater in infested areas (by 10-30 fold) and *S. invicta* workers accounted for 99% of the increase.
+Species diversity indices, which take both species numbers and relative abundance into account, decreased by an order of magnitude between non-infested and infested sites.
+@hook1990 soon documented that the demise of harvester ants (*Pogonomyrmex*) was due to direct effects of *S. invicta* as it invaded BFL.
 
-Cheshire (1995) conducted a follow-up study along part of the quarry trail where Feener had conducted his 1978 study of leaf litter ants.  The wooded area sampled in these two studies is not favored by *S. invicta*, although they are present there.  Cheshire (1995) found 13 ant species where Feener earlier had recorded 17.  In 1978, the native fire ant, S. geminata had been 2% of the 2509 ants collected by Feener.  In 1995, the red imported fire ant was 55% of the 1986 ants collected in the same spot by Cheshire and the native fire ant was missing along with several other species.  Overall, abundance and diversity of native ants decreased in 1995 but not as much as we had feared would be the case in the mid 1980’s.
+@cheshire conducted a follow-up study along part of the quarry trail where Feener had conducted his 1978 study of leaf litter ants.
+The wooded area sampled in these two studies is not favored by *S. invicta*, although they are present there.
+@cheshire found 13 ant species where Feener earlier had recorded 17.
+In 1978, the native fire ant, *S. geminata* had been 2% of the 2509 ants collected by Feener.
+In 1995, the red imported fire ant was 55% of the 1986 ants collected in the same spot by Cheshire and the native fire ant was missing along with several other species.
+Overall, abundance and diversity of native ants decreased in 1995 but not as much as we had feared would be the case in the mid 1980's.
 
-In 1999, Morrison (2002) conducted a replica of the Porter and Savignano study, using the same exact sites and methods.  After 12 years there was evidence of recovery by the native ant community and a diminishing of the dominance of *S. invicta* seen early in the invasion.  In fact, abundance and species richness of native ants were back to levels seen in non-invaded areas in 1987.  BFL fire ant researchers believe that the drought of 1995-2001, contributed to the native ant resurgence against the red imported fire ant, and that the situation is now ideal for phorid flies, parasitoids of imported fire ants, and pathogens to impose negative impacts on imported fire ants, since the effects of these enemies are compounded by the presence of competing ants ready to fill the void.
+In 1999, @morrison2002 conducted a replica of the Porter and Savignano study, using the same exact sites and methods.
+After 12 years there was evidence of recovery by the native ant community and a diminishing of the dominance of *S. invicta* seen early in the invasion.
+In fact, abundance and species richness of native ants were back to levels seen in non-invaded areas in 1987.
+BFL fire ant researchers believe that the drought of 1995-2001, contributed to the native ant resurgence against the red imported fire ant, and that the situation is now ideal for phorid flies, parasitoids of imported fire ants, and pathogens to impose negative impacts on imported fire ants, since the effects of these enemies are compounded by the presence of competing ants ready to fill the void.
 
-Remarkably, when last checked about 2005, the urban areas of Austin near BFL were still dominated by native ants, including native fire ants.  *S. invicta* was rare to absent over an area of several square kilometers in the old neighborhoods near BFL (Plowes et al. 2007).  In the last 6 years many old homes in the area have been torn down and new houses built. Sites were disturbed and horticultural plants introduced by landscapers. Such disturbance may have increased *S. invicta* in the area. A follow up study is overdue.
+Remarkably, when last checked about 2005, the urban areas of Austin near BFL were still dominated by native ants, including native fire ants.
+*S. invicta* was rare to absent over an area of several square kilometers in the old neighborhoods near BFL [@plowes2007].
+In the last 6 years many old homes in the area have been torn down and new houses built.
+Sites were disturbed and horticultural plants introduced by landscapers.
+Such disturbance may have increased *S. invicta* in the area.
+A follow up study is overdue.
 
-Ant communities (like plants) are often associated with particular habitats and disturbance regimes. We know that BFL has undergone considerable succession in plant communities during the past 100 years, and these changes may play a role in ant community dynamics, as do periodic droughts.  Tree mortality in the old quarry from the 2009-2012 droughts opened the ground level there to sunlight and higher temperatures.  Such changes favor increases in *S. invicta* abundance. 
+Ant communities (like plants) are often associated with particular habitats and disturbance regimes.
+We know that BFL has undergone considerable succession in plant communities during the past 100 years, and these changes may play a role in ant community dynamics, as do periodic droughts.
+Tree mortality in the old quarry from the 2009-2012 droughts opened the ground level there to sunlight and higher temperatures.
+Such changes favor increases in *S. invicta* abundance.
 
 ## Questions and hypotheses
 
 There are two primary topics we'll be investigating in this lab:
 
-- What are the habitat preferences of imported fire ants (*Solenposis invicta*), and do fire ants have an effect on ant diversity.
-- How does the diversity and composition of ant communities differ across habitats (wooded or open) and disturbalnce levels (high and low)?
-
+-   What are the habitat preferences of imported fire ants (*Solenposis invicta*), and do fire ants have an effect on ant diversity.
+-   How does the diversity and composition of ant communities differ across habitats (wooded or open) and disturbalnce levels (high and low)?
 
 ## Methods
 
-You will be surveying ants in your acres, then identifying them in the lab. There is a key for BFL ants available on Canvas; additionally, you can find identification help on [AntWeb](https://www.antweb.org/) (from the California Academy of Science) and [Discover Life](https://www.discoverlife.org/) (from the University of Georgia and others).
+You will be surveying ants in your acres, then identifying them in the lab.
+There is a key for BFL ants available on Canvas; additionally, you can find identification help on [AntWeb](https://www.antweb.org/) (from the California Academy of Science) and [Discover Life](https://www.discoverlife.org/) (from the University of Georgia and others).
 
 ### Bait Survey
 
 You will create a 4 by 4 grid of baits (hot dog pieces), with bait sites at roughly 15 meter intervals.
 
-  - At each point, scuff the ground to clear a small area of 10x10 cm of bare soil (ants respond to small disturbances).
-  - Write the sample number on a small paper square & on a flag; place the flag at the site.
-  - Record the GPS coordinates, to as high an accuracy as you can. If possible, record a few items in your acre that have a known position so that we can use them to correct for errors.
-  
+-   At each point, scuff the ground to clear a small area of 10x10 cm of bare soil (ants respond to small disturbances).
+-   Write the sample number on a small paper square & on a flag; place the flag at the site.
+-   Record the GPS coordinates, to as high an accuracy as you can. If possible, record a few items in your acre that have a known position so that we can use them to correct for errors.
+
 ## Analysis
 
 We'll be doing examining habitat differences with a couple of contrasts with our various methods:
 
-- Open (canopy cover 0 or 1) vs. Closed (canopy cover 2 or 3) canopies.
-- Sparse (0/1) vs. dense (2/3) ground cover.
-- Low vs. high disturbance
-- Habitat types (Q/R/P)
+-   Open (canopy cover 0 or 1) vs. Closed (canopy cover 2 or 3) canopies.
+-   Sparse (0/1) vs. dense (2/3) ground cover.
+-   Low vs. high disturbance
+-   Habitat types (Q/R/P)
 
 ### *S. invicta* habitat preference
 
@@ -51,41 +85,57 @@ Compare the presence/absense of *S. invicta* for each contrast.
 For each, create a contingency table and run a chi-squared test.
 The columns should be the different habitat conditions; the table should have two rows (fire ants present, fire ants absent), and the cell contents should be the number of baits that meet those conditions.
 
-You should also test if fire ant presence is affected by an interaction between canopy openness and disturbance.  This should also be tested with a chi-square test, with the contingency table's columns being the four combinations of openness and disturbance and the rows being the presence and absence of fire ants; the values in the contingency tables will be the number of sample points that meet the criteria. 
+You should also test if fire ant presence is affected by an interaction between canopy openness and disturbance.
+This should also be tested with a chi-square test, with the contingency table's columns being the four combinations of openness and disturbance and the rows being the presence and absence of fire ants; the values in the contingency tables will be the number of sample points that meet the criteria.
 
 ### Ant community differences
 
-We'll be using four methods to estimate and compare diversity of ants in different habitats at BFL: Jaccard’s index of similarity, Cumulative curves of species, Rank abundance curves and Shannon’s index of diversity. You can read about these methods in the Ecology Laboratory Manual by G.W. Cox or any other ecology book.
+We'll be using four methods to estimate and compare diversity of ants in different habitats at BFL: Jaccard's index of similarity, Cumulative curves of species, Rank abundance curves and Shannon's index of diversity.
+You can read about these methods in the Ecology Laboratory Manual by G.W.
+Cox or any other ecology book.
 
-In general, you should use these methods to compare the above habitat characteristics.  You don't have to do all of them for each method (that would be excessive), but I'd recommend using them to explore the data and report on some contrasts that you find interesting. For everything but the Jaccard, you should also look at the entire dataset as a whole.
+In general, you should use these methods to compare the above habitat characteristics.
+You don't have to do all of them for each method (that would be excessive), but I'd recommend using them to explore the data and report on some contrasts that you find interesting.
+For everything but the Jaccard, you should also look at the entire dataset as a whole.
 
 #### Jaccard's index of similarity
 
 This index provides an estimation of how similar species composition is between two communities (e.g., two places or times).
 
-$$J = \frac{W}{A + B - W}$$
-$A$ and $B$ are the richness (number of species present) of the two communities in question, and $W$ is the number of species in common in both communities.  $J$ varies from 0 (nothing in common) to 1 (identical communities).
+$$J = \frac{W}{A + B - W}$$ $A$ and $B$ are the richness (number of species present) of the two communities in question, and $W$ is the number of species in common in both communities.
+$J$ varies from 0 (nothing in common) to 1 (identical communities).
 You can also interpret $J$ as the proportion of total species that are shared.
 
 For these analyses, you should treat the "community" as the habitat condition you're testing.
 
 #### Species Accumulation Curve
 
-These curves show the amount of time/effort spent sampling for species against the total number of species observed. They provide information about the actual and potential species richness of a community, as well as a sense of how well a place has been sampled.  The details of how to calculate this are a bit complicated, and are explained in the attached R script.
+These curves show the amount of time/effort spent sampling for species against the total number of species observed.
+They provide information about the actual and potential species richness of a community, as well as a sense of how well a place has been sampled.
+The details of how to calculate this are a bit complicated, and are explained in the attached R script.
 
-Plot each curve (for related curves, you should include them in the same figure).  Does it appear that the habitat was fully sampled?  Estimate the likely number of species in the habitat by extrapolating the curve.  
+Plot each curve (for related curves, you should include them in the same figure).
+Does it appear that the habitat was fully sampled?
+Estimate the likely number of species in the habitat by extrapolating the curve.
 
 #### Rank Abundance Curve
 
-Rank abundance curves compare the abundance of each species to the rank-order of that abundance. These give you a visual representation of species richness and species evenness (measure of comparative relative abundance of species). Species evenness is derived from the slope of the line that fits the graph. A steep drop-off indicates low evenness as the high ranking species have much higher abundances than the low ranking species. A more gradual slope indicates high evenness as the abundances of different species are similar. 
+Rank abundance curves compare the abundance of each species to the rank-order of that abundance.
+These give you a visual representation of species richness and species evenness (measure of comparative relative abundance of species).
+Species evenness is derived from the slope of the line that fits the graph.
+A steep drop-off indicates low evenness as the high ranking species have much higher abundances than the low ranking species.
+A more gradual slope indicates high evenness as the abundances of different species are similar.
 
-To create these, plot the number of ants found in each species with log10 scale on Y-axis. Organize the species along the x-axis from most to least abundant (See more in Cox pg 197).
+To create these, plot the number of ants found in each species with log10 scale on Y-axis.
+Organize the species along the x-axis from most to least abundant (See more in Cox pg 197).
 
 #### Shannon Index
 
-This index estimates the diversity of a species in a single place, combining information about the richness and relative abundance.  The Shannon index $(H^\prime)$ is calculated as:
+This index estimates the diversity of a species in a single place, combining information about the richness and relative abundance.
+The Shannon index $(H^\prime)$ is calculated as:
 
-$$H^{\prime} = -\sum_{i=1}^n p_i \ln(p_i)$$
-where $p_i$ is the relative abundance of species $i$.  The larger $H^{\prime}$, the higher the diversity. 
-The exponential of the Shannon index is called the true Shannon diversity $(D_H = \exp(H^\prime))$; it can be interpreted as the number of species you'd expect in an equally diverse community that was perfectly even.  
+$$H^{\prime} = -\sum_{i=1}^n p_i \ln(p_i)$$ where $p_i$ is the relative abundance of species $i$.
+The larger $H^{\prime}$, the higher the diversity.
+The exponential of the Shannon index is called the true Shannon diversity $(D_H = \exp(H^\prime))$; it can be interpreted as the number of species you'd expect in an equally diverse community that was perfectly even.
 
+## References {.unnumbered}

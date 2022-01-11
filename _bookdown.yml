@@ -1,10 +1,11 @@
 book_filename: "Bio373L-Book"
 language:
   ui:
-    chapter_name: "Chapter "
+    chapter_name: ""
 delete_merged_file: true
 view: https://github.com/Christopher-Peterson/Bio373L-Book/blob/master/%s
 edit: https://github.com/Christopher-Peterson/Bio373L-Book/edit/master/%s
+csl: copeia.csl
 rmd_files: 
   - index.Rmd
   - chapters/writing/wr_structure.Rmd # - chapters/writing/wr_prelim.Rmd
