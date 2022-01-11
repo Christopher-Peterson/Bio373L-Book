@@ -166,6 +166,7 @@ calibrating-canopy-estimates
 relationship-between-canopy-and-ground-cover
 quantifying-the-spatial-mosaic
 historical-comparison
+references
 Lab_ants
 background
 questions-and-hypotheses-2
@@ -178,6 +179,7 @@ jaccards-index-of-similarity
 species-accumulation-curve
 rank-abundance-curve
 shannon-index
+references-1
 Lab_phorid
 background-1
 fire-ants-and-phorid-flies
@@ -192,3 +194,4 @@ a-note-on-running-an-ancova
 effects-of-environmental-conditions
 discussion-3
 some-questions-from-previous-semesters
+references-2
