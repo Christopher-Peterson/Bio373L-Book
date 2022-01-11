@@ -191,4 +191,4 @@ effect-of-phorids-on-ant-foraging
 a-note-on-running-an-ancova
 effects-of-environmental-conditions
 discussion-3
-some-questions-from-previou-semesters
+some-questions-from-previous-semesters
