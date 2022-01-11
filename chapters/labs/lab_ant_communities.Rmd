@@ -138,4 +138,4 @@ $$H^{\prime} = -\sum_{i=1}^n p_i \ln(p_i)$$ where $p_i$ is the relative abundanc
 The larger $H^{\prime}$, the higher the diversity.
 The exponential of the Shannon index is called the true Shannon diversity $(D_H = \exp(H^\prime))$; it can be interpreted as the number of species you'd expect in an equally diverse community that was perfectly even.
 
-## References {-}
+## References 
