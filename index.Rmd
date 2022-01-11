@@ -16,6 +16,10 @@ output:
       sharing:
         facebook: false
         twitter: false
+    toc:
+      collapse: section
+      scroll_highlight: true
+      
 documentclass: book
 bibliography: [book.bib, packages.bib]
 csl: copeia.csl
