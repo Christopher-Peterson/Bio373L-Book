@@ -11,7 +11,7 @@ quiet_plot = function(...) suppressWarnings(plot(...))
 ```
 
 Note that this chapter focuses on general guidlines for figure design.
-For instructions on how to create figures in R using `ggplot2`, see Chapter \@ref(ggplot-tutorial).  
+For instructions on how to create figures in R using `ggplot2`, see Chapter \@ref(r_ggplot).  
 The R code used to generate all of the figures in this chapter can be found [here](https://github.com/Christopher-Peterson/Bio373L-Book/blob/master/R/figures_chapter_scripts.r),  along with some annotations.  
 
 ## Captions

@@ -1,4 +1,4 @@
-# Performing some useful analyses in R {#r-analysis-tutorial}
+# Performing some useful analyses in R {#r_stats}
 
 I'm going to give some examples of how to do common analyses you'll need for this class. I won't be spending much time on the statistical assumptions or diagnostics.
 
@@ -55,7 +55,7 @@ color_as_factor = factor(color_example, levels = color_levels)
 color_as_factor
 ```
 
-## Comparing categorical frequencies (Contingency Tables & related analyses)
+## Comparing categorical frequencies (Contingency Tables & related analyses) {#r_stats_cat}
 
 These tests generally compare the frequencies of count data.
 
@@ -107,7 +107,7 @@ You can also run a chi-squared or Fisher's exact test directly on two vectors or
 chisq.test(lizards$Color_morph, lizards$Perch_type)
 ```
 
-## Linear Models: Regression, ANOVA, and t-tests
+## Linear Models: Regression, ANOVA, and t-tests {#r-stats-lm}
 
 Linear regression and Analysis of Variance (ANOVA) are both special cases of the general linear model (LM), which fits a continuous response (y) to one or more predictors (x). You specify linear models in R with a **formula** syntax, which generally follows as: `response ~ predictor`. Combining this formula with the `lm()` function and a datset gives you the basis of a linear model.
 

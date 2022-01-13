@@ -1,4 +1,4 @@
-# Wrangling, reshaping, and tidying data with `tidyr` {#tidyr-tutorial}
+# Wrangling, reshaping, and tidying data with `tidyr` {#r_tidyr}
 
 ## Tidy data
 
