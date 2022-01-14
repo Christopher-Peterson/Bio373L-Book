@@ -23,7 +23,7 @@ library(forcats)
 library(cowplot)
 theme_set(theme_cowplot())
 lizards <- read_csv("example_data/anoles.csv") # See Appendix A if you don't have this
-succession_data_wide <- read_csv("example_data/succession_wide.csv")
+succession_data_wide <- read_csv("example_data/succession_wide_F19.csv")
 yeast_data <- read_csv("example_data/yeast_data_partial.csv")
 knitr::opts_chunk$set(collapse = TRUE)
 # Capture View()
@@ -43,7 +43,7 @@ library(tidyverse)
 library(cowplot)
 theme_set(theme_cowplot())
 lizards <- read_csv("example_data/anoles.csv") # See Appendix A if you don't have this data
-succession_data_wide <- read_csv("example_data/succession_wide.csv")
+succession_data_wide <- read_csv("example_data/succession_wide_F19.csv")
 yeast_data <- read_csv("example_data/yeast_data_partial.csv")
 
 ```

@@ -1,0 +1,257 @@
+Habitat,point_number,Team,Quadrant,Location,Location_type,Location_angle,Tree_type,Distance,DBH,Drought_stress,Species,N_dead
+P,1,A,a,Pond G,Pond,11,Canopy,3.3,14,FALSE,Carya illinoiensis (Pecan),0
+P,1,A,b,Pond G,Pond,11,Canopy,2.9,27,FALSE,Carya illinoiensis (Pecan),0
+P,1,A,c,Pond G,Pond,11,Canopy,1.6,21,FALSE,Carya illinoiensis (Pecan),0
+P,1,A,d,Pond G,Pond,11,Canopy,2.9,32,FALSE,Carya illinoiensis (Pecan),1
+P,1,A,b,Pond G,Pond,11,Sapling,1.3,,,Fraxinus texana (Texas ash),0
+P,1,A,c,Pond G,Pond,11,Sapling,2.6,,,Carya illinoiensis (Pecan),0
+P,1,A,d,Pond G,Pond,11,Sapling,4.6,,,Broussenetia papyrifera (Paper mulberry),0
+P,2,A,a,Pond G,Pond,3,Canopy,3.9,21,FALSE,Juniperus ashei (Ashe’s Juniper),0
+P,2,A,b,Pond G,Pond,3,Canopy,0.98,19,FALSE,Carya illinoiensis (Pecan),1
+P,2,A,c,Pond G,Pond,3,Canopy,1.95,30,FALSE,Carya illinoiensis (Pecan),0
+P,2,A,d,Pond G,Pond,3,Canopy,1.3,25,FALSE,Carya illinoiensis (Pecan),0
+P,2,A,a,Pond G,Pond,3,Sapling,2.4,,,Bumelia lanuginosa (Gum elastic),0
+P,2,A,b,Pond G,Pond,3,Sapling,0.7,,,Fraxinus texana (Texas ash),0
+P,2,A,c,Pond G,Pond,3,Sapling,3.3,,,Carya illinoiensis (Pecan),0
+P,2,A,d,Pond G,Pond,3,Sapling,1.3,,,Prunus caroliniana (Laurel cherry),0
+P,3,A,a,Pond G,Pond,8,Canopy,2.6,6,FALSE,Salix nigra (Black Willow),0
+P,3,A,b,Pond G,Pond,8,Canopy,5.2,90,FALSE,Populus deltoides (Cottonwood),0
+P,3,A,c,Pond G,Pond,8,Canopy,4.8,11,FALSE,Populus deltoides (Cottonwood),1
+P,3,A,d,Pond G,Pond,8,Canopy,3.9,70,FALSE,Populus deltoides (Cottonwood),0
+P,3,A,a,Pond G,Pond,8,Sapling,2.4,,,Salix nigra (Black Willow),0
+P,3,A,b,Pond G,Pond,8,Sapling,2.6,,,Salix nigra (Black Willow),0
+P,3,A,c,Pond G,Pond,8,Sapling,5.2,,,Populus deltoides (Cottonwood),0
+P,3,A,d,Pond G,Pond,8,Sapling,2.8,,,Populus deltoides (Cottonwood),0
+P,10,B,a,Pond F,Pond,12,Canopy,0.5714285714285714,12,FALSE,Juniperus ashei (Ashe’s Juniper),1
+P,10,B,b,Pond F,Pond,12,Canopy,0.5714285714285714,5,FALSE,Juniperus ashei (Ashe’s Juniper),1
+P,10,B,c,Pond F,Pond,12,Canopy,5.714285714285714,10,FALSE,Salix nigra (Black Willow),0
+P,10,B,d,Pond F,Pond,12,Canopy,1.1428571428571428,27,FALSE,Juniperus ashei (Ashe’s Juniper),0
+P,10,B,a,Pond F,Pond,12,Sapling,0.5714285714285714,,FALSE,Prunus caroliniana (Laurel cherry),0
+P,10,B,b,Pond F,Pond,12,Sapling,1.1428571428571428,,FALSE,Prunus caroliniana (Laurel cherry),1
+P,10,B,c,Pond F,Pond,12,Sapling,3.4285714285714284,,FALSE,Sapium sebiferum (Chinese tallow),0
+P,10,B,d,Pond F,Pond,12,Sapling,0.5714285714285714,,FALSE,Sapium sebiferum (Chinese tallow),0
+P,11,B,a,Pond F,Pond,4,Canopy,1.7142857142857142,19,TRUE,Taxodium distichum (Bald Cypress),1
+P,11,B,b,Pond F,Pond,4,Canopy,5.142857142857143,6,FALSE,Morus rubra (Red mulberry),0
+P,11,B,c,Pond F,Pond,4,Canopy,3.4285714285714284,27,FALSE,Juniperus ashei (Ashe’s Juniper),0
+P,11,B,d,Pond F,Pond,4,Canopy,4.571428571428571,7,FALSE,Sapium sebiferum (Chinese tallow),0
+P,11,B,a,Pond F,Pond,4,Sapling,0.5714285714285714,,FALSE,Prunus caroliniana (Laurel cherry),0
+P,11,B,b,Pond F,Pond,4,Sapling,1.7142857142857142,,FALSE,Prunus caroliniana (Laurel cherry),0
+P,11,B,c,Pond F,Pond,4,Sapling,1.7142857142857142,,FALSE,Prunus caroliniana (Laurel cherry),0
+P,11,B,d,Pond F,Pond,4,Sapling,4.571428571428571,,FALSE,Prunus caroliniana (Laurel cherry),0
+P,12,B,b,Pond F,Pond,5,Canopy,9.142857142857142,17,FALSE,Carya illinoiensis (Pecan),0
+P,12,B,c,Pond F,Pond,5,Canopy,3.4285714285714284,17,FALSE,Juniperus ashei (Ashe’s Juniper),0
+P,12,B,d,Pond F,Pond,5,Canopy,8.571428571428571,14,FALSE,Juniperus ashei (Ashe’s Juniper),0
+P,12,B,a,Pond F,Pond,5,Sapling,1.1428571428571428,,FALSE,Salix nigra (Black Willow),0
+P,12,B,b,Pond F,Pond,5,Sapling,0.5714285714285714,,FALSE,Quercus fusiformis (Live oak),0
+P,12,B,d,Pond F,Pond,5,Sapling,2.857142857142857,,FALSE,Prunus caroliniana (Laurel cherry),0
+P,18,C,a,"Tag 45, 6.6 m",Transect,1,Canopy,8.823529411764705,8,,Ulmus crassifolia (Cedar elm),
+P,18,C,b,"Tag 45, 6.6 m",Transect,1,Canopy,6.617647058823529,12,,Celtis spp. (Hackberry),
+P,18,C,c,"Tag 45, 6.6 m",Transect,1,Canopy,3.676470588235294,13,,Celtis spp. (Hackberry),
+P,18,C,d,"Tag 45, 6.6 m",Transect,1,Canopy,1.102941176470588,60,,Populus deltoides (Cottonwood),
+P,18,C,a,"Tag 45, 6.6 m",Transect,1,Sapling,2.941176470588235,,,Juniperus ashei (Ashe’s Juniper),
+P,18,C,b,"Tag 45, 6.6 m",Transect,1,Sapling,2.205882352941176,,,Ulmus crassifolia (Cedar elm),
+P,18,C,c,"Tag 45, 6.6 m",Transect,1,Sapling,10.294117647058822,,,Bumelia lanuginosa (Gum elastic),
+P,18,C,d,"Tag 45, 6.6 m",Transect,1,Sapling,29.41176470588235,,,Prosopis glandulosa (Mesquite),
+P,19,C,a,"Tag 46, 38.2 m",Transect,11,Canopy,1.4705882352941175,12,FALSE,Juniperus ashei (Ashe’s Juniper),
+P,19,C,b,"Tag 46, 38.2 m",Transect,11,Canopy,9.558823529411764,15,FALSE,Juniperus ashei (Ashe’s Juniper),
+P,19,C,c,"Tag 46, 38.2 m",Transect,11,Canopy,0.7352941176470588,6,FALSE,Broussenetia papyrifera (Paper mulberry),
+P,19,C,d,"Tag 46, 38.2 m",Transect,11,Canopy,7.720588235294117,14,TRUE,Quercus fusiformis (Live oak),
+P,19,C,a,"Tag 46, 38.2 m",Transect,11,Sapling,5.147058823529411,,FALSE,Juniperus ashei (Ashe’s Juniper),
+P,19,C,b,"Tag 46, 38.2 m",Transect,11,Sapling,5.88235294117647,,TRUE,Juniperus ashei (Ashe’s Juniper),
+P,19,C,c,"Tag 46, 38.2 m",Transect,11,Sapling,8.088235294117647,,FALSE,Celtis spp. (Hackberry),
+P,19,C,d,"Tag 46, 38.2 m",Transect,11,Sapling,7.720588235294117,,FALSE,Ulmus crassifolia (Cedar elm),
+P,20,C,a,"Tag 46, 6.6 m",Transect,1,Canopy,4.044117647058823,7,,Juniperus ashei (Ashe’s Juniper),
+P,20,C,b,"Tag 46, 6.6 m",Transect,1,Canopy,2.205882352941176,14,,Juniperus ashei (Ashe’s Juniper),
+P,20,C,c,"Tag 46, 6.6 m",Transect,1,Canopy,4.779411764705882,10.5,,Juniperus ashei (Ashe’s Juniper),
+P,20,C,d,"Tag 46, 6.6 m",Transect,1,Canopy,2.205882352941176,30,,Juniperus ashei (Ashe’s Juniper),
+P,20,C,a,"Tag 46, 6.6 m",Transect,1,Sapling,8.823529411764705,,,Ulmus crassifolia (Cedar elm),
+P,20,C,b,"Tag 46, 6.6 m",Transect,1,Sapling,2.941176470588235,,,Quercus fusiformis (Live oak),
+P,20,C,c,"Tag 46, 6.6 m",Transect,1,Sapling,6.249999999999999,,,Juniperus ashei (Ashe’s Juniper),
+P,27,D,a,Pond D,Pond,1,Canopy,3.3333333333333335,5,TRUE,Juniperus ashei (Ashe’s Juniper),1
+P,27,D,b,Pond D,Pond,1,Canopy,8,18,FALSE,Quercus fusiformis (Live oak),0
+P,27,D,c,Pond D,Pond,1,Canopy,4,32,FALSE,Juniperus ashei (Ashe’s Juniper),0
+P,27,D,d,Pond D,Pond,1,Canopy,5.333333333333333,25,TRUE,Juniperus ashei (Ashe’s Juniper),1
+P,28,D,a,Pond D,Pond,10,Canopy,4,10,FALSE,Quercus fusiformis (Live oak),0
+P,28,D,b,Pond D,Pond,10,Canopy,6.666666666666667,13,FALSE,Morus rubra (Red mulberry),0
+P,28,D,c,Pond D,Pond,10,Canopy,8.666666666666666,17,FALSE,Juniperus ashei (Ashe’s Juniper),0
+P,28,D,d,Pond D,Pond,10,Canopy,4,16,FALSE,Juniperus ashei (Ashe’s Juniper),0
+P,28,D,d,Pond D,Pond,10,Sapling,2.6666666666666665,,,Juniperus ashei (Ashe’s Juniper),0
+P,29,D,a,Pond D,Pond,2,Canopy,2,1.5,TRUE,Juniperus ashei (Ashe’s Juniper),0
+P,29,D,b,Pond D,Pond,2,Canopy,2.6666666666666665,2,TRUE,Prunus caroliniana (Laurel cherry),1
+P,29,D,c,Pond D,Pond,2,Canopy,2.6666666666666665,11,FALSE,Morus rubra (Red mulberry),1
+P,29,D,d,Pond D,Pond,2,Canopy,6,12,TRUE,Juniperus ashei (Ashe’s Juniper),1
+P,29,D,b,Pond D,Pond,2,Sapling,3.3333333333333335,,,Prunus caroliniana (Laurel cherry),0
+P,29,D,c,Pond D,Pond,2,Sapling,3.3333333333333335,,,Prunus caroliniana (Laurel cherry),1
+P,36,E,a,Pond C,Pond,2,Canopy,3,9,FALSE,Celtis spp. (Hackberry),0
+P,36,E,b,Pond C,Pond,2,Canopy,2,10,FALSE,Juniperus ashei (Ashe’s Juniper),0
+P,36,E,d,Pond C,Pond,2,Canopy,10,17,FALSE,Juniperus ashei (Ashe’s Juniper),0
+P,37,E,a,Pond C,Pond,3,Canopy,3,3,FALSE,Celtis spp. (Hackberry),3
+P,37,E,b,Pond C,Pond,3,Canopy,2,12,FALSE,Taxodium distichum (Bald Cypress),0
+P,37,E,c,Pond C,Pond,3,Canopy,3.5,10.5,FALSE,Celtis spp. (Hackberry),
+P,37,E,d,Pond C,Pond,3,Canopy,5,5.5,FALSE,Celtis spp. (Hackberry),
+P,38,E,a,Pond C,Pond,6,Canopy,1.5,3,FALSE,Ulmus crassifolia (Cedar elm),0
+P,38,E,b,Pond C,Pond,6,Canopy,1,20,FALSE,Ulmus crassifolia (Cedar elm),0
+P,38,E,c,Pond C,Pond,6,Canopy,1.5,20,FALSE,Ulmus crassifolia (Cedar elm),0
+P,38,E,d,Pond C,Pond,6,Canopy,2,3,FALSE,Ulmus crassifolia (Cedar elm),0
+P,38,E,b,Pond C,Pond,6,Sapling,3,,FALSE,Ulmus crassifolia (Cedar elm),0
+Q,4,A,a,"Tag 18, 12 m",Transect,2,Canopy,3.9,26,TRUE,Juniperus ashei (Ashe’s Juniper),2
+Q,4,A,b,"Tag 18, 12 m",Transect,2,Canopy,5.2,28,TRUE,Ulmus crassifolia (Cedar elm),3
+Q,4,A,c,"Tag 18, 12 m",Transect,2,Canopy,1.3,15,TRUE,Ulmus crassifolia (Cedar elm),2
+Q,4,A,d,"Tag 18, 12 m",Transect,2,Canopy,4.55,11,TRUE,Ulmus crassifolia (Cedar elm),1
+Q,4,A,a,"Tag 18, 12 m",Transect,2,Sapling,1.95,,,Celtis spp. (Hackberry),0
+Q,4,A,b,"Tag 18, 12 m",Transect,2,Sapling,2.6,,,Melia azederach (Chinaberry),0
+Q,4,A,c,"Tag 18, 12 m",Transect,2,Sapling,3.9,,,Melia azederach (Chinaberry),0
+Q,4,A,d,"Tag 18, 12 m",Transect,2,Sapling,3.9,,,Fraxinus texana (Texas ash),1
+Q,5,A,a,"Tag 18, 15 m",Transect,7,Canopy,3.25,25,TRUE,Juniperus ashei (Ashe’s Juniper),3
+Q,5,A,c,"Tag 18, 15 m",Transect,7,Canopy,2.28,28,TRUE,Juniperus ashei (Ashe’s Juniper),0
+Q,5,A,d,"Tag 18, 15 m",Transect,7,Canopy,6.24,19,TRUE,Ulmus crassifolia (Cedar elm),0
+Q,5,A,a,"Tag 18, 15 m",Transect,7,Sapling,2.6,,,Quercus fusiformis (Live oak),1
+Q,5,A,c,"Tag 18, 15 m",Transect,7,Sapling,2.93,,,Quercus fusiformis (Live oak),2
+Q,5,A,d,"Tag 18, 15 m",Transect,7,Sapling,3.58,,,Celtis spp. (Hackberry),0
+Q,6,A,a,"Tag 18, 20 m",Transect,10,Canopy,0.98,23,TRUE,Ulmus crassifolia (Cedar elm),1
+Q,6,A,b,"Tag 18, 20 m",Transect,10,Canopy,3.25,14,TRUE,Ulmus crassifolia (Cedar elm),3
+Q,6,A,c,"Tag 18, 20 m",Transect,10,Canopy,9.75,16,TRUE,Ulmus crassifolia (Cedar elm),1
+Q,6,A,d,"Tag 18, 20 m",Transect,10,Canopy,6.75,22,TRUE,Ulmus crassifolia (Cedar elm),1
+Q,6,A,a,"Tag 18, 20 m",Transect,10,Sapling,2.11,,,Quercus fusiformis (Live oak),2
+Q,6,A,b,"Tag 18, 20 m",Transect,10,Sapling,2.6,,,Quercus fusiformis (Live oak),1
+Q,6,A,d,"Tag 18, 20 m",Transect,10,Sapling,2.5,,,Juniperus ashei (Ashe’s Juniper),2
+Q,13,B,a,"Tag 123, 5.7 m",Transect,2,Canopy,1.7142857142857142,8.5,TRUE,Ulmus crassifolia (Cedar elm),
+Q,13,B,b,"Tag 123, 5.7 m",Transect,2,Canopy,2.2857142857142856,14,TRUE,Ulmus crassifolia (Cedar elm),4
+Q,13,B,c,"Tag 123, 5.7 m",Transect,2,Canopy,3.4285714285714284,17,TRUE,Ulmus crassifolia (Cedar elm),1
+Q,13,B,d,"Tag 123, 5.7 m",Transect,2,Canopy,6.857142857142857,16,TRUE,Ulmus crassifolia (Cedar elm),1
+Q,14,B,a,"Tag 123, 5.7 m",Transect,9,Canopy,2.857142857142857,17,FALSE,Ulmus crassifolia (Cedar elm),1
+Q,14,B,b,"Tag 123, 5.7 m",Transect,9,Canopy,1.1428571428571428,12,FALSE,Ulmus crassifolia (Cedar elm),2
+Q,14,B,d,"Tag 123, 5.7 m",Transect,9,Canopy,5.142857142857143,7,TRUE,Ulmus crassifolia (Cedar elm),2
+Q,15,B,a,"Tag 125, 0.6 m",Transect,5,Canopy,4,19,FALSE,Juniperus ashei (Ashe’s Juniper),1
+Q,15,B,b,"Tag 125, 0.6 m",Transect,5,Canopy,2.857142857142857,14,FALSE,Celtis spp. (Hackberry),2
+Q,15,B,c,"Tag 125, 0.6 m",Transect,5,Canopy,1.7142857142857142,7,FALSE,Juniperus ashei (Ashe’s Juniper),0
+Q,15,B,d,"Tag 125, 0.6 m",Transect,5,Canopy,3.4285714285714284,29,FALSE,Ulmus crassifolia (Cedar elm),1
+Q,21,C,a,"Tag 146, 16.2 m",Transect,12,Canopy,2.941176470588235,7,,Juniperus ashei (Ashe’s Juniper),
+Q,21,C,b,"Tag 146, 16.2 m",Transect,12,Canopy,9.558823529411764,25,,Ulmus crassifolia (Cedar elm),
+Q,21,C,c,"Tag 146, 16.2 m",Transect,12,Canopy,4.044117647058823,11,,Juniperus ashei (Ashe’s Juniper),
+Q,21,C,d,"Tag 146, 16.2 m",Transect,12,Canopy,5.88235294117647,18,,Juniperus ashei (Ashe’s Juniper),
+Q,21,C,a,"Tag 146, 16.2 m",Transect,12,Sapling,3.3088235294117645,,,Ulmus crassifolia (Cedar elm),
+Q,21,C,b,"Tag 146, 16.2 m",Transect,12,Sapling,1.838235294117647,,,Ulmus crassifolia (Cedar elm),
+Q,21,C,c,"Tag 146, 16.2 m",Transect,12,Sapling,2.205882352941176,,,Ulmus crassifolia (Cedar elm),
+Q,21,C,d,"Tag 146, 16.2 m",Transect,12,Sapling,3.676470588235294,,TRUE,Ulmus crassifolia (Cedar elm),
+Q,22,C,a,"Tag 146, 9.6 m",Transect,9,Canopy,4.044117647058823,23,,Ulmus crassifolia (Cedar elm),
+Q,22,C,b,"Tag 146, 9.6 m",Transect,9,Canopy,8.455882352941176,12,,Ulmus crassifolia (Cedar elm),
+Q,22,C,c,"Tag 146, 9.6 m",Transect,9,Canopy,2.205882352941176,10,,Ulmus crassifolia (Cedar elm),
+Q,22,C,d,"Tag 146, 9.6 m",Transect,9,Canopy,9.558823529411764,23,,Juniperus ashei (Ashe’s Juniper),
+Q,22,C,a,"Tag 146, 9.6 m",Transect,9,Sapling,7.352941176470588,,,Ulmus crassifolia (Cedar elm),
+Q,22,C,b,"Tag 146, 9.6 m",Transect,9,Sapling,3.676470588235294,,,Ulmus crassifolia (Cedar elm),
+Q,22,C,c,"Tag 146, 9.6 m",Transect,9,Sapling,1.102941176470588,,,Juniperus ashei (Ashe’s Juniper),
+Q,22,C,d,"Tag 146, 9.6 m",Transect,9,Sapling,4.411764705882352,,,Ulmus crassifolia (Cedar elm),
+Q,23,C,a,"Tag 149, 14.7 m",Transect,3,Canopy,4.411764705882352,23,,Juniperus ashei (Ashe’s Juniper),
+Q,23,C,b,"Tag 149, 14.7 m",Transect,3,Canopy,2.941176470588235,16,,Juniperus ashei (Ashe’s Juniper),
+Q,23,C,c,"Tag 149, 14.7 m",Transect,3,Canopy,2.941176470588235,17,,Juniperus ashei (Ashe’s Juniper),
+Q,23,C,a,"Tag 149, 14.7 m",Transect,3,Sapling,2.941176470588235,,,Ulmus crassifolia (Cedar elm),
+Q,23,C,b,"Tag 149, 14.7 m",Transect,3,Sapling,2.941176470588235,,,Juniperus ashei (Ashe’s Juniper),
+Q,23,C,c,"Tag 149, 14.7 m",Transect,3,Sapling,11.76470588235294,,,Ulmus americana (American elm),
+Q,23,C,d,"Tag 149, 14.7 m",Transect,3,Sapling,2.205882352941176,,,Ulmus crassifolia (Cedar elm),
+Q,30,D,a,"Tag 58, 0.7 m",Transect,5,Canopy,5.333333333333333,22,FALSE,Juniperus ashei (Ashe’s Juniper),2
+Q,30,D,b,"Tag 58, 0.7 m",Transect,5,Canopy,3.3333333333333335,8,FALSE,Celtis spp. (Hackberry),1
+Q,30,D,c,"Tag 58, 0.7 m",Transect,5,Canopy,6.666666666666667,8,FALSE,Celtis spp. (Hackberry),0
+Q,30,D,d,"Tag 58, 0.7 m",Transect,5,Canopy,4.666666666666667,5,TRUE,Fraxinus texana (Texas ash),0
+Q,31,D,a,"Tag 58, 10.7 m",Transect,2,Canopy,5.333333333333333,16,FALSE,Juniperus ashei (Ashe’s Juniper),0
+Q,31,D,b,"Tag 58, 10.7 m",Transect,2,Canopy,5.333333333333333,6,FALSE,Ulmus crassifolia (Cedar elm),0
+Q,31,D,c,"Tag 58, 10.7 m",Transect,2,Canopy,2,6,TRUE,Ulmus crassifolia (Cedar elm),1
+Q,31,D,d,"Tag 58, 10.7 m",Transect,2,Canopy,2,6,TRUE,Ulmus americana (American elm),2
+Q,31,D,a,"Tag 58, 10.7 m",Transect,2,Sapling,4,,,Fraxinus texana (Texas ash),0
+Q,32,D,a,"Tag 58, 7.3 m",Transect,11,Canopy,8,25,FALSE,Juniperus ashei (Ashe’s Juniper),1
+Q,32,D,b,"Tag 58, 7.3 m",Transect,11,Canopy,6.666666666666667,34,FALSE,Quercus fusiformis (Live oak),1
+Q,32,D,c,"Tag 58, 7.3 m",Transect,11,Canopy,1.3333333333333333,6,FALSE,Ulmus crassifolia (Cedar elm),1
+Q,32,D,d,"Tag 58, 7.3 m",Transect,11,Canopy,4,25,FALSE,Juniperus ashei (Ashe’s Juniper),2
+Q,32,D,a,"Tag 58, 7.3 m",Transect,11,Sapling,3.3333333333333335,,,Fraxinus texana (Texas ash),0
+Q,32,D,c,"Tag 58, 7.3 m",Transect,11,Sapling,0.6666666666666666,,,Fraxinus texana (Texas ash),0
+Q,39,E,a,"Tag 79, 6.7 m",Transect,9,Canopy,2.5,7,FALSE,Fraxinus texana (Texas ash),2
+Q,39,E,b,"Tag 79, 6.7 m",Transect,9,Canopy,6,10.5,FALSE,Ulmus crassifolia (Cedar elm),0
+Q,39,E,c,"Tag 79, 6.7 m",Transect,9,Canopy,2.5,15,FALSE,Juniperus ashei (Ashe’s Juniper),0
+Q,39,E,d,"Tag 79, 6.7 m",Transect,9,Canopy,5.7,30,FALSE,Juniperus ashei (Ashe’s Juniper),1
+Q,39,E,b,"Tag 79, 6.7 m",Transect,9,Sapling,2.8,,FALSE,Ulmus crassifolia (Cedar elm),0
+Q,39,E,c,"Tag 79, 6.7 m",Transect,9,Sapling,2.2,,FALSE,Ulmus crassifolia (Cedar elm),0
+Q,40,E,a,"Tag 82, 17.5 m",Transect,9,Canopy,3.5,18,FALSE,Juniperus ashei (Ashe’s Juniper),2
+Q,40,E,b,"Tag 82, 17.5 m",Transect,9,Canopy,,,,Juniperus ashei (Ashe’s Juniper),3
+Q,40,E,c,"Tag 82, 17.5 m",Transect,9,Canopy,,,,Juniperus ashei (Ashe’s Juniper),2
+Q,40,E,d,"Tag 82, 17.5 m",Transect,9,Canopy,,,,Juniperus ashei (Ashe’s Juniper),1
+Q,40,E,b,"Tag 82, 17.5 m",Transect,9,Sapling,1.9,,FALSE,Fraxinus texana (Texas ash),0
+Q,40,E,c,"Tag 82, 17.5 m",Transect,9,Sapling,5,,FALSE,Fraxinus texana (Texas ash),0
+Q,40,E,d,"Tag 82, 17.5 m",Transect,9,Sapling,3,,FALSE,Fraxinus texana (Texas ash),0
+Q,41,E,a,"Tag 85, 10.7 m",Transect,7,Canopy,3.5,18,TRUE,Juniperus ashei (Ashe’s Juniper),0
+Q,41,E,b,"Tag 85, 10.7 m",Transect,7,Canopy,6,17,TRUE,Juniperus ashei (Ashe’s Juniper),0
+Q,41,E,c,"Tag 85, 10.7 m",Transect,7,Canopy,3,12.5,TRUE,Juniperus ashei (Ashe’s Juniper),1
+Q,41,E,d,"Tag 85, 10.7 m",Transect,7,Canopy,6,16,TRUE,Juniperus ashei (Ashe’s Juniper),1
+Q,41,E,a,"Tag 85, 10.7 m",Transect,7,Sapling,3,,TRUE,Fraxinus texana (Texas ash),5
+Q,41,E,b,"Tag 85, 10.7 m",Transect,7,Sapling,1.5,,TRUE,Fraxinus texana (Texas ash),3
+Q,41,E,c,"Tag 85, 10.7 m",Transect,7,Sapling,4,,TRUE,Fraxinus texana (Texas ash),2
+Q,41,E,d,"Tag 85, 10.7 m",Transect,7,Sapling,1.5,,TRUE,Fraxinus texana (Texas ash),0
+R,7,A,a,"Tag 115, 15 m",Transect,3,Canopy,3.9,37,TRUE,Celtis spp. (Hackberry),0
+R,7,A,b,"Tag 115, 15 m",Transect,3,Canopy,2,16,TRUE,Celtis spp. (Hackberry),0
+R,7,A,c,"Tag 115, 15 m",Transect,3,Canopy,5.5,27,TRUE,Celtis spp. (Hackberry),0
+R,7,A,d,"Tag 115, 15 m",Transect,3,Canopy,4.5,23,TRUE,Celtis spp. (Hackberry),0
+R,7,A,a,"Tag 115, 15 m",Transect,3,Sapling,9.1,,,Celtis spp. (Hackberry),0
+R,7,A,b,"Tag 115, 15 m",Transect,3,Sapling,9.6,,,Celtis spp. (Hackberry),1
+R,7,A,c,"Tag 115, 15 m",Transect,3,Sapling,3.4,,,Celtis spp. (Hackberry),0
+R,7,A,d,"Tag 115, 15 m",Transect,3,Sapling,7.8,,,Celtis spp. (Hackberry),0
+R,8,A,a,"Tag 115, 15 m",Transect,6,Canopy,2.6,6,TRUE,Prunus caroliniana (Laurel cherry),0
+R,8,A,b,"Tag 115, 15 m",Transect,6,Canopy,2,17,TRUE,Celtis spp. (Hackberry),0
+R,8,A,c,"Tag 115, 15 m",Transect,6,Canopy,3.3,14,TRUE,Celtis spp. (Hackberry),1
+R,8,A,d,"Tag 115, 15 m",Transect,6,Canopy,2.6,48,TRUE,Celtis spp. (Hackberry),0
+R,8,A,a,"Tag 115, 15 m",Transect,6,Sapling,5.7,,,Prunus caroliniana (Laurel cherry),1
+R,8,A,b,"Tag 115, 15 m",Transect,6,Sapling,1.3,,,Celtis spp. (Hackberry),1
+R,8,A,c,"Tag 115, 15 m",Transect,6,Sapling,5.2,,,Fraxinus texana (Texas ash),0
+R,8,A,d,"Tag 115, 15 m",Transect,6,Sapling,2.7,,,Celtis spp. (Hackberry),2
+R,9,A,a,"Tag 115, 20 m",Transect,11,Canopy,5.7,34,TRUE,Celtis spp. (Hackberry),1
+R,9,A,b,"Tag 115, 20 m",Transect,11,Canopy,8.5,48,TRUE,Celtis spp. (Hackberry),1
+R,9,A,c,"Tag 115, 20 m",Transect,11,Canopy,3.9,16,TRUE,Celtis spp. (Hackberry),2
+R,9,A,d,"Tag 115, 20 m",Transect,11,Canopy,6.2,28,TRUE,Celtis spp. (Hackberry),0
+R,9,A,a,"Tag 115, 20 m",Transect,11,Sapling,4.5,,,Populus deltoides (Cottonwood),0
+R,9,A,b,"Tag 115, 20 m",Transect,11,Sapling,4.7,,,Celtis spp. (Hackberry),2
+R,9,A,d,"Tag 115, 20 m",Transect,11,Sapling,7.8,,,Celtis spp. (Hackberry),0
+R,16,B,b,"Tag 28, 11.4 m",Transect,6,Canopy,5.142857142857143,32,TRUE,Celtis spp. (Hackberry),0
+R,16,B,c,"Tag 28, 11.4 m",Transect,6,Canopy,1.1428571428571428,5,TRUE,Celtis spp. (Hackberry),0
+R,16,B,d,"Tag 28, 11.4 m",Transect,6,Canopy,2.2857142857142856,24,TRUE,Celtis spp. (Hackberry),0
+R,17,B,b,"Tag 28, 3.4 m",Transect,3,Canopy,2.2857142857142856,24,TRUE,Celtis spp. (Hackberry),0
+R,17,B,c,"Tag 28, 3.4 m",Transect,3,Canopy,4,39,TRUE,Bumelia lanuginosa (Gum elastic),0
+R,17,B,d,"Tag 28, 3.4 m",Transect,3,Canopy,4,24,TRUE,Celtis spp. (Hackberry),0
+R,24,C,a,"Tag 135, 13.2 m",Transect,3,Canopy,0.7352941176470588,11,FALSE,Juniperus ashei (Ashe’s Juniper),
+R,24,C,b,"Tag 135, 13.2 m",Transect,3,Canopy,4.779411764705882,14,FALSE,Juniperus ashei (Ashe’s Juniper),
+R,24,C,c,"Tag 135, 13.2 m",Transect,3,Canopy,3.676470588235294,21,FALSE,Juniperus ashei (Ashe’s Juniper),
+R,24,C,d,"Tag 135, 13.2 m",Transect,3,Canopy,4.411764705882352,9,FALSE,Juniperus ashei (Ashe’s Juniper),
+R,24,C,a,"Tag 135, 13.2 m",Transect,3,Sapling,7.352941176470588,,FALSE,Juniperus ashei (Ashe’s Juniper),
+R,24,C,b,"Tag 135, 13.2 m",Transect,3,Sapling,6.249999999999999,,FALSE,Juniperus ashei (Ashe’s Juniper),
+R,24,C,c,"Tag 135, 13.2 m",Transect,3,Sapling,1.4705882352941175,,FALSE,Juniperus ashei (Ashe’s Juniper),
+R,24,C,d,"Tag 135, 13.2 m",Transect,3,Sapling,8.088235294117647,,FALSE,Juniperus ashei (Ashe’s Juniper),
+R,25,C,a,"Tag 136, 30.1 m",Transect,11,Canopy,14.705882352941176,19,FALSE,Prunus mexicana (Mexican plum),
+R,25,C,b,"Tag 136, 30.1 m",Transect,11,Canopy,9.558823529411764,15,FALSE,Juniperus ashei (Ashe’s Juniper),
+R,25,C,c,"Tag 136, 30.1 m",Transect,11,Canopy,5.147058823529411,8,FALSE,Juniperus ashei (Ashe’s Juniper),
+R,25,C,d,"Tag 136, 30.1 m",Transect,11,Canopy,13.235294117647058,150,FALSE,Fraxinus texana (Texas ash),
+R,25,C,a,"Tag 136, 30.1 m",Transect,11,Sapling,8.088235294117647,,FALSE,Juniperus ashei (Ashe’s Juniper),
+R,25,C,b,"Tag 136, 30.1 m",Transect,11,Sapling,4.411764705882352,,FALSE,Juniperus ashei (Ashe’s Juniper),
+R,25,C,c,"Tag 136, 30.1 m",Transect,11,Sapling,4.411764705882352,,FALSE,Juniperus ashei (Ashe’s Juniper),
+R,25,C,d,"Tag 136, 30.1 m",Transect,11,Sapling,5.514705882352941,,FALSE,Juniperus ashei (Ashe’s Juniper),
+R,26,C,a,"Tag 138, 36.8 m",Transect,2,Canopy,4.044117647058823,5,FALSE,Quercus fusiformis (Live oak),
+R,26,C,b,"Tag 138, 36.8 m",Transect,2,Canopy,7.352941176470588,12,FALSE,Juniperus ashei (Ashe’s Juniper),
+R,26,C,c,"Tag 138, 36.8 m",Transect,2,Canopy,2.205882352941176,16,FALSE,Juniperus ashei (Ashe’s Juniper),
+R,26,C,d,"Tag 138, 36.8 m",Transect,2,Canopy,0.7352941176470588,22,FALSE,Juniperus ashei (Ashe’s Juniper),
+R,26,C,a,"Tag 138, 36.8 m",Transect,2,Sapling,4.411764705882352,,FALSE,Juniperus ashei (Ashe’s Juniper),
+R,26,C,b,"Tag 138, 36.8 m",Transect,2,Sapling,14.705882352941176,,FALSE,Juniperus ashei (Ashe’s Juniper),
+R,26,C,c,"Tag 138, 36.8 m",Transect,2,Sapling,13.235294117647058,,FALSE,Juniperus ashei (Ashe’s Juniper),
+R,26,C,d,"Tag 138, 36.8 m",Transect,2,Sapling,11.029411764705882,,FALSE,Broussenetia papyrifera (Paper mulberry),
+R,33,D,a,"Tag 52, 11.3 m",Transect,11,Canopy,1.3333333333333333,11,TRUE,Celtis spp. (Hackberry),0
+R,33,D,b,"Tag 52, 11.3 m",Transect,11,Canopy,2.6666666666666665,20,TRUE,Celtis spp. (Hackberry),1
+R,33,D,c,"Tag 52, 11.3 m",Transect,11,Canopy,5.333333333333333,8,TRUE,Celtis spp. (Hackberry),0
+R,33,D,d,"Tag 52, 11.3 m",Transect,11,Canopy,2,13,TRUE,Celtis spp. (Hackberry),0
+R,34,D,a,"Tag 52, 12 m",Transect,8,Canopy,2.6666666666666665,24,TRUE,Celtis spp. (Hackberry),0
+R,34,D,b,"Tag 52, 12 m",Transect,8,Canopy,0.6666666666666666,12,TRUE,Celtis spp. (Hackberry),0
+R,34,D,c,"Tag 52, 12 m",Transect,8,Canopy,3.3333333333333335,16,TRUE,Celtis spp. (Hackberry),0
+R,34,D,d,"Tag 52, 12 m",Transect,8,Canopy,8,10,TRUE,Celtis spp. (Hackberry),1
+R,35,D,a,"Tag 52, 16 m",Transect,1,Canopy,4.666666666666667,7,TRUE,Celtis spp. (Hackberry),0
+R,35,D,b,"Tag 52, 16 m",Transect,1,Canopy,4,17,TRUE,Celtis spp. (Hackberry),1
+R,35,D,c,"Tag 52, 16 m",Transect,1,Canopy,5.333333333333333,16,TRUE,Celtis spp. (Hackberry),0
+R,35,D,d,"Tag 52, 16 m",Transect,1,Canopy,2,10,TRUE,Celtis spp. (Hackberry),0
+R,42,E,a,"Tag 158, 6.9 m",Transect,11,Canopy,8,7,FALSE,Celtis spp. (Hackberry),0
+R,42,E,b,"Tag 158, 6.9 m",Transect,11,Canopy,2,9,FALSE,Celtis spp. (Hackberry),0
+R,42,E,c,"Tag 158, 6.9 m",Transect,11,Canopy,2,29,FALSE,Celtis spp. (Hackberry),0
+R,42,E,d,"Tag 158, 6.9 m",Transect,11,Canopy,2,17,FALSE,Prunus caroliniana (Laurel cherry),0
+R,42,E,d,"Tag 158, 6.9 m",Transect,11,Sapling,4,,FALSE,Prunus caroliniana (Laurel cherry),0
