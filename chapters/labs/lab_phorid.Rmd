@@ -200,5 +200,3 @@ Once you have done this, you can then compare the relative counts across differe
 It's a relative value, so it would be unitless.
 
 If you decide to avoid mean/sd (which is your choice), I would recommend inter-quartile range over range, since it's a more robust measure.
-
-# References {-}

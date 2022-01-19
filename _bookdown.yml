@@ -21,5 +21,7 @@ rmd_files:
   - chapters/labs/lab_heterogeneity.Rmd
   - chapters/labs/lab_ant_communities.Rmd
   - chapters/labs/lab_phorid.Rmd
+  - chapters/homework/hw_succession.Rmd
+  - chapters/references.Rmd
   
   

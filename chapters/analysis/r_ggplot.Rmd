@@ -185,7 +185,7 @@ ggplot(data = lizards) +
 ```
 Challenge: How would you do the same with a histogram?
 
-### Discrete X, continuous Y {#ggp_discx_conty}
+### Discrete X, continuous Y {#r_ggplot_discx_conty}
 
 Boxplots: these show the quartile distributions of datasets. Let's compare perch height distribution at each site:
 
@@ -332,7 +332,7 @@ ggplot(beavers) +
   # date_labels says to use hours:minutes as the axis format
 ```
 
-### Discrete X and Y
+### Discrete X and Y {#r_ggplot_discx_discy}
 
 Bar graphs are good for showing counts, frequencies, and proportions. This shows how many individual lizards were in each site; It works by counting the number of rows in which the Site column has each value.  
 

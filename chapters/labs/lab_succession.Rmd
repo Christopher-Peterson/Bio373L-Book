@@ -82,7 +82,7 @@ You should provide data and analyses to address the following questions:
  
  Remember: describe what analyses you did in the method section, present what your found in the results section, and talk about what it means in the discussion.
 
-### Canopy tree density
+### Canopy tree density {#lab_succession_density}
 
 You can use the point-quarter method to estimate tree density at each site with a bit of math. Let $x_i$ be the distance from your point to a sampled canopy tree. If you sampled 4 trees at a point, then the density in trees per square meters would be $\frac{4}{x_1^2 + x_2^2 + x_3^2 + x_4^2}$. More generally, the density is $1 / \text{mean}(x^2)$. 
 
