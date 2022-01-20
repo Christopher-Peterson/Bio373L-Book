@@ -50,11 +50,11 @@ As this is the first stats homework, let's make sure you're using RStudio correc
 
 **Check R Version:** Open RStudio.
 In the Console, your R version should be listed.
-If it is less that \`r min_r\_version\`\`, you need to re-install R.
+If it is less that `r min_r_version`, you need to re-install R.
 [Download R here.](https://cran.r-project.org/)
 
 **Check RStudio Version:** Go to Help -> About RStudio.
-If the version listed is lower than \`r min_rstudio_version\`\`, then you need to re-install it.
+If the version listed is lower than `r min_rstudio_version`, then you need to re-install it.
 Note that very recent versions are numbered with a date (e.g., v. 2021.9.1.372); these are good.
 [Dowload RStudio Desktop here.](https://www.rstudio.com/products/rstudio/download/)
 
