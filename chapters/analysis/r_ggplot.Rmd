@@ -133,7 +133,7 @@ base_plot + aes(shape = Color_morph) +
   scale_shape(solid = FALSE)
 ```
 
-If you want to set manual shapes, look at `?pch` to see which the options.
+If you want to set manual shapes, look at `?pch` to see what the options are.
 
 ### Size {#r-ggplot-aes-size}
 
