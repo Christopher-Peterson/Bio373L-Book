@@ -194,7 +194,7 @@ You'll need to `filter()` your data (see \@ref(r_dplyr_filter)) so that it only 
 Let's start with the old quarry; once you get everything working, you should copy and modify the code to work for the other two habitats.
 You should also read up on the pipe `( %>% )`, as it is important for making sequences of steps (\@ref(r_dplyr_pipe)).
 
-```{r hw_filter1, echo = TRUE}
+```{r hw_filter1, echo = TRUE, eval = FALSE}
 ## Relative Abundance - Q ####
 data_Q <- succession_data_thin %>% filter(Habitat == "Q")
 ```
