@@ -12,7 +12,7 @@ editor_options:
 
 This homework will prepare you to analyze the data from the [succession lab](#lab_succession).
 You should read over that the material to properly understand the data you'll be working with here.
-Information on the data-analysis techniques you'll need to use can be found in Chapter \@ref(r-intro), Chapters \@ref(r-ggplot), Chapters \@ref(r-dplyr), and Chapter \@ref(r-stats) up to and including Section \@ref(r-stats-cat).
+Information on the data-analysis techniques you'll need to use can be found in Chapters \@ref(r-intro),  \@ref(r-ggplot), and \@ref(r-dplyr), as well as Sections \@ref(r-stats-factors) and \@ref(r-stats-cat).
 
 Please attempt this to the best of your ability.
 Once you've read the above chapters, I will be happy to meet with you (individually or in groups) to provide guidance and support on this material.
