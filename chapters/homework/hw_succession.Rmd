@@ -4,7 +4,7 @@ editor_options:
     wrap: sentence
 ---
 
-# (PART) Appendix {.unnumbered}
+# (PART) Analysis Homeworks {-}
 
 # Homework: Succession {#hw_succession}
 
@@ -12,7 +12,7 @@ editor_options:
 
 This homework will prepare you to analyze the data from the [succession lab](#lab_succession).
 You should read over that the material to properly understand the data you'll be working with here.
-Information on the data-analysis techniques you'll need to use can be found in Chapter \@ref(r_intro), Chapters \@ref(r_ggplot), Chapters \@ref(r_dplyr), and Chapter \@ref(r_stats) up to and including Section \@ref(r_stats_cat).
+Information on the data-analysis techniques you'll need to use can be found in Chapter \@ref(r-intro), Chapters \@ref(r_ggplot), Chapters \@ref(r_dplyr), and Chapter \@ref(r_stats) up to and including Section \@ref(r_stats_cat).
 
 Please attempt this to the best of your ability.
 Once you've read the above chapters, I will be happy to meet with you (individually or in groups) to provide guidance and support on this material.
@@ -152,7 +152,7 @@ For the homework, we'll use a dataset in Fall of 2019.
 
 ### Download and import the data
 
-Download [succession_long_F19.csv]() and save it in the `data` folder.
+Download [succession_long_F19.csv](https://raw.githubusercontent.com/Christopher-Peterson/Bio373L-Book/master/example_data/succession_long_F19.csv) and save it in the `data` folder.
 To read and view the data, add the following lines to your script and run them:
 
 ```{r, eval = FALSE, echo = TRUE}

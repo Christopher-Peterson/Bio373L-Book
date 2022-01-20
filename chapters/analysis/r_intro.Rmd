@@ -1,10 +1,10 @@
-# (PART) Data Analysis in R  {.unnumbered}
+# (PART) Data Analysis in R  
 
-# Working with R and RStudio {#r_intro}
+# Working with R and RStudio {#r-intro}
 
 This section include a tutorial on some data analysis topics that will be helpful for this class. Please make sure you've installed R and RStudio, and some essential packages according to [this guide](https://github.com/Christopher-Peterson/R-workshop-setup). You can skip installing git for now.
 
-## Introduction to RStudio {#r_intro_rstudio}
+## Introduction to RStudio {#r-intro-rstudio}
 
 RStudio is organized into four panels: scripts & documents (upper left), the console (lower left), and two utility panels on the right that have various helpful functions. You may not see a document window on the left; if so, hit Ctrl+Shift+N to create a blank script. (Note that on Macs, Ctrl should pretty much always be replaced with Cmd). Generally, you write all of your code in the document window, then hit Ctrl+Enter (Cmd+Return) to send the R statement your cursor is on to the console window.  
 
