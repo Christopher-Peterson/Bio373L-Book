@@ -1,4 +1,4 @@
-# Community ecology analyses with `vegan` {#r_vegan}
+# Community ecology analyses with `vegan` {#r-vegan}
 
 This appendix is a companion to the ant community ecology lab. If you haven't already, please install the `vegan` package with `install.packages("vegan")` and put the [ant_data_F18.csv](https://github.com/Christopher-Peterson/Bio373L-Book/tree/master/example_data) file in your `example_data` directory.  
 

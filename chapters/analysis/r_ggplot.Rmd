@@ -1,4 +1,4 @@
-# Making graphs in R with `ggplot2` {#r_ggplot}
+# Making graphs in R with `ggplot2` {#r-ggplot}
 ```{r tidyverse_workaround_a2, echo = FALSE, message = FALSE}
 library(ggplot2)
 library(dplyr)
@@ -9,7 +9,7 @@ library(cowplot)
 lizards <- read_csv("example_data/anoles.csv") # See Appendix A if you don't have this data
 ```
 
-## Components of a plot
+## Components of a plot {#r-ggplot-components}
 
 In this chapter, we discuss the basics of making figures with with the `ggplot2` package in R (part of the `tidyverse`.
 The `ggplot2` package assembles a graph from several components. The important components are:
@@ -52,11 +52,11 @@ theme_set(theme_cowplot())
 base_plot
 ```
 
-## Aesthetics and scales
+## Aesthetics and scales {#r-ggplot-aes}
 
 Aesthetics connect a column of data to a visual representation on the plot. For example, x and y are aesthetics that correspond to axis positions.  
 
-### Color
+### Color {#r-ggplot-aes-color}
 
 Color is a commonly use aesthetic; let's add it to our `base_plot`.
 
@@ -69,7 +69,8 @@ base_plot + aes(color = Color_morph)  # This is a discrete color
 base_plot + aes(color = Limb) # This is a continuous color
 ```
 
-These aren't particularly great color defaults; we can use scales to change them. The `viridis` color scale is a good default option, since it's generally colorblind friendly and isn't terrible when printed in black & white.
+These aren't particularly great color defaults; we can use scales to change them.
+The `viridis` color scale is a good default option, since it's generally colorblind friendly and isn't terrible when printed in black & white.
  
 ```{r aes_color_vir_d, echo = TRUE}
 base_plot + aes(color = Color_morph) + 
@@ -88,7 +89,39 @@ base_plot + aes(color = Color_morph) +
   scale_color_manual(values = my_morph_colors) 
 ```
 
-### Shape
+#### Fill {#r-ggplot-aes-fill}
+
+Related to color is the `fill` scale.
+For geoms that have solid sections (e.g., box plots, bar graphs, densities), the outline of that shape corresponds to `color` while the area is controlled by `fill`.
+Fill scales work almost exactly like color scales, except for the name (e.g., `scale_fill_manual()`, `scale_fill_viridis_d()`, etc).
+
+For example, let's make a version of the base plot that has both a color and fill aesthetic.
+```{r aes_fill1, echo = TRUE}
+base_fill_plot <- 
+  ggplot(data = lizards) + aes(x = SVL, y = Tail) + 
+  geom_point(shape = 21) # Shape #21 is a filled circle, so it has both Fill and Color aesthetics
+base_fill_plot + aes(color = Color_morph) + 
+  scale_color_viridis_d()
+```
+Note how the outlines of each point have the viridis colors, but the interior is empty.
+Now, let's try the same thing but with the fill aesthetic:
+
+```{r aes_fill2, echo = TRUE}
+base_fill_plot + aes(fill = Color_morph) + 
+  scale_fill_viridis_d()
+```
+These have black outlines (the default) and viridis centers.
+It's possible to use both together, of course:
+
+```{r aes_fill2, echo = TRUE}
+base_fill_plot + aes(fill = Color_morph, color = Color_morph) + 
+  scale_fill_viridis_d() + 
+  scale_color_manual(values = c("palevioletred", "darkseagreen2", "black"))
+```
+
+
+
+### Shape {#r-ggplot-aes-shape}
 
 Shape only works for discrete variables
 
@@ -102,14 +135,14 @@ base_plot + aes(shape = Color_morph) +
 
 If you want to set manual shapes, look at `?pch` to see which the options.
 
-### Size
+### Size {#r-ggplot-aes-size}
 
 ```{r aes_size1, echo = TRUE}
 base_plot + aes(size = Limb)
 ```
 This is kind of a mess in its current state. Let's fix that.
 
-### Fixed aesthetics
+### Fixed aesthetics {#r-ggplot-aes-fixed}
 
 You can define an aesthetic value as a constant within a `geom_*` call, and it will refer to that literal value instead of a data column.
 
@@ -123,7 +156,7 @@ ggplot(data = lizards, aes(x = SVL, y = Tail, size = Limb)) +
 
 This makes the previous cloud of points a bit easier to separate.
 
-### Combining aesthetics
+### Combining aesthetics {#r-ggplot-aes-combined}
 
 Aesthetics are particularly powerful when combined. It can be helpful to double-up the aesthetics for a variable (to help improve clarity to the reader).
 
@@ -147,7 +180,7 @@ base_plot + aes(color = Limb, shape = Color_morph) +
 
 Geometry layers are different ways to visualize your data (primarly along the x and y aesthetics); different types of `geom_*` objects are suitable to different types of x and y data.  
 
-### Continuous X, no Y
+### Continuous X, no Y {#r-ggplot-contx-noy}
 
 Histograms: 
 
@@ -185,7 +218,7 @@ ggplot(data = lizards) +
 ```
 Challenge: How would you do the same with a histogram?
 
-### Discrete X, continuous Y {#r_ggplot_discx_conty}
+### Discrete X, continuous Y {#r-ggplot-discx-conty}
 
 Boxplots: these show the quartile distributions of datasets. Let's compare perch height distribution at each site:
 
@@ -273,7 +306,7 @@ ggplot(lizards) +
 
 In this example, we've also used two data frames in the plot. This can be useful if you're combining two different types of data (such as raw & summary, or individual & site-level). The important thing to remember is that any columns named in the global aesthetics (defined by an `aes()` call that isn't inside a `geom_*`) must be present in both data frames.  In this case, those aesthetics are `Color_morph` and `Diameter.` `Diameter_se` is a local aesthetic (in `geom_errorbar`), so it doesn't need to appear in all datasets.
 
-### Continuous X and Y
+### Continuous X and Y  {#r-ggplot-contx-conty}
 
 We've already seen `geom_point` used for continuous data.  Here are a few other options:
 
@@ -319,7 +352,7 @@ ggplot(data = lizards) +
 
 
 
-### Time series data
+### Time series data {#r-ggplot-ts}
 
 If your x variable is related to time (or date), you'll probably want to use a line plot to visualize it.  Our anole dataset doesn't work for this, so you'll need to save [this](https://raw.githubusercontent.com/Christopher-Peterson/Bio373L-Book/master/example_data/beavers.csv) as `"example_data/beavers.csv"`. This data has info on the body temperature of two beavers over time.
 
@@ -332,7 +365,7 @@ ggplot(beavers) +
   # date_labels says to use hours:minutes as the axis format
 ```
 
-### Discrete X and Y {#r_ggplot_discx_discy}
+### Discrete X and Y {#r-ggplot-discx-discy}
 
 Bar graphs are good for showing counts, frequencies, and proportions. This shows how many individual lizards were in each site; It works by counting the number of rows in which the Site column has each value.  
 
@@ -421,7 +454,7 @@ regression_plot +
   facet_grid(Perch_type~Color_morph) # rows ~ columns
 ```
 
-## Changing the theme, axis titles, & other visual elements
+## Changing the theme, axis titles, & other visual elements {#r-ggplot-tweaks}
 
 By default, ggplot will name your axis labels & legends by whatever you put in the `aes` string.  You may wish to change that.  For example, the labels on this plot could be improved:
 

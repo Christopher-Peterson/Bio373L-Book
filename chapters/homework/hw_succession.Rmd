@@ -6,13 +6,13 @@ editor_options:
 
 # (PART) Analysis Homeworks {-}
 
-# Homework: Succession {#hw_succession}
+# Homework: Succession {#hw-succession}
 
 ## Required Reading
 
 This homework will prepare you to analyze the data from the [succession lab](#lab_succession).
 You should read over that the material to properly understand the data you'll be working with here.
-Information on the data-analysis techniques you'll need to use can be found in Chapter \@ref(r-intro), Chapters \@ref(r_ggplot), Chapters \@ref(r_dplyr), and Chapter \@ref(r_stats) up to and including Section \@ref(r_stats_cat).
+Information on the data-analysis techniques you'll need to use can be found in Chapter \@ref(r-intro), Chapters \@ref(r-ggplot), Chapters \@ref(r-dplyr), and Chapter \@ref(r-stats) up to and including Section \@ref(r-stats-cat).
 
 Please attempt this to the best of your ability.
 Once you've read the above chapters, I will be happy to meet with you (individually or in groups) to provide guidance and support on this material.
@@ -186,13 +186,13 @@ The remaining columns (*Team, Quadrant, Location, Location_type, Location_angle,
 
 Lets trim this data by removing the unnecessary columns.
 **Use a `select()` function to make a copy of the data that doesn't have the unnecessary columns.** Save the resulting data frame as `succession_data_thin`.
-(See section \@ref(r_dplyr_select); section \@ref(r_dplyr_pipe) is also helpful).
+(See section \@ref(r-dplyr-select); section \@ref(r-dplyr-pipe) is also helpful).
 
 ## Comparing the relative abundance of canopy and sapling trees in each habitat
 
-You'll need to `filter()` your data (see \@ref(r_dplyr_filter)) so that it only contains a single habitat when doing these comparisons.
+You'll need to `filter()` your data (see \@ref(r-dplyr-filter)) so that it only contains a single habitat when doing these comparisons.
 Let's start with the old quarry; once you get everything working, you should copy and modify the code to work for the other two habitats.
-You should also read up on the pipe `( %>% )`, as it is important for making sequences of steps (\@ref(r_dplyr_pipe)).
+You should also read up on the pipe `( %>% )`, as it is important for making sequences of steps (\@ref(r-dplyr-pipe)).
 
 ```{r hw_filter1, echo = TRUE, eval = FALSE}
 ## Relative Abundance - Q ####
@@ -208,7 +208,7 @@ For each habitat, you'll need to create a bar plot comparing the relative abunda
 #### Prepare the data
 
 First, you should create a data frame that has columns *Species*, *tree_type* (canopy/sapling), and *count* (the number trees of that species/type).
-You can create this from `data_Q` using a combination of `summarise()` (\@ref(r_dplyr_summarize)) and `group_by()` (\@ref(r_dplyr_group)).
+You can create this from `data_Q` using a combination of `summarise()` (\@ref(r-dplyr-summarize)) and `group_by()` (\@ref(r-dplyr-group)).
 Your code should look something like this:
 
 ```{r hw_grp_sm_1, eval = FALSE, echo = TRUE}
@@ -220,7 +220,7 @@ canopy_sapling_counts_Q <- data_Q %>%
 
 Next, we need to calculate relative abundances of each species for canopy and sapling trees.
 You can do this by dividing `count` by the total count within the tree-type category.
-The best way to do this is by combining `group_by()` with `mutate()` (\@ref(r_dplyr_mutate)).
+The best way to do this is by combining `group_by()` with `mutate()` (\@ref(r-dplyr-mutate)).
 Within the mutate command, you'll want to use the `sum()` function.
 
 ```{r hw_grp_sm_2, eval = FALSE, echo = TRUE}
@@ -236,7 +236,7 @@ rel_abundance_Q %>% summarise(total = sum(relative_abundance))
 
 One last detail: by default, categorical data (like species identities) are ordered alphabetically along the x axis by default.
 It is better to change this ordering into something informative.
-For this figure, we will sort the data by decreasing canopy abundance, then convert `Species` into a factor (discussed in section \@ref(r_stats_factor)).
+For this figure, we will sort the data by decreasing canopy abundance, then convert `Species` into a factor (discussed in section \@ref(r-stats-factor)).
 To do this, you'll need to use `arrange()`, `mutate()` and `fct_inorder()`.
 
 ```{r hw_arrange, eval = FALSE, echo = TRUE}
@@ -250,7 +250,7 @@ View your final plot data; you should have a data frame with canopy trees on top
 
 #### Make the figure
 
-We'll be making a bar graph using `ggplot`; I'd recommend reading all of Chapter \@ref(r_ggplot), with particular focus on Section \@ref(r_ggplot_discx_discy). 
+We'll be making a bar graph using `ggplot`; I'd recommend reading all of Chapter \@ref(r-ggplot), with particular focus on Section \@ref(r-ggplot-discx-discy). 
 
 ```{r hw_plot_rel1, eval = FALSE, echo = TRUE}
 plot_rel_abund_Q <- ggplot(plot_data_Q) + 
@@ -265,7 +265,7 @@ plot_rel_abund_Q # run this to view the plot
 ```
 
 See the chapter for details of how these arguments work (you can also see the [ggplot2 website](https://ggplot2.tidyverse.org/reference/) for more information).
-I would recommend changing the `scale_fill_` to a different option so you can customize your colors.
+I would recommend changing the `scale_fill_` to a different option so you can customize your colors (\@ref(r-ggplot-aes-color)).
 
 To save your plot as an image do this:
 
@@ -293,10 +293,10 @@ To get the five most common species, you can extract the `Species` column and su
 top_five_spp_Q <- total_counts_Q$Species[1:5]
 ```
 
-Filter `data_Q` so that it only includes species in the top 5, using the `%in%` operator, then use `select()` and `table()` to create a contingency table (\@ref(r_stats_cont_tbl)).
+Filter `data_Q` so that it only includes species in the top 5, using the `%in%` operator, then use `select()` and `table()` to create a contingency table (\@ref(r-stats-cont-tbl)).
 Save the result as `contingency_tbl_Q`.
 
-Finally, you'll need to run a chi-squared test or Fisher's exact test (\@ref(r_stats_chisq)) on `contingency_tbl_Q`.  Use the chi-squared test if all of the cells of the table have a count of 5 or more; otherwise, go with the Fisher's test.  
+Finally, you'll need to run a chi-squared test or Fisher's exact test (\@ref(r-stats-chisq)) on `contingency_tbl_Q`.  Use the chi-squared test if all of the cells of the table have a count of 5 or more; otherwise, go with the Fisher's test.  
 
 Don't forget to do all of this for the other two habitat types.
 Copy the code you've developed above and modify it.
@@ -308,7 +308,7 @@ First, filter `succession_data_thin` so that it only contains canopy trees (save
 Now, we have 2 to 4 rows for each point, and we want to get one value per point (the density).
 This suggests that a (grouped) summarize operation is what we need.
 
-As defined in Section \@ref(lab_succession_density), the point-quarter density estimate is:
+As defined in Section \@ref(lab-succession-density), the point-quarter density estimate is:
 
 $$\frac{1}{\text{mean} (x^2)}$$
 where $x$ is `Distance`.
@@ -320,4 +320,4 @@ density_data <- canopy_data %>%
   summarize(density = ) # Note that ^2 is how you square something
 ```
 
-Finally, let's make a figure showing the distribution of density values at each habitat (any of the Discrete X, Continuous Y plot styles in Section \@ref(r_ggplot_discx_conty) will work).
+Finally, let's make a figure showing the distribution of density values at each habitat (any of the Discrete X, Continuous Y plot styles in Section \@ref(r-ggplot-discx-conty) will work).

@@ -1,4 +1,4 @@
-# Performing some useful analyses in R {#r_stats}
+# Performing some useful analyses in R {#r-stats}
 
 I'm going to give some examples of how to do common analyses you'll need for this class. I won't be spending much time on the statistical assumptions or diagnostics.
 
@@ -31,7 +31,7 @@ theme_set(theme_cowplot())
 lizards <- read_csv("example_data/anoles.csv") # See Appendix A if you don't have this data
 ```
 
-## A note on factors {r_stats_factors}
+## A note on factors {r-stats-factors}
 
 R has two ways of representing textual data: character vectors (also called strings) and factors. 
 
@@ -55,11 +55,11 @@ color_as_factor = factor(color_example, levels = color_levels)
 color_as_factor
 ```
 
-## Comparing categorical frequencies (Contingency Tables & related analyses) {#r_stats_cat}
+## Comparing categorical frequencies (Contingency Tables & related analyses) {#r-stats-cat}
 
 These tests generally compare the frequencies of count data.
 
-### Contingency Tables {#r_stats_cont_tbl}
+### Contingency Tables {#r-stats-cont_tbl}
 
 The easiest way to make a contingency table is from a data frame where each column is a categorical variable you want in the table & each row is an observation.  Let's say we wanted to create a color morph by perch type contingency with our lizard data.
 
@@ -76,7 +76,7 @@ If you want to switch your contingency table from counts to frequencies, just di
 color_by_perch_tbl / sum(color_by_perch_tbl)
 ```
 
-### Chi-squared & Fisher's Exact Tests {#r_stats_chisq}
+### Chi-squared & Fisher's Exact Tests {#r-stats-chisq}
 
 Once you have a contingency table, you can test for independence between the rows and columns. This provides you with your test statistic (`X-squared`), degrees of freedom, and p-value.  
 
@@ -197,7 +197,7 @@ svl_predictors %>%
 
 For more information, see the help page `?predict.lm`.  
 
-### ANOVA
+### ANOVA {#r-stats-anova}
 
 Analysis of variance (ANOVA) is a special case of linear model where all of the predictors are all categorical. However, ANOVAs are usually treated differently from regressions for historical reasons. In R, you fit an ANOVA in the same way as a regression (with the `lm()` command); however, it's common to use the `aov()` command on the `lm`'s output to reformat the results into a more traditional style.  For the simple (one-way) ANOVA follows:
 
