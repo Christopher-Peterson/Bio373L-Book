@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>10 Succession Lab | Bio 373L Survival Guide</title>
+  <title>15 Homework: Succession | Bio 373L Survival Guide</title>
   <meta name="description" content="Lab Manual for Field Ecology (Bio 373L) at UT Austin." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="10 Succession Lab | Bio 373L Survival Guide" />
+  <meta property="og:title" content="15 Homework: Succession | Bio 373L Survival Guide" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="Christopher-Peterson/Bio373L-Book" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="10 Succession Lab | Bio 373L Survival Guide" />
+  <meta name="twitter:title" content="15 Homework: Succession | Bio 373L Survival Guide" />
   
   <meta name="twitter:description" content="Lab Manual for Field Ecology (Bio 373L) at UT Austin." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="r-tidyr.html"/>
-<link rel="next" href="mark-release-recapture-mrr-lab.html"/>
+<link rel="prev" href="Lab-phorid.html"/>
+<link rel="next" href="references-2.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -417,251 +417,692 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="lab_succession" class="section level1" number="10">
-<h1><span class="header-section-number">10</span> Succession Lab</h1>
-<div id="introduction-to-the-lab" class="section level2" number="10.1">
-<h2><span class="header-section-number">10.1</span> Introduction to the lab</h2>
-<p>Several habitat types can be discerned during a walk through BFL, each representing the integration of biotic and environmental factors with disturbance history. Here we look at species composition and age structure of trees that characterize some of these habitats.</p>
-<p>The relative abundance of different size classes of various tree species in a forest can provide clues about the history and future status of those species in that forest. For example, even if a tree species is abundant, yet represented only by large, older individuals, it is likely that the requirements for seed production or seedling establishment in the area have not been present in recent times. In order to predict the future status of that tree species in a given area we would need to find out about its requirements for regeneration and determine the likelihood that such conditions will be repeated during specified time periods. For example, for a species that requires a fire to germinate and establish, we would need to predict when fires are likely.</p>
-<p>In contrast, a tree species represented by a large population of saplings (presumed from their size) must have recently enjoyed favorable conditions for reproduction and establishment. Will such a species therefore dominate a future forest on the site? Possibly, but this may be difficult to answer since factors like disease, herbivory, fire, and/or shading by faster growing competitors may affect the survivorship of this cohort over time. Studying the size or age structure of a population helps ecologists make such projections. (Note that we generally assume that big trees are older than smaller individuals of the same species, but keep in mind that individuals of the same size may differ in age and vice versa. Local variation in microclimate edaphic factors (having to do with the soil) and light environment may result in rather different trajectories of growth for identical seedlings germinating the same year.)</p>
-<p>The goal of this project is to acquaint you with some of the kinds of data ecologists collect in attempting to answer questions about population trends. This exercise will also expose you to the always-messy issue of how to collect field data, and to give you insight and experience in statistical analyses appropriate for testing hypotheses about differences between species within different habitats in the age/size structure of trees. We will observe and quantify the distribution, abundance and size structure of dominant tree species at BFL. However, in collecting data to describe densities and size structures of these species at BFL, we are in position to test whether species have responded differently to major variations in the habitat at BFL. Once we have collected data on the trees with respect to variations in habitat at BFL, the patterns observed may stimulate additional questions and hypotheses.</p>
+<div id="hw_succession" class="section level1" number="15">
+<h1><span class="header-section-number">15</span> Homework: Succession</h1>
+<div id="required-reading" class="section level2" number="15.1">
+<h2><span class="header-section-number">15.1</span> Required Reading</h2>
+<p>This homework will prepare you to analyze the data from the <a href="lab-succession.html#lab_succession">succession lab</a>.
+You should read over that the material to properly understand the data you’ll be working with here.
+Information on the data-analysis techniques you’ll need to use can be found in Chapter @ref(r_intro), Chapters @ref(r_ggplot), Chapters @ref(r_dplyr), and Chapter @ref(r_stats) up to and including Section @ref(r_stats_cat).</p>
+<p>Please attempt this to the best of your ability.
+Once you’ve read the above chapters, I will be happy to meet with you (individually or in groups) to provide guidance and support on this material.</p>
 </div>
-<div id="materials-and-methods" class="section level2" number="10.2">
-<h2><span class="header-section-number">10.2</span> Materials and Methods</h2>
-<div id="bfl-habitat-regions" class="section level3" number="10.2.1">
-<h3><span class="header-section-number">10.2.1</span> BFL habitat regions</h3>
-<p>To collect data we will establish transects in three areas of interest: the <strong>lower river terrace</strong>, the <strong>old pastures (experimental plots)</strong> and the <strong>quarry zone</strong> (see figure <a href="lab-succession.html#fig:bflHabMap">10.1</a> for a map).</p>
-
-<div class="figure"><span id="fig:bflHabMap"></span>
-<img src="images/bfl_habitats_2013.jpg" alt="Habitat map of BFL; for the purposes of this lab, the river terrace corresponds to the pecan terrace and flood deposited terrace (near the bottom), the old pasture is the central area, and the old quarry is near the top."  />
-<p class="caption">
-Figure 10.1: Habitat map of BFL; for the purposes of this lab, the river terrace corresponds to the pecan terrace and flood deposited terrace (near the bottom), the old pasture is the central area, and the old quarry is near the top.
-</p>
-</div>
-</div>
-<div id="data-collection" class="section level3" number="10.2.2">
-<h3><span class="header-section-number">10.2.2</span> Data Collection</h3>
-<p>Given the brief time allowed by the class period, we don’t count absolute numbers, but instead use sampling techniques for describing tree populations and habitats.</p>
-<p>We will use the Point-Quarter Technique to collect data (Cox p. 66). The beauty of this method is that it allows us to quickly estimate the density of selected species in the community while gathering information on their relative abundances.</p>
-<p>Each team will perform a survey in each of 3 apparently distinctive habitats.</p>
-<div id="point-quarter-for-quarry-and-river-terrace-habitats" class="section level4" number="10.2.2.1">
-<h4><span class="header-section-number">10.2.2.1</span> Point-quarter for quarry and river terrace habitats</h4>
-<p><strong>Sample Point selection:</strong></p>
+<div id="objectives-1" class="section level2" number="15.2">
+<h2><span class="header-section-number">15.2</span> Objectives</h2>
+<p>The analysis for this lab should answer:</p>
 <ul>
-<li>Starting with an existing transect marker in the zone your team is assigned, flip a coin (or use a random number generator) to determine direction (left or right) that you will take
-perpendicular to the trail.</li>
-<li>Use a random number generator app to pick a number between 10 and 39 (alternatively, have one team member think of a number between 1 and 3 and another between 0 and 9). Your first point will this many meters
-from the trail in the predetermined direction.</li>
-<li>Repeat this process at
-the next transect tag, but in the opposite direction.</li>
-<li>Repeat it a third time for a total of 3 sample points in the habitat.</li>
+<li>Is there a difference in the relative abundances of species between canopy and sapling trees in each habitat?</li>
+<li>Does canopy density differ among habitats?</li>
 </ul>
-<p>Note: Areas recently cleared or plowed should be excluded.</p>
-<p>Each sample point is to be temporarily marked with a flag (do not leave any flags behind!!). The 3 sample points along each transect represent the center of four quadrants with sides along and perpendicular to the transect line.</p>
-<p>In each quadrant, you will determine the nearest canopy tree and sapling to the center point.
-<strong>Canopy trees</strong> are defined as having a crown that is exposed directly to sunlight and forms part of the overhead canopy.
-<strong>Saplings</strong> occur under the crown of canopy and are assumed to be potential canopy replacements when the canopy tree dies.</p>
-<p>Data to collect from each point:</p>
+<div id="whats-due" class="section level3" number="15.2.1">
+<h3><span class="header-section-number">15.2.1</span> What’s due?</h3>
 <ul>
-<li>Location (with UTM)</li>
-<li>Species of nearest canopy trees &amp; saplings</li>
-<li>Distance of these trees from the center point</li>
-<li>Diameter at breast height (dbh) of canopy trees</li>
-<li>Note signs of drought stress (leaves are wilted or dead/brown)</li>
+<li>A 3-panel figure that shows the relative abundance of canopy vs. sapling trees in each of the 3 habitats. You can create each panel separately, as long as they’re presented together with a single caption.</li>
+<li>For each habitat, a contingency table that shows the abundance of canopy and sapling trees for the 5 most abundant species in that habitat.</li>
+<li>A chi-squared test or Fisher’s exact test for each contingency table, along with 1 sentence reporting the results (e.g., significant differences).</li>
+<li>A figure showing the distribution of canopy densities among the three habitats. Should include a caption.</li>
 </ul>
+<p>These should be submitted as a Word document or PDF.
+The figures and tables you create should follow the guides in Chapter <a href="figures.html#figures">3</a>.</p>
 </div>
-<div id="point-quarter-for-old-pasture-habitat-pond-enclosures" class="section level4" number="10.2.2.2">
-<h4><span class="header-section-number">10.2.2.2</span> Point quarter for old pasture habitat (pond enclosures)</h4>
-<p><strong>Sample Point selection:</strong></p>
-<p>Because there are edge effects around enclosure walls and there is a pond in the center, we are primarily concerned with the forest that came into the sapce between the path around the wall and the pond dam, replacing the pasture that Dr. Gilbert saw as a student in 1964.</p>
+</div>
+<div id="getting-started" class="section level2" number="15.3">
+<h2><span class="header-section-number">15.3</span> Getting started</h2>
+<p>As this is the first stats homework, let’s make sure you’re using RStudio correctly.</p>
+<div id="make-sure-your-software-is-up-to-date" class="section level3" number="15.3.1">
+<h3><span class="header-section-number">15.3.1</span> Make sure your software is up-to-date</h3>
+<p><strong>Check R Version:</strong> Open RStudio.
+In the Console, your R version should be listed.
+If it is less that 4.0, you need to re-install R.
+<a href="https://cran.r-project.org/">Download R here.</a></p>
+<p><strong>Check RStudio Version:</strong> Go to Help -&gt; About RStudio.
+If the version listed is lower than 1.4.1717-3, then you need to re-install it.
+Note that very recent versions are numbered with a date (e.g., v. 2021.9.1.372); these are good.
+<a href="https://www.rstudio.com/products/rstudio/download/">Dowload RStudio Desktop here.</a></p>
+<p><strong>Check package versions:</strong> In the console, run <code>library(tidyverse)</code>.
+If this fails, run <code>install.packages("tidyverse")</code>, then start this over again.
+Tidyverse is a collection of packages that are designed to work well together.
+You should see the header “Attaching packages”, followed by a list of package names and version numbers.
+Make sure that the following packages are at least this high:</p>
 <ul>
-<li>Divide the enclosure into 12 sections (like an analog clock face).</li>
-<li>Randomly choose 6 of these sections; your sample point will be along the path near the enclosure wall.</li>
+<li><code>ggplot2</code>: 3.3.3</li>
+<li><code>tibble</code>: 3.1.0</li>
+<li><code>tidyr</code>: 1.1.3</li>
+<li><code>readr</code>: 2.0.0</li>
+<li><code>purrr</code>: 0.3.4</li>
+<li><code>dplyr</code>: 1.0.5</li>
+<li><code>stringr</code>: 1.4.0</li>
+<li><code>forcats</code>: 0.5.1</li>
 </ul>
-<p>For each of the six points, you will sample two quarters (facing away from the enclosure wall), not four; this will give you the same overall amount of data as the other two habitats. Otherwise, the procedure is the same as that of the other two habitats.</p>
+<p>You should also click the <strong>packages</strong> tab in one of the RStudio panels and verify that you have the following:</p>
+<p>-<code>cowplot</code> -<code>vegan</code> -<code>ggforce</code></p>
+<p>If any of these are missing or out of date, use <code>install.packages(c("package1", "package2", "etc"))</code> to get them.</p>
 </div>
-</div>
-</div>
-<div id="analysis-to-perform" class="section level2" number="10.3">
-<h2><span class="header-section-number">10.3</span> Analysis to perform</h2>
-<p>You should provide data and analyses to address the following questions:</p>
+<div id="create-the-rstudio-project" class="section level3" number="15.3.2">
+<h3><span class="header-section-number">15.3.2</span> Create the RStudio Project</h3>
+<p>In the upper-right corner of the RStudio window, there should be a box that says <strong>Project: (None)</strong>.
+Click this, then on the drop-down menu select <em>New Project..</em>.</p>
+<p>If you already have a folder on your computer for Bio 373L, select <em>Existing Directory</em>, then hit <em>Browse</em> and navigate to that folder.
+Otherwise, select <em>New Directory</em> -&gt; <em>New Project,</em> and name the directory “Field Ecology” or “Bio 373L” or whatever; place it as a subdirectory wherever you normally keep your class files.
+Click <em>Create Project.</em></p>
+<p>RStudio will refresh, and it should now say <em>BIO 373L</em> or whatever you named the project in the upper right corner.
+<strong>Whenever you open RStudio for this class, make sure the project name is there.</strong> If it isn’t, click that box and you should be able to select the project from the drop-down menu.</p>
+<p>Click on the <strong>Files</strong> tab (in one of the RStudio panels).
+This will give you a list of files &amp; folders that are part of the RStudio project.
+From here, use the <em>New Folder</em> button to create the following subdirectories:</p>
 <ul>
-<li>What are the qualitative trends and characteristics of each habitat?</li>
-<li>How does the total density of canopy trees differ between habitats?</li>
-<li>Does relative abundance of each species differ between canopy and sapling trees? How consistent is this among habitats?</li>
+<li><code>data</code>: for raw data files</li>
+<li><code>R</code>: for saving script files</li>
+<li><code>output</code>: for saving the results of your analyses</li>
+<li><code>figures</code>: for saving graphs</li>
 </ul>
-<p>Remember: describe what analyses you did in the method section, present what your found in the results section, and talk about what it means in the discussion.</p>
-<div id="lab_succession_density" class="section level3" number="10.3.1">
-<h3><span class="header-section-number">10.3.1</span> Canopy tree density</h3>
-<p>You can use the point-quarter method to estimate tree density at each site with a bit of math. Let <span class="math inline">\(x_i\)</span> be the distance from your point to a sampled canopy tree. If you sampled 4 trees at a point, then the density in trees per square meters would be <span class="math inline">\(\frac{4}{x_1^2 + x_2^2 + x_3^2 + x_4^2}\)</span>. More generally, the density is <span class="math inline">\(1 / \text{mean}(x^2)\)</span>.</p>
-<p>Calculate density for each sample point, and convert it to hectares (multiply by <span class="math inline">\(10,000 \text{ m}^2/\text{ha}\)</span>). How do densities compare between habitat types? Create a figure and compare the averages. Note that you won’t be able to claim that one group is different unless you use statistical tests, such as a one-way ANOVA (this is optional).</p>
+<p>Organizing your project like this is a good way to keep your files tidy and easy to find.</p>
 </div>
-<div id="species-by-habitat-and-life-stage" class="section level3" number="10.3.2">
-<h3><span class="header-section-number">10.3.2</span> Species by habitat and life stage</h3>
-<p>For each habitat, you will want to calculate the relative abundance of each tree species for canopy and sapling trees (i.e., number of Canopy species <em>x</em> in habitat <em>y</em> divided by total number of observed Canopy trees in <em>y</em>). Visualize the result for each habitat (a three-panel frequency plot would be the best way to go, with categories ordered by canopy abundance).</p>
-<p>To test if the relative proportions in canopy and saplings are equivalent, you should construct contingency tables for each habitat (See Table <a href="lab-succession.html#tab:contingency">10.1</a> for an example).
-Restrict each table to the five most common species in each habitat.
-Contingency tables can be constructed with pivot tables in Excel or the table() function in R.
-Use chi-square tests to see if the proportions of species are different between canopy and saplings for each habitat.</p>
-<table>
-<caption>
-<span id="tab:contingency">Table 10.1: </span>Abundance of most common canopy and sapling trees in the BFL old pasture habitat, Fall 2018.
-</caption>
+<div id="create-an-r-script." class="section level3" number="15.3.3">
+<h3><span class="header-section-number">15.3.3</span> Create an R script.</h3>
+<p>Create a new R script with <em>Ctrl + Shift + N</em> or <em>File -&gt; New File -&gt; R Script</em>. This will open up the script panel.</p>
+<p>Start your script with this code:</p>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="hw-succession.html#cb161-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Succession Lab Analysis Homework</span></span>
+<span id="cb161-2"><a href="hw-succession.html#cb161-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb161-3"><a href="hw-succession.html#cb161-3" aria-hidden="true" tabindex="-1"></a><span class="do">## Setup ####</span></span>
+<span id="cb161-4"><a href="hw-succession.html#cb161-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Load Required Packages</span></span>
+<span id="cb161-5"><a href="hw-succession.html#cb161-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb161-6"><a href="hw-succession.html#cb161-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cowplot)</span></code></pre></div>
+<p>Put your cursor on each line and hit <code>Ctrl + Enter</code> (or <code>Cmd + Return</code> on a Mac).
+This will send that line to the console and run it.
+Entering your commands in a script makes it a lot easier to see what you’ve done, repeat it, or modify it.
+You should only enter code in the console if you don’t want a record of it (which should be an unusual circumstance).</p>
+<p>Save your script as <code>R/hw_succession.R</code></p>
+</div>
+</div>
+<div id="the-data" class="section level2" number="15.4">
+<h2><span class="header-section-number">15.4</span> The Data</h2>
+<p>For the homework, we’ll use a dataset in Fall of 2019.</p>
+<div id="download-and-import-the-data" class="section level3" number="15.4.1">
+<h3><span class="header-section-number">15.4.1</span> Download and import the data</h3>
+<p>Download <a href="">succession_long_F19.csv</a> and save it in the <code>data</code> folder.
+To read and view the data, add the following lines to your script and run them:</p>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="hw-succession.html#cb162-1" aria-hidden="true" tabindex="-1"></a>succession_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/succession_long_F19.csv&quot;</span>)</span>
+<span id="cb162-2"><a href="hw-succession.html#cb162-2" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(succession_data)</span></code></pre></div>
+<p>Note that I used <code>read_csv()</code>, not <code>read.csv()</code>.
+Always use the version with the underscore; it’s part of the <code>readr</code> package (which is part of <code>tidyverse</code>) and is generally faster and more consistent than <code>read.csv()</code>.
+RStudio also has a data import tool.
+<strong>Do not use it.</strong>
+You should import your data with code so that you can go back later and see exactly what you’ve done.</p>
+</div>
+<div id="data" class="section level3" number="15.4.2">
+<h3><span class="header-section-number">15.4.2</span> Data</h3>
+<p>Your data should look something like this:</p>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
+<table class=" lightable-paper" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
+Habitat
 </th>
 <th style="text-align:right;">
-<em>Carya illinoiensis</em>
+point_number
+</th>
+<th style="text-align:left;">
+Team
+</th>
+<th style="text-align:left;">
+Quadrant
+</th>
+<th style="text-align:left;">
+Location
+</th>
+<th style="text-align:left;">
+Location_type
 </th>
 <th style="text-align:right;">
-<em>Celtis spp.</em>
+Location_angle
+</th>
+<th style="text-align:left;">
+Tree_type
 </th>
 <th style="text-align:right;">
-<em>Juniperus spp.</em>
+Distance
 </th>
 <th style="text-align:right;">
-<em>Quercus buckleyi</em>
+DBH
+</th>
+<th style="text-align:left;">
+Drought_stress
+</th>
+<th style="text-align:left;">
+Species
 </th>
 <th style="text-align:right;">
-<em>Quercus fusiformis</em>
-</th>
-<th style="text-align:right;">
-<em>Ulmus crassifolia</em>
+N_dead
 </th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align:left;">
+P
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+a
+</td>
+<td style="text-align:left;">
+Pond G
+</td>
+<td style="text-align:left;">
+Pond
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:left;">
 Canopy
 </td>
 <td style="text-align:right;">
-7
+3.30
 </td>
 <td style="text-align:right;">
-2
+14
 </td>
-<td style="text-align:right;">
-17
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-9
-</td>
-</tr>
-<tr>
 <td style="text-align:left;">
-Sapling
+FALSE
+</td>
+<td style="text-align:left;">
+Carya illinoiensis (Pecan)
 </td>
 <td style="text-align:right;">
 0
 </td>
-<td style="text-align:right;">
-6
+</tr>
+<tr>
+<td style="text-align:left;">
+P
 </td>
 <td style="text-align:right;">
-7
+1
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+b
+</td>
+<td style="text-align:left;">
+Pond G
+</td>
+<td style="text-align:left;">
+Pond
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:left;">
+Canopy
+</td>
+<td style="text-align:right;">
+2.90
+</td>
+<td style="text-align:right;">
+27
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+Carya illinoiensis (Pecan)
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+P
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+c
+</td>
+<td style="text-align:left;">
+Pond G
+</td>
+<td style="text-align:left;">
+Pond
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:left;">
+Canopy
+</td>
+<td style="text-align:right;">
+1.60
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+Carya illinoiensis (Pecan)
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+P
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+d
+</td>
+<td style="text-align:left;">
+Pond G
+</td>
+<td style="text-align:left;">
+Pond
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:left;">
+Canopy
+</td>
+<td style="text-align:right;">
+2.90
+</td>
+<td style="text-align:right;">
+32
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+Carya illinoiensis (Pecan)
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+P
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+b
+</td>
+<td style="text-align:left;">
+Pond G
+</td>
+<td style="text-align:left;">
+Pond
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:left;">
+Sapling
+</td>
+<td style="text-align:right;">
+1.30
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Fraxinus texana (Texas ash)
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+P
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+c
+</td>
+<td style="text-align:left;">
+Pond G
+</td>
+<td style="text-align:left;">
+Pond
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:left;">
+Sapling
+</td>
+<td style="text-align:right;">
+2.60
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Carya illinoiensis (Pecan)
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+P
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+d
+</td>
+<td style="text-align:left;">
+Pond G
+</td>
+<td style="text-align:left;">
+Pond
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:left;">
+Sapling
+</td>
+<td style="text-align:right;">
+4.60
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+Broussenetia papyrifera (Paper mulberry)
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+P
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+a
+</td>
+<td style="text-align:left;">
+Pond G
+</td>
+<td style="text-align:left;">
+Pond
 </td>
 <td style="text-align:right;">
 3
 </td>
-<td style="text-align:right;">
-6
+<td style="text-align:left;">
+Canopy
 </td>
 <td style="text-align:right;">
-11
+3.90
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+Juniperus ashei (Ashe’s Juniper)
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+P
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+b
+</td>
+<td style="text-align:left;">
+Pond G
+</td>
+<td style="text-align:left;">
+Pond
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Canopy
+</td>
+<td style="text-align:right;">
+0.98
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+Carya illinoiensis (Pecan)
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+P
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+c
+</td>
+<td style="text-align:left;">
+Pond G
+</td>
+<td style="text-align:left;">
+Pond
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Canopy
+</td>
+<td style="text-align:right;">
+1.95
+</td>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:left;">
+Carya illinoiensis (Pecan)
+</td>
+<td style="text-align:right;">
+0
 </td>
 </tr>
 </tbody>
 </table>
 </div>
-</div>
-<div id="discussion-1" class="section level2" number="10.4">
-<h2><span class="header-section-number">10.4</span> Discussion</h2>
-<p>Some suggestions for discussion topics:</p>
+<p>This data is in a tidy format: each row is an observation (a single recorded tree), each column is a separate variable.
+These are the columns that are relevant to the analysis:</p>
 <ul>
-<li>How could differences in sapling/canopy relative abundances inform possible successional trends? Based on your results, what would you predict about future dominant species in the habitats?</li>
-<li>Did you observe anything else about the ecology or natural history of these areas that may help account for your results (e.g., drought stress, dead trees, invasive species, disease, etc)?</li>
-<li>What may be driving the differences in the habitat types? Considering the history of BFL may be helpful in explaining some of this.</li>
-<li>Develop a likely scenario for the past and future decades of tree population dynamics in the woodlands of BFL.</li>
-<li>How has drought and oak wilt affected the tree community at BFL? How might a scenario for succession based on currently healthy trees be changed if we include the information on stressed/dead trees?</li>
-<li>How could this line of research be expanded upon in future work?</li>
+<li><strong>Habitat</strong>: Indicates if samples were taken from the Old Quarry (Q), the Old Pasture (P) or the River Terrace (R).</li>
+<li><strong>point_number</strong>: Each point in a point-quarter sample has multiple observations (8 for the old quarry &amp; river terrace, with 4 quarters of canopy and sapling trees) or 4 for the old pasture (2 quarters each). This column identifies each separate point.</li>
+<li><strong>Tree_type</strong>: Indicates if the row records a canopy or sapling tree.</li>
+<li><strong>Distance</strong>: Distance in meters from the point to the tree (only for canopy trees).</li>
+<li><strong>Species</strong>: Species of the tree.</li>
 </ul>
+<p>The remaining columns (<em>Team, Quadrant, Location, Location_type, Location_angle, DBI, Drought_stress, N_dead</em>) are not relevant to this analysis and can be ignored.</p>
+<p>Lets trim this data by removing the unnecessary columns.
+<strong>Use a <code>select()</code> function to make a copy of the data that doesn’t have the unnecessary columns.</strong> Save the resulting data frame as <code>succession_data_thin</code>.
+(See section @ref(r_dplyr_select); section @ref(r_dplyr_pipe) is also helpful).</p>
 </div>
-<div id="general-comments-post-review" class="section level2" number="10.5">
-<h2><span class="header-section-number">10.5</span> General Comments (Post-Review)</h2>
-<p>These were some general comments I had on a previous year’s reports; I’d recommend reading them, since they’re common mistakes that it would be good to avoid.</p>
-<div id="figures-2" class="section level3" number="10.5.1">
-<h3><span class="header-section-number">10.5.1</span> Figures</h3>
-<p>Review the guidelines in the Figures chapter. Specifically:</p>
-<ul>
-<li>Don’t use figure titles; anything that could go there should be in the caption instead.</li>
-<li>Use colors that will work in black and white,</li>
-<li>Number figures in the order they’re cited in the main text; they should also be arranged in this order (e.g., figure 2 shouldn’t be placed before figure 1).</li>
-<li>If the figure contains new data (which all of these should), it should be cited in the results.</li>
-<li>Figure numbers shouldn’t have decimals in them (e.g., no Figures 1.1, 2.3, etc). If you have a multi-panel figure, refer to specific panels as Figure 1a, 1b, etc.</li>
-<li>If you have a multi-panel figure, there should be a single caption that explains what each of the panels are.</li>
-<li>Don’t use bar plots for group means; boxplots or violin plots are usually better. This is a very inefficient way to present 3 data points, and it provides no information about the data’s variability. Boxplots or violin plots are better options. (Note that bar plots are still fine for counts or proportions).</li>
-<li>No gridlines (see below)</li>
-</ul>
-<p>To remove gridlines in excel, just click on them and delete them. Base plots in R (with the <code>plot()</code> function) shouldn’t have them by default. To remove them with <code>ggplot2</code> figures, put this near the top of the code:</p>
-<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="lab-succession.html#cb157-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;cowplot&quot;</span>) <span class="co"># if you don&#39;t have this installed; run once</span></span>
-<span id="cb157-2"><a href="lab-succession.html#cb157-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cowplot)</span>
-<span id="cb157-3"><a href="lab-succession.html#cb157-3" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_cowplot</span>()) <span class="co"># this makes your ggplots look nicer until you restart R</span></span>
-<span id="cb157-4"><a href="lab-succession.html#cb157-4" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplot commands here</span></span></code></pre></div>
 </div>
-<div id="write-this-like-youre-trying-to-publish-it" class="section level3" number="10.5.2">
-<h3><span class="header-section-number">10.5.2</span> Write this like you’re trying to publish it</h3>
-<p>You should write these reports as if you were writing a manuscript for a journal. Pretend it’s not a class paper; don’t say “For this lab, our assignment was…” or “the other students…” Write like it’s a research project; you came up with the hypotheses and methods and the other students in the class are your collaborators.</p>
-<p>When describing the data collection, you need to describe how all of this year’s data was collected, for all groups. Instead of saying “we sampled three points in per habitat,” say “five groups each sampled three points per habitat.” As part of this, don’t talk about combining your group’s data with the rest.</p>
-<p>Finally, you need to have a real title.</p>
+<div id="comparing-the-relative-abundance-of-canopy-and-sapling-trees-in-each-habitat" class="section level2" number="15.5">
+<h2><span class="header-section-number">15.5</span> Comparing the relative abundance of canopy and sapling trees in each habitat</h2>
+<p>You’ll need to <code>filter()</code> your data (see @ref(r_dplyr_filter)) so that it only contains a single habitat when doing these comparisons.
+Let’s start with the old quarry; once you get everything working, you should copy and modify the code to work for the other two habitats.
+You should also read up on the pipe <code>( %&gt;% )</code>, as it is important for making sequences of steps (@ref(r_dplyr_pipe)).</p>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="hw-succession.html#cb163-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Relative Abundance - Q ####</span></span>
+<span id="cb163-2"><a href="hw-succession.html#cb163-2" aria-hidden="true" tabindex="-1"></a>data_Q <span class="ot">&lt;-</span> succession_data_thin <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Habitat <span class="sc">==</span> <span class="st">&quot;Q&quot;</span>)</span></code></pre></div>
+<p>Comment lines ending with <code>####</code> are a good way to organize different sections of your code. RStudio will allow you to collapse the code underneath it (until the next section), so you can navigate your document more easily.</p>
+<div id="create-a-barplot-comparing-canopy-sapling-abundances" class="section level3" number="15.5.1">
+<h3><span class="header-section-number">15.5.1</span> Create a barplot comparing canopy &amp; sapling abundances</h3>
+<p>For each habitat, you’ll need to create a bar plot comparing the relative abundances of canopy and sapling species.</p>
+<div id="prepare-the-data" class="section level4" number="15.5.1.1">
+<h4><span class="header-section-number">15.5.1.1</span> Prepare the data</h4>
+<p>First, you should create a data frame that has columns <em>Species</em>, <em>tree_type</em> (canopy/sapling), and <em>count</em> (the number trees of that species/type).
+You can create this from <code>data_Q</code> using a combination of <code>summarise()</code> (@ref(r_dplyr_summarize)) and <code>group_by()</code> (@ref(r_dplyr_group)).
+Your code should look something like this:</p>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="hw-succession.html#cb164-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the number of sapling and canopy trees of each species for the Quarry habitat</span></span>
+<span id="cb164-2"><a href="hw-succession.html#cb164-2" aria-hidden="true" tabindex="-1"></a>canopy_sapling_counts_Q <span class="ot">&lt;-</span> data_Q <span class="sc">%&gt;%</span> </span>
+<span id="cb164-3"><a href="hw-succession.html#cb164-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Tree_type, Species) <span class="sc">%&gt;%</span> </span>
+<span id="cb164-4"><a href="hw-succession.html#cb164-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">count =</span> <span class="fu">n</span>()) <span class="co"># n() gets the number of rows within each group</span></span></code></pre></div>
+<p>Next, we need to calculate relative abundances of each species for canopy and sapling trees.
+You can do this by dividing <code>count</code> by the total count within the tree-type category.
+The best way to do this is by combining <code>group_by()</code> with <code>mutate()</code> (@ref(r_dplyr_mutate)).
+Within the mutate command, you’ll want to use the <code>sum()</code> function.</p>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="hw-succession.html#cb165-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate relative abundance</span></span>
+<span id="cb165-2"><a href="hw-succession.html#cb165-2" aria-hidden="true" tabindex="-1"></a>rel_abundance_Q <span class="ot">&lt;-</span> canopy_sapling_counts_Q <span class="sc">%&gt;%</span> </span>
+<span id="cb165-3"><a href="hw-succession.html#cb165-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>() <span class="sc">%&gt;%</span>  <span class="co"># Fill this out</span></span>
+<span id="cb165-4"><a href="hw-succession.html#cb165-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">relative_abundance =</span> ) <span class="co"># fill this out</span></span>
+<span id="cb165-5"><a href="hw-succession.html#cb165-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb165-6"><a href="hw-succession.html#cb165-6" aria-hidden="true" tabindex="-1"></a><span class="co"># To verify you did it correctly, run this:</span></span>
+<span id="cb165-7"><a href="hw-succession.html#cb165-7" aria-hidden="true" tabindex="-1"></a>rel_abundance_Q <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">total =</span> <span class="fu">sum</span>(relative_abundance))</span>
+<span id="cb165-8"><a href="hw-succession.html#cb165-8" aria-hidden="true" tabindex="-1"></a><span class="co"># You should get a total of 1 for each tree type</span></span></code></pre></div>
+<p>One last detail: by default, categorical data (like species identities) are ordered alphabetically along the x axis by default.
+It is better to change this ordering into something informative.
+For this figure, we will sort the data by decreasing canopy abundance, then convert <code>Species</code> into a factor (discussed in section @ref(r_stats_factor)).
+To do this, you’ll need to use <code>arrange()</code>, <code>mutate()</code> and <code>fct_inorder()</code>.</p>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="hw-succession.html#cb166-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sort species by relative canopy abundance</span></span>
+<span id="cb166-2"><a href="hw-succession.html#cb166-2" aria-hidden="true" tabindex="-1"></a>plot_data_Q <span class="ot">&lt;-</span> rel_abundance_Q <span class="sc">%&gt;%</span> </span>
+<span id="cb166-3"><a href="hw-succession.html#cb166-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>( , ) <span class="sc">%&gt;%</span> <span class="co"># You&#39;ll need to arrange by TWO columns; </span></span>
+<span id="cb166-4"><a href="hw-succession.html#cb166-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Species =</span> <span class="fu">fct_inorder</span>(Species)) <span class="co"># Convert species into a factor based on its current sorting</span></span></code></pre></div>
+<p>View your final plot data; you should have a data frame with canopy trees on top, and decreasing relative abundances.</p>
 </div>
-<div id="describe-the-habitats" class="section level3" number="10.5.3">
-<h3><span class="header-section-number">10.5.3</span> Describe the habitats</h3>
-<p>Since the different habitat types are an important part of this paper, you should describe them in a reasonable amount of detail; this could go in the intro or methods section, depending on how you wrote it.</p>
+<div id="make-the-figure" class="section level4" number="15.5.1.2">
+<h4><span class="header-section-number">15.5.1.2</span> Make the figure</h4>
+<p>We’ll be making a bar graph using <code>ggplot</code>; I’d recommend reading all of Chapter @ref(r_ggplot), with particular focus on Section @ref(r_ggplot_discx_discy).</p>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="hw-succession.html#cb167-1" aria-hidden="true" tabindex="-1"></a>plot_rel_abund_Q <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(plot_data_Q) <span class="sc">+</span> </span>
+<span id="cb167-2"><a href="hw-succession.html#cb167-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>() <span class="sc">+</span> <span class="co"># You need to assign x, y, and fill aesthetics to different columns in plot_data_Q</span></span>
+<span id="cb167-3"><a href="hw-succession.html#cb167-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">position =</span> <span class="st">&quot;dodge&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb167-4"><a href="hw-succession.html#cb167-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span>  <span class="co"># Remove gridlines</span></span>
+<span id="cb167-5"><a href="hw-succession.html#cb167-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_d</span>(<span class="st">&quot;Tree Age Class&quot;</span>) <span class="sc">+</span> <span class="co"># changes the colors of the bars;</span></span>
+<span id="cb167-6"><a href="hw-succession.html#cb167-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Name Your X Axis&quot;</span>) <span class="sc">+</span> <span class="co"># </span></span>
+<span id="cb167-7"><a href="hw-succession.html#cb167-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Name Your Y Axis&quot;</span>) <span class="co"># You need to adjust these</span></span>
+<span id="cb167-8"><a href="hw-succession.html#cb167-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb167-9"><a href="hw-succession.html#cb167-9" aria-hidden="true" tabindex="-1"></a>plot_rel_abund_Q <span class="co"># run this to view the plot</span></span></code></pre></div>
+<p>See the chapter for details of how these arguments work (you can also see the <a href="https://ggplot2.tidyverse.org/reference/">ggplot2 website</a> for more information).
+I would recommend changing the <code>scale_fill_</code> to a different option so you can customize your colors.</p>
+<p>To save your plot as an image do this:</p>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="hw-succession.html#cb168-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">&quot;figures/succession_rel_abundance_Q.png&quot;</span>, <span class="co"># File name</span></span>
+<span id="cb168-2"><a href="hw-succession.html#cb168-2" aria-hidden="true" tabindex="-1"></a>       plot_rel_abund_Q, <span class="co"># plot</span></span>
+<span id="cb168-3"><a href="hw-succession.html#cb168-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">dpi =</span> <span class="dv">300</span>, <span class="co"># keeps a high resolution; don&#39;t change this</span></span>
+<span id="cb168-4"><a href="hw-succession.html#cb168-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">width =</span> <span class="dv">7</span>, <span class="at">height =</span> <span class="dv">5</span> <span class="co"># Width &amp; height in inches; feel free to change as needed</span></span>
+<span id="cb168-5"><a href="hw-succession.html#cb168-5" aria-hidden="true" tabindex="-1"></a>       )</span></code></pre></div>
+<p>Be sure to inspect the saved image to ensure that it looks right.</p>
 </div>
-<div id="the-analysis" class="section level3" number="10.5.4">
-<h3><span class="header-section-number">10.5.4</span> The Analysis</h3>
-<p>Formally, the chi-squared test evaluates whether the rows and columns of a contingency table are independent of each other. In the context of this project, that’s equivalent to testing whether the Canopy:Sapling ratio was equal for each species OR if the prevalence of each species was the same for canopy and sapling trees.</p>
-<p>Several people misinterpreted the analysis as examining if there were more canopy or sapling trees.
-This wouldn’t work, because the chi-square test cannot tell you anything about the actual number of trees and because the way you collected the data (a fixed number of trees per point) was not set up to answer this question.</p>
-<p>The Chi-square analysis was often described incorrectly in the methods; an unfamiliar reader would not know what you were testing. When you’re describing the test, you don’t necessarily need to state the null/alternative hypotheses, but you need to make it clear what question you’re answering with it.</p>
-<p>It’s also worth remembering that the data we collect is generally not incredibly high precision. Our measurements generally don’t have the ability to distinguish between a mean density of 437.11 and 437.14; depending on the sample size, we may not even be able to distinguish between 437 and 442. Being overly precise doesn’t help. If your p-values are less than 0.0001, just report “p &lt; 0.0001.”</p>
 </div>
-<div id="keeping-things-in-the-right-sections" class="section level3" number="10.5.5">
-<h3><span class="header-section-number">10.5.5</span> Keeping things in the right sections</h3>
-<p>Many people restated the methods used for their statistical analyses in the results. For example:</p>
-<p>“I ran chi-squared tests, and they showed significant differences in the old quarry (chi-square = …, df = …, p = …), the old pasture (…) and the river terrace (…).”</p>
-<p>Don’t do this; instead, only provide the result. A better re-work of the above sentence would be:</p>
-<p>“Species composition was significantly different between canopy and sapling trees in the old quarry (…), the old pasture (…), and the river terrace (…).”</p>
-<p>Don’t put anything in the intro or methods that is actually a result. Many people listed the most common species found in each habitat in their “study area” sections. Since this was a major part of this lab, listing the dominant species should be accompanied by a citation to show evidence that this is already known. In general, if you find yourself saying that the most common species “were” something, then it sounds like you are talking about your own observations; if you say that they “are” or “have been” something, then it sounds like you’re talking about more general patterns.</p>
+<div id="contingency-table-chi-squared-test-of-top-5-species" class="section level3" number="15.5.2">
+<h3><span class="header-section-number">15.5.2</span> Contingency table &amp; chi-squared test of top 5 species</h3>
+<p>We want to take the five most abundant species in each habitat and create a contingency table.
+First, let’s find the five most abundant species.
+Create a data frame with column <code>Species</code> and <code>total_count</code> using a grouped <code>summarize()</code> operation, then sort it by decreasing count with <code>arrange()</code>.
+You’ll probably want to start with <code>data_Q</code>.
+Save the result as <code>total_counts_Q</code>.</p>
+<p>To get the five most common species, you can extract the <code>Species</code> column and subset it.</p>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="hw-succession.html#cb169-1" aria-hidden="true" tabindex="-1"></a>top_five_spp_Q <span class="ot">&lt;-</span> total_counts_Q<span class="sc">$</span>Species[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span></code></pre></div>
+<p>Filter <code>data_Q</code> so that it only includes species in the top 5, using the <code>%in%</code> operator, then use <code>select()</code> and <code>table()</code> to create a contingency table (@ref(r_stats_cont_tbl)).
+Save the result as <code>contingency_tbl_Q</code>.</p>
+<p>Finally, you’ll need to run a chi-squared test or Fisher’s exact test (@ref(r_stats_chisq)) on <code>contingency_tbl_Q</code>. Use the chi-squared test if all of the cells of the table have a count of 5 or more; otherwise, go with the Fisher’s test.</p>
+<p>Don’t forget to do all of this for the other two habitat types.
+Copy the code you’ve developed above and modify it.</p>
 </div>
-<div id="basic-style-and-format-rules" class="section level3" number="10.5.6">
-<h3><span class="header-section-number">10.5.6</span> Basic style and format rules</h3>
-<ul>
-<li>Don’t capitalize things that don’t need capitalization (e.g., the point-quarter technique).</li>
-<li>Most acronyms should be defined before their first use (though there are a few exceptions, like ANOVA).</li>
-<li>Don’t say (p-value = x), say (p = x).</li>
-<li>If a paper has more than two authors, cite it as “(Smith et al., 2009),” not “(Smith, Johnson, Franks, and Brown, 2009).</li>
-</ul>
 </div>
-<div id="other-comments" class="section level3" number="10.5.7">
-<h3><span class="header-section-number">10.5.7</span> Other Comments</h3>
-<ul>
-<li>The “fisher test” is properly called Fisher’s exact test (with “Fisher” capitalized).</li>
-<li>If you used a stats program for a bunch of different things (as you usually do w/ R or Excel), mention it at the end of the section, not the beginning.</li>
-<li>RStudio is an interface for doing analysis with R; if you used it, you should say you did your analysis in R.</li>
-<li>Make sure to explain that sample points were selected differently in pond/old pasture than in other habitats.</li>
-<li>In the discussion, if you are listing several possible interpretations of your results, it’s a good idea to put the most interesting one(s) ahead of the “this is all random noise” option.</li>
-</ul>
+<div id="density" class="section level2" number="15.6">
+<h2><span class="header-section-number">15.6</span> Density</h2>
+<p>Density (according to the point-quarter system) is a property of each point (in this case, each <code>point_number</code>) and is only relevant for canopy trees.
+First, filter <code>succession_data_thin</code> so that it only contains canopy trees (save it as <code>canopy_data</code>).
+Now, we have 2 to 4 rows for each point, and we want to get one value per point (the density).
+This suggests that a (grouped) summarize operation is what we need.</p>
+<p>As defined in Section @ref(lab_succession_density), the point-quarter density estimate is:</p>
+<p><span class="math display">\[\frac{1}{\text{mean} (x^2)}\]</span>
+where <span class="math inline">\(x\)</span> is <code>Distance</code>.
+Use this template to calculate density</p>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="hw-succession.html#cb170-1" aria-hidden="true" tabindex="-1"></a>density_data <span class="ot">&lt;-</span> canopy_data <span class="sc">%&gt;%</span></span>
+<span id="cb170-2"><a href="hw-succession.html#cb170-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>( , ) <span class="sc">%&gt;%</span>  <span class="co"># you&#39;ll need two grouping factors</span></span>
+<span id="cb170-3"><a href="hw-succession.html#cb170-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">density =</span> ) <span class="co"># Note that ^2 is how you square something</span></span></code></pre></div>
+<p>Finally, let’s make a figure showing the distribution of density values at each habitat (any of the Discrete X, Continuous Y plot styles in Section @ref(r_ggplot_discx_conty) will work).</p>
 
-</div>
 </div>
 </div>
             </section>
@@ -669,8 +1110,8 @@ This wouldn’t work, because the chi-square test cannot tell you anything about
           </div>
         </div>
       </div>
-<a href="r-tidyr.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="mark-release-recapture-mrr-lab.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="Lab-phorid.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references-2.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -701,7 +1142,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/Christopher-Peterson/Bio373L-Book/edit/master/chapters/labs/lab_succession.Rmd",
+"link": "https://github.com/Christopher-Peterson/Bio373L-Book/edit/master/chapters/homework/hw_succession.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -709,7 +1150,7 @@ gitbook.start({
 "text": null
 },
 "view": {
-"link": "https://github.com/Christopher-Peterson/Bio373L-Book/blob/master/chapters/labs/lab_succession.Rmd",
+"link": "https://github.com/Christopher-Peterson/Bio373L-Book/blob/master/chapters/homework/hw_succession.Rmd",
 "text": null
 },
 "download": null,
