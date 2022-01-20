@@ -113,7 +113,7 @@ base_fill_plot + aes(fill = Color_morph) +
 These have black outlines (the default) and viridis centers.
 It's possible to use both together, of course:
 
-```{r aes_fill2, echo = TRUE}
+```{r aes_fill3, echo = TRUE}
 base_fill_plot + aes(fill = Color_morph, color = Color_morph) + 
   scale_fill_viridis_d() + 
   scale_color_manual(values = c("palevioletred", "darkseagreen2", "black"))
