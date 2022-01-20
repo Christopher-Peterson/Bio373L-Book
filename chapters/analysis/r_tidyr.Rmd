@@ -43,7 +43,7 @@ library(tidyverse)
 library(cowplot)
 theme_set(theme_cowplot())
 lizards <- read_csv("example_data/anoles.csv") # See Appendix A if you don't have this data
-succession_data_wide <- read_csv("example_data/succession_wide_F19.csv")
+succession_data_wide <- read_csv("example_data/succession_wide_untidy.csv")
 yeast_data <- read_csv("example_data/yeast_data_partial.csv")
 
 ```
