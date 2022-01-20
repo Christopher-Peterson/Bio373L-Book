@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>15 Phorid Lab: Parasitoid impacts on host foraging behavior with Phorid flies and fire ants | Bio 373L Survival Guide</title>
+  <title>4 (PART) Data Analysis in R | Bio 373L Survival Guide</title>
   <meta name="description" content="Lab Manual for Field Ecology (Bio 373L) at UT Austin." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="15 Phorid Lab: Parasitoid impacts on host foraging behavior with Phorid flies and fire ants | Bio 373L Survival Guide" />
+  <meta property="og:title" content="4 (PART) Data Analysis in R | Bio 373L Survival Guide" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="Christopher-Peterson/Bio373L-Book" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="15 Phorid Lab: Parasitoid impacts on host foraging behavior with Phorid flies and fire ants | Bio 373L Survival Guide" />
+  <meta name="twitter:title" content="4 (PART) Data Analysis in R | Bio 373L Survival Guide" />
   
   <meta name="twitter:description" content="Lab Manual for Field Ecology (Bio 373L) at UT Austin." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="Lab-ants.html"/>
-<link rel="next" href="hw-succession.html"/>
+<link rel="prev" href="figures.html"/>
+<link rel="next" href="r-intro.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -417,205 +417,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="Lab_phorid" class="section level1" number="15">
-<h1><span class="header-section-number">15</span> Phorid Lab: Parasitoid impacts on host foraging behavior with Phorid flies and fire ants</h1>
-<div id="background-1" class="section level2" number="15.1">
-<h2><span class="header-section-number">15.1</span> Background</h2>
-<p>Although this course does not focus on behavioral ecology, this laboratory exposes you to one aspect of that field which directly relates to population and community ecology.
-We take advantage of ongoing research on fire ant biological control at Brackenridge Field Laboratory to develop this project for the course.</p>
-<div id="fire-ants-and-phorid-flies" class="section level3" number="15.1.1">
-<h3><span class="header-section-number">15.1.1</span> Fire ants and phorid flies</h3>
-<p>The imported fire ant, <em>Solenopsis invicta</em> was introduced into the Southern US about 7 decades ago.
-Since that time, this insect has spread across the entire Southeastern US and in the last two decades has established in Arizona and California.
-It is now known that U.S.
-Gulf Coast populations of this ant are the source for recent global expansion <span class="citation">(<a href="references-2.html#ref-ascunce2011" role="doc-biblioref">Ascunce et al., 2011</a>)</span>.
-Ecologists believe that the lack of natural enemies in the introduced range is a major reason this species can increase its populations faster than native counterparts such as the native fire ants, <em>S. geminata</em>, <em>S. xyloni</em>, and other native ants.</p>
-<p>Candidates for controlling fire ant populations include tiny parasitoid flies called the ant-decapitating flies, of the family Phoridae.
-This family of &gt;20,000 species is generally characterized by scavengers and fungus feeders.
-However, a few genera focus on ants, and some (such as the genus <em>Pseudacteon</em>) specialize on a single species or a small species group of within a genus.</p>
-<p>In the late 1970’s, Don Feener, a graduate student working at BFL (now Professor at University of Utah) discovered that phorid fly females have an amazing effect on their host species as they attempt to inject eggs into worker ants <span class="citation">(<a href="references-2.html#ref-feener1981" role="doc-biblioref">Feener, 1981</a>)</span>.
-Although Feener studied ants in the genus <em>Pheidole</em> and not fire ants, the observation that food foraging in ants could be inhibited by the mere presence of a tiny fly immediately suggested that one reason for the imported fire ant’s success relative to the native Texas fire ant could be that it is free of such things as phorid fly attack in its introduced range.
-The native fire ants, <em>S. geminata</em> and <em>S. xyloni</em>, are attacked by several species of <em>Pseudacteon</em> phorids, which show no interest in <em>S. invicta.</em></p>
-<p>With these facts in mind, Dr. Gilbert and his colleagues have been studying 16 species of <em>Pseudacteon</em> from Brazil and Argentina in the hopes of introducing one or more species for the control of <em>S. invicta</em>.
-One aspect of such studies involves the documentation of how these flies alter fire ant food gathering behavior in <em>S. invicta</em>, since it is thought that the “control” of fire ant populations may be via reducing food to offspring rather than via direct mortality <span class="citation">(<a href="references-2.html#ref-porter1995a" role="doc-biblioref">Porter et al., 1995</a>; <a href="references-2.html#ref-orr1997" role="doc-biblioref">Orr et al., 1997</a>)</span>.</p>
+<div id="part-data-analysis-in-r" class="section level1" number="4">
+<h1><span class="header-section-number">4</span> (PART) Data Analysis in R</h1>
 </div>
-<div id="fire-ants-natural-history" class="section level3" number="15.1.2">
-<h3><span class="header-section-number">15.1.2</span> Fire ants natural history</h3>
-<p>Fire ant workers, like those of all ants, are sterile females who assist their queen (or queens, in the case of polygynous species or genotypes) in raising more workers or winged reproductive ants called alates.
-Fire ants are very effective competitors because they possess many sizes of workers and thus can compete well for many sizes of food particles.
-We term this attribute caste polymorphism.
-Most ants have one size of worker and are termed monomorphic.<br />
-Note that “polygynous” in the context of ants refers to colonies with multiple queens, not to a polygamous form of mating.</p>
-<p>An ant colony that is well supplied with food will eventually reach a size at which it can “afford” to produce winged alates for a mating flight.
-The number of alates produced and the frequency with which a colony of a species can produce mating flights determines the rate at which that species increases its density in an area.
-Phorids are thought to reduce the reproductive rate of fire ant colonies through several related effects on food foraging ability:</p>
-<ol style="list-style-type: decimal">
-<li>When phorids begin to attack, workers attempt to avoid attack by hiding under leaves or other cover or by staying in the nest (a.k.a., the “ecology of fear”).</li>
-<li>Since phorids prefer larger workers and fire ants appear to sense this, caste ratios may change once attacks are underway, thus reducing the numbers of larger workers available to defend or transport food.</li>
-</ol>
-<p>With either or both of these responses, less food will be taken to the mound than would occur in the absence of phorids.
-How will this decrease in food gathered due to parasite avoidance affect colony size and the ability of the colony to reproduce itself (i.e. start another colony)?</p>
-</div>
-</div>
-<div id="objectives" class="section level2" number="15.2">
-<h2><span class="header-section-number">15.2</span> Objectives</h2>
-<p>The goal of the exercise is to give you insight into the types of questions and approaches that define behavioral ecology.</p>
-<ol style="list-style-type: decimal">
-<li>Measure the effects of attacking females of <em>Pseudacteon obtusus</em> phorids on the foraging activity of <em>S. invicta</em> at food items. As we observe foraging rate responses, we will take temperature data at each site using automated dataloggers (HOBOs).</li>
-<li>Observe the host specificity of <em>Pseudacteon</em> in an arenas with native and imported fire ants (This depends on availability of native ant colony). Since introduced phorids are currently emerging at BFL after recent rains we will place trays of <em>S. geminata</em> and <em>S. invicta</em> adjacent to one another in a shaded spot and observe differences in phorid response.</li>
-</ol>
-</div>
-<div id="methods-2" class="section level2" number="15.3">
-<h2><span class="header-section-number">15.3</span> Methods</h2>
-<div id="phorid-impact-on-fire-ant-foraging" class="section level3" number="15.3.1">
-<h3><span class="header-section-number">15.3.1</span> Phorid impact on fire ant foraging</h3>
-<p>The basic set-up consists of white tiles or cards upon which we ant bait.
-Worker fire ants will recruit from a nearby colony and begin harvesting the food.
-Once fire ants have recruited and formed a stable foraging line, we will cover the bait with a clear plastic shell that will allow you to control the exposure of each foraging trail to phorid flies.
-This is necessary to contain flies and to exclude other species naturalized and present outdoors at BFL.
-This setup forms our “arenas.”</p>
-<p>Each group will monitor two arenas: experimental and control.
-Phorids will be introduced to experimental area once ant numbers have become stable for a five-minute interval.
-Paired control arenas will be identical but not contain phorids.
-The two arenas should be within about two to three meters of each other.
-If there are too many phorids arriving from the resident populations, we will actively remove them from controls and add to experimental arenas.
-A tiny species, <em>P. curvatus</em>, is currently present at BFL along with <em>P. obtusus.</em></p>
-<p>A circle drawn on the tile or card around the bait is one good way to count foraging workers (<strong>number of ants crossing the line / unit time</strong>) but you can devise equally effective methods.
-The white tile or bait card helps the observer visualize the tiny, fast-flying phorids.
-It also helps if you can find a neat foraging trail so that most or all ants coming and going can be easily counted.
-On the previous day, Dr. Gilbert will choose likely sites and clear obstructing grass and weeds and to improve visibility of ants and flies.
-Baits will be placed out about 45 minutes prior to initiating the experiment.
-Hand counters and stop watches will be needed for these timed counts.</p>
-<p>Temperature, light, and humidity might vary considerably between sites.
-You will record temperatures near the baits with HOBO data loggers.
-Shade cloth will be used to reduce solar heating of covers exposed to full sun (because fire ants cease foraging at high body temperatures).
-These covers will be gently removed to make observations.
-Try to make conditions in the experimental and control as similar as possible.</p>
-<p>The effects of attacking female phorids on the foraging rates of S.
-invicta at food items will be assessed as follows:</p>
-<ol style="list-style-type: decimal">
-<li>Once foraging trails seem well established, count ants for two minutes by counting the number of ants leaving with pieces of food (number crossing the circle or other landmark in the arena during a two-minute time frame) at the site assigned to your team. You’ll do this three times, with three-minute intervals between your counts; together, these will form your baseline data.<br />
-</li>
-<li>After the third count, phorids will be released by Dr. Gilbert into the experimental arena. Watch closely for the first attack and reset the time to zero immediately after the first attack.</li>
-<li>Make five more two-minute counts at five-minute intervals after the first attack – (i.e., one at five minutes after the first attack, the next at ten minutes after the first attack, etc. There will be 3 minutes between counts). Partners should rotate between control and experimental sites so that each person has a chance to observe phorid attacks. Make sure that counts are made simultaneously in control and experimental arenas.</li>
-</ol>
-</div>
-<div id="using-the-hobo-mx2303-data-logger" class="section level3" number="15.3.2">
-<h3><span class="header-section-number">15.3.2</span> Using the HOBO MX2303 data logger</h3>
-<p>For initial setup:</p>
-<ol style="list-style-type: decimal">
-<li>Download the HOBOConnect app onto your phone</li>
-<li>Press the button on the logger to wake it up.</li>
-<li>In the app, press the “devices” tab at the bottom, then select the logger that matches your serial number.</li>
-<li>Tap the edit (pencil) button to configure the device.</li>
-<li>Edit the name to add your group name (be sure that the serial number is still there, though).</li>
-<li>Change the logging interval to 0 Minutes, 15 Seconds.</li>
-<li>Under “Stop Logging”, check “On Button Push” and save.</li>
-<li>For the two temperature channels, enter “Control” or “Experimental” under the Sensor/Channel name (depending on which arena the channel is measuring).</li>
-<li>Tap the save button at the bottom.</li>
-</ol>
-<p>To view the data that’s been collected, click the “Live Data” tab at the top.</p>
-<p>Exporting your data:</p>
-<ol style="list-style-type: decimal">
-<li>From the device configuration, click the export button at the bottom (it’s the one that isn’t a pencil).</li>
-<li>Once the readout is complete, go back to the app’s main screen, then tap to the HOBO Files tab on the bottom.</li>
-<li>Tap the three dot menu in the upper right corner, then tap the export button (it has the arrow pointing up and right).</li>
-<li>Click “Export to CSV.”</li>
-<li>Upload the file to Canvas. One way to do this is to click “Share” in the app, then email the file to yourself &amp; upload it from there.</li>
-</ol>
-<p>In your methods section, be sure to identify the model of HOBO logger used (MX2303), manufacturer, and the interval at which the data were collected.
-For example, “We collected the temperature of each arena every 15 seconds with HOBO MX2303 data loggers (Onset Computer Corporation).”</p>
-</div>
-</div>
-<div id="analysis-2" class="section level2" number="15.4">
-<h2><span class="header-section-number">15.4</span> Analysis</h2>
-<div id="effect-of-phorids-on-ant-foraging" class="section level3" number="15.4.1">
-<h3><span class="header-section-number">15.4.1</span> Effect of phorids on ant foraging</h3>
-<p>Your first question is whether phorids flies affect the rate of foraging in <em>S. invicta</em>.
-The goal is to compare ant activity before and after the introduction of the phorid parasitoid.
-We’ll use the rate at which ants left tile as our measure of activity.</p>
-<p>If you inspect the data, you will likely find that different groups had different recruitment rates to start with.
-Accounting for this is one challenge of the analysis (this is a methodological choice that may be worth talking about in your discussion).
-One solution to the problem is to standardize your counts.
-Each count (per time step, group, and treatment) needs to be divided by some baseline value.
-Since you should have three baseline values per area, you could choose to either standardize by the average of all three or by the final baseline value.
-This can be done with pivot tables, Excel formulas, or through R.
-This will express your data as a proportion of original “leaving” rates.
-This standardization will allow you to compare “leaving” rates between controls and experimentals across colonies.</p>
-<p>There are a number of ways to test this statistically:</p>
-<ul>
-<li>You can do five two-sample t-tests, comparing the proportion of ants leaving at each time point.</li>
-<li>You could do an analysis of covariance (ANCOVA), which tests whether the regression between time and proportion of ants differs between the two treatments. (Details on this below).</li>
-<li>You can calculate the difference between the standardized leaving rates of each paired control and experimental arena. This would essentially be the effect of phorid flies. You can then use a regression to see if this changes over time.</li>
-</ul>
-<p>Create a figure comparing changes in activity over time between the groups.
-Note that your figure should match up with your analysis: the t-test tests option treat each time point as a discrete value, while the ANCOVA and regression options treat time continuously.</p>
-<div id="a-note-on-running-an-ancova" class="section level4" number="15.4.1.1">
-<h4><span class="header-section-number">15.4.1.1</span> A note on running an ANCOVA</h4>
-<p>An ANCOVA is essentially a regression that also allows the slope and/or intercept of the fit line to vary between levels of a categorical variable.
-To run one in R, you can use the <code>lm()</code> function with a formula like <code>ant_activity ~ time * treatment</code>.
-The <code>*</code> indicates we want to look at the effects of time, the treatment (control vs. experimental), and the interaction of the two (i.e., if change over time has the same rate for both treatment groups).
-The <code>summary</code> of the ANCOVA will include terms for all three of these (the term that is something like <code>time:treatmentExperimental</code> is the interaction).</p>
-<p>If the interaction is small and not statistically significant, that means the two treatments change over time at the same rate.
-In this case, the <code>treatmentExperimental</code> effect is the difference in the average <code>ant_activity</code> value between the experimental and control groups.
-If the interaction is significant, then you essentially have two entirely separate regressions for the two treatments.
-The intercept and slope for the control group are simply given by the <code>(Intercept)</code> and <code>time</code> terms.
-The experimental equations can be found by adding <code>treatmentExperimental</code> and <code>time:treatmentExperimental</code> to <code>(Intercept)</code> and <code>time</code>, respectively.
-Alternatively, you can just fit separate simple regression on time for only the data from each group and use their equations; they should be almost identical.</p>
-<p>I have no idea how to do an ANCOVA in Excel, and I think it’s generally a bad idea to try.</p>
-</div>
-</div>
-<div id="effects-of-environmental-conditions" class="section level3" number="15.4.2">
-<h3><span class="header-section-number">15.4.2</span> Effects of environmental conditions</h3>
-<p>Do temperature or relative humidity affect foraging behavior?
-Do these effects change based on the presence of phorid flies?</p>
-<p>Create a scatter plot with temperature on the x-axis and number of ants leaving on the y-axis; separate control and experimental data into different panels.
-Repeat this with Relative Humidity instead of temperature.</p>
-<p>For all four of these, run a linear regression; be sure to include the regression line in the plots and report the appropriate statistics</p>
-</div>
-</div>
-<div id="discussion-3" class="section level2" number="15.5">
-<h2><span class="header-section-number">15.5</span> Discussion</h2>
-<p>Your discussion should address the following points &amp; questions:</p>
-<ol style="list-style-type: decimal">
-<li>Interpret your results of your analyses.</li>
-<li>How might a decrease in food gathered due to parasite avoidance affect colony size and the ability of the colony to reproduce itself (i.e. start another colony)?</li>
-<li>Phorid flies are parasitoids of individual worker ants (i.e., they kill the host individual by feeding internally in the host). However, from a population ecology perspective they are better viewed as parasites of ant colonies. Why?</li>
-<li>What are some problems with the experimental design for this week’s lab? How might having the study be non-blind affect the results? How would you improve these experiments?</li>
-</ol>
-</div>
-<div id="some-questions-from-previous-semesters" class="section level2" number="15.6">
-<h2><span class="header-section-number">15.6</span> Some questions from previous semesters:</h2>
-<blockquote>
-<p>I’ve been looking at the data and trying to begin the Analysis, but I don’t understand what you mean about standardizing counts.
-What number would I divide by and would it be the same number for all groups, or do I have to analyze the data of each group individually and compare it?</p>
-</blockquote>
-<p>Each colony (team/group * treatment combo) should be standardized by a different number, which represents the number of ants present before the treatment began.
-There are a number of ways to do this, but I would recommend either standardizing by the colony’s number at baseline 3 (i.e., right before fly introduction), or by the average count for all three baselines at that colony.
-Once you have done this, you can then compare the relative counts across different colonies.</p>
-<blockquote>
-<p>Once the leaving rate values are calculated after dividing by baseline values, what are the units?
-I’m a little confused.
-Is it ants/time step, ants/second, ants/minute?
-I know each time step is 2 minutes long, so saying 1.14 ants/time step seems incorrect.
-Is there something I’m totally missing?</p>
-<p>Also I noticed that some of the data is very asymmetrical, so would you rather us talk about its median/range when describing asymmetrical center and spread (in the results), or would you still prefer mean and standard deviation?</p>
-</blockquote>
-<p>It’s a relative value, so it would be unitless.</p>
-<p>If you decide to avoid mean/sd (which is your choice), I would recommend inter-quartile range over range, since it’s a more robust measure.</p>
-
-</div>
-</div>
-
-
-
             </section>
 
           </div>
         </div>
       </div>
-<a href="Lab-ants.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="hw-succession.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="figures.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="r-intro.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -646,7 +457,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/Christopher-Peterson/Bio373L-Book/edit/master/chapters/labs/lab_phorid.Rmd",
+"link": "https://github.com/Christopher-Peterson/Bio373L-Book/edit/master/chapters/analysis/r_intro.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -654,7 +465,7 @@ gitbook.start({
 "text": null
 },
 "view": {
-"link": "https://github.com/Christopher-Peterson/Bio373L-Book/blob/master/chapters/labs/lab_phorid.Rmd",
+"link": "https://github.com/Christopher-Peterson/Bio373L-Book/blob/master/chapters/analysis/r_intro.Rmd",
 "text": null
 },
 "download": null,

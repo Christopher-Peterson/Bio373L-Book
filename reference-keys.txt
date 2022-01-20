@@ -62,8 +62,9 @@ general-formatting
 continuous-response-categorical-predictors
 categorical-count-or-frequency-responses
 tables
-r_intro
-r_intro_rstudio
+part-data-analysis-in-r
+r-intro
+r-intro-rstudio
 rstudio-projects
 customizing-rstudio
 r-basics
