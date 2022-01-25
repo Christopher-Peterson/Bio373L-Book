@@ -62,7 +62,6 @@ general-formatting
 continuous-response-categorical-predictors
 categorical-count-or-frequency-responses
 tables
-part-data-analysis-in-r
 r-intro
 r-intro-rstudio
 rstudio-projects
@@ -100,9 +99,9 @@ r-dplyr-arrange
 r-dplyr-summarize
 r-dplyr-group
 r-stats
-a-note-on-factors-r-stats-factors
+r-stats-factors
 r-stats-cat
-r-stats-cont_tbl
+r-stats-cont-tbl
 r-stats-chisq
 r-stats-lm
 regression
