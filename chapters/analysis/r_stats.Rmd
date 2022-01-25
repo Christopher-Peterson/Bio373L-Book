@@ -31,7 +31,7 @@ theme_set(theme_cowplot())
 lizards <- read_csv("example_data/anoles.csv") # See Appendix A if you don't have this data
 ```
 
-## A note on factors {r-stats-factors}
+## A note on factors {#r-stats-factors}
 
 R has two ways of representing textual data: character vectors (also called strings) and factors. 
 
@@ -59,7 +59,7 @@ color_as_factor
 
 These tests generally compare the frequencies of count data.
 
-### Contingency Tables {#r-stats-cont_tbl}
+### Contingency Tables {#r-stats-cont-tbl}
 
 The easiest way to make a contingency table is from a data frame where each column is a categorical variable you want in the table & each row is an observation.  Let's say we wanted to create a color morph by perch type contingency with our lizard data.
 
