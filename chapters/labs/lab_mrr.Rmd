@@ -1,4 +1,4 @@
-# Mark-Release-Recapture (MRR) Lab
+# Mark-Release-Recapture (MRR) Lab {#lab-mrr}
 <!-- with *Heliconius* {#Lab_MRR} -->
 
 ## Introduction
@@ -65,11 +65,11 @@ Larry will photograph each numbered butterfly and post in a web album so that yo
 We will score the orange/red/brown patterns for which the link between phenotype and genotype is now known.
 The mimetic phenotypes generated are key to the diversification of the genus, to predator protection niches, and to mutualism between sympatric species (Mullerian mimicry).
 A supergene locus controls expression of a transcription factor called **Optix**; this locus exhibits incomplete dominance, so the genotype can be directly determined from the phenotype.
-One allele (F) accounts for the red, orange, red or brown scales in the discal forewing band (beyond the large wing cell).
+One allele (F) accounts for the red, orange, red or brown scales in the distal forewing band (beyond the large wing cell).
 Another allele (H) controls the presence of such scales on the hind wing and/or on the proximal FW in the cell region.
-We will use these genotypes to estimate whether the population is in **Hardy-Weinberg Equilbirum**
+We will use these genotypes to estimate whether the population is in **Hardy-Weinberg Equilibirum**
 
-### Hardy-Weinberg Equilbrium
+### Hardy-Weinberg Equilibrium
 
 A few definitions are in order:
 
@@ -84,7 +84,7 @@ There are many possible genotype frequencies that can correspond to the same all
 However, the two populations would look quite different.
 The relation between allele and genotype frequencies can help us understand a population's biology.
 
-#### Genotype frequencies at equilbrium
+#### Genotype frequencies at equilibrium
 
 If genotype frequencies are stable and unchanging from one generation to the next, then we can expect a certain relationship between genotype and allele frequencies: 
 
@@ -119,7 +119,6 @@ In terms of our data, this is equal to
 $$\chi^{2}=\frac{\left(f_{FF}-p^{2}\right)^{2}}{p^{2}}+\frac{\left(f_{FH}-2pq\right)^{2}}{2pq}+\frac{\left(f_{HH}-q^{2}\right)^{2}}{q^{2}}$$
 
 This is somewhat different from the chi-squared tests we've done in previous labs (which are chi-squared tests of independence).
-I'll be providing some code that shows how to do this.
 
 ```{r echo = FALSE}
 #n_butterflies =  # real number of butterflies
@@ -132,7 +131,7 @@ Primary Questions:
 1. How does sampling intensity improve mark-release-recapture (MRR) population size estimates? 
 2. Does separating animals by sex alter our estimate of population size? What's the sex ratio?
 3. How does the Lincoln-Petersen model compare with alternate MRR methods?
-4. Are the *Heliconius* populations in Hardy-Weinberg equilbrium for the Optix gene?
+4. Are the *Heliconius* populations in Hardy-Weinberg equilibrium for the Optix gene?
 
 ## Field Methods
 
