@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>11 Mark-Release-Recapture (MRR) Lab | Bio 373L Survival Guide</title>
+  <title>16 Homework: Mark-Release-Recapture | Bio 373L Survival Guide</title>
   <meta name="description" content="Lab Manual for Field Ecology (Bio 373L) at UT Austin." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="11 Mark-Release-Recapture (MRR) Lab | Bio 373L Survival Guide" />
+  <meta property="og:title" content="16 Homework: Mark-Release-Recapture | Bio 373L Survival Guide" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="Christopher-Peterson/Bio373L-Book" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="11 Mark-Release-Recapture (MRR) Lab | Bio 373L Survival Guide" />
+  <meta name="twitter:title" content="16 Homework: Mark-Release-Recapture | Bio 373L Survival Guide" />
   
   <meta name="twitter:description" content="Lab Manual for Field Ecology (Bio 373L) at UT Austin." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="lab-succession.html"/>
-<link rel="next" href="Lab-heterogeneity.html"/>
+<link rel="prev" href="hw-succession.html"/>
+<link rel="next" href="references-2.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -446,187 +446,236 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="lab-mrr" class="section level1" number="11">
-<h1><span class="header-section-number">11</span> Mark-Release-Recapture (MRR) Lab</h1>
-<!-- with *Heliconius* {#Lab_MRR} -->
-<div id="introduction-1" class="section level2" number="11.1">
-<h2><span class="header-section-number">11.1</span> Introduction</h2>
-<p>The size of an animal population is an important quantity to measure if we wish to understand its ecological and evolutionary interactions.
-How population size varies with respect to weather, resources, or competing populations provides clues about which factors are significant in the distribution and abundance of a species.</p>
-<p>While plants and sessile animals are relatively easy to census, the mobility of most animals makes population studies very difficult.
-Therefore when one attempts to estimate the size of such populations it is necessary to use indirect methods such as Mark-Release-Recapture (MRR).</p>
-<div id="lab-mrr-lp" class="section level3" number="11.1.1">
-<h3><span class="header-section-number">11.1.1</span> The Lincoln-Petersen model</h3>
-<p>The basic method, from which most modern population size estimation procedures have evolved (Lincoln-Petersen), involves at least two sampling periods.
-During the first period, all animals captured are given marks.
-If the population size is <span class="math inline">\(N\)</span> and <span class="math inline">\(M_1\)</span> animals were caught and marked during the first period, then the fraction <span class="math inline">\((M_1 / N)\)</span> represents the proportion of the population actually marked.</p>
-<p>Ideally, the marked animals will have mixed randomly with the remaining unmarked population before the second sample is taken (first <strong>assumption</strong>).
-During this second capture period, it is also <strong>assumed</strong> that the chance of catching any marked animal is equal to the chance of catching any unmarked member of the population (this assumption is violated if, for example, marked animals are more wary and harder to catch, or if the marks make detection substantially easier).
-Simple methods also assume no gains or losses in the populations between sample periods.</p>
-<p>If the assumptions of random mixing and capture hold, the following should be true:</p>
-<ol style="list-style-type: decimal">
-<li>Some animals caught on the second sampling period (<strong>total number caught in second sample</strong> <span class="math inline">\(= S_2\)</span>) will be re-captures of those marked on period one; the <strong>number of recaptures</strong> is represented by <span class="math inline">\(R_2\)</span>.</li>
-<li><span class="math inline">\(\frac{R_2}{S_2} = \frac{M_1}{N}\)</span>.</li>
-</ol>
-<p>Thus, we can estimate the population size as:
-<span class="math display">\[\hat{N} = \frac{S_2 M_1}{R_2}\]</span></p>
-<p>In other words, <span class="math inline">\(R_2/M_1\)</span> estimates the fraction of <span class="math inline">\(N\)</span> marked on the first day. This can be shown graphically as follows (<span class="math inline">\(N\)</span> is the entire box, <span class="math inline">\(M_1\)</span> is the blue row, <span class="math inline">\(S_2\)</span> is the red column, and <span class="math inline">\(R_2\)</span> is their purple intersection):</p>
-<div class="figure">
-<img src="images/mrr_diagram.png" alt="" />
-<p class="caption">MRR Diagram</p>
+<div id="hw-mrr" class="section level1" number="16">
+<h1><span class="header-section-number">16</span> Homework: Mark-Release-Recapture</h1>
+<div id="required-reading-1" class="section level2" number="16.1">
+<h2><span class="header-section-number">16.1</span> Required Reading</h2>
+<p>This homework will prepare you to analyze the data from the <a href="lab-mrr.html#lab-mrr">MRR lab</a>.
+You should read over that the material to properly understand the data you’ll be working with here.
+I will assume that you are familiar with the material used in the <a href="hw-succession.html#hw-succession">Succession homework</a>.
+In addition, you should read Section <a href="r-stats.html#r-stats-lm">7.3</a>.</p>
+<pre><code>Please attempt this to the best of your ability.
+Once you&#39;ve read the above chapters, I will be happy to meet with you (individually or in groups) to provide guidance and support on this material.</code></pre>
 </div>
-<p>Assumptions of the Lincoln-Petersen method:</p>
-<ol style="list-style-type: decimal">
-<li>Marks do not affect animals.</li>
-<li>Marked animals are mixed in the population.</li>
-<li>Marked and unmarked animals have the same probability of capture</li>
-<li>The population is closed (no birth/death/migration)</li>
-<li>Marks are not lost between samples</li>
-</ol>
-<p>Although we can never be sure that the estimated population size <span class="math inline">\((\hat{N})\)</span> equals the true value, <span class="math inline">\(\hat{N}\)</span> should approach <span class="math inline">\(N\)</span> as <span class="math inline">\(M_1\)</span> and <span class="math inline">\(S_2\)</span> get larger.
-Even though intense enough sampling could allow direct measure of <span class="math inline">\(N\)</span>, real habitats are too complex and mobile animals too elusive.
-In this exercise, we will study a hybrid population of <em>Heliconius</em> butterflies.</p>
-</div>
-<div id="heliconius-butterflies" class="section level3" number="11.1.2">
-<h3><span class="header-section-number">11.1.2</span> <em>Heliconius</em> butterflies</h3>
-<p>Our main focus for this exercise will be an enclosed hybrid population of <em>Heliconius melopomene x Heliconius cydno</em>.
-The exercise sits at the interface of population ecology and genetics since the study population is polymorphic for wing patterns reflecting a naturally occurring phenomenon in South America.
-It is known that males of <em>Heliconius melpomene</em> mate with females of <em>Heliconius cydno</em> in nature to yield species called <em>H. heurippa</em>, <em>H. timareta</em>, and likely others.
-<em>Heliconius timareta</em> displays a variety of color pattern types in different parts of its range.
-Such races are locally monomorphic (i.e. only one pattern exists in a particular place)
-However, genomic studies confirm that these populations share cydno mitochondrial haplotypes and a common mode of origination, in spite of diverse phenotypes.
-In the 1980s, Dr. Gilbert carried out studies of hybridization in <em>H. cydno</em> and <em>H. melpomene</em> in UT greenhouses and hypothesized the likely hybrid origin of species like <em>H. timerata</em>.
-Now that genomic studies verify his hypotheses on the origin of such species, Dr. Gilbert has recreated a hybrid population according to the likely mode of origin of <em>H. timareta</em>.
-This population is large and diverse in color pattern phenotypes for which we know the genetics of major pattern elements.</p>
-<div class="figure">
-<img src="images/heliconius_distribution.jpg" alt="" />
-<p class="caption">Distribution of some <em>Heliconius</em> species</p>
-</div>
-<p>With the hybrid <em>H. cydno X H. melpomene</em> population, you will be able to combine ecology and population genetics by applying Hardy-Weinberg law to test whether a force like selection or non-random mating is acting on wing pattern genes.
-Larry will photograph each numbered butterfly and post in a web album so that you can record the proportion of phenotypes and determine whether they are in Hardy-Weinberg equilibrium.</p>
-<div class="figure">
-<img src="images/optix_phenotypes.jpg" alt="" />
-<p class="caption">Optix phenotypes</p>
-</div>
-<p>We will score the orange/red/brown patterns for which the link between phenotype and genotype is now known.
-The mimetic phenotypes generated are key to the diversification of the genus, to predator protection niches, and to mutualism between sympatric species (Mullerian mimicry).
-A supergene locus controls expression of a transcription factor called <strong>Optix</strong>; this locus exhibits incomplete dominance, so the genotype can be directly determined from the phenotype.
-One allele (F) accounts for the red, orange, red or brown scales in the distal forewing band (beyond the large wing cell).
-Another allele (H) controls the presence of such scales on the hind wing and/or on the proximal FW in the cell region.
-We will use these genotypes to estimate whether the population is in <strong>Hardy-Weinberg Equilibirum</strong></p>
-</div>
-<div id="lab-mrr-hwe-theory" class="section level3" number="11.1.3">
-<h3><span class="header-section-number">11.1.3</span> Hardy-Weinberg Equilibrium</h3>
-<p>A few definitions are in order:</p>
+<div id="objectives-and-whats-due" class="section level2" number="16.2">
+<h2><span class="header-section-number">16.2</span> Objectives (and what’s due)</h2>
+<p>There are four primary questions in this lab, along with the associated results you’ll be submitting:</p>
 <ul>
-<li><strong>Allele</strong>: one variant of a gene. For example, the <em>Optix</em> gene has the alleles <span class="math inline">\(F\)</span> and <span class="math inline">\(H\)</span>.</li>
-<li><strong>Genotype</strong>: in a diploid organism like <em>Heliconius</em> butterflies, there are two copies of most genes; the genotype is the combination of the alleles. For <em>Optix</em>, genotypes can be <span class="math inline">\(FF\)</span>, <span class="math inline">\(FH\)</span>, or <span class="math inline">\(HH\)</span>. An individual with 2 of the same alleles (<span class="math inline">\(FF\)</span> or <span class="math inline">\(HH\)</span>) is a homozygote, while an individual with different alleles (<span class="math inline">\(FH\)</span>) is a heterozygote.</li>
-<li><strong>Allele frequency</strong>: the proportion of each allele of a gene within a population. For 2-allele systems, we usually note these frequencies as <span class="math inline">\(p\)</span> and <span class="math inline">\(q\)</span>, where <span class="math inline">\(p + q = 1\)</span>. In <em>Optix</em>, <span class="math inline">\(p\)</span> is the frequency of <span class="math inline">\(F\)</span> and <span class="math inline">\(q\)</span> is the frequency of <span class="math inline">\(H\)</span>.</li>
-<li><strong>Genotype frequency</strong>: the proportion of each genotype within a population. For <em>Optix</em>, we will be noting these as <span class="math inline">\(f_{FF}\)</span>, <span class="math inline">\(f_{FH}\)</span>, and <span class="math inline">\(f_{HH}\)</span>. Genotype frequencies will also sum to 1.</li>
-</ul>
-<p>Allele frequencies can be directly calculated from genotype frequencies <span class="math inline">\((p=f_{FF}+0.5*f_{FH}\)</span>, <span class="math inline">\(q=1-p)\)</span>.
-However, the reverse is not necessarily true.
-There are many possible genotype frequencies that can correspond to the same allele frequencies; as an extreme example, a population with 100 heterozygotes (<span class="math inline">\(FH\)</span> genotypes) would have the same allele frequencies as one with 50 <span class="math inline">\(FF\)</span> and <span class="math inline">\(50\)</span> HH homozygotes.
-However, the two populations would look quite different.
-The relation between allele and genotype frequencies can help us understand a population’s biology.</p>
-<div id="genotype-frequencies-at-equilibrium" class="section level4" number="11.1.3.1">
-<h4><span class="header-section-number">11.1.3.1</span> Genotype frequencies at equilibrium</h4>
-<p>If genotype frequencies are stable and unchanging from one generation to the next, then we can expect a certain relationship between genotype and allele frequencies:</p>
-<p><span class="math display">\[f_{FF}=p^{2};\,\,\,\,\,\,\,f_{FH}=2pq;\,\,\,\,\,\,\,f_{HH}=q^{2}\]</span>
-This is called <strong>Hardy-Weinberg Equilibrium</strong> (HWE).
-An easy way to remember this is that genotypes take two alleles, so expanding the equation <span class="math inline">\((p+q)^{2}=1\)</span> will give you these ratios.
-HWE only applies for a population that is not changing.</p>
-<p>What can affect allele or genotype frequencies?</p>
+<li><p>How does sampling intensity improve mark-release-recapture (MRR) population size estimates?</p>
 <ul>
-<li>Natural selection: If one allele or genotype provides an advantage in the current environment, individuals with this allele are likely to produce more offspring, which will increase the allele frequency over time.</li>
-<li>Migration: Allele frequencies tend to vary between populations of the same species; individuals moving from one population to another will make the allele frequencies more similar to each other.</li>
-<li>Genetic drift: Variation in individual mating success will cause random changes in allele frequencies, in large populations, these are so small that they usually average out; however, small populations can have substantial change between generations.</li>
-<li>Mutation: Random events can introduce new alleles; while this is rare and most mutations disappear through drift shortly after popping up, mutation is ultimately the source of all genetic variation.</li>
-<li>Non-random mating: If individuals prefer to mate with like individuals, this can increase the frequencies of homozygous genotypes; conversely, a preference for different individuals can increase heterozygote frequencies. Unlike the previous four, non-random mating changes genotype frequencies without changing allele frequencies.</li>
-</ul>
-<p>Pretty much any natural population will violate at least one of these conditions.
-So why is HWE useful?
-It gives us a baseline expectation to compare our observed genotype frequencies to.
-If our data are significantly different from the HWE values, we can conclude that one of these processes is playing an important role in the population.
-If not, then these processes are minor enough that we can ignore them.</p>
-</div>
-<div id="detecting-violations-of-hwe" class="section level4" number="11.1.3.2">
-<h4><span class="header-section-number">11.1.3.2</span> Detecting violations of HWE</h4>
-<p>To test whether our genotype data is in Hardy-Weinberg equilibrium, we can use a chi-squared test of goodness-of-fit.
-First, we’ll need to calculate a chi-squared test statistic, which measures how strongly our observed data <span class="math inline">\((O)\)</span> deviates from the HWE expectations <span class="math inline">\((E)\)</span>.</p>
-<p><span class="math display">\[\chi^{2}=\sum_{i}\frac{\left(O_{i}-E_{i}\right)^{2}}{E_{i}}\]</span></p>
-<p>In terms of our data, this is equal to</p>
-<p><span class="math display">\[\chi^{2}=\frac{\left(f_{FF}-p^{2}\right)^{2}}{p^{2}}+\frac{\left(f_{FH}-2pq\right)^{2}}{2pq}+\frac{\left(f_{HH}-q^{2}\right)^{2}}{q^{2}}\]</span></p>
-<p>This is somewhat different from the chi-squared tests we’ve done in previous labs (which are chi-squared tests of independence).</p>
-</div>
-</div>
-</div>
-<div id="questions-and-hypotheses" class="section level2" number="11.2">
-<h2><span class="header-section-number">11.2</span> Questions and hypotheses</h2>
-<p>Primary Questions:</p>
-<ol style="list-style-type: decimal">
-<li>How does sampling intensity improve mark-release-recapture (MRR) population size estimates?</li>
-<li>Does separating animals by sex alter our estimate of population size? What’s the sex ratio?</li>
-<li>How does the Lincoln-Petersen model compare with alternate MRR methods?</li>
-<li>Are the <em>Heliconius</em> populations in Hardy-Weinberg equilibrium for the Optix gene?</li>
-</ol>
-</div>
-<div id="lab-mrr-field-methods" class="section level2" number="11.3">
-<h2><span class="header-section-number">11.3</span> Field Methods</h2>
-<p>For the MRR exercise, your team will enter the greenhouse capture butterflies for two distinct periods.</p>
-<p>For the first period, your group will capture 5 different butterflies. re-mixes with the population. At least thirty minutes after you’ve completed the first period, return to the greenhouse for the second period and capture five more. The delay should give the butterflies time to mix with the population.</p>
+<li><strong>Submit:</strong> Lincoln-Petersen population estimate at maximum sample size <span class="math inline">\((\hat{N})\)</span></li>
+<li><strong>Submit:</strong> A figure that shows how the Lincoln-Peterson population size estimate changes with sample size.</li>
+</ul></li>
+<li><p>Does separating animals by sex alter our estimate of population size?
+What’s the sex ratio?</p>
 <ul>
-<li>Space yourselves out and move slowly around your area of the greenhouse when searching.</li>
-<li>For each butterfly, record its number (or bring it to Dr. Gilbert if it doesn’t have one).</li>
-<li>Butterflies often land and sit after capture; don’t resample these. Instead, scare them into flight (by gently waving your hand) to insure mixing of individuals in the population.</li>
-</ul>
-<p>After you’ve completed your data collection, you will be given a photo album of the marked butterflies; you will need to identify the genotype and sex of the butterflies in the images for the Hardy-Weinberg exercise.</p>
-</div>
-<div id="analysis" class="section level2" number="11.4">
-<h2><span class="header-section-number">11.4</span> Analysis</h2>
-<p>The Lincoln-Petersen model:</p>
-<p>If <span class="math inline">\(S_2\)</span> is the number of individuals collected in a sample period, <span class="math inline">\(M_1\)</span> is total number of previously marked individuals, and <span class="math inline">\(R_2\)</span> is the number of marked individuals who were recaptured, then you can estimate population size:</p>
-<p><span class="math display">\[\hat{N} = \frac{S_2 M_1}{R_2}\]</span></p>
-<div id="effect-of-sampling-intensity-on-lincoln-petersen-hatn-estimates" class="section level3" number="11.4.1">
-<h3><span class="header-section-number">11.4.1</span> Effect of sampling intensity on Lincoln-Petersen <span class="math inline">\(\hat{N}\)</span> estimates</h3>
-<p>We’re going to simulate increased sampling estimates by pooling together estimates from each team.
-I’ll be combining the data from each group in all possible team combinations (i.e., one team: A, B, C, …; two teams: AB, AC, AD, …; three teams: ABC, ABD, BCD, …).
-For each combination, you’ll need to calculate the Lincoln-Petersen population size estimate <span class="math inline">\((\hat{N})\)</span>.
-Create a figure showing the effect of sample size on <span class="math inline">\(\hat{N}\)</span>.</p>
-</div>
-<div id="sex-ratios" class="section level3" number="11.4.2">
-<h3><span class="header-section-number">11.4.2</span> Sex ratios</h3>
-<p>Using the combined data from all teams, estimate <span class="math inline">\(\hat{N}\)</span> separately for male and female butterflies. How does the sum of these estimates compare with the estimate when the sexes are lumped together?</p>
-<p>What is the sex ratio of the population? Does it differ from 50:50? Use a chi-square test to test this.</p>
-</div>
-<div id="lab-mrr-trinidad" class="section level3" number="11.4.3">
-<h3><span class="header-section-number">11.4.3</span> Comparison of Lincoln-Petersen with alternative method</h3>
-<p>In 1970-71, Larry Gilbert collected data on a natural population of <em>Heliconius</em> in Trinidad (recall his paper spreadsheet from lecture with cells colored in to represent individuals). We will use this method to estimate population sizes.</p>
-<p>For each of the three sample periods, use a regression to model the relationship between the daily recapture proportion <span class="math inline">\((x)\)</span> and the cumulative number of individuals marked <span class="math inline">\((y)\)</span>.
-Intuitively, a recapture rate of 1.0 would suggest that you’ve sampled the entire population; you could thus use this regression equation to estimate <span class="math inline">\((\hat{N})\)</span> by evaluating it when <span class="math inline">\(x=1\)</span>.
-Create a multi-panel regression plot to go along with these methods.</p>
-<p>Compare these estimates with the Lincoln-Petersen estimate from the day with the highest proportion of recaptures in the sampling period.
-<!-- Note that for each row of the Trinidad data, $S_2$ = `total_captured`, $R_2$ = `recaptures`, and $M_1$ = `(cumulative_m - new_captures)`.  --></p>
-</div>
-<div id="hardy-weinberg" class="section level3" number="11.4.4">
-<h3><span class="header-section-number">11.4.4</span> Hardy-Weinberg</h3>
-<p>First, you’ll want to get the observed numbers for each genotype; we’ll call these <span class="math inline">\(N_{FF}\)</span>, <span class="math inline">\(N_{FH}\)</span>, and <span class="math inline">\(N_{HH}\)</span>; the total sample size <span class="math inline">\(N\)</span> is the sum of these.</p>
-<p>From these observed genotypes, you can calculate the genotype frequency of F, which is just <span class="math inline">\(\frac{N_{FF} + 0.5 N_{FH} }{N}\)</span>l let’s call this <span class="math inline">\(p\)</span>.</p>
-<p>You can get your HWE expected genotypes by using <span class="math inline">\(p\)</span> and <span class="math inline">\(q=1-p\)</span> to get your expected genotype frequencies; From here, you can run a chi-squared test.</p>
-</div>
-</div>
-<div id="discussion-2" class="section level2" number="11.5">
-<h2><span class="header-section-number">11.5</span> Discussion</h2>
-<p>You should address the following in your discussion:</p>
+<li><strong>Submit:</strong> Separate estimates of population size for males <span class="math inline">\((\hat{N}_m)\)</span> and females <span class="math inline">\((\hat{N}_f)\)</span>.</li>
+<li><strong>Submit:</strong> Does <span class="math inline">\(\hat{N} = \hat{N}_m + \hat{N}_f\)</span>?</li>
+<li><strong>Submit:</strong> A chi-squared test to see if the sex ratio is 50:50.</li>
+</ul></li>
+<li><p>How does the Lincoln-Petersen model compare with alternate MRR methods?</p>
 <ul>
-<li>How well did we meet the assumptions of MRR?</li>
-<li>Our MRR data came from a closed population; briefly speculate about some of the potential problems with these estimates in an open, natural population (how would emigration/immigration or birth/death affect the estimates)? How might our study compare with data from a natural population?</li>
-<li>How well does the Lincoln-Petersen model compare with fractional recapture estimation in a natural population? How different were your population estimates? What factors could help explain them?</li>
-<li>Think of some creative ways you could improve sampling in an MRR project (beyond just increasing the sample size).<br />
-</li>
-<li>Don’t forget to discuss your results from the sex ratio and genotype analyses.</li>
+<li><strong>Submit:</strong> A 3-panel figure showing the total number of recaptures as a function of the daily recapture rate for Dr. Gilbert’s Trinidad dataset (split over each of the three months).</li>
+<li><strong>Submit:</strong> The Lincoln-Petersen estimate for each month.</li>
+<li><strong>Submit:</strong> A regression-based estimate for each month.</li>
+</ul></li>
+<li><p>Are the <em>Heliconius</em> populations in Hardy-Weinberg equilibrium for the Optix gene?</p>
+<ul>
+<li><strong>Submit:</strong> The observed genotype frequencies and the expected frequencies under HWE.</li>
+<li><strong>Submit:</strong> A chi-square test for whether the observed frequencies deviate from HWE.</li>
+</ul></li>
 </ul>
+</div>
+<div id="getting-started-1" class="section level2" number="16.3">
+<h2><span class="header-section-number">16.3</span> Getting started</h2>
+<p>There are several datasets you’ll need to download for this; they are all located on Canvas under the MRR module.</p>
+<ul>
+<li><strong>F19_recapture_data.zip</strong>: This contains a bunch of csv files. Extract it as a subfolder of <code>data</code> (so you should have a file named <code>data/F19_recapture_data/1_Teams_A.csv</code>).</li>
+<li><strong>Trinidad Data</strong>: Download &amp; Save this file under <code>data</code>.</li>
+<li><strong>F19_genotype_consensus.csv</strong>: Put this in <code>data</code>.</li>
+</ul>
+<p>You should begin your script with the following:</p>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="hw-mrr.html#cb175-1" aria-hidden="true" tabindex="-1"></a><span class="co"># MRR Lab Analysis</span></span>
+<span id="cb175-2"><a href="hw-mrr.html#cb175-2" aria-hidden="true" tabindex="-1"></a><span class="do">#### Setup ####</span></span>
+<span id="cb175-3"><a href="hw-mrr.html#cb175-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb175-4"><a href="hw-mrr.html#cb175-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl) <span class="co"># used to read the excel file; this is installed with Tidyverse</span></span>
+<span id="cb175-5"><a href="hw-mrr.html#cb175-5" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_classic</span>()) <span class="co"># Removes gridlines from ggplot</span></span>
+<span id="cb175-6"><a href="hw-mrr.html#cb175-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb175-7"><a href="hw-mrr.html#cb175-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Data file locations: Change these when analyzing the current dataset</span></span>
+<span id="cb175-8"><a href="hw-mrr.html#cb175-8" aria-hidden="true" tabindex="-1"></a>recap_folder <span class="ot">=</span> <span class="st">&quot;data/F19_recapture_data&quot;</span></span>
+<span id="cb175-9"><a href="hw-mrr.html#cb175-9" aria-hidden="true" tabindex="-1"></a>genotype_file <span class="ot">=</span> <span class="st">&quot;data/F19_genotype_consensus.csv&quot;</span></span>
+<span id="cb175-10"><a href="hw-mrr.html#cb175-10" aria-hidden="true" tabindex="-1"></a>trinidad_file <span class="ot">=</span> <span class="st">&quot;data/MRR GilbertTrinidad data.xlsx&quot;</span> <span class="co"># This won&#39;t change</span></span></code></pre></div>
+</div>
+<div id="sampling-intensity-and-lincoln-petersen" class="section level2" number="16.4">
+<h2><span class="header-section-number">16.4</span> Sampling Intensity and Lincoln-Petersen</h2>
+<div id="the-data-1" class="section level3" number="16.4.1">
+<h3><span class="header-section-number">16.4.1</span> The data</h3>
+<p>To simulate different sample sizes, I’ve pooled together the data collected by different groupings of teams.
+This includes all the data collected by each team on its own, by all pairs of teams (e.g., A&amp;B, A&amp;C, A&amp;D, etc), all triplets, etc., all the way to all teams combined.
+Each of these data are in a separate csv file in the recapture data folder.
+You’re going to load them all into a single data frame.</p>
+<p>First, list all the csv files in the directory, then import them with the <code>read_csv()</code> function from the <code>readr</code> package.
+Note that you need <code>readr</code> version <code>2.0</code> or higher; earlier ones can’t handle multiple files.
+Additionally, make sure you use <code>read_csv()</code>, not <code>read.csv()</code>; these are different functions and they work slightly differently.</p>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="hw-mrr.html#cb176-1" aria-hidden="true" tabindex="-1"></a><span class="do">#### Sample Size and LP Method ####</span></span>
+<span id="cb176-2"><a href="hw-mrr.html#cb176-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb176-3"><a href="hw-mrr.html#cb176-3" aria-hidden="true" tabindex="-1"></a><span class="co"># List the names of all csv files in the recap folder</span></span>
+<span id="cb176-4"><a href="hw-mrr.html#cb176-4" aria-hidden="true" tabindex="-1"></a>recap_files <span class="ot">&lt;-</span> <span class="fu">dir</span>(recap_folder, <span class="at">pattern =</span>  <span class="st">&quot;.csv&quot;</span>, <span class="at">full.names =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb176-5"><a href="hw-mrr.html#cb176-5" aria-hidden="true" tabindex="-1"></a>recap_files <span class="co"># take a look at it</span></span>
+<span id="cb176-6"><a href="hw-mrr.html#cb176-6" aria-hidden="true" tabindex="-1"></a>recap_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(recap_files) <span class="co"># Read all the recap files and combine as a single data frame</span></span>
+<span id="cb176-7"><a href="hw-mrr.html#cb176-7" aria-hidden="true" tabindex="-1"></a><span class="co"># You could add the argument id = &#39;file_name&#39; if you wanted to keep the original file name as an argument,</span></span>
+<span id="cb176-8"><a href="hw-mrr.html#cb176-8" aria-hidden="true" tabindex="-1"></a><span class="co"># but that isn&#39;t necessary with these data</span></span></code></pre></div>
+<p>The columns of this data frame are:</p>
+<ul>
+<li><strong>Period:</strong> The first or second sampling period (as described in Section <a href="lab-mrr.html#lab-mrr-field-methods">11.3</a> ).</li>
+<li><strong>Mark_Number:</strong> The id of the butterfly that was marked.</li>
+<li><strong>sex:</strong> The sex, <code>"M"</code> or <code>"F"</code>.</li>
+<li><strong>Capture_Status:</strong> Is this the first time the butterfly was observed (<code>"Mark"</code>) or has it been seen before (<code>"Recap"</code>).</li>
+<li><strong>Team_combo:</strong> What combinations of teams were used to create this dataset? This relates to sample size.</li>
+</ul>
+</div>
+<div id="hw-mrr-lp-calc" class="section level3" number="16.4.2">
+<h3><span class="header-section-number">16.4.2</span> Calculating Lincoln-Petersen numbers</h3>
+<p>For the LP method, we need the following numbers:</p>
+<ul>
+<li><span class="math inline">\(M_1\)</span>: Number of individuals marked in first sample period (This will be all of the first period individuals).</li>
+<li><span class="math inline">\(S_2\)</span>: Total number of individuals in second sample period.</li>
+<li><span class="math inline">\(R_2\)</span>: Number of individuals that were recaptured in the second period.</li>
+</ul>
+<p>Once you have these</p>
+<p>We want to calculate these for each<code>Team_combo</code>.<br />
+The easiest way to do this with a grouped summarize command.
+The basic outline should be as follows:</p>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="hw-mrr.html#cb177-1" aria-hidden="true" tabindex="-1"></a>lp_estimates <span class="ot">&lt;-</span> recap_data <span class="sc">%&gt;%</span> </span>
+<span id="cb177-2"><a href="hw-mrr.html#cb177-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(        ) <span class="sc">%&gt;%</span> <span class="co"># Finish this</span></span>
+<span id="cb177-3"><a href="hw-mrr.html#cb177-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>( <span class="co"># We&#39;re dropping the subscripts because they aren&#39;t necessary</span></span>
+<span id="cb177-4"><a href="hw-mrr.html#cb177-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">M =</span>     ,</span>
+<span id="cb177-5"><a href="hw-mrr.html#cb177-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">S =</span>     ,</span>
+<span id="cb177-6"><a href="hw-mrr.html#cb177-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">R =</span>     ,</span>
+<span id="cb177-7"><a href="hw-mrr.html#cb177-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">sample_size =</span> <span class="fu">n</span>() ) <span class="sc">%&gt;%</span> </span>
+<span id="cb177-8"><a href="hw-mrr.html#cb177-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">N_hat =</span> ) <span class="co"># Calculate N-hat from S, M, and R</span></span></code></pre></div>
+<p>To calculate <code>M</code>, <code>S</code>, and <code>R</code>, you’ll need to combine logical statements (like you’d use in <code>filter()</code>, Section <a href="r-dplyr.html#r-dplyr-filter">6.3</a>) with the <code>sum()</code> function.
+This will give you a count of the number of cases where the logical condition is <code>TRUE</code>.
+For example, you can count the number of Male individuals in each Period and Capture Status with this:</p>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="hw-mrr.html#cb178-1" aria-hidden="true" tabindex="-1"></a>recap_data <span class="sc">%&gt;%</span> </span>
+<span id="cb178-2"><a href="hw-mrr.html#cb178-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Period, Capture_Status) <span class="sc">%&gt;%</span> </span>
+<span id="cb178-3"><a href="hw-mrr.html#cb178-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">N_males =</span> <span class="fu">sum</span>(sex <span class="sc">==</span> <span class="st">&quot;M&quot;</span>))</span></code></pre></div>
+<p>You may need to combine multiple logical conditions for some of these.</p>
+<p>You can use an <code>arrange()</code> function (Section <a href="r-dplyr.html#r-dplyr-arrange">6.5</a>) to figure out what the <span class="math inline">\(hat{N}\)</span> corresponds with the highest sample size.</p>
+</div>
+<div id="visualizing-the-effect-of-sample-size-on" class="section level3" number="16.4.3">
+<h3><span class="header-section-number">16.4.3</span> Visualizing the effect of sample size on $</h3>
+<p>Create a plot from <code>lp_estimates</code> with <code>sample_size</code> on the x axis and <code>N_hat</code> on the y axis.
+Be sure to caption your figure.</p>
+</div>
+</div>
+<div id="estimates-by-sex-and-sex-ratios" class="section level2" number="16.5">
+<h2><span class="header-section-number">16.5</span> Estimates by Sex and Sex Ratios</h2>
+<p>We want to estimate the number of males and females separately.
+Sampling intensity isn’t important for this, so let’s only include the data from the whole-class.</p>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="hw-mrr.html#cb179-1" aria-hidden="true" tabindex="-1"></a><span class="do">#### Sex Ratios ####</span></span>
+<span id="cb179-2"><a href="hw-mrr.html#cb179-2" aria-hidden="true" tabindex="-1"></a>recap_data_full <span class="ot">&lt;-</span> recap_data <span class="sc">%&gt;%</span> </span>
+<span id="cb179-3"><a href="hw-mrr.html#cb179-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Team_combo <span class="sc">==</span> <span class="st">&quot;ABCDE&quot;</span>) <span class="co"># You may need to change this if there are more than 5 teams, e.g., &quot;ABCDEFG&quot;</span></span></code></pre></div>
+<p>Now, you’ll want to use the same approach you used in Section <a href="hw-mrr.html#hw-mrr-lp-calc">16.4.2</a> to estimate the number of males and females from this dataset.
+This should result in a two-row data frame (one row for males, one for females).
+Save that as <code>lp_estimate_by_sex</code>.</p>
+<div id="is-the-sex-ratio-5050" class="section level3" number="16.5.1">
+<h3><span class="header-section-number">16.5.1</span> Is the Sex Ratio 50:50?</h3>
+<p>Next, we want to run a one-sample chi-squared test to see if the sex ratio is unbalanced.
+First, we define the observed counts (the LP estimates) and expected frequencies.
+Then, use a chi-squared test with the following arguments</p>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="hw-mrr.html#cb180-1" aria-hidden="true" tabindex="-1"></a>sr_observed_counts <span class="ot">&lt;-</span> lp_estimates_by_sex<span class="sc">$</span>N_hat</span>
+<span id="cb180-2"><a href="hw-mrr.html#cb180-2" aria-hidden="true" tabindex="-1"></a>sr_expected_freq   <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">0.5</span>) <span class="co"># 50:50</span></span>
+<span id="cb180-3"><a href="hw-mrr.html#cb180-3" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(<span class="at">x =</span> sr_observed_counts,</span>
+<span id="cb180-4"><a href="hw-mrr.html#cb180-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">p =</span> sr_expected_freq) <span class="co">#  You MUST name the p argument</span></span></code></pre></div>
+</div>
+</div>
+<div id="alternate-methods-for-population-size-estimates" class="section level2" number="16.6">
+<h2><span class="header-section-number">16.6</span> Alternate Methods for Population Size Estimates</h2>
+<p>In this section, we’ll be comparing the LP method with a continuous-sampling approach that uses regression analysis.
+For background, see Section <a href="lab-mrr.html#lab-mrr-trinidad">11.4.3</a>.</p>
+<div id="the-data-2" class="section level3" number="16.6.1">
+<h3><span class="header-section-number">16.6.1</span> The data</h3>
+<p>This data is saved as an excel file; to import it, we’ll be using the <code>read_excel()</code> function, from the <code>readxl</code> package.</p>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="hw-mrr.html#cb181-1" aria-hidden="true" tabindex="-1"></a><span class="do">#### Regression vs LP analysis (Trinidad Data) ####</span></span>
+<span id="cb181-2"><a href="hw-mrr.html#cb181-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb181-3"><a href="hw-mrr.html#cb181-3" aria-hidden="true" tabindex="-1"></a>trinidad_data <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(trinidad_file, <span class="at">sheet =</span> <span class="st">&quot;Sheet1&quot;</span>)</span></code></pre></div>
+<p>The columns we care about</p>
+<ul>
+<li><strong>Sample_Period</strong>: These data were collected over Late April/ Early May, July, and August.</li>
+<li><strong>Date:</strong> the date. Not used in this analysis.</li>
+<li><strong>new_captures:</strong> Number of new individuals captured on that date.</li>
+<li><strong>recaptures:</strong> Number of recaptures on that date.</li>
+<li><strong>total_captured:</strong> Total number of individuals captured on that date.</li>
+<li><strong>cumulative_M</strong>: Total number of unique individuals marked since the beginning of the sample period.</li>
+<li><strong>prop_recapture:</strong> Proportion of individuals captured on date that are recaptures.</li>
+<li>The two columns beginning with Collect_ can be ignored</li>
+</ul>
+</div>
+<div id="lincoln-petersen-estimate" class="section level3" number="16.6.2">
+<h3><span class="header-section-number">16.6.2</span> Lincoln-Petersen estimate</h3>
+<p>Use a grouped <code>filter()</code> command to create a data frame containing the highest proportion of recaptures in each sampling period (3 rows total).
+Calculate <span class="math inline">\(\hat{N}\)</span> based on these data.
+Note that some of the column names you’ll need to use will be different, and you may need to calculate <code>M_1</code>, <code>R_2</code>, or <code>S_2</code> from a combination of existing columns.</p>
+</div>
+<div id="regression-estimate" class="section level3" number="16.6.3">
+<h3><span class="header-section-number">16.6.3</span> Regression estimate</h3>
+<p>Filter your data to only include the first sample period and run a linear regression (Section <a href="r-stats.html#r-stats-lm">7.3</a>), with <code>prop_recapture</code> as the predictor/x/independent variable and <code>cumulative_M</code> as the response/y/dependent variable.
+Save the result as <code>trinidad_lm_apr</code>.
+View the results with <code>print(trinidad_lm_apr)</code> and take a look at the coefficients.
+These are the slope and intercept for the regression line.
+From these, you could calculate the expected value of <code>cumulative_M</code> for any value of <code>prop_recapture</code>.
+Therefore, calculating the value of <code>cumulative_M</code> when <code>prop_recapture</code> = 1 could be another way to estimate the total population size.</p>
+<p>While it’s pretty straightforward to do this by hand, we’re going to use R’s <code>predict()</code> function, which predicts the y values associated with new x values.
+Versions of predict have been designed for a wide variety of different statistical models in R, so understanding it can help with a variety of tasks.<br />
+First, define a new data frame that contains the new predictor variables (in this case, <code>prop_recapture = 1</code>).
+Then, use predict with the regression object and new data:</p>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="hw-mrr.html#cb182-1" aria-hidden="true" tabindex="-1"></a>trinidad_predict_df <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">prop_recapture =</span> <span class="dv">1</span>) </span>
+<span id="cb182-2"><a href="hw-mrr.html#cb182-2" aria-hidden="true" tabindex="-1"></a>trinidad_nhat_lm_apr <span class="ot">=</span> <span class="fu">predict.lm</span>(trinidad_lm_apr, <span class="at">newdata =</span> trinidad_predict_df)</span></code></pre></div>
+<p>Do this for all three sample periods (you don’t need to make multiple <code>trinidad_predict_df</code>’s, they’re all the same) and compare these values with the Lincoln-Peterson estimates.</p>
+</div>
+<div id="regression-figure" class="section level3" number="16.6.4">
+<h3><span class="header-section-number">16.6.4</span> Regression figure</h3>
+<p>Create a figure in ggplot for your regressions (Section <a href="r-ggplot.html#r-ggplot-contx-conty">5.3.3</a>).
+You should use <code>geom_smooth(method = 'lm')</code> and <code>geom_point()</code> to display both the raw data and the regression line.
+Facet your data by sample period with facet_wrap() and make sure all three periods are stacked on top of each other in a single column (see <code>?facet_wrap</code> for details).</p>
+</div>
+</div>
+<div id="hardy-weinberg-equilibrium-optix" class="section level2" number="16.7">
+<h2><span class="header-section-number">16.7</span> Hardy-Weinberg Equilibrium &amp; Optix</h2>
+<p>For this, we’ll be doing some quick population genetics.</p>
+<div id="the-data-3" class="section level3" number="16.7.1">
+<h3><span class="header-section-number">16.7.1</span> The data</h3>
+<p>Import the data as:</p>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="hw-mrr.html#cb183-1" aria-hidden="true" tabindex="-1"></a><span class="do">#### HWE Analysis ####</span></span>
+<span id="cb183-2"><a href="hw-mrr.html#cb183-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb183-3"><a href="hw-mrr.html#cb183-3" aria-hidden="true" tabindex="-1"></a>genotype_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(genotype_file)</span></code></pre></div>
+<p>The only column we care about for this is <strong>Genotype</strong>, which will be one of <em>FF</em>, <em>FH</em> or <em>HH</em>.</p>
+</div>
+<div id="calculating-hwe-ratios" class="section level3" number="16.7.2">
+<h3><span class="header-section-number">16.7.2</span> Calculating HWE ratios</h3>
+<p>First, we want to get the count and frequency of each genotype; do this with a grouped <code>summarize()</code>, followed by a <code>mutate()</code>, and name your new columns <code>count</code> and <code>frequency</code>.
+Your genotype frequencies should sum to 1.
+Save the new data frame as <code>genotype_observed</code>.</p>
+<p>To make the frequencies easier to work with, we’re going to re-shape the data (this is similar to what is covered in Chapter @ref{r-tidyr}, but it isn’t covered there yet).
+Do this:</p>
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="hw-mrr.html#cb184-1" aria-hidden="true" tabindex="-1"></a>gt_freq_observed <span class="ot">&lt;-</span> genotype_observed <span class="sc">%&gt;%</span> </span>
+<span id="cb184-2"><a href="hw-mrr.html#cb184-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Genotype, frequency) <span class="sc">%&gt;%</span> </span>
+<span id="cb184-3"><a href="hw-mrr.html#cb184-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> Genotype, <span class="at">values_from =</span> frequency)</span></code></pre></div>
+<p>Next, use <code>summarize()</code> on <code>gt_freq_observed</code> to calculate your allele frequencie for <code>F</code> and <code>H</code> from the genotype frequencies as described in Section <a href="lab-mrr.html#lab-mrr-hwe-theory">11.1.3</a>.
+Save the new data frame as <code>allele_freq</code>.
+Then, calculate your expected HWE genotype frequencies from <code>allele_freq</code> with another <code>summarize()</code> function and save it as <code>gt_hwe</code>.
+Make sure that the columns of <code>gt_hwe</code> are in the same order as <code>gt_freq_observed</code>.
+Finally, add a column for HWE frequencies to <code>genotype_observed</code>:</p>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="hw-mrr.html#cb185-1" aria-hidden="true" tabindex="-1"></a>genotype_obs_hwe <span class="ot">&lt;-</span> genotype_observed <span class="sc">%&gt;%</span> </span>
+<span id="cb185-2"><a href="hw-mrr.html#cb185-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">HWE_freq =</span> <span class="fu">as.numeric</span>(gt.hwe)) <span class="co"># as.numeric converts gt_hwe from a data frame to a vector</span></span></code></pre></div>
+<p>You’ll want to report this table.</p>
+</div>
+<div id="testing-for-hwe" class="section level3" number="16.7.3">
+<h3><span class="header-section-number">16.7.3</span> Testing for HWE</h3>
+<p>Run a one-sample chi-squared test (as you did earlier with the sex ratios); you’ll want to use two columns from <code>genotype_obs_hwe</code> for <code>x</code> and <code>p</code>.</p>
 
+</div>
 </div>
 </div>
             </section>
@@ -634,8 +683,8 @@ Create a multi-panel regression plot to go along with these methods.</p>
           </div>
         </div>
       </div>
-<a href="lab-succession.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="Lab-heterogeneity.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="hw-succession.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references-2.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -666,7 +715,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/Christopher-Peterson/Bio373L-Book/edit/master/chapters/labs/lab_mrr.Rmd",
+"link": "https://github.com/Christopher-Peterson/Bio373L-Book/edit/master/chapters/homework/hw_mrr.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -674,7 +723,7 @@ gitbook.start({
 "text": null
 },
 "view": {
-"link": "https://github.com/Christopher-Peterson/Bio373L-Book/blob/master/chapters/labs/lab_mrr.Rmd",
+"link": "https://github.com/Christopher-Peterson/Bio373L-Book/blob/master/chapters/homework/hw_mrr.Rmd",
 "text": null
 },
 "download": null,
