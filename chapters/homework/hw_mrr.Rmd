@@ -1,0 +1,281 @@
+---
+  editor_options: 
+    markdown: 
+      wrap: sentence
+  markdown: 
+  wrap: sentence
+---
+
+# Homework: Mark-Release-Recapture {#hw-mrr}
+
+## Required Reading
+
+This homework will prepare you to analyze the data from the [MRR lab](#lab-mrr).
+You should read over that the material to properly understand the data you'll be working with here.
+I will assume that you are familiar with the material used in the [Succession homework](#hw-succession).
+In addition, you should read Section \@ref(r-stats-lm).
+
+    Please attempt this to the best of your ability.
+    Once you've read the above chapters, I will be happy to meet with you (individually or in groups) to provide guidance and support on this material.
+
+## Objectives (and what's due)
+
+There are four primary questions in this lab, along with the associated results you'll be submitting:
+
+-   How does sampling intensity improve mark-release-recapture (MRR) population size estimates?
+
+    -   **Submit:** Lincoln-Petersen population estimate at maximum sample size $(\hat{N})$
+    -   **Submit:** A figure that shows how the Lincoln-Peterson population size estimate changes with sample size.
+
+-   Does separating animals by sex alter our estimate of population size?
+    What's the sex ratio?
+
+    -   **Submit:** Separate estimates of population size for males $(\hat{N}_m)$ and females $(\hat{N}_f)$.
+    -   **Submit:** Does $\hat{N} = \hat{N}_m + \hat{N}_f$?
+    -   **Submit:** A chi-squared test to see if the sex ratio is 50:50.
+
+-   How does the Lincoln-Petersen model compare with alternate MRR methods?
+
+    -   **Submit:** A 3-panel figure showing the total number of recaptures as a function of the daily recapture rate for Dr. Gilbert's Trinidad dataset (split over each of the three months).
+    -   **Submit:** The Lincoln-Petersen estimate for each month.
+    -   **Submit:** A regression-based estimate for each month.
+
+-   Are the *Heliconius* populations in Hardy-Weinberg equilibrium for the Optix gene?
+
+    -   **Submit:** The observed genotype frequencies and the expected frequencies under HWE.
+    -   **Submit:** A chi-square test for whether the observed frequencies deviate from HWE.
+
+## Getting started
+
+There are several datasets you'll need to download for this; they are all located on Canvas under the MRR module.
+
+-   **F19_recapture_data.zip**: This contains a bunch of csv files. Extract it as a subfolder of `data` (so you should have a file named `data/F19_recapture_data/1_Teams_A.csv`).
+-   **Trinidad Data**: Download & Save this file under `data`.
+-   **F19_genotype_consensus.csv**: Put this in `data`.
+
+You should begin your script with the following:
+
+```{r hw-mrr-setup, eval = FALSE, echo = TRUE}
+# MRR Lab Analysis
+#### Setup ####
+library(tidyverse)
+library(readxl) # used to read the excel file; this is installed with Tidyverse
+theme_set(theme_classic()) # Removes gridlines from ggplot
+
+# Data file locations: Change these when analyzing the current dataset
+recap_folder = "data/F19_recapture_data"
+genotype_file = "data/F19_genotype_consensus.csv"
+trinidad_file = "data/MRR GilbertTrinidad data.xlsx" # This won't change
+
+```
+
+## Sampling Intensity and Lincoln-Petersen
+
+### The data
+
+To simulate different sample sizes, I've pooled together the data collected by different groupings of teams.
+This includes all the data collected by each team on its own, by all pairs of teams (e.g., A&B, A&C, A&D, etc), all triplets, etc., all the way to all teams combined.
+Each of these data are in a separate csv file in the recapture data folder.
+You're going to load them all into a single data frame.
+
+First, list all the csv files in the directory, then import them with the `read_csv()` function from the `readr` package.
+Note that you need `readr` version `2.0` or higher; earlier ones can't handle multiple files.
+Additionally, make sure you use `read_csv()`, not `read.csv()`; these are different functions and they work slightly differently.
+
+```{r hw-mrr-load-recap, eval = FALSE, echo = TRUE}
+#### Sample Size and LP Method ####
+
+# List the names of all csv files in the recap folder
+recap_files <- dir(recap_folder, pattern =  ".csv", full.names = TRUE)
+recap_files # take a look at it
+recap_data <- read_csv(recap_files) # Read all the recap files and combine as a single data frame
+# You could add the argument id = 'file_name' if you wanted to keep the original file name as an argument,
+# but that isn't necessary with these data
+```
+
+The columns of this data frame are:
+
+-   **Period:** The first or second sampling period (as described in Section \@ref(lab-mrr-field-methods) ).
+-   **Mark_Number:** The id of the butterfly that was marked.
+-   **sex:** The sex, `"M"` or `"F"`.
+-   **Capture_Status:** Is this the first time the butterfly was observed (`"Mark"`) or has it been seen before (`"Recap"`).
+-   **Team_combo:** What combinations of teams were used to create this dataset? This relates to sample size.
+
+### Calculating Lincoln-Petersen numbers {#hw-mrr-lp-calc}
+
+For the LP method, we need the following numbers:
+
+-   $M_1$: Number of individuals marked in first sample period (This will be all of the first period individuals).
+-   $S_2$: Total number of individuals in second sample period.
+-   $R_2$: Number of individuals that were recaptured in the second period.
+
+Once you have these
+
+We want to calculate these for each`Team_combo`.\
+The easiest way to do this with a grouped summarize command.
+The basic outline should be as follows:
+
+```{r hw-mrr-lp-comps, eval = FALSE, echo = TRUE}
+lp_estimates <- recap_data %>% 
+  group_by(        ) %>% # Finish this
+  summarize( # We're dropping the subscripts because they aren't necessary
+    M =     ,
+    S =     ,
+    R =     ,
+    sample_size = n() ) %>% 
+  mutate(N_hat = ) # Calculate N-hat from S, M, and R
+```
+
+To calculate `M`, `S`, and `R`, you'll need to combine logical statements (like you'd use in `filter()`, Section \@ref(r-dplyr-filter)) with the `sum()` function.
+This will give you a count of the number of cases where the logical condition is `TRUE`.
+For example, you can count the number of Male individuals in each Period and Capture Status with this:
+
+```{r hw-mrr-logical-sum, eval = FALSE, echo = TRUE}
+recap_data %>% 
+  group_by(Period, Capture_Status) %>% 
+  summarize(N_males = sum(sex == "M"))
+```
+
+You may need to combine multiple logical conditions for some of these.
+
+You can use an `arrange()` function (Section \@ref(r-dplyr-arrange)) to figure out what the $hat{N}$ corresponds with the highest sample size.
+
+### Visualizing the effect of sample size on \$\hat{N}
+
+Create a plot from `lp_estimates` with `sample_size` on the x axis and `N_hat` on the y axis.
+Be sure to caption your figure.
+
+## Estimates by Sex and Sex Ratios
+
+We want to estimate the number of males and females separately.
+Sampling intensity isn't important for this, so let's only include the data from the whole-class.
+
+```{r hw-mrr-sex-data, echo = TRUE, eval = FALSE}
+#### Sex Ratios ####
+recap_data_full <- recap_data %>% 
+  filter(Team_combo == "ABCDE") # You may need to change this if there are more than 5 teams, e.g., "ABCDEFG"
+```
+
+Now, you'll want to use the same approach you used in Section \@ref(hw-mrr-lp-calc) to estimate the number of males and females from this dataset.
+This should result in a two-row data frame (one row for males, one for females).
+Save that as `lp_estimate_by_sex`.
+
+### Is the Sex Ratio 50:50?
+
+Next, we want to run a one-sample chi-squared test to see if the sex ratio is unbalanced.
+First, we define the observed counts (the LP estimates) and expected frequencies.
+Then, use a chi-squared test with the following arguments
+
+```{r hw-mrr-sr-setup, echo = TRUE, eval = FALSE}
+sr_observed_counts <- lp_estimates_by_sex$N_hat
+sr_expected_freq   <- c(0.5, 0.5) # 50:50
+chisq.test(x = sr_observed_counts,
+           p = sr_expected_freq) #  You MUST name the p argument
+```
+
+## Alternate Methods for Population Size Estimates
+
+In this section, we'll be comparing the LP method with a continuous-sampling approach that uses regression analysis.
+For background, see Section \@ref(lab-mrr-trinidad).
+
+### The data
+
+This data is saved as an excel file; to import it, we'll be using the `read_excel()` function, from the `readxl` package.
+
+```{r hw-mrr-trin-data, echo = TRUE, eval = FALSE}
+#### Regression vs LP analysis (Trinidad Data) ####
+
+trinidad_data <- read_excel(trinidad_file, sheet = "Sheet1")
+```
+
+The columns we care about
+
+-   **Sample_Period**: These data were collected over Late April/ Early May, July, and August.
+-   **Date:** the date. Not used in this analysis.
+-   **new_captures:** Number of new individuals captured on that date.
+-   **recaptures:** Number of recaptures on that date.
+-   **total_captured:** Total number of individuals captured on that date.
+-   **cumulative_M**: Total number of unique individuals marked since the beginning of the sample period.
+-   **prop_recapture:** Proportion of individuals captured on date that are recaptures.
+-   The two columns beginning with Collect\_ can be ignored
+
+### Lincoln-Petersen estimate
+
+Use a grouped `filter()` command to create a data frame containing the highest proportion of recaptures in each sampling period (3 rows total).
+Calculate $\hat{N}$ based on these data. 
+Note that some of the column names you'll need to use will be different, and you may need to calculate `M_1`, `R_2`, or `S_2` from a combination of existing columns.
+
+### Regression estimate
+
+Filter your data to only include the first sample period and run a linear regression (Section \@ref(r-stats-lm)), with `prop_recapture` as the predictor/x/independent variable and `cumulative_M` as the response/y/dependent variable.
+Save the result as `trinidad_lm_apr`.
+View the results with `print(trinidad_lm_apr)` and take a look at the coefficients.
+These are the slope and intercept for the regression line.
+From these, you could calculate the expected value of `cumulative_M` for any value of `prop_recapture`.
+Therefore, calculating the value of `cumulative_M` when `prop_recapture` = 1 could be another way to estimate the total population size.
+
+While it's pretty straightforward to do this by hand, we're going to use R's `predict()` function, which predicts the y values associated with new x values.
+Versions of predict have been designed for a wide variety of different statistical models in R, so understanding it can help with a variety of tasks.  
+First, define a new data frame that contains the new predictor variables (in this case, `prop_recapture = 1`).
+Then, use predict with the regression object and new data:
+
+```{r hw-mrr-lm-pred-df, echo = TRUE, eval = FALSE}
+trinidad_predict_df = data.frame(prop_recapture = 1) 
+trinidad_nhat_lm_apr = predict.lm(trinidad_lm_apr, newdata = trinidad_predict_df)
+```
+
+Do this for all three sample periods (you don't need to make multiple `trinidad_predict_df`'s, they're all the same) and compare these values with the Lincoln-Peterson estimates.
+
+### Regression figure
+
+Create a figure in ggplot for your regressions (Section \@ref(r-ggplot-contx-conty)).
+You should use `geom_smooth(method = 'lm')` and `geom_point()` to display both the raw data and the regression line.
+Facet your data by sample period with facet_wrap() and make sure all three periods are stacked on top of each other in a single column (see `?facet_wrap` for details).
+
+## Hardy-Weinberg Equilibrium & Optix
+
+For this, we'll be doing some quick population genetics.
+
+### The data
+
+Import the data as:
+
+```{r hw-mrr-geno-read, eval = FALSE, echo = TRUE}
+#### HWE Analysis ####
+
+genotype_data <- read_csv(genotype_file)
+```
+
+The only column we care about for this is **Genotype**, which will be one of *FF*, *FH* or *HH*.
+
+### Calculating HWE ratios
+
+First, we want to get the count and frequency of each genotype; do this with a grouped `summarize()`, followed by a `mutate()`, and name your new columns `count` and `frequency`.
+Your genotype frequencies should sum to 1.
+Save the new data frame as `genotype_observed`.
+
+To make the frequencies easier to work with, we're going to re-shape the data (this is similar to what is covered in Chapter \@ref{r-tidyr}, but it isn't covered there yet).
+Do this:
+
+```{r hw-mrr-geno-pivot, eval = FALSE, echo = TRUE}
+gt_freq_observed <- genotype_observed %>% 
+  select(Genotype, frequency) %>% 
+  pivot_wider(names_from = Genotype, values_from = frequency)
+```
+
+Next, use `summarize()` on `gt_freq_observed` to calculate your allele frequencie for `F` and `H` from the genotype frequencies as described in Section \@ref(lab-mrr-hwe-theory).
+Save the new data frame as `allele_freq`.
+Then, calculate your expected HWE genotype frequencies from `allele_freq` with another `summarize()` function and save it as `gt_hwe`.
+Make sure that the columns of `gt_hwe` are in the same order as `gt_freq_observed`.
+Finally, add a column for HWE frequencies to `genotype_observed`:
+
+```{r hw-mrr-geno-hwe-obs, eval = FALSE, echo = TRUE}
+genotype_obs_hwe <- genotype_observed %>% 
+  mutate(HWE_freq = as.numeric(gt.hwe)) # as.numeric converts gt_hwe from a data frame to a vector
+```
+
+You'll want to report this table.
+
+### Testing for HWE
+
+Run a one-sample chi-squared test (as you did earlier with the sex ratios); you'll want to use two columns from `genotype_obs_hwe` for `x` and `p`.
