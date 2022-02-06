@@ -24,7 +24,7 @@
 <meta name="author" content="Christopher R. Peterson" />
 
 
-<meta name="date" content="2022-02-03" />
+<meta name="date" content="2022-02-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -520,19 +520,19 @@ Use linear regression on this class’s dataset, with subjective score as the pr
 Note that the structure of the data will almost certainly violate some of the assumptions of a linear regression test.
 We can still do this because this isn’t a hypothesis-driven analysis, but a prediction-driven one; provide the <span class="math inline">\(R^2\)</span> and fit equation, but not the p-values.</p>
 <p>To run a regression in R, modify this code:</p>
-<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="Lab-heterogeneity.html#cb161-1" aria-hidden="true" tabindex="-1"></a>regression <span class="ot">=</span> <span class="fu">lm</span>(y <span class="sc">~</span> x, <span class="at">data =</span> your_data_set) <span class="co"># adjust this for your regression</span></span>
-<span id="cb161-2"><a href="Lab-heterogeneity.html#cb161-2" aria-hidden="true" tabindex="-1"></a>regression <span class="co"># this gives you the coefficients</span></span>
-<span id="cb161-3"><a href="Lab-heterogeneity.html#cb161-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(regression) <span class="co"># This includes R2 values</span></span>
-<span id="cb161-4"><a href="Lab-heterogeneity.html#cb161-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Note that you should go with the &quot;Multiple R-squared,&quot; not &quot;Adjusted R-squared&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="Lab-heterogeneity.html#cb163-1" aria-hidden="true" tabindex="-1"></a>regression <span class="ot">=</span> <span class="fu">lm</span>(y <span class="sc">~</span> x, <span class="at">data =</span> your_data_set) <span class="co"># adjust this for your regression</span></span>
+<span id="cb163-2"><a href="Lab-heterogeneity.html#cb163-2" aria-hidden="true" tabindex="-1"></a>regression <span class="co"># this gives you the coefficients</span></span>
+<span id="cb163-3"><a href="Lab-heterogeneity.html#cb163-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(regression) <span class="co"># This includes R2 values</span></span>
+<span id="cb163-4"><a href="Lab-heterogeneity.html#cb163-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Note that you should go with the &quot;Multiple R-squared,&quot; not &quot;Adjusted R-squared&quot;</span></span></code></pre></div>
 <p>Create a figure for this analysis, including the data points and trend line.
 If you’re using Excel, please remember that the equation that appears after you add the trendline shouldn’t be included in the resulting graph (it belongs in the caption and main text).
 If you’re using <code>ggplot</code> in R, you can add a regression line to the graph by adding the following line to your figure code:</p>
-<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="Lab-heterogeneity.html#cb162-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">color =</span> <span class="st">&quot;grey&quot;</span>) </span>
-<span id="cb162-2"><a href="Lab-heterogeneity.html#cb162-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># feel free to change color</span></span></code></pre></div>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="Lab-heterogeneity.html#cb164-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">color =</span> <span class="st">&quot;grey&quot;</span>) </span>
+<span id="cb164-2"><a href="Lab-heterogeneity.html#cb164-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># feel free to change color</span></span></code></pre></div>
 <p>One other thing I’d recommend is spreading out the points on your x axis a little, since otherwise they will just be four vertical lines.
 In ggplot, you can do this by replacing <code>geom_point</code> with:</p>
-<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="Lab-heterogeneity.html#cb163-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">height =</span> <span class="dv">0</span>, <span class="at">width =</span> .<span class="dv">25</span>) </span>
-<span id="cb163-2"><a href="Lab-heterogeneity.html#cb163-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># changing width will spread the dots out more; just don&#39;t change height</span></span></code></pre></div>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="Lab-heterogeneity.html#cb165-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">height =</span> <span class="dv">0</span>, <span class="at">width =</span> .<span class="dv">25</span>) </span>
+<span id="cb165-2"><a href="Lab-heterogeneity.html#cb165-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># changing width will spread the dots out more; just don&#39;t change height</span></span></code></pre></div>
 </div>
 <div id="relationship-between-canopy-and-ground-cover" class="section level3" number="12.4.2">
 <h3><span class="header-section-number">12.4.2</span> Relationship between canopy and ground cover</h3>

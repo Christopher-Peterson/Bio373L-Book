@@ -24,7 +24,7 @@
 <meta name="author" content="Christopher R. Peterson" />
 
 
-<meta name="date" content="2022-02-03" />
+<meta name="date" content="2022-02-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -705,99 +705,100 @@ Challenge: How would you do the same with a histogram?</p>
 <h3><span class="header-section-number">5.3.4</span> Time series data</h3>
 <p>If your x variable is related to time (or date), you’ll probably want to use a line plot to visualize it. Our anole dataset doesn’t work for this, so you’ll need to save <a href="https://raw.githubusercontent.com/Christopher-Peterson/Bio373L-Book/master/example_data/beavers.csv">this</a> as <code>"example_data/beavers.csv"</code>. This data has info on the body temperature of two beavers over time.</p>
 <div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="r-ggplot.html#cb46-1" aria-hidden="true" tabindex="-1"></a>beavers <span class="ot">=</span> <span class="fu">read_csv</span>(<span class="st">&quot;example_data/beavers.csv&quot;</span>)</span></code></pre></div>
+<pre><code>## Rows: 214 Columns: 4</code></pre>
+<pre><code>## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## chr  (1): beaver
+## dbl  (2): Temperature, activ
+## dttm (1): Time</code></pre>
 <pre><code>## 
-## ── Column specification ────────────────────────────────────────────────────────
-## cols(
-##   Time = col_datetime(format = &quot;&quot;),
-##   Temperature = col_double(),
-##   activ = col_double(),
-##   beaver = col_character()
-## )</code></pre>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="r-ggplot.html#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(beavers) <span class="sc">+</span> </span>
-<span id="cb48-2"><a href="r-ggplot.html#cb48-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> Time, <span class="at">y =</span> Temperature, <span class="at">color =</span> beaver) <span class="sc">+</span> </span>
-<span id="cb48-3"><a href="r-ggplot.html#cb48-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
-<span id="cb48-4"><a href="r-ggplot.html#cb48-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_datetime</span>(<span class="at">date_labels =</span> <span class="st">&quot;%H:%M&quot;</span>) <span class="co"># This tells R that you&#39;ve got a time on the x axis</span></span></code></pre></div>
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="r-ggplot.html#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(beavers) <span class="sc">+</span> </span>
+<span id="cb50-2"><a href="r-ggplot.html#cb50-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> Time, <span class="at">y =</span> Temperature, <span class="at">color =</span> beaver) <span class="sc">+</span> </span>
+<span id="cb50-3"><a href="r-ggplot.html#cb50-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb50-4"><a href="r-ggplot.html#cb50-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_datetime</span>(<span class="at">date_labels =</span> <span class="st">&quot;%H:%M&quot;</span>) <span class="co"># This tells R that you&#39;ve got a time on the x axis</span></span></code></pre></div>
 <p><img src="Bio373L-Book_files/figure-html/beaver_ts-1.png" width="672" /></p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="r-ggplot.html#cb49-1" aria-hidden="true" tabindex="-1"></a>  <span class="co"># date_labels says to use hours:minutes as the axis format</span></span></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="r-ggplot.html#cb51-1" aria-hidden="true" tabindex="-1"></a>  <span class="co"># date_labels says to use hours:minutes as the axis format</span></span></code></pre></div>
 </div>
 <div id="r-ggplot-discx-discy" class="section level3" number="5.3.5">
 <h3><span class="header-section-number">5.3.5</span> Discrete X and Y</h3>
 <p>Bar graphs are good for showing counts, frequencies, and proportions. This shows how many individual lizards were in each site; It works by counting the number of rows in which the Site column has each value.</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="r-ggplot.html#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> lizards) <span class="sc">+</span> </span>
-<span id="cb50-2"><a href="r-ggplot.html#cb50-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> Site) <span class="sc">+</span></span>
-<span id="cb50-3"><a href="r-ggplot.html#cb50-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="r-ggplot.html#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> lizards) <span class="sc">+</span> </span>
+<span id="cb52-2"><a href="r-ggplot.html#cb52-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> Site) <span class="sc">+</span></span>
+<span id="cb52-3"><a href="r-ggplot.html#cb52-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div>
 <p><img src="Bio373L-Book_files/figure-html/geo_bar1-1.png" width="672" /></p>
 <p>If you use a grouping aesthetic, you’ll get a stacked bar plot by default:</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="r-ggplot.html#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> lizards) <span class="sc">+</span> </span>
-<span id="cb51-2"><a href="r-ggplot.html#cb51-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> Site, <span class="at">fill =</span> Perch_type) <span class="sc">+</span></span>
-<span id="cb51-3"><a href="r-ggplot.html#cb51-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
-<span id="cb51-4"><a href="r-ggplot.html#cb51-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_d</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="r-ggplot.html#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> lizards) <span class="sc">+</span> </span>
+<span id="cb53-2"><a href="r-ggplot.html#cb53-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> Site, <span class="at">fill =</span> Perch_type) <span class="sc">+</span></span>
+<span id="cb53-3"><a href="r-ggplot.html#cb53-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb53-4"><a href="r-ggplot.html#cb53-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_d</span>()</span></code></pre></div>
 <p><img src="Bio373L-Book_files/figure-html/geo_bar_stacked-1.png" width="672" /></p>
 <p>Sometimes, stacking can be hard to interpret; you can have your categories lined next to each other by specifying the bar position as <strong>dodge</strong>:</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="r-ggplot.html#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> lizards) <span class="sc">+</span> </span>
-<span id="cb52-2"><a href="r-ggplot.html#cb52-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> Site, <span class="at">fill =</span> Perch_type) <span class="sc">+</span></span>
-<span id="cb52-3"><a href="r-ggplot.html#cb52-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">&quot;dodge&quot;</span>) <span class="sc">+</span></span>
-<span id="cb52-4"><a href="r-ggplot.html#cb52-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_d</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="r-ggplot.html#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> lizards) <span class="sc">+</span> </span>
+<span id="cb54-2"><a href="r-ggplot.html#cb54-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> Site, <span class="at">fill =</span> Perch_type) <span class="sc">+</span></span>
+<span id="cb54-3"><a href="r-ggplot.html#cb54-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">&quot;dodge&quot;</span>) <span class="sc">+</span></span>
+<span id="cb54-4"><a href="r-ggplot.html#cb54-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_d</span>()</span></code></pre></div>
 <p><img src="Bio373L-Book_files/figure-html/geo_bar_dodge-1.png" width="672" /></p>
 <p>It’s usually a good idea to have your bars ordered in a descending frequency; you can do this by using <code>fct_infreq()</code> in your <code>aes()</code> statement.</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="r-ggplot.html#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> lizards) <span class="sc">+</span> </span>
-<span id="cb53-2"><a href="r-ggplot.html#cb53-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">fct_infreq</span>(Site), <span class="co"># Note how this changes the axis label</span></span>
-<span id="cb53-3"><a href="r-ggplot.html#cb53-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">fill =</span> Perch_type) <span class="sc">+</span> <span class="co"># We&#39;ll talk about how to fix that in a bit</span></span>
-<span id="cb53-4"><a href="r-ggplot.html#cb53-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="r-ggplot.html#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> lizards) <span class="sc">+</span> </span>
+<span id="cb55-2"><a href="r-ggplot.html#cb55-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">fct_infreq</span>(Site), <span class="co"># Note how this changes the axis label</span></span>
+<span id="cb55-3"><a href="r-ggplot.html#cb55-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">fill =</span> Perch_type) <span class="sc">+</span> <span class="co"># We&#39;ll talk about how to fix that in a bit</span></span>
+<span id="cb55-4"><a href="r-ggplot.html#cb55-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div>
 <p><img src="Bio373L-Book_files/figure-html/geo_bars_infreq-1.png" width="672" /></p>
 <p>If you wish to use frequencies instead of counts along the y axis, it’s usually a better idea to calculate them yourself and display those numbers. You can use <code>geom_col()</code> for these displays; it’s like <code>geom_bar()</code>, but it takes a user-suplied <code>y</code> aesthetic.</p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="r-ggplot.html#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This code uses dplyr, which is discussed in the next appendix. Don&#39;t worry if it doesn&#39;t make sense now.</span></span>
-<span id="cb54-2"><a href="r-ggplot.html#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Overal perch_height frequency</span></span>
-<span id="cb54-3"><a href="r-ggplot.html#cb54-3" aria-hidden="true" tabindex="-1"></a>lizard_perch_freq <span class="ot">=</span> lizards <span class="sc">%&gt;%</span> </span>
-<span id="cb54-4"><a href="r-ggplot.html#cb54-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Perch_type) <span class="sc">%&gt;%</span> </span>
-<span id="cb54-5"><a href="r-ggplot.html#cb54-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">count =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span> </span>
-<span id="cb54-6"><a href="r-ggplot.html#cb54-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># calculate frequencies per-group</span></span>
-<span id="cb54-7"><a href="r-ggplot.html#cb54-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">frequency =</span> count<span class="sc">/</span><span class="fu">sum</span>(count)) <span class="sc">%&gt;%</span> </span>
-<span id="cb54-8"><a href="r-ggplot.html#cb54-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># sort by frequency</span></span>
-<span id="cb54-9"><a href="r-ggplot.html#cb54-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(frequency)) <span class="sc">%&gt;%</span> </span>
-<span id="cb54-10"><a href="r-ggplot.html#cb54-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># tell ggplot to plot Perch_type in its current order</span></span>
-<span id="cb54-11"><a href="r-ggplot.html#cb54-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Perch_type =</span> <span class="fu">fct_inorder</span>(Perch_type))</span>
-<span id="cb54-12"><a href="r-ggplot.html#cb54-12" aria-hidden="true" tabindex="-1"></a><span class="co"># feel free to use View() to look at this</span></span>
-<span id="cb54-13"><a href="r-ggplot.html#cb54-13" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(lizard_perch_freq) <span class="sc">+</span> </span>
-<span id="cb54-14"><a href="r-ggplot.html#cb54-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> Perch_type, <span class="at">y =</span> frequency) <span class="sc">+</span> </span>
-<span id="cb54-15"><a href="r-ggplot.html#cb54-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="r-ggplot.html#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This code uses dplyr, which is discussed in the next appendix. Don&#39;t worry if it doesn&#39;t make sense now.</span></span>
+<span id="cb56-2"><a href="r-ggplot.html#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Overal perch_height frequency</span></span>
+<span id="cb56-3"><a href="r-ggplot.html#cb56-3" aria-hidden="true" tabindex="-1"></a>lizard_perch_freq <span class="ot">=</span> lizards <span class="sc">%&gt;%</span> </span>
+<span id="cb56-4"><a href="r-ggplot.html#cb56-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Perch_type) <span class="sc">%&gt;%</span> </span>
+<span id="cb56-5"><a href="r-ggplot.html#cb56-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">count =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span> </span>
+<span id="cb56-6"><a href="r-ggplot.html#cb56-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># calculate frequencies per-group</span></span>
+<span id="cb56-7"><a href="r-ggplot.html#cb56-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">frequency =</span> count<span class="sc">/</span><span class="fu">sum</span>(count)) <span class="sc">%&gt;%</span> </span>
+<span id="cb56-8"><a href="r-ggplot.html#cb56-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># sort by frequency</span></span>
+<span id="cb56-9"><a href="r-ggplot.html#cb56-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(frequency)) <span class="sc">%&gt;%</span> </span>
+<span id="cb56-10"><a href="r-ggplot.html#cb56-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># tell ggplot to plot Perch_type in its current order</span></span>
+<span id="cb56-11"><a href="r-ggplot.html#cb56-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Perch_type =</span> <span class="fu">fct_inorder</span>(Perch_type))</span>
+<span id="cb56-12"><a href="r-ggplot.html#cb56-12" aria-hidden="true" tabindex="-1"></a><span class="co"># feel free to use View() to look at this</span></span>
+<span id="cb56-13"><a href="r-ggplot.html#cb56-13" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(lizard_perch_freq) <span class="sc">+</span> </span>
+<span id="cb56-14"><a href="r-ggplot.html#cb56-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> Perch_type, <span class="at">y =</span> frequency) <span class="sc">+</span> </span>
+<span id="cb56-15"><a href="r-ggplot.html#cb56-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>()</span></code></pre></div>
 <p><img src="Bio373L-Book_files/figure-html/geom_col_data-1.png" width="672" /></p>
 </div>
 </div>
 <div id="facets" class="section level2" number="5.4">
 <h2><span class="header-section-number">5.4</span> Facets</h2>
 <p>You can use facets to make multi-panel figures. This can highlight differences between groups if including them in the same panel is too busy or messy. Let’s start by taking our previous regression plot and separating it by color morph.</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="r-ggplot.html#cb55-1" aria-hidden="true" tabindex="-1"></a>regression_plot <span class="sc">+</span></span>
-<span id="cb55-2"><a href="r-ggplot.html#cb55-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>Color_morph) <span class="co"># note the ~</span></span></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="r-ggplot.html#cb57-1" aria-hidden="true" tabindex="-1"></a>regression_plot <span class="sc">+</span></span>
+<span id="cb57-2"><a href="r-ggplot.html#cb57-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>Color_morph) <span class="co"># note the ~</span></span></code></pre></div>
 <p><img src="Bio373L-Book_files/figure-html/facet_reg_color-1.png" width="672" /></p>
 <p>It doesn’t look like there’s much there. What about faceting by site?</p>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="r-ggplot.html#cb56-1" aria-hidden="true" tabindex="-1"></a>regression_plot <span class="sc">+</span></span>
-<span id="cb56-2"><a href="r-ggplot.html#cb56-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>Site) <span class="co"># note the ~</span></span></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="r-ggplot.html#cb58-1" aria-hidden="true" tabindex="-1"></a>regression_plot <span class="sc">+</span></span>
+<span id="cb58-2"><a href="r-ggplot.html#cb58-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>Site) <span class="co"># note the ~</span></span></code></pre></div>
 <p><img src="Bio373L-Book_files/figure-html/facet_reg_site1-1.png" width="672" /></p>
 <p>In this case, it looks like the data ranges are quite a bit different among the sites. This leads to a large amount of unused space. You may wish to remove this whitespace.</p>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="r-ggplot.html#cb57-1" aria-hidden="true" tabindex="-1"></a>regression_plot <span class="sc">+</span></span>
-<span id="cb57-2"><a href="r-ggplot.html#cb57-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>Site, <span class="at">scales =</span> <span class="st">&quot;free_x&quot;</span>) <span class="co"># scales can also be &#39;free_y&#39; or &#39;free&#39; (which does both x and y)</span></span></code></pre></div>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="r-ggplot.html#cb59-1" aria-hidden="true" tabindex="-1"></a>regression_plot <span class="sc">+</span></span>
+<span id="cb59-2"><a href="r-ggplot.html#cb59-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>Site, <span class="at">scales =</span> <span class="st">&quot;free_x&quot;</span>) <span class="co"># scales can also be &#39;free_y&#39; or &#39;free&#39; (which does both x and y)</span></span></code></pre></div>
 <p><img src="Bio373L-Book_files/figure-html/facet_reg_site2-1.png" width="672" /></p>
 <p>You can also facet by two variables into rows &amp; columns with <code>facet_grid()</code>.</p>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="r-ggplot.html#cb58-1" aria-hidden="true" tabindex="-1"></a>regression_plot <span class="sc">+</span></span>
-<span id="cb58-2"><a href="r-ggplot.html#cb58-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(Perch_type<span class="sc">~</span>Color_morph) <span class="co"># rows ~ columns</span></span></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="r-ggplot.html#cb60-1" aria-hidden="true" tabindex="-1"></a>regression_plot <span class="sc">+</span></span>
+<span id="cb60-2"><a href="r-ggplot.html#cb60-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(Perch_type<span class="sc">~</span>Color_morph) <span class="co"># rows ~ columns</span></span></code></pre></div>
 <p><img src="Bio373L-Book_files/figure-html/facet_grd-1.png" width="672" /></p>
 </div>
 <div id="r-ggplot-tweaks" class="section level2" number="5.5">
 <h2><span class="header-section-number">5.5</span> Changing the theme, axis titles, &amp; other visual elements</h2>
 <p>By default, ggplot will name your axis labels &amp; legends by whatever you put in the <code>aes</code> string. You may wish to change that. For example, the labels on this plot could be improved:</p>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="r-ggplot.html#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(lizards) <span class="sc">+</span> </span>
-<span id="cb59-2"><a href="r-ggplot.html#cb59-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> Limb, <span class="at">y =</span> Diameter, <span class="at">color =</span> Color_morph) <span class="sc">+</span> </span>
-<span id="cb59-3"><a href="r-ggplot.html#cb59-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb59-4"><a href="r-ggplot.html#cb59-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_viridis_d</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="r-ggplot.html#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(lizards) <span class="sc">+</span> </span>
+<span id="cb61-2"><a href="r-ggplot.html#cb61-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> Limb, <span class="at">y =</span> Diameter, <span class="at">color =</span> Color_morph) <span class="sc">+</span> </span>
+<span id="cb61-3"><a href="r-ggplot.html#cb61-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb61-4"><a href="r-ggplot.html#cb61-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_viridis_d</span>()</span></code></pre></div>
 <p><img src="Bio373L-Book_files/figure-html/no_theme_plot-1.png" width="672" /></p>
 <p>The <code>xlab()</code> and <code>ylab()</code> commands can provide labels for their respective axes, while the <code>name</code> argument can re-label scales.</p>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="r-ggplot.html#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(lizards) <span class="sc">+</span> </span>
-<span id="cb60-2"><a href="r-ggplot.html#cb60-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> Limb, <span class="at">y =</span> Diameter, <span class="at">color =</span> Color_morph) <span class="sc">+</span> </span>
-<span id="cb60-3"><a href="r-ggplot.html#cb60-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb60-4"><a href="r-ggplot.html#cb60-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_viridis_d</span>(<span class="at">name =</span> <span class="st">&quot;Color Morph&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb60-5"><a href="r-ggplot.html#cb60-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Hind Limb Length (mm)&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb60-6"><a href="r-ggplot.html#cb60-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Perch Diameter (mm)&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="r-ggplot.html#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(lizards) <span class="sc">+</span> </span>
+<span id="cb62-2"><a href="r-ggplot.html#cb62-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> Limb, <span class="at">y =</span> Diameter, <span class="at">color =</span> Color_morph) <span class="sc">+</span> </span>
+<span id="cb62-3"><a href="r-ggplot.html#cb62-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb62-4"><a href="r-ggplot.html#cb62-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_viridis_d</span>(<span class="at">name =</span> <span class="st">&quot;Color Morph&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb62-5"><a href="r-ggplot.html#cb62-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Hind Limb Length (mm)&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb62-6"><a href="r-ggplot.html#cb62-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Perch Diameter (mm)&quot;</span>)</span></code></pre></div>
 <p><img src="Bio373L-Book_files/figure-html/with_labs-1.png" width="672" /></p>
 <p>More complicated options involve tweaking the theme. I’m not going to get into this right now, but I may update this later if conditions call for it. There is an example of using it to move the legend position several sections ago.</p>
 </div>
