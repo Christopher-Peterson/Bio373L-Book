@@ -254,7 +254,7 @@ First, we want to get the count and frequency of each genotype; do this with a g
 Your genotype frequencies should sum to 1.
 Save the new data frame as `genotype_observed`.
 
-To make the frequencies easier to work with, we're going to re-shape the data (this is similar to what is covered in Chapter \@ref{r-tidyr}, but it isn't covered there yet).
+To make the frequencies easier to work with, we're going to re-shape the data (this is similar to what is covered in Chapter \@ref(r-tidyr), but it isn't covered there yet).
 Do this:
 
 ```{r hw-mrr-geno-pivot, eval = FALSE, echo = TRUE}
@@ -271,7 +271,7 @@ Finally, add a column for HWE frequencies to `genotype_observed`:
 
 ```{r hw-mrr-geno-hwe-obs, eval = FALSE, echo = TRUE}
 genotype_obs_hwe <- genotype_observed %>% 
-  mutate(HWE_freq = as.numeric(gt.hwe)) # as.numeric converts gt_hwe from a data frame to a vector
+  mutate(HWE_freq = as.numeric(gt_hwe)) # as.numeric converts gt_hwe from a data frame to a vector
 ```
 
 You'll want to report this table.
