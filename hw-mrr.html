@@ -24,7 +24,7 @@
 <meta name="author" content="Christopher R. Peterson" />
 
 
-<meta name="date" content="2022-02-06" />
+<meta name="date" content="2022-02-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -657,7 +657,7 @@ Facet your data by sample period with facet_wrap() and make sure all three perio
 <p>First, we want to get the count and frequency of each genotype; do this with a grouped <code>summarize()</code>, followed by a <code>mutate()</code>, and name your new columns <code>count</code> and <code>frequency</code>.
 Your genotype frequencies should sum to 1.
 Save the new data frame as <code>genotype_observed</code>.</p>
-<p>To make the frequencies easier to work with, we’re going to re-shape the data (this is similar to what is covered in Chapter @ref{r-tidyr}, but it isn’t covered there yet).
+<p>To make the frequencies easier to work with, we’re going to re-shape the data (this is similar to what is covered in Chapter <a href="r-tidyr.html#r-tidyr">9</a>, but it isn’t covered there yet).
 Do this:</p>
 <div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="hw-mrr.html#cb186-1" aria-hidden="true" tabindex="-1"></a>gt_freq_observed <span class="ot">&lt;-</span> genotype_observed <span class="sc">%&gt;%</span> </span>
 <span id="cb186-2"><a href="hw-mrr.html#cb186-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Genotype, frequency) <span class="sc">%&gt;%</span> </span>
@@ -668,7 +668,7 @@ Then, calculate your expected HWE genotype frequencies from <code>allele_freq</c
 Make sure that the columns of <code>gt_hwe</code> are in the same order as <code>gt_freq_observed</code>.
 Finally, add a column for HWE frequencies to <code>genotype_observed</code>:</p>
 <div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="hw-mrr.html#cb187-1" aria-hidden="true" tabindex="-1"></a>genotype_obs_hwe <span class="ot">&lt;-</span> genotype_observed <span class="sc">%&gt;%</span> </span>
-<span id="cb187-2"><a href="hw-mrr.html#cb187-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">HWE_freq =</span> <span class="fu">as.numeric</span>(gt.hwe)) <span class="co"># as.numeric converts gt_hwe from a data frame to a vector</span></span></code></pre></div>
+<span id="cb187-2"><a href="hw-mrr.html#cb187-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">HWE_freq =</span> <span class="fu">as.numeric</span>(gt_hwe)) <span class="co"># as.numeric converts gt_hwe from a data frame to a vector</span></span></code></pre></div>
 <p>You’ll want to report this table.</p>
 </div>
 <div id="testing-for-hwe" class="section level3" number="16.7.3">
