@@ -423,7 +423,7 @@ ggplot(lizard_perch_freq) +
 
 ```
 
-## Facets
+## Facets {#r-ggplot-facet}
 
 You can use facets to make multi-panel figures. This can highlight differences between groups if including them in the same panel is too busy or messy. Let's start by taking our previous regression plot and separating it by color morph.
 

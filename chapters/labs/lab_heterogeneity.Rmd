@@ -4,7 +4,7 @@ editor_options:
     wrap: sentence
 ---
 
-# Heterogeneity Lab: {#Lab_heterogeneity}
+# Heterogeneity Lab: {#lab-heterogeneity}
 
 ## Introduction & background
 
@@ -84,41 +84,39 @@ Use linear regression on this class's dataset, with subjective score as the pred
 Note that the structure of the data will almost certainly violate some of the assumptions of a linear regression test.
 We can still do this because this isn't a hypothesis-driven analysis, but a prediction-driven one; provide the $R^2$ and fit equation, but not the p-values.
 
-To run a regression in R, modify this code:
+<!-- To run a regression in R, modify this code: -->
 
-```{r regressEx, eval = FALSE}
-regression = lm(y ~ x, data = your_data_set) # adjust this for your regression
-regression # this gives you the coefficients
-summary(regression) # This includes R2 values
-# Note that you should go with the "Multiple R-squared," not "Adjusted R-squared"
-```
+<!-- ```{r regressEx, eval = FALSE} -->
+<!-- regression = lm(y ~ x, data = your_data_set) # adjust this for your regression -->
+<!-- regression # this gives you the coefficients -->
+<!-- summary(regression) # This includes R2 values -->
+<!-- # Note that you should go with the "Multiple R-squared," not "Adjusted R-squared" -->
+<!-- ``` -->
 
-Create a figure for this analysis, including the data points and trend line.
-If you're using Excel, please remember that the equation that appears after you add the trendline shouldn't be included in the resulting graph (it belongs in the caption and main text).
-If you're using `ggplot` in R, you can add a regression line to the graph by adding the following line to your figure code:
+<!-- Create a figure for this analysis, including the data points and trend line. -->
+<!-- If you're using Excel, please remember that the equation that appears after you add the trendline shouldn't be included in the resulting graph (it belongs in the caption and main text). -->
+<!-- If you're using `ggplot` in R, you can add a regression line to the graph by adding the following line to your figure code: -->
 
-```{r, eval = FALSE}
-  geom_smooth(method = "lm", se = FALSE, color = "grey") 
-  # feel free to change color
-```
+<!-- ```{r, eval = FALSE} -->
+<!--   geom_smooth(method = "lm", se = FALSE, color = "grey")  -->
+<!--   # feel free to change color -->
+<!-- ``` -->
 
-One other thing I'd recommend is spreading out the points on your x axis a little, since otherwise they will just be four vertical lines.
-In ggplot, you can do this by replacing `geom_point` with:
+<!-- One other thing I'd recommend is spreading out the points on your x axis a little, since otherwise they will just be four vertical lines. -->
+<!-- In ggplot, you can do this by replacing `geom_point` with: -->
 
-```{r, eval = FALSE}
-  geom_jitter(height = 0, width = .25) 
-  # changing width will spread the dots out more; just don't change height
-```
+<!-- ```{r, eval = FALSE} -->
+<!--   geom_jitter(height = 0, width = .25)  -->
+<!--   # changing width will spread the dots out more; just don't change height -->
+<!-- ``` -->
 
 ### Relationship between canopy and ground cover
 
-Create four contingency tables examining the ground & shrub cover relationship; one for each level of canopy cover.
-Note that the cells of the tables should be a count (number of plots), not a relative proportion.
-Run chi-squared tests on each table.
-This is rather similar to what you did for the previous lab.
+Create three contingency tables examining the pairwise relationships between ground, shrub, and canopy cover cover relationship.
+Examine interactions between the three levels by creating four more ground x canopy contingency tables, each containing different levels of shrub cover.  
+Run chi-squared (or Fisher's exact) tests on each of these.
 
-Re-create these tables with the relative number of plots per canopy cover type for each ground/shrub combination.
-You need to visually present this information in some way; you could try making a graph of some sort, or you could color the cells of the table to indicate the strength of the proportion.
+Don't include the raw contingency tables in your report; instead, create enhanced versions where the cells are colored by the relative frequency of co-occurrence. 
 Note that adding color information to a table would turn it into a figure, and it should be referred to as such.
 
 ### Quantifying the spatial mosaic
@@ -146,5 +144,6 @@ If you do this by hand, scan or photograph it and include it in the Canvas submi
 How are the current levels of shrub, canopy, and ground cover different from previous years?
 We will be comparing current data with fall 2004, when deer populations were high.
 For each cover type (canopy, shrub, and ground), make a contingency table comparing present cover levels vs. those in 2004 and run a chi-squared test.
+Visualize the contingency tables in the same way you did with the previous set.
 
 ## References 
