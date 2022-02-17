@@ -42,7 +42,7 @@ You should download two datasets from Canvas and put them in your `data` folder:
 
 Begin your script with the following:
 
-```{r hw-mrr-setup, eval = FALSE, echo = TRUE}
+```{r hw-het-setup, eval = FALSE, echo = TRUE}
 # Heterogeneity Lab Analysis
 #### Setup ####
 library(tidyverse)
