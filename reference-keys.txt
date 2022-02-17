@@ -87,7 +87,7 @@ r-ggplot-discx-conty
 r-ggplot-contx-conty
 r-ggplot-ts
 r-ggplot-discx-discy
-facets
+r-ggplot-facet
 r-ggplot-tweaks
 more-references
 r-dplyr
@@ -158,7 +158,7 @@ sex-ratios
 lab-mrr-trinidad
 hardy-weinberg
 discussion-2
-Lab_heterogeneity
+lab-heterogeneity
 introduction-background
 questions-and-hypotheses-1
 field-methods
@@ -231,3 +231,11 @@ hardy-weinberg-equilibrium-optix
 the-data-3
 calculating-hwe-ratios
 testing-for-hwe
+hw-heterogeneity
+required-reading-2
+objectives-and-whats-due-1
+getting-started-2
+the-data-4
+relationships-between-cover-levels
+relationship-between-current-and-historical-cover-levels
+calibrating-subjective-scores-with-gap-light-analyzer
