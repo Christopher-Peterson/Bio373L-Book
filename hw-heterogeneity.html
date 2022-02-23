@@ -24,7 +24,7 @@
 <meta name="author" content="Christopher R. Peterson" />
 
 
-<meta name="date" content="2022-02-17" />
+<meta name="date" content="2022-02-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -529,7 +529,7 @@ Instead of including the contingency table directly, we’re going to create fig
 <span id="cb186-7"><a href="hw-heterogeneity.html#cb186-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_c</span>() <span class="sc">+</span> <span class="co"># Nice color scale</span></span>
 <span id="cb186-8"><a href="hw-heterogeneity.html#cb186-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_fixed</span>() <span class="sc">+</span> <span class="co"># keeps x &amp; y dimensions equal</span></span>
 <span id="cb186-9"><a href="hw-heterogeneity.html#cb186-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add text to the squares</span></span>
-<span id="cb186-10"><a href="hw-heterogeneity.html#cb186-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_label</span>(<span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">round</span>(Freq, <span class="dv">3</span>)),</span>
+<span id="cb186-10"><a href="hw-heterogeneity.html#cb186-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_label</span>(<span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">round</span>(n, <span class="dv">3</span>)),</span>
 <span id="cb186-11"><a href="hw-heterogeneity.html#cb186-11" aria-hidden="true" tabindex="-1"></a>            <span class="at">label.size =</span> <span class="dv">0</span>, <span class="co"># Keep this as is</span></span>
 <span id="cb186-12"><a href="hw-heterogeneity.html#cb186-12" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Feel free to adjust these details</span></span>
 <span id="cb186-13"><a href="hw-heterogeneity.html#cb186-13" aria-hidden="true" tabindex="-1"></a>            <span class="co"># to get an image you like</span></span>
