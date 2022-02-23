@@ -80,7 +80,7 @@ your_contingency_table %>% # replace with your contingency table name
   scale_fill_viridis_c() + # Nice color scale
   coord_fixed() + # keeps x & y dimensions equal
   # Add text to the squares
-  geom_label(aes(label = round(Freq, 3)),
+  geom_label(aes(label = round(n, 3)),
             label.size = 0, # Keep this as is
             # Feel free to adjust these details
             # to get an image you like
