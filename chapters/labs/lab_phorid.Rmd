@@ -55,6 +55,8 @@ The goal of the exercise is to give you insight into the types of questions and 
 1.  Measure the effects of attacking females of *Pseudacteon obtusus* phorids on the foraging activity of *S. invicta* at food items. As we observe foraging rate responses, we will take temperature data at each site using automated dataloggers (HOBOs).
 2.  Observe the host specificity of *Pseudacteon* in an arenas with native and imported fire ants (This depends on availability of native ant colony). Since introduced phorids are currently emerging at BFL after recent rains we will place trays of *S. geminata* and *S. invicta* adjacent to one another in a shaded spot and observe differences in phorid response.
 
+
+
 ## Methods
 
 ### Phorid impact on fire ant foraging
@@ -118,6 +120,23 @@ Exporting your data:
 
 In your methods section, be sure to identify the model of HOBO logger used (MX2303), manufacturer, and the interval at which the data were collected.
 For example, "We collected the temperature of each arena every 15 seconds with HOBO MX2303 data loggers (Onset Computer Corporation)."
+
+
+## Modified protocol if phorids are not present
+
+Due to the climate and the state of BFL's phorid fly project, we will not always be able to examine the effects of phorid flies on foraging on fire ants.
+We have devised a proxy experiment for these semesters that should disrupt ant foraging in a similar manner. You can skip this section if the phorids are available this semester.
+
+Once a phorid fly attacks a fire ant, the ant releases alarm pheromones ($\alpha$-farnesene).
+Therefore, applying alarm pheromones to an experimental arena should simulate the effects of a phorid attack.
+In the absence of the purified compound, we can stimulate pheromone production in a variety of ways; here, we will shock them with a modified cattle prod.
+
+In this  experiment, we will have two hot dogs in the each arena. 
+One hot dog will be counted for ant activity as in the original design; the other will be shocked with the cattle prod to produce pheromones.
+The second hot dog will only be shocked in the treatment group; for the control, the cattle prod will be placed in the same configuration but not used.  
+
+Otherwise, this will follow the same protocol as the original experiment; the time of phorid introduction will be substituted by the time at which the treatment hotdog is shocked.
+
 
 ## Analysis
 
@@ -200,3 +219,4 @@ Once you have done this, you can then compare the relative counts across differe
 It's a relative value, so it would be unitless.
 
 If you decide to avoid mean/sd (which is your choice), I would recommend inter-quartile range over range, since it's a more robust measure.
+
