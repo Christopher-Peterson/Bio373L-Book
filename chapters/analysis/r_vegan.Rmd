@@ -81,9 +81,15 @@ Since you'll be doing this for several groups, it's a good idea to write a funct
 
 ```{r a6_jaccard_func1, collapse = TRUE}
 
-jaccard_similarity = function(com_1, com_2) {
+jaccard_similarity = function(com_1, com_2, na.rm = FALSE) {
   # com_1 and com_2 are the arguments of the function, 
   # they should be the names in different communities
+  
+  # Remove missing values from the two communities if na.rm == TRUE
+  if(isTRUE(na.rm)) {
+    com_1 = na.omit(com_1)
+    com_2 = na.omit(com_2)
+  }
   
   # Create local variables for the intersection and union;
   common_spp = intersect(com_1, com_2) 
