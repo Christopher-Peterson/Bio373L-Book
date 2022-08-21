@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>4 Working with R and RStudio | Bio 373L Survival Guide</title>
   <meta name="description" content="Lab Manual for Field Ecology (Bio 373L) at UT Austin." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.28 and GitBook 2.6.7" />
 
   <meta property="og:title" content="4 Working with R and RStudio | Bio 373L Survival Guide" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="Lab Manual for Field Ecology (Bio 373L) at UT Austin." />
   <meta name="github-repo" content="Christopher-Peterson/Bio373L-Book" />
@@ -24,7 +23,7 @@
 <meta name="author" content="Christopher R. Peterson" />
 
 
-<meta name="date" content="2022-03-30" />
+<meta name="date" content="2022-08-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,8 +32,8 @@
   
 <link rel="prev" href="figures.html"/>
 <link rel="next" href="r-ggplot.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,7 +49,9 @@
 
 
 
-
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
@@ -118,6 +119,29 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -234,7 +258,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="6" data-path="r-dplyr.html"><a href="r-dplyr.html"><i class="fa fa-check"></i><b>6</b> Data manipulation with <code>dplyr</code></a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="r-dplyr.html"><a href="r-dplyr.html#r-dplyr-pipe"><i class="fa fa-check"></i><b>6.1</b> The Pipe (%&gt;%)</a></li>
+<li class="chapter" data-level="6.1" data-path="r-dplyr.html"><a href="r-dplyr.html#r-dplyr-pipe"><i class="fa fa-check"></i><b>6.1</b> The Pipe (|&gt;)</a></li>
 <li class="chapter" data-level="6.2" data-path="r-dplyr.html"><a href="r-dplyr.html#r-dplyr-mutate"><i class="fa fa-check"></i><b>6.2</b> Adding/modifying columns (mutate)</a></li>
 <li class="chapter" data-level="6.3" data-path="r-dplyr.html"><a href="r-dplyr.html#r-dplyr-filter"><i class="fa fa-check"></i><b>6.3</b> Subsetting by row (filter)</a></li>
 <li class="chapter" data-level="6.4" data-path="r-dplyr.html"><a href="r-dplyr.html#r-dplyr-select"><i class="fa fa-check"></i><b>6.4</b> Subsetting by column (select)</a></li>
@@ -334,42 +358,42 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="12.5" data-path="lab-heterogeneity.html"><a href="lab-heterogeneity.html#references"><i class="fa fa-check"></i><b>12.5</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="Lab-ants.html"><a href="Lab-ants.html"><i class="fa fa-check"></i><b>13</b> Ant Lab: Ant Community Ecology and the Effects of Invasive Fire Ants</a>
+<li class="chapter" data-level="13" data-path="Lab_ants.html"><a href="Lab_ants.html"><i class="fa fa-check"></i><b>13</b> Ant Lab: Ant Community Ecology and the Effects of Invasive Fire Ants</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="Lab-ants.html"><a href="Lab-ants.html#background"><i class="fa fa-check"></i><b>13.1</b> Background</a></li>
-<li class="chapter" data-level="13.2" data-path="Lab-ants.html"><a href="Lab-ants.html#questions-and-hypotheses-2"><i class="fa fa-check"></i><b>13.2</b> Questions and hypotheses</a></li>
-<li class="chapter" data-level="13.3" data-path="Lab-ants.html"><a href="Lab-ants.html#methods-1"><i class="fa fa-check"></i><b>13.3</b> Methods</a>
+<li class="chapter" data-level="13.1" data-path="Lab_ants.html"><a href="Lab_ants.html#background"><i class="fa fa-check"></i><b>13.1</b> Background</a></li>
+<li class="chapter" data-level="13.2" data-path="Lab_ants.html"><a href="Lab_ants.html#questions-and-hypotheses-2"><i class="fa fa-check"></i><b>13.2</b> Questions and hypotheses</a></li>
+<li class="chapter" data-level="13.3" data-path="Lab_ants.html"><a href="Lab_ants.html#methods-1"><i class="fa fa-check"></i><b>13.3</b> Methods</a>
 <ul>
-<li class="chapter" data-level="13.3.1" data-path="Lab-ants.html"><a href="Lab-ants.html#bait-survey"><i class="fa fa-check"></i><b>13.3.1</b> Bait Survey</a></li>
+<li class="chapter" data-level="13.3.1" data-path="Lab_ants.html"><a href="Lab_ants.html#bait-survey"><i class="fa fa-check"></i><b>13.3.1</b> Bait Survey</a></li>
 </ul></li>
-<li class="chapter" data-level="13.4" data-path="Lab-ants.html"><a href="Lab-ants.html#analysis-1"><i class="fa fa-check"></i><b>13.4</b> Analysis</a>
+<li class="chapter" data-level="13.4" data-path="Lab_ants.html"><a href="Lab_ants.html#analysis-1"><i class="fa fa-check"></i><b>13.4</b> Analysis</a>
 <ul>
-<li class="chapter" data-level="13.4.1" data-path="Lab-ants.html"><a href="Lab-ants.html#s.-invicta-habitat-preference"><i class="fa fa-check"></i><b>13.4.1</b> <em>S. invicta</em> habitat preference</a></li>
-<li class="chapter" data-level="13.4.2" data-path="Lab-ants.html"><a href="Lab-ants.html#ant-community-differences"><i class="fa fa-check"></i><b>13.4.2</b> Ant community differences</a></li>
+<li class="chapter" data-level="13.4.1" data-path="Lab_ants.html"><a href="Lab_ants.html#s.-invicta-habitat-preference"><i class="fa fa-check"></i><b>13.4.1</b> <em>S. invicta</em> habitat preference</a></li>
+<li class="chapter" data-level="13.4.2" data-path="Lab_ants.html"><a href="Lab_ants.html#ant-community-differences"><i class="fa fa-check"></i><b>13.4.2</b> Ant community differences</a></li>
 </ul></li>
-<li class="chapter" data-level="13.5" data-path="Lab-ants.html"><a href="Lab-ants.html#references-1"><i class="fa fa-check"></i><b>13.5</b> References</a></li>
+<li class="chapter" data-level="13.5" data-path="Lab_ants.html"><a href="Lab_ants.html#references-1"><i class="fa fa-check"></i><b>13.5</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="Lab-phorid.html"><a href="Lab-phorid.html"><i class="fa fa-check"></i><b>14</b> Phorid Lab: Parasitoid impacts on host foraging behavior with Phorid flies and fire ants</a>
+<li class="chapter" data-level="14" data-path="Lab_phorid.html"><a href="Lab_phorid.html"><i class="fa fa-check"></i><b>14</b> Phorid Lab: Parasitoid impacts on host foraging behavior with Phorid flies and fire ants</a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="Lab-phorid.html"><a href="Lab-phorid.html#background-1"><i class="fa fa-check"></i><b>14.1</b> Background</a>
+<li class="chapter" data-level="14.1" data-path="Lab_phorid.html"><a href="Lab_phorid.html#background-1"><i class="fa fa-check"></i><b>14.1</b> Background</a>
 <ul>
-<li class="chapter" data-level="14.1.1" data-path="Lab-phorid.html"><a href="Lab-phorid.html#fire-ants-and-phorid-flies"><i class="fa fa-check"></i><b>14.1.1</b> Fire ants and phorid flies</a></li>
-<li class="chapter" data-level="14.1.2" data-path="Lab-phorid.html"><a href="Lab-phorid.html#fire-ants-natural-history"><i class="fa fa-check"></i><b>14.1.2</b> Fire ants natural history</a></li>
+<li class="chapter" data-level="14.1.1" data-path="Lab_phorid.html"><a href="Lab_phorid.html#fire-ants-and-phorid-flies"><i class="fa fa-check"></i><b>14.1.1</b> Fire ants and phorid flies</a></li>
+<li class="chapter" data-level="14.1.2" data-path="Lab_phorid.html"><a href="Lab_phorid.html#fire-ants-natural-history"><i class="fa fa-check"></i><b>14.1.2</b> Fire ants natural history</a></li>
 </ul></li>
-<li class="chapter" data-level="14.2" data-path="Lab-phorid.html"><a href="Lab-phorid.html#objectives"><i class="fa fa-check"></i><b>14.2</b> Objectives</a></li>
-<li class="chapter" data-level="14.3" data-path="Lab-phorid.html"><a href="Lab-phorid.html#methods-2"><i class="fa fa-check"></i><b>14.3</b> Methods</a>
+<li class="chapter" data-level="14.2" data-path="Lab_phorid.html"><a href="Lab_phorid.html#objectives"><i class="fa fa-check"></i><b>14.2</b> Objectives</a></li>
+<li class="chapter" data-level="14.3" data-path="Lab_phorid.html"><a href="Lab_phorid.html#methods-2"><i class="fa fa-check"></i><b>14.3</b> Methods</a>
 <ul>
-<li class="chapter" data-level="14.3.1" data-path="Lab-phorid.html"><a href="Lab-phorid.html#phorid-impact-on-fire-ant-foraging"><i class="fa fa-check"></i><b>14.3.1</b> Phorid impact on fire ant foraging</a></li>
-<li class="chapter" data-level="14.3.2" data-path="Lab-phorid.html"><a href="Lab-phorid.html#using-the-hobo-mx2303-data-logger"><i class="fa fa-check"></i><b>14.3.2</b> Using the HOBO MX2303 data logger</a></li>
+<li class="chapter" data-level="14.3.1" data-path="Lab_phorid.html"><a href="Lab_phorid.html#phorid-impact-on-fire-ant-foraging"><i class="fa fa-check"></i><b>14.3.1</b> Phorid impact on fire ant foraging</a></li>
+<li class="chapter" data-level="14.3.2" data-path="Lab_phorid.html"><a href="Lab_phorid.html#using-the-hobo-mx2303-data-logger"><i class="fa fa-check"></i><b>14.3.2</b> Using the HOBO MX2303 data logger</a></li>
 </ul></li>
-<li class="chapter" data-level="14.4" data-path="Lab-phorid.html"><a href="Lab-phorid.html#modified-protocol-if-phorids-are-not-present"><i class="fa fa-check"></i><b>14.4</b> Modified protocol if phorids are not present</a></li>
-<li class="chapter" data-level="14.5" data-path="Lab-phorid.html"><a href="Lab-phorid.html#analysis-2"><i class="fa fa-check"></i><b>14.5</b> Analysis</a>
+<li class="chapter" data-level="14.4" data-path="Lab_phorid.html"><a href="Lab_phorid.html#modified-protocol-if-phorids-are-not-present"><i class="fa fa-check"></i><b>14.4</b> Modified protocol if phorids are not present</a></li>
+<li class="chapter" data-level="14.5" data-path="Lab_phorid.html"><a href="Lab_phorid.html#analysis-2"><i class="fa fa-check"></i><b>14.5</b> Analysis</a>
 <ul>
-<li class="chapter" data-level="14.5.1" data-path="Lab-phorid.html"><a href="Lab-phorid.html#effect-of-phorids-on-ant-foraging"><i class="fa fa-check"></i><b>14.5.1</b> Effect of phorids on ant foraging</a></li>
-<li class="chapter" data-level="14.5.2" data-path="Lab-phorid.html"><a href="Lab-phorid.html#effects-of-environmental-conditions"><i class="fa fa-check"></i><b>14.5.2</b> Effects of environmental conditions</a></li>
+<li class="chapter" data-level="14.5.1" data-path="Lab_phorid.html"><a href="Lab_phorid.html#effect-of-phorids-on-ant-foraging"><i class="fa fa-check"></i><b>14.5.1</b> Effect of phorids on ant foraging</a></li>
+<li class="chapter" data-level="14.5.2" data-path="Lab_phorid.html"><a href="Lab_phorid.html#effects-of-environmental-conditions"><i class="fa fa-check"></i><b>14.5.2</b> Effects of environmental conditions</a></li>
 </ul></li>
-<li class="chapter" data-level="14.6" data-path="Lab-phorid.html"><a href="Lab-phorid.html#discussion-3"><i class="fa fa-check"></i><b>14.6</b> Discussion</a></li>
-<li class="chapter" data-level="14.7" data-path="Lab-phorid.html"><a href="Lab-phorid.html#some-questions-from-previous-semesters"><i class="fa fa-check"></i><b>14.7</b> Some questions from previous semesters:</a></li>
+<li class="chapter" data-level="14.6" data-path="Lab_phorid.html"><a href="Lab_phorid.html#discussion-3"><i class="fa fa-check"></i><b>14.6</b> Discussion</a></li>
+<li class="chapter" data-level="14.7" data-path="Lab_phorid.html"><a href="Lab_phorid.html#some-questions-from-previous-semesters"><i class="fa fa-check"></i><b>14.7</b> Some questions from previous semesters:</a></li>
 </ul></li>
 <li class="part"><span><b>IV Analysis Homeworks</b></span></li>
 <li class="chapter" data-level="15" data-path="hw-succession.html"><a href="hw-succession.html"><i class="fa fa-check"></i><b>15</b> Homework: Succession</a>
@@ -457,30 +481,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="r-intro" class="section level1" number="4">
-<h1><span class="header-section-number">4</span> Working with R and RStudio</h1>
+<div id="r-intro" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">4</span> Working with R and RStudio<a href="r-intro.html#r-intro" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>This section include a tutorial on some data analysis topics that will be helpful for this class. Please make sure you’ve installed R and RStudio, and some essential packages according to <a href="https://github.com/Christopher-Peterson/R-workshop-setup">this guide</a>. You can skip installing git for now.</p>
-<div id="r-intro-rstudio" class="section level2" number="4.1">
-<h2><span class="header-section-number">4.1</span> Introduction to RStudio</h2>
+<div id="r-intro-rstudio" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Introduction to RStudio<a href="r-intro.html#r-intro-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>RStudio is organized into four panels: scripts &amp; documents (upper left), the console (lower left), and two utility panels on the right that have various helpful functions. You may not see a document window on the left; if so, hit Ctrl+Shift+N to create a blank script. (Note that on Macs, Ctrl should pretty much always be replaced with Cmd). Generally, you write all of your code in the document window, then hit Ctrl+Enter (Cmd+Return) to send the R statement your cursor is on to the console window.</p>
-<div id="rstudio-projects" class="section level3" number="4.1.1">
-<h3><span class="header-section-number">4.1.1</span> RStudio Projects</h3>
+<div id="rstudio-projects" class="section level3 hasAnchor" number="4.1.1">
+<h3><span class="header-section-number">4.1.1</span> RStudio Projects<a href="r-intro.html#rstudio-projects" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>RStudio’s most useful feature is R projects, which automatically manage a lot of the tedious things that can normally cause problems when working with R. Most importantly, they make it easier to keep track of where your script, data, and output files are.</p>
 <p>Let’s create a project for Bio 373L. In the upper right corner, click the down arrow next to <strong>Project: (None)</strong> (if it says something else, that’s fine), then select <strong>New Project…</strong>. Select <strong>New Directory -&gt; New Project</strong>, then give it a name relevant to the class. I’d recommend making the project a subdirectory of where you keep the rest of your 373L files. Create the project; RStudio will take a moment to reset, then the upper-right corner of the screen should have the name of your project. Always make sure the project is loaded when you’re working on material for this class; if it isn’t, just click the project drop-down arrow and select it from the list.</p>
 <p>Now that your project is loaded, click the <strong>Files</strong> tab in one of the two utility panels; this shows everything in the project directory. All of the script &amp; data files you work should be put in this directory. I recommend creating a folder for each lab (click the <strong>New Folder</strong> button) to keep things organized. If you want to open the folder in Windows Explorer/Finder/whateverfile manager you use, click the <strong>More</strong> button, then <strong>Show Folder in New Window.</strong></p>
 </div>
-<div id="customizing-rstudio" class="section level3" number="4.1.2">
-<h3><span class="header-section-number">4.1.2</span> Customizing RStudio</h3>
+<div id="customizing-rstudio" class="section level3 hasAnchor" number="4.1.2">
+<h3><span class="header-section-number">4.1.2</span> Customizing RStudio<a href="r-intro.html#customizing-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>I have a couple of recommendations for customizing RStudio to make it easier to use. Go to <strong>Tools -&gt; Global Options.</strong></p>
 <p>Under the <strong>General</strong> tab, make sure that the <strong>Workspace</strong> options are unchecked and set to Never; this will make sure you start with a fresh slate every time you start up R and prevent some weird errors from cropping up.</p>
 <p>Under <strong>Appearance</strong>, I’d take a look at some of the Editor themes. I’m rather fond of <strong>Vibrant Ink</strong>.</p>
 <p>Under <strong>Pane Layout</strong>, you can reorganize your panels. I like to put the Console in the lower right, and make sure that the lower left pane contains only History, Connections, Packages, and Tutorial. I generally find those four functions to be generally useless, so I can keep that pane minimized and have a larger document window on the left.</p>
 </div>
 </div>
-<div id="r-basics" class="section level2" number="4.2">
-<h2><span class="header-section-number">4.2</span> R basics</h2>
-<div id="statements-vectors" class="section level3" number="4.2.1">
-<h3><span class="header-section-number">4.2.1</span> Statements &amp; vectors</h3>
+<div id="r-basics" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> R basics<a href="r-intro.html#r-basics" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="statements-vectors" class="section level3 hasAnchor" number="4.2.1">
+<h3><span class="header-section-number">4.2.1</span> Statements &amp; vectors<a href="r-intro.html#statements-vectors" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Let’s take a look at some R basics. First, R can be used as an excessively fancy calculator. The following block contains R expressions, followed by the results of running them in the console (preceded with <code>##</code>). Try running it yourself.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="r-intro.html#cb1-1" aria-hidden="true" tabindex="-1"></a>(<span class="dv">4</span><span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> <span class="dv">8</span>)<span class="sc">/</span><span class="dv">10</span></span>
 <span id="cb1-2"><a href="r-intro.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 2.4</span></span>
@@ -507,8 +531,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb2-16"><a href="r-intro.html#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;I have been at UT for &quot; &quot;5&quot;                      &quot;Years&quot;</span></span></code></pre></div>
 <p>Note that anything following a <code>#</code> is a comment, and ignored by R. I highly advise using comments to document your code.</p>
 </div>
-<div id="variables" class="section level3" number="4.2.2">
-<h3><span class="header-section-number">4.2.2</span> Variables</h3>
+<div id="variables" class="section level3 hasAnchor" number="4.2.2">
+<h3><span class="header-section-number">4.2.2</span> Variables<a href="r-intro.html#variables" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>You can save values &amp; objects by creating variables.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="r-intro.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># You can use either &lt;- or = to assign a variable</span></span>
 <span id="cb3-2"><a href="r-intro.html#cb3-2" aria-hidden="true" tabindex="-1"></a>first_ten <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
@@ -530,8 +554,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb3-18"><a href="r-intro.html#cb3-18" aria-hidden="true" tabindex="-1"></a>first_Ten <span class="co"># doesn&#39;t work</span></span>
 <span id="cb3-19"><a href="r-intro.html#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="do">## Error in eval(expr, envir, enclos): object &#39;first_Ten&#39; not found</span></span></code></pre></div>
 </div>
-<div id="reading-working-with-data-frames" class="section level3" number="4.2.3">
-<h3><span class="header-section-number">4.2.3</span> Reading &amp; working with data frames</h3>
+<div id="reading-working-with-data-frames" class="section level3 hasAnchor" number="4.2.3">
+<h3><span class="header-section-number">4.2.3</span> Reading &amp; working with data frames<a href="r-intro.html#reading-working-with-data-frames" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Before we get started with this you’ll need to download an example data file. From RStudio, create an <strong>example_data</strong> directory, then save <a href="https://raw.githubusercontent.com/Christopher-Peterson/Bio373L-Book/master/example_data/anoles.csv">this file</a> in it (make sure the name is still <code>anoles.csv</code>). Note that you may need to go to go to **File -&gt; Save Page As…* (or some variant) in your web browser to save it.</p>
 <p>Now, let’s load the data into R.
 To do that, we need to load the <code>readr</code> package, which is part of the <code>tidyverse</code>.
@@ -543,7 +567,7 @@ RStudio also has some built-in ways to load datasets; I would strongly advise no
 <p>This is a data frame (effectively a spreadsheet). Technically, it’s a type of data frame called a <code>tibble</code>, which doesn’t really matter for what we’re doing right now. Let’s take a look at it:</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="r-intro.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># quick view of data frame; note that there&#39;s more columns and rows </span></span>
 <span id="cb5-2"><a href="r-intro.html#cb5-2" aria-hidden="true" tabindex="-1"></a>lizards <span class="co"># listed than are displayed</span></span></code></pre></div>
-<pre><code>## # A tibble: 657 x 9
+<pre><code>## # A tibble: 657 × 9
 ##    Site  Color_morph  Limb  Mass Diameter Height   SVL  Tail Perch_type
 ##    &lt;chr&gt; &lt;chr&gt;       &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;     
 ##  1 A     Green        14.3  6.46        8    164  61.8  43.9 Other     
@@ -556,7 +580,8 @@ RStudio also has some built-in ways to load datasets; I would strongly advise no
 ##  8 A     Brown        10    5.09       20    141  48    34.9 Tree      
 ##  9 A     Brown        12.3  7.2        19    129  54.9  61   Tree      
 ## 10 A     Brown        11.2  6.66       15    134  52.7  50.4 Tree      
-## # … with 647 more rows</code></pre>
+## # … with 647 more rows
+## # ℹ Use `print(n = ...)` to see more rows</code></pre>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="r-intro.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Look at the first few rows of each column</span></span>
 <span id="cb7-2"><a href="r-intro.html#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(lizards)</span></code></pre></div>
 <pre><code>## Rows: 657
@@ -580,8 +605,8 @@ RStudio also has some built-in ways to load datasets; I would strongly advise no
 <span id="cb10-5"><a href="r-intro.html#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Note that some of these require quotes, some of them don&#39;t; this is </span></span>
 <span id="cb10-6"><a href="r-intro.html#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co"># I haven&#39;t included output here, because it&#39;s rather long</span></span></code></pre></div>
 </div>
-<div id="functions" class="section level3" number="4.2.4">
-<h3><span class="header-section-number">4.2.4</span> Functions</h3>
+<div id="functions" class="section level3 hasAnchor" number="4.2.4">
+<h3><span class="header-section-number">4.2.4</span> Functions<a href="r-intro.html#functions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Pretty much everything that isn’t data is a function. Some of the examples we’ve used include <code>log</code>, <code>abs</code>, <code>read_csv</code>, and <code>mean</code>. Most functions have arguments, which tell the function what to work with. For example:</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="r-intro.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>) <span class="co"># mean of 1 through 5</span></span>
 <span id="cb11-2"><a href="r-intro.html#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 3</span></span>
@@ -595,8 +620,8 @@ RStudio also has some built-in ways to load datasets; I would strongly advise no
 <span id="cb12-5"><a href="r-intro.html#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">10</span>) <span class="co"># same as above, but matched by position</span></span>
 <span id="cb12-6"><a href="r-intro.html#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 0.0000000 0.3010300 0.4771213 0.6020600 0.6989700</span></span></code></pre></div>
 </div>
-<div id="getting-help" class="section level3" number="4.2.5">
-<h3><span class="header-section-number">4.2.5</span> Getting Help</h3>
+<div id="getting-help" class="section level3 hasAnchor" number="4.2.5">
+<h3><span class="header-section-number">4.2.5</span> Getting Help<a href="r-intro.html#getting-help" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>R has a built-in help system to look up functions, their arguments, and what they do:</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="r-intro.html#cb13-1" aria-hidden="true" tabindex="-1"></a>?read_csv</span>
 <span id="cb13-2"><a href="r-intro.html#cb13-2" aria-hidden="true" tabindex="-1"></a>?mean</span>
@@ -615,7 +640,6 @@ RStudio also has some built-in ways to load datasets; I would strongly advise no
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -634,6 +658,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -654,6 +679,10 @@ gitbook.start({
 "text": null
 },
 "download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "section",
 "scroll_highlight": true
@@ -668,7 +697,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

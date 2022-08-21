@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>3 Figures and Tables | Bio 373L Survival Guide</title>
   <meta name="description" content="Lab Manual for Field Ecology (Bio 373L) at UT Austin." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.28 and GitBook 2.6.7" />
 
   <meta property="og:title" content="3 Figures and Tables | Bio 373L Survival Guide" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="Lab Manual for Field Ecology (Bio 373L) at UT Austin." />
   <meta name="github-repo" content="Christopher-Peterson/Bio373L-Book" />
@@ -24,7 +23,7 @@
 <meta name="author" content="Christopher R. Peterson" />
 
 
-<meta name="date" content="2022-03-30" />
+<meta name="date" content="2022-08-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,8 +32,8 @@
   
 <link rel="prev" href="style.html"/>
 <link rel="next" href="r-intro.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,7 +49,9 @@
 
 
 
-
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
@@ -118,6 +119,29 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -234,7 +258,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="6" data-path="r-dplyr.html"><a href="r-dplyr.html"><i class="fa fa-check"></i><b>6</b> Data manipulation with <code>dplyr</code></a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="r-dplyr.html"><a href="r-dplyr.html#r-dplyr-pipe"><i class="fa fa-check"></i><b>6.1</b> The Pipe (%&gt;%)</a></li>
+<li class="chapter" data-level="6.1" data-path="r-dplyr.html"><a href="r-dplyr.html#r-dplyr-pipe"><i class="fa fa-check"></i><b>6.1</b> The Pipe (|&gt;)</a></li>
 <li class="chapter" data-level="6.2" data-path="r-dplyr.html"><a href="r-dplyr.html#r-dplyr-mutate"><i class="fa fa-check"></i><b>6.2</b> Adding/modifying columns (mutate)</a></li>
 <li class="chapter" data-level="6.3" data-path="r-dplyr.html"><a href="r-dplyr.html#r-dplyr-filter"><i class="fa fa-check"></i><b>6.3</b> Subsetting by row (filter)</a></li>
 <li class="chapter" data-level="6.4" data-path="r-dplyr.html"><a href="r-dplyr.html#r-dplyr-select"><i class="fa fa-check"></i><b>6.4</b> Subsetting by column (select)</a></li>
@@ -334,42 +358,42 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="12.5" data-path="lab-heterogeneity.html"><a href="lab-heterogeneity.html#references"><i class="fa fa-check"></i><b>12.5</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="Lab-ants.html"><a href="Lab-ants.html"><i class="fa fa-check"></i><b>13</b> Ant Lab: Ant Community Ecology and the Effects of Invasive Fire Ants</a>
+<li class="chapter" data-level="13" data-path="Lab_ants.html"><a href="Lab_ants.html"><i class="fa fa-check"></i><b>13</b> Ant Lab: Ant Community Ecology and the Effects of Invasive Fire Ants</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="Lab-ants.html"><a href="Lab-ants.html#background"><i class="fa fa-check"></i><b>13.1</b> Background</a></li>
-<li class="chapter" data-level="13.2" data-path="Lab-ants.html"><a href="Lab-ants.html#questions-and-hypotheses-2"><i class="fa fa-check"></i><b>13.2</b> Questions and hypotheses</a></li>
-<li class="chapter" data-level="13.3" data-path="Lab-ants.html"><a href="Lab-ants.html#methods-1"><i class="fa fa-check"></i><b>13.3</b> Methods</a>
+<li class="chapter" data-level="13.1" data-path="Lab_ants.html"><a href="Lab_ants.html#background"><i class="fa fa-check"></i><b>13.1</b> Background</a></li>
+<li class="chapter" data-level="13.2" data-path="Lab_ants.html"><a href="Lab_ants.html#questions-and-hypotheses-2"><i class="fa fa-check"></i><b>13.2</b> Questions and hypotheses</a></li>
+<li class="chapter" data-level="13.3" data-path="Lab_ants.html"><a href="Lab_ants.html#methods-1"><i class="fa fa-check"></i><b>13.3</b> Methods</a>
 <ul>
-<li class="chapter" data-level="13.3.1" data-path="Lab-ants.html"><a href="Lab-ants.html#bait-survey"><i class="fa fa-check"></i><b>13.3.1</b> Bait Survey</a></li>
+<li class="chapter" data-level="13.3.1" data-path="Lab_ants.html"><a href="Lab_ants.html#bait-survey"><i class="fa fa-check"></i><b>13.3.1</b> Bait Survey</a></li>
 </ul></li>
-<li class="chapter" data-level="13.4" data-path="Lab-ants.html"><a href="Lab-ants.html#analysis-1"><i class="fa fa-check"></i><b>13.4</b> Analysis</a>
+<li class="chapter" data-level="13.4" data-path="Lab_ants.html"><a href="Lab_ants.html#analysis-1"><i class="fa fa-check"></i><b>13.4</b> Analysis</a>
 <ul>
-<li class="chapter" data-level="13.4.1" data-path="Lab-ants.html"><a href="Lab-ants.html#s.-invicta-habitat-preference"><i class="fa fa-check"></i><b>13.4.1</b> <em>S. invicta</em> habitat preference</a></li>
-<li class="chapter" data-level="13.4.2" data-path="Lab-ants.html"><a href="Lab-ants.html#ant-community-differences"><i class="fa fa-check"></i><b>13.4.2</b> Ant community differences</a></li>
+<li class="chapter" data-level="13.4.1" data-path="Lab_ants.html"><a href="Lab_ants.html#s.-invicta-habitat-preference"><i class="fa fa-check"></i><b>13.4.1</b> <em>S. invicta</em> habitat preference</a></li>
+<li class="chapter" data-level="13.4.2" data-path="Lab_ants.html"><a href="Lab_ants.html#ant-community-differences"><i class="fa fa-check"></i><b>13.4.2</b> Ant community differences</a></li>
 </ul></li>
-<li class="chapter" data-level="13.5" data-path="Lab-ants.html"><a href="Lab-ants.html#references-1"><i class="fa fa-check"></i><b>13.5</b> References</a></li>
+<li class="chapter" data-level="13.5" data-path="Lab_ants.html"><a href="Lab_ants.html#references-1"><i class="fa fa-check"></i><b>13.5</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="Lab-phorid.html"><a href="Lab-phorid.html"><i class="fa fa-check"></i><b>14</b> Phorid Lab: Parasitoid impacts on host foraging behavior with Phorid flies and fire ants</a>
+<li class="chapter" data-level="14" data-path="Lab_phorid.html"><a href="Lab_phorid.html"><i class="fa fa-check"></i><b>14</b> Phorid Lab: Parasitoid impacts on host foraging behavior with Phorid flies and fire ants</a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="Lab-phorid.html"><a href="Lab-phorid.html#background-1"><i class="fa fa-check"></i><b>14.1</b> Background</a>
+<li class="chapter" data-level="14.1" data-path="Lab_phorid.html"><a href="Lab_phorid.html#background-1"><i class="fa fa-check"></i><b>14.1</b> Background</a>
 <ul>
-<li class="chapter" data-level="14.1.1" data-path="Lab-phorid.html"><a href="Lab-phorid.html#fire-ants-and-phorid-flies"><i class="fa fa-check"></i><b>14.1.1</b> Fire ants and phorid flies</a></li>
-<li class="chapter" data-level="14.1.2" data-path="Lab-phorid.html"><a href="Lab-phorid.html#fire-ants-natural-history"><i class="fa fa-check"></i><b>14.1.2</b> Fire ants natural history</a></li>
+<li class="chapter" data-level="14.1.1" data-path="Lab_phorid.html"><a href="Lab_phorid.html#fire-ants-and-phorid-flies"><i class="fa fa-check"></i><b>14.1.1</b> Fire ants and phorid flies</a></li>
+<li class="chapter" data-level="14.1.2" data-path="Lab_phorid.html"><a href="Lab_phorid.html#fire-ants-natural-history"><i class="fa fa-check"></i><b>14.1.2</b> Fire ants natural history</a></li>
 </ul></li>
-<li class="chapter" data-level="14.2" data-path="Lab-phorid.html"><a href="Lab-phorid.html#objectives"><i class="fa fa-check"></i><b>14.2</b> Objectives</a></li>
-<li class="chapter" data-level="14.3" data-path="Lab-phorid.html"><a href="Lab-phorid.html#methods-2"><i class="fa fa-check"></i><b>14.3</b> Methods</a>
+<li class="chapter" data-level="14.2" data-path="Lab_phorid.html"><a href="Lab_phorid.html#objectives"><i class="fa fa-check"></i><b>14.2</b> Objectives</a></li>
+<li class="chapter" data-level="14.3" data-path="Lab_phorid.html"><a href="Lab_phorid.html#methods-2"><i class="fa fa-check"></i><b>14.3</b> Methods</a>
 <ul>
-<li class="chapter" data-level="14.3.1" data-path="Lab-phorid.html"><a href="Lab-phorid.html#phorid-impact-on-fire-ant-foraging"><i class="fa fa-check"></i><b>14.3.1</b> Phorid impact on fire ant foraging</a></li>
-<li class="chapter" data-level="14.3.2" data-path="Lab-phorid.html"><a href="Lab-phorid.html#using-the-hobo-mx2303-data-logger"><i class="fa fa-check"></i><b>14.3.2</b> Using the HOBO MX2303 data logger</a></li>
+<li class="chapter" data-level="14.3.1" data-path="Lab_phorid.html"><a href="Lab_phorid.html#phorid-impact-on-fire-ant-foraging"><i class="fa fa-check"></i><b>14.3.1</b> Phorid impact on fire ant foraging</a></li>
+<li class="chapter" data-level="14.3.2" data-path="Lab_phorid.html"><a href="Lab_phorid.html#using-the-hobo-mx2303-data-logger"><i class="fa fa-check"></i><b>14.3.2</b> Using the HOBO MX2303 data logger</a></li>
 </ul></li>
-<li class="chapter" data-level="14.4" data-path="Lab-phorid.html"><a href="Lab-phorid.html#modified-protocol-if-phorids-are-not-present"><i class="fa fa-check"></i><b>14.4</b> Modified protocol if phorids are not present</a></li>
-<li class="chapter" data-level="14.5" data-path="Lab-phorid.html"><a href="Lab-phorid.html#analysis-2"><i class="fa fa-check"></i><b>14.5</b> Analysis</a>
+<li class="chapter" data-level="14.4" data-path="Lab_phorid.html"><a href="Lab_phorid.html#modified-protocol-if-phorids-are-not-present"><i class="fa fa-check"></i><b>14.4</b> Modified protocol if phorids are not present</a></li>
+<li class="chapter" data-level="14.5" data-path="Lab_phorid.html"><a href="Lab_phorid.html#analysis-2"><i class="fa fa-check"></i><b>14.5</b> Analysis</a>
 <ul>
-<li class="chapter" data-level="14.5.1" data-path="Lab-phorid.html"><a href="Lab-phorid.html#effect-of-phorids-on-ant-foraging"><i class="fa fa-check"></i><b>14.5.1</b> Effect of phorids on ant foraging</a></li>
-<li class="chapter" data-level="14.5.2" data-path="Lab-phorid.html"><a href="Lab-phorid.html#effects-of-environmental-conditions"><i class="fa fa-check"></i><b>14.5.2</b> Effects of environmental conditions</a></li>
+<li class="chapter" data-level="14.5.1" data-path="Lab_phorid.html"><a href="Lab_phorid.html#effect-of-phorids-on-ant-foraging"><i class="fa fa-check"></i><b>14.5.1</b> Effect of phorids on ant foraging</a></li>
+<li class="chapter" data-level="14.5.2" data-path="Lab_phorid.html"><a href="Lab_phorid.html#effects-of-environmental-conditions"><i class="fa fa-check"></i><b>14.5.2</b> Effects of environmental conditions</a></li>
 </ul></li>
-<li class="chapter" data-level="14.6" data-path="Lab-phorid.html"><a href="Lab-phorid.html#discussion-3"><i class="fa fa-check"></i><b>14.6</b> Discussion</a></li>
-<li class="chapter" data-level="14.7" data-path="Lab-phorid.html"><a href="Lab-phorid.html#some-questions-from-previous-semesters"><i class="fa fa-check"></i><b>14.7</b> Some questions from previous semesters:</a></li>
+<li class="chapter" data-level="14.6" data-path="Lab_phorid.html"><a href="Lab_phorid.html#discussion-3"><i class="fa fa-check"></i><b>14.6</b> Discussion</a></li>
+<li class="chapter" data-level="14.7" data-path="Lab_phorid.html"><a href="Lab_phorid.html#some-questions-from-previous-semesters"><i class="fa fa-check"></i><b>14.7</b> Some questions from previous semesters:</a></li>
 </ul></li>
 <li class="part"><span><b>IV Analysis Homeworks</b></span></li>
 <li class="chapter" data-level="15" data-path="hw-succession.html"><a href="hw-succession.html"><i class="fa fa-check"></i><b>15</b> Homework: Succession</a>
@@ -457,25 +481,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="figures" class="section level1" number="3">
-<h1><span class="header-section-number">3</span> Figures and Tables</h1>
+<div id="figures" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">3</span> Figures and Tables<a href="figures.html#figures" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Good figures are one of the most important parts of a manuscript. When learning to write scientific papers, some might view figures as an afterthought. This is a mistake. The figure should tell a fairly complete story. Combined with its caption, the reader should be able to look at the figure immediately after reading the abstract and have a general sense of what’s going on.</p>
 <p>Tables are also an important part of a paper’s results, but good figures are usually easier to interpret by the reader.</p>
 <p>Note that this chapter focuses on general guidlines for figure design.
 For instructions on how to create figures in R using <code>ggplot2</code>, see Chapter @ref(r_ggplot).<br />
 The R code used to generate all of the figures in this chapter can be found <a href="https://github.com/Christopher-Peterson/Bio373L-Book/blob/master/R/figures_chapter_scripts.r">here</a>, along with some annotations.</p>
-<div id="captions" class="section level2" number="3.1">
-<h2><span class="header-section-number">3.1</span> Captions</h2>
+<div id="captions" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Captions<a href="figures.html#captions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Figures and tables require captions that explain what they represent. Captions should be below figures and above captions. The first “sentence” of a caption shouldn’t actually be a sentence; it’s more of a description. See the various examples in this chapter for more details.</p>
 <p>The caption should help the figure or table stand alone from everything else. If there are abbreviations or acronyms in the figure, they should be defined in the caption. If your figure is related to a statistical test, you should present the results of the test in the figure caption. If there’s a line of best fit in a scatterplot figure, this means that a linear regression was performed behind the scenes; you should report the details.</p>
 <p>Note that figures in your manuscript <strong>should not have titles</strong>. This information belongs in the caption.</p>
 </div>
-<div id="figures-1" class="section level2" number="3.2">
-<h2><span class="header-section-number">3.2</span> Figures</h2>
+<div id="figures-1" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Figures<a href="figures.html#figures-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Make sure the caption (and legend, if present) gives enough information that the reader can understand exactly what the figure/table represents without having to look at the text. DO refer to all tables/figures in the body of the text, and include them in order (i.e. the first table/figure the reader comes across should be called table 1/figure 1 and should be the first one referred to in the text). Note that in this chapter, the figures are numbered 3.1, 3.2, etc; this is appropriate for a multi-chapter book, but not for a paper/article/manuscript. Don’t use decimals.</p>
 <p>Figures should communicate your results, not just present/summarize your data. A good figure tells a story. If there is a trend or pattern, it should be designed to emphasize it.</p>
-<div id="specific-figure-guidelines" class="section level3" number="3.2.1">
-<h3><span class="header-section-number">3.2.1</span> Specific Figure Guidelines</h3>
+<div id="specific-figure-guidelines" class="section level3 hasAnchor" number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> Specific Figure Guidelines<a href="figures.html#specific-figure-guidelines" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Figure design is communication, so you want to make the result/message as obvious as you can. The longer a reader has to stare at your figure before “getting it,” the more likely they are to get bored or stop caring.</p>
 <ul>
 <li>Avoid large amounts of empty white space. For categorical data, you should remove categories that have no data unless their absence is somehow important and interesting.
@@ -505,15 +529,15 @@ The R code used to generate all of the figures in this chapter can be found <a h
 </ul>
 <p>Please remember that you should be writing your lab reports as if the reader (i.e., me) didn’t know exactly what you did.</p>
 </div>
-<div id="be-concise-1" class="section level3" number="3.2.2">
-<h3><span class="header-section-number">3.2.2</span> Be Concise</h3>
+<div id="be-concise-1" class="section level3 hasAnchor" number="3.2.2">
+<h3><span class="header-section-number">3.2.2</span> Be Concise<a href="figures.html#be-concise-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>If you have multiple figures that conceptually belong together (e.g., the same measurements taken in three years), you should turn them into a single multi-panel figure. Label your the panels with letters in the upper left corner; the caption should explain how the panels are different.</p>
 </div>
 </div>
-<div id="some-example-figures" class="section level2" number="3.3">
-<h2><span class="header-section-number">3.3</span> Some Example Figures</h2>
-<div id="general-formatting" class="section level3" number="3.3.1">
-<h3><span class="header-section-number">3.3.1</span> General Formatting</h3>
+<div id="some-example-figures" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> Some Example Figures<a href="figures.html#some-example-figures" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="general-formatting" class="section level3 hasAnchor" number="3.3.1">
+<h3><span class="header-section-number">3.3.1</span> General Formatting<a href="figures.html#general-formatting" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Figure <a href="figures.html#fig:penguinBad">3.1</a> is poorly formatted:</p>
 <ul>
 <li>The colors are hard to distinguish when printed and black and white;</li>
@@ -526,14 +550,14 @@ The R code used to generate all of the figures in this chapter can be found <a h
 </ul>
 
 
-<div class="figure"><span id="fig:penguinBad"></span>
+<div class="figure"><span style="display:block;" id="fig:penguinBad"></span>
 <img src="Bio373L-Book_files/figure-html/penguinBad-1.png" alt="Body mass (X variable) vs flipper length (Y variable). The regression is significant (\(R^2 = 0.76\); \(p&lt;0.0001\))." width="672" />
 <p class="caption">
 Figure 3.1: Body mass (X variable) vs flipper length (Y variable). The regression is significant (<span class="math inline">\(R^2 = 0.76\)</span>; <span class="math inline">\(p&lt;0.0001\)</span>).
 </p>
 </div>
 <p>Figure <a href="figures.html#fig:penguinGood">3.2</a> contains the same data, but has been reformatted to address these issues. Note the use of units in the axis labels, the formatting of scientific species names, the positioning of the legend to minimize whitespace, and the lack of a title and gridlines. This is also an example of how to plot data with a continuous response and a combination of continuous and categorical predictors.</p>
-<div class="figure"><span id="fig:penguinGood"></span>
+<div class="figure"><span style="display:block;" id="fig:penguinGood"></span>
 <img src="Bio373L-Book_files/figure-html/penguinGood-1.png" alt="Association between body mass and flipper length in three species of penguin. Flipper length increases with body mass ((Flipper Length) = 13.7 + 1.5*(Body Mass); \(R^2 = 0.76\); \(p&lt;0.0001\))." width="672" />
 <p class="caption">
 Figure 3.2: Association between body mass and flipper length in three species of penguin. Flipper length increases with body mass ((Flipper Length) = 13.7 + 1.5*(Body Mass); <span class="math inline">\(R^2 = 0.76\)</span>; <span class="math inline">\(p&lt;0.0001\)</span>).
@@ -541,61 +565,61 @@ Figure 3.2: Association between body mass and flipper length in three species of
 </div>
 <p>Figure <a href="figures.html#fig:penguinPanel">3.3</a> is an example of a multi-panel figure; in the text, you should refer to parts of it as Figure <a href="figures.html#fig:penguinPanel">3.3</a>A, <a href="figures.html#fig:penguinPanel">3.3</a>B, etc.</p>
 
-<div class="figure"><span id="fig:penguinPanel"></span>
+<div class="figure"><span style="display:block;" id="fig:penguinPanel"></span>
 <img src="Bio373L-Book_files/figure-html/penguinPanel-1.png" alt="Association between bill length and bill depth for three species of penguins. The association is significant and different among species ((Bill Depth) = 10.6 + 0.2*(Bill Length) for Adelie, 5.5 + 0.2*(Bill Length) for Gentoo, and 8.7 + 0.2*(Bill Length) for Chinstrap; \(R^2 = 0.77\); \(p_{\text{species}} &lt; 0.0001\); \(p_{\text{length}} &lt; 0.0001\);)" width="672" />
 <p class="caption">
 Figure 3.3: Association between bill length and bill depth for three species of penguins. The association is significant and different among species ((Bill Depth) = 10.6 + 0.2*(Bill Length) for Adelie, 5.5 + 0.2*(Bill Length) for Gentoo, and 8.7 + 0.2*(Bill Length) for Chinstrap; <span class="math inline">\(R^2 = 0.77\)</span>; <span class="math inline">\(p_{\text{species}} &lt; 0.0001\)</span>; <span class="math inline">\(p_{\text{length}} &lt; 0.0001\)</span>;)
 </p>
 </div>
 </div>
-<div id="continuous-response-categorical-predictors" class="section level3" number="3.3.2">
-<h3><span class="header-section-number">3.3.2</span> Continuous response, categorical predictors</h3>
+<div id="continuous-response-categorical-predictors" class="section level3 hasAnchor" number="3.3.2">
+<h3><span class="header-section-number">3.3.2</span> Continuous response, categorical predictors<a href="figures.html#continuous-response-categorical-predictors" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>There are a number of options for representing continuous data grouped into multiple categories. You should avoid “dynamite” plots (Figure <a href="figures.html#fig:dynamite">3.4</a>), which use a bar with error lines to represent a mean and standard error; these figures use a lot of space to provide very little information. A better option is to use box plots (Figure <a href="figures.html#fig:boxplot">3.5</a>), which show the median, quartiles, range, and outliers of each group. Equivalently, you could use a group of histograms (Figure <a href="figures.html#fig:histoplot">3.6</a>). A particularly effective way to visualize this type of dataset shows the distribution of the data and the summary statistics (Figure <a href="figures.html#fig:violin">3.7</a>).</p>
 
 
 
-<div class="figure"><span id="fig:dynamite"></span>
+<div class="figure"><span style="display:block;" id="fig:dynamite"></span>
 <img src="Bio373L-Book_files/figure-html/dynamite-1.png" alt="Mean body mass for three species of penguin, with standard errors. Body mass differs significantly among species \((p &lt; 0.0001)\)." width="672" />
 <p class="caption">
 Figure 3.4: Mean body mass for three species of penguin, with standard errors. Body mass differs significantly among species <span class="math inline">\((p &lt; 0.0001)\)</span>.
 </p>
 </div>
-<div class="figure"><span id="fig:boxplot"></span>
+<div class="figure"><span style="display:block;" id="fig:boxplot"></span>
 <img src="Bio373L-Book_files/figure-html/boxplot-1.png" alt="Distribution of body mass for three species of penguin. Body mass differs significantly among species \((p &lt; 0.0001)\)." width="672" />
 <p class="caption">
 Figure 3.5: Distribution of body mass for three species of penguin. Body mass differs significantly among species <span class="math inline">\((p &lt; 0.0001)\)</span>.
 </p>
 </div>
-<div class="figure"><span id="fig:histoplot"></span>
+<div class="figure"><span style="display:block;" id="fig:histoplot"></span>
 <img src="Bio373L-Book_files/figure-html/histoplot-1.png" alt="Distribution of body mass for three species of penguin. Body mass differs significantly among species \((p &lt; 0.0001)\)." width="672" />
 <p class="caption">
 Figure 3.6: Distribution of body mass for three species of penguin. Body mass differs significantly among species <span class="math inline">\((p &lt; 0.0001)\)</span>.
 </p>
 </div>
-<div class="figure"><span id="fig:violin"></span>
+<div class="figure"><span style="display:block;" id="fig:violin"></span>
 <img src="Bio373L-Book_files/figure-html/violin-1.png" alt="Distribution of body mass for three species of penguin, with mean and standard errors in red. Body mass differs significantly among species \((p &lt; 0.0001)\)." width="672" />
 <p class="caption">
 Figure 3.7: Distribution of body mass for three species of penguin, with mean and standard errors in red. Body mass differs significantly among species <span class="math inline">\((p &lt; 0.0001)\)</span>.
 </p>
 </div>
 </div>
-<div id="categorical-count-or-frequency-responses" class="section level3" number="3.3.3">
-<h3><span class="header-section-number">3.3.3</span> Categorical, count, or frequency responses</h3>
+<div id="categorical-count-or-frequency-responses" class="section level3 hasAnchor" number="3.3.3">
+<h3><span class="header-section-number">3.3.3</span> Categorical, count, or frequency responses<a href="figures.html#categorical-count-or-frequency-responses" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>These sorts of data usually involve examining how counts or frequencies differ among groups; they’re often associated with <span class="math inline">\(\chi^2\)</span> tests. Generally, it’s best to represent these sorts of data with bar graphs (avoid pie charts). When making a bar graph, it’s a good idea to arrange your data to emphasize any trends. The species in Figure <a href="figures.html#fig:anoleBad">3.8</a> are organized alphabetically, which obscures any trend. A better option is to organize by decreasing frequency of either total counts (like in Figure <a href="figures.html#fig:anoleCountStack">3.9</a>) or of one of the groups (Figure <a href="figures.html#fig:anoleCountDodge">3.10</a>). These make it easier to detect patterns.</p>
 
-<div class="figure"><span id="fig:anoleBad"></span>
+<div class="figure"><span style="display:block;" id="fig:anoleBad"></span>
 <img src="Bio373L-Book_files/figure-html/anoleBad-1.png" alt="Number of Anolis captured from canopy and trunk perches." width="672" />
 <p class="caption">
 Figure 3.8: Number of <em>Anolis</em> captured from canopy and trunk perches.
 </p>
 </div>
-<div class="figure"><span id="fig:anoleCountStack"></span>
+<div class="figure"><span style="display:block;" id="fig:anoleCountStack"></span>
 <img src="Bio373L-Book_files/figure-html/anoleCountStack-1.png" alt="Number of Anolis captured from canopy and trunk perches." width="672" />
 <p class="caption">
 Figure 3.9: Number of <em>Anolis</em> captured from canopy and trunk perches.
 </p>
 </div>
-<div class="figure"><span id="fig:anoleCountDodge"></span>
+<div class="figure"><span style="display:block;" id="fig:anoleCountDodge"></span>
 <img src="Bio373L-Book_files/figure-html/anoleCountDodge-1.png" alt="Number of Anolis captured from canopy and trunk perches." width="672" />
 <p class="caption">
 Figure 3.10: Number of <em>Anolis</em> captured from canopy and trunk perches.
@@ -603,14 +627,14 @@ Figure 3.10: Number of <em>Anolis</em> captured from canopy and trunk perches.
 </div>
 <p>An important consideration is whether to represent your data with counts or proportions (AKA frequencies – vary from 0 to 1). There are pros and cons to both approaches, but frequencies are usually better if the number of observations differs among your groups (compare Figure <a href="figures.html#fig:anoleFreqByPerch">3.11</a> with Figure <a href="figures.html#fig:anoleCountDodge">3.10</a>). Be careful when calculating frequencies, because you may inadvertently end up making a graph that isn’t answering the question you’re trying to ask. For example, Figure <a href="figures.html#fig:anoleFreqByPerch">3.11</a> shows how anole frequencies differ between perch types, but Figure <a href="figures.html#fig:anoleFreqBySpp">3.12</a> shows the frequency at which each species occupies the two perches.</p>
 
-<div class="figure"><span id="fig:anoleFreqByPerch"></span>
+<div class="figure"><span style="display:block;" id="fig:anoleFreqByPerch"></span>
 <img src="Bio373L-Book_files/figure-html/anoleFreqByPerch-1.png" alt="Frequency of Anolis species captured from canopy and trunk perches." width="672" />
 <p class="caption">
 Figure 3.11: Frequency of <em>Anolis</em> species captured from canopy and trunk perches.
 </p>
 </div>
 
-<div class="figure"><span id="fig:anoleFreqBySpp"></span>
+<div class="figure"><span style="display:block;" id="fig:anoleFreqBySpp"></span>
 <img src="Bio373L-Book_files/figure-html/anoleFreqBySpp-1.png" alt="Perch frequency for 9 species of Anolis." width="672" />
 <p class="caption">
 Figure 3.12: Perch frequency for 9 species of <em>Anolis</em>.
@@ -618,7 +642,7 @@ Figure 3.12: Perch frequency for 9 species of <em>Anolis</em>.
 </div>
 <p>If there is some aspect of your data that you’d like to really emphasize, it can help to get more creative with your figures. For example, the most visually striking parts of Figure <a href="figures.html#fig:anoleBarFreqDiff">3.13</a> are the colored sections of the bars, which correspond to the direction and magnitude of the difference between perches for each species. Do note that making more complicated figures may require extra explanation in the caption.</p>
 
-<div class="figure"><span id="fig:anoleBarFreqDiff"></span>
+<div class="figure"><span style="display:block;" id="fig:anoleBarFreqDiff"></span>
 <img src="Bio373L-Book_files/figure-html/anoleBarFreqDiff-1.png" alt="Number of Anolis found at each perch position. The white bar indicates the count at the less frequent perch, the total height is the count at the more frequent perch, color indicates which perch the species was more common at, and the size of the colored regions indicates the difference between perches." width="672" />
 <p class="caption">
 Figure 3.13: Number of <em>Anolis</em> found at each perch position. The white bar indicates the count at the less frequent perch, the total height is the count at the more frequent perch, color indicates which perch the species was more common at, and the size of the colored regions indicates the difference between perches.
@@ -626,8 +650,8 @@ Figure 3.13: Number of <em>Anolis</em> found at each perch position. The white b
 </div>
 </div>
 </div>
-<div id="tables" class="section level2" number="3.4">
-<h2><span class="header-section-number">3.4</span> Tables</h2>
+<div id="tables" class="section level2 hasAnchor" number="3.4">
+<h2><span class="header-section-number">3.4</span> Tables<a href="figures.html#tables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Tables are an effective addition to a manuscript when you have a lot of data in the text and want to present it to the reader in an organized fashion. They are particularly helpful when you have a lot of different kinds of data that would be hard to plot together. For example, see Table <a href="figures.html#tab:table1">3.1</a>.</p>
 <p>Tables are best for highly structured data. If there isn’t much data to present, the data can usually just be presented in the text of the results. If there’s a lot of data, it is worth considering if a figure would be better.</p>
 <table>
@@ -685,7 +709,6 @@ Figure 3.13: Number of <em>Anolis</em> found at each perch position. The white b
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -704,6 +727,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -724,6 +748,10 @@ gitbook.start({
 "text": null
 },
 "download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "section",
 "scroll_highlight": true
@@ -738,7 +766,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

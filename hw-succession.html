@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>15 Homework: Succession | Bio 373L Survival Guide</title>
   <meta name="description" content="Lab Manual for Field Ecology (Bio 373L) at UT Austin." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.28 and GitBook 2.6.7" />
 
   <meta property="og:title" content="15 Homework: Succession | Bio 373L Survival Guide" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="Lab Manual for Field Ecology (Bio 373L) at UT Austin." />
   <meta name="github-repo" content="Christopher-Peterson/Bio373L-Book" />
@@ -24,17 +23,17 @@
 <meta name="author" content="Christopher R. Peterson" />
 
 
-<meta name="date" content="2022-03-30" />
+<meta name="date" content="2022-08-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="Lab-phorid.html"/>
+<link rel="prev" href="Lab_phorid.html"/>
 <link rel="next" href="hw-mrr.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,7 +49,9 @@
 
 
 
-
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
@@ -118,6 +119,29 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -234,7 +258,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="6" data-path="r-dplyr.html"><a href="r-dplyr.html"><i class="fa fa-check"></i><b>6</b> Data manipulation with <code>dplyr</code></a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="r-dplyr.html"><a href="r-dplyr.html#r-dplyr-pipe"><i class="fa fa-check"></i><b>6.1</b> The Pipe (%&gt;%)</a></li>
+<li class="chapter" data-level="6.1" data-path="r-dplyr.html"><a href="r-dplyr.html#r-dplyr-pipe"><i class="fa fa-check"></i><b>6.1</b> The Pipe (|&gt;)</a></li>
 <li class="chapter" data-level="6.2" data-path="r-dplyr.html"><a href="r-dplyr.html#r-dplyr-mutate"><i class="fa fa-check"></i><b>6.2</b> Adding/modifying columns (mutate)</a></li>
 <li class="chapter" data-level="6.3" data-path="r-dplyr.html"><a href="r-dplyr.html#r-dplyr-filter"><i class="fa fa-check"></i><b>6.3</b> Subsetting by row (filter)</a></li>
 <li class="chapter" data-level="6.4" data-path="r-dplyr.html"><a href="r-dplyr.html#r-dplyr-select"><i class="fa fa-check"></i><b>6.4</b> Subsetting by column (select)</a></li>
@@ -334,42 +358,42 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="12.5" data-path="lab-heterogeneity.html"><a href="lab-heterogeneity.html#references"><i class="fa fa-check"></i><b>12.5</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="Lab-ants.html"><a href="Lab-ants.html"><i class="fa fa-check"></i><b>13</b> Ant Lab: Ant Community Ecology and the Effects of Invasive Fire Ants</a>
+<li class="chapter" data-level="13" data-path="Lab_ants.html"><a href="Lab_ants.html"><i class="fa fa-check"></i><b>13</b> Ant Lab: Ant Community Ecology and the Effects of Invasive Fire Ants</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="Lab-ants.html"><a href="Lab-ants.html#background"><i class="fa fa-check"></i><b>13.1</b> Background</a></li>
-<li class="chapter" data-level="13.2" data-path="Lab-ants.html"><a href="Lab-ants.html#questions-and-hypotheses-2"><i class="fa fa-check"></i><b>13.2</b> Questions and hypotheses</a></li>
-<li class="chapter" data-level="13.3" data-path="Lab-ants.html"><a href="Lab-ants.html#methods-1"><i class="fa fa-check"></i><b>13.3</b> Methods</a>
+<li class="chapter" data-level="13.1" data-path="Lab_ants.html"><a href="Lab_ants.html#background"><i class="fa fa-check"></i><b>13.1</b> Background</a></li>
+<li class="chapter" data-level="13.2" data-path="Lab_ants.html"><a href="Lab_ants.html#questions-and-hypotheses-2"><i class="fa fa-check"></i><b>13.2</b> Questions and hypotheses</a></li>
+<li class="chapter" data-level="13.3" data-path="Lab_ants.html"><a href="Lab_ants.html#methods-1"><i class="fa fa-check"></i><b>13.3</b> Methods</a>
 <ul>
-<li class="chapter" data-level="13.3.1" data-path="Lab-ants.html"><a href="Lab-ants.html#bait-survey"><i class="fa fa-check"></i><b>13.3.1</b> Bait Survey</a></li>
+<li class="chapter" data-level="13.3.1" data-path="Lab_ants.html"><a href="Lab_ants.html#bait-survey"><i class="fa fa-check"></i><b>13.3.1</b> Bait Survey</a></li>
 </ul></li>
-<li class="chapter" data-level="13.4" data-path="Lab-ants.html"><a href="Lab-ants.html#analysis-1"><i class="fa fa-check"></i><b>13.4</b> Analysis</a>
+<li class="chapter" data-level="13.4" data-path="Lab_ants.html"><a href="Lab_ants.html#analysis-1"><i class="fa fa-check"></i><b>13.4</b> Analysis</a>
 <ul>
-<li class="chapter" data-level="13.4.1" data-path="Lab-ants.html"><a href="Lab-ants.html#s.-invicta-habitat-preference"><i class="fa fa-check"></i><b>13.4.1</b> <em>S. invicta</em> habitat preference</a></li>
-<li class="chapter" data-level="13.4.2" data-path="Lab-ants.html"><a href="Lab-ants.html#ant-community-differences"><i class="fa fa-check"></i><b>13.4.2</b> Ant community differences</a></li>
+<li class="chapter" data-level="13.4.1" data-path="Lab_ants.html"><a href="Lab_ants.html#s.-invicta-habitat-preference"><i class="fa fa-check"></i><b>13.4.1</b> <em>S. invicta</em> habitat preference</a></li>
+<li class="chapter" data-level="13.4.2" data-path="Lab_ants.html"><a href="Lab_ants.html#ant-community-differences"><i class="fa fa-check"></i><b>13.4.2</b> Ant community differences</a></li>
 </ul></li>
-<li class="chapter" data-level="13.5" data-path="Lab-ants.html"><a href="Lab-ants.html#references-1"><i class="fa fa-check"></i><b>13.5</b> References</a></li>
+<li class="chapter" data-level="13.5" data-path="Lab_ants.html"><a href="Lab_ants.html#references-1"><i class="fa fa-check"></i><b>13.5</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="Lab-phorid.html"><a href="Lab-phorid.html"><i class="fa fa-check"></i><b>14</b> Phorid Lab: Parasitoid impacts on host foraging behavior with Phorid flies and fire ants</a>
+<li class="chapter" data-level="14" data-path="Lab_phorid.html"><a href="Lab_phorid.html"><i class="fa fa-check"></i><b>14</b> Phorid Lab: Parasitoid impacts on host foraging behavior with Phorid flies and fire ants</a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="Lab-phorid.html"><a href="Lab-phorid.html#background-1"><i class="fa fa-check"></i><b>14.1</b> Background</a>
+<li class="chapter" data-level="14.1" data-path="Lab_phorid.html"><a href="Lab_phorid.html#background-1"><i class="fa fa-check"></i><b>14.1</b> Background</a>
 <ul>
-<li class="chapter" data-level="14.1.1" data-path="Lab-phorid.html"><a href="Lab-phorid.html#fire-ants-and-phorid-flies"><i class="fa fa-check"></i><b>14.1.1</b> Fire ants and phorid flies</a></li>
-<li class="chapter" data-level="14.1.2" data-path="Lab-phorid.html"><a href="Lab-phorid.html#fire-ants-natural-history"><i class="fa fa-check"></i><b>14.1.2</b> Fire ants natural history</a></li>
+<li class="chapter" data-level="14.1.1" data-path="Lab_phorid.html"><a href="Lab_phorid.html#fire-ants-and-phorid-flies"><i class="fa fa-check"></i><b>14.1.1</b> Fire ants and phorid flies</a></li>
+<li class="chapter" data-level="14.1.2" data-path="Lab_phorid.html"><a href="Lab_phorid.html#fire-ants-natural-history"><i class="fa fa-check"></i><b>14.1.2</b> Fire ants natural history</a></li>
 </ul></li>
-<li class="chapter" data-level="14.2" data-path="Lab-phorid.html"><a href="Lab-phorid.html#objectives"><i class="fa fa-check"></i><b>14.2</b> Objectives</a></li>
-<li class="chapter" data-level="14.3" data-path="Lab-phorid.html"><a href="Lab-phorid.html#methods-2"><i class="fa fa-check"></i><b>14.3</b> Methods</a>
+<li class="chapter" data-level="14.2" data-path="Lab_phorid.html"><a href="Lab_phorid.html#objectives"><i class="fa fa-check"></i><b>14.2</b> Objectives</a></li>
+<li class="chapter" data-level="14.3" data-path="Lab_phorid.html"><a href="Lab_phorid.html#methods-2"><i class="fa fa-check"></i><b>14.3</b> Methods</a>
 <ul>
-<li class="chapter" data-level="14.3.1" data-path="Lab-phorid.html"><a href="Lab-phorid.html#phorid-impact-on-fire-ant-foraging"><i class="fa fa-check"></i><b>14.3.1</b> Phorid impact on fire ant foraging</a></li>
-<li class="chapter" data-level="14.3.2" data-path="Lab-phorid.html"><a href="Lab-phorid.html#using-the-hobo-mx2303-data-logger"><i class="fa fa-check"></i><b>14.3.2</b> Using the HOBO MX2303 data logger</a></li>
+<li class="chapter" data-level="14.3.1" data-path="Lab_phorid.html"><a href="Lab_phorid.html#phorid-impact-on-fire-ant-foraging"><i class="fa fa-check"></i><b>14.3.1</b> Phorid impact on fire ant foraging</a></li>
+<li class="chapter" data-level="14.3.2" data-path="Lab_phorid.html"><a href="Lab_phorid.html#using-the-hobo-mx2303-data-logger"><i class="fa fa-check"></i><b>14.3.2</b> Using the HOBO MX2303 data logger</a></li>
 </ul></li>
-<li class="chapter" data-level="14.4" data-path="Lab-phorid.html"><a href="Lab-phorid.html#modified-protocol-if-phorids-are-not-present"><i class="fa fa-check"></i><b>14.4</b> Modified protocol if phorids are not present</a></li>
-<li class="chapter" data-level="14.5" data-path="Lab-phorid.html"><a href="Lab-phorid.html#analysis-2"><i class="fa fa-check"></i><b>14.5</b> Analysis</a>
+<li class="chapter" data-level="14.4" data-path="Lab_phorid.html"><a href="Lab_phorid.html#modified-protocol-if-phorids-are-not-present"><i class="fa fa-check"></i><b>14.4</b> Modified protocol if phorids are not present</a></li>
+<li class="chapter" data-level="14.5" data-path="Lab_phorid.html"><a href="Lab_phorid.html#analysis-2"><i class="fa fa-check"></i><b>14.5</b> Analysis</a>
 <ul>
-<li class="chapter" data-level="14.5.1" data-path="Lab-phorid.html"><a href="Lab-phorid.html#effect-of-phorids-on-ant-foraging"><i class="fa fa-check"></i><b>14.5.1</b> Effect of phorids on ant foraging</a></li>
-<li class="chapter" data-level="14.5.2" data-path="Lab-phorid.html"><a href="Lab-phorid.html#effects-of-environmental-conditions"><i class="fa fa-check"></i><b>14.5.2</b> Effects of environmental conditions</a></li>
+<li class="chapter" data-level="14.5.1" data-path="Lab_phorid.html"><a href="Lab_phorid.html#effect-of-phorids-on-ant-foraging"><i class="fa fa-check"></i><b>14.5.1</b> Effect of phorids on ant foraging</a></li>
+<li class="chapter" data-level="14.5.2" data-path="Lab_phorid.html"><a href="Lab_phorid.html#effects-of-environmental-conditions"><i class="fa fa-check"></i><b>14.5.2</b> Effects of environmental conditions</a></li>
 </ul></li>
-<li class="chapter" data-level="14.6" data-path="Lab-phorid.html"><a href="Lab-phorid.html#discussion-3"><i class="fa fa-check"></i><b>14.6</b> Discussion</a></li>
-<li class="chapter" data-level="14.7" data-path="Lab-phorid.html"><a href="Lab-phorid.html#some-questions-from-previous-semesters"><i class="fa fa-check"></i><b>14.7</b> Some questions from previous semesters:</a></li>
+<li class="chapter" data-level="14.6" data-path="Lab_phorid.html"><a href="Lab_phorid.html#discussion-3"><i class="fa fa-check"></i><b>14.6</b> Discussion</a></li>
+<li class="chapter" data-level="14.7" data-path="Lab_phorid.html"><a href="Lab_phorid.html#some-questions-from-previous-semesters"><i class="fa fa-check"></i><b>14.7</b> Some questions from previous semesters:</a></li>
 </ul></li>
 <li class="part"><span><b>IV Analysis Homeworks</b></span></li>
 <li class="chapter" data-level="15" data-path="hw-succession.html"><a href="hw-succession.html"><i class="fa fa-check"></i><b>15</b> Homework: Succession</a>
@@ -457,25 +481,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="hw-succession" class="section level1" number="15">
-<h1><span class="header-section-number">15</span> Homework: Succession</h1>
-<div id="required-reading" class="section level2" number="15.1">
-<h2><span class="header-section-number">15.1</span> Required Reading</h2>
+<div id="hw-succession" class="section level1 hasAnchor" number="15">
+<h1><span class="header-section-number">15</span> Homework: Succession<a href="hw-succession.html#hw-succession" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="required-reading" class="section level2 hasAnchor" number="15.1">
+<h2><span class="header-section-number">15.1</span> Required Reading<a href="hw-succession.html#required-reading" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>This homework will prepare you to analyze the data from the <a href="#lab_succession">succession lab</a>.
 You should read over that the material to properly understand the data you’ll be working with here.
 Information on the data-analysis techniques you’ll need to use can be found in Chapters <a href="r-intro.html#r-intro">4</a>, <a href="r-ggplot.html#r-ggplot">5</a>, and <a href="r-dplyr.html#r-dplyr">6</a>, as well as Sections <a href="r-stats.html#r-stats-factors">7.1</a> and <a href="r-stats.html#r-stats-cat">7.2</a>.</p>
 <p>Please attempt this to the best of your ability.
 Once you’ve read the above chapters, I will be happy to meet with you (individually or in groups) to provide guidance and support on this material.</p>
 </div>
-<div id="objectives-1" class="section level2" number="15.2">
-<h2><span class="header-section-number">15.2</span> Objectives</h2>
+<div id="objectives-1" class="section level2 hasAnchor" number="15.2">
+<h2><span class="header-section-number">15.2</span> Objectives<a href="hw-succession.html#objectives-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The analysis for this lab should answer:</p>
 <ul>
 <li>Is there a difference in the relative abundances of species between canopy and sapling trees in each habitat?</li>
 <li>Does canopy density differ among habitats?</li>
 </ul>
-<div id="whats-due" class="section level3" number="15.2.1">
-<h3><span class="header-section-number">15.2.1</span> What’s due?</h3>
+<div id="whats-due" class="section level3 hasAnchor" number="15.2.1">
+<h3><span class="header-section-number">15.2.1</span> What’s due?<a href="hw-succession.html#whats-due" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li>A 3-panel figure that shows the relative abundance of canopy vs. sapling trees in each of the 3 habitats. You can create each panel separately, as long as they’re presented together with a single caption.</li>
 <li>For each habitat, a contingency table that shows the abundance of canopy and sapling trees for the 5 most abundant species in that habitat.</li>
@@ -486,11 +510,11 @@ Once you’ve read the above chapters, I will be happy to meet with you (individ
 The figures and tables you create should follow the guides in Chapter <a href="figures.html#figures">3</a>.</p>
 </div>
 </div>
-<div id="getting-started" class="section level2" number="15.3">
-<h2><span class="header-section-number">15.3</span> Getting started</h2>
+<div id="getting-started" class="section level2 hasAnchor" number="15.3">
+<h2><span class="header-section-number">15.3</span> Getting started<a href="hw-succession.html#getting-started" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>As this is the first stats homework, let’s make sure you’re using RStudio correctly.</p>
-<div id="make-sure-your-software-is-up-to-date" class="section level3" number="15.3.1">
-<h3><span class="header-section-number">15.3.1</span> Make sure your software is up-to-date</h3>
+<div id="make-sure-your-software-is-up-to-date" class="section level3 hasAnchor" number="15.3.1">
+<h3><span class="header-section-number">15.3.1</span> Make sure your software is up-to-date<a href="hw-succession.html#make-sure-your-software-is-up-to-date" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><strong>Check R Version:</strong> Open RStudio.
 In the Console, your R version should be listed.
 If it is less that 4.0, you need to re-install R.
@@ -518,8 +542,8 @@ Make sure that the following packages are at least this high:</p>
 <p>-<code>cowplot</code> -<code>vegan</code> -<code>ggforce</code></p>
 <p>If any of these are missing or out of date, use <code>install.packages(c("package1", "package2", "etc"))</code> to get them.</p>
 </div>
-<div id="create-the-rstudio-project" class="section level3" number="15.3.2">
-<h3><span class="header-section-number">15.3.2</span> Create the RStudio Project</h3>
+<div id="create-the-rstudio-project" class="section level3 hasAnchor" number="15.3.2">
+<h3><span class="header-section-number">15.3.2</span> Create the RStudio Project<a href="hw-succession.html#create-the-rstudio-project" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In the upper-right corner of the RStudio window, there should be a box that says <strong>Project: (None)</strong>.
 Click this, then on the drop-down menu select <em>New Project..</em>.</p>
 <p>If you already have a folder on your computer for Bio 373L, select <em>Existing Directory</em>, then hit <em>Browse</em> and navigate to that folder.
@@ -538,16 +562,16 @@ From here, use the <em>New Folder</em> button to create the following subdirecto
 </ul>
 <p>Organizing your project like this is a good way to keep your files tidy and easy to find.</p>
 </div>
-<div id="create-an-r-script." class="section level3" number="15.3.3">
-<h3><span class="header-section-number">15.3.3</span> Create an R script.</h3>
+<div id="create-an-r-script." class="section level3 hasAnchor" number="15.3.3">
+<h3><span class="header-section-number">15.3.3</span> Create an R script.<a href="hw-succession.html#create-an-r-script." class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Create a new R script with <em>Ctrl + Shift + N</em> or <em>File -&gt; New File -&gt; R Script</em>. This will open up the script panel.</p>
 <p>Start your script with this code:</p>
-<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="hw-succession.html#cb163-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Succession Lab Analysis Homework</span></span>
-<span id="cb163-2"><a href="hw-succession.html#cb163-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb163-3"><a href="hw-succession.html#cb163-3" aria-hidden="true" tabindex="-1"></a><span class="do">## Setup ####</span></span>
-<span id="cb163-4"><a href="hw-succession.html#cb163-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Load Required Packages</span></span>
-<span id="cb163-5"><a href="hw-succession.html#cb163-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb163-6"><a href="hw-succession.html#cb163-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cowplot)</span></code></pre></div>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="hw-succession.html#cb161-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Succession Lab Analysis Homework</span></span>
+<span id="cb161-2"><a href="hw-succession.html#cb161-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb161-3"><a href="hw-succession.html#cb161-3" aria-hidden="true" tabindex="-1"></a><span class="do">## Setup ####</span></span>
+<span id="cb161-4"><a href="hw-succession.html#cb161-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Load Required Packages</span></span>
+<span id="cb161-5"><a href="hw-succession.html#cb161-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb161-6"><a href="hw-succession.html#cb161-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cowplot)</span></code></pre></div>
 <p>Put your cursor on each line and hit <code>Ctrl + Enter</code> (or <code>Cmd + Return</code> on a Mac).
 This will send that line to the console and run it.
 Entering your commands in a script makes it a lot easier to see what you’ve done, repeat it, or modify it.
@@ -555,23 +579,23 @@ You should only enter code in the console if you don’t want a record of it (wh
 <p>Save your script as <code>R/hw_succession.R</code></p>
 </div>
 </div>
-<div id="the-data" class="section level2" number="15.4">
-<h2><span class="header-section-number">15.4</span> The Data</h2>
+<div id="the-data" class="section level2 hasAnchor" number="15.4">
+<h2><span class="header-section-number">15.4</span> The Data<a href="hw-succession.html#the-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>For the homework, we’ll use a dataset in Fall of 2019.</p>
-<div id="download-and-import-the-data" class="section level3" number="15.4.1">
-<h3><span class="header-section-number">15.4.1</span> Download and import the data</h3>
+<div id="download-and-import-the-data" class="section level3 hasAnchor" number="15.4.1">
+<h3><span class="header-section-number">15.4.1</span> Download and import the data<a href="hw-succession.html#download-and-import-the-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Download <a href="https://raw.githubusercontent.com/Christopher-Peterson/Bio373L-Book/master/example_data/succession_long_F19.csv">succession_long_F19.csv</a> and save it in the <code>data</code> folder.
 To read and view the data, add the following lines to your script and run them:</p>
-<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="hw-succession.html#cb164-1" aria-hidden="true" tabindex="-1"></a>succession_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/succession_long_F19.csv&quot;</span>)</span>
-<span id="cb164-2"><a href="hw-succession.html#cb164-2" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(succession_data)</span></code></pre></div>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="hw-succession.html#cb162-1" aria-hidden="true" tabindex="-1"></a>succession_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/succession_long_F19.csv&quot;</span>)</span>
+<span id="cb162-2"><a href="hw-succession.html#cb162-2" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(succession_data)</span></code></pre></div>
 <p>Note that I used <code>read_csv()</code>, not <code>read.csv()</code>.
 Always use the version with the underscore; it’s part of the <code>readr</code> package (which is part of <code>tidyverse</code>) and is generally faster and more consistent than <code>read.csv()</code>.
 RStudio also has a data import tool.
 <strong>Do not use it.</strong>
 You should import your data with code so that you can go back later and see exactly what you’ve done.</p>
 </div>
-<div id="data" class="section level3" number="15.4.2">
-<h3><span class="header-section-number">15.4.2</span> Data</h3>
+<div id="data" class="section level3 hasAnchor" number="15.4.2">
+<h3><span class="header-section-number">15.4.2</span> Data<a href="hw-succession.html#data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Your data should look something like this:</p>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
 <table class=" lightable-paper" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; margin-left: auto; margin-right: auto;">
@@ -1047,80 +1071,80 @@ These are the columns that are relevant to the analysis:</p>
 (See section <a href="r-dplyr.html#r-dplyr-select">6.4</a>; section <a href="r-dplyr.html#r-dplyr-pipe">6.1</a> is also helpful).</p>
 </div>
 </div>
-<div id="comparing-the-relative-abundance-of-canopy-and-sapling-trees-in-each-habitat" class="section level2" number="15.5">
-<h2><span class="header-section-number">15.5</span> Comparing the relative abundance of canopy and sapling trees in each habitat</h2>
+<div id="comparing-the-relative-abundance-of-canopy-and-sapling-trees-in-each-habitat" class="section level2 hasAnchor" number="15.5">
+<h2><span class="header-section-number">15.5</span> Comparing the relative abundance of canopy and sapling trees in each habitat<a href="hw-succession.html#comparing-the-relative-abundance-of-canopy-and-sapling-trees-in-each-habitat" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>You’ll need to <code>filter()</code> your data (see <a href="r-dplyr.html#r-dplyr-filter">6.3</a>) so that it only contains a single habitat when doing these comparisons.
 Let’s start with the old quarry; once you get everything working, you should copy and modify the code to work for the other two habitats.
-You should also read up on the pipe <code>( %&gt;% )</code>, as it is important for making sequences of steps (<a href="r-dplyr.html#r-dplyr-pipe">6.1</a>).</p>
-<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="hw-succession.html#cb165-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Relative Abundance - Q ####</span></span>
-<span id="cb165-2"><a href="hw-succession.html#cb165-2" aria-hidden="true" tabindex="-1"></a>data_Q <span class="ot">&lt;-</span> succession_data_thin <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Habitat <span class="sc">==</span> <span class="st">&quot;Q&quot;</span>)</span></code></pre></div>
+You should also read up on the pipe <code>( |&gt; )</code>, as it is important for making sequences of steps (<a href="r-dplyr.html#r-dplyr-pipe">6.1</a>).</p>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="hw-succession.html#cb163-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Relative Abundance - Q ####</span></span>
+<span id="cb163-2"><a href="hw-succession.html#cb163-2" aria-hidden="true" tabindex="-1"></a>data_Q <span class="ot">&lt;-</span> succession_data_thin <span class="sc">|&gt;</span> <span class="fu">filter</span>(Habitat <span class="sc">==</span> <span class="st">&quot;Q&quot;</span>)</span></code></pre></div>
 <p>Comment lines ending with <code>####</code> are a good way to organize different sections of your code. RStudio will allow you to collapse the code underneath it (until the next section), so you can navigate your document more easily.</p>
-<div id="create-a-barplot-comparing-canopy-sapling-abundances" class="section level3" number="15.5.1">
-<h3><span class="header-section-number">15.5.1</span> Create a barplot comparing canopy &amp; sapling abundances</h3>
+<div id="create-a-barplot-comparing-canopy-sapling-abundances" class="section level3 hasAnchor" number="15.5.1">
+<h3><span class="header-section-number">15.5.1</span> Create a barplot comparing canopy &amp; sapling abundances<a href="hw-succession.html#create-a-barplot-comparing-canopy-sapling-abundances" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>For each habitat, you’ll need to create a bar plot comparing the relative abundances of canopy and sapling species.</p>
-<div id="prepare-the-data" class="section level4" number="15.5.1.1">
-<h4><span class="header-section-number">15.5.1.1</span> Prepare the data</h4>
+<div id="prepare-the-data" class="section level4 hasAnchor" number="15.5.1.1">
+<h4><span class="header-section-number">15.5.1.1</span> Prepare the data<a href="hw-succession.html#prepare-the-data" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>First, you should create a data frame that has columns <em>Species</em>, <em>tree_type</em> (canopy/sapling), and <em>count</em> (the number trees of that species/type).
 You can create this from <code>data_Q</code> using a combination of <code>summarise()</code> (<a href="r-dplyr.html#r-dplyr-summarize">6.6</a>) and <code>group_by()</code> (<a href="r-dplyr.html#r-dplyr-group">6.7</a>).
 Your code should look something like this:</p>
-<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="hw-succession.html#cb166-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the number of sapling and canopy trees of each species for the Quarry habitat</span></span>
-<span id="cb166-2"><a href="hw-succession.html#cb166-2" aria-hidden="true" tabindex="-1"></a>canopy_sapling_counts_Q <span class="ot">&lt;-</span> data_Q <span class="sc">%&gt;%</span> </span>
-<span id="cb166-3"><a href="hw-succession.html#cb166-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Tree_type, Species) <span class="sc">%&gt;%</span> </span>
-<span id="cb166-4"><a href="hw-succession.html#cb166-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">count =</span> <span class="fu">n</span>()) <span class="co"># n() gets the number of rows within each group</span></span></code></pre></div>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="hw-succession.html#cb164-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the number of sapling and canopy trees of each species for the Quarry habitat</span></span>
+<span id="cb164-2"><a href="hw-succession.html#cb164-2" aria-hidden="true" tabindex="-1"></a>canopy_sapling_counts_Q <span class="ot">&lt;-</span> data_Q <span class="sc">|&gt;</span> </span>
+<span id="cb164-3"><a href="hw-succession.html#cb164-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Tree_type, Species) <span class="sc">|&gt;</span> </span>
+<span id="cb164-4"><a href="hw-succession.html#cb164-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">count =</span> <span class="fu">n</span>()) <span class="co"># n() gets the number of rows within each group</span></span></code></pre></div>
 <p>Next, we need to calculate relative abundances of each species for canopy and sapling trees.
 You can do this by dividing <code>count</code> by the total count within the tree-type category.
 The best way to do this is by combining <code>group_by()</code> with <code>mutate()</code> (<a href="r-dplyr.html#r-dplyr-mutate">6.2</a>).
 Within the mutate command, you’ll want to use the <code>sum()</code> function.</p>
-<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="hw-succession.html#cb167-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate relative abundance</span></span>
-<span id="cb167-2"><a href="hw-succession.html#cb167-2" aria-hidden="true" tabindex="-1"></a>rel_abundance_Q <span class="ot">&lt;-</span> canopy_sapling_counts_Q <span class="sc">%&gt;%</span> </span>
-<span id="cb167-3"><a href="hw-succession.html#cb167-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>() <span class="sc">%&gt;%</span>  <span class="co"># Fill this out</span></span>
-<span id="cb167-4"><a href="hw-succession.html#cb167-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">relative_abundance =</span> ) <span class="co"># fill this out</span></span>
-<span id="cb167-5"><a href="hw-succession.html#cb167-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb167-6"><a href="hw-succession.html#cb167-6" aria-hidden="true" tabindex="-1"></a><span class="co"># To verify you did it correctly, run this:</span></span>
-<span id="cb167-7"><a href="hw-succession.html#cb167-7" aria-hidden="true" tabindex="-1"></a>rel_abundance_Q <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">total =</span> <span class="fu">sum</span>(relative_abundance))</span>
-<span id="cb167-8"><a href="hw-succession.html#cb167-8" aria-hidden="true" tabindex="-1"></a><span class="co"># You should get a total of 1 for each tree type</span></span></code></pre></div>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="hw-succession.html#cb165-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate relative abundance</span></span>
+<span id="cb165-2"><a href="hw-succession.html#cb165-2" aria-hidden="true" tabindex="-1"></a>rel_abundance_Q <span class="ot">&lt;-</span> canopy_sapling_counts_Q <span class="sc">|&gt;</span> </span>
+<span id="cb165-3"><a href="hw-succession.html#cb165-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>() <span class="sc">|&gt;</span>  <span class="co"># Fill this out</span></span>
+<span id="cb165-4"><a href="hw-succession.html#cb165-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">relative_abundance =</span> ) <span class="co"># fill this out</span></span>
+<span id="cb165-5"><a href="hw-succession.html#cb165-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb165-6"><a href="hw-succession.html#cb165-6" aria-hidden="true" tabindex="-1"></a><span class="co"># To verify you did it correctly, run this:</span></span>
+<span id="cb165-7"><a href="hw-succession.html#cb165-7" aria-hidden="true" tabindex="-1"></a>rel_abundance_Q <span class="sc">|&gt;</span> <span class="fu">summarise</span>(<span class="at">total =</span> <span class="fu">sum</span>(relative_abundance))</span>
+<span id="cb165-8"><a href="hw-succession.html#cb165-8" aria-hidden="true" tabindex="-1"></a><span class="co"># You should get a total of 1 for each tree type</span></span></code></pre></div>
 <p>One last detail: by default, categorical data (like species identities) are ordered alphabetically along the x axis by default.
 It is better to change this ordering into something informative.
 For this figure, we will sort the data by decreasing canopy abundance, then convert <code>Species</code> into a factor (discussed in section <a href="#r-stats-factor"><strong>??</strong></a>).
 To do this, you’ll need to use <code>arrange()</code>, <code>mutate()</code> and <code>fct_inorder()</code>.</p>
-<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="hw-succession.html#cb168-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sort species by relative canopy abundance</span></span>
-<span id="cb168-2"><a href="hw-succession.html#cb168-2" aria-hidden="true" tabindex="-1"></a>plot_data_Q <span class="ot">&lt;-</span> rel_abundance_Q <span class="sc">%&gt;%</span> </span>
-<span id="cb168-3"><a href="hw-succession.html#cb168-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>( , ) <span class="sc">%&gt;%</span> <span class="co"># You&#39;ll need to arrange by TWO columns; </span></span>
-<span id="cb168-4"><a href="hw-succession.html#cb168-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Species =</span> <span class="fu">fct_inorder</span>(Species)) <span class="co"># Convert species into a factor based on its current sorting</span></span></code></pre></div>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="hw-succession.html#cb166-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sort species by relative canopy abundance</span></span>
+<span id="cb166-2"><a href="hw-succession.html#cb166-2" aria-hidden="true" tabindex="-1"></a>plot_data_Q <span class="ot">&lt;-</span> rel_abundance_Q <span class="sc">|&gt;</span> </span>
+<span id="cb166-3"><a href="hw-succession.html#cb166-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>( , ) <span class="sc">|&gt;</span> <span class="co"># You&#39;ll need to arrange by TWO columns; </span></span>
+<span id="cb166-4"><a href="hw-succession.html#cb166-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Species =</span> <span class="fu">fct_inorder</span>(Species)) <span class="co"># Convert species into a factor based on its current sorting</span></span></code></pre></div>
 <p>View your final plot data; you should have a data frame with canopy trees on top, and decreasing relative abundances.</p>
 </div>
-<div id="make-the-figure" class="section level4" number="15.5.1.2">
-<h4><span class="header-section-number">15.5.1.2</span> Make the figure</h4>
+<div id="make-the-figure" class="section level4 hasAnchor" number="15.5.1.2">
+<h4><span class="header-section-number">15.5.1.2</span> Make the figure<a href="hw-succession.html#make-the-figure" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>We’ll be making a bar graph using <code>ggplot</code>; I’d recommend reading all of Chapter <a href="r-ggplot.html#r-ggplot">5</a>, with particular focus on Section <a href="r-ggplot.html#r-ggplot-discx-discy">5.3.5</a>.</p>
-<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="hw-succession.html#cb169-1" aria-hidden="true" tabindex="-1"></a>plot_rel_abund_Q <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(plot_data_Q) <span class="sc">+</span> </span>
-<span id="cb169-2"><a href="hw-succession.html#cb169-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>() <span class="sc">+</span> <span class="co"># You need to assign x, y, and fill aesthetics to different columns in plot_data_Q</span></span>
-<span id="cb169-3"><a href="hw-succession.html#cb169-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">position =</span> <span class="st">&quot;dodge&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb169-4"><a href="hw-succession.html#cb169-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span>  <span class="co"># Remove gridlines</span></span>
-<span id="cb169-5"><a href="hw-succession.html#cb169-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_d</span>(<span class="st">&quot;Tree Age Class&quot;</span>) <span class="sc">+</span> <span class="co"># changes the colors of the bars;</span></span>
-<span id="cb169-6"><a href="hw-succession.html#cb169-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Name Your X Axis&quot;</span>) <span class="sc">+</span> <span class="co"># </span></span>
-<span id="cb169-7"><a href="hw-succession.html#cb169-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Name Your Y Axis&quot;</span>) <span class="co"># You need to adjust these</span></span>
-<span id="cb169-8"><a href="hw-succession.html#cb169-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb169-9"><a href="hw-succession.html#cb169-9" aria-hidden="true" tabindex="-1"></a>plot_rel_abund_Q <span class="co"># run this to view the plot</span></span></code></pre></div>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="hw-succession.html#cb167-1" aria-hidden="true" tabindex="-1"></a>plot_rel_abund_Q <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(plot_data_Q) <span class="sc">+</span> </span>
+<span id="cb167-2"><a href="hw-succession.html#cb167-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>() <span class="sc">+</span> <span class="co"># You need to assign x, y, and fill aesthetics to different columns in plot_data_Q</span></span>
+<span id="cb167-3"><a href="hw-succession.html#cb167-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">position =</span> <span class="st">&quot;dodge&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb167-4"><a href="hw-succession.html#cb167-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span>  <span class="co"># Remove gridlines</span></span>
+<span id="cb167-5"><a href="hw-succession.html#cb167-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_d</span>(<span class="st">&quot;Tree Age Class&quot;</span>) <span class="sc">+</span> <span class="co"># changes the colors of the bars;</span></span>
+<span id="cb167-6"><a href="hw-succession.html#cb167-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Name Your X Axis&quot;</span>) <span class="sc">+</span> <span class="co"># </span></span>
+<span id="cb167-7"><a href="hw-succession.html#cb167-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Name Your Y Axis&quot;</span>) <span class="co"># You need to adjust these</span></span>
+<span id="cb167-8"><a href="hw-succession.html#cb167-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb167-9"><a href="hw-succession.html#cb167-9" aria-hidden="true" tabindex="-1"></a>plot_rel_abund_Q <span class="co"># run this to view the plot</span></span></code></pre></div>
 <p>See the chapter for details of how these arguments work (you can also see the <a href="https://ggplot2.tidyverse.org/reference/">ggplot2 website</a> for more information).
 I would recommend changing the <code>scale_fill_</code> to a different option so you can customize your colors (<a href="r-ggplot.html#r-ggplot-aes-color">5.2.1</a>).</p>
 <p>To save your plot as an image do this:</p>
-<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="hw-succession.html#cb170-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">&quot;figures/succession_rel_abundance_Q.png&quot;</span>, <span class="co"># File name</span></span>
-<span id="cb170-2"><a href="hw-succession.html#cb170-2" aria-hidden="true" tabindex="-1"></a>       plot_rel_abund_Q, <span class="co"># plot</span></span>
-<span id="cb170-3"><a href="hw-succession.html#cb170-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">dpi =</span> <span class="dv">300</span>, <span class="co"># keeps a high resolution; don&#39;t change this</span></span>
-<span id="cb170-4"><a href="hw-succession.html#cb170-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">width =</span> <span class="dv">7</span>, <span class="at">height =</span> <span class="dv">5</span> <span class="co"># Width &amp; height in inches; feel free to change as needed</span></span>
-<span id="cb170-5"><a href="hw-succession.html#cb170-5" aria-hidden="true" tabindex="-1"></a>       )</span></code></pre></div>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="hw-succession.html#cb168-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">&quot;figures/succession_rel_abundance_Q.png&quot;</span>, <span class="co"># File name</span></span>
+<span id="cb168-2"><a href="hw-succession.html#cb168-2" aria-hidden="true" tabindex="-1"></a>       plot_rel_abund_Q, <span class="co"># plot</span></span>
+<span id="cb168-3"><a href="hw-succession.html#cb168-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">dpi =</span> <span class="dv">300</span>, <span class="co"># keeps a high resolution; don&#39;t change this</span></span>
+<span id="cb168-4"><a href="hw-succession.html#cb168-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">width =</span> <span class="dv">7</span>, <span class="at">height =</span> <span class="dv">5</span> <span class="co"># Width &amp; height in inches; feel free to change as needed</span></span>
+<span id="cb168-5"><a href="hw-succession.html#cb168-5" aria-hidden="true" tabindex="-1"></a>       )</span></code></pre></div>
 <p>Be sure to inspect the saved image to ensure that it looks right.</p>
 </div>
 </div>
-<div id="contingency-table-chi-squared-test-of-top-5-species" class="section level3" number="15.5.2">
-<h3><span class="header-section-number">15.5.2</span> Contingency table &amp; chi-squared test of top 5 species</h3>
+<div id="contingency-table-chi-squared-test-of-top-5-species" class="section level3 hasAnchor" number="15.5.2">
+<h3><span class="header-section-number">15.5.2</span> Contingency table &amp; chi-squared test of top 5 species<a href="hw-succession.html#contingency-table-chi-squared-test-of-top-5-species" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We want to take the five most abundant species in each habitat and create a contingency table.
 First, let’s find the five most abundant species.
 Create a data frame with column <code>Species</code> and <code>total_count</code> using a grouped <code>summarize()</code> operation, then sort it by decreasing count with <code>arrange()</code>.
 You’ll probably want to start with <code>data_Q</code>.
 Save the result as <code>total_counts_Q</code>.</p>
 <p>To get the five most common species, you can extract the <code>Species</code> column and subset it.</p>
-<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="hw-succession.html#cb171-1" aria-hidden="true" tabindex="-1"></a>top_five_spp_Q <span class="ot">&lt;-</span> total_counts_Q<span class="sc">$</span>Species[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="hw-succession.html#cb169-1" aria-hidden="true" tabindex="-1"></a>top_five_spp_Q <span class="ot">&lt;-</span> total_counts_Q<span class="sc">$</span>Species[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span></code></pre></div>
 <p>Filter <code>data_Q</code> so that it only includes species in the top 5, using the <code>%in%</code> operator, then use <code>select()</code> and <code>table()</code> to create a contingency table (<a href="r-stats.html#r-stats-cont-tbl">7.2.1</a>).
 Save the result as <code>contingency_tbl_Q</code>.</p>
 <p>Finally, you’ll need to run a chi-squared test or Fisher’s exact test (<a href="r-stats.html#r-stats-chisq">7.2.2</a>) on <code>contingency_tbl_Q</code>. Use the chi-squared test if all of the cells of the table have a count of 5 or more; otherwise, go with the Fisher’s test.</p>
@@ -1128,8 +1152,8 @@ Save the result as <code>contingency_tbl_Q</code>.</p>
 Copy the code you’ve developed above and modify it.</p>
 </div>
 </div>
-<div id="density" class="section level2" number="15.6">
-<h2><span class="header-section-number">15.6</span> Density</h2>
+<div id="density" class="section level2 hasAnchor" number="15.6">
+<h2><span class="header-section-number">15.6</span> Density<a href="hw-succession.html#density" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Density (according to the point-quarter system) is a property of each point (in this case, each <code>point_number</code>) and is only relevant for canopy trees.
 First, filter <code>succession_data_thin</code> so that it only contains canopy trees (save it as <code>canopy_data</code>).
 Now, we have 2 to 4 rows for each point, and we want to get one value per point (the density).
@@ -1138,9 +1162,9 @@ This suggests that a (grouped) summarize operation is what we need.</p>
 <p><span class="math display">\[\frac{1}{\text{mean} (x^2)}\]</span>
 where <span class="math inline">\(x\)</span> is <code>Distance</code>.
 Use this template to calculate density</p>
-<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="hw-succession.html#cb172-1" aria-hidden="true" tabindex="-1"></a>density_data <span class="ot">&lt;-</span> canopy_data <span class="sc">%&gt;%</span></span>
-<span id="cb172-2"><a href="hw-succession.html#cb172-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>( , ) <span class="sc">%&gt;%</span>  <span class="co"># you&#39;ll need two grouping factors</span></span>
-<span id="cb172-3"><a href="hw-succession.html#cb172-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">density =</span> ) <span class="co"># Note that ^2 is how you square something</span></span></code></pre></div>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="hw-succession.html#cb170-1" aria-hidden="true" tabindex="-1"></a>density_data <span class="ot">&lt;-</span> canopy_data <span class="sc">|&gt;</span></span>
+<span id="cb170-2"><a href="hw-succession.html#cb170-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>( , ) <span class="sc">|&gt;</span>  <span class="co"># you&#39;ll need two grouping factors</span></span>
+<span id="cb170-3"><a href="hw-succession.html#cb170-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">density =</span> ) <span class="co"># Note that ^2 is how you square something</span></span></code></pre></div>
 <p>Finally, let’s make a figure showing the distribution of density values at each habitat (any of the Discrete X, Continuous Y plot styles in Section <a href="r-ggplot.html#r-ggplot-discx-conty">5.3.2</a> will work).</p>
 
 </div>
@@ -1150,12 +1174,11 @@ Use this template to calculate density</p>
           </div>
         </div>
       </div>
-<a href="Lab-phorid.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="Lab_phorid.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="hw-mrr.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -1174,6 +1197,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -1194,6 +1218,10 @@ gitbook.start({
 "text": null
 },
 "download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "section",
 "scroll_highlight": true
@@ -1208,7 +1236,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

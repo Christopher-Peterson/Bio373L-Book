@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>16 Homework: Mark-Release-Recapture | Bio 373L Survival Guide</title>
   <meta name="description" content="Lab Manual for Field Ecology (Bio 373L) at UT Austin." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.28 and GitBook 2.6.7" />
 
   <meta property="og:title" content="16 Homework: Mark-Release-Recapture | Bio 373L Survival Guide" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="Lab Manual for Field Ecology (Bio 373L) at UT Austin." />
   <meta name="github-repo" content="Christopher-Peterson/Bio373L-Book" />
@@ -24,7 +23,7 @@
 <meta name="author" content="Christopher R. Peterson" />
 
 
-<meta name="date" content="2022-03-30" />
+<meta name="date" content="2022-08-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,8 +32,8 @@
   
 <link rel="prev" href="hw-succession.html"/>
 <link rel="next" href="hw-heterogeneity.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,7 +49,9 @@
 
 
 
-
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
@@ -118,6 +119,29 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -234,7 +258,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="6" data-path="r-dplyr.html"><a href="r-dplyr.html"><i class="fa fa-check"></i><b>6</b> Data manipulation with <code>dplyr</code></a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="r-dplyr.html"><a href="r-dplyr.html#r-dplyr-pipe"><i class="fa fa-check"></i><b>6.1</b> The Pipe (%&gt;%)</a></li>
+<li class="chapter" data-level="6.1" data-path="r-dplyr.html"><a href="r-dplyr.html#r-dplyr-pipe"><i class="fa fa-check"></i><b>6.1</b> The Pipe (|&gt;)</a></li>
 <li class="chapter" data-level="6.2" data-path="r-dplyr.html"><a href="r-dplyr.html#r-dplyr-mutate"><i class="fa fa-check"></i><b>6.2</b> Adding/modifying columns (mutate)</a></li>
 <li class="chapter" data-level="6.3" data-path="r-dplyr.html"><a href="r-dplyr.html#r-dplyr-filter"><i class="fa fa-check"></i><b>6.3</b> Subsetting by row (filter)</a></li>
 <li class="chapter" data-level="6.4" data-path="r-dplyr.html"><a href="r-dplyr.html#r-dplyr-select"><i class="fa fa-check"></i><b>6.4</b> Subsetting by column (select)</a></li>
@@ -334,42 +358,42 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="12.5" data-path="lab-heterogeneity.html"><a href="lab-heterogeneity.html#references"><i class="fa fa-check"></i><b>12.5</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="Lab-ants.html"><a href="Lab-ants.html"><i class="fa fa-check"></i><b>13</b> Ant Lab: Ant Community Ecology and the Effects of Invasive Fire Ants</a>
+<li class="chapter" data-level="13" data-path="Lab_ants.html"><a href="Lab_ants.html"><i class="fa fa-check"></i><b>13</b> Ant Lab: Ant Community Ecology and the Effects of Invasive Fire Ants</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="Lab-ants.html"><a href="Lab-ants.html#background"><i class="fa fa-check"></i><b>13.1</b> Background</a></li>
-<li class="chapter" data-level="13.2" data-path="Lab-ants.html"><a href="Lab-ants.html#questions-and-hypotheses-2"><i class="fa fa-check"></i><b>13.2</b> Questions and hypotheses</a></li>
-<li class="chapter" data-level="13.3" data-path="Lab-ants.html"><a href="Lab-ants.html#methods-1"><i class="fa fa-check"></i><b>13.3</b> Methods</a>
+<li class="chapter" data-level="13.1" data-path="Lab_ants.html"><a href="Lab_ants.html#background"><i class="fa fa-check"></i><b>13.1</b> Background</a></li>
+<li class="chapter" data-level="13.2" data-path="Lab_ants.html"><a href="Lab_ants.html#questions-and-hypotheses-2"><i class="fa fa-check"></i><b>13.2</b> Questions and hypotheses</a></li>
+<li class="chapter" data-level="13.3" data-path="Lab_ants.html"><a href="Lab_ants.html#methods-1"><i class="fa fa-check"></i><b>13.3</b> Methods</a>
 <ul>
-<li class="chapter" data-level="13.3.1" data-path="Lab-ants.html"><a href="Lab-ants.html#bait-survey"><i class="fa fa-check"></i><b>13.3.1</b> Bait Survey</a></li>
+<li class="chapter" data-level="13.3.1" data-path="Lab_ants.html"><a href="Lab_ants.html#bait-survey"><i class="fa fa-check"></i><b>13.3.1</b> Bait Survey</a></li>
 </ul></li>
-<li class="chapter" data-level="13.4" data-path="Lab-ants.html"><a href="Lab-ants.html#analysis-1"><i class="fa fa-check"></i><b>13.4</b> Analysis</a>
+<li class="chapter" data-level="13.4" data-path="Lab_ants.html"><a href="Lab_ants.html#analysis-1"><i class="fa fa-check"></i><b>13.4</b> Analysis</a>
 <ul>
-<li class="chapter" data-level="13.4.1" data-path="Lab-ants.html"><a href="Lab-ants.html#s.-invicta-habitat-preference"><i class="fa fa-check"></i><b>13.4.1</b> <em>S. invicta</em> habitat preference</a></li>
-<li class="chapter" data-level="13.4.2" data-path="Lab-ants.html"><a href="Lab-ants.html#ant-community-differences"><i class="fa fa-check"></i><b>13.4.2</b> Ant community differences</a></li>
+<li class="chapter" data-level="13.4.1" data-path="Lab_ants.html"><a href="Lab_ants.html#s.-invicta-habitat-preference"><i class="fa fa-check"></i><b>13.4.1</b> <em>S. invicta</em> habitat preference</a></li>
+<li class="chapter" data-level="13.4.2" data-path="Lab_ants.html"><a href="Lab_ants.html#ant-community-differences"><i class="fa fa-check"></i><b>13.4.2</b> Ant community differences</a></li>
 </ul></li>
-<li class="chapter" data-level="13.5" data-path="Lab-ants.html"><a href="Lab-ants.html#references-1"><i class="fa fa-check"></i><b>13.5</b> References</a></li>
+<li class="chapter" data-level="13.5" data-path="Lab_ants.html"><a href="Lab_ants.html#references-1"><i class="fa fa-check"></i><b>13.5</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="Lab-phorid.html"><a href="Lab-phorid.html"><i class="fa fa-check"></i><b>14</b> Phorid Lab: Parasitoid impacts on host foraging behavior with Phorid flies and fire ants</a>
+<li class="chapter" data-level="14" data-path="Lab_phorid.html"><a href="Lab_phorid.html"><i class="fa fa-check"></i><b>14</b> Phorid Lab: Parasitoid impacts on host foraging behavior with Phorid flies and fire ants</a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="Lab-phorid.html"><a href="Lab-phorid.html#background-1"><i class="fa fa-check"></i><b>14.1</b> Background</a>
+<li class="chapter" data-level="14.1" data-path="Lab_phorid.html"><a href="Lab_phorid.html#background-1"><i class="fa fa-check"></i><b>14.1</b> Background</a>
 <ul>
-<li class="chapter" data-level="14.1.1" data-path="Lab-phorid.html"><a href="Lab-phorid.html#fire-ants-and-phorid-flies"><i class="fa fa-check"></i><b>14.1.1</b> Fire ants and phorid flies</a></li>
-<li class="chapter" data-level="14.1.2" data-path="Lab-phorid.html"><a href="Lab-phorid.html#fire-ants-natural-history"><i class="fa fa-check"></i><b>14.1.2</b> Fire ants natural history</a></li>
+<li class="chapter" data-level="14.1.1" data-path="Lab_phorid.html"><a href="Lab_phorid.html#fire-ants-and-phorid-flies"><i class="fa fa-check"></i><b>14.1.1</b> Fire ants and phorid flies</a></li>
+<li class="chapter" data-level="14.1.2" data-path="Lab_phorid.html"><a href="Lab_phorid.html#fire-ants-natural-history"><i class="fa fa-check"></i><b>14.1.2</b> Fire ants natural history</a></li>
 </ul></li>
-<li class="chapter" data-level="14.2" data-path="Lab-phorid.html"><a href="Lab-phorid.html#objectives"><i class="fa fa-check"></i><b>14.2</b> Objectives</a></li>
-<li class="chapter" data-level="14.3" data-path="Lab-phorid.html"><a href="Lab-phorid.html#methods-2"><i class="fa fa-check"></i><b>14.3</b> Methods</a>
+<li class="chapter" data-level="14.2" data-path="Lab_phorid.html"><a href="Lab_phorid.html#objectives"><i class="fa fa-check"></i><b>14.2</b> Objectives</a></li>
+<li class="chapter" data-level="14.3" data-path="Lab_phorid.html"><a href="Lab_phorid.html#methods-2"><i class="fa fa-check"></i><b>14.3</b> Methods</a>
 <ul>
-<li class="chapter" data-level="14.3.1" data-path="Lab-phorid.html"><a href="Lab-phorid.html#phorid-impact-on-fire-ant-foraging"><i class="fa fa-check"></i><b>14.3.1</b> Phorid impact on fire ant foraging</a></li>
-<li class="chapter" data-level="14.3.2" data-path="Lab-phorid.html"><a href="Lab-phorid.html#using-the-hobo-mx2303-data-logger"><i class="fa fa-check"></i><b>14.3.2</b> Using the HOBO MX2303 data logger</a></li>
+<li class="chapter" data-level="14.3.1" data-path="Lab_phorid.html"><a href="Lab_phorid.html#phorid-impact-on-fire-ant-foraging"><i class="fa fa-check"></i><b>14.3.1</b> Phorid impact on fire ant foraging</a></li>
+<li class="chapter" data-level="14.3.2" data-path="Lab_phorid.html"><a href="Lab_phorid.html#using-the-hobo-mx2303-data-logger"><i class="fa fa-check"></i><b>14.3.2</b> Using the HOBO MX2303 data logger</a></li>
 </ul></li>
-<li class="chapter" data-level="14.4" data-path="Lab-phorid.html"><a href="Lab-phorid.html#modified-protocol-if-phorids-are-not-present"><i class="fa fa-check"></i><b>14.4</b> Modified protocol if phorids are not present</a></li>
-<li class="chapter" data-level="14.5" data-path="Lab-phorid.html"><a href="Lab-phorid.html#analysis-2"><i class="fa fa-check"></i><b>14.5</b> Analysis</a>
+<li class="chapter" data-level="14.4" data-path="Lab_phorid.html"><a href="Lab_phorid.html#modified-protocol-if-phorids-are-not-present"><i class="fa fa-check"></i><b>14.4</b> Modified protocol if phorids are not present</a></li>
+<li class="chapter" data-level="14.5" data-path="Lab_phorid.html"><a href="Lab_phorid.html#analysis-2"><i class="fa fa-check"></i><b>14.5</b> Analysis</a>
 <ul>
-<li class="chapter" data-level="14.5.1" data-path="Lab-phorid.html"><a href="Lab-phorid.html#effect-of-phorids-on-ant-foraging"><i class="fa fa-check"></i><b>14.5.1</b> Effect of phorids on ant foraging</a></li>
-<li class="chapter" data-level="14.5.2" data-path="Lab-phorid.html"><a href="Lab-phorid.html#effects-of-environmental-conditions"><i class="fa fa-check"></i><b>14.5.2</b> Effects of environmental conditions</a></li>
+<li class="chapter" data-level="14.5.1" data-path="Lab_phorid.html"><a href="Lab_phorid.html#effect-of-phorids-on-ant-foraging"><i class="fa fa-check"></i><b>14.5.1</b> Effect of phorids on ant foraging</a></li>
+<li class="chapter" data-level="14.5.2" data-path="Lab_phorid.html"><a href="Lab_phorid.html#effects-of-environmental-conditions"><i class="fa fa-check"></i><b>14.5.2</b> Effects of environmental conditions</a></li>
 </ul></li>
-<li class="chapter" data-level="14.6" data-path="Lab-phorid.html"><a href="Lab-phorid.html#discussion-3"><i class="fa fa-check"></i><b>14.6</b> Discussion</a></li>
-<li class="chapter" data-level="14.7" data-path="Lab-phorid.html"><a href="Lab-phorid.html#some-questions-from-previous-semesters"><i class="fa fa-check"></i><b>14.7</b> Some questions from previous semesters:</a></li>
+<li class="chapter" data-level="14.6" data-path="Lab_phorid.html"><a href="Lab_phorid.html#discussion-3"><i class="fa fa-check"></i><b>14.6</b> Discussion</a></li>
+<li class="chapter" data-level="14.7" data-path="Lab_phorid.html"><a href="Lab_phorid.html#some-questions-from-previous-semesters"><i class="fa fa-check"></i><b>14.7</b> Some questions from previous semesters:</a></li>
 </ul></li>
 <li class="part"><span><b>IV Analysis Homeworks</b></span></li>
 <li class="chapter" data-level="15" data-path="hw-succession.html"><a href="hw-succession.html"><i class="fa fa-check"></i><b>15</b> Homework: Succession</a>
@@ -457,10 +481,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="hw-mrr" class="section level1" number="16">
-<h1><span class="header-section-number">16</span> Homework: Mark-Release-Recapture</h1>
-<div id="required-reading-1" class="section level2" number="16.1">
-<h2><span class="header-section-number">16.1</span> Required Reading</h2>
+<div id="hw-mrr" class="section level1 hasAnchor" number="16">
+<h1><span class="header-section-number">16</span> Homework: Mark-Release-Recapture<a href="hw-mrr.html#hw-mrr" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="required-reading-1" class="section level2 hasAnchor" number="16.1">
+<h2><span class="header-section-number">16.1</span> Required Reading<a href="hw-mrr.html#required-reading-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>This homework will prepare you to analyze the data from the <a href="lab-mrr.html#lab-mrr">MRR lab</a>.
 You should read over that the material to properly understand the data you’ll be working with here.
 I will assume that you are familiar with the material used in the <a href="hw-succession.html#hw-succession">Succession homework</a>.
@@ -468,8 +492,8 @@ In addition, you should read Section <a href="r-stats.html#r-stats-lm">7.3</a>.<
 <pre><code>Please attempt this to the best of your ability.
 Once you&#39;ve read the above chapters, I will be happy to meet with you (individually or in groups) to provide guidance and support on this material.</code></pre>
 </div>
-<div id="objectives-and-whats-due" class="section level2" number="16.2">
-<h2><span class="header-section-number">16.2</span> Objectives (and what’s due)</h2>
+<div id="objectives-and-whats-due" class="section level2 hasAnchor" number="16.2">
+<h2><span class="header-section-number">16.2</span> Objectives (and what’s due)<a href="hw-mrr.html#objectives-and-whats-due" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>There are four primary questions in this lab, along with the associated results you’ll be submitting:</p>
 <ul>
 <li><p>How does sampling intensity improve mark-release-recapture (MRR) population size estimates?</p>
@@ -497,8 +521,8 @@ What’s the sex ratio?</p>
 </ul></li>
 </ul>
 </div>
-<div id="getting-started-1" class="section level2" number="16.3">
-<h2><span class="header-section-number">16.3</span> Getting started</h2>
+<div id="getting-started-1" class="section level2 hasAnchor" number="16.3">
+<h2><span class="header-section-number">16.3</span> Getting started<a href="hw-mrr.html#getting-started-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>There are several datasets you’ll need to download for this; they are all located on Canvas under the MRR module.</p>
 <ul>
 <li><strong>F19_recapture_data.zip</strong>: This contains a bunch of csv files. Extract it as a subfolder of <code>data</code> (so you should have a file named <code>data/F19_recapture_data/1_Teams_A.csv</code>).</li>
@@ -506,21 +530,21 @@ What’s the sex ratio?</p>
 <li><strong>F19_genotype_consensus.csv</strong>: Put this in <code>data</code>.</li>
 </ul>
 <p>You should begin your script with the following:</p>
-<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="hw-mrr.html#cb174-1" aria-hidden="true" tabindex="-1"></a><span class="co"># MRR Lab Analysis</span></span>
-<span id="cb174-2"><a href="hw-mrr.html#cb174-2" aria-hidden="true" tabindex="-1"></a><span class="do">#### Setup ####</span></span>
-<span id="cb174-3"><a href="hw-mrr.html#cb174-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb174-4"><a href="hw-mrr.html#cb174-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl) <span class="co"># used to read the excel file; this is installed with Tidyverse</span></span>
-<span id="cb174-5"><a href="hw-mrr.html#cb174-5" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_classic</span>()) <span class="co"># Removes gridlines from ggplot</span></span>
-<span id="cb174-6"><a href="hw-mrr.html#cb174-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb174-7"><a href="hw-mrr.html#cb174-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Data file locations: Change these when analyzing the current dataset</span></span>
-<span id="cb174-8"><a href="hw-mrr.html#cb174-8" aria-hidden="true" tabindex="-1"></a>recap_folder <span class="ot">=</span> <span class="st">&quot;data/F19_recapture_data&quot;</span></span>
-<span id="cb174-9"><a href="hw-mrr.html#cb174-9" aria-hidden="true" tabindex="-1"></a>genotype_file <span class="ot">=</span> <span class="st">&quot;data/F19_genotype_consensus.csv&quot;</span></span>
-<span id="cb174-10"><a href="hw-mrr.html#cb174-10" aria-hidden="true" tabindex="-1"></a>trinidad_file <span class="ot">=</span> <span class="st">&quot;data/MRR GilbertTrinidad data.xlsx&quot;</span> <span class="co"># This won&#39;t change</span></span></code></pre></div>
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="hw-mrr.html#cb172-1" aria-hidden="true" tabindex="-1"></a><span class="co"># MRR Lab Analysis</span></span>
+<span id="cb172-2"><a href="hw-mrr.html#cb172-2" aria-hidden="true" tabindex="-1"></a><span class="do">#### Setup ####</span></span>
+<span id="cb172-3"><a href="hw-mrr.html#cb172-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb172-4"><a href="hw-mrr.html#cb172-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl) <span class="co"># used to read the excel file; this is installed with Tidyverse</span></span>
+<span id="cb172-5"><a href="hw-mrr.html#cb172-5" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_classic</span>()) <span class="co"># Removes gridlines from ggplot</span></span>
+<span id="cb172-6"><a href="hw-mrr.html#cb172-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb172-7"><a href="hw-mrr.html#cb172-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Data file locations: Change these when analyzing the current dataset</span></span>
+<span id="cb172-8"><a href="hw-mrr.html#cb172-8" aria-hidden="true" tabindex="-1"></a>recap_folder <span class="ot">=</span> <span class="st">&quot;data/F19_recapture_data&quot;</span></span>
+<span id="cb172-9"><a href="hw-mrr.html#cb172-9" aria-hidden="true" tabindex="-1"></a>genotype_file <span class="ot">=</span> <span class="st">&quot;data/F19_genotype_consensus.csv&quot;</span></span>
+<span id="cb172-10"><a href="hw-mrr.html#cb172-10" aria-hidden="true" tabindex="-1"></a>trinidad_file <span class="ot">=</span> <span class="st">&quot;data/MRR GilbertTrinidad data.xlsx&quot;</span> <span class="co"># This won&#39;t change</span></span></code></pre></div>
 </div>
-<div id="sampling-intensity-and-lincoln-petersen" class="section level2" number="16.4">
-<h2><span class="header-section-number">16.4</span> Sampling Intensity and Lincoln-Petersen</h2>
-<div id="the-data-1" class="section level3" number="16.4.1">
-<h3><span class="header-section-number">16.4.1</span> The data</h3>
+<div id="sampling-intensity-and-lincoln-petersen" class="section level2 hasAnchor" number="16.4">
+<h2><span class="header-section-number">16.4</span> Sampling Intensity and Lincoln-Petersen<a href="hw-mrr.html#sampling-intensity-and-lincoln-petersen" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="the-data-1" class="section level3 hasAnchor" number="16.4.1">
+<h3><span class="header-section-number">16.4.1</span> The data<a href="hw-mrr.html#the-data-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>To simulate different sample sizes, I’ve pooled together the data collected by different groupings of teams.
 This includes all the data collected by each team on its own, by all pairs of teams (e.g., A&amp;B, A&amp;C, A&amp;D, etc), all triplets, etc., all the way to all teams combined.
 Each of these data are in a separate csv file in the recapture data folder.
@@ -528,14 +552,14 @@ You’re going to load them all into a single data frame.</p>
 <p>First, list all the csv files in the directory, then import them with the <code>read_csv()</code> function from the <code>readr</code> package.
 Note that you need <code>readr</code> version <code>2.0</code> or higher; earlier ones can’t handle multiple files.
 Additionally, make sure you use <code>read_csv()</code>, not <code>read.csv()</code>; these are different functions and they work slightly differently.</p>
-<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="hw-mrr.html#cb175-1" aria-hidden="true" tabindex="-1"></a><span class="do">#### Sample Size and LP Method ####</span></span>
-<span id="cb175-2"><a href="hw-mrr.html#cb175-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb175-3"><a href="hw-mrr.html#cb175-3" aria-hidden="true" tabindex="-1"></a><span class="co"># List the names of all csv files in the recap folder</span></span>
-<span id="cb175-4"><a href="hw-mrr.html#cb175-4" aria-hidden="true" tabindex="-1"></a>recap_files <span class="ot">&lt;-</span> <span class="fu">dir</span>(recap_folder, <span class="at">pattern =</span>  <span class="st">&quot;.csv&quot;</span>, <span class="at">full.names =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb175-5"><a href="hw-mrr.html#cb175-5" aria-hidden="true" tabindex="-1"></a>recap_files <span class="co"># take a look at it</span></span>
-<span id="cb175-6"><a href="hw-mrr.html#cb175-6" aria-hidden="true" tabindex="-1"></a>recap_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(recap_files) <span class="co"># Read all the recap files and combine as a single data frame</span></span>
-<span id="cb175-7"><a href="hw-mrr.html#cb175-7" aria-hidden="true" tabindex="-1"></a><span class="co"># You could add the argument id = &#39;file_name&#39; if you wanted to keep the original file name as an argument,</span></span>
-<span id="cb175-8"><a href="hw-mrr.html#cb175-8" aria-hidden="true" tabindex="-1"></a><span class="co"># but that isn&#39;t necessary with these data</span></span></code></pre></div>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="hw-mrr.html#cb173-1" aria-hidden="true" tabindex="-1"></a><span class="do">#### Sample Size and LP Method ####</span></span>
+<span id="cb173-2"><a href="hw-mrr.html#cb173-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb173-3"><a href="hw-mrr.html#cb173-3" aria-hidden="true" tabindex="-1"></a><span class="co"># List the names of all csv files in the recap folder</span></span>
+<span id="cb173-4"><a href="hw-mrr.html#cb173-4" aria-hidden="true" tabindex="-1"></a>recap_files <span class="ot">&lt;-</span> <span class="fu">dir</span>(recap_folder, <span class="at">pattern =</span>  <span class="st">&quot;.csv&quot;</span>, <span class="at">full.names =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb173-5"><a href="hw-mrr.html#cb173-5" aria-hidden="true" tabindex="-1"></a>recap_files <span class="co"># take a look at it</span></span>
+<span id="cb173-6"><a href="hw-mrr.html#cb173-6" aria-hidden="true" tabindex="-1"></a>recap_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(recap_files) <span class="co"># Read all the recap files and combine as a single data frame</span></span>
+<span id="cb173-7"><a href="hw-mrr.html#cb173-7" aria-hidden="true" tabindex="-1"></a><span class="co"># You could add the argument id = &#39;file_name&#39; if you wanted to keep the original file name as an argument,</span></span>
+<span id="cb173-8"><a href="hw-mrr.html#cb173-8" aria-hidden="true" tabindex="-1"></a><span class="co"># but that isn&#39;t necessary with these data</span></span></code></pre></div>
 <p>The columns of this data frame are:</p>
 <ul>
 <li><strong>Period:</strong> The first or second sampling period (as described in Section <a href="lab-mrr.html#lab-mrr-field-methods">11.3</a> ).</li>
@@ -545,8 +569,8 @@ Additionally, make sure you use <code>read_csv()</code>, not <code>read.csv()</c
 <li><strong>Team_combo:</strong> What combinations of teams were used to create this dataset? This relates to sample size.</li>
 </ul>
 </div>
-<div id="hw-mrr-lp-calc" class="section level3" number="16.4.2">
-<h3><span class="header-section-number">16.4.2</span> Calculating Lincoln-Petersen numbers</h3>
+<div id="hw-mrr-lp-calc" class="section level3 hasAnchor" number="16.4.2">
+<h3><span class="header-section-number">16.4.2</span> Calculating Lincoln-Petersen numbers<a href="hw-mrr.html#hw-mrr-lp-calc" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>For the LP method, we need the following numbers:</p>
 <ul>
 <li><span class="math inline">\(M_1\)</span>: Number of individuals marked in first sample period (This will be all of the first period individuals).</li>
@@ -557,60 +581,60 @@ Additionally, make sure you use <code>read_csv()</code>, not <code>read.csv()</c
 <p>We want to calculate these for each<code>Team_combo</code>.<br />
 The easiest way to do this with a grouped summarize command.
 The basic outline should be as follows:</p>
-<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="hw-mrr.html#cb176-1" aria-hidden="true" tabindex="-1"></a>lp_estimates <span class="ot">&lt;-</span> recap_data <span class="sc">%&gt;%</span> </span>
-<span id="cb176-2"><a href="hw-mrr.html#cb176-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(        ) <span class="sc">%&gt;%</span> <span class="co"># Finish this</span></span>
-<span id="cb176-3"><a href="hw-mrr.html#cb176-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>( <span class="co"># We&#39;re dropping the subscripts because they aren&#39;t necessary</span></span>
-<span id="cb176-4"><a href="hw-mrr.html#cb176-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">M =</span>     ,</span>
-<span id="cb176-5"><a href="hw-mrr.html#cb176-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">S =</span>     ,</span>
-<span id="cb176-6"><a href="hw-mrr.html#cb176-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">R =</span>     ,</span>
-<span id="cb176-7"><a href="hw-mrr.html#cb176-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">sample_size =</span> <span class="fu">n</span>() ) <span class="sc">%&gt;%</span> </span>
-<span id="cb176-8"><a href="hw-mrr.html#cb176-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">N_hat =</span> ) <span class="co"># Calculate N-hat from S, M, and R</span></span></code></pre></div>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="hw-mrr.html#cb174-1" aria-hidden="true" tabindex="-1"></a>lp_estimates <span class="ot">&lt;-</span> recap_data  <span class="sc">|&gt;</span>  </span>
+<span id="cb174-2"><a href="hw-mrr.html#cb174-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(        ) <span class="sc">|&gt;</span> <span class="co"># Finish this</span></span>
+<span id="cb174-3"><a href="hw-mrr.html#cb174-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>( <span class="co"># We&#39;re dropping the subscripts because they aren&#39;t necessary</span></span>
+<span id="cb174-4"><a href="hw-mrr.html#cb174-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">M =</span>     ,</span>
+<span id="cb174-5"><a href="hw-mrr.html#cb174-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">S =</span>     ,</span>
+<span id="cb174-6"><a href="hw-mrr.html#cb174-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">R =</span>     ,</span>
+<span id="cb174-7"><a href="hw-mrr.html#cb174-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">sample_size =</span> <span class="fu">n</span>() ) <span class="sc">|&gt;</span> </span>
+<span id="cb174-8"><a href="hw-mrr.html#cb174-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">N_hat =</span> ) <span class="co"># Calculate N-hat from S, M, and R</span></span></code></pre></div>
 <p>To calculate <code>M</code>, <code>S</code>, and <code>R</code>, you’ll need to combine logical statements (like you’d use in <code>filter()</code>, Section <a href="r-dplyr.html#r-dplyr-filter">6.3</a>) with the <code>sum()</code> function.
 This will give you a count of the number of cases where the logical condition is <code>TRUE</code>.
 For example, you can count the number of Male individuals in each Period and Capture Status with this:</p>
-<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="hw-mrr.html#cb177-1" aria-hidden="true" tabindex="-1"></a>recap_data <span class="sc">%&gt;%</span> </span>
-<span id="cb177-2"><a href="hw-mrr.html#cb177-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Period, Capture_Status) <span class="sc">%&gt;%</span> </span>
-<span id="cb177-3"><a href="hw-mrr.html#cb177-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">N_males =</span> <span class="fu">sum</span>(sex <span class="sc">==</span> <span class="st">&quot;M&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="hw-mrr.html#cb175-1" aria-hidden="true" tabindex="-1"></a>recap_data <span class="sc">|&gt;</span> </span>
+<span id="cb175-2"><a href="hw-mrr.html#cb175-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Period, Capture_Status) <span class="sc">|&gt;</span> </span>
+<span id="cb175-3"><a href="hw-mrr.html#cb175-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">N_males =</span> <span class="fu">sum</span>(sex <span class="sc">==</span> <span class="st">&quot;M&quot;</span>))</span></code></pre></div>
 <p>You may need to combine multiple logical conditions for some of these.</p>
 <p>You can use an <code>arrange()</code> function (Section <a href="r-dplyr.html#r-dplyr-arrange">6.5</a>) to figure out what the <span class="math inline">\(hat{N}\)</span> corresponds with the highest sample size.</p>
 </div>
-<div id="visualizing-the-effect-of-sample-size-on" class="section level3" number="16.4.3">
-<h3><span class="header-section-number">16.4.3</span> Visualizing the effect of sample size on $</h3>
+<div id="visualizing-the-effect-of-sample-size-on" class="section level3 hasAnchor" number="16.4.3">
+<h3><span class="header-section-number">16.4.3</span> Visualizing the effect of sample size on $<a href="hw-mrr.html#visualizing-the-effect-of-sample-size-on" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Create a plot from <code>lp_estimates</code> with <code>sample_size</code> on the x axis and <code>N_hat</code> on the y axis.
 Be sure to caption your figure.</p>
 </div>
 </div>
-<div id="estimates-by-sex-and-sex-ratios" class="section level2" number="16.5">
-<h2><span class="header-section-number">16.5</span> Estimates by Sex and Sex Ratios</h2>
+<div id="estimates-by-sex-and-sex-ratios" class="section level2 hasAnchor" number="16.5">
+<h2><span class="header-section-number">16.5</span> Estimates by Sex and Sex Ratios<a href="hw-mrr.html#estimates-by-sex-and-sex-ratios" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We want to estimate the number of males and females separately.
 Sampling intensity isn’t important for this, so let’s only include the data from the whole-class.</p>
-<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="hw-mrr.html#cb178-1" aria-hidden="true" tabindex="-1"></a><span class="do">#### Sex Ratios ####</span></span>
-<span id="cb178-2"><a href="hw-mrr.html#cb178-2" aria-hidden="true" tabindex="-1"></a>recap_data_full <span class="ot">&lt;-</span> recap_data <span class="sc">%&gt;%</span> </span>
-<span id="cb178-3"><a href="hw-mrr.html#cb178-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Team_combo <span class="sc">==</span> <span class="st">&quot;ABCDE&quot;</span>) <span class="co"># You may need to change this if there are more than 5 teams, e.g., &quot;ABCDEFG&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="hw-mrr.html#cb176-1" aria-hidden="true" tabindex="-1"></a><span class="do">#### Sex Ratios ####</span></span>
+<span id="cb176-2"><a href="hw-mrr.html#cb176-2" aria-hidden="true" tabindex="-1"></a>recap_data_full <span class="ot">&lt;-</span> recap_data <span class="sc">|&gt;</span> </span>
+<span id="cb176-3"><a href="hw-mrr.html#cb176-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Team_combo <span class="sc">==</span> <span class="st">&quot;ABCDE&quot;</span>) <span class="co"># You may need to change this if there are more than 5 teams, e.g., &quot;ABCDEFG&quot;</span></span></code></pre></div>
 <p>Now, you’ll want to use the same approach you used in Section <a href="hw-mrr.html#hw-mrr-lp-calc">16.4.2</a> to estimate the number of males and females from this dataset.
 This should result in a two-row data frame (one row for males, one for females).
 Save that as <code>lp_estimate_by_sex</code>.</p>
-<div id="is-the-sex-ratio-5050" class="section level3" number="16.5.1">
-<h3><span class="header-section-number">16.5.1</span> Is the Sex Ratio 50:50?</h3>
+<div id="is-the-sex-ratio-5050" class="section level3 hasAnchor" number="16.5.1">
+<h3><span class="header-section-number">16.5.1</span> Is the Sex Ratio 50:50?<a href="hw-mrr.html#is-the-sex-ratio-5050" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Next, we want to run a one-sample chi-squared test to see if the sex ratio is unbalanced.
 First, we define the observed counts (the LP estimates) and expected frequencies.
 Then, use a chi-squared test with the following arguments</p>
-<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="hw-mrr.html#cb179-1" aria-hidden="true" tabindex="-1"></a>sr_observed_counts <span class="ot">&lt;-</span> lp_estimates_by_sex<span class="sc">$</span>N_hat</span>
-<span id="cb179-2"><a href="hw-mrr.html#cb179-2" aria-hidden="true" tabindex="-1"></a>sr_expected_freq   <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">0.5</span>) <span class="co"># 50:50</span></span>
-<span id="cb179-3"><a href="hw-mrr.html#cb179-3" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(<span class="at">x =</span> sr_observed_counts,</span>
-<span id="cb179-4"><a href="hw-mrr.html#cb179-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">p =</span> sr_expected_freq) <span class="co">#  You MUST name the p argument</span></span></code></pre></div>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="hw-mrr.html#cb177-1" aria-hidden="true" tabindex="-1"></a>sr_observed_counts <span class="ot">&lt;-</span> lp_estimates_by_sex<span class="sc">$</span>N_hat</span>
+<span id="cb177-2"><a href="hw-mrr.html#cb177-2" aria-hidden="true" tabindex="-1"></a>sr_expected_freq   <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">0.5</span>) <span class="co"># 50:50</span></span>
+<span id="cb177-3"><a href="hw-mrr.html#cb177-3" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(<span class="at">x =</span> sr_observed_counts,</span>
+<span id="cb177-4"><a href="hw-mrr.html#cb177-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">p =</span> sr_expected_freq) <span class="co">#  You MUST name the p argument</span></span></code></pre></div>
 </div>
 </div>
-<div id="alternate-methods-for-population-size-estimates" class="section level2" number="16.6">
-<h2><span class="header-section-number">16.6</span> Alternate Methods for Population Size Estimates</h2>
+<div id="alternate-methods-for-population-size-estimates" class="section level2 hasAnchor" number="16.6">
+<h2><span class="header-section-number">16.6</span> Alternate Methods for Population Size Estimates<a href="hw-mrr.html#alternate-methods-for-population-size-estimates" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In this section, we’ll be comparing the LP method with a continuous-sampling approach that uses regression analysis.
 For background, see Section <a href="lab-mrr.html#lab-mrr-trinidad">11.4.3</a>.</p>
-<div id="the-data-2" class="section level3" number="16.6.1">
-<h3><span class="header-section-number">16.6.1</span> The data</h3>
+<div id="the-data-2" class="section level3 hasAnchor" number="16.6.1">
+<h3><span class="header-section-number">16.6.1</span> The data<a href="hw-mrr.html#the-data-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>This data is saved as an excel file; to import it, we’ll be using the <code>read_excel()</code> function, from the <code>readxl</code> package.</p>
-<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="hw-mrr.html#cb180-1" aria-hidden="true" tabindex="-1"></a><span class="do">#### Regression vs LP analysis (Trinidad Data) ####</span></span>
-<span id="cb180-2"><a href="hw-mrr.html#cb180-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb180-3"><a href="hw-mrr.html#cb180-3" aria-hidden="true" tabindex="-1"></a>trinidad_data <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(trinidad_file, <span class="at">sheet =</span> <span class="st">&quot;Sheet1&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="hw-mrr.html#cb178-1" aria-hidden="true" tabindex="-1"></a><span class="do">#### Regression vs LP analysis (Trinidad Data) ####</span></span>
+<span id="cb178-2"><a href="hw-mrr.html#cb178-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb178-3"><a href="hw-mrr.html#cb178-3" aria-hidden="true" tabindex="-1"></a>trinidad_data <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(trinidad_file, <span class="at">sheet =</span> <span class="st">&quot;Sheet1&quot;</span>)</span></code></pre></div>
 <p>The columns we care about</p>
 <ul>
 <li><strong>Sample_Period</strong>: These data were collected over Late April/ Early May, July, and August.</li>
@@ -623,14 +647,14 @@ For background, see Section <a href="lab-mrr.html#lab-mrr-trinidad">11.4.3</a>.<
 <li>The two columns beginning with Collect_ can be ignored</li>
 </ul>
 </div>
-<div id="lincoln-petersen-estimate" class="section level3" number="16.6.2">
-<h3><span class="header-section-number">16.6.2</span> Lincoln-Petersen estimate</h3>
+<div id="lincoln-petersen-estimate" class="section level3 hasAnchor" number="16.6.2">
+<h3><span class="header-section-number">16.6.2</span> Lincoln-Petersen estimate<a href="hw-mrr.html#lincoln-petersen-estimate" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Use a grouped <code>filter()</code> command to create a data frame containing the highest proportion of recaptures in each sampling period (3 rows total).
 Calculate <span class="math inline">\(\hat{N}\)</span> based on these data.
 Note that some of the column names you’ll need to use will be different, and you may need to calculate <code>M_1</code>, <code>R_2</code>, or <code>S_2</code> from a combination of existing columns.</p>
 </div>
-<div id="regression-estimate" class="section level3" number="16.6.3">
-<h3><span class="header-section-number">16.6.3</span> Regression estimate</h3>
+<div id="regression-estimate" class="section level3 hasAnchor" number="16.6.3">
+<h3><span class="header-section-number">16.6.3</span> Regression estimate<a href="hw-mrr.html#regression-estimate" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Filter your data to only include the first sample period and run a linear regression (Section <a href="r-stats.html#r-stats-lm">7.3</a>), with <code>prop_recapture</code> as the predictor/x/independent variable and <code>cumulative_M</code> as the response/y/dependent variable.
 Save the result as <code>trinidad_lm_apr</code>.
 View the results with <code>print(trinidad_lm_apr)</code> and take a look at the coefficients.
@@ -641,49 +665,49 @@ Therefore, calculating the value of <code>cumulative_M</code> when <code>prop_re
 Versions of predict have been designed for a wide variety of different statistical models in R, so understanding it can help with a variety of tasks.<br />
 First, define a new data frame that contains the new predictor variables (in this case, <code>prop_recapture = 1</code>).
 Then, use predict with the regression object and new data:</p>
-<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="hw-mrr.html#cb181-1" aria-hidden="true" tabindex="-1"></a>trinidad_predict_df <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">prop_recapture =</span> <span class="dv">1</span>) </span>
-<span id="cb181-2"><a href="hw-mrr.html#cb181-2" aria-hidden="true" tabindex="-1"></a>trinidad_nhat_lm_apr <span class="ot">=</span> <span class="fu">predict.lm</span>(trinidad_lm_apr, <span class="at">newdata =</span> trinidad_predict_df)</span></code></pre></div>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="hw-mrr.html#cb179-1" aria-hidden="true" tabindex="-1"></a>trinidad_predict_df <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">prop_recapture =</span> <span class="dv">1</span>) </span>
+<span id="cb179-2"><a href="hw-mrr.html#cb179-2" aria-hidden="true" tabindex="-1"></a>trinidad_nhat_lm_apr <span class="ot">=</span> <span class="fu">predict.lm</span>(trinidad_lm_apr, <span class="at">newdata =</span> trinidad_predict_df)</span></code></pre></div>
 <p>Do this for all three sample periods (you don’t need to make multiple <code>trinidad_predict_df</code>’s, they’re all the same) and compare these values with the Lincoln-Peterson estimates.</p>
 </div>
-<div id="regression-figure" class="section level3" number="16.6.4">
-<h3><span class="header-section-number">16.6.4</span> Regression figure</h3>
+<div id="regression-figure" class="section level3 hasAnchor" number="16.6.4">
+<h3><span class="header-section-number">16.6.4</span> Regression figure<a href="hw-mrr.html#regression-figure" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Create a figure in ggplot for your regressions (Section <a href="r-ggplot.html#r-ggplot-contx-conty">5.3.3</a>).
 You should use <code>geom_smooth(method = 'lm')</code> and <code>geom_point()</code> to display both the raw data and the regression line.
 Facet your data by sample period with facet_wrap() and make sure all three periods are stacked on top of each other in a single column (see <code>?facet_wrap</code> for details).</p>
 </div>
 </div>
-<div id="hardy-weinberg-equilibrium-optix" class="section level2" number="16.7">
-<h2><span class="header-section-number">16.7</span> Hardy-Weinberg Equilibrium &amp; Optix</h2>
+<div id="hardy-weinberg-equilibrium-optix" class="section level2 hasAnchor" number="16.7">
+<h2><span class="header-section-number">16.7</span> Hardy-Weinberg Equilibrium &amp; Optix<a href="hw-mrr.html#hardy-weinberg-equilibrium-optix" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>For this, we’ll be doing some quick population genetics.</p>
-<div id="the-data-3" class="section level3" number="16.7.1">
-<h3><span class="header-section-number">16.7.1</span> The data</h3>
+<div id="the-data-3" class="section level3 hasAnchor" number="16.7.1">
+<h3><span class="header-section-number">16.7.1</span> The data<a href="hw-mrr.html#the-data-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Import the data as:</p>
-<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="hw-mrr.html#cb182-1" aria-hidden="true" tabindex="-1"></a><span class="do">#### HWE Analysis ####</span></span>
-<span id="cb182-2"><a href="hw-mrr.html#cb182-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb182-3"><a href="hw-mrr.html#cb182-3" aria-hidden="true" tabindex="-1"></a>genotype_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(genotype_file)</span></code></pre></div>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="hw-mrr.html#cb180-1" aria-hidden="true" tabindex="-1"></a><span class="do">#### HWE Analysis ####</span></span>
+<span id="cb180-2"><a href="hw-mrr.html#cb180-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb180-3"><a href="hw-mrr.html#cb180-3" aria-hidden="true" tabindex="-1"></a>genotype_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(genotype_file)</span></code></pre></div>
 <p>The only column we care about for this is <strong>Genotype</strong>, which will be one of <em>FF</em>, <em>FH</em> or <em>HH</em>.</p>
 </div>
-<div id="calculating-hwe-ratios" class="section level3" number="16.7.2">
-<h3><span class="header-section-number">16.7.2</span> Calculating HWE ratios</h3>
+<div id="calculating-hwe-ratios" class="section level3 hasAnchor" number="16.7.2">
+<h3><span class="header-section-number">16.7.2</span> Calculating HWE ratios<a href="hw-mrr.html#calculating-hwe-ratios" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>First, we want to get the count and frequency of each genotype; do this with a grouped <code>summarize()</code>, followed by a <code>mutate()</code>, and name your new columns <code>count</code> and <code>frequency</code>.
 Your genotype frequencies should sum to 1.
 Save the new data frame as <code>genotype_observed</code>.</p>
 <p>To make the frequencies easier to work with, we’re going to re-shape the data (this is similar to what is covered in Chapter <a href="r-tidyr.html#r-tidyr">9</a>, but it isn’t covered there yet).
 Do this:</p>
-<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="hw-mrr.html#cb183-1" aria-hidden="true" tabindex="-1"></a>gt_freq_observed <span class="ot">&lt;-</span> genotype_observed <span class="sc">%&gt;%</span> </span>
-<span id="cb183-2"><a href="hw-mrr.html#cb183-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Genotype, frequency) <span class="sc">%&gt;%</span> </span>
-<span id="cb183-3"><a href="hw-mrr.html#cb183-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> Genotype, <span class="at">values_from =</span> frequency)</span></code></pre></div>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="hw-mrr.html#cb181-1" aria-hidden="true" tabindex="-1"></a>gt_freq_observed <span class="ot">&lt;-</span> genotype_observed <span class="sc">|&gt;</span> </span>
+<span id="cb181-2"><a href="hw-mrr.html#cb181-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Genotype, frequency) <span class="sc">|&gt;</span> </span>
+<span id="cb181-3"><a href="hw-mrr.html#cb181-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> Genotype, <span class="at">values_from =</span> frequency)</span></code></pre></div>
 <p>Next, use <code>summarize()</code> on <code>gt_freq_observed</code> to calculate your allele frequencie for <code>F</code> and <code>H</code> from the genotype frequencies as described in Section <a href="lab-mrr.html#lab-mrr-hwe-theory">11.1.3</a>.
 Save the new data frame as <code>allele_freq</code>.
 Then, calculate your expected HWE genotype frequencies from <code>allele_freq</code> with another <code>summarize()</code> function and save it as <code>gt_hwe</code>.
 Make sure that the columns of <code>gt_hwe</code> are in the same order as <code>gt_freq_observed</code>.
 Finally, add a column for HWE frequencies to <code>genotype_observed</code>:</p>
-<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="hw-mrr.html#cb184-1" aria-hidden="true" tabindex="-1"></a>genotype_obs_hwe <span class="ot">&lt;-</span> genotype_observed <span class="sc">%&gt;%</span> </span>
-<span id="cb184-2"><a href="hw-mrr.html#cb184-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">HWE_freq =</span> <span class="fu">as.numeric</span>(gt_hwe)) <span class="co"># as.numeric converts gt_hwe from a data frame to a vector</span></span></code></pre></div>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="hw-mrr.html#cb182-1" aria-hidden="true" tabindex="-1"></a>genotype_obs_hwe <span class="ot">&lt;-</span> genotype_observed <span class="sc">|&gt;</span> </span>
+<span id="cb182-2"><a href="hw-mrr.html#cb182-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">HWE_freq =</span> <span class="fu">as.numeric</span>(gt_hwe)) <span class="co"># as.numeric converts gt_hwe from a data frame to a vector</span></span></code></pre></div>
 <p>You’ll want to report this table.</p>
 </div>
-<div id="testing-for-hwe" class="section level3" number="16.7.3">
-<h3><span class="header-section-number">16.7.3</span> Testing for HWE</h3>
+<div id="testing-for-hwe" class="section level3 hasAnchor" number="16.7.3">
+<h3><span class="header-section-number">16.7.3</span> Testing for HWE<a href="hw-mrr.html#testing-for-hwe" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Run a one-sample chi-squared test (as you did earlier with the sex ratios); you’ll want to use two columns from <code>genotype_obs_hwe</code> for <code>x</code> and <code>p</code>.</p>
 
 </div>
@@ -699,7 +723,6 @@ Finally, add a column for HWE frequencies to <code>genotype_observed</code>:</p>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -718,6 +741,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -738,6 +762,10 @@ gitbook.start({
 "text": null
 },
 "download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "section",
 "scroll_highlight": true
@@ -752,7 +780,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Bio 373L Survival Guide</title>
   <meta name="description" content="Lab Manual for Field Ecology (Bio 373L) at UT Austin." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.28 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Bio 373L Survival Guide" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="Lab Manual for Field Ecology (Bio 373L) at UT Austin." />
   <meta name="github-repo" content="Christopher-Peterson/Bio373L-Book" />
@@ -24,7 +23,7 @@
 <meta name="author" content="Christopher R. Peterson" />
 
 
-<meta name="date" content="2022-03-30" />
+<meta name="date" content="2022-08-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,8 +32,8 @@
   
 
 <link rel="next" href="structure.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,7 +49,9 @@
 
 
 
-
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
@@ -118,6 +119,29 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -234,7 +258,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="6" data-path="r-dplyr.html"><a href="r-dplyr.html"><i class="fa fa-check"></i><b>6</b> Data manipulation with <code>dplyr</code></a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="r-dplyr.html"><a href="r-dplyr.html#r-dplyr-pipe"><i class="fa fa-check"></i><b>6.1</b> The Pipe (%&gt;%)</a></li>
+<li class="chapter" data-level="6.1" data-path="r-dplyr.html"><a href="r-dplyr.html#r-dplyr-pipe"><i class="fa fa-check"></i><b>6.1</b> The Pipe (|&gt;)</a></li>
 <li class="chapter" data-level="6.2" data-path="r-dplyr.html"><a href="r-dplyr.html#r-dplyr-mutate"><i class="fa fa-check"></i><b>6.2</b> Adding/modifying columns (mutate)</a></li>
 <li class="chapter" data-level="6.3" data-path="r-dplyr.html"><a href="r-dplyr.html#r-dplyr-filter"><i class="fa fa-check"></i><b>6.3</b> Subsetting by row (filter)</a></li>
 <li class="chapter" data-level="6.4" data-path="r-dplyr.html"><a href="r-dplyr.html#r-dplyr-select"><i class="fa fa-check"></i><b>6.4</b> Subsetting by column (select)</a></li>
@@ -334,42 +358,42 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="12.5" data-path="lab-heterogeneity.html"><a href="lab-heterogeneity.html#references"><i class="fa fa-check"></i><b>12.5</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="Lab-ants.html"><a href="Lab-ants.html"><i class="fa fa-check"></i><b>13</b> Ant Lab: Ant Community Ecology and the Effects of Invasive Fire Ants</a>
+<li class="chapter" data-level="13" data-path="Lab_ants.html"><a href="Lab_ants.html"><i class="fa fa-check"></i><b>13</b> Ant Lab: Ant Community Ecology and the Effects of Invasive Fire Ants</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="Lab-ants.html"><a href="Lab-ants.html#background"><i class="fa fa-check"></i><b>13.1</b> Background</a></li>
-<li class="chapter" data-level="13.2" data-path="Lab-ants.html"><a href="Lab-ants.html#questions-and-hypotheses-2"><i class="fa fa-check"></i><b>13.2</b> Questions and hypotheses</a></li>
-<li class="chapter" data-level="13.3" data-path="Lab-ants.html"><a href="Lab-ants.html#methods-1"><i class="fa fa-check"></i><b>13.3</b> Methods</a>
+<li class="chapter" data-level="13.1" data-path="Lab_ants.html"><a href="Lab_ants.html#background"><i class="fa fa-check"></i><b>13.1</b> Background</a></li>
+<li class="chapter" data-level="13.2" data-path="Lab_ants.html"><a href="Lab_ants.html#questions-and-hypotheses-2"><i class="fa fa-check"></i><b>13.2</b> Questions and hypotheses</a></li>
+<li class="chapter" data-level="13.3" data-path="Lab_ants.html"><a href="Lab_ants.html#methods-1"><i class="fa fa-check"></i><b>13.3</b> Methods</a>
 <ul>
-<li class="chapter" data-level="13.3.1" data-path="Lab-ants.html"><a href="Lab-ants.html#bait-survey"><i class="fa fa-check"></i><b>13.3.1</b> Bait Survey</a></li>
+<li class="chapter" data-level="13.3.1" data-path="Lab_ants.html"><a href="Lab_ants.html#bait-survey"><i class="fa fa-check"></i><b>13.3.1</b> Bait Survey</a></li>
 </ul></li>
-<li class="chapter" data-level="13.4" data-path="Lab-ants.html"><a href="Lab-ants.html#analysis-1"><i class="fa fa-check"></i><b>13.4</b> Analysis</a>
+<li class="chapter" data-level="13.4" data-path="Lab_ants.html"><a href="Lab_ants.html#analysis-1"><i class="fa fa-check"></i><b>13.4</b> Analysis</a>
 <ul>
-<li class="chapter" data-level="13.4.1" data-path="Lab-ants.html"><a href="Lab-ants.html#s.-invicta-habitat-preference"><i class="fa fa-check"></i><b>13.4.1</b> <em>S. invicta</em> habitat preference</a></li>
-<li class="chapter" data-level="13.4.2" data-path="Lab-ants.html"><a href="Lab-ants.html#ant-community-differences"><i class="fa fa-check"></i><b>13.4.2</b> Ant community differences</a></li>
+<li class="chapter" data-level="13.4.1" data-path="Lab_ants.html"><a href="Lab_ants.html#s.-invicta-habitat-preference"><i class="fa fa-check"></i><b>13.4.1</b> <em>S. invicta</em> habitat preference</a></li>
+<li class="chapter" data-level="13.4.2" data-path="Lab_ants.html"><a href="Lab_ants.html#ant-community-differences"><i class="fa fa-check"></i><b>13.4.2</b> Ant community differences</a></li>
 </ul></li>
-<li class="chapter" data-level="13.5" data-path="Lab-ants.html"><a href="Lab-ants.html#references-1"><i class="fa fa-check"></i><b>13.5</b> References</a></li>
+<li class="chapter" data-level="13.5" data-path="Lab_ants.html"><a href="Lab_ants.html#references-1"><i class="fa fa-check"></i><b>13.5</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="Lab-phorid.html"><a href="Lab-phorid.html"><i class="fa fa-check"></i><b>14</b> Phorid Lab: Parasitoid impacts on host foraging behavior with Phorid flies and fire ants</a>
+<li class="chapter" data-level="14" data-path="Lab_phorid.html"><a href="Lab_phorid.html"><i class="fa fa-check"></i><b>14</b> Phorid Lab: Parasitoid impacts on host foraging behavior with Phorid flies and fire ants</a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="Lab-phorid.html"><a href="Lab-phorid.html#background-1"><i class="fa fa-check"></i><b>14.1</b> Background</a>
+<li class="chapter" data-level="14.1" data-path="Lab_phorid.html"><a href="Lab_phorid.html#background-1"><i class="fa fa-check"></i><b>14.1</b> Background</a>
 <ul>
-<li class="chapter" data-level="14.1.1" data-path="Lab-phorid.html"><a href="Lab-phorid.html#fire-ants-and-phorid-flies"><i class="fa fa-check"></i><b>14.1.1</b> Fire ants and phorid flies</a></li>
-<li class="chapter" data-level="14.1.2" data-path="Lab-phorid.html"><a href="Lab-phorid.html#fire-ants-natural-history"><i class="fa fa-check"></i><b>14.1.2</b> Fire ants natural history</a></li>
+<li class="chapter" data-level="14.1.1" data-path="Lab_phorid.html"><a href="Lab_phorid.html#fire-ants-and-phorid-flies"><i class="fa fa-check"></i><b>14.1.1</b> Fire ants and phorid flies</a></li>
+<li class="chapter" data-level="14.1.2" data-path="Lab_phorid.html"><a href="Lab_phorid.html#fire-ants-natural-history"><i class="fa fa-check"></i><b>14.1.2</b> Fire ants natural history</a></li>
 </ul></li>
-<li class="chapter" data-level="14.2" data-path="Lab-phorid.html"><a href="Lab-phorid.html#objectives"><i class="fa fa-check"></i><b>14.2</b> Objectives</a></li>
-<li class="chapter" data-level="14.3" data-path="Lab-phorid.html"><a href="Lab-phorid.html#methods-2"><i class="fa fa-check"></i><b>14.3</b> Methods</a>
+<li class="chapter" data-level="14.2" data-path="Lab_phorid.html"><a href="Lab_phorid.html#objectives"><i class="fa fa-check"></i><b>14.2</b> Objectives</a></li>
+<li class="chapter" data-level="14.3" data-path="Lab_phorid.html"><a href="Lab_phorid.html#methods-2"><i class="fa fa-check"></i><b>14.3</b> Methods</a>
 <ul>
-<li class="chapter" data-level="14.3.1" data-path="Lab-phorid.html"><a href="Lab-phorid.html#phorid-impact-on-fire-ant-foraging"><i class="fa fa-check"></i><b>14.3.1</b> Phorid impact on fire ant foraging</a></li>
-<li class="chapter" data-level="14.3.2" data-path="Lab-phorid.html"><a href="Lab-phorid.html#using-the-hobo-mx2303-data-logger"><i class="fa fa-check"></i><b>14.3.2</b> Using the HOBO MX2303 data logger</a></li>
+<li class="chapter" data-level="14.3.1" data-path="Lab_phorid.html"><a href="Lab_phorid.html#phorid-impact-on-fire-ant-foraging"><i class="fa fa-check"></i><b>14.3.1</b> Phorid impact on fire ant foraging</a></li>
+<li class="chapter" data-level="14.3.2" data-path="Lab_phorid.html"><a href="Lab_phorid.html#using-the-hobo-mx2303-data-logger"><i class="fa fa-check"></i><b>14.3.2</b> Using the HOBO MX2303 data logger</a></li>
 </ul></li>
-<li class="chapter" data-level="14.4" data-path="Lab-phorid.html"><a href="Lab-phorid.html#modified-protocol-if-phorids-are-not-present"><i class="fa fa-check"></i><b>14.4</b> Modified protocol if phorids are not present</a></li>
-<li class="chapter" data-level="14.5" data-path="Lab-phorid.html"><a href="Lab-phorid.html#analysis-2"><i class="fa fa-check"></i><b>14.5</b> Analysis</a>
+<li class="chapter" data-level="14.4" data-path="Lab_phorid.html"><a href="Lab_phorid.html#modified-protocol-if-phorids-are-not-present"><i class="fa fa-check"></i><b>14.4</b> Modified protocol if phorids are not present</a></li>
+<li class="chapter" data-level="14.5" data-path="Lab_phorid.html"><a href="Lab_phorid.html#analysis-2"><i class="fa fa-check"></i><b>14.5</b> Analysis</a>
 <ul>
-<li class="chapter" data-level="14.5.1" data-path="Lab-phorid.html"><a href="Lab-phorid.html#effect-of-phorids-on-ant-foraging"><i class="fa fa-check"></i><b>14.5.1</b> Effect of phorids on ant foraging</a></li>
-<li class="chapter" data-level="14.5.2" data-path="Lab-phorid.html"><a href="Lab-phorid.html#effects-of-environmental-conditions"><i class="fa fa-check"></i><b>14.5.2</b> Effects of environmental conditions</a></li>
+<li class="chapter" data-level="14.5.1" data-path="Lab_phorid.html"><a href="Lab_phorid.html#effect-of-phorids-on-ant-foraging"><i class="fa fa-check"></i><b>14.5.1</b> Effect of phorids on ant foraging</a></li>
+<li class="chapter" data-level="14.5.2" data-path="Lab_phorid.html"><a href="Lab_phorid.html#effects-of-environmental-conditions"><i class="fa fa-check"></i><b>14.5.2</b> Effects of environmental conditions</a></li>
 </ul></li>
-<li class="chapter" data-level="14.6" data-path="Lab-phorid.html"><a href="Lab-phorid.html#discussion-3"><i class="fa fa-check"></i><b>14.6</b> Discussion</a></li>
-<li class="chapter" data-level="14.7" data-path="Lab-phorid.html"><a href="Lab-phorid.html#some-questions-from-previous-semesters"><i class="fa fa-check"></i><b>14.7</b> Some questions from previous semesters:</a></li>
+<li class="chapter" data-level="14.6" data-path="Lab_phorid.html"><a href="Lab_phorid.html#discussion-3"><i class="fa fa-check"></i><b>14.6</b> Discussion</a></li>
+<li class="chapter" data-level="14.7" data-path="Lab_phorid.html"><a href="Lab_phorid.html#some-questions-from-previous-semesters"><i class="fa fa-check"></i><b>14.7</b> Some questions from previous semesters:</a></li>
 </ul></li>
 <li class="part"><span><b>IV Analysis Homeworks</b></span></li>
 <li class="chapter" data-level="15" data-path="hw-succession.html"><a href="hw-succession.html"><i class="fa fa-check"></i><b>15</b> Homework: Succession</a>
@@ -460,10 +484,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="header">
 <h1 class="title">Bio 373L Survival Guide</h1>
 <p class="author"><em>Christopher R. Peterson</em></p>
-<p class="date"><em>2022-03-30</em></p>
+<p class="date"><em>2022-08-21</em></p>
 </div>
-<div id="preface" class="section level1 unnumbered">
-<h1>Preface</h1>
+<div id="preface" class="section level1 unnumbered hasAnchor">
+<h1>Preface<a href="index.html#preface" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>This is the official lab manual for Bio 373L (Field Ecology) at the University of Texas at Austin.<br />
 It is split into three parts:</p>
 <ul>
@@ -487,7 +511,6 @@ It is split into three parts:</p>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -506,6 +529,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -526,6 +550,10 @@ gitbook.start({
 "text": null
 },
 "download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "section",
 "scroll_highlight": true
@@ -540,7 +568,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

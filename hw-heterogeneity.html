@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>17 Homework: Heterogeneity | Bio 373L Survival Guide</title>
   <meta name="description" content="Lab Manual for Field Ecology (Bio 373L) at UT Austin." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.28 and GitBook 2.6.7" />
 
   <meta property="og:title" content="17 Homework: Heterogeneity | Bio 373L Survival Guide" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="Lab Manual for Field Ecology (Bio 373L) at UT Austin." />
   <meta name="github-repo" content="Christopher-Peterson/Bio373L-Book" />
@@ -24,7 +23,7 @@
 <meta name="author" content="Christopher R. Peterson" />
 
 
-<meta name="date" content="2022-03-30" />
+<meta name="date" content="2022-08-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,8 +32,8 @@
   
 <link rel="prev" href="hw-mrr.html"/>
 <link rel="next" href="references-2.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,7 +49,9 @@
 
 
 
-
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
@@ -118,6 +119,29 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -234,7 +258,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="6" data-path="r-dplyr.html"><a href="r-dplyr.html"><i class="fa fa-check"></i><b>6</b> Data manipulation with <code>dplyr</code></a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="r-dplyr.html"><a href="r-dplyr.html#r-dplyr-pipe"><i class="fa fa-check"></i><b>6.1</b> The Pipe (%&gt;%)</a></li>
+<li class="chapter" data-level="6.1" data-path="r-dplyr.html"><a href="r-dplyr.html#r-dplyr-pipe"><i class="fa fa-check"></i><b>6.1</b> The Pipe (|&gt;)</a></li>
 <li class="chapter" data-level="6.2" data-path="r-dplyr.html"><a href="r-dplyr.html#r-dplyr-mutate"><i class="fa fa-check"></i><b>6.2</b> Adding/modifying columns (mutate)</a></li>
 <li class="chapter" data-level="6.3" data-path="r-dplyr.html"><a href="r-dplyr.html#r-dplyr-filter"><i class="fa fa-check"></i><b>6.3</b> Subsetting by row (filter)</a></li>
 <li class="chapter" data-level="6.4" data-path="r-dplyr.html"><a href="r-dplyr.html#r-dplyr-select"><i class="fa fa-check"></i><b>6.4</b> Subsetting by column (select)</a></li>
@@ -334,42 +358,42 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="12.5" data-path="lab-heterogeneity.html"><a href="lab-heterogeneity.html#references"><i class="fa fa-check"></i><b>12.5</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="Lab-ants.html"><a href="Lab-ants.html"><i class="fa fa-check"></i><b>13</b> Ant Lab: Ant Community Ecology and the Effects of Invasive Fire Ants</a>
+<li class="chapter" data-level="13" data-path="Lab_ants.html"><a href="Lab_ants.html"><i class="fa fa-check"></i><b>13</b> Ant Lab: Ant Community Ecology and the Effects of Invasive Fire Ants</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="Lab-ants.html"><a href="Lab-ants.html#background"><i class="fa fa-check"></i><b>13.1</b> Background</a></li>
-<li class="chapter" data-level="13.2" data-path="Lab-ants.html"><a href="Lab-ants.html#questions-and-hypotheses-2"><i class="fa fa-check"></i><b>13.2</b> Questions and hypotheses</a></li>
-<li class="chapter" data-level="13.3" data-path="Lab-ants.html"><a href="Lab-ants.html#methods-1"><i class="fa fa-check"></i><b>13.3</b> Methods</a>
+<li class="chapter" data-level="13.1" data-path="Lab_ants.html"><a href="Lab_ants.html#background"><i class="fa fa-check"></i><b>13.1</b> Background</a></li>
+<li class="chapter" data-level="13.2" data-path="Lab_ants.html"><a href="Lab_ants.html#questions-and-hypotheses-2"><i class="fa fa-check"></i><b>13.2</b> Questions and hypotheses</a></li>
+<li class="chapter" data-level="13.3" data-path="Lab_ants.html"><a href="Lab_ants.html#methods-1"><i class="fa fa-check"></i><b>13.3</b> Methods</a>
 <ul>
-<li class="chapter" data-level="13.3.1" data-path="Lab-ants.html"><a href="Lab-ants.html#bait-survey"><i class="fa fa-check"></i><b>13.3.1</b> Bait Survey</a></li>
+<li class="chapter" data-level="13.3.1" data-path="Lab_ants.html"><a href="Lab_ants.html#bait-survey"><i class="fa fa-check"></i><b>13.3.1</b> Bait Survey</a></li>
 </ul></li>
-<li class="chapter" data-level="13.4" data-path="Lab-ants.html"><a href="Lab-ants.html#analysis-1"><i class="fa fa-check"></i><b>13.4</b> Analysis</a>
+<li class="chapter" data-level="13.4" data-path="Lab_ants.html"><a href="Lab_ants.html#analysis-1"><i class="fa fa-check"></i><b>13.4</b> Analysis</a>
 <ul>
-<li class="chapter" data-level="13.4.1" data-path="Lab-ants.html"><a href="Lab-ants.html#s.-invicta-habitat-preference"><i class="fa fa-check"></i><b>13.4.1</b> <em>S. invicta</em> habitat preference</a></li>
-<li class="chapter" data-level="13.4.2" data-path="Lab-ants.html"><a href="Lab-ants.html#ant-community-differences"><i class="fa fa-check"></i><b>13.4.2</b> Ant community differences</a></li>
+<li class="chapter" data-level="13.4.1" data-path="Lab_ants.html"><a href="Lab_ants.html#s.-invicta-habitat-preference"><i class="fa fa-check"></i><b>13.4.1</b> <em>S. invicta</em> habitat preference</a></li>
+<li class="chapter" data-level="13.4.2" data-path="Lab_ants.html"><a href="Lab_ants.html#ant-community-differences"><i class="fa fa-check"></i><b>13.4.2</b> Ant community differences</a></li>
 </ul></li>
-<li class="chapter" data-level="13.5" data-path="Lab-ants.html"><a href="Lab-ants.html#references-1"><i class="fa fa-check"></i><b>13.5</b> References</a></li>
+<li class="chapter" data-level="13.5" data-path="Lab_ants.html"><a href="Lab_ants.html#references-1"><i class="fa fa-check"></i><b>13.5</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="Lab-phorid.html"><a href="Lab-phorid.html"><i class="fa fa-check"></i><b>14</b> Phorid Lab: Parasitoid impacts on host foraging behavior with Phorid flies and fire ants</a>
+<li class="chapter" data-level="14" data-path="Lab_phorid.html"><a href="Lab_phorid.html"><i class="fa fa-check"></i><b>14</b> Phorid Lab: Parasitoid impacts on host foraging behavior with Phorid flies and fire ants</a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="Lab-phorid.html"><a href="Lab-phorid.html#background-1"><i class="fa fa-check"></i><b>14.1</b> Background</a>
+<li class="chapter" data-level="14.1" data-path="Lab_phorid.html"><a href="Lab_phorid.html#background-1"><i class="fa fa-check"></i><b>14.1</b> Background</a>
 <ul>
-<li class="chapter" data-level="14.1.1" data-path="Lab-phorid.html"><a href="Lab-phorid.html#fire-ants-and-phorid-flies"><i class="fa fa-check"></i><b>14.1.1</b> Fire ants and phorid flies</a></li>
-<li class="chapter" data-level="14.1.2" data-path="Lab-phorid.html"><a href="Lab-phorid.html#fire-ants-natural-history"><i class="fa fa-check"></i><b>14.1.2</b> Fire ants natural history</a></li>
+<li class="chapter" data-level="14.1.1" data-path="Lab_phorid.html"><a href="Lab_phorid.html#fire-ants-and-phorid-flies"><i class="fa fa-check"></i><b>14.1.1</b> Fire ants and phorid flies</a></li>
+<li class="chapter" data-level="14.1.2" data-path="Lab_phorid.html"><a href="Lab_phorid.html#fire-ants-natural-history"><i class="fa fa-check"></i><b>14.1.2</b> Fire ants natural history</a></li>
 </ul></li>
-<li class="chapter" data-level="14.2" data-path="Lab-phorid.html"><a href="Lab-phorid.html#objectives"><i class="fa fa-check"></i><b>14.2</b> Objectives</a></li>
-<li class="chapter" data-level="14.3" data-path="Lab-phorid.html"><a href="Lab-phorid.html#methods-2"><i class="fa fa-check"></i><b>14.3</b> Methods</a>
+<li class="chapter" data-level="14.2" data-path="Lab_phorid.html"><a href="Lab_phorid.html#objectives"><i class="fa fa-check"></i><b>14.2</b> Objectives</a></li>
+<li class="chapter" data-level="14.3" data-path="Lab_phorid.html"><a href="Lab_phorid.html#methods-2"><i class="fa fa-check"></i><b>14.3</b> Methods</a>
 <ul>
-<li class="chapter" data-level="14.3.1" data-path="Lab-phorid.html"><a href="Lab-phorid.html#phorid-impact-on-fire-ant-foraging"><i class="fa fa-check"></i><b>14.3.1</b> Phorid impact on fire ant foraging</a></li>
-<li class="chapter" data-level="14.3.2" data-path="Lab-phorid.html"><a href="Lab-phorid.html#using-the-hobo-mx2303-data-logger"><i class="fa fa-check"></i><b>14.3.2</b> Using the HOBO MX2303 data logger</a></li>
+<li class="chapter" data-level="14.3.1" data-path="Lab_phorid.html"><a href="Lab_phorid.html#phorid-impact-on-fire-ant-foraging"><i class="fa fa-check"></i><b>14.3.1</b> Phorid impact on fire ant foraging</a></li>
+<li class="chapter" data-level="14.3.2" data-path="Lab_phorid.html"><a href="Lab_phorid.html#using-the-hobo-mx2303-data-logger"><i class="fa fa-check"></i><b>14.3.2</b> Using the HOBO MX2303 data logger</a></li>
 </ul></li>
-<li class="chapter" data-level="14.4" data-path="Lab-phorid.html"><a href="Lab-phorid.html#modified-protocol-if-phorids-are-not-present"><i class="fa fa-check"></i><b>14.4</b> Modified protocol if phorids are not present</a></li>
-<li class="chapter" data-level="14.5" data-path="Lab-phorid.html"><a href="Lab-phorid.html#analysis-2"><i class="fa fa-check"></i><b>14.5</b> Analysis</a>
+<li class="chapter" data-level="14.4" data-path="Lab_phorid.html"><a href="Lab_phorid.html#modified-protocol-if-phorids-are-not-present"><i class="fa fa-check"></i><b>14.4</b> Modified protocol if phorids are not present</a></li>
+<li class="chapter" data-level="14.5" data-path="Lab_phorid.html"><a href="Lab_phorid.html#analysis-2"><i class="fa fa-check"></i><b>14.5</b> Analysis</a>
 <ul>
-<li class="chapter" data-level="14.5.1" data-path="Lab-phorid.html"><a href="Lab-phorid.html#effect-of-phorids-on-ant-foraging"><i class="fa fa-check"></i><b>14.5.1</b> Effect of phorids on ant foraging</a></li>
-<li class="chapter" data-level="14.5.2" data-path="Lab-phorid.html"><a href="Lab-phorid.html#effects-of-environmental-conditions"><i class="fa fa-check"></i><b>14.5.2</b> Effects of environmental conditions</a></li>
+<li class="chapter" data-level="14.5.1" data-path="Lab_phorid.html"><a href="Lab_phorid.html#effect-of-phorids-on-ant-foraging"><i class="fa fa-check"></i><b>14.5.1</b> Effect of phorids on ant foraging</a></li>
+<li class="chapter" data-level="14.5.2" data-path="Lab_phorid.html"><a href="Lab_phorid.html#effects-of-environmental-conditions"><i class="fa fa-check"></i><b>14.5.2</b> Effects of environmental conditions</a></li>
 </ul></li>
-<li class="chapter" data-level="14.6" data-path="Lab-phorid.html"><a href="Lab-phorid.html#discussion-3"><i class="fa fa-check"></i><b>14.6</b> Discussion</a></li>
-<li class="chapter" data-level="14.7" data-path="Lab-phorid.html"><a href="Lab-phorid.html#some-questions-from-previous-semesters"><i class="fa fa-check"></i><b>14.7</b> Some questions from previous semesters:</a></li>
+<li class="chapter" data-level="14.6" data-path="Lab_phorid.html"><a href="Lab_phorid.html#discussion-3"><i class="fa fa-check"></i><b>14.6</b> Discussion</a></li>
+<li class="chapter" data-level="14.7" data-path="Lab_phorid.html"><a href="Lab_phorid.html#some-questions-from-previous-semesters"><i class="fa fa-check"></i><b>14.7</b> Some questions from previous semesters:</a></li>
 </ul></li>
 <li class="part"><span><b>IV Analysis Homeworks</b></span></li>
 <li class="chapter" data-level="15" data-path="hw-succession.html"><a href="hw-succession.html"><i class="fa fa-check"></i><b>15</b> Homework: Succession</a>
@@ -457,16 +481,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="hw-heterogeneity" class="section level1" number="17">
-<h1><span class="header-section-number">17</span> Homework: Heterogeneity</h1>
-<div id="required-reading-2" class="section level2" number="17.1">
-<h2><span class="header-section-number">17.1</span> Required Reading</h2>
+<div id="hw-heterogeneity" class="section level1 hasAnchor" number="17">
+<h1><span class="header-section-number">17</span> Homework: Heterogeneity<a href="hw-heterogeneity.html#hw-heterogeneity" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="required-reading-2" class="section level2 hasAnchor" number="17.1">
+<h2><span class="header-section-number">17.1</span> Required Reading<a href="hw-heterogeneity.html#required-reading-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>This homework will prepare you to analyze the data from the <a href="lab-heterogeneity.html#lab-heterogeneity">Heterogeneity lab</a>.
 You should read over that the material to properly understand the data you’ll be working with here.
 I will assume that you are familiar with the material used in the <a href="hw-succession.html#hw-succession">Succession</a> and <a href="hw-mrr.html#hw-mrr">MRR</a> homeworks.</p>
 </div>
-<div id="objectives-and-whats-due-1" class="section level2" number="17.2">
-<h2><span class="header-section-number">17.2</span> Objectives (and what’s due)</h2>
+<div id="objectives-and-whats-due-1" class="section level2 hasAnchor" number="17.2">
+<h2><span class="header-section-number">17.2</span> Objectives (and what’s due)<a href="hw-heterogeneity.html#objectives-and-whats-due-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li><p>What are the relationships between canopy, shrub, and ground cover?</p>
 <ul>
@@ -488,27 +512,27 @@ This in particular isn’t a biological hypothesis, but comparing different meth
 </ul></li>
 </ul>
 </div>
-<div id="getting-started-2" class="section level2" number="17.3">
-<h2><span class="header-section-number">17.3</span> Getting started</h2>
+<div id="getting-started-2" class="section level2 hasAnchor" number="17.3">
+<h2><span class="header-section-number">17.3</span> Getting started<a href="hw-heterogeneity.html#getting-started-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>You should download two datasets from Canvas and put them in your <code>data</code> folder:</p>
 <ul>
 <li><strong>F20_heterogeneity_data.csv</strong>: The “current” dataset.</li>
 <li><strong>historical_data_Fall_03_to_19.csv</strong>: contains data from most fall semesters since 2003.</li>
 </ul>
 <p>Begin your script with the following:</p>
-<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="hw-heterogeneity.html#cb185-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Heterogeneity Lab Analysis</span></span>
-<span id="cb185-2"><a href="hw-heterogeneity.html#cb185-2" aria-hidden="true" tabindex="-1"></a><span class="do">#### Setup ####</span></span>
-<span id="cb185-3"><a href="hw-heterogeneity.html#cb185-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb185-4"><a href="hw-heterogeneity.html#cb185-4" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_classic</span>()) <span class="co"># Removes gridlines from ggplot</span></span>
-<span id="cb185-5"><a href="hw-heterogeneity.html#cb185-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb185-6"><a href="hw-heterogeneity.html#cb185-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Data file locations: Change these when analyzing the current dataset</span></span>
-<span id="cb185-7"><a href="hw-heterogeneity.html#cb185-7" aria-hidden="true" tabindex="-1"></a>current_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/F20_heterogeneity_data.csv&quot;</span>)</span>
-<span id="cb185-8"><a href="hw-heterogeneity.html#cb185-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb185-9"><a href="hw-heterogeneity.html#cb185-9" aria-hidden="true" tabindex="-1"></a>historical_data_full <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/historical_data_Fall_03_to_19.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="hw-heterogeneity.html#cb183-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Heterogeneity Lab Analysis</span></span>
+<span id="cb183-2"><a href="hw-heterogeneity.html#cb183-2" aria-hidden="true" tabindex="-1"></a><span class="do">#### Setup ####</span></span>
+<span id="cb183-3"><a href="hw-heterogeneity.html#cb183-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb183-4"><a href="hw-heterogeneity.html#cb183-4" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_classic</span>()) <span class="co"># Removes gridlines from ggplot</span></span>
+<span id="cb183-5"><a href="hw-heterogeneity.html#cb183-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb183-6"><a href="hw-heterogeneity.html#cb183-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Data file locations: Change these when analyzing the current dataset</span></span>
+<span id="cb183-7"><a href="hw-heterogeneity.html#cb183-7" aria-hidden="true" tabindex="-1"></a>current_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/F20_heterogeneity_data.csv&quot;</span>)</span>
+<span id="cb183-8"><a href="hw-heterogeneity.html#cb183-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb183-9"><a href="hw-heterogeneity.html#cb183-9" aria-hidden="true" tabindex="-1"></a>historical_data_full <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/historical_data_Fall_03_to_19.csv&quot;</span>)</span></code></pre></div>
 <p>Save the R file as <code>R/heterogeneity_homework.R</code>.</p>
 </div>
-<div id="the-data-4" class="section level2" number="17.4">
-<h2><span class="header-section-number">17.4</span> The data</h2>
+<div id="the-data-4" class="section level2 hasAnchor" number="17.4">
+<h2><span class="header-section-number">17.4</span> The data<a href="hw-heterogeneity.html#the-data-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The columns of these data frames that are relevant are:</p>
 <ul>
 <li><strong>Tag:</strong> transect tag number</li>
@@ -517,47 +541,47 @@ This in particular isn’t a biological hypothesis, but comparing different meth
 <li><strong>Season</strong> and <strong>Year</strong> (only in historical); when the data were collected.</li>
 </ul>
 </div>
-<div id="relationships-between-cover-levels" class="section level2" number="17.5">
-<h2><span class="header-section-number">17.5</span> Relationships between Cover Levels</h2>
+<div id="relationships-between-cover-levels" class="section level2 hasAnchor" number="17.5">
+<h2><span class="header-section-number">17.5</span> Relationships between Cover Levels<a href="hw-heterogeneity.html#relationships-between-cover-levels" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Using the current data, create <a href="r-stats.html#r-stats-cat">contingency tables</a> for each pairwise combination of Canopy, Shrub, and Ground (three tables total); for each of these, run chi-squared tests (or Fisher’s tests if necessary).
 Instead of including the contingency table directly, we’re going to create figures that show colored heat maps.</p>
-<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="hw-heterogeneity.html#cb186-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb186-2"><a href="hw-heterogeneity.html#cb186-2" aria-hidden="true" tabindex="-1"></a>your_contingency_table <span class="sc">%&gt;%</span> <span class="co"># replace with your contingency table name</span></span>
-<span id="cb186-3"><a href="hw-heterogeneity.html#cb186-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span> <span class="co"># Convert to a data frame</span></span>
-<span id="cb186-4"><a href="hw-heterogeneity.html#cb186-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>()  <span class="sc">+</span> </span>
-<span id="cb186-5"><a href="hw-heterogeneity.html#cb186-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> , <span class="at">y =</span> ) <span class="sc">+</span> <span class="co"># FIll in</span></span>
-<span id="cb186-6"><a href="hw-heterogeneity.html#cb186-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="fu">aes</span>(<span class="at">fill =</span> n)) <span class="sc">+</span> <span class="co"># Makes colored squares based on count</span></span>
-<span id="cb186-7"><a href="hw-heterogeneity.html#cb186-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_c</span>() <span class="sc">+</span> <span class="co"># Nice color scale</span></span>
-<span id="cb186-8"><a href="hw-heterogeneity.html#cb186-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_fixed</span>() <span class="sc">+</span> <span class="co"># keeps x &amp; y dimensions equal</span></span>
-<span id="cb186-9"><a href="hw-heterogeneity.html#cb186-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add text to the squares</span></span>
-<span id="cb186-10"><a href="hw-heterogeneity.html#cb186-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_label</span>(<span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">round</span>(n, <span class="dv">3</span>)),</span>
-<span id="cb186-11"><a href="hw-heterogeneity.html#cb186-11" aria-hidden="true" tabindex="-1"></a>            <span class="at">label.size =</span> <span class="dv">0</span>, <span class="co"># Keep this as is</span></span>
-<span id="cb186-12"><a href="hw-heterogeneity.html#cb186-12" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Feel free to adjust these details</span></span>
-<span id="cb186-13"><a href="hw-heterogeneity.html#cb186-13" aria-hidden="true" tabindex="-1"></a>            <span class="co"># to get an image you like</span></span>
-<span id="cb186-14"><a href="hw-heterogeneity.html#cb186-14" aria-hidden="true" tabindex="-1"></a>            <span class="at">color =</span> <span class="st">&quot;white&quot;</span>, <span class="co"># Text color</span></span>
-<span id="cb186-15"><a href="hw-heterogeneity.html#cb186-15" aria-hidden="true" tabindex="-1"></a>            <span class="at">fill =</span> <span class="st">&quot;#00000010&quot;</span>, <span class="co"># Slight background around text to make it more legible</span></span>
-<span id="cb186-16"><a href="hw-heterogeneity.html#cb186-16" aria-hidden="true" tabindex="-1"></a>            <span class="at">size =</span> <span class="dv">10</span>) <span class="co"># text size; </span></span></code></pre></div>
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="hw-heterogeneity.html#cb184-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb184-2"><a href="hw-heterogeneity.html#cb184-2" aria-hidden="true" tabindex="-1"></a>your_contingency_table <span class="sc">|&gt;</span> <span class="co"># replace with your contingency table name</span></span>
+<span id="cb184-3"><a href="hw-heterogeneity.html#cb184-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">|&gt;</span> <span class="co"># Convert to a data frame</span></span>
+<span id="cb184-4"><a href="hw-heterogeneity.html#cb184-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>()  <span class="sc">+</span> </span>
+<span id="cb184-5"><a href="hw-heterogeneity.html#cb184-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> , <span class="at">y =</span> ) <span class="sc">+</span> <span class="co"># FIll in</span></span>
+<span id="cb184-6"><a href="hw-heterogeneity.html#cb184-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="fu">aes</span>(<span class="at">fill =</span> n)) <span class="sc">+</span> <span class="co"># Makes colored squares based on count</span></span>
+<span id="cb184-7"><a href="hw-heterogeneity.html#cb184-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_c</span>() <span class="sc">+</span> <span class="co"># Nice color scale</span></span>
+<span id="cb184-8"><a href="hw-heterogeneity.html#cb184-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_fixed</span>() <span class="sc">+</span> <span class="co"># keeps x &amp; y dimensions equal</span></span>
+<span id="cb184-9"><a href="hw-heterogeneity.html#cb184-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add text to the squares</span></span>
+<span id="cb184-10"><a href="hw-heterogeneity.html#cb184-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_label</span>(<span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">round</span>(n, <span class="dv">3</span>)),</span>
+<span id="cb184-11"><a href="hw-heterogeneity.html#cb184-11" aria-hidden="true" tabindex="-1"></a>            <span class="at">label.size =</span> <span class="dv">0</span>, <span class="co"># Keep this as is</span></span>
+<span id="cb184-12"><a href="hw-heterogeneity.html#cb184-12" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Feel free to adjust these details</span></span>
+<span id="cb184-13"><a href="hw-heterogeneity.html#cb184-13" aria-hidden="true" tabindex="-1"></a>            <span class="co"># to get an image you like</span></span>
+<span id="cb184-14"><a href="hw-heterogeneity.html#cb184-14" aria-hidden="true" tabindex="-1"></a>            <span class="at">color =</span> <span class="st">&quot;white&quot;</span>, <span class="co"># Text color</span></span>
+<span id="cb184-15"><a href="hw-heterogeneity.html#cb184-15" aria-hidden="true" tabindex="-1"></a>            <span class="at">fill =</span> <span class="st">&quot;#00000010&quot;</span>, <span class="co"># Slight background around text to make it more legible</span></span>
+<span id="cb184-16"><a href="hw-heterogeneity.html#cb184-16" aria-hidden="true" tabindex="-1"></a>            <span class="at">size =</span> <span class="dv">10</span>) <span class="co"># text size; </span></span></code></pre></div>
 <p>To look at the interaction of all three levels, create four data sets for each different shrub level using the <code>filter()</code> function and run separate Chi-squared / Fisher’s exact tests.
 To visualize the table, you’ll need to make a 3-dimensional contingency table and manipulate it:</p>
-<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="hw-heterogeneity.html#cb187-1" aria-hidden="true" tabindex="-1"></a>contingency_3d <span class="ot">&lt;-</span> current_data <span class="sc">%&gt;%</span> </span>
-<span id="cb187-2"><a href="hw-heterogeneity.html#cb187-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Canopy, Shrub, Ground) <span class="sc">%&gt;%</span> </span>
-<span id="cb187-3"><a href="hw-heterogeneity.html#cb187-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">table</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb187-4"><a href="hw-heterogeneity.html#cb187-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb187-5"><a href="hw-heterogeneity.html#cb187-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Shrub =</span> <span class="fu">paste</span>(<span class="st">&quot;Shrub = &quot;</span>, Shrub)) <span class="co"># Modify shrub to include the lable; this will help with faceting</span></span></code></pre></div>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="hw-heterogeneity.html#cb185-1" aria-hidden="true" tabindex="-1"></a>contingency_3d <span class="ot">&lt;-</span> current_data <span class="sc">|&gt;</span> </span>
+<span id="cb185-2"><a href="hw-heterogeneity.html#cb185-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Canopy, Shrub, Ground) <span class="sc">|&gt;</span> </span>
+<span id="cb185-3"><a href="hw-heterogeneity.html#cb185-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">table</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb185-4"><a href="hw-heterogeneity.html#cb185-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb185-5"><a href="hw-heterogeneity.html#cb185-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Shrub =</span> <span class="fu">paste</span>(<span class="st">&quot;Shrub = &quot;</span>, Shrub)) <span class="co"># Modify shrub to include the lable; this will help with faceting</span></span></code></pre></div>
 <p>Then use this with the figure-making code, but use <code>facet_wrap()</code> (Section <a href="r-ggplot.html#r-ggplot-facet">5.4</a>) to make separate panels for each shrub level.</p>
 </div>
-<div id="relationship-between-current-and-historical-cover-levels" class="section level2" number="17.6">
-<h2><span class="header-section-number">17.6</span> Relationship Between Current and Historical Cover Levels</h2>
+<div id="relationship-between-current-and-historical-cover-levels" class="section level2 hasAnchor" number="17.6">
+<h2><span class="header-section-number">17.6</span> Relationship Between Current and Historical Cover Levels<a href="hw-heterogeneity.html#relationship-between-current-and-historical-cover-levels" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>You’ll need to make a dataset that contains the current data and the semester of interest (which is Fall 2004).
 First, filter <code>historical_data_full</code> so that it only includes Fall 2004’s data (save as <code>historical_data_F04</code>).
 Then, you’ll want to modify the <code>current_data</code> so that it has columns for the Semester and Year (Fall 2020) before binding it to the 2004 data:</p>
-<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="hw-heterogeneity.html#cb188-1" aria-hidden="true" tabindex="-1"></a>historical_comparison_data <span class="ot">&lt;-</span> current_data <span class="sc">%&gt;%</span> </span>
-<span id="cb188-2"><a href="hw-heterogeneity.html#cb188-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(   ) <span class="sc">%&gt;%</span>  <span class="co"># Fill this in</span></span>
-<span id="cb188-3"><a href="hw-heterogeneity.html#cb188-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(historical_data_F04) <span class="co"># Combine w/ F04 data</span></span></code></pre></div>
+<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="hw-heterogeneity.html#cb186-1" aria-hidden="true" tabindex="-1"></a>historical_comparison_data <span class="ot">&lt;-</span> current_data <span class="sc">|&gt;</span> </span>
+<span id="cb186-2"><a href="hw-heterogeneity.html#cb186-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(   ) <span class="sc">|&gt;</span>  <span class="co"># Fill this in</span></span>
+<span id="cb186-3"><a href="hw-heterogeneity.html#cb186-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(historical_data_F04) <span class="co"># Combine w/ F04 data</span></span></code></pre></div>
 <p>From here, you’ll need to make 3 more contingency tables (Year vs. each of the cover levels), run the appropriate tests on them, and visualize them.</p>
 </div>
-<div id="calibrating-subjective-scores-with-gap-light-analyzer" class="section level2" number="17.7">
-<h2><span class="header-section-number">17.7</span> Calibrating Subjective Scores with Gap Light Analyzer</h2>
+<div id="calibrating-subjective-scores-with-gap-light-analyzer" class="section level2 hasAnchor" number="17.7">
+<h2><span class="header-section-number">17.7</span> Calibrating Subjective Scores with Gap Light Analyzer<a href="hw-heterogeneity.html#calibrating-subjective-scores-with-gap-light-analyzer" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The cover levels here are subjectively determined; it’s probably a good idea to see how well the subjective scores match with a more objective measure.
 We’ll do this with a linear regression (Section <a href="r-stats.html#r-stats-lm">7.3</a>).
 To see how well subjective scores predict the GLA percent canopy openness, run a regression with <code>Canopy</code> as the predictor (X) and <code>Percent_Cnpy_Open</code> as the response (Y).
@@ -577,7 +601,6 @@ For the data points, use <code>geom_jitter(height = 0, width = 0.15)</code> inst
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -596,6 +619,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -616,6 +640,10 @@ gitbook.start({
 "text": null
 },
 "download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "section",
 "scroll_highlight": true
@@ -630,7 +658,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');
