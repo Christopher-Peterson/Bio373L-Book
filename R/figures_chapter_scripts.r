@@ -19,7 +19,7 @@ set.seed(20923) # to keep random numbers consistent between runs
 # Load the penguin data
 penguins = suppressMessages( # quietly...
   readr::read_csv(
-  "https://raw.githubusercontent.com/allisonhorst/palmerpenguins/master/inst/extdata/penguins.csv")) %>% 
+  "https://raw.githubusercontent.com/allisonhorst/palmerpenguins/master/inst/extdata/penguins.csv")) |> 
   # change some units
   mutate(flipper_length_cm = flipper_length_mm / 10,
          body_mass_kg = body_mass_g / 1000)
@@ -28,11 +28,11 @@ penguins = suppressMessages( # quietly...
 # Flipper length vs. body mass
 # Fit the regression:
 penguin_lm = lm(flipper_length_cm ~ body_mass_kg, penguins)
-penguin_eqn = penguin_lm %>% 
+penguin_eqn = penguin_lm |> 
   # Get coeficients in the right format
-  coef() %>% as.list() %>% 
+  coef() |> as.list() |> 
   # Round them
-  map(~round(.x, 1)) %>% 
+  map(~round(.x, 1)) |> 
   # Format w/ text
   glue_data("(Flipper Length) = {`(Intercept)`} + {body_mass_kg}*(Body Mass)")
 
@@ -44,8 +44,8 @@ penguin_pval = anova(penguin_lm)[["Pr(>F)"]]
 # Bill length vs bill depth
 bill_lm = lm(bill_depth_mm ~ bill_length_mm + species, penguins) 
 # Reformat these intercepts for each species
-bill_coefs = bill_lm %>% 
-  coef() %>% as.list()
+bill_coefs = bill_lm |> 
+  coef() |> as.list()
 bill_spp_coefs = 
   with(bill_coefs, # with lets us work directly with elements inbill_coefs
        list(
@@ -59,7 +59,7 @@ bill_spp_coefs =
     Chinstrap = `(Intercept)` + speciesChinstrap,
     Gentoo = `(Intercept)` + speciesGentoo,
     bill_length_mm = bill_length_mm
-  )) %>%map(~round(.x, 1)) 
+  )) |>map(~round(.x, 1)) 
 # Since we have multiple 
 bill_eqn = 
   glue_data(bill_spp_coefs, glue_collapse(c(
@@ -131,7 +131,7 @@ facet_letter_df = tibble(
   species = unique(penguins$species),
   label = c("A", "B", "C")
 )
-penguin_facet_plt = penguins %>% 
+penguin_facet_plt = penguins |> 
   ggplot(aes(x = bill_length_mm, y = bill_depth_mm)) +
   geom_point() + 
   facet_grid(species~.) + 
@@ -159,7 +159,7 @@ penguin_facet_plt = penguins %>%
 
 #### dynamite plot ####
  # DO not make these, they are bad
-penguin_dyn = penguins %>% group_by(species) %>% 
+penguin_dyn = penguins |> group_by(species) |> 
   summarize(y = mean(body_mass_kg, na.rm = TRUE), 
             se = sd(body_mass_kg, na.rm = TRUE)/sqrt(n()))
 dynam_plot = ggplot(penguin_dyn, aes(x = species, y )) + 
@@ -168,11 +168,11 @@ dynam_plot = ggplot(penguin_dyn, aes(x = species, y )) +
   ylab("Body Mass (kg)") 
 
 #### Box plot, histogram, violin plot ####
-box_plot = penguins %>%
+box_plot = penguins |>
   ggplot(aes(x = species, y = body_mass_kg )) + 
   geom_boxplot() + 
   ylab("Body Mass (kg)") 
-histo_plot = penguins %>%
+histo_plot = penguins |>
   ggplot(aes(x = body_mass_kg )) + 
   geom_histogram(fill = "white", color = "black", binwidth = .1) + 
   facet_grid(species~., switch = "both") + 
@@ -180,7 +180,7 @@ histo_plot = penguins %>%
   theme(strip.text = element_text(face = "italic"),
         strip.background = element_blank(),
         strip.placement = "outside") + ylab("")
-violin_plot = penguins %>%
+violin_plot = penguins |>
   ggplot(aes(x = species, y = body_mass_kg )) + 
   geom_violin() +  # Add the violin shape
   geom_sina(color = grey(.4)) + # this is from the ggforce package; adds the dots
@@ -204,21 +204,21 @@ anole_classes = tribble(
   "A. sagrei",         "Trunk-ground",
   "A. trinitatus",     "Ground-ish")
 set.seed(123); 
-anole_dat = anole_classes %>% 
-  distinct(Ecomorph) %>% 
-  mutate(ground_prob = c(.25, .75, .5, .1, .9)) %>% 
-  right_join(anole_classes, by = "Ecomorph") %>% 
-  mutate(count = rpois(9, 3.5)*5 + rpois(9, 6)) %>% 
+anole_dat = anole_classes |> 
+  distinct(Ecomorph) |> 
+  mutate(ground_prob = c(.25, .75, .5, .1, .9)) |> 
+  right_join(anole_classes, by = "Ecomorph") |> 
+  mutate(count = rpois(9, 3.5)*5 + rpois(9, 6)) |> 
   mutate(Trunk = rbinom(9, count, ground_prob),
-         Canopy = count - Trunk) %>%
-  select(Species, Ecomorph, Trunk, Canopy) %>% 
+         Canopy = count - Trunk) |>
+  select(Species, Ecomorph, Trunk, Canopy) |> 
   # Add in trunk bias
-  mutate(Trunk = round(Trunk * 2.5)) %>% 
-  gather(key = "Perch", value = "Count", Trunk, Canopy) %>% 
+  mutate(Trunk = round(Trunk * 2.5)) |> 
+  gather(key = "Perch", value = "Count", Trunk, Canopy) |> 
   mutate(Perch = factor(Perch, levels = c("Trunk", "Canopy")))
 #### Bad Categorical Figure ####
 anole_bad_plt = 
-  anole_dat %>% 
+  anole_dat |> 
   ggplot(aes(x = Species, y = Count, group = Perch)) + 
   geom_col(aes(fill = Perch), color = "black", position = position_dodge()) +
   scale_fill_manual(values = c(grey(.95), grey(.6)), 
@@ -230,18 +230,18 @@ anole_bad_plt =
 #### Stacked Counts figure ####
 
 # We want to arrange the levels by the total count (per-species)
-anole_stacked_plt = anole_dat %>% 
+anole_stacked_plt = anole_dat |> 
   # First, compute the total count
-  group_by(Species) %>% # group by species
-  mutate(total_count = sum(Count)) %>% # total count (per species, due to grouping)
-  ungroup() %>% # Remove grouping so that the following sorting step doesn't use it
+  group_by(Species) |> # group by species
+  mutate(total_count = sum(Count)) |> # total count (per species, due to grouping)
+  ungroup() |> # Remove grouping so that the following sorting step doesn't use it
   # THen, sort the data by total count
-  arrange(desc(total_count)) %>% # desc() makes it go highest-to-lowest (default is low-to-high)
+  arrange(desc(total_count)) |> # desc() makes it go highest-to-lowest (default is low-to-high)
   # alternatively, try one of these instead:
-    # arrange(Perch, desc(Count)) %>% 
-    # arrange(desc(Perch), desc(Count)) %>% 
+    # arrange(Perch, desc(Count)) |> 
+    # arrange(desc(Perch), desc(Count)) |> 
   # Encode the sorting in the Species column:
-  mutate(Species = fct_inorder(Species)) %>% 
+  mutate(Species = fct_inorder(Species)) |> 
   # fct_inorder() tells species assign species underlying values based on 
     # its existing ordering in the data
     # This will make ggplot arrange the bar graph in that order
@@ -261,9 +261,9 @@ anole_stacked_plt = anole_dat %>%
 
 # for this case, we want to arrange in decreasing order by 
   # Trunk counts
-anole_dodge_plt = anole_dat %>% 
-  arrange(Perch, desc(Count)) %>% 
-  mutate(Species = fct_inorder(Species)) %>% 
+anole_dodge_plt = anole_dat |> 
+  arrange(Perch, desc(Count)) |> 
+  mutate(Species = fct_inorder(Species)) |> 
   ggplot(aes(x = Species, y = Count, group = Perch)) + 
   geom_col(aes(fill = Perch), color = "black",
            position = position_dodge()) + # position_dodge() makes the bars go next to each other
@@ -277,11 +277,11 @@ anole_dodge_plt = anole_dat %>%
 #### Anole Perch & Species frequency plots ####
 
 # Calculate frequencies by perch
-anole_freq_perch = anole_dat %>% group_by(Perch) %>% 
-  mutate(Frequency = Count/sum(Count)) %>% ungroup() %>% 
+anole_freq_perch = anole_dat |> group_by(Perch) |> 
+  mutate(Frequency = Count/sum(Count)) |> ungroup() |> 
   arrange(Perch, desc(Frequency) )
-anole_perch_freq_plt = anole_freq_perch %>%  
-  mutate(Species = fct_inorder(Species)) %>% 
+anole_perch_freq_plt = anole_freq_perch |>  
+  mutate(Species = fct_inorder(Species)) |> 
   ggplot(aes(x = Species, y = Frequency, group = Perch)) + 
   geom_col(aes(fill = Perch), color = "black", position = position_dodge()) +
   scale_fill_manual(values = c(grey(.95), grey(.6)), 
@@ -292,11 +292,11 @@ anole_perch_freq_plt = anole_freq_perch %>%
         legend.justification = c(.0,1)) +
   ylab("Proportion of species\nat each perch position")
 
-anole_freq_spp = anole_dat %>% group_by(Species) %>% 
-  mutate(Frequency = Count/sum(Count)) %>% ungroup() %>% 
+anole_freq_spp = anole_dat |> group_by(Species) |> 
+  mutate(Frequency = Count/sum(Count)) |> ungroup() |> 
   arrange(Perch, Frequency) 
-anole_spp_freq_plt = anole_freq_spp %>%  
-  mutate(Species = fct_inorder(Species)) %>% 
+anole_spp_freq_plt = anole_freq_spp |>  
+  mutate(Species = fct_inorder(Species)) |> 
   ggplot(aes(x = Species, y = Frequency, group = Perch)) + 
   geom_col(aes(fill = Perch), color = "black") +
   scale_fill_manual(values = c(grey(.95), grey(.6)), 
@@ -309,13 +309,13 @@ anole_spp_freq_plt = anole_freq_spp %>%
 
 # Create a data frame where the lower & higher frequencies are
 # defined as new columns, along with which_highest to identify which is which
-anole_diff_dat = anole_freq_perch %>% group_by(Species) %>% 
+anole_diff_dat = anole_freq_perch |> group_by(Species) |> 
   summarize(lowest = min(Frequency), highest = max(Frequency),
-            which_higher = Perch[Frequency == highest]) %>% 
-  arrange(desc(lowest)) %>% 
+            which_higher = Perch[Frequency == highest]) |> 
+  arrange(desc(lowest)) |> 
   mutate(Species = fct_inorder(Species)) 
 
-anole_diff_plt = anole_diff_dat %>%  
+anole_diff_plt = anole_diff_dat |>  
   ggplot(aes(x = Species)) + 
   # Create a column for the highest frequency, the background filled based on which perch has more lizards
   geom_col(aes(y = highest, fill = which_higher), color = "black") +

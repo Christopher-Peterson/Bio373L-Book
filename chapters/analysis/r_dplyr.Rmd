@@ -17,9 +17,9 @@ real_view = View
 View = function(x,...){
   # Scrollable table output
   # knitr::kable(head(x))
-  x %>% head(n = 10) %>% 
-  kableExtra::kbl() %>% 
-  kableExtra::kable_paper() %>% 
+  x |> head(n = 10) |> 
+  kableExtra::kbl() |> 
+  kableExtra::kable_paper() |> 
   kableExtra::scroll_box(width = "100%")
 } 
 ```
@@ -30,9 +30,9 @@ theme_set(theme_cowplot())
 lizards <- read_csv("example_data/anoles.csv") # See Appendix A if you don't have this data
 ```
 
-## The Pipe (%>%) {#r-dplyr-pipe}
+## The Pipe (|>) {#r-dplyr-pipe}
 
-The **pipe ( %>% )** operator strings functions together in a sequence.  It takes the result of the function on its left and makes it the first argument to the function on the right. Let's say you wanted to calculate the base-12 log of the mean of the square root of the absolute value of numbers between -50 and 50. The traditional way to write that would be:
+The **pipe ( |> )** operator strings functions together in a sequence.  It takes the result of the function on its left and makes it the first argument to the function on the right. Let's say you wanted to calculate the base-12 log of the mean of the square root of the absolute value of numbers between -50 and 50. The traditional way to write that would be:
 
 ```{r nopipe}
 log(mean(sqrt(abs(-50:50))), base = 12)
@@ -40,19 +40,21 @@ log(mean(sqrt(abs(-50:50))), base = 12)
 This is rather difficult to read; it has a lot of nested parentheses, and you need to start from the inside and work your way out to see what's happening.  With the pipe, you could re-write it like this:
 
 ```{r with_pipe}
--50:50 %>% abs() %>% sqrt() %>% 
-  mean() %>% log(base = 12)
+-50:50 |> abs() |> sqrt() |> 
+  mean() |> log(base = 12)
 ```
 Using pipes can make your code much clearer, and is quite helpful when creating a sequence of related transformations on data.
 
-In RStudio, you can insert the pipe by pressing Ctrl+Shift+M.
+In RStudio, you can insert the pipe by pressing Ctrl+Shift+M. 
+
+When looking for help online, you may also find a different version of the pipe (`%>%`); this is an older version of the pipe that is part of the tidyverse.  It works similarly to `|>` but has a number of technical drawbacks. In most cases, you can use them interchangeably. 
 
 ## Adding/modifying columns (mutate) {#r-dplyr-mutate}
 
 The `mutate()` function creates a new column in a data frame. For example, the total length of a lizard is defined as its snout-vent length (SVL) plus it's tail length.  
 
 ```{r mutate1}
-mutate(.data = lizards, total_length = SVL + Tail) %>% 
+mutate(.data = lizards, total_length = SVL + Tail) |> 
   View() # Use View to look at the results in RStudio
 ```
 
@@ -66,12 +68,12 @@ mutate(lizards, # generally, the .data argument is not named
        log_total_length = log(total_length),
        # You can also change an existing column by saving something to its name
        Color_morph = paste(Color_morph, "morph") # add "morph" after each color
-       ) %>% View()
+       ) |> View()
 ```
 Note that this doesn't modify the `lizards` dataset.  It creates a new data frame that has an additional column. You'll need to save it as a new variable to use it.
 
 ```{r mutate3}
-lizards_full = lizards %>% # It's also traditional to pipe the data argument in
+lizards_full = lizards |> # It's also traditional to pipe the data argument in
   mutate(total_length = SVL + Tail,
          rel_limb = Limb/SVL,
          log_total_length = log(total_length)) 
@@ -80,8 +82,8 @@ lizards_full = lizards %>% # It's also traditional to pipe the data argument in
 Tidyverse functions are designed to be piped together.  For example:
 
 ```{r mutate_plot}
-lizards %>% 
-  mutate(Total_length = SVL + Tail) %>% 
+lizards |> 
+  mutate(Total_length = SVL + Tail) |> 
   ggplot(aes(x = Site, y = Total_length)) +
   geom_boxplot()
 ```
@@ -91,11 +93,11 @@ Creating a quick plot at the end of a data manipulation step can be a good way t
 Here are a few other helpful things to do with `mutate()`:
 
 ```{r mutate4, collect = TRUE}
-lizards %>% mutate(
+lizards |> mutate(
   intercept = 1, # Add a constant
   row_number = 1:n() # the n() function tells you how many rows are 
     # in the current data frame (it only works in mutate & related functions)
-) %>%  View()
+) |>  View()
 ```
 
 
@@ -109,24 +111,24 @@ Here are a few exercises to try:
 Let's define "large lizards" as:
 
 ```{r mutate_large}
-lizards %>% 
-  mutate(large = SVL > 60) %>% 
+lizards |> 
+  mutate(large = SVL > 60) |> 
   View()
 ```
 
 The **large** column is a logical vector, with `TRUE` & `FALSE` values.  We can use logical vectors to get a subset of the data frame where the vector is `TRUE` with the `filter()` function.
 
 ```{r filter_intro}
-lizards %>%
-  mutate(large = SVL > 60) %>% 
-  filter(large) %>% 
+lizards |>
+  mutate(large = SVL > 60) |> 
+  filter(large) |> 
   View()
 ```
 
 Note that only `TRUE` values of **large** remain the the data frame. It's not actually necessary to create a column before filtering:
 
 ```{r filter_2}
-lizards %>% filter(SVL > 60) %>% View()
+lizards |> filter(SVL > 60) |> View()
 ```
 
 The `filter()` command returns every row where its logical conditions are `TRUE`.  Conditional statements that create logical statements include the following:
@@ -157,9 +159,9 @@ You can also combine and modify logical values:
 If you give `filter()` more than one condition, it applies all of them by combining them with `&`.
 
 ```{r filter3}
-lizards %>% 
+lizards |> 
   filter(Color_morph == "Blue",
-         Site %in% c("A", "B", "C", "D", "E")) %>% 
+         Site %in% c("A", "B", "C", "D", "E")) |> 
   ggplot(aes(x = SVL, y = Height, color = Site)) + geom_point()
 ```
 
@@ -173,45 +175,45 @@ Exercises:
 You can subset certain columns with the `select()` function. There are several ways to do this.  The simplest is by name:
 
 ```{r select1}
-lizards %>% select(Site, Color_morph, SVL) %>% View()
+lizards |> select(Site, Color_morph, SVL) |> View()
 ```
 
 You can also select by position:
 ```{r select2}
-lizards %>% select(1, 2, 7) %>% View()
+lizards |> select(1, 2, 7) |> View()
 ```
 
 This is more useful for ranges of values:
 ```{r select3}
-lizards %>% select(1:4, 7) %>% View()
+lizards |> select(1:4, 7) |> View()
 ```
 
 You can also use character vectors:
 ```{r select4}
-lizards %>% select("Site", "Color_morph", "SVL") %>% View()
+lizards |> select("Site", "Color_morph", "SVL") |> View()
 ```
 
 Note that if you want to use a variable that has column names saved as a character vector, you'll need to use a helper function (`all_of`) to tell `select` that you want to look for the contents of the variable, not the name of the variable:
 ```{r select5}
 select_vars = c("Site", "Color_morph", "SVL")
-lizards %>% 
-  select(all_of(select_vars)) %>% # without all_of, it would try to look for a column called "select_vars"
+lizards |> 
+  select(all_of(select_vars)) |> # without all_of, it would try to look for a column called "select_vars"
   View()
 ```
 
 You can remove columns by using a negative sign. (Note that negative signs are ignored if you have any names without negative signs).
 
 ```{r select6}
-lizards %>% select(-Color_morph, -Limb) %>% View()
+lizards |> select(-Color_morph, -Limb) |> View()
 ```
 ```{r select7}
-lizards %>% select(-(1:5)) %>% View()
+lizards |> select(-(1:5)) |> View()
 ```
 
 You can also use the `where` helper function to select columns based on their characteristics.  For example, the `is.numeric` function returns TRUE if its argument is a number; you can use it to select all numeric columns.
 ```{r select_num}
-lizards %>% 
-  select(where(is.numeric)) %>% 
+lizards |> 
+  select(where(is.numeric)) |> 
   View()
 ```
 
@@ -224,29 +226,29 @@ There's a lot more you can do with this if you want to get fancy; the documentat
 You can use `arrange()` to sort by one or more column values.  To sort lizards from lowest to highest mass:
 
 ```{r arrange1}
-lizards %>% arrange(Mass) %>% View()
+lizards |> arrange(Mass) |> View()
 ```
 
 If you wish to sort from highest to lowest, use the `desc()` helper function:
 ```{r arrange2}
-lizards %>% arrange(desc(Mass)) %>% View()
+lizards |> arrange(desc(Mass)) |> View()
 ```
 
 When you have categorical variables, you'll often have ties:
 ```{r arrange3}
-lizards %>% arrange(Site) %>% View()
+lizards |> arrange(Site) |> View()
 ```
 
 In this case, it's helpful to sort by multiple variables; the following code orders by Site, then by color morph within site, then by SVL.  
 ```{r arrange4}
-lizards %>% arrange(Site, Color_morph, SVL) %>% View()
+lizards |> arrange(Site, Color_morph, SVL) |> View()
 ```
 
 One particularly useful thing you can do with this is create rankings. 
 ```{r arrange5}
-lizards %>% 
-  arrange(desc(SVL)) %>% 
-  mutate(size_rank = 1:n()) %>%
+lizards |> 
+  arrange(desc(SVL)) |> 
+  mutate(size_rank = 1:n()) |>
   View()
 ```
 
@@ -258,17 +260,17 @@ lizards %>%
 Summarize is like mutate, but it generally produces columns that are shorter than the input.  It's typically used for summary stats.  For example, this calculates several characteristics of SVL.
 
 ```{r smry1}
-lizards %>% 
+lizards |> 
   summarize(mean_SVL = mean(SVL), 
             sd_SVL = sd(SVL),
             med_SVL = median(SVL), 
-            count = n()) %>% 
+            count = n()) |> 
   View()
 ```
 
 A useful trick for summarize is to take the mean of a logical vector; `TRUE` and `FALSE` are interpreted as 1 and 0, so this gives you a frequency.  For example, if you wanted to get the proportion of color morphs:
 ```{r smry_prop}
-lizards %>% 
+lizards |> 
   summarize(freq_Blue = mean(Color_morph == "Blue"),
             freq_Brown = mean(Color_morph == "Brown"),
             freq_Green = mean(Color_morph == "Green")
@@ -277,20 +279,20 @@ lizards %>%
 You can use the `across` helper function to apply the same summary function to multiple rows.
 
 ```{r smry_across}
-lizards %>% 
+lizards |> 
   summarize(
     across(.cols = c(SVL, Tail),
            .fns = mean)
-    ) %>% View()
+    ) |> View()
 ```
 The `.cols` argument identifies the columns to use for the summary, using the same methods as `select()`, the .fns should be one or more functions to apply to each column. If you wish to use more than one summary function, you need to create a named vector:
 
 ```{r smry_across2}
-lizards %>% 
+lizards |> 
   summarize(
     across(.cols = where(is.numeric), # apply to all numeric functions
            .fns = c(Mean = mean, StDev = sd)) # named vector (Mean and StDev)
-    ) %>% View()
+    ) |> View()
 ```
 
 This applies the functions `mean` and `sd` to all numeric columns; The results have the names `"Mean"` and `"StDev"` that we gave each function applied to the end of the column.
@@ -300,37 +302,37 @@ This applies the functions `mean` and `sd` to all numeric columns; The results h
 The real power of the `dplyr` package comes from being able to apply all of the above functions to grouped subsets of a data frame. To create a grouped table use the `group_by` function:
 
 ```{r grp1}
-lizards %>% group_by(Site)
+lizards |> group_by(Site)
 ```
 
 This doesn't appear to do much on its own; however, look what happens when you combine it with `summarize`:
 
 ```{r grp2, message = FALSE}
-lizards %>% group_by(Site) %>% 
+lizards |> group_by(Site) |> 
   summarize(mean_SVL = mean(SVL),
             sd_SVL = sd(SVL),
-            count = n()) %>% 
+            count = n()) |> 
   View()
 ```
 
 This calculates the mean, SD of SVL for each site. You can group by multiple factors
 
 ```{r grp3, message = FALSE}
-lizards %>% group_by(Site, Color_morph) %>% 
+lizards |> group_by(Site, Color_morph) |> 
   summarize(mean_SVL = mean(SVL), 
-            count = n()) %>% 
-  ungroup() %>% # Removes grouping; usually a good idea at the end unless you want surprises
+            count = n()) |> 
+  ungroup() |> # Removes grouping; usually a good idea at the end unless you want surprises
   View()
 ```
 
 Grouping doesn't just work with `summarize`; for example, you can use it with mutate to find the relative height of each lizard within its site:
 
 ```{r grp4, message = FALSE}
-lizards %>% group_by(Site) %>% 
+lizards |> group_by(Site) |> 
   mutate(
-    rel_height = Height/max(Height)) %>% 
+    rel_height = Height/max(Height)) |> 
     # max(Height) returns the max height in each site
-  ungroup() %>% 
+  ungroup() |> 
   ggplot(aes(x = Site, y = rel_height)) + 
   geom_jitter(width = .2, height = 0)
 ```
@@ -340,13 +342,13 @@ You can also use this to easily calculate frequencies:
 An alternate way to do this would be to combine `r`summarise` and `mutate`.
 
 ```{r smry_mut_freq, message = FALSE}
-lizards %>% 
-  group_by(Site, Color_morph) %>% 
-  summarize(count = n()) %>% 
+lizards |> 
+  group_by(Site, Color_morph) |> 
+  summarize(count = n()) |> 
   # count is the total number of each morph at each site
-  group_by(Site) %>% 
+  group_by(Site) |> 
   # Calculate color morph frequency at each site
-  mutate(site_frequency = count / sum(count)) %>% 
+  mutate(site_frequency = count / sum(count)) |> 
   View()
 ```
 
@@ -356,7 +358,7 @@ Some Exercises:
  5. Visualize the relationship between the maximum height at a site and the average limb length. Use this to help:
  
 ```{r, eval = FALSE, error = TRUE}
- lizards %>% 
+ lizards |> 
   # Put your summarize() code here
   # You should name your new columns max_height and mean_limb
     ggplot(aes(x = max_height, y = mean_limb)) + 

@@ -15,9 +15,9 @@ theme_set(theme_cowplot())
 View = function(x,...){
   # Scrollable table output
   # knitr::kable(head(x))
-  x %>% head(n = 10) %>% 
-  kableExtra::kbl() %>% 
-  kableExtra::kable_paper() %>% 
+  x |> head(n = 10) |> 
+  kableExtra::kbl() |> 
+  kableExtra::kable_paper() |> 
   kableExtra::scroll_box(width = "100%")
 } 
 ```
@@ -42,12 +42,12 @@ View(wide_ant_data)
 Looking at the dataset, there's a bunch of columns that indicate the number of species present. Let's make a tidy version of this dataset, which will be easier to work with for some of the functions we're using. We'll be using the `pivot_longer()` function from the `tidyr` package.
 
 ```{r a6_tidy_ants, message = FALSE}
-tidy_ant_data = wide_ant_data %>% 
+tidy_ant_data = wide_ant_data |> 
   pivot_longer(cols = Solenopsis_invicta:Other_species, # These are the species columns
                names_to = "Species", # Put the column name in a "Species" column
-               values_to = "N") %>% # Cell values are counts, so make that an N column
+               values_to = "N") |> # Cell values are counts, so make that an N column
   # replace the underscores in species names with a space:
-  mutate(Species = str_replace(Species, "_", " ")) %>% # str_replace is in the stringr package, which is part of tidyverse
+  mutate(Species = str_replace(Species, "_", " ")) |> # str_replace is in the stringr package, which is part of tidyverse
   filter(N > 0) # Remove species that aren't present
 View(tidy_ant_data)
 ```
@@ -107,14 +107,14 @@ How would we make this work with the dataset?  Here's one possibility:
 ```{r a6_jaccard_cumbersome, collapse = TRUE}
 # Define the community comparison as disturbed river terrace vs undisturbed river terrace
 
-com_r_lo = tidy_ant_data %>% 
+com_r_lo = tidy_ant_data |> 
   # Subset the data to get the "community" you want
-  filter(Habitat == "R", Disturbance == "low") %>% 
+  filter(Habitat == "R", Disturbance == "low") |> 
   # Get the list of species as a vector
-  pull(Species) %>% unique()
-com_r_hi = tidy_ant_data %>% 
-  filter(Habitat == "R", Disturbance == "high") %>% 
-  pull(Species) %>% unique()
+  pull(Species) |> unique()
+com_r_hi = tidy_ant_data |> 
+  filter(Habitat == "R", Disturbance == "high") |> 
+  pull(Species) |> unique()
 com_r_lo
 
 com_r_hi
@@ -134,32 +134,32 @@ to_presence_absense = function(x) if_else(x <= 0 | is.na(x), 0, 1) # Recodes dat
 
 # Format data for the species accumulation curve
 format_sac_data = function(wide_data) {
-    wide_data %>% 
+    wide_data |> 
       # Select only species columns
-      select(Solenopsis_invicta:Other_species) %>% 
+      select(Solenopsis_invicta:Other_species) |> 
       # We don't want to include this "other species"
-      select(-Other_species) %>% 
+      select(-Other_species) |> 
       # use to_presence_absense() on all columns
       mutate(across(everything(), to_presence_absense))
 }
 
 # Test it on quarry data:
-wide_ant_data %>% 
-  filter(Habitat == "Q") %>% 
+wide_ant_data |> 
+  filter(Habitat == "Q") |> 
   # Note: depending on the dataset, the Habitat variable may be recoded 
   # as "Quarry", "River Terrace", etc instead of "Q", "R"
   # You'll need to change the previous line of code so that it matches
   # what's in the dataset.
-  format_sac_data() %>% 
+  format_sac_data() |> 
   View()
 ```
 
 From here, you can 
 
 ```{r a6_sac_run, collapse = TRUE}
-sac_r = wide_ant_data %>% 
-  filter(Habitat == "R") %>% 
-  format_sac_data() %>% 
+sac_r = wide_ant_data |> 
+  filter(Habitat == "R") |> 
+  format_sac_data() |> 
   specaccum(method = "random", permutations = 500)   # Use these argument options
 ```
 
@@ -178,10 +178,10 @@ View(sac_r_tidy)
 From this, it's relatively simple to create the actual plot:
 
 ```{r a6_sac_plot1}
-sac_r_plot = sac_r_tidy %>% 
+sac_r_plot = sac_r_tidy |> 
   # Define the confidence intervals based on mean richness & standard errors
   mutate(lower_ci = richness - se * 1.96,
-         upper_ci = richness + se * 1.96) %>% 
+         upper_ci = richness + se * 1.96) |> 
   ggplot() + aes(x = sites, y = richness) +
   geom_line(size = 1) + # line for richness
   # The lines below add in confidence intervals
@@ -197,19 +197,19 @@ Let's combine these last few steps into a pair of functions, for re-use with dif
 ```{r a6_get_sac}
 get_sac = function(wide_data) {
   # wide_data is data in the wide format, probably subset or filtered
-  sac = format_sac_data(wide_data) %>% # Convert to SAC format
+  sac = format_sac_data(wide_data) |> # Convert to SAC format
     specaccum(method = "random", permutations = 500) # calculate SAC
   tibble( # Tidy output
     sites = sac$sites,
     richness = sac$richness,
     se = sac$sd
-  ) %>%   
+  ) |>   
     mutate(lower_ci = richness - se * 1.96,
            upper_ci = richness + se * 1.96)
 }
 plot_sac = function(sac_data) {
   # sac_data is the output of get_sac()
-  sac_data %>% ggplot() + 
+  sac_data |> ggplot() + 
     aes(x = sites, y = richness) +
     geom_line(size = 1) + # line for richness
     # The lines below add in confidence intervals
@@ -224,9 +224,9 @@ plot_sac = function(sac_data) {
 From here, we easily try different combinations
 
 ```{r a6_sac_expt1}
-wide_ant_data %>% 
-  filter(Habitat == "P") %>% 
-  get_sac() %>% 
+wide_ant_data |> 
+  filter(Habitat == "P") |> 
+  get_sac() |> 
   plot_sac()
 ```
 
@@ -234,13 +234,13 @@ When comparing multiple groups, it's best to put them together in a single plot.
 
 ```{r a6_sac_expt2}
 # Create the SAC data frames for each group in your comparison
-sac_dist_hi = wide_ant_data %>% 
-    filter(Disturbance == "high") %>% 
-    get_sac() %>% 
+sac_dist_hi = wide_ant_data |> 
+    filter(Disturbance == "high") |> 
+    get_sac() |> 
     mutate(Disturbance = "high") # Use the Mutate Add disturbance column to sac results
-sac_dist_low = wide_ant_data %>% 
-    filter(Disturbance == "low") %>% 
-    get_sac() %>% 
+sac_dist_low = wide_ant_data |> 
+    filter(Disturbance == "low") |> 
+    get_sac() |> 
     mutate(Disturbance = "low") # Add disturbance column back to sac results
 
 sac_dist_combined = # Combine them into one data frame
@@ -279,10 +279,10 @@ plot_rank_abundance = function(summarized_data, right_margin = 2.8) {
 Your resulting plot should look something like this:
 
 ```{r a6_plot_rank_abund_hidden, echo = FALSE}
-tidy_ant_data %>% filter(Disturbance == "low") %>% 
-  group_by(Species) %>% summarize(N = sum(N)) %>% 
-  arrange(desc(N)) %>% mutate(Species = fct_inorder(Species)) %>% 
-  ungroup() %>% plot_rank_abundance()
+tidy_ant_data |> filter(Disturbance == "low") |> 
+  group_by(Species) |> summarize(N = sum(N)) |> 
+  arrange(desc(N)) |> mutate(Species = fct_inorder(Species)) |> 
+  ungroup() |> plot_rank_abundance()
 ```
 
 
@@ -297,15 +297,15 @@ shannon_diversity = function(species, count) {
   # count: how many of each species are present
   
   # Create p, a vector of relative frequencies
-  p = tibble(species, count) %>% 
+  p = tibble(species, count) |> 
     # Merge duplicate species 
-    group_by(species) %>% 
-    summarize(count = sum(count)) %>% 
-    ungroup() %>% 
+    group_by(species) |> 
+    summarize(count = sum(count)) |> 
+    ungroup() |> 
     # Remove zeroes
-    filter(count > 0) %>% 
+    filter(count > 0) |> 
     # Convert to frequencies
-    mutate(p = count / sum(count)) %>% 
+    mutate(p = count / sum(count)) |> 
     # Extract column p
     pull(p) 
   if(length(p) < 2) return(0) # one or 0 species has an H of 0
@@ -320,9 +320,9 @@ shannon_diversity(LETTERS[1:5], # Species names, A : E
 This function should work well with a grouped summarize function:
 
 ```{r a6_shannon_grouped, collapse = TRUE}
-tidy_ant_data %>% 
-  group_by(Acre, Habitat) %>% # group by Acre & habitat
-  summarize(shannon = shannon_diversity(Species, N)) %>% 
+tidy_ant_data |> 
+  group_by(Acre, Habitat) |> # group by Acre & habitat
+  summarize(shannon = shannon_diversity(Species, N)) |> 
   View()
 ```
 

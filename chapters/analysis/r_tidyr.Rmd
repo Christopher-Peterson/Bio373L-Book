@@ -32,9 +32,9 @@ real_view = View
 View = function(x,...){
   # Scrollable table output
   # knitr::kable(head(x))
-  x %>% head(n = 10) %>% 
-    kableExtra::kbl() %>% 
-    kableExtra::kable_paper() %>% 
+  x |> head(n = 10) |> 
+    kableExtra::kbl() |> 
+    kableExtra::kable_paper() |> 
     kableExtra::scroll_box(width = "100%")
 } 
 ```
@@ -69,13 +69,13 @@ This clearly does not meet the definition of tidy data; the "Species" variable i
 The first step to tidying this data is consolidate the last sixteen columns; we're going to use `pivot_longer()` for that.  In its simplest form, `pivot_longer()` converts several columns into two: one with the original column names, and the other with the original column values. This will result in a data frame with more rows than the original (hence, "longer").  
 
 ```{r pivot_longer_ex1}
-succession_data_wide %>% 
+succession_data_wide |> 
   pivot_longer(
     # The first argument is the column names you want to reshape
     # This uses the same syntax of select() and across() from dplyr
     cols = -c(Type:DBH), # minus sign grabs everything NOT between Type & DBH: 
     names_to = "Species", # Name of the column that stores the old column names
-    values_to = "is_present") %>%  # Name of the oclumn that stores old cell values
+    values_to = "is_present") |>  # Name of the oclumn that stores old cell values
   View()
 ```
 
@@ -83,17 +83,17 @@ If you'll notice, the first 16 rows are identical in the `Type:DBH` columns, whi
 
 ```{r pivot_longer_alt_select, eval = FALSE, echo = TRUE}
 # The only difference between these is the .cols argument
-succession_data_wide %>% pivot_longer(
+succession_data_wide |> pivot_longer(
     .cols = 7:22, # positions of the columns to pivot
     names_to = "Species", values_to = "is_present")
-succession_data_wide %>% pivot_longer(
+succession_data_wide |> pivot_longer(
     -c(Type, Team, Sample, Quadrant, Distance, DBH), # explicitly list names
     names_to = "Species", values_to = "is_present")
-succession_data_wide %>% pivot_longer(
+succession_data_wide |> pivot_longer(
   # You can use ranges of column names to keep, though that's not practical here
     `Acer negundo (Boxwood elder)`:`Ulmus crassifolia (Cedar elm)`,
     names_to = "Species", values_to = "is_present")
-succession_data_wide %>% pivot_longer(
+succession_data_wide |> pivot_longer(
   .cols = contains("("), # graps all columns with an open parentheses in them
   names_to = "Species", values_to = "is_present")
 ```
@@ -104,9 +104,9 @@ One thing to note about our output is that there's a lot of `NA` values in `is_p
 
 ```{r pivot_longer_filter}
 succession_longer = 
-  succession_data_wide %>% pivot_longer(
-    cols = -c(Type:DBH), names_to = "Species", values_to = "is_present") %>%
-  filter(!is.na(is_present)) %>% # Remove missing values
+  succession_data_wide |> pivot_longer(
+    cols = -c(Type:DBH), names_to = "Species", values_to = "is_present") |>
+  filter(!is.na(is_present)) |> # Remove missing values
   select(-is_present) # This column is no longer useful
 View(succession_longer)
 ```
@@ -118,7 +118,7 @@ View(succession_longer)
 To fully tidy this, we need to split the "Type" column into habitat type and tree type columns.  The `separate()` function is useful for this.  
 
 ```{r separate_ex1}
-succession_sep = succession_longer %>% 
+succession_sep = succession_longer |> 
     separate(col = Type, # Column to separate; note that the arg is col, not .col
            into = c("Habitat", "Tree_type"), # Names of the new columns to separate into
            sep = "-") # the character used to mark the separation
@@ -130,22 +130,22 @@ Note that the `sep` argument can be either text or a integer(s); if it's a chara
 It would also be useful to have a column that specifically identifies the each sample point; currenlty, that information is split between the `Habitat`, `Team`, and `Sample` columns. The `unite()` function does this (it's the complement of `separate`).
 
 ```{r unite_ex1}
-succession_tidy = succession_sep %>% 
+succession_tidy = succession_sep |> 
   unite(col = "sample_point", # Name of new colum
         Habitat, Team, Sample, # columns to unite (note; these are all seaprate args)
         sep = "-", # separate the columns with a dash
         remove = FALSE # by default, unite() removes the columns to separate; this disables that because we want to keep Habitat
-        ) %>% 
+        ) |> 
   select(-Team, -Sample) 
-succession_tidy %>% View()
+succession_tidy |> View()
 ```
 
 An alternative option to `unite()` is to use a combination of `mutate()` and `paste()`:
 
 ```{r unite_alt1, eval = FALSE}
-succession_sep %>% 
-  mutate(sample_point = paste(Habitat, Team, Sample, sep = "-")) %>% 
-  select(-Team, -Sample) %>% 
+succession_sep |> 
+  mutate(sample_point = paste(Habitat, Team, Sample, sep = "-")) |> 
+  select(-Team, -Sample) |> 
   View() # The column order will be different, but otherwise it's the same.
 ```
 
@@ -166,11 +166,11 @@ The first four columns are single variables (gene name, biological process, mole
 While we could do this with a combination of `pivot_longer()` and `separate()`,  `pivot_longer()` can do both tasks at once with a few extra arguments. 
 
 ```{r a5_pivot_wider_multi1}
-yeast_data %>% 
+yeast_data |> 
   pivot_longer(G0.05:U0.3,
     names_to = c("Substrate", "Concentration"), # The names will go into these columns
     names_sep = 1, # separate the names between columns after the first character
-    values_to = "Gene_expression") %>% 
+    values_to = "Gene_expression") |> 
   glimpse()
 ```
 
@@ -191,12 +191,12 @@ convert_concentration = list(
 
 # We'll talk more about lists later
 
-tidy_yeast = yeast_data %>% 
+tidy_yeast = yeast_data |> 
   pivot_longer(G0.05:U0.3,
     names_to = c("Substrate", "Concentration"), names_sep = 1, 
     names_transform = convert_concentration, # We could also have defined the list here
     values_to = "Gene_expression") 
-tidy_yeast %>% glimpse()
+tidy_yeast |> glimpse()
 ```
 
 ### Combining `pivot_longer()` with `summarise()`
@@ -204,9 +204,9 @@ tidy_yeast %>% glimpse()
 Here's a particularly powerful combination of `tidyverse()` functions you can use when you're exploring a new dataset: calculate summary statistics on all of your variables with `summarise(across(...))`, tidy the results with `pivot_longer()`, then create a faceted `ggplot`.  
 
 ```{r pivot_summarize_1, collapse = TRUE}
-lizard_smry_by_color = lizards %>% 
+lizard_smry_by_color = lizards |> 
   # Group the data by color morph
-  group_by(Color_morph) %>% 
+  group_by(Color_morph) |> 
   summarize(
     across(where(is.numeric), # For all numeric columns...
            list(Mean = mean, Med = median, SD = sd)
@@ -219,10 +219,10 @@ glimpse(lizard_smry_by_color)
 This creates a data frame with columns for the color, the sample size, and a bunch that follow the pattern `Trait_statistic`.  An ideal way to tidy these data would be reduce these columns into `Trait`, `Mean`, `Median`, and `SD`. We can do that like this:
 
 ```{r pivot_summarize_2, collapse = TRUE}
-lizard_smry_tidy = lizard_smry_by_color %>% 
+lizard_smry_tidy = lizard_smry_by_color |> 
   pivot_longer(-c(Color_morph, N), # exclude the columns
                names_to = c("Trait", ".value"),
-               names_sep = "_") %>% 
+               names_sep = "_") |> 
   mutate(SE = SD/sqrt(N)) # may as well calculate standard error while we're here
 View(lizard_smry_tidy)
 ```
@@ -232,7 +232,7 @@ This call didn't have a `values_to` argument in it; instead, one of the `names_t
 From here, you can make a nice little summary statistic plot:
 
 ```{r pivot_sumarise_3, collapse = TRUE}
-lizard_smry_tidy %>% 
+lizard_smry_tidy |> 
   ggplot(aes(x = Color_morph)) + 
   facet_wrap(~Trait, scales = "free_y") +
   # SD:

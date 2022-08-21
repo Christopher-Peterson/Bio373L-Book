@@ -132,9 +132,9 @@ real_view = View
 View = function(x,...){
   # Scrollable table output
   # knitr::kable(head(x))
-  x %>% head(n = 10) %>% 
-  kableExtra::kbl() %>% 
-  kableExtra::kable_paper() %>% 
+  x |> head(n = 10) |> 
+  kableExtra::kbl() |> 
+  kableExtra::kable_paper() |> 
   kableExtra::scroll_box(width = "100%")
 } 
 ```
@@ -192,11 +192,11 @@ Lets trim this data by removing the unnecessary columns.
 
 You'll need to `filter()` your data (see \@ref(r-dplyr-filter)) so that it only contains a single habitat when doing these comparisons.
 Let's start with the old quarry; once you get everything working, you should copy and modify the code to work for the other two habitats.
-You should also read up on the pipe `( %>% )`, as it is important for making sequences of steps (\@ref(r-dplyr-pipe)).
+You should also read up on the pipe `( |> )`, as it is important for making sequences of steps (\@ref(r-dplyr-pipe)).
 
 ```{r hw_filter1, echo = TRUE, eval = FALSE}
 ## Relative Abundance - Q ####
-data_Q <- succession_data_thin %>% filter(Habitat == "Q")
+data_Q <- succession_data_thin |> filter(Habitat == "Q")
 ```
 
 Comment lines ending with `####` are a good way to organize different sections of your code. RStudio will allow you to collapse the code underneath it (until the next section), so you can navigate your document more easily.
@@ -213,8 +213,8 @@ Your code should look something like this:
 
 ```{r hw_grp_sm_1, eval = FALSE, echo = TRUE}
 # Get the number of sapling and canopy trees of each species for the Quarry habitat
-canopy_sapling_counts_Q <- data_Q %>% 
-  group_by(Tree_type, Species) %>% 
+canopy_sapling_counts_Q <- data_Q |> 
+  group_by(Tree_type, Species) |> 
   summarize(count = n()) # n() gets the number of rows within each group
 ```
 
@@ -225,12 +225,12 @@ Within the mutate command, you'll want to use the `sum()` function.
 
 ```{r hw_grp_sm_2, eval = FALSE, echo = TRUE}
 # Calculate relative abundance
-rel_abundance_Q <- canopy_sapling_counts_Q %>% 
-  group_by() %>%  # Fill this out
+rel_abundance_Q <- canopy_sapling_counts_Q |> 
+  group_by() |>  # Fill this out
   mutate(relative_abundance = ) # fill this out
 
 # To verify you did it correctly, run this:
-rel_abundance_Q %>% summarise(total = sum(relative_abundance))
+rel_abundance_Q |> summarise(total = sum(relative_abundance))
 # You should get a total of 1 for each tree type
 ```
 
@@ -241,8 +241,8 @@ To do this, you'll need to use `arrange()`, `mutate()` and `fct_inorder()`.
 
 ```{r hw_arrange, eval = FALSE, echo = TRUE}
 # Sort species by relative canopy abundance
-plot_data_Q <- rel_abundance_Q %>% 
-  arrange( , ) %>% # You'll need to arrange by TWO columns; 
+plot_data_Q <- rel_abundance_Q |> 
+  arrange( , ) |> # You'll need to arrange by TWO columns; 
   mutate(Species = fct_inorder(Species)) # Convert species into a factor based on its current sorting
 ```
 
@@ -315,8 +315,8 @@ where $x$ is `Distance`.
 Use this template to calculate density
 
 ```{r hw_dens_calc, eval = FALSE, echo = TRUE}
-density_data <- canopy_data %>%
-  group_by( , ) %>%  # you'll need two grouping factors
+density_data <- canopy_data |>
+  group_by( , ) |>  # you'll need two grouping factors
   summarize(density = ) # Note that ^2 is how you square something
 ```
 

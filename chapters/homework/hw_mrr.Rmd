@@ -116,13 +116,13 @@ The easiest way to do this with a grouped summarize command.
 The basic outline should be as follows:
 
 ```{r hw-mrr-lp-comps, eval = FALSE, echo = TRUE}
-lp_estimates <- recap_data %>% 
-  group_by(        ) %>% # Finish this
+lp_estimates <- recap_data  |>  
+  group_by(        ) |> # Finish this
   summarize( # We're dropping the subscripts because they aren't necessary
     M =     ,
     S =     ,
     R =     ,
-    sample_size = n() ) %>% 
+    sample_size = n() ) |> 
   mutate(N_hat = ) # Calculate N-hat from S, M, and R
 ```
 
@@ -131,8 +131,8 @@ This will give you a count of the number of cases where the logical condition is
 For example, you can count the number of Male individuals in each Period and Capture Status with this:
 
 ```{r hw-mrr-logical-sum, eval = FALSE, echo = TRUE}
-recap_data %>% 
-  group_by(Period, Capture_Status) %>% 
+recap_data |> 
+  group_by(Period, Capture_Status) |> 
   summarize(N_males = sum(sex == "M"))
 ```
 
@@ -152,7 +152,7 @@ Sampling intensity isn't important for this, so let's only include the data from
 
 ```{r hw-mrr-sex-data, echo = TRUE, eval = FALSE}
 #### Sex Ratios ####
-recap_data_full <- recap_data %>% 
+recap_data_full <- recap_data |> 
   filter(Team_combo == "ABCDE") # You may need to change this if there are more than 5 teams, e.g., "ABCDEFG"
 ```
 
@@ -258,8 +258,8 @@ To make the frequencies easier to work with, we're going to re-shape the data (t
 Do this:
 
 ```{r hw-mrr-geno-pivot, eval = FALSE, echo = TRUE}
-gt_freq_observed <- genotype_observed %>% 
-  select(Genotype, frequency) %>% 
+gt_freq_observed <- genotype_observed |> 
+  select(Genotype, frequency) |> 
   pivot_wider(names_from = Genotype, values_from = frequency)
 ```
 
@@ -270,7 +270,7 @@ Make sure that the columns of `gt_hwe` are in the same order as `gt_freq_observe
 Finally, add a column for HWE frequencies to `genotype_observed`:
 
 ```{r hw-mrr-geno-hwe-obs, eval = FALSE, echo = TRUE}
-genotype_obs_hwe <- genotype_observed %>% 
+genotype_obs_hwe <- genotype_observed |> 
   mutate(HWE_freq = as.numeric(gt_hwe)) # as.numeric converts gt_hwe from a data frame to a vector
 ```
 

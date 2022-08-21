@@ -72,8 +72,8 @@ Instead of including the contingency table directly, we're going to create figur
 
 ```{r hw-het-cont-figure, eval = FALSE, echo = TRUE}
 
-your_contingency_table %>% # replace with your contingency table name
-  as_tibble() %>% # Convert to a data frame
+your_contingency_table |> # replace with your contingency table name
+  as_tibble() |> # Convert to a data frame
   ggplot()  + 
   aes(x = , y = ) + # FIll in
   geom_tile(aes(fill = n)) + # Makes colored squares based on count
@@ -94,10 +94,10 @@ To look at the interaction of all three levels, create four data sets for each d
 To visualize the table, you'll need to make a 3-dimensional contingency table and manipulate it:
 
 ```{r hw-het-3d-cont-table, eval = FALSE, echo = TRUE}
-contingency_3d <- current_data %>% 
-  select(Canopy, Shrub, Ground) %>% 
-  table() %>% 
-  as_tibble() %>% 
+contingency_3d <- current_data |> 
+  select(Canopy, Shrub, Ground) |> 
+  table() |> 
+  as_tibble() |> 
   mutate(Shrub = paste("Shrub = ", Shrub)) # Modify shrub to include the lable; this will help with faceting
 
 ```
@@ -111,8 +111,8 @@ First, filter `historical_data_full` so that it only includes Fall 2004's data (
 Then, you'll want to modify the `current_data` so that it has columns for the Semester and Year (Fall 2020) before binding it to the 2004 data:
 
 ```{r hw-het-combine-data, eval = FALSE, echo = TRUE}
-historical_comparison_data <- current_data %>% 
-  mutate(   ) %>%  # Fill this in
+historical_comparison_data <- current_data |> 
+  mutate(   ) |>  # Fill this in
   bind_rows(historical_data_F04) # Combine w/ F04 data
 ```
 

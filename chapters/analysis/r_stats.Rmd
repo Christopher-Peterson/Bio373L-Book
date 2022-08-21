@@ -18,9 +18,9 @@ real_view = View
 View = function(x,...){
   # Scrollable table output
   # knitr::kable(head(x))
-  x %>% head(n = 10) %>% 
-    kableExtra::kbl() %>% 
-    kableExtra::kable_paper() %>% 
+  x |> head(n = 10) |> 
+    kableExtra::kbl() |> 
+    kableExtra::kable_paper() |> 
     kableExtra::scroll_box(width = "100%")
 } 
 ```
@@ -64,8 +64,8 @@ These tests generally compare the frequencies of count data.
 The easiest way to make a contingency table is from a data frame where each column is a categorical variable you want in the table & each row is an observation.  Let's say we wanted to create a color morph by perch type contingency with our lizard data.
 
 ```{r contingency_lizard_1, collapse = TRUE}
-color_by_perch_tbl <- lizards %>% 
-  select(Color_morph, Perch_type) %>% # select only the columns you want
+color_by_perch_tbl <- lizards |> 
+  select(Color_morph, Perch_type) |> # select only the columns you want
   table()  # feed them into the table command
 color_by_perch_tbl
 ```
@@ -87,9 +87,9 @@ chisq.test(color_by_perch_tbl)
 Chi-squared tests assume that there's at least five observations in each cell of the contingency table.  If this fails, then the resulting values aren't accurate.  For example: 
 
 ```{r contingency_lizard_small, collapse = TRUE}
-site_a_contingency <- lizards %>% 
-  filter(Site == "A") %>% # cut down the data size
-  select(Color_morph, Perch_type) %>% # select only the columns you want
+site_a_contingency <- lizards |> 
+  filter(Site == "A") |> # cut down the data size
+  select(Color_morph, Perch_type) |> # select only the columns you want
   table()  # feed them into the table command
 print(site_a_contingency)
 chisq.test(site_a_contingency)
@@ -120,7 +120,7 @@ simple_reg <- lm(Mass ~ SVL, data = lizards)
 simple_reg
 ```
 
-By default, this creates an LM object, which tells us the regression coefficients. For a linear regression (continuous response), these tell us the regression equation; in this case, that for every $1 \text{ mm}$ increase in SVL, mass increases by $`r coef(simple_reg)[2] %>% round(3) %>% as.numeric()` \text{ g}$.  Note that in this case, it may make sense to re-scale SVL to be in cm, so that the coefficient would be easier to interpret (e.g., use `lizards %>% mutate(SVL_cm = SVL/10)`. To extract the coeficients directly, use:
+By default, this creates an LM object, which tells us the regression coefficients. For a linear regression (continuous response), these tell us the regression equation; in this case, that for every $1 \text{ mm}$ increase in SVL, mass increases by $`r coef(simple_reg)[2] |> round(3) |> as.numeric()` \text{ g}$.  Note that in this case, it may make sense to re-scale SVL to be in cm, so that the coefficient would be easier to interpret (e.g., use `lizards |> mutate(SVL_cm = SVL/10)`. To extract the coeficients directly, use:
 
 ```{r lm_2, collapse = TRUE}
 coef(simple_reg)
@@ -144,7 +144,7 @@ A quick note on p-values:
 For a simple linear regression, `ggplot` can automatically plot the trendline (a.k.a., fitted values) and confidence intervals with `geom_smooth()`. 
 
 ```{r a4_lin_reg_plot1, collapse = TRUE, message = FALSE}
-lizards %>% 
+lizards |> 
   ggplot() + 
   aes(x = SVL, y = Mass) + 
   geom_point() + 
@@ -159,13 +159,13 @@ For more complicated models, this approach may not work very well; it can be hel
 You can get these values directly with the `predict()` function. The code below calculates the trendline and 95% confidence interval for the regression, and adds them to a data frame with the original data.  
 
 ```{r lm_predict, collapse = TRUE}
-simple_reg_predictions <- simple_reg %>% 
+simple_reg_predictions <- simple_reg |> 
   # Predict fitted values wish 95% confidence intervals
-  predict(interval = "confidence", level = .95) %>% 
+  predict(interval = "confidence", level = .95) |> 
   # The output of predict() is a matrix; that's hard to work with, so...
   as_tibble() # we convert the output of predict() to a data frame (tibble)
-simple_reg_plot_data <- lizards %>% 
-  select(SVL, Mass) %>% # we only need these columns
+simple_reg_plot_data <- lizards |> 
+  select(SVL, Mass) |> # we only need these columns
   bind_cols(simple_reg_predictions) # adds columns of simple_reg_preds to our lizards
 View(simple_reg_plot_data)
 ```
@@ -191,7 +191,7 @@ svl_predictors = tibble(SVL = c(20, 150, 600)) # New predictors
 mass_predictions <- predict(simple_reg, 
                            newdata = svl_predictors)  # The newdata argument is key here
                                                       # If unspecified, it uses the original data
-svl_predictors %>% 
+svl_predictors |> 
   mutate(Mass_estimate = mass_predictions)
 ```
 
@@ -208,7 +208,7 @@ simple_anova_lm <- lm(Diameter ~ Color_morph, data = lizards)
 simple_anova <- aov(simple_anova_lm)
 
 # Look at the ANOVA table
-simple_anova %>% summary()
+simple_anova |> summary()
 ```
 
 The ANOVA table gives us estimates of variation explained by the predictor and the residuals.  Note how different the output is from the summary of a regression, even though the underlying math is the same:
@@ -228,14 +228,14 @@ Two quick notes about this: `r ss = anova(simple_anova)[["Sum Sq"]]`
 
 ```{r aov_predict, collapse = TRUE}
 # make a data frame with just your predictors (distinct removes duplicates)
-color_levels <- lizards %>% distinct(Color_morph)
+color_levels <- lizards |> distinct(Color_morph)
 color_levels
 
 simple_anova_means <- 
   # Calculate means & 95% CI
   predict(simple_anova, newdata = color_levels, 
-                             interval = "confidence", level = 0.95) %>% 
-    as_tibble() %>%  # Convert to data frame
+                             interval = "confidence", level = 0.95) |> 
+    as_tibble() |>  # Convert to data frame
     bind_cols(color_levels) # add the prediction data as more columns
 simple_anova_means
 ```
@@ -245,7 +245,7 @@ simple_anova_means
 In general, the ANOVA tests whether a factor (such as color morph) explains a significant amount of variation in the response. To test whether there are significant differences between specific levels of a factor, you need to run post-hoc tests on your ANOVA. A common post-hoc is Tukey's HSD (honest significant difference).
 
 ```{r anova_hsd1, collapse = TRUE}
-simple_anova %>% TukeyHSD()
+simple_anova |> TukeyHSD()
 ```
  
 You can use the `witch` argument to specify specific level comparisons, but by default it compares all of them. 
@@ -254,8 +254,8 @@ A traditional way of summarizing post-hoc tests is to assign one or more letters
 
 ```{r update_anova_mean_tbl}
 # We'll store these in a data frame for later use
-anova_means_letters <- simple_anova_means %>% 
-  arrange(Color_morph) %>% # These will be plotted alphabetically, so we'll sort them that way to keep things easy
+anova_means_letters <- simple_anova_means |> 
+  arrange(Color_morph) |> # These will be plotted alphabetically, so we'll sort them that way to keep things easy
   mutate(anova_labels = c("A", "B", "C"))
 anova_means_letters
 ```
@@ -307,17 +307,17 @@ While it's perfectly valid to use an ANOVA to compare the means of two samples, 
 First, let's create a 2-level categorical variable to work with.  Normally, this would be done during data collection, but there aren't any in this data source.  Let's define lizards as big (SVL >= 65 mm) or small (SVL <= 55 mm) and remove the intermediates.
 
 ```{r a4_make_binary_variable, message = FALSE}
-lizards_by_size <- lizards %>%
-  filter(SVL <= 55 | SVL >= 65) %>%  # Remove the lizards of intermediate size
+lizards_by_size <- lizards |>
+  filter(SVL <= 55 | SVL >= 65) |>  # Remove the lizards of intermediate size
   mutate(Size_class = if_else (SVL >= 65, "big", "small") )# Define Size_class as big or small, based on SVL
 ```
 
 Next, let's use a t-test to see if limb length differs between big and small lizards. First, we should look at the mean and standard deviation of each group.  The classic t-test requires that the variances of the two groups are equal; if not, an adjustment will need to be applied.  In practice, this adjustment has no ill effect if the variances are equal, so you may as well apply it.  In any case, it's a good idea to look at data summaries before running a test.
 
 ```{r a4 t_test_smry_table, message = FALSE}
-lizard_size_sumary_table <- lizards_by_size %>%
-  group_by(Size_class) %>% # We want to summarize each size class
-  summarize(mean = mean(Limb), sd = sd(Limb), var = var(Limb), n = n()) %>%
+lizard_size_sumary_table <- lizards_by_size |>
+  group_by(Size_class) |> # We want to summarize each size class
+  summarize(mean = mean(Limb), sd = sd(Limb), var = var(Limb), n = n()) |>
   ungroup()
 lizard_size_sumary_table
 ```
@@ -338,9 +338,9 @@ When reporting a t-test, you should *t*, the degrees of freedom, the p-value, th
 Cohen's *d* is essentially a standardized way of measuring the difference between two groups.  Conceptually, it's the number of standard deviations of difference between the two groups.  You can calculate it by taking the difference in the group means and dividing by the pooled standard deviation. To get the pooled standard deviation, calculate the weighted average of the variance (weighted by population size) and take the square root.
 
 ```{r a4_cohen_d}
-lizard_size_sumary_table %>% 
+lizard_size_sumary_table |> 
   summarize(mean_diff = diff(mean),
-            pooled_variance = sum(var * n) / sum(n) ) %>% #weighted mean of variance
+            pooled_variance = sum(var * n) / sum(n) ) |> #weighted mean of variance
   mutate(cohen_d = abs(mean_diff) / sqrt(pooled_variance) ) # COhen's d is always positive, so take abs() of mean_diff 
 ```
 

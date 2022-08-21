@@ -275,8 +275,8 @@ Sometimes, you'll want to show means & confidence intervals of your different gr
 ```{r mean_se_plot, message = FALSE}
 # We need to create a new data frame for mean & standard error of perch diameter
 # This uses dplyr commands, which are explained in the next appendix
-diameter_mean_se = lizards %>% 
-  group_by(Color_morph) %>% 
+diameter_mean_se = lizards |> 
+  group_by(Color_morph) |> 
   summarize(
     Diameter_se = sd(Diameter) / sqrt(n()), # Standard error
     Diameter = mean(Diameter)) # This mean diameter
@@ -407,13 +407,13 @@ If you wish to use frequencies instead of counts along the y axis, it's usually 
 ```{r geom_col_data}
 # This code uses dplyr, which is discussed in the next appendix. Don't worry if it doesn't make sense now.
 # Overal perch_height frequency
-lizard_perch_freq = lizards %>% 
-  group_by(Perch_type) %>% 
-  summarize(count = n()) %>% 
+lizard_perch_freq = lizards |> 
+  group_by(Perch_type) |> 
+  summarize(count = n()) |> 
   # calculate frequencies per-group
-  mutate(frequency = count/sum(count)) %>% 
+  mutate(frequency = count/sum(count)) |> 
   # sort by frequency
-  arrange(desc(frequency)) %>% 
+  arrange(desc(frequency)) |> 
   # tell ggplot to plot Perch_type in its current order
   mutate(Perch_type = fct_inorder(Perch_type))
 # feel free to use View() to look at this

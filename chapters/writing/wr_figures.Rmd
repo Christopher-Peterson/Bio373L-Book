@@ -1,3 +1,8 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
 # Figures and Tables {#figures}
 
 Good figures are one of the most important parts of a manuscript.  When learning to write scientific papers, some might view figures as an afterthought.  This is a mistake.  The figure should tell a fairly complete story.  Combined with its caption, the reader should be able to look at the figure immediately after reading the abstract and have a general sense of what's going on.  
