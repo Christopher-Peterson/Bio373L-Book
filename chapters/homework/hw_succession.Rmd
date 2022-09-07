@@ -2,6 +2,7 @@
 editor_options: 
   markdown: 
     wrap: sentence
+  chunk_output_type: console
 ---
 
 # (PART) Analysis Homeworks {-}
@@ -203,7 +204,27 @@ Comment lines ending with `####` are a good way to organize different sections o
 
 ### Create a barplot comparing canopy & sapling abundances
 
-For each habitat, you'll need to create a bar plot comparing the relative abundances of canopy and sapling species.
+For each habitat, you'll need to create a bar plot comparing the relative abundances of canopy and sapling species. It should look something like this:
+
+```{r hw_suc_final_plt_ex, eval = TRUE, echo = FALSE}
+# Invisible to students: create results
+data_Q = succession_data |> 
+  filter(Habitat == "Q")
+rel_ab_Q = data_Q |> group_by(Tree_type, Species) |> 
+  count(name = 'count') |> 
+  group_by(Tree_type) |> 
+  mutate(relative_abundance = count / sum(count)) |> 
+  arrange(Tree_type, desc(relative_abundance)) |> 
+  mutate(Species = fct_inorder(Species))
+rel_ab_Q |> 
+ggplot(aes(x = Species, y = relative_abundance, fill = Tree_type)) + 
+  geom_col(position = "dodge") + 
+  theme_classic() +  # Remove gridlines
+  scale_fill_viridis_d("Tree Age Class") + # changes the colors of the bars;
+  xlab("Species") + # 
+  ylab("Relative Abundance")+ 
+  theme(axis.text.x = element_text(angle = -5, hjust = .5, vjust = 0))
+```
 
 #### Prepare the data
 
@@ -259,8 +280,8 @@ plot_rel_abund_Q <- ggplot(plot_data_Q) +
   theme_classic() +  # Remove gridlines
   scale_fill_viridis_d("Tree Age Class") + # changes the colors of the bars;
   xlab("Name Your X Axis") + # 
-  ylab("Name Your Y Axis") # You need to adjust these
-
+  ylab("Name Your Y Axis") + # You need to adjust these
+  theme(axis.text.x = element_text(angle = -5, hjust = .5, vjust = 0)) # Adjust the x axis text angle
 plot_rel_abund_Q # run this to view the plot
 ```
 
