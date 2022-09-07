@@ -12,7 +12,8 @@
 
 This homework will prepare you to analyze the data from the [Heterogeneity lab](#lab-heterogeneity).
 You should read over that the material to properly understand the data you'll be working with here.
-I will assume that you are familiar with the material used in the [Succession](#hw-succession) and [MRR](#hw-mrr) homeworks.
+I will assume that you are familiar with the material used in the [Succession](#hw-succession) homework (which references Chapters \@ref(r-intro),  \@ref(r-ggplot), and \@ref(r-dplyr), and Sections \@ref(r-stats-factors) and \@ref(r-stats-cat)).
+In addition, you should read Section \@ref(r-stats-lm).
 
 ## Objectives (and what's due)
 
@@ -42,7 +43,7 @@ You should download two datasets from Canvas and put them in your `data` folder:
 
 Begin your script with the following:
 
-```{r hw-het-setup, eval = FALSE, echo = TRUE}
+```{r hw-het-setup, eval = TRUE, echo = TRUE, message=FALSE, warning = FALSE,include=FALSE}
 # Heterogeneity Lab Analysis
 #### Setup ####
 library(tidyverse)
@@ -75,12 +76,12 @@ Instead of including the contingency table directly, we're going to create figur
 your_contingency_table |> # replace with your contingency table name
   as_tibble() |> # Convert to a data frame
   ggplot()  + 
-  aes(x = , y = ) + # FIll in
+  aes(x = , y = ) + # Finish these
   geom_tile(aes(fill = n)) + # Makes colored squares based on count
   scale_fill_viridis_c() + # Nice color scale
   coord_fixed() + # keeps x & y dimensions equal
   # Add text to the squares
-  geom_label(aes(label = round(n, 3)),
+  geom_label(aes(label = round(n, 3)), # Include the count as a label; the rounding is there in case you want to switch it to a proportion
             label.size = 0, # Keep this as is
             # Feel free to adjust these details
             # to get an image you like
@@ -93,16 +94,34 @@ your_contingency_table |> # replace with your contingency table name
 To look at the interaction of all three levels, create four data sets for each different shrub level using the `filter()` function and run separate Chi-squared / Fisher's exact tests.
 To visualize the table, you'll need to make a 3-dimensional contingency table and manipulate it:
 
-```{r hw-het-3d-cont-table, eval = FALSE, echo = TRUE}
+```{r hw-het-3d-cont-table, eval = TRUE, echo = TRUE}
 contingency_3d <- current_data |> 
   select(Canopy, Shrub, Ground) |> 
   table() |> 
   as_tibble() |> 
-  mutate(Shrub = paste("Shrub = ", Shrub)) # Modify shrub to include the lable; this will help with faceting
+  mutate(Shrub = paste("Shrub = ", Shrub)) # Modify shrub to include the label; this will help with faceting
 
 ```
 
-Then use this with the figure-making code, but use `facet_wrap()` (Section \@ref(r-ggplot-facet)) to make separate panels for each shrub level.  
+Then use this with the figure-making code, but use `facet_wrap()` (Section \@ref(r-ggplot-facet)) to make separate panels for each shrub level.
+Your final figure for this should look like this:
+
+```{r hw-het-cont-fig-facet-example, include=TRUE, echo = FALSE}
+contingency_3d |> 
+  ggplot(aes(x = Canopy, y = Ground)) + 
+  geom_tile(aes(fill = n)) + # Makes colored squares based on count
+  scale_fill_viridis_c() + # Nice color scale
+  facet_wrap(~Shrub, nrow = 2) + 
+  coord_fixed() + # keeps x & y dimensions equal
+  # Add text to the squares
+  geom_label(aes(label = round(n, 3)), # Include the count as a label; the rounding is there in case you want to switch it to a proportion
+            label.size = 0, # Keep this as is
+            # Feel free to adjust these details
+            # to get an image you like
+            color = "white", # Text color
+            fill = "#00000010", # Slight background around text to make it more legible
+            size = 10) # text size; 
+```
 
 ## Relationship Between Current and Historical Cover Levels
 
@@ -112,7 +131,7 @@ Then, you'll want to modify the `current_data` so that it has columns for the Se
 
 ```{r hw-het-combine-data, eval = FALSE, echo = TRUE}
 historical_comparison_data <- current_data |> 
-  mutate(   ) |>  # Fill this in
+  mutate(   ) |>  # Fill this in; new columns should match the columns in historical_data_full
   bind_rows(historical_data_F04) # Combine w/ F04 data
 ```
 
@@ -125,7 +144,7 @@ We'll do this with a linear regression (Section \@ref(r-stats-lm)).
 To see how well subjective scores predict the GLA percent canopy openness, run a regression with `Canopy` as the predictor (X) and `Percent_Cnpy_Open` as the response (Y).
 When reporting these results, focus on the $R^2$ statistic, as it indicates the amount of variation in canopy openness is explained by the subjective scores.
 
-Create a figure of the regression with both a regression line and individual data points (Section \@ref(r-ggplot-contx-conty)).
+Create a figure of the regression with both a regression line and individual data points (See \@ref(r-ggplot-contx-conty) for examples).
 For the data points, use `geom_jitter(height = 0, width = 0.15)` instead of `geom_point()`, so that all of the points aren't lined up with each other.
 
 

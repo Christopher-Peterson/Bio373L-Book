@@ -17,13 +17,13 @@ rmd_files:
   - chapters/analysis/r_vegan.Rmd
   - chapters/analysis/r_tidyr.Rmd
   - chapters/labs/lab_succession.Rmd
-  - chapters/labs/lab_mrr.Rmd
   - chapters/labs/lab_heterogeneity.Rmd
+  - chapters/labs/lab_mrr.Rmd
   - chapters/labs/lab_ant_communities.Rmd
   - chapters/labs/lab_phorid.Rmd
   - chapters/homework/hw_succession.Rmd
-  - chapters/homework/hw_mrr.Rmd
   - chapters/homework/hw_heterogeneity.Rmd
+  - chapters/homework/hw_mrr.Rmd
   - chapters/references.Rmd
   
   
