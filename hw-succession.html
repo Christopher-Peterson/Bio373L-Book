@@ -1081,7 +1081,8 @@ You should also read up on the pipe <code>( |&gt; )</code>, as it is important f
 <p>Comment lines ending with <code>####</code> are a good way to organize different sections of your code. RStudio will allow you to collapse the code underneath it (until the next section), so you can navigate your document more easily.</p>
 <div id="create-a-barplot-comparing-canopy-sapling-abundances" class="section level3 hasAnchor" number="15.5.1">
 <h3><span class="header-section-number">15.5.1</span> Create a barplot comparing canopy &amp; sapling abundances<a href="hw-succession.html#create-a-barplot-comparing-canopy-sapling-abundances" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>For each habitat, you’ll need to create a bar plot comparing the relative abundances of canopy and sapling species.</p>
+<p>For each habitat, you’ll need to create a bar plot comparing the relative abundances of canopy and sapling species. It should look something like this:</p>
+<p><img src="Bio373L-Book_files/figure-html/hw_suc_final_plt_ex-1.png" width="672" /></p>
 <div id="prepare-the-data" class="section level4 hasAnchor" number="15.5.1.1">
 <h4><span class="header-section-number">15.5.1.1</span> Prepare the data<a href="hw-succession.html#prepare-the-data" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>First, you should create a data frame that has columns <em>Species</em>, <em>tree_type</em> (canopy/sapling), and <em>count</em> (the number trees of that species/type).
@@ -1122,8 +1123,8 @@ To do this, you’ll need to use <code>arrange()</code>, <code>mutate()</code> a
 <span id="cb167-4"><a href="hw-succession.html#cb167-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span>  <span class="co"># Remove gridlines</span></span>
 <span id="cb167-5"><a href="hw-succession.html#cb167-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_d</span>(<span class="st">&quot;Tree Age Class&quot;</span>) <span class="sc">+</span> <span class="co"># changes the colors of the bars;</span></span>
 <span id="cb167-6"><a href="hw-succession.html#cb167-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Name Your X Axis&quot;</span>) <span class="sc">+</span> <span class="co"># </span></span>
-<span id="cb167-7"><a href="hw-succession.html#cb167-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Name Your Y Axis&quot;</span>) <span class="co"># You need to adjust these</span></span>
-<span id="cb167-8"><a href="hw-succession.html#cb167-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb167-7"><a href="hw-succession.html#cb167-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Name Your Y Axis&quot;</span>) <span class="sc">+</span> <span class="co"># You need to adjust these</span></span>
+<span id="cb167-8"><a href="hw-succession.html#cb167-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="sc">-</span><span class="dv">5</span>, <span class="at">hjust =</span> .<span class="dv">5</span>, <span class="at">vjust =</span> <span class="dv">0</span>)) <span class="co"># Adjust the x axis text angle</span></span>
 <span id="cb167-9"><a href="hw-succession.html#cb167-9" aria-hidden="true" tabindex="-1"></a>plot_rel_abund_Q <span class="co"># run this to view the plot</span></span></code></pre></div>
 <p>See the chapter for details of how these arguments work (you can also see the <a href="https://ggplot2.tidyverse.org/reference/">ggplot2 website</a> for more information).
 I would recommend changing the <code>scale_fill_</code> to a different option so you can customize your colors (<a href="r-ggplot.html#r-ggplot-aes-color">5.2.1</a>).</p>
