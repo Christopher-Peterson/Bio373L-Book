@@ -223,7 +223,7 @@ ggplot(aes(x = Species, y = relative_abundance, fill = Tree_type)) +
   scale_fill_viridis_d("Tree Age Class") + # changes the colors of the bars;
   xlab("Species") + # 
   ylab("Relative Abundance")+ 
-  theme(axis.text.x = element_text(angle = -5, hjust = .5, vjust = 0))
+  theme(axis.text.x = element_text(angle = -15, hjust = .7, vjust = 0))
 ```
 
 #### Prepare the data
@@ -281,7 +281,7 @@ plot_rel_abund_Q <- ggplot(plot_data_Q) +
   scale_fill_viridis_d("Tree Age Class") + # changes the colors of the bars;
   xlab("Name Your X Axis") + # 
   ylab("Name Your Y Axis") + # You need to adjust these
-  theme(axis.text.x = element_text(angle = -5, hjust = .5, vjust = 0)) # Adjust the x axis text angle
+  theme(axis.text.x = element_text(angle = -15, hjust = .7, vjust = 0)) # Adjust the x axis text angle
 plot_rel_abund_Q # run this to view the plot
 ```
 
