@@ -23,7 +23,7 @@
 <meta name="author" content="Christopher R. Peterson" />
 
 
-<meta name="date" content="2022-09-07" />
+<meta name="date" content="2022-09-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -564,7 +564,7 @@ Additionally, make sure you use <code>read_csv()</code>, not <code>read.csv()</c
 <ul>
 <li><strong>Period:</strong> The first or second sampling period (as described in Section <a href="lab-mrr.html#lab-mrr-field-methods">12.3</a> ).</li>
 <li><strong>Mark_Number:</strong> The id of the butterfly that was marked.</li>
-<li><strong>sex:</strong> The sex, <code>"M"</code> or <code>"F"</code>.</li>
+<li><strong>Sex:</strong> The sex, <code>"M"</code> or <code>"F"</code>. Some sex data may be missing (<code>NA</code>).</li>
 <li><strong>Capture_Status:</strong> Is this the first time the butterfly was observed (<code>"Mark"</code>) or has it been seen before (<code>"Recap"</code>).</li>
 <li><strong>Team_combo:</strong> What combinations of teams were used to create this dataset? This relates to sample size.</li>
 </ul>
@@ -594,7 +594,7 @@ This will give you a count of the number of cases where the logical condition is
 For example, you can count the number of Male individuals in each Period and Capture Status with this:</p>
 <div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="hw-mrr.html#cb178-1" aria-hidden="true" tabindex="-1"></a>recap_data <span class="sc">|&gt;</span> </span>
 <span id="cb178-2"><a href="hw-mrr.html#cb178-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Period, Capture_Status) <span class="sc">|&gt;</span> </span>
-<span id="cb178-3"><a href="hw-mrr.html#cb178-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">N_males =</span> <span class="fu">sum</span>(sex <span class="sc">==</span> <span class="st">&quot;M&quot;</span>))</span></code></pre></div>
+<span id="cb178-3"><a href="hw-mrr.html#cb178-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">N_males =</span> <span class="fu">sum</span>(Sex <span class="sc">==</span> <span class="st">&quot;M&quot;</span>))</span></code></pre></div>
 <p>You may need to combine multiple logical conditions for some of these.</p>
 <p>You can use an <code>arrange()</code> function (Section <a href="r-dplyr.html#r-dplyr-arrange">6.5</a>) to figure out what the <span class="math inline">\(hat{N}\)</span> corresponds with the highest sample size.</p>
 </div>
@@ -613,7 +613,9 @@ Sampling intensity isn’t important for this, so let’s only include the data 
 <span id="cb179-3"><a href="hw-mrr.html#cb179-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Team_combo <span class="sc">==</span> <span class="st">&quot;ABCDE&quot;</span>) <span class="co"># You may need to change this if there are more than 5 teams, e.g., &quot;ABCDEFG&quot;</span></span></code></pre></div>
 <p>Now, you’ll want to use the same approach you used in Section <a href="hw-mrr.html#hw-mrr-lp-calc">17.4.2</a> to estimate the number of males and females from this dataset.
 This should result in a two-row data frame (one row for males, one for females).
-Save that as <code>lp_estimate_by_sex</code>.</p>
+Be sure to inspect the data; if you have a row where sex is <code>NA</code>, you’ll need to filter it out.
+You can do this by adding <code>|&gt; filter(!is.na(Sex))</code> to your chain of data transformations.
+Save this dataframe as the variable <code>lp_estimate_by_sex</code>.</p>
 <div id="is-the-sex-ratio-5050" class="section level3 hasAnchor" number="17.5.1">
 <h3><span class="header-section-number">17.5.1</span> Is the Sex Ratio 50:50?<a href="hw-mrr.html#is-the-sex-ratio-5050" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Next, we want to run a one-sample chi-squared test to see if the sex ratio is unbalanced.
