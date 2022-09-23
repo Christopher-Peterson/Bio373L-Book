@@ -97,7 +97,7 @@ The columns of this data frame are:
 
 -   **Period:** The first or second sampling period (as described in Section \@ref(lab-mrr-field-methods) ).
 -   **Mark_Number:** The id of the butterfly that was marked.
--   **sex:** The sex, `"M"` or `"F"`.
+-   **Sex:** The sex, `"M"` or `"F"`. Some sex data may be missing (`NA`).
 -   **Capture_Status:** Is this the first time the butterfly was observed (`"Mark"`) or has it been seen before (`"Recap"`).
 -   **Team_combo:** What combinations of teams were used to create this dataset? This relates to sample size.
 
@@ -133,7 +133,7 @@ For example, you can count the number of Male individuals in each Period and Cap
 ```{r hw-mrr-logical-sum, eval = FALSE, echo = TRUE}
 recap_data |> 
   group_by(Period, Capture_Status) |> 
-  summarize(N_males = sum(sex == "M"))
+  summarize(N_males = sum(Sex == "M"))
 ```
 
 You may need to combine multiple logical conditions for some of these.
@@ -158,7 +158,9 @@ recap_data_full <- recap_data |>
 
 Now, you'll want to use the same approach you used in Section \@ref(hw-mrr-lp-calc) to estimate the number of males and females from this dataset.
 This should result in a two-row data frame (one row for males, one for females).
-Save that as `lp_estimate_by_sex`.
+Be sure to inspect the data; if you have a row where sex is `NA`, you'll need to filter it out.
+You can do this by adding `|> filter(!is.na(Sex))` to your chain of data transformations.
+Save this dataframe as the variable `lp_estimate_by_sex`.
 
 ### Is the Sex Ratio 50:50?
 
