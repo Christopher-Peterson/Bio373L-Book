@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>9 Wrangling, reshaping, and tidying data with tidyr | Bio 373L Survival Guide</title>
+  <title>8 Wrangling, reshaping, and tidying data with tidyr | Bio 373L Survival Guide</title>
   <meta name="description" content="Lab Manual for Field Ecology (Bio 373L) at UT Austin." />
   <meta name="generator" content="bookdown 0.28 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="9 Wrangling, reshaping, and tidying data with tidyr | Bio 373L Survival Guide" />
+  <meta property="og:title" content="8 Wrangling, reshaping, and tidying data with tidyr | Bio 373L Survival Guide" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Lab Manual for Field Ecology (Bio 373L) at UT Austin." />
   <meta name="github-repo" content="Christopher-Peterson/Bio373L-Book" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="9 Wrangling, reshaping, and tidying data with tidyr | Bio 373L Survival Guide" />
+  <meta name="twitter:title" content="8 Wrangling, reshaping, and tidying data with tidyr | Bio 373L Survival Guide" />
   
   <meta name="twitter:description" content="Lab Manual for Field Ecology (Bio 373L) at UT Austin." />
   
@@ -23,14 +23,14 @@
 <meta name="author" content="Christopher R. Peterson" />
 
 
-<meta name="date" content="2022-09-23" />
+<meta name="date" content="2022-09-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="r-vegan.html"/>
+<link rel="prev" href="r-stats.html"/>
 <link rel="next" href="lab-succession.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -281,184 +281,191 @@ div.csl-indent {
 <li class="chapter" data-level="7.3.3" data-path="r-stats.html"><a href="r-stats.html#comparing-two-means-t-tests"><i class="fa fa-check"></i><b>7.3.3</b> Comparing two means (t-tests)</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="r-vegan.html"><a href="r-vegan.html"><i class="fa fa-check"></i><b>8</b> Community ecology analyses with <code>vegan</code></a>
+<li class="chapter" data-level="8" data-path="r-tidyr.html"><a href="r-tidyr.html"><i class="fa fa-check"></i><b>8</b> Wrangling, reshaping, and tidying data with <code>tidyr</code></a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="r-vegan.html"><a href="r-vegan.html#setting-up-the-data"><i class="fa fa-check"></i><b>8.1</b> Setting up the data</a></li>
-<li class="chapter" data-level="8.2" data-path="r-vegan.html"><a href="r-vegan.html#jaccard-similarity"><i class="fa fa-check"></i><b>8.2</b> Jaccard similarity</a></li>
-<li class="chapter" data-level="8.3" data-path="r-vegan.html"><a href="r-vegan.html#species-accumulation-curves"><i class="fa fa-check"></i><b>8.3</b> Species Accumulation Curves</a></li>
-<li class="chapter" data-level="8.4" data-path="r-vegan.html"><a href="r-vegan.html#rank-abundance-curves"><i class="fa fa-check"></i><b>8.4</b> Rank Abundance Curves</a></li>
-<li class="chapter" data-level="8.5" data-path="r-vegan.html"><a href="r-vegan.html#shannon-index-diversity"><i class="fa fa-check"></i><b>8.5</b> Shannon Index &amp; Diversity</a></li>
-</ul></li>
-<li class="chapter" data-level="9" data-path="r-tidyr.html"><a href="r-tidyr.html"><i class="fa fa-check"></i><b>9</b> Wrangling, reshaping, and tidying data with <code>tidyr</code></a>
+<li class="chapter" data-level="8.1" data-path="r-tidyr.html"><a href="r-tidyr.html#tidy-data"><i class="fa fa-check"></i><b>8.1</b> Tidy data</a></li>
+<li class="chapter" data-level="8.2" data-path="r-tidyr.html"><a href="r-tidyr.html#pivot-longer-tutorial"><i class="fa fa-check"></i><b>8.2</b> Going from many columns to many rows: <code>pivot_longer()</code></a></li>
+<li class="chapter" data-level="8.3" data-path="r-tidyr.html"><a href="r-tidyr.html#separate-tutorial"><i class="fa fa-check"></i><b>8.3</b> Splitting and merging columns: <code>separate() and unite()</code></a></li>
+<li class="chapter" data-level="8.4" data-path="r-tidyr.html"><a href="r-tidyr.html#pivot-longer-multi-tutorial"><i class="fa fa-check"></i><b>8.4</b> Pivoting multiple columns</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="r-tidyr.html"><a href="r-tidyr.html#tidy-data"><i class="fa fa-check"></i><b>9.1</b> Tidy data</a></li>
-<li class="chapter" data-level="9.2" data-path="r-tidyr.html"><a href="r-tidyr.html#pivot-longer-tutorial"><i class="fa fa-check"></i><b>9.2</b> Going from many columns to many rows: <code>pivot_longer()</code></a></li>
-<li class="chapter" data-level="9.3" data-path="r-tidyr.html"><a href="r-tidyr.html#separate-tutorial"><i class="fa fa-check"></i><b>9.3</b> Splitting and merging columns: <code>separate() and unite()</code></a></li>
-<li class="chapter" data-level="9.4" data-path="r-tidyr.html"><a href="r-tidyr.html#pivot-longer-multi-tutorial"><i class="fa fa-check"></i><b>9.4</b> Pivoting multiple columns</a>
-<ul>
-<li class="chapter" data-level="9.4.1" data-path="r-tidyr.html"><a href="r-tidyr.html#combining-pivot_longer-with-summarise"><i class="fa fa-check"></i><b>9.4.1</b> Combining <code>pivot_longer()</code> with <code>summarise()</code></a></li>
+<li class="chapter" data-level="8.4.1" data-path="r-tidyr.html"><a href="r-tidyr.html#combining-pivot_longer-with-summarise"><i class="fa fa-check"></i><b>8.4.1</b> Combining <code>pivot_longer()</code> with <code>summarise()</code></a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>III Field Problems and Lab activities</b></span></li>
-<li class="chapter" data-level="10" data-path="lab-succession.html"><a href="lab-succession.html"><i class="fa fa-check"></i><b>10</b> Succession Lab</a>
+<li class="chapter" data-level="9" data-path="lab-succession.html"><a href="lab-succession.html"><i class="fa fa-check"></i><b>9</b> Succession Lab</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="lab-succession.html"><a href="lab-succession.html#introduction-to-the-lab"><i class="fa fa-check"></i><b>10.1</b> Introduction to the lab</a></li>
-<li class="chapter" data-level="10.2" data-path="lab-succession.html"><a href="lab-succession.html#materials-and-methods"><i class="fa fa-check"></i><b>10.2</b> Materials and Methods</a>
+<li class="chapter" data-level="9.1" data-path="lab-succession.html"><a href="lab-succession.html#introduction-to-the-lab"><i class="fa fa-check"></i><b>9.1</b> Introduction to the lab</a></li>
+<li class="chapter" data-level="9.2" data-path="lab-succession.html"><a href="lab-succession.html#materials-and-methods"><i class="fa fa-check"></i><b>9.2</b> Materials and Methods</a>
 <ul>
-<li class="chapter" data-level="10.2.1" data-path="lab-succession.html"><a href="lab-succession.html#bfl-habitat-regions"><i class="fa fa-check"></i><b>10.2.1</b> BFL habitat regions</a></li>
-<li class="chapter" data-level="10.2.2" data-path="lab-succession.html"><a href="lab-succession.html#data-collection"><i class="fa fa-check"></i><b>10.2.2</b> Data Collection</a></li>
+<li class="chapter" data-level="9.2.1" data-path="lab-succession.html"><a href="lab-succession.html#bfl-habitat-regions"><i class="fa fa-check"></i><b>9.2.1</b> BFL habitat regions</a></li>
+<li class="chapter" data-level="9.2.2" data-path="lab-succession.html"><a href="lab-succession.html#data-collection"><i class="fa fa-check"></i><b>9.2.2</b> Data Collection</a></li>
 </ul></li>
-<li class="chapter" data-level="10.3" data-path="lab-succession.html"><a href="lab-succession.html#analysis-to-perform"><i class="fa fa-check"></i><b>10.3</b> Analysis to perform</a>
+<li class="chapter" data-level="9.3" data-path="lab-succession.html"><a href="lab-succession.html#analysis-to-perform"><i class="fa fa-check"></i><b>9.3</b> Analysis to perform</a>
 <ul>
-<li class="chapter" data-level="10.3.1" data-path="lab-succession.html"><a href="lab-succession.html#lab-succession-density"><i class="fa fa-check"></i><b>10.3.1</b> Canopy tree density</a></li>
-<li class="chapter" data-level="10.3.2" data-path="lab-succession.html"><a href="lab-succession.html#species-by-habitat-and-life-stage"><i class="fa fa-check"></i><b>10.3.2</b> Species by habitat and life stage</a></li>
+<li class="chapter" data-level="9.3.1" data-path="lab-succession.html"><a href="lab-succession.html#lab-succession-density"><i class="fa fa-check"></i><b>9.3.1</b> Canopy tree density</a></li>
+<li class="chapter" data-level="9.3.2" data-path="lab-succession.html"><a href="lab-succession.html#species-by-habitat-and-life-stage"><i class="fa fa-check"></i><b>9.3.2</b> Species by habitat and life stage</a></li>
 </ul></li>
-<li class="chapter" data-level="10.4" data-path="lab-succession.html"><a href="lab-succession.html#discussion-1"><i class="fa fa-check"></i><b>10.4</b> Discussion</a></li>
-<li class="chapter" data-level="10.5" data-path="lab-succession.html"><a href="lab-succession.html#general-comments-post-review"><i class="fa fa-check"></i><b>10.5</b> General Comments (Post-Review)</a>
+<li class="chapter" data-level="9.4" data-path="lab-succession.html"><a href="lab-succession.html#discussion-1"><i class="fa fa-check"></i><b>9.4</b> Discussion</a></li>
+<li class="chapter" data-level="9.5" data-path="lab-succession.html"><a href="lab-succession.html#general-comments-post-review"><i class="fa fa-check"></i><b>9.5</b> General Comments (Post-Review)</a>
 <ul>
-<li class="chapter" data-level="10.5.1" data-path="lab-succession.html"><a href="lab-succession.html#figures-2"><i class="fa fa-check"></i><b>10.5.1</b> Figures</a></li>
-<li class="chapter" data-level="10.5.2" data-path="lab-succession.html"><a href="lab-succession.html#write-this-like-youre-trying-to-publish-it"><i class="fa fa-check"></i><b>10.5.2</b> Write this like you’re trying to publish it</a></li>
-<li class="chapter" data-level="10.5.3" data-path="lab-succession.html"><a href="lab-succession.html#describe-the-habitats"><i class="fa fa-check"></i><b>10.5.3</b> Describe the habitats</a></li>
-<li class="chapter" data-level="10.5.4" data-path="lab-succession.html"><a href="lab-succession.html#the-analysis"><i class="fa fa-check"></i><b>10.5.4</b> The Analysis</a></li>
-<li class="chapter" data-level="10.5.5" data-path="lab-succession.html"><a href="lab-succession.html#keeping-things-in-the-right-sections"><i class="fa fa-check"></i><b>10.5.5</b> Keeping things in the right sections</a></li>
-<li class="chapter" data-level="10.5.6" data-path="lab-succession.html"><a href="lab-succession.html#basic-style-and-format-rules"><i class="fa fa-check"></i><b>10.5.6</b> Basic style and format rules</a></li>
-<li class="chapter" data-level="10.5.7" data-path="lab-succession.html"><a href="lab-succession.html#other-comments"><i class="fa fa-check"></i><b>10.5.7</b> Other Comments</a></li>
+<li class="chapter" data-level="9.5.1" data-path="lab-succession.html"><a href="lab-succession.html#figures-2"><i class="fa fa-check"></i><b>9.5.1</b> Figures</a></li>
+<li class="chapter" data-level="9.5.2" data-path="lab-succession.html"><a href="lab-succession.html#write-this-like-youre-trying-to-publish-it"><i class="fa fa-check"></i><b>9.5.2</b> Write this like you’re trying to publish it</a></li>
+<li class="chapter" data-level="9.5.3" data-path="lab-succession.html"><a href="lab-succession.html#describe-the-habitats"><i class="fa fa-check"></i><b>9.5.3</b> Describe the habitats</a></li>
+<li class="chapter" data-level="9.5.4" data-path="lab-succession.html"><a href="lab-succession.html#the-analysis"><i class="fa fa-check"></i><b>9.5.4</b> The Analysis</a></li>
+<li class="chapter" data-level="9.5.5" data-path="lab-succession.html"><a href="lab-succession.html#keeping-things-in-the-right-sections"><i class="fa fa-check"></i><b>9.5.5</b> Keeping things in the right sections</a></li>
+<li class="chapter" data-level="9.5.6" data-path="lab-succession.html"><a href="lab-succession.html#basic-style-and-format-rules"><i class="fa fa-check"></i><b>9.5.6</b> Basic style and format rules</a></li>
+<li class="chapter" data-level="9.5.7" data-path="lab-succession.html"><a href="lab-succession.html#other-comments"><i class="fa fa-check"></i><b>9.5.7</b> Other Comments</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="lab-heterogeneity.html"><a href="lab-heterogeneity.html"><i class="fa fa-check"></i><b>11</b> Heterogeneity Lab:</a>
+<li class="chapter" data-level="10" data-path="lab-heterogeneity.html"><a href="lab-heterogeneity.html"><i class="fa fa-check"></i><b>10</b> Heterogeneity Lab:</a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="lab-heterogeneity.html"><a href="lab-heterogeneity.html#introduction-background"><i class="fa fa-check"></i><b>11.1</b> Introduction &amp; background</a></li>
-<li class="chapter" data-level="11.2" data-path="lab-heterogeneity.html"><a href="lab-heterogeneity.html#questions-and-hypotheses"><i class="fa fa-check"></i><b>11.2</b> Questions and Hypotheses</a></li>
-<li class="chapter" data-level="11.3" data-path="lab-heterogeneity.html"><a href="lab-heterogeneity.html#field-methods"><i class="fa fa-check"></i><b>11.3</b> Field Methods</a></li>
-<li class="chapter" data-level="11.4" data-path="lab-heterogeneity.html"><a href="lab-heterogeneity.html#analyses"><i class="fa fa-check"></i><b>11.4</b> Analyses</a>
+<li class="chapter" data-level="10.1" data-path="lab-heterogeneity.html"><a href="lab-heterogeneity.html#introduction-background"><i class="fa fa-check"></i><b>10.1</b> Introduction &amp; background</a></li>
+<li class="chapter" data-level="10.2" data-path="lab-heterogeneity.html"><a href="lab-heterogeneity.html#questions-and-hypotheses"><i class="fa fa-check"></i><b>10.2</b> Questions and Hypotheses</a></li>
+<li class="chapter" data-level="10.3" data-path="lab-heterogeneity.html"><a href="lab-heterogeneity.html#field-methods"><i class="fa fa-check"></i><b>10.3</b> Field Methods</a></li>
+<li class="chapter" data-level="10.4" data-path="lab-heterogeneity.html"><a href="lab-heterogeneity.html#analyses"><i class="fa fa-check"></i><b>10.4</b> Analyses</a>
 <ul>
-<li class="chapter" data-level="11.4.1" data-path="lab-heterogeneity.html"><a href="lab-heterogeneity.html#calibrating-canopy-estimates"><i class="fa fa-check"></i><b>11.4.1</b> Calibrating canopy estimates</a></li>
-<li class="chapter" data-level="11.4.2" data-path="lab-heterogeneity.html"><a href="lab-heterogeneity.html#relationship-between-canopy-and-ground-cover"><i class="fa fa-check"></i><b>11.4.2</b> Relationship between canopy and ground cover</a></li>
-<li class="chapter" data-level="11.4.3" data-path="lab-heterogeneity.html"><a href="lab-heterogeneity.html#quantifying-the-spatial-mosaic"><i class="fa fa-check"></i><b>11.4.3</b> Quantifying the spatial mosaic</a></li>
-<li class="chapter" data-level="11.4.4" data-path="lab-heterogeneity.html"><a href="lab-heterogeneity.html#historical-comparison"><i class="fa fa-check"></i><b>11.4.4</b> Historical comparison</a></li>
+<li class="chapter" data-level="10.4.1" data-path="lab-heterogeneity.html"><a href="lab-heterogeneity.html#calibrating-canopy-estimates"><i class="fa fa-check"></i><b>10.4.1</b> Calibrating canopy estimates</a></li>
+<li class="chapter" data-level="10.4.2" data-path="lab-heterogeneity.html"><a href="lab-heterogeneity.html#relationship-between-canopy-and-ground-cover"><i class="fa fa-check"></i><b>10.4.2</b> Relationship between canopy and ground cover</a></li>
+<li class="chapter" data-level="10.4.3" data-path="lab-heterogeneity.html"><a href="lab-heterogeneity.html#quantifying-the-spatial-mosaic"><i class="fa fa-check"></i><b>10.4.3</b> Quantifying the spatial mosaic</a></li>
+<li class="chapter" data-level="10.4.4" data-path="lab-heterogeneity.html"><a href="lab-heterogeneity.html#historical-comparison"><i class="fa fa-check"></i><b>10.4.4</b> Historical comparison</a></li>
 </ul></li>
-<li class="chapter" data-level="11.5" data-path="lab-heterogeneity.html"><a href="lab-heterogeneity.html#references"><i class="fa fa-check"></i><b>11.5</b> References</a></li>
+<li class="chapter" data-level="10.5" data-path="lab-heterogeneity.html"><a href="lab-heterogeneity.html#references"><i class="fa fa-check"></i><b>10.5</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="lab-mrr.html"><a href="lab-mrr.html"><i class="fa fa-check"></i><b>12</b> Mark-Release-Recapture (MRR) Lab</a>
+<li class="chapter" data-level="11" data-path="lab-mrr.html"><a href="lab-mrr.html"><i class="fa fa-check"></i><b>11</b> Mark-Release-Recapture (MRR) Lab</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="lab-mrr.html"><a href="lab-mrr.html#introduction-1"><i class="fa fa-check"></i><b>12.1</b> Introduction</a>
+<li class="chapter" data-level="11.1" data-path="lab-mrr.html"><a href="lab-mrr.html#introduction-1"><i class="fa fa-check"></i><b>11.1</b> Introduction</a>
 <ul>
-<li class="chapter" data-level="12.1.1" data-path="lab-mrr.html"><a href="lab-mrr.html#lab-mrr-lp"><i class="fa fa-check"></i><b>12.1.1</b> The Lincoln-Petersen model</a></li>
-<li class="chapter" data-level="12.1.2" data-path="lab-mrr.html"><a href="lab-mrr.html#heliconius-butterflies"><i class="fa fa-check"></i><b>12.1.2</b> <em>Heliconius</em> butterflies</a></li>
-<li class="chapter" data-level="12.1.3" data-path="lab-mrr.html"><a href="lab-mrr.html#lab-mrr-hwe-theory"><i class="fa fa-check"></i><b>12.1.3</b> Hardy-Weinberg Equilibrium</a></li>
+<li class="chapter" data-level="11.1.1" data-path="lab-mrr.html"><a href="lab-mrr.html#lab-mrr-lp"><i class="fa fa-check"></i><b>11.1.1</b> The Lincoln-Petersen model</a></li>
+<li class="chapter" data-level="11.1.2" data-path="lab-mrr.html"><a href="lab-mrr.html#heliconius-butterflies"><i class="fa fa-check"></i><b>11.1.2</b> <em>Heliconius</em> butterflies</a></li>
+<li class="chapter" data-level="11.1.3" data-path="lab-mrr.html"><a href="lab-mrr.html#lab-mrr-hwe-theory"><i class="fa fa-check"></i><b>11.1.3</b> Hardy-Weinberg Equilibrium</a></li>
 </ul></li>
-<li class="chapter" data-level="12.2" data-path="lab-mrr.html"><a href="lab-mrr.html#questions-and-hypotheses-1"><i class="fa fa-check"></i><b>12.2</b> Questions and hypotheses</a></li>
-<li class="chapter" data-level="12.3" data-path="lab-mrr.html"><a href="lab-mrr.html#lab-mrr-field-methods"><i class="fa fa-check"></i><b>12.3</b> Field Methods</a></li>
-<li class="chapter" data-level="12.4" data-path="lab-mrr.html"><a href="lab-mrr.html#analysis"><i class="fa fa-check"></i><b>12.4</b> Analysis</a>
+<li class="chapter" data-level="11.2" data-path="lab-mrr.html"><a href="lab-mrr.html#questions-and-hypotheses-1"><i class="fa fa-check"></i><b>11.2</b> Questions and hypotheses</a></li>
+<li class="chapter" data-level="11.3" data-path="lab-mrr.html"><a href="lab-mrr.html#lab-mrr-field-methods"><i class="fa fa-check"></i><b>11.3</b> Field Methods</a></li>
+<li class="chapter" data-level="11.4" data-path="lab-mrr.html"><a href="lab-mrr.html#analysis"><i class="fa fa-check"></i><b>11.4</b> Analysis</a>
 <ul>
-<li class="chapter" data-level="12.4.1" data-path="lab-mrr.html"><a href="lab-mrr.html#effect-of-sampling-intensity-on-lincoln-petersen-hatn-estimates"><i class="fa fa-check"></i><b>12.4.1</b> Effect of sampling intensity on Lincoln-Petersen <span class="math inline">\(\hat{N}\)</span> estimates</a></li>
-<li class="chapter" data-level="12.4.2" data-path="lab-mrr.html"><a href="lab-mrr.html#sex-ratios"><i class="fa fa-check"></i><b>12.4.2</b> Sex ratios</a></li>
-<li class="chapter" data-level="12.4.3" data-path="lab-mrr.html"><a href="lab-mrr.html#lab-mrr-trinidad"><i class="fa fa-check"></i><b>12.4.3</b> Comparison of Lincoln-Petersen with alternative method</a></li>
-<li class="chapter" data-level="12.4.4" data-path="lab-mrr.html"><a href="lab-mrr.html#hardy-weinberg"><i class="fa fa-check"></i><b>12.4.4</b> Hardy-Weinberg</a></li>
+<li class="chapter" data-level="11.4.1" data-path="lab-mrr.html"><a href="lab-mrr.html#effect-of-sampling-intensity-on-lincoln-petersen-hatn-estimates"><i class="fa fa-check"></i><b>11.4.1</b> Effect of sampling intensity on Lincoln-Petersen <span class="math inline">\(\hat{N}\)</span> estimates</a></li>
+<li class="chapter" data-level="11.4.2" data-path="lab-mrr.html"><a href="lab-mrr.html#sex-ratios"><i class="fa fa-check"></i><b>11.4.2</b> Sex ratios</a></li>
+<li class="chapter" data-level="11.4.3" data-path="lab-mrr.html"><a href="lab-mrr.html#lab-mrr-trinidad"><i class="fa fa-check"></i><b>11.4.3</b> Comparison of Lincoln-Petersen with alternative method</a></li>
+<li class="chapter" data-level="11.4.4" data-path="lab-mrr.html"><a href="lab-mrr.html#hardy-weinberg"><i class="fa fa-check"></i><b>11.4.4</b> Hardy-Weinberg</a></li>
 </ul></li>
-<li class="chapter" data-level="12.5" data-path="lab-mrr.html"><a href="lab-mrr.html#discussion-2"><i class="fa fa-check"></i><b>12.5</b> Discussion</a></li>
+<li class="chapter" data-level="11.5" data-path="lab-mrr.html"><a href="lab-mrr.html#discussion-2"><i class="fa fa-check"></i><b>11.5</b> Discussion</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="Lab_ants.html"><a href="Lab_ants.html"><i class="fa fa-check"></i><b>13</b> Ant Lab: Ant Community Ecology and the Effects of Invasive Fire Ants</a>
+<li class="chapter" data-level="12" data-path="Lab_ants.html"><a href="Lab_ants.html"><i class="fa fa-check"></i><b>12</b> Ant Lab: Ant Community Ecology and the Effects of Invasive Fire Ants</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="Lab_ants.html"><a href="Lab_ants.html#background"><i class="fa fa-check"></i><b>13.1</b> Background</a></li>
-<li class="chapter" data-level="13.2" data-path="Lab_ants.html"><a href="Lab_ants.html#questions-and-hypotheses-2"><i class="fa fa-check"></i><b>13.2</b> Questions and hypotheses</a></li>
-<li class="chapter" data-level="13.3" data-path="Lab_ants.html"><a href="Lab_ants.html#methods-1"><i class="fa fa-check"></i><b>13.3</b> Methods</a>
+<li class="chapter" data-level="12.1" data-path="Lab_ants.html"><a href="Lab_ants.html#background"><i class="fa fa-check"></i><b>12.1</b> Background</a></li>
+<li class="chapter" data-level="12.2" data-path="Lab_ants.html"><a href="Lab_ants.html#questions-and-hypotheses-2"><i class="fa fa-check"></i><b>12.2</b> Questions and hypotheses</a></li>
+<li class="chapter" data-level="12.3" data-path="Lab_ants.html"><a href="Lab_ants.html#methods-1"><i class="fa fa-check"></i><b>12.3</b> Methods</a>
 <ul>
-<li class="chapter" data-level="13.3.1" data-path="Lab_ants.html"><a href="Lab_ants.html#bait-survey"><i class="fa fa-check"></i><b>13.3.1</b> Bait Survey</a></li>
+<li class="chapter" data-level="12.3.1" data-path="Lab_ants.html"><a href="Lab_ants.html#bait-survey"><i class="fa fa-check"></i><b>12.3.1</b> Bait Survey</a></li>
 </ul></li>
-<li class="chapter" data-level="13.4" data-path="Lab_ants.html"><a href="Lab_ants.html#analysis-1"><i class="fa fa-check"></i><b>13.4</b> Analysis</a>
+<li class="chapter" data-level="12.4" data-path="Lab_ants.html"><a href="Lab_ants.html#analysis-1"><i class="fa fa-check"></i><b>12.4</b> Analysis</a>
 <ul>
-<li class="chapter" data-level="13.4.1" data-path="Lab_ants.html"><a href="Lab_ants.html#s.-invicta-habitat-preference"><i class="fa fa-check"></i><b>13.4.1</b> <em>S. invicta</em> habitat preference</a></li>
-<li class="chapter" data-level="13.4.2" data-path="Lab_ants.html"><a href="Lab_ants.html#ant-community-differences"><i class="fa fa-check"></i><b>13.4.2</b> Ant community differences</a></li>
+<li class="chapter" data-level="12.4.1" data-path="Lab_ants.html"><a href="Lab_ants.html#s.-invicta-habitat-preference"><i class="fa fa-check"></i><b>12.4.1</b> <em>S. invicta</em> habitat preference</a></li>
+<li class="chapter" data-level="12.4.2" data-path="Lab_ants.html"><a href="Lab_ants.html#ant-community-differences"><i class="fa fa-check"></i><b>12.4.2</b> Ant community differences</a></li>
 </ul></li>
-<li class="chapter" data-level="13.5" data-path="Lab_ants.html"><a href="Lab_ants.html#references-1"><i class="fa fa-check"></i><b>13.5</b> References</a></li>
+<li class="chapter" data-level="12.5" data-path="Lab_ants.html"><a href="Lab_ants.html#references-1"><i class="fa fa-check"></i><b>12.5</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="Lab_phorid.html"><a href="Lab_phorid.html"><i class="fa fa-check"></i><b>14</b> Phorid Lab: Parasitoid impacts on host foraging behavior with Phorid flies and fire ants</a>
+<li class="chapter" data-level="13" data-path="Lab_phorid.html"><a href="Lab_phorid.html"><i class="fa fa-check"></i><b>13</b> Phorid Lab: Parasitoid impacts on host foraging behavior with Phorid flies and fire ants</a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="Lab_phorid.html"><a href="Lab_phorid.html#background-1"><i class="fa fa-check"></i><b>14.1</b> Background</a>
+<li class="chapter" data-level="13.1" data-path="Lab_phorid.html"><a href="Lab_phorid.html#background-1"><i class="fa fa-check"></i><b>13.1</b> Background</a>
 <ul>
-<li class="chapter" data-level="14.1.1" data-path="Lab_phorid.html"><a href="Lab_phorid.html#fire-ants-and-phorid-flies"><i class="fa fa-check"></i><b>14.1.1</b> Fire ants and phorid flies</a></li>
-<li class="chapter" data-level="14.1.2" data-path="Lab_phorid.html"><a href="Lab_phorid.html#fire-ants-natural-history"><i class="fa fa-check"></i><b>14.1.2</b> Fire ants natural history</a></li>
+<li class="chapter" data-level="13.1.1" data-path="Lab_phorid.html"><a href="Lab_phorid.html#fire-ants-and-phorid-flies"><i class="fa fa-check"></i><b>13.1.1</b> Fire ants and phorid flies</a></li>
+<li class="chapter" data-level="13.1.2" data-path="Lab_phorid.html"><a href="Lab_phorid.html#fire-ants-natural-history"><i class="fa fa-check"></i><b>13.1.2</b> Fire ants natural history</a></li>
 </ul></li>
-<li class="chapter" data-level="14.2" data-path="Lab_phorid.html"><a href="Lab_phorid.html#objectives"><i class="fa fa-check"></i><b>14.2</b> Objectives</a></li>
-<li class="chapter" data-level="14.3" data-path="Lab_phorid.html"><a href="Lab_phorid.html#methods-2"><i class="fa fa-check"></i><b>14.3</b> Methods</a>
+<li class="chapter" data-level="13.2" data-path="Lab_phorid.html"><a href="Lab_phorid.html#objectives"><i class="fa fa-check"></i><b>13.2</b> Objectives</a></li>
+<li class="chapter" data-level="13.3" data-path="Lab_phorid.html"><a href="Lab_phorid.html#methods-2"><i class="fa fa-check"></i><b>13.3</b> Methods</a>
 <ul>
-<li class="chapter" data-level="14.3.1" data-path="Lab_phorid.html"><a href="Lab_phorid.html#phorid-impact-on-fire-ant-foraging"><i class="fa fa-check"></i><b>14.3.1</b> Phorid impact on fire ant foraging</a></li>
-<li class="chapter" data-level="14.3.2" data-path="Lab_phorid.html"><a href="Lab_phorid.html#using-the-hobo-mx2303-data-logger"><i class="fa fa-check"></i><b>14.3.2</b> Using the HOBO MX2303 data logger</a></li>
+<li class="chapter" data-level="13.3.1" data-path="Lab_phorid.html"><a href="Lab_phorid.html#phorid-impact-on-fire-ant-foraging"><i class="fa fa-check"></i><b>13.3.1</b> Phorid impact on fire ant foraging</a></li>
+<li class="chapter" data-level="13.3.2" data-path="Lab_phorid.html"><a href="Lab_phorid.html#using-the-hobo-mx2303-data-logger"><i class="fa fa-check"></i><b>13.3.2</b> Using the HOBO MX2303 data logger</a></li>
 </ul></li>
-<li class="chapter" data-level="14.4" data-path="Lab_phorid.html"><a href="Lab_phorid.html#modified-protocol-if-phorids-are-not-present"><i class="fa fa-check"></i><b>14.4</b> Modified protocol if phorids are not present</a></li>
-<li class="chapter" data-level="14.5" data-path="Lab_phorid.html"><a href="Lab_phorid.html#analysis-2"><i class="fa fa-check"></i><b>14.5</b> Analysis</a>
+<li class="chapter" data-level="13.4" data-path="Lab_phorid.html"><a href="Lab_phorid.html#modified-protocol-if-phorids-are-not-present"><i class="fa fa-check"></i><b>13.4</b> Modified protocol if phorids are not present</a></li>
+<li class="chapter" data-level="13.5" data-path="Lab_phorid.html"><a href="Lab_phorid.html#analysis-2"><i class="fa fa-check"></i><b>13.5</b> Analysis</a>
 <ul>
-<li class="chapter" data-level="14.5.1" data-path="Lab_phorid.html"><a href="Lab_phorid.html#effect-of-phorids-on-ant-foraging"><i class="fa fa-check"></i><b>14.5.1</b> Effect of phorids on ant foraging</a></li>
-<li class="chapter" data-level="14.5.2" data-path="Lab_phorid.html"><a href="Lab_phorid.html#effects-of-environmental-conditions"><i class="fa fa-check"></i><b>14.5.2</b> Effects of environmental conditions</a></li>
+<li class="chapter" data-level="13.5.1" data-path="Lab_phorid.html"><a href="Lab_phorid.html#effect-of-phorids-on-ant-foraging"><i class="fa fa-check"></i><b>13.5.1</b> Effect of phorids on ant foraging</a></li>
+<li class="chapter" data-level="13.5.2" data-path="Lab_phorid.html"><a href="Lab_phorid.html#effects-of-environmental-conditions"><i class="fa fa-check"></i><b>13.5.2</b> Effects of environmental conditions</a></li>
 </ul></li>
-<li class="chapter" data-level="14.6" data-path="Lab_phorid.html"><a href="Lab_phorid.html#discussion-3"><i class="fa fa-check"></i><b>14.6</b> Discussion</a></li>
-<li class="chapter" data-level="14.7" data-path="Lab_phorid.html"><a href="Lab_phorid.html#some-questions-from-previous-semesters"><i class="fa fa-check"></i><b>14.7</b> Some questions from previous semesters:</a></li>
+<li class="chapter" data-level="13.6" data-path="Lab_phorid.html"><a href="Lab_phorid.html#discussion-3"><i class="fa fa-check"></i><b>13.6</b> Discussion</a></li>
+<li class="chapter" data-level="13.7" data-path="Lab_phorid.html"><a href="Lab_phorid.html#some-questions-from-previous-semesters"><i class="fa fa-check"></i><b>13.7</b> Some questions from previous semesters:</a></li>
 </ul></li>
 <li class="part"><span><b>IV Analysis Homeworks</b></span></li>
-<li class="chapter" data-level="15" data-path="hw-succession.html"><a href="hw-succession.html"><i class="fa fa-check"></i><b>15</b> Homework: Succession</a>
+<li class="chapter" data-level="14" data-path="hw-succession.html"><a href="hw-succession.html"><i class="fa fa-check"></i><b>14</b> Homework: Succession</a>
 <ul>
-<li class="chapter" data-level="15.1" data-path="hw-succession.html"><a href="hw-succession.html#required-reading"><i class="fa fa-check"></i><b>15.1</b> Required Reading</a></li>
-<li class="chapter" data-level="15.2" data-path="hw-succession.html"><a href="hw-succession.html#objectives-1"><i class="fa fa-check"></i><b>15.2</b> Objectives</a>
+<li class="chapter" data-level="14.1" data-path="hw-succession.html"><a href="hw-succession.html#required-reading"><i class="fa fa-check"></i><b>14.1</b> Required Reading</a></li>
+<li class="chapter" data-level="14.2" data-path="hw-succession.html"><a href="hw-succession.html#objectives-1"><i class="fa fa-check"></i><b>14.2</b> Objectives</a>
 <ul>
-<li class="chapter" data-level="15.2.1" data-path="hw-succession.html"><a href="hw-succession.html#whats-due"><i class="fa fa-check"></i><b>15.2.1</b> What’s due?</a></li>
+<li class="chapter" data-level="14.2.1" data-path="hw-succession.html"><a href="hw-succession.html#whats-due"><i class="fa fa-check"></i><b>14.2.1</b> What’s due?</a></li>
 </ul></li>
-<li class="chapter" data-level="15.3" data-path="hw-succession.html"><a href="hw-succession.html#getting-started"><i class="fa fa-check"></i><b>15.3</b> Getting started</a>
+<li class="chapter" data-level="14.3" data-path="hw-succession.html"><a href="hw-succession.html#getting-started"><i class="fa fa-check"></i><b>14.3</b> Getting started</a>
 <ul>
-<li class="chapter" data-level="15.3.1" data-path="hw-succession.html"><a href="hw-succession.html#make-sure-your-software-is-up-to-date"><i class="fa fa-check"></i><b>15.3.1</b> Make sure your software is up-to-date</a></li>
-<li class="chapter" data-level="15.3.2" data-path="hw-succession.html"><a href="hw-succession.html#create-the-rstudio-project"><i class="fa fa-check"></i><b>15.3.2</b> Create the RStudio Project</a></li>
-<li class="chapter" data-level="15.3.3" data-path="hw-succession.html"><a href="hw-succession.html#create-an-r-script."><i class="fa fa-check"></i><b>15.3.3</b> Create an R script.</a></li>
+<li class="chapter" data-level="14.3.1" data-path="hw-succession.html"><a href="hw-succession.html#make-sure-your-software-is-up-to-date"><i class="fa fa-check"></i><b>14.3.1</b> Make sure your software is up-to-date</a></li>
+<li class="chapter" data-level="14.3.2" data-path="hw-succession.html"><a href="hw-succession.html#create-the-rstudio-project"><i class="fa fa-check"></i><b>14.3.2</b> Create the RStudio Project</a></li>
+<li class="chapter" data-level="14.3.3" data-path="hw-succession.html"><a href="hw-succession.html#create-an-r-script."><i class="fa fa-check"></i><b>14.3.3</b> Create an R script.</a></li>
 </ul></li>
-<li class="chapter" data-level="15.4" data-path="hw-succession.html"><a href="hw-succession.html#the-data"><i class="fa fa-check"></i><b>15.4</b> The Data</a>
+<li class="chapter" data-level="14.4" data-path="hw-succession.html"><a href="hw-succession.html#the-data"><i class="fa fa-check"></i><b>14.4</b> The Data</a>
 <ul>
-<li class="chapter" data-level="15.4.1" data-path="hw-succession.html"><a href="hw-succession.html#download-and-import-the-data"><i class="fa fa-check"></i><b>15.4.1</b> Download and import the data</a></li>
-<li class="chapter" data-level="15.4.2" data-path="hw-succession.html"><a href="hw-succession.html#data"><i class="fa fa-check"></i><b>15.4.2</b> Data</a></li>
+<li class="chapter" data-level="14.4.1" data-path="hw-succession.html"><a href="hw-succession.html#download-and-import-the-data"><i class="fa fa-check"></i><b>14.4.1</b> Download and import the data</a></li>
+<li class="chapter" data-level="14.4.2" data-path="hw-succession.html"><a href="hw-succession.html#data"><i class="fa fa-check"></i><b>14.4.2</b> Data</a></li>
 </ul></li>
-<li class="chapter" data-level="15.5" data-path="hw-succession.html"><a href="hw-succession.html#comparing-the-relative-abundance-of-canopy-and-sapling-trees-in-each-habitat"><i class="fa fa-check"></i><b>15.5</b> Comparing the relative abundance of canopy and sapling trees in each habitat</a>
+<li class="chapter" data-level="14.5" data-path="hw-succession.html"><a href="hw-succession.html#comparing-the-relative-abundance-of-canopy-and-sapling-trees-in-each-habitat"><i class="fa fa-check"></i><b>14.5</b> Comparing the relative abundance of canopy and sapling trees in each habitat</a>
 <ul>
-<li class="chapter" data-level="15.5.1" data-path="hw-succession.html"><a href="hw-succession.html#create-a-barplot-comparing-canopy-sapling-abundances"><i class="fa fa-check"></i><b>15.5.1</b> Create a barplot comparing canopy &amp; sapling abundances</a></li>
-<li class="chapter" data-level="15.5.2" data-path="hw-succession.html"><a href="hw-succession.html#contingency-table-chi-squared-test-of-top-5-species"><i class="fa fa-check"></i><b>15.5.2</b> Contingency table &amp; chi-squared test of top 5 species</a></li>
+<li class="chapter" data-level="14.5.1" data-path="hw-succession.html"><a href="hw-succession.html#create-a-barplot-comparing-canopy-sapling-abundances"><i class="fa fa-check"></i><b>14.5.1</b> Create a barplot comparing canopy &amp; sapling abundances</a></li>
+<li class="chapter" data-level="14.5.2" data-path="hw-succession.html"><a href="hw-succession.html#contingency-table-chi-squared-test-of-top-5-species"><i class="fa fa-check"></i><b>14.5.2</b> Contingency table &amp; chi-squared test of top 5 species</a></li>
 </ul></li>
-<li class="chapter" data-level="15.6" data-path="hw-succession.html"><a href="hw-succession.html#density"><i class="fa fa-check"></i><b>15.6</b> Density</a></li>
+<li class="chapter" data-level="14.6" data-path="hw-succession.html"><a href="hw-succession.html#density"><i class="fa fa-check"></i><b>14.6</b> Density</a></li>
 </ul></li>
-<li class="chapter" data-level="16" data-path="hw-heterogeneity.html"><a href="hw-heterogeneity.html"><i class="fa fa-check"></i><b>16</b> Homework: Heterogeneity</a>
+<li class="chapter" data-level="15" data-path="hw-heterogeneity.html"><a href="hw-heterogeneity.html"><i class="fa fa-check"></i><b>15</b> Homework: Heterogeneity</a>
 <ul>
-<li class="chapter" data-level="16.1" data-path="hw-heterogeneity.html"><a href="hw-heterogeneity.html#required-reading-1"><i class="fa fa-check"></i><b>16.1</b> Required Reading</a></li>
-<li class="chapter" data-level="16.2" data-path="hw-heterogeneity.html"><a href="hw-heterogeneity.html#objectives-and-whats-due"><i class="fa fa-check"></i><b>16.2</b> Objectives (and what’s due)</a></li>
-<li class="chapter" data-level="16.3" data-path="hw-heterogeneity.html"><a href="hw-heterogeneity.html#getting-started-1"><i class="fa fa-check"></i><b>16.3</b> Getting started</a></li>
-<li class="chapter" data-level="16.4" data-path="hw-heterogeneity.html"><a href="hw-heterogeneity.html#the-data-1"><i class="fa fa-check"></i><b>16.4</b> The data</a></li>
-<li class="chapter" data-level="16.5" data-path="hw-heterogeneity.html"><a href="hw-heterogeneity.html#relationships-between-cover-levels"><i class="fa fa-check"></i><b>16.5</b> Relationships between Cover Levels</a></li>
-<li class="chapter" data-level="16.6" data-path="hw-heterogeneity.html"><a href="hw-heterogeneity.html#relationship-between-current-and-historical-cover-levels"><i class="fa fa-check"></i><b>16.6</b> Relationship Between Current and Historical Cover Levels</a></li>
-<li class="chapter" data-level="16.7" data-path="hw-heterogeneity.html"><a href="hw-heterogeneity.html#calibrating-subjective-scores-with-gap-light-analyzer"><i class="fa fa-check"></i><b>16.7</b> Calibrating Subjective Scores with Gap Light Analyzer</a></li>
+<li class="chapter" data-level="15.1" data-path="hw-heterogeneity.html"><a href="hw-heterogeneity.html#required-reading-1"><i class="fa fa-check"></i><b>15.1</b> Required Reading</a></li>
+<li class="chapter" data-level="15.2" data-path="hw-heterogeneity.html"><a href="hw-heterogeneity.html#objectives-and-whats-due"><i class="fa fa-check"></i><b>15.2</b> Objectives (and what’s due)</a></li>
+<li class="chapter" data-level="15.3" data-path="hw-heterogeneity.html"><a href="hw-heterogeneity.html#getting-started-1"><i class="fa fa-check"></i><b>15.3</b> Getting started</a></li>
+<li class="chapter" data-level="15.4" data-path="hw-heterogeneity.html"><a href="hw-heterogeneity.html#the-data-1"><i class="fa fa-check"></i><b>15.4</b> The data</a></li>
+<li class="chapter" data-level="15.5" data-path="hw-heterogeneity.html"><a href="hw-heterogeneity.html#relationships-between-cover-levels"><i class="fa fa-check"></i><b>15.5</b> Relationships between Cover Levels</a></li>
+<li class="chapter" data-level="15.6" data-path="hw-heterogeneity.html"><a href="hw-heterogeneity.html#relationship-between-current-and-historical-cover-levels"><i class="fa fa-check"></i><b>15.6</b> Relationship Between Current and Historical Cover Levels</a></li>
+<li class="chapter" data-level="15.7" data-path="hw-heterogeneity.html"><a href="hw-heterogeneity.html#calibrating-subjective-scores-with-gap-light-analyzer"><i class="fa fa-check"></i><b>15.7</b> Calibrating Subjective Scores with Gap Light Analyzer</a></li>
 </ul></li>
-<li class="chapter" data-level="17" data-path="hw-mrr.html"><a href="hw-mrr.html"><i class="fa fa-check"></i><b>17</b> Homework: Mark-Release-Recapture</a>
+<li class="chapter" data-level="16" data-path="hw-mrr.html"><a href="hw-mrr.html"><i class="fa fa-check"></i><b>16</b> Homework: Mark-Release-Recapture</a>
 <ul>
-<li class="chapter" data-level="17.1" data-path="hw-mrr.html"><a href="hw-mrr.html#required-reading-2"><i class="fa fa-check"></i><b>17.1</b> Required Reading</a></li>
-<li class="chapter" data-level="17.2" data-path="hw-mrr.html"><a href="hw-mrr.html#objectives-and-whats-due-1"><i class="fa fa-check"></i><b>17.2</b> Objectives (and what’s due)</a></li>
-<li class="chapter" data-level="17.3" data-path="hw-mrr.html"><a href="hw-mrr.html#getting-started-2"><i class="fa fa-check"></i><b>17.3</b> Getting started</a></li>
-<li class="chapter" data-level="17.4" data-path="hw-mrr.html"><a href="hw-mrr.html#sampling-intensity-and-lincoln-petersen"><i class="fa fa-check"></i><b>17.4</b> Sampling Intensity and Lincoln-Petersen</a>
+<li class="chapter" data-level="16.1" data-path="hw-mrr.html"><a href="hw-mrr.html#required-reading-2"><i class="fa fa-check"></i><b>16.1</b> Required Reading</a></li>
+<li class="chapter" data-level="16.2" data-path="hw-mrr.html"><a href="hw-mrr.html#objectives-and-whats-due-1"><i class="fa fa-check"></i><b>16.2</b> Objectives (and what’s due)</a></li>
+<li class="chapter" data-level="16.3" data-path="hw-mrr.html"><a href="hw-mrr.html#getting-started-2"><i class="fa fa-check"></i><b>16.3</b> Getting started</a></li>
+<li class="chapter" data-level="16.4" data-path="hw-mrr.html"><a href="hw-mrr.html#sampling-intensity-and-lincoln-petersen"><i class="fa fa-check"></i><b>16.4</b> Sampling Intensity and Lincoln-Petersen</a>
 <ul>
-<li class="chapter" data-level="17.4.1" data-path="hw-mrr.html"><a href="hw-mrr.html#the-data-2"><i class="fa fa-check"></i><b>17.4.1</b> The data</a></li>
-<li class="chapter" data-level="17.4.2" data-path="hw-mrr.html"><a href="hw-mrr.html#hw-mrr-lp-calc"><i class="fa fa-check"></i><b>17.4.2</b> Calculating Lincoln-Petersen numbers</a></li>
-<li class="chapter" data-level="17.4.3" data-path="hw-mrr.html"><a href="hw-mrr.html#visualizing-the-effect-of-sample-size-on"><i class="fa fa-check"></i><b>17.4.3</b> Visualizing the effect of sample size on $</a></li>
+<li class="chapter" data-level="16.4.1" data-path="hw-mrr.html"><a href="hw-mrr.html#the-data-2"><i class="fa fa-check"></i><b>16.4.1</b> The data</a></li>
+<li class="chapter" data-level="16.4.2" data-path="hw-mrr.html"><a href="hw-mrr.html#hw-mrr-lp-calc"><i class="fa fa-check"></i><b>16.4.2</b> Calculating Lincoln-Petersen numbers</a></li>
+<li class="chapter" data-level="16.4.3" data-path="hw-mrr.html"><a href="hw-mrr.html#visualizing-the-effect-of-sample-size-on"><i class="fa fa-check"></i><b>16.4.3</b> Visualizing the effect of sample size on $</a></li>
 </ul></li>
-<li class="chapter" data-level="17.5" data-path="hw-mrr.html"><a href="hw-mrr.html#estimates-by-sex-and-sex-ratios"><i class="fa fa-check"></i><b>17.5</b> Estimates by Sex and Sex Ratios</a>
+<li class="chapter" data-level="16.5" data-path="hw-mrr.html"><a href="hw-mrr.html#estimates-by-sex-and-sex-ratios"><i class="fa fa-check"></i><b>16.5</b> Estimates by Sex and Sex Ratios</a>
 <ul>
-<li class="chapter" data-level="17.5.1" data-path="hw-mrr.html"><a href="hw-mrr.html#is-the-sex-ratio-5050"><i class="fa fa-check"></i><b>17.5.1</b> Is the Sex Ratio 50:50?</a></li>
+<li class="chapter" data-level="16.5.1" data-path="hw-mrr.html"><a href="hw-mrr.html#is-the-sex-ratio-5050"><i class="fa fa-check"></i><b>16.5.1</b> Is the Sex Ratio 50:50?</a></li>
 </ul></li>
-<li class="chapter" data-level="17.6" data-path="hw-mrr.html"><a href="hw-mrr.html#alternate-methods-for-population-size-estimates"><i class="fa fa-check"></i><b>17.6</b> Alternate Methods for Population Size Estimates</a>
+<li class="chapter" data-level="16.6" data-path="hw-mrr.html"><a href="hw-mrr.html#alternate-methods-for-population-size-estimates"><i class="fa fa-check"></i><b>16.6</b> Alternate Methods for Population Size Estimates</a>
 <ul>
-<li class="chapter" data-level="17.6.1" data-path="hw-mrr.html"><a href="hw-mrr.html#the-data-3"><i class="fa fa-check"></i><b>17.6.1</b> The data</a></li>
-<li class="chapter" data-level="17.6.2" data-path="hw-mrr.html"><a href="hw-mrr.html#lincoln-petersen-estimate"><i class="fa fa-check"></i><b>17.6.2</b> Lincoln-Petersen estimate</a></li>
-<li class="chapter" data-level="17.6.3" data-path="hw-mrr.html"><a href="hw-mrr.html#regression-estimate"><i class="fa fa-check"></i><b>17.6.3</b> Regression estimate</a></li>
-<li class="chapter" data-level="17.6.4" data-path="hw-mrr.html"><a href="hw-mrr.html#regression-figure"><i class="fa fa-check"></i><b>17.6.4</b> Regression figure</a></li>
+<li class="chapter" data-level="16.6.1" data-path="hw-mrr.html"><a href="hw-mrr.html#the-data-3"><i class="fa fa-check"></i><b>16.6.1</b> The data</a></li>
+<li class="chapter" data-level="16.6.2" data-path="hw-mrr.html"><a href="hw-mrr.html#lincoln-petersen-estimate"><i class="fa fa-check"></i><b>16.6.2</b> Lincoln-Petersen estimate</a></li>
+<li class="chapter" data-level="16.6.3" data-path="hw-mrr.html"><a href="hw-mrr.html#regression-estimate"><i class="fa fa-check"></i><b>16.6.3</b> Regression estimate</a></li>
+<li class="chapter" data-level="16.6.4" data-path="hw-mrr.html"><a href="hw-mrr.html#regression-figure"><i class="fa fa-check"></i><b>16.6.4</b> Regression figure</a></li>
 </ul></li>
-<li class="chapter" data-level="17.7" data-path="hw-mrr.html"><a href="hw-mrr.html#hardy-weinberg-equilibrium-optix"><i class="fa fa-check"></i><b>17.7</b> Hardy-Weinberg Equilibrium &amp; Optix</a>
+<li class="chapter" data-level="16.7" data-path="hw-mrr.html"><a href="hw-mrr.html#hardy-weinberg-equilibrium-optix"><i class="fa fa-check"></i><b>16.7</b> Hardy-Weinberg Equilibrium &amp; Optix</a>
 <ul>
-<li class="chapter" data-level="17.7.1" data-path="hw-mrr.html"><a href="hw-mrr.html#the-data-4"><i class="fa fa-check"></i><b>17.7.1</b> The data</a></li>
-<li class="chapter" data-level="17.7.2" data-path="hw-mrr.html"><a href="hw-mrr.html#calculating-hwe-ratios"><i class="fa fa-check"></i><b>17.7.2</b> Calculating HWE ratios</a></li>
-<li class="chapter" data-level="17.7.3" data-path="hw-mrr.html"><a href="hw-mrr.html#testing-for-hwe"><i class="fa fa-check"></i><b>17.7.3</b> Testing for HWE</a></li>
+<li class="chapter" data-level="16.7.1" data-path="hw-mrr.html"><a href="hw-mrr.html#the-data-4"><i class="fa fa-check"></i><b>16.7.1</b> The data</a></li>
+<li class="chapter" data-level="16.7.2" data-path="hw-mrr.html"><a href="hw-mrr.html#calculating-hwe-ratios"><i class="fa fa-check"></i><b>16.7.2</b> Calculating HWE ratios</a></li>
+<li class="chapter" data-level="16.7.3" data-path="hw-mrr.html"><a href="hw-mrr.html#testing-for-hwe"><i class="fa fa-check"></i><b>16.7.3</b> Testing for HWE</a></li>
 </ul></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="hw-ants.html"><a href="hw-ants.html"><i class="fa fa-check"></i><b>17</b> Homework: Ant Community Ecology and Invasive Fire Ants</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="hw-ants.html"><a href="hw-ants.html#required-reading-3"><i class="fa fa-check"></i><b>17.1</b> Required Reading</a></li>
+<li class="chapter" data-level="17.2" data-path="hw-ants.html"><a href="hw-ants.html#objectives-and-whats-due-2"><i class="fa fa-check"></i><b>17.2</b> Objectives (and what’s due)</a></li>
+<li class="chapter" data-level="17.3" data-path="hw-ants.html"><a href="hw-ants.html#getting-started-3"><i class="fa fa-check"></i><b>17.3</b> Getting started</a>
+<ul>
+<li class="chapter" data-level="17.3.1" data-path="hw-ants.html"><a href="hw-ants.html#contrasts"><i class="fa fa-check"></i><b>17.3.1</b> Contrasts</a></li>
+<li class="chapter" data-level="17.3.2" data-path="hw-ants.html"><a href="hw-ants.html#the-data-5"><i class="fa fa-check"></i><b>17.3.2</b> The data</a></li>
+</ul></li>
+<li class="chapter" data-level="17.4" data-path="hw-ants.html"><a href="hw-ants.html#s.-invicta-habitat-preference-1"><i class="fa fa-check"></i><b>17.4</b> <em>S. invicta</em> habitat preference</a></li>
+<li class="chapter" data-level="17.5" data-path="hw-ants.html"><a href="hw-ants.html#jaccard-similarity"><i class="fa fa-check"></i><b>17.5</b> Jaccard similarity</a></li>
+<li class="chapter" data-level="17.6" data-path="hw-ants.html"><a href="hw-ants.html#shannon-index-diversity"><i class="fa fa-check"></i><b>17.6</b> Shannon Index &amp; Diversity</a></li>
+<li class="chapter" data-level="17.7" data-path="hw-ants.html"><a href="hw-ants.html#species-accumulation-curves"><i class="fa fa-check"></i><b>17.7</b> Species Accumulation Curves</a></li>
+<li class="chapter" data-level="17.8" data-path="hw-ants.html"><a href="hw-ants.html#rank-abundance-curves"><i class="fa fa-check"></i><b>17.8</b> Rank Abundance Curves</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references-2.html"><a href="references-2.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -481,10 +488,10 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="r-tidyr" class="section level1 hasAnchor" number="9">
-<h1><span class="header-section-number">9</span> Wrangling, reshaping, and tidying data with <code>tidyr</code><a href="r-tidyr.html#r-tidyr" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="tidy-data" class="section level2 hasAnchor" number="9.1">
-<h2><span class="header-section-number">9.1</span> Tidy data<a href="r-tidyr.html#tidy-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="r-tidyr" class="section level1 hasAnchor" number="8">
+<h1><span class="header-section-number">8</span> Wrangling, reshaping, and tidying data with <code>tidyr</code><a href="r-tidyr.html#r-tidyr" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="tidy-data" class="section level2 hasAnchor" number="8.1">
+<h2><span class="header-section-number">8.1</span> Tidy data<a href="r-tidyr.html#tidy-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Most of the previous appendices have required you to have your data in a <strong>tidy</strong> format. Tidy data consist of data frames with the following characteristics:</p>
 <ol style="list-style-type: decimal">
 <li>Each column is a different variable</li>
@@ -493,17 +500,17 @@ div.csl-indent {
 </ol>
 <p>The packages in the <code>tidyverse</code> are generally designed to operate on tidy data; however, other functions may require the data to be in a different shape. It’s also frequently convenient to record field data in a non-tidy format. The <code>tidyr</code> package is designed to reshape your data. For more information on tidy data, please see <a href="https://tidyr.tidyverse.org/articles/tidy-data.html">this article</a>.</p>
 <p>We’re going to be using some new datasets for this chapter; if you don’t have them already, <a href="https://github.com/Christopher-Peterson/Bio373L-Book/tree/master/example_data">download them here</a> and put them in your “example_data” directory.</p>
-<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="r-tidyr.html#cb146-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) </span>
-<span id="cb146-2"><a href="r-tidyr.html#cb146-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cowplot)</span>
-<span id="cb146-3"><a href="r-tidyr.html#cb146-3" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_cowplot</span>())</span>
-<span id="cb146-4"><a href="r-tidyr.html#cb146-4" aria-hidden="true" tabindex="-1"></a>lizards <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;example_data/anoles.csv&quot;</span>) <span class="co"># See Appendix A if you don&#39;t have this data</span></span>
-<span id="cb146-5"><a href="r-tidyr.html#cb146-5" aria-hidden="true" tabindex="-1"></a>succession_data_wide <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;example_data/succession_wide_untidy.csv&quot;</span>)</span>
-<span id="cb146-6"><a href="r-tidyr.html#cb146-6" aria-hidden="true" tabindex="-1"></a>yeast_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;example_data/yeast_data_partial.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="r-tidyr.html#cb130-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) </span>
+<span id="cb130-2"><a href="r-tidyr.html#cb130-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cowplot)</span>
+<span id="cb130-3"><a href="r-tidyr.html#cb130-3" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_cowplot</span>())</span>
+<span id="cb130-4"><a href="r-tidyr.html#cb130-4" aria-hidden="true" tabindex="-1"></a>lizards <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;example_data/anoles.csv&quot;</span>) <span class="co"># See Appendix A if you don&#39;t have this data</span></span>
+<span id="cb130-5"><a href="r-tidyr.html#cb130-5" aria-hidden="true" tabindex="-1"></a>succession_data_wide <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;example_data/succession_wide_untidy.csv&quot;</span>)</span>
+<span id="cb130-6"><a href="r-tidyr.html#cb130-6" aria-hidden="true" tabindex="-1"></a>yeast_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;example_data/yeast_data_partial.csv&quot;</span>)</span></code></pre></div>
 </div>
-<div id="pivot-longer-tutorial" class="section level2 hasAnchor" number="9.2">
-<h2><span class="header-section-number">9.2</span> Going from many columns to many rows: <code>pivot_longer()</code><a href="r-tidyr.html#pivot-longer-tutorial" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="pivot-longer-tutorial" class="section level2 hasAnchor" number="8.2">
+<h2><span class="header-section-number">8.2</span> Going from many columns to many rows: <code>pivot_longer()</code><a href="r-tidyr.html#pivot-longer-tutorial" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Let’s look at the succession data file; this is slightly modified data from Fall 2018, which was collected as part of the first lab (Section @ref(#lab1)).</p>
-<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="r-tidyr.html#cb147-1" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(succession_data_wide)</span></code></pre></div>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="r-tidyr.html#cb131-1" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(succession_data_wide)</span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
 <table class=" lightable-paper" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; margin-left: auto; margin-right: auto;">
 <thead>
@@ -1270,14 +1277,14 @@ NA
 </ul>
 <p>This clearly does not meet the definition of tidy data; the “Species” variable is split between columns, and the habitat type and tree type are both combined into a single “type” column.</p>
 <p>The first step to tidying this data is consolidate the last sixteen columns; we’re going to use <code>pivot_longer()</code> for that. In its simplest form, <code>pivot_longer()</code> converts several columns into two: one with the original column names, and the other with the original column values. This will result in a data frame with more rows than the original (hence, “longer”).</p>
-<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="r-tidyr.html#cb148-1" aria-hidden="true" tabindex="-1"></a>succession_data_wide <span class="sc">|&gt;</span> </span>
-<span id="cb148-2"><a href="r-tidyr.html#cb148-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
-<span id="cb148-3"><a href="r-tidyr.html#cb148-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># The first argument is the column names you want to reshape</span></span>
-<span id="cb148-4"><a href="r-tidyr.html#cb148-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># This uses the same syntax of select() and across() from dplyr</span></span>
-<span id="cb148-5"><a href="r-tidyr.html#cb148-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="sc">-</span><span class="fu">c</span>(Type<span class="sc">:</span>DBH), <span class="co"># minus sign grabs everything NOT between Type &amp; DBH: </span></span>
-<span id="cb148-6"><a href="r-tidyr.html#cb148-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">&quot;Species&quot;</span>, <span class="co"># Name of the column that stores the old column names</span></span>
-<span id="cb148-7"><a href="r-tidyr.html#cb148-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">&quot;is_present&quot;</span>) <span class="sc">|&gt;</span>  <span class="co"># Name of the oclumn that stores old cell values</span></span>
-<span id="cb148-8"><a href="r-tidyr.html#cb148-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">View</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="r-tidyr.html#cb132-1" aria-hidden="true" tabindex="-1"></a>succession_data_wide <span class="sc">|&gt;</span> </span>
+<span id="cb132-2"><a href="r-tidyr.html#cb132-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb132-3"><a href="r-tidyr.html#cb132-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># The first argument is the column names you want to reshape</span></span>
+<span id="cb132-4"><a href="r-tidyr.html#cb132-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># This uses the same syntax of select() and across() from dplyr</span></span>
+<span id="cb132-5"><a href="r-tidyr.html#cb132-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="sc">-</span><span class="fu">c</span>(Type<span class="sc">:</span>DBH), <span class="co"># minus sign grabs everything NOT between Type &amp; DBH: </span></span>
+<span id="cb132-6"><a href="r-tidyr.html#cb132-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">&quot;Species&quot;</span>, <span class="co"># Name of the column that stores the old column names</span></span>
+<span id="cb132-7"><a href="r-tidyr.html#cb132-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">&quot;is_present&quot;</span>) <span class="sc">|&gt;</span>  <span class="co"># Name of the oclumn that stores old cell values</span></span>
+<span id="cb132-8"><a href="r-tidyr.html#cb132-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">View</span>()</span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
 <table class=" lightable-paper" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; margin-left: auto; margin-right: auto;">
 <thead>
@@ -1573,28 +1580,28 @@ NA
 </table>
 </div>
 <p>If you’ll notice, the first 16 rows are identical in the <code>Type:DBH</code> columns, while <code>Species</code> and <code>is_present</code> vary. A few alternative ways to do the same thing:</p>
-<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="r-tidyr.html#cb149-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The only difference between these is the .cols argument</span></span>
-<span id="cb149-2"><a href="r-tidyr.html#cb149-2" aria-hidden="true" tabindex="-1"></a>succession_data_wide <span class="sc">|&gt;</span> <span class="fu">pivot_longer</span>(</span>
-<span id="cb149-3"><a href="r-tidyr.html#cb149-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">.cols =</span> <span class="dv">7</span><span class="sc">:</span><span class="dv">22</span>, <span class="co"># positions of the columns to pivot</span></span>
-<span id="cb149-4"><a href="r-tidyr.html#cb149-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">&quot;Species&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;is_present&quot;</span>)</span>
-<span id="cb149-5"><a href="r-tidyr.html#cb149-5" aria-hidden="true" tabindex="-1"></a>succession_data_wide <span class="sc">|&gt;</span> <span class="fu">pivot_longer</span>(</span>
-<span id="cb149-6"><a href="r-tidyr.html#cb149-6" aria-hidden="true" tabindex="-1"></a>    <span class="sc">-</span><span class="fu">c</span>(Type, Team, Sample, Quadrant, Distance, DBH), <span class="co"># explicitly list names</span></span>
-<span id="cb149-7"><a href="r-tidyr.html#cb149-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">&quot;Species&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;is_present&quot;</span>)</span>
-<span id="cb149-8"><a href="r-tidyr.html#cb149-8" aria-hidden="true" tabindex="-1"></a>succession_data_wide <span class="sc">|&gt;</span> <span class="fu">pivot_longer</span>(</span>
-<span id="cb149-9"><a href="r-tidyr.html#cb149-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># You can use ranges of column names to keep, though that&#39;s not practical here</span></span>
-<span id="cb149-10"><a href="r-tidyr.html#cb149-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Acer negundo (Boxwood elder)</span><span class="st">`</span><span class="sc">:</span><span class="st">`</span><span class="at">Ulmus crassifolia (Cedar elm)</span><span class="st">`</span>,</span>
-<span id="cb149-11"><a href="r-tidyr.html#cb149-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">&quot;Species&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;is_present&quot;</span>)</span>
-<span id="cb149-12"><a href="r-tidyr.html#cb149-12" aria-hidden="true" tabindex="-1"></a>succession_data_wide <span class="sc">|&gt;</span> <span class="fu">pivot_longer</span>(</span>
-<span id="cb149-13"><a href="r-tidyr.html#cb149-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">.cols =</span> <span class="fu">contains</span>(<span class="st">&quot;(&quot;</span>), <span class="co"># graps all columns with an open parentheses in them</span></span>
-<span id="cb149-14"><a href="r-tidyr.html#cb149-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">names_to =</span> <span class="st">&quot;Species&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;is_present&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="r-tidyr.html#cb133-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The only difference between these is the .cols argument</span></span>
+<span id="cb133-2"><a href="r-tidyr.html#cb133-2" aria-hidden="true" tabindex="-1"></a>succession_data_wide <span class="sc">|&gt;</span> <span class="fu">pivot_longer</span>(</span>
+<span id="cb133-3"><a href="r-tidyr.html#cb133-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">.cols =</span> <span class="dv">7</span><span class="sc">:</span><span class="dv">22</span>, <span class="co"># positions of the columns to pivot</span></span>
+<span id="cb133-4"><a href="r-tidyr.html#cb133-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">&quot;Species&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;is_present&quot;</span>)</span>
+<span id="cb133-5"><a href="r-tidyr.html#cb133-5" aria-hidden="true" tabindex="-1"></a>succession_data_wide <span class="sc">|&gt;</span> <span class="fu">pivot_longer</span>(</span>
+<span id="cb133-6"><a href="r-tidyr.html#cb133-6" aria-hidden="true" tabindex="-1"></a>    <span class="sc">-</span><span class="fu">c</span>(Type, Team, Sample, Quadrant, Distance, DBH), <span class="co"># explicitly list names</span></span>
+<span id="cb133-7"><a href="r-tidyr.html#cb133-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">&quot;Species&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;is_present&quot;</span>)</span>
+<span id="cb133-8"><a href="r-tidyr.html#cb133-8" aria-hidden="true" tabindex="-1"></a>succession_data_wide <span class="sc">|&gt;</span> <span class="fu">pivot_longer</span>(</span>
+<span id="cb133-9"><a href="r-tidyr.html#cb133-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># You can use ranges of column names to keep, though that&#39;s not practical here</span></span>
+<span id="cb133-10"><a href="r-tidyr.html#cb133-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Acer negundo (Boxwood elder)</span><span class="st">`</span><span class="sc">:</span><span class="st">`</span><span class="at">Ulmus crassifolia (Cedar elm)</span><span class="st">`</span>,</span>
+<span id="cb133-11"><a href="r-tidyr.html#cb133-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">&quot;Species&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;is_present&quot;</span>)</span>
+<span id="cb133-12"><a href="r-tidyr.html#cb133-12" aria-hidden="true" tabindex="-1"></a>succession_data_wide <span class="sc">|&gt;</span> <span class="fu">pivot_longer</span>(</span>
+<span id="cb133-13"><a href="r-tidyr.html#cb133-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">.cols =</span> <span class="fu">contains</span>(<span class="st">&quot;(&quot;</span>), <span class="co"># graps all columns with an open parentheses in them</span></span>
+<span id="cb133-14"><a href="r-tidyr.html#cb133-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">names_to =</span> <span class="st">&quot;Species&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;is_present&quot;</span>)</span></code></pre></div>
 <p>Note that the <code>.cols</code> argument generally doesn’t have quotations around its column names, while the <code>names_to</code> and <code>values_to</code> do. The simplest explanation for it is that the <code>.cols</code> columns already exist in the data, so R knows how to find them; the others don’t, so we use quotes to create the names (This isn’t entirely true, but the full details are quite complicated and it’s a useful rule of thumb for <code>tidyverse</code> functions).</p>
 <p>One thing to note about our output is that there’s a lot of <code>NA</code> values in <code>is_present</code>, indicating species that were not found at each point. We don’t really care about those, so let’s get rid of them.</p>
-<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="r-tidyr.html#cb150-1" aria-hidden="true" tabindex="-1"></a>succession_longer <span class="ot">=</span> </span>
-<span id="cb150-2"><a href="r-tidyr.html#cb150-2" aria-hidden="true" tabindex="-1"></a>  succession_data_wide <span class="sc">|&gt;</span> <span class="fu">pivot_longer</span>(</span>
-<span id="cb150-3"><a href="r-tidyr.html#cb150-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="sc">-</span><span class="fu">c</span>(Type<span class="sc">:</span>DBH), <span class="at">names_to =</span> <span class="st">&quot;Species&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;is_present&quot;</span>) <span class="sc">|&gt;</span></span>
-<span id="cb150-4"><a href="r-tidyr.html#cb150-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(is_present)) <span class="sc">|&gt;</span> <span class="co"># Remove missing values</span></span>
-<span id="cb150-5"><a href="r-tidyr.html#cb150-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>is_present) <span class="co"># This column is no longer useful</span></span>
-<span id="cb150-6"><a href="r-tidyr.html#cb150-6" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(succession_longer)</span></code></pre></div>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="r-tidyr.html#cb134-1" aria-hidden="true" tabindex="-1"></a>succession_longer <span class="ot">=</span> </span>
+<span id="cb134-2"><a href="r-tidyr.html#cb134-2" aria-hidden="true" tabindex="-1"></a>  succession_data_wide <span class="sc">|&gt;</span> <span class="fu">pivot_longer</span>(</span>
+<span id="cb134-3"><a href="r-tidyr.html#cb134-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="sc">-</span><span class="fu">c</span>(Type<span class="sc">:</span>DBH), <span class="at">names_to =</span> <span class="st">&quot;Species&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;is_present&quot;</span>) <span class="sc">|&gt;</span></span>
+<span id="cb134-4"><a href="r-tidyr.html#cb134-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(is_present)) <span class="sc">|&gt;</span> <span class="co"># Remove missing values</span></span>
+<span id="cb134-5"><a href="r-tidyr.html#cb134-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>is_present) <span class="co"># This column is no longer useful</span></span>
+<span id="cb134-6"><a href="r-tidyr.html#cb134-6" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(succession_longer)</span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
 <table class=" lightable-paper" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; margin-left: auto; margin-right: auto;">
 <thead>
@@ -1858,14 +1865,14 @@ Ulmus crassifolia (Cedar elm)
 </div>
 <p>(( Add example to practice with genotype data))</p>
 </div>
-<div id="separate-tutorial" class="section level2 hasAnchor" number="9.3">
-<h2><span class="header-section-number">9.3</span> Splitting and merging columns: <code>separate() and unite()</code><a href="r-tidyr.html#separate-tutorial" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="separate-tutorial" class="section level2 hasAnchor" number="8.3">
+<h2><span class="header-section-number">8.3</span> Splitting and merging columns: <code>separate() and unite()</code><a href="r-tidyr.html#separate-tutorial" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>To fully tidy this, we need to split the “Type” column into habitat type and tree type columns. The <code>separate()</code> function is useful for this.</p>
-<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="r-tidyr.html#cb151-1" aria-hidden="true" tabindex="-1"></a>succession_sep <span class="ot">=</span> succession_longer <span class="sc">|&gt;</span> </span>
-<span id="cb151-2"><a href="r-tidyr.html#cb151-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">separate</span>(<span class="at">col =</span> Type, <span class="co"># Column to separate; note that the arg is col, not .col</span></span>
-<span id="cb151-3"><a href="r-tidyr.html#cb151-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">into =</span> <span class="fu">c</span>(<span class="st">&quot;Habitat&quot;</span>, <span class="st">&quot;Tree_type&quot;</span>), <span class="co"># Names of the new columns to separate into</span></span>
-<span id="cb151-4"><a href="r-tidyr.html#cb151-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">sep =</span> <span class="st">&quot;-&quot;</span>) <span class="co"># the character used to mark the separation</span></span>
-<span id="cb151-5"><a href="r-tidyr.html#cb151-5" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(succession_sep)</span></code></pre></div>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="r-tidyr.html#cb135-1" aria-hidden="true" tabindex="-1"></a>succession_sep <span class="ot">=</span> succession_longer <span class="sc">|&gt;</span> </span>
+<span id="cb135-2"><a href="r-tidyr.html#cb135-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">separate</span>(<span class="at">col =</span> Type, <span class="co"># Column to separate; note that the arg is col, not .col</span></span>
+<span id="cb135-3"><a href="r-tidyr.html#cb135-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">into =</span> <span class="fu">c</span>(<span class="st">&quot;Habitat&quot;</span>, <span class="st">&quot;Tree_type&quot;</span>), <span class="co"># Names of the new columns to separate into</span></span>
+<span id="cb135-4"><a href="r-tidyr.html#cb135-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">sep =</span> <span class="st">&quot;-&quot;</span>) <span class="co"># the character used to mark the separation</span></span>
+<span id="cb135-5"><a href="r-tidyr.html#cb135-5" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(succession_sep)</span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
 <table class=" lightable-paper" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; margin-left: auto; margin-right: auto;">
 <thead>
@@ -2162,14 +2169,14 @@ Ulmus crassifolia (Cedar elm)
 </div>
 <p>Note that the <code>sep</code> argument can be either text or a integer(s); if it’s a character vector, the character(s) are removed during the split (as with above). If <code>sep</code> is an integer (or integer vector), then the split is made after that/those position(s) in the text without removing anything.</p>
 <p>It would also be useful to have a column that specifically identifies the each sample point; currenlty, that information is split between the <code>Habitat</code>, <code>Team</code>, and <code>Sample</code> columns. The <code>unite()</code> function does this (it’s the complement of <code>separate</code>).</p>
-<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="r-tidyr.html#cb152-1" aria-hidden="true" tabindex="-1"></a>succession_tidy <span class="ot">=</span> succession_sep <span class="sc">|&gt;</span> </span>
-<span id="cb152-2"><a href="r-tidyr.html#cb152-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unite</span>(<span class="at">col =</span> <span class="st">&quot;sample_point&quot;</span>, <span class="co"># Name of new colum</span></span>
-<span id="cb152-3"><a href="r-tidyr.html#cb152-3" aria-hidden="true" tabindex="-1"></a>        Habitat, Team, Sample, <span class="co"># columns to unite (note; these are all seaprate args)</span></span>
-<span id="cb152-4"><a href="r-tidyr.html#cb152-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">sep =</span> <span class="st">&quot;-&quot;</span>, <span class="co"># separate the columns with a dash</span></span>
-<span id="cb152-5"><a href="r-tidyr.html#cb152-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">remove =</span> <span class="cn">FALSE</span> <span class="co"># by default, unite() removes the columns to separate; this disables that because we want to keep Habitat</span></span>
-<span id="cb152-6"><a href="r-tidyr.html#cb152-6" aria-hidden="true" tabindex="-1"></a>        ) <span class="sc">|&gt;</span> </span>
-<span id="cb152-7"><a href="r-tidyr.html#cb152-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>Team, <span class="sc">-</span>Sample) </span>
-<span id="cb152-8"><a href="r-tidyr.html#cb152-8" aria-hidden="true" tabindex="-1"></a>succession_tidy <span class="sc">|&gt;</span> <span class="fu">View</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="r-tidyr.html#cb136-1" aria-hidden="true" tabindex="-1"></a>succession_tidy <span class="ot">=</span> succession_sep <span class="sc">|&gt;</span> </span>
+<span id="cb136-2"><a href="r-tidyr.html#cb136-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unite</span>(<span class="at">col =</span> <span class="st">&quot;sample_point&quot;</span>, <span class="co"># Name of new colum</span></span>
+<span id="cb136-3"><a href="r-tidyr.html#cb136-3" aria-hidden="true" tabindex="-1"></a>        Habitat, Team, Sample, <span class="co"># columns to unite (note; these are all seaprate args)</span></span>
+<span id="cb136-4"><a href="r-tidyr.html#cb136-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">sep =</span> <span class="st">&quot;-&quot;</span>, <span class="co"># separate the columns with a dash</span></span>
+<span id="cb136-5"><a href="r-tidyr.html#cb136-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">remove =</span> <span class="cn">FALSE</span> <span class="co"># by default, unite() removes the columns to separate; this disables that because we want to keep Habitat</span></span>
+<span id="cb136-6"><a href="r-tidyr.html#cb136-6" aria-hidden="true" tabindex="-1"></a>        ) <span class="sc">|&gt;</span> </span>
+<span id="cb136-7"><a href="r-tidyr.html#cb136-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>Team, <span class="sc">-</span>Sample) </span>
+<span id="cb136-8"><a href="r-tidyr.html#cb136-8" aria-hidden="true" tabindex="-1"></a>succession_tidy <span class="sc">|&gt;</span> <span class="fu">View</span>()</span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
 <table class=" lightable-paper" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; margin-left: auto; margin-right: auto;">
 <thead>
@@ -2432,15 +2439,15 @@ Ulmus crassifolia (Cedar elm)
 </table>
 </div>
 <p>An alternative option to <code>unite()</code> is to use a combination of <code>mutate()</code> and <code>paste()</code>:</p>
-<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="r-tidyr.html#cb153-1" aria-hidden="true" tabindex="-1"></a>succession_sep <span class="sc">|&gt;</span> </span>
-<span id="cb153-2"><a href="r-tidyr.html#cb153-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sample_point =</span> <span class="fu">paste</span>(Habitat, Team, Sample, <span class="at">sep =</span> <span class="st">&quot;-&quot;</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb153-3"><a href="r-tidyr.html#cb153-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>Team, <span class="sc">-</span>Sample) <span class="sc">|&gt;</span> </span>
-<span id="cb153-4"><a href="r-tidyr.html#cb153-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">View</span>() <span class="co"># The column order will be different, but otherwise it&#39;s the same.</span></span></code></pre></div>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="r-tidyr.html#cb137-1" aria-hidden="true" tabindex="-1"></a>succession_sep <span class="sc">|&gt;</span> </span>
+<span id="cb137-2"><a href="r-tidyr.html#cb137-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sample_point =</span> <span class="fu">paste</span>(Habitat, Team, Sample, <span class="at">sep =</span> <span class="st">&quot;-&quot;</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb137-3"><a href="r-tidyr.html#cb137-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>Team, <span class="sc">-</span>Sample) <span class="sc">|&gt;</span> </span>
+<span id="cb137-4"><a href="r-tidyr.html#cb137-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">View</span>() <span class="co"># The column order will be different, but otherwise it&#39;s the same.</span></span></code></pre></div>
 </div>
-<div id="pivot-longer-multi-tutorial" class="section level2 hasAnchor" number="9.4">
-<h2><span class="header-section-number">9.4</span> Pivoting multiple columns<a href="r-tidyr.html#pivot-longer-multi-tutorial" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="pivot-longer-multi-tutorial" class="section level2 hasAnchor" number="8.4">
+<h2><span class="header-section-number">8.4</span> Pivoting multiple columns<a href="r-tidyr.html#pivot-longer-multi-tutorial" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We’re going to take a look a dataset from <a href="https://www.molbiolcell.org/doi/full/10.1091/mbc.e07-08-0779">Brauer et al (2008)</a>. The experiment tested yeast gene expression under nutrient limitation (for several different nutrients &amp; several different concentrations).</p>
-<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="r-tidyr.html#cb154-1" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(yeast_data)</span></code></pre></div>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="r-tidyr.html#cb138-1" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(yeast_data)</span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
 <table class=" lightable-paper" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; margin-left: auto; margin-right: auto;">
 <thead>
@@ -3798,92 +3805,92 @@ YOR069W
 <li>Gene expression</li>
 </ul>
 <p>While we could do this with a combination of <code>pivot_longer()</code> and <code>separate()</code>, <code>pivot_longer()</code> can do both tasks at once with a few extra arguments.</p>
-<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="r-tidyr.html#cb155-1" aria-hidden="true" tabindex="-1"></a>yeast_data <span class="sc">|&gt;</span> </span>
-<span id="cb155-2"><a href="r-tidyr.html#cb155-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(G0<span class="fl">.05</span><span class="sc">:</span>U0<span class="fl">.3</span>,</span>
-<span id="cb155-3"><a href="r-tidyr.html#cb155-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">&quot;Substrate&quot;</span>, <span class="st">&quot;Concentration&quot;</span>), <span class="co"># The names will go into these columns</span></span>
-<span id="cb155-4"><a href="r-tidyr.html#cb155-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_sep =</span> <span class="dv">1</span>, <span class="co"># separate the names between columns after the first character</span></span>
-<span id="cb155-5"><a href="r-tidyr.html#cb155-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">&quot;Gene_expression&quot;</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb155-6"><a href="r-tidyr.html#cb155-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span>
-<span id="cb155-7"><a href="r-tidyr.html#cb155-7" aria-hidden="true" tabindex="-1"></a><span class="do">## Rows: 199,332</span></span>
-<span id="cb155-8"><a href="r-tidyr.html#cb155-8" aria-hidden="true" tabindex="-1"></a><span class="do">## Columns: 7</span></span>
-<span id="cb155-9"><a href="r-tidyr.html#cb155-9" aria-hidden="true" tabindex="-1"></a><span class="do">## $ gene_name       &lt;chr&gt; &quot;SFB2&quot;, &quot;SFB2&quot;, &quot;SFB2&quot;, &quot;SFB2&quot;, &quot;SFB2&quot;, &quot;SFB2&quot;, &quot;SFB2&quot;…</span></span>
-<span id="cb155-10"><a href="r-tidyr.html#cb155-10" aria-hidden="true" tabindex="-1"></a><span class="do">## $ bio_process     &lt;chr&gt; &quot;ER to Golgi transport&quot;, &quot;ER to Golgi transport&quot;, &quot;ER …</span></span>
-<span id="cb155-11"><a href="r-tidyr.html#cb155-11" aria-hidden="true" tabindex="-1"></a><span class="do">## $ mol_func        &lt;chr&gt; &quot;molecular function unknown&quot;, &quot;molecular function unkn…</span></span>
-<span id="cb155-12"><a href="r-tidyr.html#cb155-12" aria-hidden="true" tabindex="-1"></a><span class="do">## $ syst_id         &lt;chr&gt; &quot;YNL049C&quot;, &quot;YNL049C&quot;, &quot;YNL049C&quot;, &quot;YNL049C&quot;, &quot;YNL049C&quot;,…</span></span>
-<span id="cb155-13"><a href="r-tidyr.html#cb155-13" aria-hidden="true" tabindex="-1"></a><span class="do">## $ Substrate       &lt;chr&gt; &quot;G&quot;, &quot;G&quot;, &quot;G&quot;, &quot;G&quot;, &quot;G&quot;, &quot;G&quot;, &quot;N&quot;, &quot;N&quot;, &quot;N&quot;, &quot;N&quot;, &quot;N&quot;,…</span></span>
-<span id="cb155-14"><a href="r-tidyr.html#cb155-14" aria-hidden="true" tabindex="-1"></a><span class="do">## $ Concentration   &lt;chr&gt; &quot;0.05&quot;, &quot;0.1&quot;, &quot;0.15&quot;, &quot;0.2&quot;, &quot;0.25&quot;, &quot;0.3&quot;, &quot;0.05&quot;, &quot;…</span></span>
-<span id="cb155-15"><a href="r-tidyr.html#cb155-15" aria-hidden="true" tabindex="-1"></a><span class="do">## $ Gene_expression &lt;dbl&gt; -0.24, -0.13, -0.21, -0.15, -0.05, -0.05, 0.20, 0.24, …</span></span></code></pre></div>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="r-tidyr.html#cb139-1" aria-hidden="true" tabindex="-1"></a>yeast_data <span class="sc">|&gt;</span> </span>
+<span id="cb139-2"><a href="r-tidyr.html#cb139-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(G0<span class="fl">.05</span><span class="sc">:</span>U0<span class="fl">.3</span>,</span>
+<span id="cb139-3"><a href="r-tidyr.html#cb139-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">&quot;Substrate&quot;</span>, <span class="st">&quot;Concentration&quot;</span>), <span class="co"># The names will go into these columns</span></span>
+<span id="cb139-4"><a href="r-tidyr.html#cb139-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_sep =</span> <span class="dv">1</span>, <span class="co"># separate the names between columns after the first character</span></span>
+<span id="cb139-5"><a href="r-tidyr.html#cb139-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">&quot;Gene_expression&quot;</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb139-6"><a href="r-tidyr.html#cb139-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span>
+<span id="cb139-7"><a href="r-tidyr.html#cb139-7" aria-hidden="true" tabindex="-1"></a><span class="do">## Rows: 199,332</span></span>
+<span id="cb139-8"><a href="r-tidyr.html#cb139-8" aria-hidden="true" tabindex="-1"></a><span class="do">## Columns: 7</span></span>
+<span id="cb139-9"><a href="r-tidyr.html#cb139-9" aria-hidden="true" tabindex="-1"></a><span class="do">## $ gene_name       &lt;chr&gt; &quot;SFB2&quot;, &quot;SFB2&quot;, &quot;SFB2&quot;, &quot;SFB2&quot;, &quot;SFB2&quot;, &quot;SFB2&quot;, &quot;SFB2&quot;…</span></span>
+<span id="cb139-10"><a href="r-tidyr.html#cb139-10" aria-hidden="true" tabindex="-1"></a><span class="do">## $ bio_process     &lt;chr&gt; &quot;ER to Golgi transport&quot;, &quot;ER to Golgi transport&quot;, &quot;ER …</span></span>
+<span id="cb139-11"><a href="r-tidyr.html#cb139-11" aria-hidden="true" tabindex="-1"></a><span class="do">## $ mol_func        &lt;chr&gt; &quot;molecular function unknown&quot;, &quot;molecular function unkn…</span></span>
+<span id="cb139-12"><a href="r-tidyr.html#cb139-12" aria-hidden="true" tabindex="-1"></a><span class="do">## $ syst_id         &lt;chr&gt; &quot;YNL049C&quot;, &quot;YNL049C&quot;, &quot;YNL049C&quot;, &quot;YNL049C&quot;, &quot;YNL049C&quot;,…</span></span>
+<span id="cb139-13"><a href="r-tidyr.html#cb139-13" aria-hidden="true" tabindex="-1"></a><span class="do">## $ Substrate       &lt;chr&gt; &quot;G&quot;, &quot;G&quot;, &quot;G&quot;, &quot;G&quot;, &quot;G&quot;, &quot;G&quot;, &quot;N&quot;, &quot;N&quot;, &quot;N&quot;, &quot;N&quot;, &quot;N&quot;,…</span></span>
+<span id="cb139-14"><a href="r-tidyr.html#cb139-14" aria-hidden="true" tabindex="-1"></a><span class="do">## $ Concentration   &lt;chr&gt; &quot;0.05&quot;, &quot;0.1&quot;, &quot;0.15&quot;, &quot;0.2&quot;, &quot;0.25&quot;, &quot;0.3&quot;, &quot;0.05&quot;, &quot;…</span></span>
+<span id="cb139-15"><a href="r-tidyr.html#cb139-15" aria-hidden="true" tabindex="-1"></a><span class="do">## $ Gene_expression &lt;dbl&gt; -0.24, -0.13, -0.21, -0.15, -0.05, -0.05, 0.20, 0.24, …</span></span></code></pre></div>
 <p>The <code>names_sep</code> argument works exactly like <code>sep</code> in <code>separate()</code>.</p>
 <p>Notice that <code>Concentration</code> is listed as a character vector (<code>&lt;chr&gt;</code>). It’s probably a good idea to have it as a numeric vector instead. The <code>names_transform</code> argument lets you specify a function that can be applied to the names column(s) after they’re re-shaped. In this case, we’re going to use <code>as.numeric()</code> to convert it into a number.</p>
-<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="r-tidyr.html#cb156-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb156-2"><a href="r-tidyr.html#cb156-2" aria-hidden="true" tabindex="-1"></a><span class="co"># We&#39;re going to create a list that tells pivot_longer to use the </span></span>
-<span id="cb156-3"><a href="r-tidyr.html#cb156-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># as.numeric() function on Concentration</span></span>
-<span id="cb156-4"><a href="r-tidyr.html#cb156-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># a list() is basically a big box you can put any other kind of data structure into</span></span>
-<span id="cb156-5"><a href="r-tidyr.html#cb156-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Each item in a list is called an elements; elements can be named or not</span></span>
-<span id="cb156-6"><a href="r-tidyr.html#cb156-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># This list has one named element; if we wanted to transform more columns, we could include them here as well</span></span>
-<span id="cb156-7"><a href="r-tidyr.html#cb156-7" aria-hidden="true" tabindex="-1"></a>convert_concentration <span class="ot">=</span> <span class="fu">list</span>(</span>
-<span id="cb156-8"><a href="r-tidyr.html#cb156-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">Concentration =</span> as.numeric <span class="co"># Note there&#39;s no parentheses; this is because we&#39;re identifying the function, not calling it.</span></span>
-<span id="cb156-9"><a href="r-tidyr.html#cb156-9" aria-hidden="true" tabindex="-1"></a>  ) </span>
-<span id="cb156-10"><a href="r-tidyr.html#cb156-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb156-11"><a href="r-tidyr.html#cb156-11" aria-hidden="true" tabindex="-1"></a><span class="co"># We&#39;ll talk more about lists later</span></span>
-<span id="cb156-12"><a href="r-tidyr.html#cb156-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb156-13"><a href="r-tidyr.html#cb156-13" aria-hidden="true" tabindex="-1"></a>tidy_yeast <span class="ot">=</span> yeast_data <span class="sc">|&gt;</span> </span>
-<span id="cb156-14"><a href="r-tidyr.html#cb156-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(G0<span class="fl">.05</span><span class="sc">:</span>U0<span class="fl">.3</span>,</span>
-<span id="cb156-15"><a href="r-tidyr.html#cb156-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">&quot;Substrate&quot;</span>, <span class="st">&quot;Concentration&quot;</span>), <span class="at">names_sep =</span> <span class="dv">1</span>, </span>
-<span id="cb156-16"><a href="r-tidyr.html#cb156-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_transform =</span> convert_concentration, <span class="co"># We could also have defined the list here</span></span>
-<span id="cb156-17"><a href="r-tidyr.html#cb156-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">&quot;Gene_expression&quot;</span>) </span>
-<span id="cb156-18"><a href="r-tidyr.html#cb156-18" aria-hidden="true" tabindex="-1"></a>tidy_yeast <span class="sc">|&gt;</span> <span class="fu">glimpse</span>()</span>
-<span id="cb156-19"><a href="r-tidyr.html#cb156-19" aria-hidden="true" tabindex="-1"></a><span class="do">## Rows: 199,332</span></span>
-<span id="cb156-20"><a href="r-tidyr.html#cb156-20" aria-hidden="true" tabindex="-1"></a><span class="do">## Columns: 7</span></span>
-<span id="cb156-21"><a href="r-tidyr.html#cb156-21" aria-hidden="true" tabindex="-1"></a><span class="do">## $ gene_name       &lt;chr&gt; &quot;SFB2&quot;, &quot;SFB2&quot;, &quot;SFB2&quot;, &quot;SFB2&quot;, &quot;SFB2&quot;, &quot;SFB2&quot;, &quot;SFB2&quot;…</span></span>
-<span id="cb156-22"><a href="r-tidyr.html#cb156-22" aria-hidden="true" tabindex="-1"></a><span class="do">## $ bio_process     &lt;chr&gt; &quot;ER to Golgi transport&quot;, &quot;ER to Golgi transport&quot;, &quot;ER …</span></span>
-<span id="cb156-23"><a href="r-tidyr.html#cb156-23" aria-hidden="true" tabindex="-1"></a><span class="do">## $ mol_func        &lt;chr&gt; &quot;molecular function unknown&quot;, &quot;molecular function unkn…</span></span>
-<span id="cb156-24"><a href="r-tidyr.html#cb156-24" aria-hidden="true" tabindex="-1"></a><span class="do">## $ syst_id         &lt;chr&gt; &quot;YNL049C&quot;, &quot;YNL049C&quot;, &quot;YNL049C&quot;, &quot;YNL049C&quot;, &quot;YNL049C&quot;,…</span></span>
-<span id="cb156-25"><a href="r-tidyr.html#cb156-25" aria-hidden="true" tabindex="-1"></a><span class="do">## $ Substrate       &lt;chr&gt; &quot;G&quot;, &quot;G&quot;, &quot;G&quot;, &quot;G&quot;, &quot;G&quot;, &quot;G&quot;, &quot;N&quot;, &quot;N&quot;, &quot;N&quot;, &quot;N&quot;, &quot;N&quot;,…</span></span>
-<span id="cb156-26"><a href="r-tidyr.html#cb156-26" aria-hidden="true" tabindex="-1"></a><span class="do">## $ Concentration   &lt;dbl&gt; 0.05, 0.10, 0.15, 0.20, 0.25, 0.30, 0.05, 0.10, 0.15, …</span></span>
-<span id="cb156-27"><a href="r-tidyr.html#cb156-27" aria-hidden="true" tabindex="-1"></a><span class="do">## $ Gene_expression &lt;dbl&gt; -0.24, -0.13, -0.21, -0.15, -0.05, -0.05, 0.20, 0.24, …</span></span></code></pre></div>
-<div id="combining-pivot_longer-with-summarise" class="section level3 hasAnchor" number="9.4.1">
-<h3><span class="header-section-number">9.4.1</span> Combining <code>pivot_longer()</code> with <code>summarise()</code><a href="r-tidyr.html#combining-pivot_longer-with-summarise" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="r-tidyr.html#cb140-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb140-2"><a href="r-tidyr.html#cb140-2" aria-hidden="true" tabindex="-1"></a><span class="co"># We&#39;re going to create a list that tells pivot_longer to use the </span></span>
+<span id="cb140-3"><a href="r-tidyr.html#cb140-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># as.numeric() function on Concentration</span></span>
+<span id="cb140-4"><a href="r-tidyr.html#cb140-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># a list() is basically a big box you can put any other kind of data structure into</span></span>
+<span id="cb140-5"><a href="r-tidyr.html#cb140-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Each item in a list is called an elements; elements can be named or not</span></span>
+<span id="cb140-6"><a href="r-tidyr.html#cb140-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># This list has one named element; if we wanted to transform more columns, we could include them here as well</span></span>
+<span id="cb140-7"><a href="r-tidyr.html#cb140-7" aria-hidden="true" tabindex="-1"></a>convert_concentration <span class="ot">=</span> <span class="fu">list</span>(</span>
+<span id="cb140-8"><a href="r-tidyr.html#cb140-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">Concentration =</span> as.numeric <span class="co"># Note there&#39;s no parentheses; this is because we&#39;re identifying the function, not calling it.</span></span>
+<span id="cb140-9"><a href="r-tidyr.html#cb140-9" aria-hidden="true" tabindex="-1"></a>  ) </span>
+<span id="cb140-10"><a href="r-tidyr.html#cb140-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb140-11"><a href="r-tidyr.html#cb140-11" aria-hidden="true" tabindex="-1"></a><span class="co"># We&#39;ll talk more about lists later</span></span>
+<span id="cb140-12"><a href="r-tidyr.html#cb140-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb140-13"><a href="r-tidyr.html#cb140-13" aria-hidden="true" tabindex="-1"></a>tidy_yeast <span class="ot">=</span> yeast_data <span class="sc">|&gt;</span> </span>
+<span id="cb140-14"><a href="r-tidyr.html#cb140-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(G0<span class="fl">.05</span><span class="sc">:</span>U0<span class="fl">.3</span>,</span>
+<span id="cb140-15"><a href="r-tidyr.html#cb140-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">&quot;Substrate&quot;</span>, <span class="st">&quot;Concentration&quot;</span>), <span class="at">names_sep =</span> <span class="dv">1</span>, </span>
+<span id="cb140-16"><a href="r-tidyr.html#cb140-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_transform =</span> convert_concentration, <span class="co"># We could also have defined the list here</span></span>
+<span id="cb140-17"><a href="r-tidyr.html#cb140-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">&quot;Gene_expression&quot;</span>) </span>
+<span id="cb140-18"><a href="r-tidyr.html#cb140-18" aria-hidden="true" tabindex="-1"></a>tidy_yeast <span class="sc">|&gt;</span> <span class="fu">glimpse</span>()</span>
+<span id="cb140-19"><a href="r-tidyr.html#cb140-19" aria-hidden="true" tabindex="-1"></a><span class="do">## Rows: 199,332</span></span>
+<span id="cb140-20"><a href="r-tidyr.html#cb140-20" aria-hidden="true" tabindex="-1"></a><span class="do">## Columns: 7</span></span>
+<span id="cb140-21"><a href="r-tidyr.html#cb140-21" aria-hidden="true" tabindex="-1"></a><span class="do">## $ gene_name       &lt;chr&gt; &quot;SFB2&quot;, &quot;SFB2&quot;, &quot;SFB2&quot;, &quot;SFB2&quot;, &quot;SFB2&quot;, &quot;SFB2&quot;, &quot;SFB2&quot;…</span></span>
+<span id="cb140-22"><a href="r-tidyr.html#cb140-22" aria-hidden="true" tabindex="-1"></a><span class="do">## $ bio_process     &lt;chr&gt; &quot;ER to Golgi transport&quot;, &quot;ER to Golgi transport&quot;, &quot;ER …</span></span>
+<span id="cb140-23"><a href="r-tidyr.html#cb140-23" aria-hidden="true" tabindex="-1"></a><span class="do">## $ mol_func        &lt;chr&gt; &quot;molecular function unknown&quot;, &quot;molecular function unkn…</span></span>
+<span id="cb140-24"><a href="r-tidyr.html#cb140-24" aria-hidden="true" tabindex="-1"></a><span class="do">## $ syst_id         &lt;chr&gt; &quot;YNL049C&quot;, &quot;YNL049C&quot;, &quot;YNL049C&quot;, &quot;YNL049C&quot;, &quot;YNL049C&quot;,…</span></span>
+<span id="cb140-25"><a href="r-tidyr.html#cb140-25" aria-hidden="true" tabindex="-1"></a><span class="do">## $ Substrate       &lt;chr&gt; &quot;G&quot;, &quot;G&quot;, &quot;G&quot;, &quot;G&quot;, &quot;G&quot;, &quot;G&quot;, &quot;N&quot;, &quot;N&quot;, &quot;N&quot;, &quot;N&quot;, &quot;N&quot;,…</span></span>
+<span id="cb140-26"><a href="r-tidyr.html#cb140-26" aria-hidden="true" tabindex="-1"></a><span class="do">## $ Concentration   &lt;dbl&gt; 0.05, 0.10, 0.15, 0.20, 0.25, 0.30, 0.05, 0.10, 0.15, …</span></span>
+<span id="cb140-27"><a href="r-tidyr.html#cb140-27" aria-hidden="true" tabindex="-1"></a><span class="do">## $ Gene_expression &lt;dbl&gt; -0.24, -0.13, -0.21, -0.15, -0.05, -0.05, 0.20, 0.24, …</span></span></code></pre></div>
+<div id="combining-pivot_longer-with-summarise" class="section level3 hasAnchor" number="8.4.1">
+<h3><span class="header-section-number">8.4.1</span> Combining <code>pivot_longer()</code> with <code>summarise()</code><a href="r-tidyr.html#combining-pivot_longer-with-summarise" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Here’s a particularly powerful combination of <code>tidyverse()</code> functions you can use when you’re exploring a new dataset: calculate summary statistics on all of your variables with <code>summarise(across(...))</code>, tidy the results with <code>pivot_longer()</code>, then create a faceted <code>ggplot</code>.</p>
-<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="r-tidyr.html#cb157-1" aria-hidden="true" tabindex="-1"></a>lizard_smry_by_color <span class="ot">=</span> lizards <span class="sc">|&gt;</span> </span>
-<span id="cb157-2"><a href="r-tidyr.html#cb157-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Group the data by color morph</span></span>
-<span id="cb157-3"><a href="r-tidyr.html#cb157-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Color_morph) <span class="sc">|&gt;</span> </span>
-<span id="cb157-4"><a href="r-tidyr.html#cb157-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
-<span id="cb157-5"><a href="r-tidyr.html#cb157-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">across</span>(<span class="fu">where</span>(is.numeric), <span class="co"># For all numeric columns...</span></span>
-<span id="cb157-6"><a href="r-tidyr.html#cb157-6" aria-hidden="true" tabindex="-1"></a>           <span class="fu">list</span>(<span class="at">Mean =</span> mean, <span class="at">Med =</span> median, <span class="at">SD =</span> sd)</span>
-<span id="cb157-7"><a href="r-tidyr.html#cb157-7" aria-hidden="true" tabindex="-1"></a>           <span class="co"># run mean(), meidan(), and sd() on each group &amp; variable</span></span>
-<span id="cb157-8"><a href="r-tidyr.html#cb157-8" aria-hidden="true" tabindex="-1"></a>           <span class="co"># Note that the list elements follows the pattern Name = function</span></span>
-<span id="cb157-9"><a href="r-tidyr.html#cb157-9" aria-hidden="true" tabindex="-1"></a>    ),<span class="at">N =</span> <span class="fu">n</span>() ) <span class="co"># This is outside of across, since it&#39;s only run once per group</span></span>
-<span id="cb157-10"><a href="r-tidyr.html#cb157-10" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(lizard_smry_by_color)</span>
-<span id="cb157-11"><a href="r-tidyr.html#cb157-11" aria-hidden="true" tabindex="-1"></a><span class="do">## Rows: 3</span></span>
-<span id="cb157-12"><a href="r-tidyr.html#cb157-12" aria-hidden="true" tabindex="-1"></a><span class="do">## Columns: 20</span></span>
-<span id="cb157-13"><a href="r-tidyr.html#cb157-13" aria-hidden="true" tabindex="-1"></a><span class="do">## $ Color_morph   &lt;chr&gt; &quot;Blue&quot;, &quot;Brown&quot;, &quot;Green&quot;</span></span>
-<span id="cb157-14"><a href="r-tidyr.html#cb157-14" aria-hidden="true" tabindex="-1"></a><span class="do">## $ Limb_Mean     &lt;dbl&gt; 13.08791, 13.27692, 13.11584</span></span>
-<span id="cb157-15"><a href="r-tidyr.html#cb157-15" aria-hidden="true" tabindex="-1"></a><span class="do">## $ Limb_Med      &lt;dbl&gt; 13.1, 13.1, 12.8</span></span>
-<span id="cb157-16"><a href="r-tidyr.html#cb157-16" aria-hidden="true" tabindex="-1"></a><span class="do">## $ Limb_SD       &lt;dbl&gt; 1.802216, 1.778345, 1.911442</span></span>
-<span id="cb157-17"><a href="r-tidyr.html#cb157-17" aria-hidden="true" tabindex="-1"></a><span class="do">## $ Mass_Mean     &lt;dbl&gt; 6.955116, 7.118371, 6.997738</span></span>
-<span id="cb157-18"><a href="r-tidyr.html#cb157-18" aria-hidden="true" tabindex="-1"></a><span class="do">## $ Mass_Med      &lt;dbl&gt; 6.92, 7.09, 6.99</span></span>
-<span id="cb157-19"><a href="r-tidyr.html#cb157-19" aria-hidden="true" tabindex="-1"></a><span class="do">## $ Mass_SD       &lt;dbl&gt; 1.067424, 1.097275, 1.098401</span></span>
-<span id="cb157-20"><a href="r-tidyr.html#cb157-20" aria-hidden="true" tabindex="-1"></a><span class="do">## $ Diameter_Mean &lt;dbl&gt; 32.88372, 24.11765, 11.47511</span></span>
-<span id="cb157-21"><a href="r-tidyr.html#cb157-21" aria-hidden="true" tabindex="-1"></a><span class="do">## $ Diameter_Med  &lt;dbl&gt; 33, 24, 11</span></span>
-<span id="cb157-22"><a href="r-tidyr.html#cb157-22" aria-hidden="true" tabindex="-1"></a><span class="do">## $ Diameter_SD   &lt;dbl&gt; 5.495152, 4.539194, 5.132390</span></span>
-<span id="cb157-23"><a href="r-tidyr.html#cb157-23" aria-hidden="true" tabindex="-1"></a><span class="do">## $ Height_Mean   &lt;dbl&gt; 171.2744, 167.2534, 167.7557</span></span>
-<span id="cb157-24"><a href="r-tidyr.html#cb157-24" aria-hidden="true" tabindex="-1"></a><span class="do">## $ Height_Med    &lt;dbl&gt; 184, 172, 175</span></span>
-<span id="cb157-25"><a href="r-tidyr.html#cb157-25" aria-hidden="true" tabindex="-1"></a><span class="do">## $ Height_SD     &lt;dbl&gt; 43.11129, 41.40915, 43.63552</span></span>
-<span id="cb157-26"><a href="r-tidyr.html#cb157-26" aria-hidden="true" tabindex="-1"></a><span class="do">## $ SVL_Mean      &lt;dbl&gt; 60.28000, 61.55928, 60.40633</span></span>
-<span id="cb157-27"><a href="r-tidyr.html#cb157-27" aria-hidden="true" tabindex="-1"></a><span class="do">## $ SVL_Med       &lt;dbl&gt; 59.5, 60.9, 57.9</span></span>
-<span id="cb157-28"><a href="r-tidyr.html#cb157-28" aria-hidden="true" tabindex="-1"></a><span class="do">## $ SVL_SD        &lt;dbl&gt; 8.741475, 8.349435, 9.006788</span></span>
-<span id="cb157-29"><a href="r-tidyr.html#cb157-29" aria-hidden="true" tabindex="-1"></a><span class="do">## $ Tail_Mean     &lt;dbl&gt; 56.90837, 57.97647, 57.75385</span></span>
-<span id="cb157-30"><a href="r-tidyr.html#cb157-30" aria-hidden="true" tabindex="-1"></a><span class="do">## $ Tail_Med      &lt;dbl&gt; 56.3, 58.0, 58.2</span></span>
-<span id="cb157-31"><a href="r-tidyr.html#cb157-31" aria-hidden="true" tabindex="-1"></a><span class="do">## $ Tail_SD       &lt;dbl&gt; 12.46141, 11.69319, 12.25767</span></span>
-<span id="cb157-32"><a href="r-tidyr.html#cb157-32" aria-hidden="true" tabindex="-1"></a><span class="do">## $ N             &lt;int&gt; 215, 221, 221</span></span></code></pre></div>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="r-tidyr.html#cb141-1" aria-hidden="true" tabindex="-1"></a>lizard_smry_by_color <span class="ot">=</span> lizards <span class="sc">|&gt;</span> </span>
+<span id="cb141-2"><a href="r-tidyr.html#cb141-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Group the data by color morph</span></span>
+<span id="cb141-3"><a href="r-tidyr.html#cb141-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Color_morph) <span class="sc">|&gt;</span> </span>
+<span id="cb141-4"><a href="r-tidyr.html#cb141-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb141-5"><a href="r-tidyr.html#cb141-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">across</span>(<span class="fu">where</span>(is.numeric), <span class="co"># For all numeric columns...</span></span>
+<span id="cb141-6"><a href="r-tidyr.html#cb141-6" aria-hidden="true" tabindex="-1"></a>           <span class="fu">list</span>(<span class="at">Mean =</span> mean, <span class="at">Med =</span> median, <span class="at">SD =</span> sd)</span>
+<span id="cb141-7"><a href="r-tidyr.html#cb141-7" aria-hidden="true" tabindex="-1"></a>           <span class="co"># run mean(), meidan(), and sd() on each group &amp; variable</span></span>
+<span id="cb141-8"><a href="r-tidyr.html#cb141-8" aria-hidden="true" tabindex="-1"></a>           <span class="co"># Note that the list elements follows the pattern Name = function</span></span>
+<span id="cb141-9"><a href="r-tidyr.html#cb141-9" aria-hidden="true" tabindex="-1"></a>    ),<span class="at">N =</span> <span class="fu">n</span>() ) <span class="co"># This is outside of across, since it&#39;s only run once per group</span></span>
+<span id="cb141-10"><a href="r-tidyr.html#cb141-10" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(lizard_smry_by_color)</span>
+<span id="cb141-11"><a href="r-tidyr.html#cb141-11" aria-hidden="true" tabindex="-1"></a><span class="do">## Rows: 3</span></span>
+<span id="cb141-12"><a href="r-tidyr.html#cb141-12" aria-hidden="true" tabindex="-1"></a><span class="do">## Columns: 20</span></span>
+<span id="cb141-13"><a href="r-tidyr.html#cb141-13" aria-hidden="true" tabindex="-1"></a><span class="do">## $ Color_morph   &lt;chr&gt; &quot;Blue&quot;, &quot;Brown&quot;, &quot;Green&quot;</span></span>
+<span id="cb141-14"><a href="r-tidyr.html#cb141-14" aria-hidden="true" tabindex="-1"></a><span class="do">## $ Limb_Mean     &lt;dbl&gt; 13.08791, 13.27692, 13.11584</span></span>
+<span id="cb141-15"><a href="r-tidyr.html#cb141-15" aria-hidden="true" tabindex="-1"></a><span class="do">## $ Limb_Med      &lt;dbl&gt; 13.1, 13.1, 12.8</span></span>
+<span id="cb141-16"><a href="r-tidyr.html#cb141-16" aria-hidden="true" tabindex="-1"></a><span class="do">## $ Limb_SD       &lt;dbl&gt; 1.802216, 1.778345, 1.911442</span></span>
+<span id="cb141-17"><a href="r-tidyr.html#cb141-17" aria-hidden="true" tabindex="-1"></a><span class="do">## $ Mass_Mean     &lt;dbl&gt; 6.955116, 7.118371, 6.997738</span></span>
+<span id="cb141-18"><a href="r-tidyr.html#cb141-18" aria-hidden="true" tabindex="-1"></a><span class="do">## $ Mass_Med      &lt;dbl&gt; 6.92, 7.09, 6.99</span></span>
+<span id="cb141-19"><a href="r-tidyr.html#cb141-19" aria-hidden="true" tabindex="-1"></a><span class="do">## $ Mass_SD       &lt;dbl&gt; 1.067424, 1.097275, 1.098401</span></span>
+<span id="cb141-20"><a href="r-tidyr.html#cb141-20" aria-hidden="true" tabindex="-1"></a><span class="do">## $ Diameter_Mean &lt;dbl&gt; 32.88372, 24.11765, 11.47511</span></span>
+<span id="cb141-21"><a href="r-tidyr.html#cb141-21" aria-hidden="true" tabindex="-1"></a><span class="do">## $ Diameter_Med  &lt;dbl&gt; 33, 24, 11</span></span>
+<span id="cb141-22"><a href="r-tidyr.html#cb141-22" aria-hidden="true" tabindex="-1"></a><span class="do">## $ Diameter_SD   &lt;dbl&gt; 5.495152, 4.539194, 5.132390</span></span>
+<span id="cb141-23"><a href="r-tidyr.html#cb141-23" aria-hidden="true" tabindex="-1"></a><span class="do">## $ Height_Mean   &lt;dbl&gt; 171.2744, 167.2534, 167.7557</span></span>
+<span id="cb141-24"><a href="r-tidyr.html#cb141-24" aria-hidden="true" tabindex="-1"></a><span class="do">## $ Height_Med    &lt;dbl&gt; 184, 172, 175</span></span>
+<span id="cb141-25"><a href="r-tidyr.html#cb141-25" aria-hidden="true" tabindex="-1"></a><span class="do">## $ Height_SD     &lt;dbl&gt; 43.11129, 41.40915, 43.63552</span></span>
+<span id="cb141-26"><a href="r-tidyr.html#cb141-26" aria-hidden="true" tabindex="-1"></a><span class="do">## $ SVL_Mean      &lt;dbl&gt; 60.28000, 61.55928, 60.40633</span></span>
+<span id="cb141-27"><a href="r-tidyr.html#cb141-27" aria-hidden="true" tabindex="-1"></a><span class="do">## $ SVL_Med       &lt;dbl&gt; 59.5, 60.9, 57.9</span></span>
+<span id="cb141-28"><a href="r-tidyr.html#cb141-28" aria-hidden="true" tabindex="-1"></a><span class="do">## $ SVL_SD        &lt;dbl&gt; 8.741475, 8.349435, 9.006788</span></span>
+<span id="cb141-29"><a href="r-tidyr.html#cb141-29" aria-hidden="true" tabindex="-1"></a><span class="do">## $ Tail_Mean     &lt;dbl&gt; 56.90837, 57.97647, 57.75385</span></span>
+<span id="cb141-30"><a href="r-tidyr.html#cb141-30" aria-hidden="true" tabindex="-1"></a><span class="do">## $ Tail_Med      &lt;dbl&gt; 56.3, 58.0, 58.2</span></span>
+<span id="cb141-31"><a href="r-tidyr.html#cb141-31" aria-hidden="true" tabindex="-1"></a><span class="do">## $ Tail_SD       &lt;dbl&gt; 12.46141, 11.69319, 12.25767</span></span>
+<span id="cb141-32"><a href="r-tidyr.html#cb141-32" aria-hidden="true" tabindex="-1"></a><span class="do">## $ N             &lt;int&gt; 215, 221, 221</span></span></code></pre></div>
 <p>This creates a data frame with columns for the color, the sample size, and a bunch that follow the pattern <code>Trait_statistic</code>. An ideal way to tidy these data would be reduce these columns into <code>Trait</code>, <code>Mean</code>, <code>Median</code>, and <code>SD</code>. We can do that like this:</p>
-<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="r-tidyr.html#cb158-1" aria-hidden="true" tabindex="-1"></a>lizard_smry_tidy <span class="ot">=</span> lizard_smry_by_color <span class="sc">|&gt;</span> </span>
-<span id="cb158-2"><a href="r-tidyr.html#cb158-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span><span class="fu">c</span>(Color_morph, N), <span class="co"># exclude the columns</span></span>
-<span id="cb158-3"><a href="r-tidyr.html#cb158-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">&quot;Trait&quot;</span>, <span class="st">&quot;.value&quot;</span>),</span>
-<span id="cb158-4"><a href="r-tidyr.html#cb158-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_sep =</span> <span class="st">&quot;_&quot;</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb158-5"><a href="r-tidyr.html#cb158-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">SE =</span> SD<span class="sc">/</span><span class="fu">sqrt</span>(N)) <span class="co"># may as well calculate standard error while we&#39;re here</span></span>
-<span id="cb158-6"><a href="r-tidyr.html#cb158-6" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(lizard_smry_tidy)</span></code></pre></div>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="r-tidyr.html#cb142-1" aria-hidden="true" tabindex="-1"></a>lizard_smry_tidy <span class="ot">=</span> lizard_smry_by_color <span class="sc">|&gt;</span> </span>
+<span id="cb142-2"><a href="r-tidyr.html#cb142-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span><span class="fu">c</span>(Color_morph, N), <span class="co"># exclude the columns</span></span>
+<span id="cb142-3"><a href="r-tidyr.html#cb142-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">&quot;Trait&quot;</span>, <span class="st">&quot;.value&quot;</span>),</span>
+<span id="cb142-4"><a href="r-tidyr.html#cb142-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_sep =</span> <span class="st">&quot;_&quot;</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb142-5"><a href="r-tidyr.html#cb142-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">SE =</span> SD<span class="sc">/</span><span class="fu">sqrt</span>(N)) <span class="co"># may as well calculate standard error while we&#39;re here</span></span>
+<span id="cb142-6"><a href="r-tidyr.html#cb142-6" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(lizard_smry_tidy)</span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
 <table class=" lightable-paper" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; margin-left: auto; margin-right: auto;">
 <thead>
@@ -4147,17 +4154,17 @@ Height
 </div>
 <p>This call didn’t have a <code>values_to</code> argument in it; instead, one of the <code>names_to</code> was listed as <code>".value"</code>. This is a special indicator that tells pivot_longer to create one column for each matching name and place the corresponding values into it.</p>
 <p>From here, you can make a nice little summary statistic plot:</p>
-<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="r-tidyr.html#cb159-1" aria-hidden="true" tabindex="-1"></a>lizard_smry_tidy <span class="sc">|&gt;</span> </span>
-<span id="cb159-2"><a href="r-tidyr.html#cb159-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Color_morph)) <span class="sc">+</span> </span>
-<span id="cb159-3"><a href="r-tidyr.html#cb159-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>Trait, <span class="at">scales =</span> <span class="st">&quot;free_y&quot;</span>) <span class="sc">+</span></span>
-<span id="cb159-4"><a href="r-tidyr.html#cb159-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># SD:</span></span>
-<span id="cb159-5"><a href="r-tidyr.html#cb159-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_linerange</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> Mean <span class="sc">-</span> SD, <span class="at">ymax =</span> Mean <span class="sc">+</span> SD), <span class="at">color =</span> <span class="st">&quot;cornflowerblue&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb159-6"><a href="r-tidyr.html#cb159-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Confidence Interval:</span></span>
-<span id="cb159-7"><a href="r-tidyr.html#cb159-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> Mean <span class="sc">-</span> SE <span class="sc">*</span> <span class="fl">1.96</span>, <span class="at">ymax =</span> Mean <span class="sc">+</span> SE <span class="sc">*</span> <span class="fl">1.96</span>), </span>
-<span id="cb159-8"><a href="r-tidyr.html#cb159-8" aria-hidden="true" tabindex="-1"></a>                <span class="at">color =</span> <span class="st">&quot;red&quot;</span>, <span class="at">width =</span> .<span class="dv">3</span>) <span class="sc">+</span> </span>
-<span id="cb159-9"><a href="r-tidyr.html#cb159-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Mean</span></span>
-<span id="cb159-10"><a href="r-tidyr.html#cb159-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y =</span> Mean), <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span> </span>
-<span id="cb159-11"><a href="r-tidyr.html#cb159-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Trait Mean, SD, and 95% CI&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="r-tidyr.html#cb143-1" aria-hidden="true" tabindex="-1"></a>lizard_smry_tidy <span class="sc">|&gt;</span> </span>
+<span id="cb143-2"><a href="r-tidyr.html#cb143-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Color_morph)) <span class="sc">+</span> </span>
+<span id="cb143-3"><a href="r-tidyr.html#cb143-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>Trait, <span class="at">scales =</span> <span class="st">&quot;free_y&quot;</span>) <span class="sc">+</span></span>
+<span id="cb143-4"><a href="r-tidyr.html#cb143-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># SD:</span></span>
+<span id="cb143-5"><a href="r-tidyr.html#cb143-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_linerange</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> Mean <span class="sc">-</span> SD, <span class="at">ymax =</span> Mean <span class="sc">+</span> SD), <span class="at">color =</span> <span class="st">&quot;cornflowerblue&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb143-6"><a href="r-tidyr.html#cb143-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Confidence Interval:</span></span>
+<span id="cb143-7"><a href="r-tidyr.html#cb143-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> Mean <span class="sc">-</span> SE <span class="sc">*</span> <span class="fl">1.96</span>, <span class="at">ymax =</span> Mean <span class="sc">+</span> SE <span class="sc">*</span> <span class="fl">1.96</span>), </span>
+<span id="cb143-8"><a href="r-tidyr.html#cb143-8" aria-hidden="true" tabindex="-1"></a>                <span class="at">color =</span> <span class="st">&quot;red&quot;</span>, <span class="at">width =</span> .<span class="dv">3</span>) <span class="sc">+</span> </span>
+<span id="cb143-9"><a href="r-tidyr.html#cb143-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Mean</span></span>
+<span id="cb143-10"><a href="r-tidyr.html#cb143-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y =</span> Mean), <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span> </span>
+<span id="cb143-11"><a href="r-tidyr.html#cb143-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Trait Mean, SD, and 95% CI&quot;</span>) </span></code></pre></div>
 <p><img src="Bio373L-Book_files/figure-html/pivot_sumarise_3-1.png" width="672" /></p>
 <!-- ## Going from many rows to many columns: `pivot_wider()` {#pivot-wider-tutorial} -->
 <!-- (In progress) -->
@@ -4177,7 +4184,7 @@ Height
           </div>
         </div>
       </div>
-<a href="r-vegan.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="r-stats.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="lab-succession.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

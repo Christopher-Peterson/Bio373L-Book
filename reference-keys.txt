@@ -112,12 +112,6 @@ post-hoc-tests
 plotting-anovas
 comparing-two-means-t-tests
 effect-size-cohens-d
-r-vegan
-setting-up-the-data
-jaccard-similarity
-species-accumulation-curves
-rank-abundance-curves
-shannon-index-diversity
 r-tidyr
 tidy-data
 pivot-longer-tutorial
@@ -240,3 +234,14 @@ hardy-weinberg-equilibrium-optix
 the-data-4
 calculating-hwe-ratios
 testing-for-hwe
+hw-ants
+required-reading-3
+objectives-and-whats-due-2
+getting-started-3
+contrasts
+the-data-5
+s.-invicta-habitat-preference-1
+jaccard-similarity
+shannon-index-diversity
+species-accumulation-curves
+rank-abundance-curves
