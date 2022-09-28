@@ -14,7 +14,7 @@ rmd_files:
   - chapters/analysis/r_ggplot.Rmd
   - chapters/analysis/r_dplyr.Rmd
   - chapters/analysis/r_stats.Rmd
-  - chapters/analysis/r_vegan.Rmd
+  # - chapters/analysis/r_vegan.Rmd
   - chapters/analysis/r_tidyr.Rmd
   - chapters/labs/lab_succession.Rmd
   - chapters/labs/lab_heterogeneity.Rmd
@@ -24,6 +24,7 @@ rmd_files:
   - chapters/homework/hw_succession.Rmd
   - chapters/homework/hw_heterogeneity.Rmd
   - chapters/homework/hw_mrr.Rmd
+  - chapters/homework/hw_ants.Rmd
   - chapters/references.Rmd
   
   
