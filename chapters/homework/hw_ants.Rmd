@@ -261,6 +261,7 @@ tidy_ant_data |>
   summarize(shannon = shannon_diversity(Species, N)) 
 ```
 
+Make a figure out of this (a boxplot or a jitterplot).
 
 ## Species Accumulation Curves
 
