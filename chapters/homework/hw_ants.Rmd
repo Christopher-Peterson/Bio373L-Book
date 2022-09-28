@@ -97,7 +97,7 @@ The columns of this data frame that are:
 
 We'll need to re-define some our columns to fit the above contrasts; you can use the `if_else()` function inside mutate to do this.  
 
-```{r hw-ants-wide-setup, echo = TRUE}
+```{r hw-ants-wide-setup, echo = TRUE, eval = FALSE}
 
 wide_ant_data = raw_ant_data |> 
   # Remove unnecessary columns
@@ -105,6 +105,17 @@ wide_ant_data = raw_ant_data |>
   mutate(
     Canopy_cover = if_else(Canopy_cover %in% c(0, 1), "Open", "Closed"), # see ?if_else() for details
     Ground_cover = # define as sparse vs. dense
+  )
+```
+
+```{r hw-ants-wide-setup-real, echo = FALSE, eval = TRUE}
+
+wide_ant_data = raw_ant_data |> 
+  # Remove unnecessary columns
+  select(-GPS_easting, -GPS_northing, -Phorids_present, -Field_Notes, -Name, -Total_ants, -`Other species`) |> 
+  mutate(
+    Canopy_cover = if_else(Canopy_cover %in% c(0, 1), "Open", "Closed"), # see ?if_else() for details
+    Ground_cover =  if_else(Ground_cover %in% c(0, 1), "Sparse", "Dense")
   )
 ```
 
