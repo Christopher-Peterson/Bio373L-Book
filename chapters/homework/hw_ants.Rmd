@@ -49,6 +49,16 @@ raw_ant_data = read_csv("data/F21_ant_data.csv")
 ```
 
 ```{r hw-ants-view-trick, include = FALSE, echo = FALSE}
+
+suppressPackageStartupMessages({
+library(tidyverse) 
+library(vegan) 
+}) |> suppressWarnings() |> suppressMessages()
+theme_set(theme_classic()) # Removes gridlines from ggplot
+
+raw_ant_data = read_csv("data/F21_ant_data.csv")
+
+
 View = function(x,...){
   # Scrollable table output
   # knitr::kable(head(x))
