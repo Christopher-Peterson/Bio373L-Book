@@ -23,7 +23,7 @@
 <meta name="author" content="Christopher R. Peterson" />
 
 
-<meta name="date" content="2022-09-28" />
+<meta name="date" content="2022-10-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -1763,7 +1763,7 @@ Let’s combine these last few steps into a pair of functions, for re-use with d
 <div id="rank-abundance-curves" class="section level2 hasAnchor" number="17.8">
 <h2><span class="header-section-number">17.8</span> Rank Abundance Curves<a href="hw-ants.html#rank-abundance-curves" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>This is really just an exercise in data manipulation: we want to get the total number of individuals of each species, then display them in decreasing frequency.
-You need to do a grouped <code>summarize()</code> on the tidy data so that there’s one row per species, with columns Species, N (which is the species-level sum of the already existing N column in <code>tidy_ant_data</code>), and whatever your contrast is.
+You need to do a grouped <code>summarize()</code> on the tidy data so that there’s one row per species/contrast combination, with columns Species, N (which is the species-level sum of the already existing N column in <code>tidy_ant_data</code>), and whatever your contrast is.
 From here, sort the summary by contrast and descending N, group by the contrast, and use <code>mutate()</code> to make a new column <code>species_rank = 1:n()</code>.</p>
 <p>To make the plot itself, you can use this function; use <code>aes()</code> to separate your contrasts by color like you did with <code>plot_sac()</code> above.</p>
 <div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="hw-ants.html#cb185-1" aria-hidden="true" tabindex="-1"></a></span>
