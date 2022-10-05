@@ -394,7 +394,7 @@ Do this for all of your contrasts.
 ## Rank Abundance Curves
 
 This is really just an exercise in data manipulation: we want to get the total number of individuals of each species, then display them in decreasing frequency.
-You need to do a grouped `summarize()` on the tidy data so that there's one row per species, with columns Species, N (which is the species-level sum of the already existing N column in `tidy_ant_data`), and whatever your contrast is.
+You need to do a grouped `summarize()` on the tidy data so that there's one row per species/contrast combination, with columns Species, N (which is the species-level sum of the already existing N column in `tidy_ant_data`), and whatever your contrast is.
 From here, sort the summary by contrast and descending N, group by the contrast, and use `mutate()` to make a new column `species_rank = 1:n()`.
 
 To make the plot itself, you can use this function; use `aes()` to separate your contrasts by color like you did with `plot_sac()` above.
@@ -423,6 +423,7 @@ tidy_ant_data |>
   summarize(N = sum(N)) |> 
   arrange(Disturbance, desc(N)) |> 
   mutate(species_rank = 1:n()) |> 
+  suppressWarnings() |> 
   ungroup() |> plot_rank_abundance() + aes(color = Disturbance) + theme_classic()
 ```
 
