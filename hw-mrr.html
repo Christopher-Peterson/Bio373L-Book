@@ -279,6 +279,7 @@ div.csl-indent {
 <li class="chapter" data-level="7.3.1" data-path="r-stats.html"><a href="r-stats.html#regression"><i class="fa fa-check"></i><b>7.3.1</b> Regression</a></li>
 <li class="chapter" data-level="7.3.2" data-path="r-stats.html"><a href="r-stats.html#r-stats-anova"><i class="fa fa-check"></i><b>7.3.2</b> ANOVA</a></li>
 <li class="chapter" data-level="7.3.3" data-path="r-stats.html"><a href="r-stats.html#comparing-two-means-t-tests"><i class="fa fa-check"></i><b>7.3.3</b> Comparing two means (t-tests)</a></li>
+<li class="chapter" data-level="7.3.4" data-path="r-stats.html"><a href="r-stats.html#r-stats-ancova"><i class="fa fa-check"></i><b>7.3.4</b> Comparing two rates or relationships (ANCOVA)</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="r-tidyr.html"><a href="r-tidyr.html"><i class="fa fa-check"></i><b>8</b> Wrangling, reshaping, and tidying data with <code>tidyr</code></a>
@@ -537,16 +538,16 @@ What’s the sex ratio?</p>
 <li><strong>F19_genotype_consensus.csv</strong>: Put this in <code>data</code>.</li>
 </ul>
 <p>You should begin your script with the following:</p>
-<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="hw-mrr.html#cb159-1" aria-hidden="true" tabindex="-1"></a><span class="co"># MRR Lab Analysis</span></span>
-<span id="cb159-2"><a href="hw-mrr.html#cb159-2" aria-hidden="true" tabindex="-1"></a><span class="do">#### Setup ####</span></span>
-<span id="cb159-3"><a href="hw-mrr.html#cb159-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb159-4"><a href="hw-mrr.html#cb159-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl) <span class="co"># used to read the excel file; this is installed with Tidyverse</span></span>
-<span id="cb159-5"><a href="hw-mrr.html#cb159-5" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_classic</span>()) <span class="co"># Removes gridlines from ggplot</span></span>
-<span id="cb159-6"><a href="hw-mrr.html#cb159-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-7"><a href="hw-mrr.html#cb159-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Data file locations: Change these when analyzing the current dataset</span></span>
-<span id="cb159-8"><a href="hw-mrr.html#cb159-8" aria-hidden="true" tabindex="-1"></a>recap_folder <span class="ot">=</span> <span class="st">&quot;data/F19_recapture_data&quot;</span></span>
-<span id="cb159-9"><a href="hw-mrr.html#cb159-9" aria-hidden="true" tabindex="-1"></a>genotype_file <span class="ot">=</span> <span class="st">&quot;data/F19_genotype_consensus.csv&quot;</span></span>
-<span id="cb159-10"><a href="hw-mrr.html#cb159-10" aria-hidden="true" tabindex="-1"></a>trinidad_file <span class="ot">=</span> <span class="st">&quot;data/MRR GilbertTrinidad data.xlsx&quot;</span> <span class="co"># This won&#39;t change</span></span></code></pre></div>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="hw-mrr.html#cb168-1" aria-hidden="true" tabindex="-1"></a><span class="co"># MRR Lab Analysis</span></span>
+<span id="cb168-2"><a href="hw-mrr.html#cb168-2" aria-hidden="true" tabindex="-1"></a><span class="do">#### Setup ####</span></span>
+<span id="cb168-3"><a href="hw-mrr.html#cb168-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb168-4"><a href="hw-mrr.html#cb168-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl) <span class="co"># used to read the excel file; this is installed with Tidyverse</span></span>
+<span id="cb168-5"><a href="hw-mrr.html#cb168-5" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_classic</span>()) <span class="co"># Removes gridlines from ggplot</span></span>
+<span id="cb168-6"><a href="hw-mrr.html#cb168-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb168-7"><a href="hw-mrr.html#cb168-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Data file locations: Change these when analyzing the current dataset</span></span>
+<span id="cb168-8"><a href="hw-mrr.html#cb168-8" aria-hidden="true" tabindex="-1"></a>recap_folder <span class="ot">=</span> <span class="st">&quot;data/F19_recapture_data&quot;</span></span>
+<span id="cb168-9"><a href="hw-mrr.html#cb168-9" aria-hidden="true" tabindex="-1"></a>genotype_file <span class="ot">=</span> <span class="st">&quot;data/F19_genotype_consensus.csv&quot;</span></span>
+<span id="cb168-10"><a href="hw-mrr.html#cb168-10" aria-hidden="true" tabindex="-1"></a>trinidad_file <span class="ot">=</span> <span class="st">&quot;data/MRR GilbertTrinidad data.xlsx&quot;</span> <span class="co"># This won&#39;t change</span></span></code></pre></div>
 </div>
 <div id="sampling-intensity-and-lincoln-petersen" class="section level2 hasAnchor" number="16.4">
 <h2><span class="header-section-number">16.4</span> Sampling Intensity and Lincoln-Petersen<a href="hw-mrr.html#sampling-intensity-and-lincoln-petersen" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -559,14 +560,14 @@ You’re going to load them all into a single data frame.</p>
 <p>First, list all the csv files in the directory, then import them with the <code>read_csv()</code> function from the <code>readr</code> package.
 Note that you need <code>readr</code> version <code>2.0</code> or higher; earlier ones can’t handle multiple files.
 Additionally, make sure you use <code>read_csv()</code>, not <code>read.csv()</code>; these are different functions and they work slightly differently.</p>
-<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="hw-mrr.html#cb160-1" aria-hidden="true" tabindex="-1"></a><span class="do">#### Sample Size and LP Method ####</span></span>
-<span id="cb160-2"><a href="hw-mrr.html#cb160-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb160-3"><a href="hw-mrr.html#cb160-3" aria-hidden="true" tabindex="-1"></a><span class="co"># List the names of all csv files in the recap folder</span></span>
-<span id="cb160-4"><a href="hw-mrr.html#cb160-4" aria-hidden="true" tabindex="-1"></a>recap_files <span class="ot">&lt;-</span> <span class="fu">dir</span>(recap_folder, <span class="at">pattern =</span>  <span class="st">&quot;.csv&quot;</span>, <span class="at">full.names =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb160-5"><a href="hw-mrr.html#cb160-5" aria-hidden="true" tabindex="-1"></a>recap_files <span class="co"># take a look at it</span></span>
-<span id="cb160-6"><a href="hw-mrr.html#cb160-6" aria-hidden="true" tabindex="-1"></a>recap_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(recap_files) <span class="co"># Read all the recap files and combine as a single data frame</span></span>
-<span id="cb160-7"><a href="hw-mrr.html#cb160-7" aria-hidden="true" tabindex="-1"></a><span class="co"># You could add the argument id = &#39;file_name&#39; if you wanted to keep the original file name as an argument,</span></span>
-<span id="cb160-8"><a href="hw-mrr.html#cb160-8" aria-hidden="true" tabindex="-1"></a><span class="co"># but that isn&#39;t necessary with these data</span></span></code></pre></div>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="hw-mrr.html#cb169-1" aria-hidden="true" tabindex="-1"></a><span class="do">#### Sample Size and LP Method ####</span></span>
+<span id="cb169-2"><a href="hw-mrr.html#cb169-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb169-3"><a href="hw-mrr.html#cb169-3" aria-hidden="true" tabindex="-1"></a><span class="co"># List the names of all csv files in the recap folder</span></span>
+<span id="cb169-4"><a href="hw-mrr.html#cb169-4" aria-hidden="true" tabindex="-1"></a>recap_files <span class="ot">&lt;-</span> <span class="fu">dir</span>(recap_folder, <span class="at">pattern =</span>  <span class="st">&quot;.csv&quot;</span>, <span class="at">full.names =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb169-5"><a href="hw-mrr.html#cb169-5" aria-hidden="true" tabindex="-1"></a>recap_files <span class="co"># take a look at it</span></span>
+<span id="cb169-6"><a href="hw-mrr.html#cb169-6" aria-hidden="true" tabindex="-1"></a>recap_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(recap_files) <span class="co"># Read all the recap files and combine as a single data frame</span></span>
+<span id="cb169-7"><a href="hw-mrr.html#cb169-7" aria-hidden="true" tabindex="-1"></a><span class="co"># You could add the argument id = &#39;file_name&#39; if you wanted to keep the original file name as an argument,</span></span>
+<span id="cb169-8"><a href="hw-mrr.html#cb169-8" aria-hidden="true" tabindex="-1"></a><span class="co"># but that isn&#39;t necessary with these data</span></span></code></pre></div>
 <p>The columns of this data frame are:</p>
 <ul>
 <li><strong>Period:</strong> The first or second sampling period (as described in Section <a href="lab-mrr.html#lab-mrr-field-methods">11.3</a> ).</li>
@@ -588,20 +589,20 @@ Additionally, make sure you use <code>read_csv()</code>, not <code>read.csv()</c
 <p>We want to calculate these for each<code>Team_combo</code>.<br />
 The easiest way to do this with a grouped summarize command.
 The basic outline should be as follows:</p>
-<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="hw-mrr.html#cb161-1" aria-hidden="true" tabindex="-1"></a>lp_estimates <span class="ot">&lt;-</span> recap_data  <span class="sc">|&gt;</span>  </span>
-<span id="cb161-2"><a href="hw-mrr.html#cb161-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(        ) <span class="sc">|&gt;</span> <span class="co"># Finish this</span></span>
-<span id="cb161-3"><a href="hw-mrr.html#cb161-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>( <span class="co"># We&#39;re dropping the subscripts because they aren&#39;t necessary</span></span>
-<span id="cb161-4"><a href="hw-mrr.html#cb161-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">M =</span>     ,</span>
-<span id="cb161-5"><a href="hw-mrr.html#cb161-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">S =</span>     ,</span>
-<span id="cb161-6"><a href="hw-mrr.html#cb161-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">R =</span>     ,</span>
-<span id="cb161-7"><a href="hw-mrr.html#cb161-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">sample_size =</span> <span class="fu">n</span>() ) <span class="sc">|&gt;</span> </span>
-<span id="cb161-8"><a href="hw-mrr.html#cb161-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">N_hat =</span> ) <span class="co"># Calculate N-hat from S, M, and R</span></span></code></pre></div>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="hw-mrr.html#cb170-1" aria-hidden="true" tabindex="-1"></a>lp_estimates <span class="ot">&lt;-</span> recap_data  <span class="sc">|&gt;</span>  </span>
+<span id="cb170-2"><a href="hw-mrr.html#cb170-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(        ) <span class="sc">|&gt;</span> <span class="co"># Finish this</span></span>
+<span id="cb170-3"><a href="hw-mrr.html#cb170-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>( <span class="co"># We&#39;re dropping the subscripts because they aren&#39;t necessary</span></span>
+<span id="cb170-4"><a href="hw-mrr.html#cb170-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">M =</span>     ,</span>
+<span id="cb170-5"><a href="hw-mrr.html#cb170-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">S =</span>     ,</span>
+<span id="cb170-6"><a href="hw-mrr.html#cb170-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">R =</span>     ,</span>
+<span id="cb170-7"><a href="hw-mrr.html#cb170-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">sample_size =</span> <span class="fu">n</span>() ) <span class="sc">|&gt;</span> </span>
+<span id="cb170-8"><a href="hw-mrr.html#cb170-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">N_hat =</span> ) <span class="co"># Calculate N-hat from S, M, and R</span></span></code></pre></div>
 <p>To calculate <code>M</code>, <code>S</code>, and <code>R</code>, you’ll need to combine logical statements (like you’d use in <code>filter()</code>, Section <a href="r-dplyr.html#r-dplyr-filter">6.3</a>) with the <code>sum()</code> function.
 This will give you a count of the number of cases where the logical condition is <code>TRUE</code>.
 For example, you can count the number of Male individuals in each Period and Capture Status with this:</p>
-<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="hw-mrr.html#cb162-1" aria-hidden="true" tabindex="-1"></a>recap_data <span class="sc">|&gt;</span> </span>
-<span id="cb162-2"><a href="hw-mrr.html#cb162-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Period, Capture_Status) <span class="sc">|&gt;</span> </span>
-<span id="cb162-3"><a href="hw-mrr.html#cb162-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">N_males =</span> <span class="fu">sum</span>(Sex <span class="sc">==</span> <span class="st">&quot;M&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="hw-mrr.html#cb171-1" aria-hidden="true" tabindex="-1"></a>recap_data <span class="sc">|&gt;</span> </span>
+<span id="cb171-2"><a href="hw-mrr.html#cb171-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Period, Capture_Status) <span class="sc">|&gt;</span> </span>
+<span id="cb171-3"><a href="hw-mrr.html#cb171-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">N_males =</span> <span class="fu">sum</span>(Sex <span class="sc">==</span> <span class="st">&quot;M&quot;</span>))</span></code></pre></div>
 <p>You may need to combine multiple logical conditions for some of these.</p>
 <p>You can use an <code>arrange()</code> function (Section <a href="r-dplyr.html#r-dplyr-arrange">6.5</a>) to figure out what the <span class="math inline">\(hat{N}\)</span> corresponds with the highest sample size.</p>
 </div>
@@ -615,9 +616,9 @@ Be sure to caption your figure.</p>
 <h2><span class="header-section-number">16.5</span> Estimates by Sex and Sex Ratios<a href="hw-mrr.html#estimates-by-sex-and-sex-ratios" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We want to estimate the number of males and females separately.
 Sampling intensity isn’t important for this, so let’s only include the data from the whole-class.</p>
-<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="hw-mrr.html#cb163-1" aria-hidden="true" tabindex="-1"></a><span class="do">#### Sex Ratios ####</span></span>
-<span id="cb163-2"><a href="hw-mrr.html#cb163-2" aria-hidden="true" tabindex="-1"></a>recap_data_full <span class="ot">&lt;-</span> recap_data <span class="sc">|&gt;</span> </span>
-<span id="cb163-3"><a href="hw-mrr.html#cb163-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Team_combo <span class="sc">==</span> <span class="st">&quot;ABCDE&quot;</span>) <span class="co"># You may need to change this if there are more than 5 teams, e.g., &quot;ABCDEFG&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="hw-mrr.html#cb172-1" aria-hidden="true" tabindex="-1"></a><span class="do">#### Sex Ratios ####</span></span>
+<span id="cb172-2"><a href="hw-mrr.html#cb172-2" aria-hidden="true" tabindex="-1"></a>recap_data_full <span class="ot">&lt;-</span> recap_data <span class="sc">|&gt;</span> </span>
+<span id="cb172-3"><a href="hw-mrr.html#cb172-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Team_combo <span class="sc">==</span> <span class="st">&quot;ABCDE&quot;</span>) <span class="co"># You may need to change this if there are more than 5 teams, e.g., &quot;ABCDEFG&quot;</span></span></code></pre></div>
 <p>Now, you’ll want to use the same approach you used in Section <a href="hw-mrr.html#hw-mrr-lp-calc">16.4.2</a> to estimate the number of males and females from this dataset.
 This should result in a two-row data frame (one row for males, one for females).
 Be sure to inspect the data; if you have a row where sex is <code>NA</code>, you’ll need to filter it out.
@@ -628,10 +629,10 @@ Save this dataframe as the variable <code>lp_estimate_by_sex</code>.</p>
 <p>Next, we want to run a one-sample chi-squared test to see if the sex ratio is unbalanced.
 First, we define the observed counts (the LP estimates) and expected frequencies.
 Then, use a chi-squared test with the following arguments</p>
-<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="hw-mrr.html#cb164-1" aria-hidden="true" tabindex="-1"></a>sr_observed_counts <span class="ot">&lt;-</span> lp_estimates_by_sex<span class="sc">$</span>N_hat</span>
-<span id="cb164-2"><a href="hw-mrr.html#cb164-2" aria-hidden="true" tabindex="-1"></a>sr_expected_freq   <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">0.5</span>) <span class="co"># 50:50</span></span>
-<span id="cb164-3"><a href="hw-mrr.html#cb164-3" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(<span class="at">x =</span> sr_observed_counts,</span>
-<span id="cb164-4"><a href="hw-mrr.html#cb164-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">p =</span> sr_expected_freq) <span class="co">#  You MUST name the p argument</span></span></code></pre></div>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="hw-mrr.html#cb173-1" aria-hidden="true" tabindex="-1"></a>sr_observed_counts <span class="ot">&lt;-</span> lp_estimates_by_sex<span class="sc">$</span>N_hat</span>
+<span id="cb173-2"><a href="hw-mrr.html#cb173-2" aria-hidden="true" tabindex="-1"></a>sr_expected_freq   <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">0.5</span>) <span class="co"># 50:50</span></span>
+<span id="cb173-3"><a href="hw-mrr.html#cb173-3" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(<span class="at">x =</span> sr_observed_counts,</span>
+<span id="cb173-4"><a href="hw-mrr.html#cb173-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">p =</span> sr_expected_freq) <span class="co">#  You MUST name the p argument</span></span></code></pre></div>
 </div>
 </div>
 <div id="alternate-methods-for-population-size-estimates" class="section level2 hasAnchor" number="16.6">
@@ -641,9 +642,9 @@ For background, see Section <a href="lab-mrr.html#lab-mrr-trinidad">11.4.3</a>.<
 <div id="the-data-3" class="section level3 hasAnchor" number="16.6.1">
 <h3><span class="header-section-number">16.6.1</span> The data<a href="hw-mrr.html#the-data-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>This data is saved as an excel file; to import it, we’ll be using the <code>read_excel()</code> function, from the <code>readxl</code> package.</p>
-<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="hw-mrr.html#cb165-1" aria-hidden="true" tabindex="-1"></a><span class="do">#### Regression vs LP analysis (Trinidad Data) ####</span></span>
-<span id="cb165-2"><a href="hw-mrr.html#cb165-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb165-3"><a href="hw-mrr.html#cb165-3" aria-hidden="true" tabindex="-1"></a>trinidad_data <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(trinidad_file, <span class="at">sheet =</span> <span class="st">&quot;Sheet1&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="hw-mrr.html#cb174-1" aria-hidden="true" tabindex="-1"></a><span class="do">#### Regression vs LP analysis (Trinidad Data) ####</span></span>
+<span id="cb174-2"><a href="hw-mrr.html#cb174-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb174-3"><a href="hw-mrr.html#cb174-3" aria-hidden="true" tabindex="-1"></a>trinidad_data <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(trinidad_file, <span class="at">sheet =</span> <span class="st">&quot;Sheet1&quot;</span>)</span></code></pre></div>
 <p>The columns we care about</p>
 <ul>
 <li><strong>Sample_Period</strong>: These data were collected over Late April/ Early May, July, and August.</li>
@@ -674,8 +675,8 @@ Therefore, calculating the value of <code>cumulative_M</code> when <code>prop_re
 Versions of predict have been designed for a wide variety of different statistical models in R, so understanding it can help with a variety of tasks.<br />
 First, define a new data frame that contains the new predictor variables (in this case, <code>prop_recapture = 1</code>).
 Then, use predict with the regression object and new data:</p>
-<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="hw-mrr.html#cb166-1" aria-hidden="true" tabindex="-1"></a>trinidad_predict_df <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">prop_recapture =</span> <span class="dv">1</span>) </span>
-<span id="cb166-2"><a href="hw-mrr.html#cb166-2" aria-hidden="true" tabindex="-1"></a>trinidad_nhat_lm_apr <span class="ot">=</span> <span class="fu">predict.lm</span>(trinidad_lm_apr, <span class="at">newdata =</span> trinidad_predict_df)</span></code></pre></div>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="hw-mrr.html#cb175-1" aria-hidden="true" tabindex="-1"></a>trinidad_predict_df <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">prop_recapture =</span> <span class="dv">1</span>) </span>
+<span id="cb175-2"><a href="hw-mrr.html#cb175-2" aria-hidden="true" tabindex="-1"></a>trinidad_nhat_lm_apr <span class="ot">=</span> <span class="fu">predict.lm</span>(trinidad_lm_apr, <span class="at">newdata =</span> trinidad_predict_df)</span></code></pre></div>
 <p>Do this for all three sample periods (you don’t need to make multiple <code>trinidad_predict_df</code>’s, they’re all the same) and compare these values with the Lincoln-Peterson estimates.</p>
 </div>
 <div id="regression-figure" class="section level3 hasAnchor" number="16.6.4">
@@ -691,9 +692,9 @@ Facet your data by sample period with facet_wrap() and make sure all three perio
 <div id="the-data-4" class="section level3 hasAnchor" number="16.7.1">
 <h3><span class="header-section-number">16.7.1</span> The data<a href="hw-mrr.html#the-data-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Import the data as:</p>
-<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="hw-mrr.html#cb167-1" aria-hidden="true" tabindex="-1"></a><span class="do">#### HWE Analysis ####</span></span>
-<span id="cb167-2"><a href="hw-mrr.html#cb167-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb167-3"><a href="hw-mrr.html#cb167-3" aria-hidden="true" tabindex="-1"></a>genotype_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(genotype_file)</span></code></pre></div>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="hw-mrr.html#cb176-1" aria-hidden="true" tabindex="-1"></a><span class="do">#### HWE Analysis ####</span></span>
+<span id="cb176-2"><a href="hw-mrr.html#cb176-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb176-3"><a href="hw-mrr.html#cb176-3" aria-hidden="true" tabindex="-1"></a>genotype_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(genotype_file)</span></code></pre></div>
 <p>The only column we care about for this is <strong>Genotype</strong>, which will be one of <em>FF</em>, <em>FH</em> or <em>HH</em>.</p>
 </div>
 <div id="calculating-hwe-ratios" class="section level3 hasAnchor" number="16.7.2">
@@ -703,16 +704,16 @@ Your genotype frequencies should sum to 1.
 Save the new data frame as <code>genotype_observed</code>.</p>
 <p>To make the frequencies easier to work with, we’re going to re-shape the data (this is similar to what is covered in Chapter <a href="r-tidyr.html#r-tidyr">8</a>, but it isn’t covered there yet).
 Do this:</p>
-<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="hw-mrr.html#cb168-1" aria-hidden="true" tabindex="-1"></a>gt_freq_observed <span class="ot">&lt;-</span> genotype_observed <span class="sc">|&gt;</span> </span>
-<span id="cb168-2"><a href="hw-mrr.html#cb168-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Genotype, frequency) <span class="sc">|&gt;</span> </span>
-<span id="cb168-3"><a href="hw-mrr.html#cb168-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> Genotype, <span class="at">values_from =</span> frequency)</span></code></pre></div>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="hw-mrr.html#cb177-1" aria-hidden="true" tabindex="-1"></a>gt_freq_observed <span class="ot">&lt;-</span> genotype_observed <span class="sc">|&gt;</span> </span>
+<span id="cb177-2"><a href="hw-mrr.html#cb177-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Genotype, frequency) <span class="sc">|&gt;</span> </span>
+<span id="cb177-3"><a href="hw-mrr.html#cb177-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> Genotype, <span class="at">values_from =</span> frequency)</span></code></pre></div>
 <p>Next, use <code>summarize()</code> on <code>gt_freq_observed</code> to calculate your allele frequencie for <code>F</code> and <code>H</code> from the genotype frequencies as described in Section <a href="lab-mrr.html#lab-mrr-hwe-theory">11.1.3</a>.
 Save the new data frame as <code>allele_freq</code>.
 Then, calculate your expected HWE genotype frequencies from <code>allele_freq</code> with another <code>summarize()</code> function and save it as <code>gt_hwe</code>.
 Make sure that the columns of <code>gt_hwe</code> are in the same order as <code>gt_freq_observed</code>.
 Finally, add a column for HWE frequencies to <code>genotype_observed</code>:</p>
-<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="hw-mrr.html#cb169-1" aria-hidden="true" tabindex="-1"></a>genotype_obs_hwe <span class="ot">&lt;-</span> genotype_observed <span class="sc">|&gt;</span> </span>
-<span id="cb169-2"><a href="hw-mrr.html#cb169-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">HWE_freq =</span> <span class="fu">as.numeric</span>(gt_hwe)) <span class="co"># as.numeric converts gt_hwe from a data frame to a vector</span></span></code></pre></div>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="hw-mrr.html#cb178-1" aria-hidden="true" tabindex="-1"></a>genotype_obs_hwe <span class="ot">&lt;-</span> genotype_observed <span class="sc">|&gt;</span> </span>
+<span id="cb178-2"><a href="hw-mrr.html#cb178-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">HWE_freq =</span> <span class="fu">as.numeric</span>(gt_hwe)) <span class="co"># as.numeric converts gt_hwe from a data frame to a vector</span></span></code></pre></div>
 <p>You’ll want to report this table.</p>
 </div>
 <div id="testing-for-hwe" class="section level3 hasAnchor" number="16.7.3">

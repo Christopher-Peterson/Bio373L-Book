@@ -279,6 +279,7 @@ div.csl-indent {
 <li class="chapter" data-level="7.3.1" data-path="r-stats.html"><a href="r-stats.html#regression"><i class="fa fa-check"></i><b>7.3.1</b> Regression</a></li>
 <li class="chapter" data-level="7.3.2" data-path="r-stats.html"><a href="r-stats.html#r-stats-anova"><i class="fa fa-check"></i><b>7.3.2</b> ANOVA</a></li>
 <li class="chapter" data-level="7.3.3" data-path="r-stats.html"><a href="r-stats.html#comparing-two-means-t-tests"><i class="fa fa-check"></i><b>7.3.3</b> Comparing two means (t-tests)</a></li>
+<li class="chapter" data-level="7.3.4" data-path="r-stats.html"><a href="r-stats.html#r-stats-ancova"><i class="fa fa-check"></i><b>7.3.4</b> Comparing two rates or relationships (ANCOVA)</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="r-tidyr.html"><a href="r-tidyr.html"><i class="fa fa-check"></i><b>8</b> Wrangling, reshaping, and tidying data with <code>tidyr</code></a>
@@ -518,15 +519,15 @@ I will also use code from Chapter <a href="r-tidyr.html#r-tidyr">8</a> to reshap
 <div id="getting-started-3" class="section level2 hasAnchor" number="17.3">
 <h2><span class="header-section-number">17.3</span> Getting started<a href="hw-ants.html#getting-started-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>You’ll need to download <a href="data/F21_ant_data.csv">F21_ant_data.csv</a> and put it in your <code>data</code> directory.</p>
-<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="hw-ants.html#cb170-1" aria-hidden="true" tabindex="-1"></a><span class="co"># MRR Lab Analysis</span></span>
-<span id="cb170-2"><a href="hw-ants.html#cb170-2" aria-hidden="true" tabindex="-1"></a><span class="do">#### Setup ####</span></span>
-<span id="cb170-3"><a href="hw-ants.html#cb170-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Load packages &amp; data</span></span>
-<span id="cb170-4"><a href="hw-ants.html#cb170-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) </span>
-<span id="cb170-5"><a href="hw-ants.html#cb170-5" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;vegan&quot;) # uncomment if necessary</span></span>
-<span id="cb170-6"><a href="hw-ants.html#cb170-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vegan) </span>
-<span id="cb170-7"><a href="hw-ants.html#cb170-7" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_classic</span>()) <span class="co"># Removes gridlines from ggplot</span></span>
-<span id="cb170-8"><a href="hw-ants.html#cb170-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb170-9"><a href="hw-ants.html#cb170-9" aria-hidden="true" tabindex="-1"></a>raw_ant_data <span class="ot">=</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/F21_ant_data.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="hw-ants.html#cb179-1" aria-hidden="true" tabindex="-1"></a><span class="co"># MRR Lab Analysis</span></span>
+<span id="cb179-2"><a href="hw-ants.html#cb179-2" aria-hidden="true" tabindex="-1"></a><span class="do">#### Setup ####</span></span>
+<span id="cb179-3"><a href="hw-ants.html#cb179-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Load packages &amp; data</span></span>
+<span id="cb179-4"><a href="hw-ants.html#cb179-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) </span>
+<span id="cb179-5"><a href="hw-ants.html#cb179-5" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;vegan&quot;) # uncomment if necessary</span></span>
+<span id="cb179-6"><a href="hw-ants.html#cb179-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vegan) </span>
+<span id="cb179-7"><a href="hw-ants.html#cb179-7" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_classic</span>()) <span class="co"># Removes gridlines from ggplot</span></span>
+<span id="cb179-8"><a href="hw-ants.html#cb179-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb179-9"><a href="hw-ants.html#cb179-9" aria-hidden="true" tabindex="-1"></a>raw_ant_data <span class="ot">=</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/F21_ant_data.csv&quot;</span>)</span></code></pre></div>
 <div id="contrasts" class="section level3 hasAnchor" number="17.3.1">
 <h3><span class="header-section-number">17.3.1</span> Contrasts<a href="hw-ants.html#contrasts" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Most of these analyses will focus on ecological contrasts. There are four contrasts we’re interested in with this lab:</p>
@@ -555,28 +556,28 @@ I will also use code from Chapter <a href="r-tidyr.html#r-tidyr">8</a> to reshap
 <li><strong>Other species</strong>: Other species present; you can generally ignore this.</li>
 </ul>
 <p>We’ll need to re-define some our columns to fit the above contrasts; you can use the <code>if_else()</code> function inside mutate to do this.</p>
-<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="hw-ants.html#cb171-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb171-2"><a href="hw-ants.html#cb171-2" aria-hidden="true" tabindex="-1"></a>wide_ant_data <span class="ot">=</span> raw_ant_data <span class="sc">|&gt;</span> </span>
-<span id="cb171-3"><a href="hw-ants.html#cb171-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Remove unnecessary columns</span></span>
-<span id="cb171-4"><a href="hw-ants.html#cb171-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>GPS_easting, <span class="sc">-</span>GPS_northing, <span class="sc">-</span>Phorids_present, <span class="sc">-</span>Field_Notes, <span class="sc">-</span>Name, <span class="sc">-</span>Total_ants, <span class="sc">-</span><span class="st">`</span><span class="at">Other species</span><span class="st">`</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb171-5"><a href="hw-ants.html#cb171-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb171-6"><a href="hw-ants.html#cb171-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">Canopy_cover =</span> <span class="fu">if_else</span>(Canopy_cover <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="st">&quot;Open&quot;</span>, <span class="st">&quot;Closed&quot;</span>), <span class="co"># see ?if_else() for details</span></span>
-<span id="cb171-7"><a href="hw-ants.html#cb171-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">Ground_cover =</span> <span class="co"># define as sparse vs. dense</span></span>
-<span id="cb171-8"><a href="hw-ants.html#cb171-8" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="hw-ants.html#cb180-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb180-2"><a href="hw-ants.html#cb180-2" aria-hidden="true" tabindex="-1"></a>wide_ant_data <span class="ot">=</span> raw_ant_data <span class="sc">|&gt;</span> </span>
+<span id="cb180-3"><a href="hw-ants.html#cb180-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Remove unnecessary columns</span></span>
+<span id="cb180-4"><a href="hw-ants.html#cb180-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>GPS_easting, <span class="sc">-</span>GPS_northing, <span class="sc">-</span>Phorids_present, <span class="sc">-</span>Field_Notes, <span class="sc">-</span>Name, <span class="sc">-</span>Total_ants, <span class="sc">-</span><span class="st">`</span><span class="at">Other species</span><span class="st">`</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb180-5"><a href="hw-ants.html#cb180-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb180-6"><a href="hw-ants.html#cb180-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">Canopy_cover =</span> <span class="fu">if_else</span>(Canopy_cover <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="st">&quot;Open&quot;</span>, <span class="st">&quot;Closed&quot;</span>), <span class="co"># see ?if_else() for details</span></span>
+<span id="cb180-7"><a href="hw-ants.html#cb180-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">Ground_cover =</span> <span class="co"># define as sparse vs. dense</span></span>
+<span id="cb180-8"><a href="hw-ants.html#cb180-8" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
 <p>We’re also going to transform the data into a long format using <code>pivot_longer</code> (<a href="r-tidyr.html#pivot-longer-tutorial">8.2</a>).</p>
-<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="hw-ants.html#cb172-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get a list of species columns</span></span>
-<span id="cb172-2"><a href="hw-ants.html#cb172-2" aria-hidden="true" tabindex="-1"></a>ant_species <span class="ot">=</span> wide_ant_data <span class="sc">|&gt;</span> </span>
-<span id="cb172-3"><a href="hw-ants.html#cb172-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Remove the non-species columns</span></span>
-<span id="cb172-4"><a href="hw-ants.html#cb172-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>Acre, <span class="sc">-</span>Site, <span class="sc">-</span>Fire_ants_present, <span class="sc">-</span>Canopy_cover, <span class="sc">-</span>Ground_cover, <span class="sc">-</span>Disturbance) <span class="sc">|&gt;</span> </span>
-<span id="cb172-5"><a href="hw-ants.html#cb172-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">names</span>() <span class="co"># get the column names</span></span>
-<span id="cb172-6"><a href="hw-ants.html#cb172-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb172-7"><a href="hw-ants.html#cb172-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert all of the species columns to &quot;Species&quot; and &quot;N&quot;</span></span>
-<span id="cb172-8"><a href="hw-ants.html#cb172-8" aria-hidden="true" tabindex="-1"></a>tidy_ant_data <span class="ot">=</span> wide_ant_data <span class="sc">|&gt;</span> </span>
-<span id="cb172-9"><a href="hw-ants.html#cb172-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">all_of</span>(ant_species), <span class="co"># all_of() selects columns based on a character vector; it also works in select()</span></span>
-<span id="cb172-10"><a href="hw-ants.html#cb172-10" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">&quot;Species&quot;</span>, <span class="co"># Put the column name in a &quot;Species&quot; column</span></span>
-<span id="cb172-11"><a href="hw-ants.html#cb172-11" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">&quot;N&quot;</span>) <span class="sc">|&gt;</span> <span class="co"># Cell values are counts, so make that an N column</span></span>
-<span id="cb172-12"><a href="hw-ants.html#cb172-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># replace the underscores in species names with a space:</span></span>
-<span id="cb172-13"><a href="hw-ants.html#cb172-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(N <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="co"># Remove species that aren&#39;t present</span></span></code></pre></div>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="hw-ants.html#cb181-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get a list of species columns</span></span>
+<span id="cb181-2"><a href="hw-ants.html#cb181-2" aria-hidden="true" tabindex="-1"></a>ant_species <span class="ot">=</span> wide_ant_data <span class="sc">|&gt;</span> </span>
+<span id="cb181-3"><a href="hw-ants.html#cb181-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Remove the non-species columns</span></span>
+<span id="cb181-4"><a href="hw-ants.html#cb181-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>Acre, <span class="sc">-</span>Site, <span class="sc">-</span>Fire_ants_present, <span class="sc">-</span>Canopy_cover, <span class="sc">-</span>Ground_cover, <span class="sc">-</span>Disturbance) <span class="sc">|&gt;</span> </span>
+<span id="cb181-5"><a href="hw-ants.html#cb181-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">names</span>() <span class="co"># get the column names</span></span>
+<span id="cb181-6"><a href="hw-ants.html#cb181-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb181-7"><a href="hw-ants.html#cb181-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert all of the species columns to &quot;Species&quot; and &quot;N&quot;</span></span>
+<span id="cb181-8"><a href="hw-ants.html#cb181-8" aria-hidden="true" tabindex="-1"></a>tidy_ant_data <span class="ot">=</span> wide_ant_data <span class="sc">|&gt;</span> </span>
+<span id="cb181-9"><a href="hw-ants.html#cb181-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">all_of</span>(ant_species), <span class="co"># all_of() selects columns based on a character vector; it also works in select()</span></span>
+<span id="cb181-10"><a href="hw-ants.html#cb181-10" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">&quot;Species&quot;</span>, <span class="co"># Put the column name in a &quot;Species&quot; column</span></span>
+<span id="cb181-11"><a href="hw-ants.html#cb181-11" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">&quot;N&quot;</span>) <span class="sc">|&gt;</span> <span class="co"># Cell values are counts, so make that an N column</span></span>
+<span id="cb181-12"><a href="hw-ants.html#cb181-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># replace the underscores in species names with a space:</span></span>
+<span id="cb181-13"><a href="hw-ants.html#cb181-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(N <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="co"># Remove species that aren&#39;t present</span></span></code></pre></div>
 </div>
 </div>
 <div id="s.-invicta-habitat-preference-1" class="section level2 hasAnchor" number="17.4">
@@ -591,143 +592,143 @@ I will also use code from Chapter <a href="r-tidyr.html#r-tidyr">8</a> to reshap
 <p>Jaccard similarity is a measure of how similar the species composition is between a pair of communities (or between two levels of a contrast).
 To calculate the Jaccard similarity of two communities, you need to divide the number of shared species by the total number of species.
 This can be done with a combination of the <code>intersect()</code>, <code>union()</code>, and <code>length()</code> functions.</p>
-<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="hw-ants.html#cb173-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Let&#39;s say these are the species in our two communities:</span></span>
-<span id="cb173-2"><a href="hw-ants.html#cb173-2" aria-hidden="true" tabindex="-1"></a>com_a <span class="ot">=</span> LETTERS[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span>
-<span id="cb173-3"><a href="hw-ants.html#cb173-3" aria-hidden="true" tabindex="-1"></a>com_b <span class="ot">=</span> LETTERS[<span class="dv">3</span><span class="sc">:</span><span class="dv">8</span>]</span>
-<span id="cb173-4"><a href="hw-ants.html#cb173-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb173-5"><a href="hw-ants.html#cb173-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Species in common:</span></span>
-<span id="cb173-6"><a href="hw-ants.html#cb173-6" aria-hidden="true" tabindex="-1"></a><span class="fu">intersect</span>(com_a, com_b)</span>
-<span id="cb173-7"><a href="hw-ants.html#cb173-7" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;C&quot; &quot;D&quot; &quot;E&quot;</span></span>
-<span id="cb173-8"><a href="hw-ants.html#cb173-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb173-9"><a href="hw-ants.html#cb173-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Species present in either:</span></span>
-<span id="cb173-10"><a href="hw-ants.html#cb173-10" aria-hidden="true" tabindex="-1"></a><span class="fu">union</span>(com_a, com_b)</span>
-<span id="cb173-11"><a href="hw-ants.html#cb173-11" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;A&quot; &quot;B&quot; &quot;C&quot; &quot;D&quot; &quot;E&quot; &quot;F&quot; &quot;G&quot; &quot;H&quot;</span></span>
-<span id="cb173-12"><a href="hw-ants.html#cb173-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb173-13"><a href="hw-ants.html#cb173-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Total number of species present:</span></span>
-<span id="cb173-14"><a href="hw-ants.html#cb173-14" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">union</span>(com_a, com_b))</span>
-<span id="cb173-15"><a href="hw-ants.html#cb173-15" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 8</span></span>
-<span id="cb173-16"><a href="hw-ants.html#cb173-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb173-17"><a href="hw-ants.html#cb173-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Jaccard similarity:</span></span>
-<span id="cb173-18"><a href="hw-ants.html#cb173-18" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">intersect</span>(com_a, com_b)) <span class="sc">/</span> </span>
-<span id="cb173-19"><a href="hw-ants.html#cb173-19" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">union</span>(com_a, com_b))</span>
-<span id="cb173-20"><a href="hw-ants.html#cb173-20" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 0.375</span></span></code></pre></div>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="hw-ants.html#cb182-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Let&#39;s say these are the species in our two communities:</span></span>
+<span id="cb182-2"><a href="hw-ants.html#cb182-2" aria-hidden="true" tabindex="-1"></a>com_a <span class="ot">=</span> LETTERS[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span>
+<span id="cb182-3"><a href="hw-ants.html#cb182-3" aria-hidden="true" tabindex="-1"></a>com_b <span class="ot">=</span> LETTERS[<span class="dv">3</span><span class="sc">:</span><span class="dv">8</span>]</span>
+<span id="cb182-4"><a href="hw-ants.html#cb182-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb182-5"><a href="hw-ants.html#cb182-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Species in common:</span></span>
+<span id="cb182-6"><a href="hw-ants.html#cb182-6" aria-hidden="true" tabindex="-1"></a><span class="fu">intersect</span>(com_a, com_b)</span>
+<span id="cb182-7"><a href="hw-ants.html#cb182-7" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;C&quot; &quot;D&quot; &quot;E&quot;</span></span>
+<span id="cb182-8"><a href="hw-ants.html#cb182-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb182-9"><a href="hw-ants.html#cb182-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Species present in either:</span></span>
+<span id="cb182-10"><a href="hw-ants.html#cb182-10" aria-hidden="true" tabindex="-1"></a><span class="fu">union</span>(com_a, com_b)</span>
+<span id="cb182-11"><a href="hw-ants.html#cb182-11" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] &quot;A&quot; &quot;B&quot; &quot;C&quot; &quot;D&quot; &quot;E&quot; &quot;F&quot; &quot;G&quot; &quot;H&quot;</span></span>
+<span id="cb182-12"><a href="hw-ants.html#cb182-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb182-13"><a href="hw-ants.html#cb182-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Total number of species present:</span></span>
+<span id="cb182-14"><a href="hw-ants.html#cb182-14" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">union</span>(com_a, com_b))</span>
+<span id="cb182-15"><a href="hw-ants.html#cb182-15" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 8</span></span>
+<span id="cb182-16"><a href="hw-ants.html#cb182-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb182-17"><a href="hw-ants.html#cb182-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Jaccard similarity:</span></span>
+<span id="cb182-18"><a href="hw-ants.html#cb182-18" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">intersect</span>(com_a, com_b)) <span class="sc">/</span> </span>
+<span id="cb182-19"><a href="hw-ants.html#cb182-19" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">union</span>(com_a, com_b))</span>
+<span id="cb182-20"><a href="hw-ants.html#cb182-20" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 0.375</span></span></code></pre></div>
 <p>Since you’ll be doing this for several groups, it’s a good idea to write a function that will do this for us.
 For a background on functions, please see <a href="https://r4ds.had.co.nz/functions.html">this chapter</a> in <em>R for Data Science</em>.
 To use the function, first run the code that defines it:</p>
-<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="hw-ants.html#cb174-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb174-2"><a href="hw-ants.html#cb174-2" aria-hidden="true" tabindex="-1"></a>jaccard_similarity <span class="ot">=</span> <span class="cf">function</span>(com_1, com_2, <span class="at">na.rm =</span> <span class="cn">FALSE</span>) {</span>
-<span id="cb174-3"><a href="hw-ants.html#cb174-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># com_1 and com_2 are the arguments of the function,</span></span>
-<span id="cb174-4"><a href="hw-ants.html#cb174-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># they should be the names of species in different communities</span></span>
-<span id="cb174-5"><a href="hw-ants.html#cb174-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Remove missing values from the two communities if na.rm == TRUE</span></span>
-<span id="cb174-6"><a href="hw-ants.html#cb174-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># </span></span>
-<span id="cb174-7"><a href="hw-ants.html#cb174-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="fu">isTRUE</span>(na.rm)) {</span>
-<span id="cb174-8"><a href="hw-ants.html#cb174-8" aria-hidden="true" tabindex="-1"></a>    com_1 <span class="ot">=</span> <span class="fu">na.omit</span>(com_1)</span>
-<span id="cb174-9"><a href="hw-ants.html#cb174-9" aria-hidden="true" tabindex="-1"></a>    com_2 <span class="ot">=</span> <span class="fu">na.omit</span>(com_2)</span>
-<span id="cb174-10"><a href="hw-ants.html#cb174-10" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb174-11"><a href="hw-ants.html#cb174-11" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb174-12"><a href="hw-ants.html#cb174-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Create local variables for the intersection and union;</span></span>
-<span id="cb174-13"><a href="hw-ants.html#cb174-13" aria-hidden="true" tabindex="-1"></a>  common_spp <span class="ot">=</span> <span class="fu">intersect</span>(com_1, com_2) </span>
-<span id="cb174-14"><a href="hw-ants.html#cb174-14" aria-hidden="true" tabindex="-1"></a>  total_spp <span class="ot">=</span> <span class="fu">union</span>(com_1, com_2) </span>
-<span id="cb174-15"><a href="hw-ants.html#cb174-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># these variables are created while the function runs &amp; destroyed when it ends</span></span>
-<span id="cb174-16"><a href="hw-ants.html#cb174-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># The last value of the function is its output (a.k.a., return value)</span></span>
-<span id="cb174-17"><a href="hw-ants.html#cb174-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">length</span>(common_spp) <span class="sc">/</span> <span class="fu">length</span>(total_spp) <span class="co"># return this</span></span>
-<span id="cb174-18"><a href="hw-ants.html#cb174-18" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb174-19"><a href="hw-ants.html#cb174-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb174-20"><a href="hw-ants.html#cb174-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Here&#39;s an example of running the function</span></span>
-<span id="cb174-21"><a href="hw-ants.html#cb174-21" aria-hidden="true" tabindex="-1"></a><span class="fu">jaccard_similarity</span>(<span class="at">com_1 =</span> com_a, <span class="at">com_2 =</span> com_b)</span>
-<span id="cb174-22"><a href="hw-ants.html#cb174-22" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 0.375</span></span>
-<span id="cb174-23"><a href="hw-ants.html#cb174-23" aria-hidden="true" tabindex="-1"></a><span class="co"># This is the same thing:</span></span>
-<span id="cb174-24"><a href="hw-ants.html#cb174-24" aria-hidden="true" tabindex="-1"></a><span class="fu">jaccard_similarity</span>(com_a, com_b)</span>
-<span id="cb174-25"><a href="hw-ants.html#cb174-25" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 0.375</span></span></code></pre></div>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="hw-ants.html#cb183-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb183-2"><a href="hw-ants.html#cb183-2" aria-hidden="true" tabindex="-1"></a>jaccard_similarity <span class="ot">=</span> <span class="cf">function</span>(com_1, com_2, <span class="at">na.rm =</span> <span class="cn">FALSE</span>) {</span>
+<span id="cb183-3"><a href="hw-ants.html#cb183-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># com_1 and com_2 are the arguments of the function,</span></span>
+<span id="cb183-4"><a href="hw-ants.html#cb183-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># they should be the names of species in different communities</span></span>
+<span id="cb183-5"><a href="hw-ants.html#cb183-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Remove missing values from the two communities if na.rm == TRUE</span></span>
+<span id="cb183-6"><a href="hw-ants.html#cb183-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># </span></span>
+<span id="cb183-7"><a href="hw-ants.html#cb183-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="fu">isTRUE</span>(na.rm)) {</span>
+<span id="cb183-8"><a href="hw-ants.html#cb183-8" aria-hidden="true" tabindex="-1"></a>    com_1 <span class="ot">=</span> <span class="fu">na.omit</span>(com_1)</span>
+<span id="cb183-9"><a href="hw-ants.html#cb183-9" aria-hidden="true" tabindex="-1"></a>    com_2 <span class="ot">=</span> <span class="fu">na.omit</span>(com_2)</span>
+<span id="cb183-10"><a href="hw-ants.html#cb183-10" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb183-11"><a href="hw-ants.html#cb183-11" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb183-12"><a href="hw-ants.html#cb183-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Create local variables for the intersection and union;</span></span>
+<span id="cb183-13"><a href="hw-ants.html#cb183-13" aria-hidden="true" tabindex="-1"></a>  common_spp <span class="ot">=</span> <span class="fu">intersect</span>(com_1, com_2) </span>
+<span id="cb183-14"><a href="hw-ants.html#cb183-14" aria-hidden="true" tabindex="-1"></a>  total_spp <span class="ot">=</span> <span class="fu">union</span>(com_1, com_2) </span>
+<span id="cb183-15"><a href="hw-ants.html#cb183-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># these variables are created while the function runs &amp; destroyed when it ends</span></span>
+<span id="cb183-16"><a href="hw-ants.html#cb183-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># The last value of the function is its output (a.k.a., return value)</span></span>
+<span id="cb183-17"><a href="hw-ants.html#cb183-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">length</span>(common_spp) <span class="sc">/</span> <span class="fu">length</span>(total_spp) <span class="co"># return this</span></span>
+<span id="cb183-18"><a href="hw-ants.html#cb183-18" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb183-19"><a href="hw-ants.html#cb183-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb183-20"><a href="hw-ants.html#cb183-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Here&#39;s an example of running the function</span></span>
+<span id="cb183-21"><a href="hw-ants.html#cb183-21" aria-hidden="true" tabindex="-1"></a><span class="fu">jaccard_similarity</span>(<span class="at">com_1 =</span> com_a, <span class="at">com_2 =</span> com_b)</span>
+<span id="cb183-22"><a href="hw-ants.html#cb183-22" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 0.375</span></span>
+<span id="cb183-23"><a href="hw-ants.html#cb183-23" aria-hidden="true" tabindex="-1"></a><span class="co"># This is the same thing:</span></span>
+<span id="cb183-24"><a href="hw-ants.html#cb183-24" aria-hidden="true" tabindex="-1"></a><span class="fu">jaccard_similarity</span>(com_a, com_b)</span>
+<span id="cb183-25"><a href="hw-ants.html#cb183-25" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 0.375</span></span></code></pre></div>
 <p>How would this work for our data?
 Filter the data for each level of the contrast and pull out the species column.
 Then run the function.</p>
-<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="hw-ants.html#cb175-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Contrast: Disturbance</span></span>
-<span id="cb175-2"><a href="hw-ants.html#cb175-2" aria-hidden="true" tabindex="-1"></a>disturb_low <span class="ot">=</span> tidy_ant_data <span class="sc">|&gt;</span> </span>
-<span id="cb175-3"><a href="hw-ants.html#cb175-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Subset the data to get the &quot;community&quot; you want</span></span>
-<span id="cb175-4"><a href="hw-ants.html#cb175-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Disturbance <span class="sc">==</span> <span class="st">&quot;low&quot;</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb175-5"><a href="hw-ants.html#cb175-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Get the list of species as a vector</span></span>
-<span id="cb175-6"><a href="hw-ants.html#cb175-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(Species) <span class="co"># pull() is like $ but works with pipes</span></span>
-<span id="cb175-7"><a href="hw-ants.html#cb175-7" aria-hidden="true" tabindex="-1"></a>disturb_hi <span class="ot">=</span> <span class="co">#  fill this in for hight disturbance</span></span>
-<span id="cb175-8"><a href="hw-ants.html#cb175-8" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb175-9"><a href="hw-ants.html#cb175-9" aria-hidden="true" tabindex="-1"></a><span class="fu">jaccard_similarity</span>(disturb_low, disturb_hi)</span></code></pre></div>
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="hw-ants.html#cb184-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Contrast: Disturbance</span></span>
+<span id="cb184-2"><a href="hw-ants.html#cb184-2" aria-hidden="true" tabindex="-1"></a>disturb_low <span class="ot">=</span> tidy_ant_data <span class="sc">|&gt;</span> </span>
+<span id="cb184-3"><a href="hw-ants.html#cb184-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Subset the data to get the &quot;community&quot; you want</span></span>
+<span id="cb184-4"><a href="hw-ants.html#cb184-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Disturbance <span class="sc">==</span> <span class="st">&quot;low&quot;</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb184-5"><a href="hw-ants.html#cb184-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Get the list of species as a vector</span></span>
+<span id="cb184-6"><a href="hw-ants.html#cb184-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(Species) <span class="co"># pull() is like $ but works with pipes</span></span>
+<span id="cb184-7"><a href="hw-ants.html#cb184-7" aria-hidden="true" tabindex="-1"></a>disturb_hi <span class="ot">=</span> <span class="co">#  fill this in for hight disturbance</span></span>
+<span id="cb184-8"><a href="hw-ants.html#cb184-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb184-9"><a href="hw-ants.html#cb184-9" aria-hidden="true" tabindex="-1"></a><span class="fu">jaccard_similarity</span>(disturb_low, disturb_hi)</span></code></pre></div>
 <p>For habitat (in the final assignment), you’ll need to make 3 pairwise similarity comparisons (Q vs. R, Q vs. P, P vs. R).</p>
 </div>
 <div id="shannon-index-diversity" class="section level2 hasAnchor" number="17.6">
 <h2><span class="header-section-number">17.6</span> Shannon Index &amp; Diversity<a href="hw-ants.html#shannon-index-diversity" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Let’s make a function that calculates the Shannon index of a community:</p>
-<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="hw-ants.html#cb176-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb176-2"><a href="hw-ants.html#cb176-2" aria-hidden="true" tabindex="-1"></a>shannon_diversity <span class="ot">=</span> <span class="cf">function</span>(species, count) {</span>
-<span id="cb176-3"><a href="hw-ants.html#cb176-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># species: vector of species names; </span></span>
-<span id="cb176-4"><a href="hw-ants.html#cb176-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># count: how many of each species are present</span></span>
-<span id="cb176-5"><a href="hw-ants.html#cb176-5" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb176-6"><a href="hw-ants.html#cb176-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Create p, a vector of relative frequencies</span></span>
-<span id="cb176-7"><a href="hw-ants.html#cb176-7" aria-hidden="true" tabindex="-1"></a>  p <span class="ot">=</span> <span class="fu">tibble</span>(species, count) <span class="sc">|&gt;</span> </span>
-<span id="cb176-8"><a href="hw-ants.html#cb176-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Merge duplicate species </span></span>
-<span id="cb176-9"><a href="hw-ants.html#cb176-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(species) <span class="sc">|&gt;</span> </span>
-<span id="cb176-10"><a href="hw-ants.html#cb176-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">count =</span> <span class="fu">sum</span>(count)) <span class="sc">|&gt;</span> </span>
-<span id="cb176-11"><a href="hw-ants.html#cb176-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb176-12"><a href="hw-ants.html#cb176-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Remove zeroes</span></span>
-<span id="cb176-13"><a href="hw-ants.html#cb176-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(count <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb176-14"><a href="hw-ants.html#cb176-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Convert to frequencies</span></span>
-<span id="cb176-15"><a href="hw-ants.html#cb176-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">p =</span> count <span class="sc">/</span> <span class="fu">sum</span>(count)) <span class="sc">|&gt;</span> </span>
-<span id="cb176-16"><a href="hw-ants.html#cb176-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Extract column p</span></span>
-<span id="cb176-17"><a href="hw-ants.html#cb176-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pull</span>(p) </span>
-<span id="cb176-18"><a href="hw-ants.html#cb176-18" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="fu">length</span>(p) <span class="sc">&lt;</span> <span class="dv">2</span>) <span class="fu">return</span>(<span class="dv">0</span>) <span class="co"># one or 0 species has an H of 0</span></span>
-<span id="cb176-19"><a href="hw-ants.html#cb176-19" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Return value:</span></span>
-<span id="cb176-20"><a href="hw-ants.html#cb176-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">exp</span>( <span class="sc">-</span><span class="fu">sum</span>(p <span class="sc">*</span> <span class="fu">log</span>(p)) ) <span class="co"># exponential of shannon index</span></span>
-<span id="cb176-21"><a href="hw-ants.html#cb176-21" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb176-22"><a href="hw-ants.html#cb176-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb176-23"><a href="hw-ants.html#cb176-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the shannon diversity</span></span>
-<span id="cb176-24"><a href="hw-ants.html#cb176-24" aria-hidden="true" tabindex="-1"></a><span class="fu">shannon_diversity</span>(LETTERS[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>], <span class="co"># Species names, A : E</span></span>
-<span id="cb176-25"><a href="hw-ants.html#cb176-25" aria-hidden="true" tabindex="-1"></a>                 <span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">5</span>, <span class="dv">30</span>, <span class="dv">22</span>, <span class="dv">140</span>)) <span class="co"># Species counts</span></span>
-<span id="cb176-26"><a href="hw-ants.html#cb176-26" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 3.367463</span></span></code></pre></div>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="hw-ants.html#cb185-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb185-2"><a href="hw-ants.html#cb185-2" aria-hidden="true" tabindex="-1"></a>shannon_diversity <span class="ot">=</span> <span class="cf">function</span>(species, count) {</span>
+<span id="cb185-3"><a href="hw-ants.html#cb185-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># species: vector of species names; </span></span>
+<span id="cb185-4"><a href="hw-ants.html#cb185-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># count: how many of each species are present</span></span>
+<span id="cb185-5"><a href="hw-ants.html#cb185-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb185-6"><a href="hw-ants.html#cb185-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Create p, a vector of relative frequencies</span></span>
+<span id="cb185-7"><a href="hw-ants.html#cb185-7" aria-hidden="true" tabindex="-1"></a>  p <span class="ot">=</span> <span class="fu">tibble</span>(species, count) <span class="sc">|&gt;</span> </span>
+<span id="cb185-8"><a href="hw-ants.html#cb185-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Merge duplicate species </span></span>
+<span id="cb185-9"><a href="hw-ants.html#cb185-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(species) <span class="sc">|&gt;</span> </span>
+<span id="cb185-10"><a href="hw-ants.html#cb185-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">count =</span> <span class="fu">sum</span>(count)) <span class="sc">|&gt;</span> </span>
+<span id="cb185-11"><a href="hw-ants.html#cb185-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb185-12"><a href="hw-ants.html#cb185-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Remove zeroes</span></span>
+<span id="cb185-13"><a href="hw-ants.html#cb185-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(count <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb185-14"><a href="hw-ants.html#cb185-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Convert to frequencies</span></span>
+<span id="cb185-15"><a href="hw-ants.html#cb185-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">p =</span> count <span class="sc">/</span> <span class="fu">sum</span>(count)) <span class="sc">|&gt;</span> </span>
+<span id="cb185-16"><a href="hw-ants.html#cb185-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Extract column p</span></span>
+<span id="cb185-17"><a href="hw-ants.html#cb185-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pull</span>(p) </span>
+<span id="cb185-18"><a href="hw-ants.html#cb185-18" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="fu">length</span>(p) <span class="sc">&lt;</span> <span class="dv">2</span>) <span class="fu">return</span>(<span class="dv">0</span>) <span class="co"># one or 0 species has an H of 0</span></span>
+<span id="cb185-19"><a href="hw-ants.html#cb185-19" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Return value:</span></span>
+<span id="cb185-20"><a href="hw-ants.html#cb185-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">exp</span>( <span class="sc">-</span><span class="fu">sum</span>(p <span class="sc">*</span> <span class="fu">log</span>(p)) ) <span class="co"># exponential of shannon index</span></span>
+<span id="cb185-21"><a href="hw-ants.html#cb185-21" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb185-22"><a href="hw-ants.html#cb185-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb185-23"><a href="hw-ants.html#cb185-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the shannon diversity</span></span>
+<span id="cb185-24"><a href="hw-ants.html#cb185-24" aria-hidden="true" tabindex="-1"></a><span class="fu">shannon_diversity</span>(LETTERS[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>], <span class="co"># Species names, A : E</span></span>
+<span id="cb185-25"><a href="hw-ants.html#cb185-25" aria-hidden="true" tabindex="-1"></a>                 <span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">5</span>, <span class="dv">30</span>, <span class="dv">22</span>, <span class="dv">140</span>)) <span class="co"># Species counts</span></span>
+<span id="cb185-26"><a href="hw-ants.html#cb185-26" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 3.367463</span></span></code></pre></div>
 <p>This function should work well with a grouped summarize function:</p>
-<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="hw-ants.html#cb177-1" aria-hidden="true" tabindex="-1"></a>tidy_ant_data <span class="sc">|&gt;</span> </span>
-<span id="cb177-2"><a href="hw-ants.html#cb177-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Acre, Disturbance) <span class="sc">|&gt;</span> <span class="co"># group by Acre &amp; habitat</span></span>
-<span id="cb177-3"><a href="hw-ants.html#cb177-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">shannon =</span> <span class="fu">shannon_diversity</span>(Species, N)) </span>
-<span id="cb177-4"><a href="hw-ants.html#cb177-4" aria-hidden="true" tabindex="-1"></a><span class="do">## `summarise()` has grouped output by &#39;Acre&#39;. You can override using the</span></span>
-<span id="cb177-5"><a href="hw-ants.html#cb177-5" aria-hidden="true" tabindex="-1"></a><span class="do">## `.groups` argument.</span></span>
-<span id="cb177-6"><a href="hw-ants.html#cb177-6" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 24 × 3</span></span>
-<span id="cb177-7"><a href="hw-ants.html#cb177-7" aria-hidden="true" tabindex="-1"></a><span class="do">## # Groups:   Acre [14]</span></span>
-<span id="cb177-8"><a href="hw-ants.html#cb177-8" aria-hidden="true" tabindex="-1"></a><span class="do">##    Acre  Disturbance shannon</span></span>
-<span id="cb177-9"><a href="hw-ants.html#cb177-9" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;chr&gt; &lt;chr&gt;         &lt;dbl&gt;</span></span>
-<span id="cb177-10"><a href="hw-ants.html#cb177-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 A1    high           1.63</span></span>
-<span id="cb177-11"><a href="hw-ants.html#cb177-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 A1    low            2.03</span></span>
-<span id="cb177-12"><a href="hw-ants.html#cb177-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 A10   high           0   </span></span>
-<span id="cb177-13"><a href="hw-ants.html#cb177-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 A10   low            1.69</span></span>
-<span id="cb177-14"><a href="hw-ants.html#cb177-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 A11   high           1.21</span></span>
-<span id="cb177-15"><a href="hw-ants.html#cb177-15" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 A11   low            1.33</span></span>
-<span id="cb177-16"><a href="hw-ants.html#cb177-16" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 A14   high           2.79</span></span>
-<span id="cb177-17"><a href="hw-ants.html#cb177-17" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 A14   low            1.93</span></span>
-<span id="cb177-18"><a href="hw-ants.html#cb177-18" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 A15   high           1.24</span></span>
-<span id="cb177-19"><a href="hw-ants.html#cb177-19" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 A15   low            1.12</span></span>
-<span id="cb177-20"><a href="hw-ants.html#cb177-20" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 14 more rows</span></span>
-<span id="cb177-21"><a href="hw-ants.html#cb177-21" aria-hidden="true" tabindex="-1"></a><span class="do">## # ℹ Use `print(n = ...)` to see more rows</span></span></code></pre></div>
+<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="hw-ants.html#cb186-1" aria-hidden="true" tabindex="-1"></a>tidy_ant_data <span class="sc">|&gt;</span> </span>
+<span id="cb186-2"><a href="hw-ants.html#cb186-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Acre, Disturbance) <span class="sc">|&gt;</span> <span class="co"># group by Acre &amp; habitat</span></span>
+<span id="cb186-3"><a href="hw-ants.html#cb186-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">shannon =</span> <span class="fu">shannon_diversity</span>(Species, N)) </span>
+<span id="cb186-4"><a href="hw-ants.html#cb186-4" aria-hidden="true" tabindex="-1"></a><span class="do">## `summarise()` has grouped output by &#39;Acre&#39;. You can override using the</span></span>
+<span id="cb186-5"><a href="hw-ants.html#cb186-5" aria-hidden="true" tabindex="-1"></a><span class="do">## `.groups` argument.</span></span>
+<span id="cb186-6"><a href="hw-ants.html#cb186-6" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 24 × 3</span></span>
+<span id="cb186-7"><a href="hw-ants.html#cb186-7" aria-hidden="true" tabindex="-1"></a><span class="do">## # Groups:   Acre [14]</span></span>
+<span id="cb186-8"><a href="hw-ants.html#cb186-8" aria-hidden="true" tabindex="-1"></a><span class="do">##    Acre  Disturbance shannon</span></span>
+<span id="cb186-9"><a href="hw-ants.html#cb186-9" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;chr&gt; &lt;chr&gt;         &lt;dbl&gt;</span></span>
+<span id="cb186-10"><a href="hw-ants.html#cb186-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 A1    high           1.63</span></span>
+<span id="cb186-11"><a href="hw-ants.html#cb186-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 A1    low            2.03</span></span>
+<span id="cb186-12"><a href="hw-ants.html#cb186-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 A10   high           0   </span></span>
+<span id="cb186-13"><a href="hw-ants.html#cb186-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 A10   low            1.69</span></span>
+<span id="cb186-14"><a href="hw-ants.html#cb186-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 A11   high           1.21</span></span>
+<span id="cb186-15"><a href="hw-ants.html#cb186-15" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 A11   low            1.33</span></span>
+<span id="cb186-16"><a href="hw-ants.html#cb186-16" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 A14   high           2.79</span></span>
+<span id="cb186-17"><a href="hw-ants.html#cb186-17" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 A14   low            1.93</span></span>
+<span id="cb186-18"><a href="hw-ants.html#cb186-18" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 A15   high           1.24</span></span>
+<span id="cb186-19"><a href="hw-ants.html#cb186-19" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 A15   low            1.12</span></span>
+<span id="cb186-20"><a href="hw-ants.html#cb186-20" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 14 more rows</span></span>
+<span id="cb186-21"><a href="hw-ants.html#cb186-21" aria-hidden="true" tabindex="-1"></a><span class="do">## # ℹ Use `print(n = ...)` to see more rows</span></span></code></pre></div>
 <p>Make a figure out of this (a boxplot or a jitterplot).</p>
 </div>
 <div id="species-accumulation-curves" class="section level2 hasAnchor" number="17.7">
 <h2><span class="header-section-number">17.7</span> Species Accumulation Curves<a href="hw-ants.html#species-accumulation-curves" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Species accumulation curves are calculated by the <code>specaccum()</code> function in <code>vegan</code>. This function requires a data set where each column is a species, each_row is a site, and each cell is a 1 (indicating presence) or 0 (indicating absence). Let’s create a function that will format the data for this:</p>
-<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="hw-ants.html#cb178-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a function that converts a number to presence-absense</span></span>
-<span id="cb178-2"><a href="hw-ants.html#cb178-2" aria-hidden="true" tabindex="-1"></a>to_presence_absense <span class="ot">=</span> <span class="cf">function</span>(x) <span class="fu">if_else</span>(x <span class="sc">&lt;=</span> <span class="dv">0</span> <span class="sc">|</span> <span class="fu">is.na</span>(x), <span class="dv">0</span>, <span class="dv">1</span>) <span class="co"># Recodes data as 0 if it&#39;s 0 or missing or 1 otherwise</span></span>
-<span id="cb178-3"><a href="hw-ants.html#cb178-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb178-4"><a href="hw-ants.html#cb178-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Format data for the species accumulation curve</span></span>
-<span id="cb178-5"><a href="hw-ants.html#cb178-5" aria-hidden="true" tabindex="-1"></a>format_sac_data <span class="ot">=</span> <span class="cf">function</span>(wide_data, <span class="at">ant_spp =</span> ant_species) {</span>
-<span id="cb178-6"><a href="hw-ants.html#cb178-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Takes a wide data format</span></span>
-<span id="cb178-7"><a href="hw-ants.html#cb178-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># ant_spp is the name of all ant species in the dataset; it&#39;s defined earlier</span></span>
-<span id="cb178-8"><a href="hw-ants.html#cb178-8" aria-hidden="true" tabindex="-1"></a>    wide_data <span class="sc">|&gt;</span> </span>
-<span id="cb178-9"><a href="hw-ants.html#cb178-9" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Select only species columns</span></span>
-<span id="cb178-10"><a href="hw-ants.html#cb178-10" aria-hidden="true" tabindex="-1"></a>      <span class="fu">select</span>(<span class="fu">all_of</span>(ant_spp)) <span class="sc">|&gt;</span> </span>
-<span id="cb178-11"><a href="hw-ants.html#cb178-11" aria-hidden="true" tabindex="-1"></a>      <span class="co"># use to_presence_absense() on all columns</span></span>
-<span id="cb178-12"><a href="hw-ants.html#cb178-12" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), to_presence_absense))</span>
-<span id="cb178-13"><a href="hw-ants.html#cb178-13" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb178-14"><a href="hw-ants.html#cb178-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb178-15"><a href="hw-ants.html#cb178-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Here&#39;s what the results looks like on open canopy data:</span></span>
-<span id="cb178-16"><a href="hw-ants.html#cb178-16" aria-hidden="true" tabindex="-1"></a>wide_ant_data <span class="sc">|&gt;</span> </span>
-<span id="cb178-17"><a href="hw-ants.html#cb178-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Canopy_cover <span class="sc">==</span> <span class="st">&quot;Open&quot;</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb178-18"><a href="hw-ants.html#cb178-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">format_sac_data</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb178-19"><a href="hw-ants.html#cb178-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">View</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="hw-ants.html#cb187-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a function that converts a number to presence-absense</span></span>
+<span id="cb187-2"><a href="hw-ants.html#cb187-2" aria-hidden="true" tabindex="-1"></a>to_presence_absense <span class="ot">=</span> <span class="cf">function</span>(x) <span class="fu">if_else</span>(x <span class="sc">&lt;=</span> <span class="dv">0</span> <span class="sc">|</span> <span class="fu">is.na</span>(x), <span class="dv">0</span>, <span class="dv">1</span>) <span class="co"># Recodes data as 0 if it&#39;s 0 or missing or 1 otherwise</span></span>
+<span id="cb187-3"><a href="hw-ants.html#cb187-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb187-4"><a href="hw-ants.html#cb187-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Format data for the species accumulation curve</span></span>
+<span id="cb187-5"><a href="hw-ants.html#cb187-5" aria-hidden="true" tabindex="-1"></a>format_sac_data <span class="ot">=</span> <span class="cf">function</span>(wide_data, <span class="at">ant_spp =</span> ant_species) {</span>
+<span id="cb187-6"><a href="hw-ants.html#cb187-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Takes a wide data format</span></span>
+<span id="cb187-7"><a href="hw-ants.html#cb187-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># ant_spp is the name of all ant species in the dataset; it&#39;s defined earlier</span></span>
+<span id="cb187-8"><a href="hw-ants.html#cb187-8" aria-hidden="true" tabindex="-1"></a>    wide_data <span class="sc">|&gt;</span> </span>
+<span id="cb187-9"><a href="hw-ants.html#cb187-9" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Select only species columns</span></span>
+<span id="cb187-10"><a href="hw-ants.html#cb187-10" aria-hidden="true" tabindex="-1"></a>      <span class="fu">select</span>(<span class="fu">all_of</span>(ant_spp)) <span class="sc">|&gt;</span> </span>
+<span id="cb187-11"><a href="hw-ants.html#cb187-11" aria-hidden="true" tabindex="-1"></a>      <span class="co"># use to_presence_absense() on all columns</span></span>
+<span id="cb187-12"><a href="hw-ants.html#cb187-12" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), to_presence_absense))</span>
+<span id="cb187-13"><a href="hw-ants.html#cb187-13" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb187-14"><a href="hw-ants.html#cb187-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb187-15"><a href="hw-ants.html#cb187-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Here&#39;s what the results looks like on open canopy data:</span></span>
+<span id="cb187-16"><a href="hw-ants.html#cb187-16" aria-hidden="true" tabindex="-1"></a>wide_ant_data <span class="sc">|&gt;</span> </span>
+<span id="cb187-17"><a href="hw-ants.html#cb187-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Canopy_cover <span class="sc">==</span> <span class="st">&quot;Open&quot;</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb187-18"><a href="hw-ants.html#cb187-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">format_sac_data</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb187-19"><a href="hw-ants.html#cb187-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">View</span>()</span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
 <table class=" lightable-paper" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; margin-left: auto; margin-right: auto;">
 <thead>
@@ -1551,18 +1552,18 @@ Pheidole consipata
 </table>
 </div>
 <p>From here, you can use it to calculate an SAC.</p>
-<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="hw-ants.html#cb179-1" aria-hidden="true" tabindex="-1"></a>sac_open <span class="ot">=</span> wide_ant_data <span class="sc">|&gt;</span> </span>
-<span id="cb179-2"><a href="hw-ants.html#cb179-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Canopy_cover <span class="sc">==</span> <span class="st">&quot;Open&quot;</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb179-3"><a href="hw-ants.html#cb179-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">format_sac_data</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb179-4"><a href="hw-ants.html#cb179-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">specaccum</span>(<span class="at">method =</span> <span class="st">&quot;random&quot;</span>, <span class="at">permutations =</span> <span class="dv">500</span>)   <span class="co"># Use these argument options</span></span></code></pre></div>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="hw-ants.html#cb188-1" aria-hidden="true" tabindex="-1"></a>sac_open <span class="ot">=</span> wide_ant_data <span class="sc">|&gt;</span> </span>
+<span id="cb188-2"><a href="hw-ants.html#cb188-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Canopy_cover <span class="sc">==</span> <span class="st">&quot;Open&quot;</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb188-3"><a href="hw-ants.html#cb188-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">format_sac_data</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb188-4"><a href="hw-ants.html#cb188-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">specaccum</span>(<span class="at">method =</span> <span class="st">&quot;random&quot;</span>, <span class="at">permutations =</span> <span class="dv">500</span>)   <span class="co"># Use these argument options</span></span></code></pre></div>
 <p>Use <code>print(sac_open)</code> to look at the output. The results are basically a tidy data frame turned on its side: one row for the number of sites sampled, one for the estimated richness, and one for the error around the richness estimate. To plot this, we need to re-format the output.</p>
-<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="hw-ants.html#cb180-1" aria-hidden="true" tabindex="-1"></a>sac_open_tidy <span class="ot">=</span> </span>
-<span id="cb180-2"><a href="hw-ants.html#cb180-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>(</span>
-<span id="cb180-3"><a href="hw-ants.html#cb180-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">sites =</span> sac_open<span class="sc">$</span>sites,</span>
-<span id="cb180-4"><a href="hw-ants.html#cb180-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">richness =</span> sac_open<span class="sc">$</span>richness,</span>
-<span id="cb180-5"><a href="hw-ants.html#cb180-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">se =</span> sac_open<span class="sc">$</span>sd <span class="co"># the &quot;SD&quot; column is actually a standard error measure</span></span>
-<span id="cb180-6"><a href="hw-ants.html#cb180-6" aria-hidden="true" tabindex="-1"></a>  ) </span>
-<span id="cb180-7"><a href="hw-ants.html#cb180-7" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(sac_open_tidy)</span></code></pre></div>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="hw-ants.html#cb189-1" aria-hidden="true" tabindex="-1"></a>sac_open_tidy <span class="ot">=</span> </span>
+<span id="cb189-2"><a href="hw-ants.html#cb189-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>(</span>
+<span id="cb189-3"><a href="hw-ants.html#cb189-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">sites =</span> sac_open<span class="sc">$</span>sites,</span>
+<span id="cb189-4"><a href="hw-ants.html#cb189-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">richness =</span> sac_open<span class="sc">$</span>richness,</span>
+<span id="cb189-5"><a href="hw-ants.html#cb189-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">se =</span> sac_open<span class="sc">$</span>sd <span class="co"># the &quot;SD&quot; column is actually a standard error measure</span></span>
+<span id="cb189-6"><a href="hw-ants.html#cb189-6" aria-hidden="true" tabindex="-1"></a>  ) </span>
+<span id="cb189-7"><a href="hw-ants.html#cb189-7" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(sac_open_tidy)</span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
 <table class=" lightable-paper" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; margin-left: auto; margin-right: auto;">
 <thead>
@@ -1693,70 +1694,70 @@ se
 </table>
 </div>
 <p>From this, it’s relatively simple to create the actual plot:</p>
-<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="hw-ants.html#cb181-1" aria-hidden="true" tabindex="-1"></a>sac_open_plot <span class="ot">=</span> sac_open_tidy <span class="sc">|&gt;</span> </span>
-<span id="cb181-2"><a href="hw-ants.html#cb181-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Define the confidence intervals based on mean richness &amp; standard errors</span></span>
-<span id="cb181-3"><a href="hw-ants.html#cb181-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">lower_ci =</span> richness <span class="sc">-</span> se <span class="sc">*</span> <span class="fl">1.96</span>,</span>
-<span id="cb181-4"><a href="hw-ants.html#cb181-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">upper_ci =</span> richness <span class="sc">+</span> se <span class="sc">*</span> <span class="fl">1.96</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb181-5"><a href="hw-ants.html#cb181-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(<span class="at">x =</span> sites, <span class="at">y =</span> richness) <span class="sc">+</span></span>
-<span id="cb181-6"><a href="hw-ants.html#cb181-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span> <span class="co"># line for richness</span></span>
-<span id="cb181-7"><a href="hw-ants.html#cb181-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># The lines below add in confidence intervals</span></span>
-<span id="cb181-8"><a href="hw-ants.html#cb181-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> lower_ci), <span class="at">linetype =</span> <span class="dv">2</span>, <span class="at">alpha =</span> .<span class="dv">7</span>) <span class="sc">+</span> </span>
-<span id="cb181-9"><a href="hw-ants.html#cb181-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> upper_ci), <span class="at">linetype =</span> <span class="dv">2</span>, <span class="at">alpha =</span> .<span class="dv">7</span>) <span class="sc">+</span></span>
-<span id="cb181-10"><a href="hw-ants.html#cb181-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># alpha adds a bit of transparency</span></span>
-<span id="cb181-11"><a href="hw-ants.html#cb181-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Sampling intensity (number of sites)&quot;</span>) <span class="sc">+</span></span>
-<span id="cb181-12"><a href="hw-ants.html#cb181-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Number of ant species&quot;</span>)</span>
-<span id="cb181-13"><a href="hw-ants.html#cb181-13" aria-hidden="true" tabindex="-1"></a>sac_open_plot</span></code></pre></div>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="hw-ants.html#cb190-1" aria-hidden="true" tabindex="-1"></a>sac_open_plot <span class="ot">=</span> sac_open_tidy <span class="sc">|&gt;</span> </span>
+<span id="cb190-2"><a href="hw-ants.html#cb190-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Define the confidence intervals based on mean richness &amp; standard errors</span></span>
+<span id="cb190-3"><a href="hw-ants.html#cb190-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">lower_ci =</span> richness <span class="sc">-</span> se <span class="sc">*</span> <span class="fl">1.96</span>,</span>
+<span id="cb190-4"><a href="hw-ants.html#cb190-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">upper_ci =</span> richness <span class="sc">+</span> se <span class="sc">*</span> <span class="fl">1.96</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb190-5"><a href="hw-ants.html#cb190-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(<span class="at">x =</span> sites, <span class="at">y =</span> richness) <span class="sc">+</span></span>
+<span id="cb190-6"><a href="hw-ants.html#cb190-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span> <span class="co"># line for richness</span></span>
+<span id="cb190-7"><a href="hw-ants.html#cb190-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># The lines below add in confidence intervals</span></span>
+<span id="cb190-8"><a href="hw-ants.html#cb190-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> lower_ci), <span class="at">linetype =</span> <span class="dv">2</span>, <span class="at">alpha =</span> .<span class="dv">7</span>) <span class="sc">+</span> </span>
+<span id="cb190-9"><a href="hw-ants.html#cb190-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> upper_ci), <span class="at">linetype =</span> <span class="dv">2</span>, <span class="at">alpha =</span> .<span class="dv">7</span>) <span class="sc">+</span></span>
+<span id="cb190-10"><a href="hw-ants.html#cb190-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># alpha adds a bit of transparency</span></span>
+<span id="cb190-11"><a href="hw-ants.html#cb190-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Sampling intensity (number of sites)&quot;</span>) <span class="sc">+</span></span>
+<span id="cb190-12"><a href="hw-ants.html#cb190-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Number of ant species&quot;</span>)</span>
+<span id="cb190-13"><a href="hw-ants.html#cb190-13" aria-hidden="true" tabindex="-1"></a>sac_open_plot</span></code></pre></div>
 <p><img src="Bio373L-Book_files/figure-html/hw-ants-sac-plot1-1.png" width="672" />
 Let’s combine these last few steps into a pair of functions, for re-use with different data sub-sets:</p>
-<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="hw-ants.html#cb182-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the tidy SAC data</span></span>
-<span id="cb182-2"><a href="hw-ants.html#cb182-2" aria-hidden="true" tabindex="-1"></a>get_sac <span class="ot">=</span> <span class="cf">function</span>(wide_data) {</span>
-<span id="cb182-3"><a href="hw-ants.html#cb182-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># wide_data is data in the wide format, probably subset or filtered</span></span>
-<span id="cb182-4"><a href="hw-ants.html#cb182-4" aria-hidden="true" tabindex="-1"></a>  sac <span class="ot">=</span> <span class="fu">format_sac_data</span>(wide_data) <span class="sc">|&gt;</span> <span class="co"># Convert to SAC format</span></span>
-<span id="cb182-5"><a href="hw-ants.html#cb182-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">specaccum</span>(<span class="at">method =</span> <span class="st">&quot;random&quot;</span>, <span class="at">permutations =</span> <span class="dv">500</span>) <span class="co"># calculate SAC</span></span>
-<span id="cb182-6"><a href="hw-ants.html#cb182-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>( <span class="co"># Tidy output</span></span>
-<span id="cb182-7"><a href="hw-ants.html#cb182-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">sites =</span> sac<span class="sc">$</span>sites,</span>
-<span id="cb182-8"><a href="hw-ants.html#cb182-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">richness =</span> sac<span class="sc">$</span>richness,</span>
-<span id="cb182-9"><a href="hw-ants.html#cb182-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">se =</span> sac<span class="sc">$</span>sd</span>
-<span id="cb182-10"><a href="hw-ants.html#cb182-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span>   </span>
-<span id="cb182-11"><a href="hw-ants.html#cb182-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">lower_ci =</span> richness <span class="sc">-</span> se <span class="sc">*</span> <span class="fl">1.96</span>,</span>
-<span id="cb182-12"><a href="hw-ants.html#cb182-12" aria-hidden="true" tabindex="-1"></a>           <span class="at">upper_ci =</span> richness <span class="sc">+</span> se <span class="sc">*</span> <span class="fl">1.96</span>)</span>
-<span id="cb182-13"><a href="hw-ants.html#cb182-13" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb182-14"><a href="hw-ants.html#cb182-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Make the plot</span></span>
-<span id="cb182-15"><a href="hw-ants.html#cb182-15" aria-hidden="true" tabindex="-1"></a>plot_sac <span class="ot">=</span> <span class="cf">function</span>(sac_data) {</span>
-<span id="cb182-16"><a href="hw-ants.html#cb182-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># sac_data is the output of get_sac()</span></span>
-<span id="cb182-17"><a href="hw-ants.html#cb182-17" aria-hidden="true" tabindex="-1"></a>  sac_data <span class="sc">|&gt;</span> <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb182-18"><a href="hw-ants.html#cb182-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> sites, <span class="at">y =</span> richness) <span class="sc">+</span></span>
-<span id="cb182-19"><a href="hw-ants.html#cb182-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span> <span class="co"># line for richness</span></span>
-<span id="cb182-20"><a href="hw-ants.html#cb182-20" aria-hidden="true" tabindex="-1"></a>    <span class="co"># The lines below add in confidence intervals</span></span>
-<span id="cb182-21"><a href="hw-ants.html#cb182-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> lower_ci), <span class="at">linetype =</span> <span class="dv">2</span>, <span class="at">alpha =</span> .<span class="dv">7</span>) <span class="sc">+</span> </span>
-<span id="cb182-22"><a href="hw-ants.html#cb182-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> upper_ci), <span class="at">linetype =</span> <span class="dv">2</span>, <span class="at">alpha =</span> .<span class="dv">7</span>) <span class="sc">+</span></span>
-<span id="cb182-23"><a href="hw-ants.html#cb182-23" aria-hidden="true" tabindex="-1"></a>    <span class="co"># alpha adds a bit of transparency</span></span>
-<span id="cb182-24"><a href="hw-ants.html#cb182-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">xlab</span>(<span class="st">&quot;Sampling intensity (number of sites)&quot;</span>) <span class="sc">+</span></span>
-<span id="cb182-25"><a href="hw-ants.html#cb182-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ylab</span>(<span class="st">&quot;Number of ant species&quot;</span>)</span>
-<span id="cb182-26"><a href="hw-ants.html#cb182-26" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="hw-ants.html#cb191-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the tidy SAC data</span></span>
+<span id="cb191-2"><a href="hw-ants.html#cb191-2" aria-hidden="true" tabindex="-1"></a>get_sac <span class="ot">=</span> <span class="cf">function</span>(wide_data) {</span>
+<span id="cb191-3"><a href="hw-ants.html#cb191-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># wide_data is data in the wide format, probably subset or filtered</span></span>
+<span id="cb191-4"><a href="hw-ants.html#cb191-4" aria-hidden="true" tabindex="-1"></a>  sac <span class="ot">=</span> <span class="fu">format_sac_data</span>(wide_data) <span class="sc">|&gt;</span> <span class="co"># Convert to SAC format</span></span>
+<span id="cb191-5"><a href="hw-ants.html#cb191-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">specaccum</span>(<span class="at">method =</span> <span class="st">&quot;random&quot;</span>, <span class="at">permutations =</span> <span class="dv">500</span>) <span class="co"># calculate SAC</span></span>
+<span id="cb191-6"><a href="hw-ants.html#cb191-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>( <span class="co"># Tidy output</span></span>
+<span id="cb191-7"><a href="hw-ants.html#cb191-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">sites =</span> sac<span class="sc">$</span>sites,</span>
+<span id="cb191-8"><a href="hw-ants.html#cb191-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">richness =</span> sac<span class="sc">$</span>richness,</span>
+<span id="cb191-9"><a href="hw-ants.html#cb191-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">se =</span> sac<span class="sc">$</span>sd</span>
+<span id="cb191-10"><a href="hw-ants.html#cb191-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span>   </span>
+<span id="cb191-11"><a href="hw-ants.html#cb191-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">lower_ci =</span> richness <span class="sc">-</span> se <span class="sc">*</span> <span class="fl">1.96</span>,</span>
+<span id="cb191-12"><a href="hw-ants.html#cb191-12" aria-hidden="true" tabindex="-1"></a>           <span class="at">upper_ci =</span> richness <span class="sc">+</span> se <span class="sc">*</span> <span class="fl">1.96</span>)</span>
+<span id="cb191-13"><a href="hw-ants.html#cb191-13" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb191-14"><a href="hw-ants.html#cb191-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Make the plot</span></span>
+<span id="cb191-15"><a href="hw-ants.html#cb191-15" aria-hidden="true" tabindex="-1"></a>plot_sac <span class="ot">=</span> <span class="cf">function</span>(sac_data) {</span>
+<span id="cb191-16"><a href="hw-ants.html#cb191-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># sac_data is the output of get_sac()</span></span>
+<span id="cb191-17"><a href="hw-ants.html#cb191-17" aria-hidden="true" tabindex="-1"></a>  sac_data <span class="sc">|&gt;</span> <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb191-18"><a href="hw-ants.html#cb191-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> sites, <span class="at">y =</span> richness) <span class="sc">+</span></span>
+<span id="cb191-19"><a href="hw-ants.html#cb191-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span> <span class="co"># line for richness</span></span>
+<span id="cb191-20"><a href="hw-ants.html#cb191-20" aria-hidden="true" tabindex="-1"></a>    <span class="co"># The lines below add in confidence intervals</span></span>
+<span id="cb191-21"><a href="hw-ants.html#cb191-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> lower_ci), <span class="at">linetype =</span> <span class="dv">2</span>, <span class="at">alpha =</span> .<span class="dv">7</span>) <span class="sc">+</span> </span>
+<span id="cb191-22"><a href="hw-ants.html#cb191-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> upper_ci), <span class="at">linetype =</span> <span class="dv">2</span>, <span class="at">alpha =</span> .<span class="dv">7</span>) <span class="sc">+</span></span>
+<span id="cb191-23"><a href="hw-ants.html#cb191-23" aria-hidden="true" tabindex="-1"></a>    <span class="co"># alpha adds a bit of transparency</span></span>
+<span id="cb191-24"><a href="hw-ants.html#cb191-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">xlab</span>(<span class="st">&quot;Sampling intensity (number of sites)&quot;</span>) <span class="sc">+</span></span>
+<span id="cb191-25"><a href="hw-ants.html#cb191-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ylab</span>(<span class="st">&quot;Number of ant species&quot;</span>)</span>
+<span id="cb191-26"><a href="hw-ants.html#cb191-26" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>From here, we easily try different combinations</p>
-<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="hw-ants.html#cb183-1" aria-hidden="true" tabindex="-1"></a>wide_ant_data <span class="sc">|&gt;</span> </span>
-<span id="cb183-2"><a href="hw-ants.html#cb183-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Canopy_cover <span class="sc">==</span> <span class="st">&quot;Closed&quot;</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb183-3"><a href="hw-ants.html#cb183-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">get_sac</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb183-4"><a href="hw-ants.html#cb183-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_sac</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="hw-ants.html#cb192-1" aria-hidden="true" tabindex="-1"></a>wide_ant_data <span class="sc">|&gt;</span> </span>
+<span id="cb192-2"><a href="hw-ants.html#cb192-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Canopy_cover <span class="sc">==</span> <span class="st">&quot;Closed&quot;</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb192-3"><a href="hw-ants.html#cb192-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">get_sac</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb192-4"><a href="hw-ants.html#cb192-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_sac</span>()</span></code></pre></div>
 <p><img src="Bio373L-Book_files/figure-html/hw-ants-sac-func-ex-1.png" width="672" /></p>
 <p>When comparing multiple groups, it’s best to put them together in a single plot. The easiest way to do that is to calculate the SAC data, then combine the resulting data frames</p>
-<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="hw-ants.html#cb184-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the SAC data frames for each group in your comparison</span></span>
-<span id="cb184-2"><a href="hw-ants.html#cb184-2" aria-hidden="true" tabindex="-1"></a>sac_cnpy_open <span class="ot">=</span> wide_ant_data <span class="sc">|&gt;</span> </span>
-<span id="cb184-3"><a href="hw-ants.html#cb184-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(Canopy_cover <span class="sc">==</span> <span class="st">&quot;Open&quot;</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb184-4"><a href="hw-ants.html#cb184-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">get_sac</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb184-5"><a href="hw-ants.html#cb184-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">Canopy_cover =</span> <span class="st">&quot;Open&quot;</span>) <span class="co"># Use the Mutate Add disturbance column to sac results</span></span>
-<span id="cb184-6"><a href="hw-ants.html#cb184-6" aria-hidden="true" tabindex="-1"></a>sac_cnpy_closed <span class="ot">=</span> wide_ant_data <span class="sc">|&gt;</span> </span>
-<span id="cb184-7"><a href="hw-ants.html#cb184-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(Canopy_cover <span class="sc">==</span> <span class="st">&quot;Closed&quot;</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb184-8"><a href="hw-ants.html#cb184-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">get_sac</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb184-9"><a href="hw-ants.html#cb184-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">Canopy_cover =</span> <span class="st">&quot;Closed&quot;</span>) <span class="co"># Add disturbance column back to sac results</span></span>
-<span id="cb184-10"><a href="hw-ants.html#cb184-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb184-11"><a href="hw-ants.html#cb184-11" aria-hidden="true" tabindex="-1"></a>sac_cnpy_combined <span class="ot">=</span> <span class="co"># Combine them into one data frame</span></span>
-<span id="cb184-12"><a href="hw-ants.html#cb184-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(sac_cnpy_open, sac_cnpy_closed) <span class="co"># Note that bind_rows() can combine more than two data frames, if you&#39;re doing a 3+ part comparison</span></span>
-<span id="cb184-13"><a href="hw-ants.html#cb184-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb184-14"><a href="hw-ants.html#cb184-14" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_sac</span>(sac_cnpy_combined) <span class="sc">+</span> <span class="co"># Creates a standard SAC Plot</span></span>
-<span id="cb184-15"><a href="hw-ants.html#cb184-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">color=</span>Canopy_cover) <span class="sc">+</span>    <span class="co"># Separates out the lines by color based on the Disturbance column</span></span>
-<span id="cb184-16"><a href="hw-ants.html#cb184-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_viridis_d</span>()     <span class="co"># Make the colors look nice</span></span></code></pre></div>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="hw-ants.html#cb193-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the SAC data frames for each group in your comparison</span></span>
+<span id="cb193-2"><a href="hw-ants.html#cb193-2" aria-hidden="true" tabindex="-1"></a>sac_cnpy_open <span class="ot">=</span> wide_ant_data <span class="sc">|&gt;</span> </span>
+<span id="cb193-3"><a href="hw-ants.html#cb193-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(Canopy_cover <span class="sc">==</span> <span class="st">&quot;Open&quot;</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb193-4"><a href="hw-ants.html#cb193-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">get_sac</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb193-5"><a href="hw-ants.html#cb193-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">Canopy_cover =</span> <span class="st">&quot;Open&quot;</span>) <span class="co"># Use the Mutate Add disturbance column to sac results</span></span>
+<span id="cb193-6"><a href="hw-ants.html#cb193-6" aria-hidden="true" tabindex="-1"></a>sac_cnpy_closed <span class="ot">=</span> wide_ant_data <span class="sc">|&gt;</span> </span>
+<span id="cb193-7"><a href="hw-ants.html#cb193-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(Canopy_cover <span class="sc">==</span> <span class="st">&quot;Closed&quot;</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb193-8"><a href="hw-ants.html#cb193-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">get_sac</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb193-9"><a href="hw-ants.html#cb193-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">Canopy_cover =</span> <span class="st">&quot;Closed&quot;</span>) <span class="co"># Add disturbance column back to sac results</span></span>
+<span id="cb193-10"><a href="hw-ants.html#cb193-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb193-11"><a href="hw-ants.html#cb193-11" aria-hidden="true" tabindex="-1"></a>sac_cnpy_combined <span class="ot">=</span> <span class="co"># Combine them into one data frame</span></span>
+<span id="cb193-12"><a href="hw-ants.html#cb193-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(sac_cnpy_open, sac_cnpy_closed) <span class="co"># Note that bind_rows() can combine more than two data frames, if you&#39;re doing a 3+ part comparison</span></span>
+<span id="cb193-13"><a href="hw-ants.html#cb193-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb193-14"><a href="hw-ants.html#cb193-14" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_sac</span>(sac_cnpy_combined) <span class="sc">+</span> <span class="co"># Creates a standard SAC Plot</span></span>
+<span id="cb193-15"><a href="hw-ants.html#cb193-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">color=</span>Canopy_cover) <span class="sc">+</span>    <span class="co"># Separates out the lines by color based on the Disturbance column</span></span>
+<span id="cb193-16"><a href="hw-ants.html#cb193-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_viridis_d</span>()     <span class="co"># Make the colors look nice</span></span></code></pre></div>
 <p><img src="Bio373L-Book_files/figure-html/a6_sac_expt2-1.png" width="672" /></p>
 <p>Do this for all of your contrasts.</p>
 </div>
@@ -1766,18 +1767,18 @@ Let’s combine these last few steps into a pair of functions, for re-use with d
 You need to do a grouped <code>summarize()</code> on the tidy data so that there’s one row per species/contrast combination, with columns Species, N (which is the species-level sum of the already existing N column in <code>tidy_ant_data</code>), and whatever your contrast is.
 From here, sort the summary by contrast and descending N, group by the contrast, and use <code>mutate()</code> to make a new column <code>species_rank = 1:n()</code>.</p>
 <p>To make the plot itself, you can use this function; use <code>aes()</code> to separate your contrasts by color like you did with <code>plot_sac()</code> above.</p>
-<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="hw-ants.html#cb185-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb185-2"><a href="hw-ants.html#cb185-2" aria-hidden="true" tabindex="-1"></a>plot_rank_abundance <span class="ot">=</span> <span class="cf">function</span>(summarized_data, <span class="at">right_margin =</span> <span class="fl">2.8</span>) {</span>
-<span id="cb185-3"><a href="hw-ants.html#cb185-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Make the rank abundance plot</span></span>
-<span id="cb185-4"><a href="hw-ants.html#cb185-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># The right_margin argument is used to make sure that </span></span>
-<span id="cb185-5"><a href="hw-ants.html#cb185-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># the angled axis labels don&#39;t go of the page</span></span>
-<span id="cb185-6"><a href="hw-ants.html#cb185-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># make it larger or smaller to suit your tastes</span></span>
-<span id="cb185-7"><a href="hw-ants.html#cb185-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(summarized_data, <span class="fu">aes</span>(<span class="at">x =</span> species_rank, <span class="at">y =</span> N)) <span class="sc">+</span></span>
-<span id="cb185-8"><a href="hw-ants.html#cb185-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="co"># Create a descending line</span></span>
-<span id="cb185-9"><a href="hw-ants.html#cb185-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_log10</span>() <span class="sc">+</span> <span class="co"># puts y axis on log scale</span></span>
-<span id="cb185-10"><a href="hw-ants.html#cb185-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">xlab</span>(<span class="st">&quot;Species (In Rank Order)&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb185-11"><a href="hw-ants.html#cb185-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_viridis_d</span>()</span>
-<span id="cb185-12"><a href="hw-ants.html#cb185-12" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="hw-ants.html#cb194-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb194-2"><a href="hw-ants.html#cb194-2" aria-hidden="true" tabindex="-1"></a>plot_rank_abundance <span class="ot">=</span> <span class="cf">function</span>(summarized_data, <span class="at">right_margin =</span> <span class="fl">2.8</span>) {</span>
+<span id="cb194-3"><a href="hw-ants.html#cb194-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Make the rank abundance plot</span></span>
+<span id="cb194-4"><a href="hw-ants.html#cb194-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># The right_margin argument is used to make sure that </span></span>
+<span id="cb194-5"><a href="hw-ants.html#cb194-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># the angled axis labels don&#39;t go of the page</span></span>
+<span id="cb194-6"><a href="hw-ants.html#cb194-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># make it larger or smaller to suit your tastes</span></span>
+<span id="cb194-7"><a href="hw-ants.html#cb194-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(summarized_data, <span class="fu">aes</span>(<span class="at">x =</span> species_rank, <span class="at">y =</span> N)) <span class="sc">+</span></span>
+<span id="cb194-8"><a href="hw-ants.html#cb194-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="co"># Create a descending line</span></span>
+<span id="cb194-9"><a href="hw-ants.html#cb194-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_log10</span>() <span class="sc">+</span> <span class="co"># puts y axis on log scale</span></span>
+<span id="cb194-10"><a href="hw-ants.html#cb194-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">xlab</span>(<span class="st">&quot;Species (In Rank Order)&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb194-11"><a href="hw-ants.html#cb194-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_viridis_d</span>()</span>
+<span id="cb194-12"><a href="hw-ants.html#cb194-12" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>Your resulting plot should look something like this:</p>
 <pre><code>## `summarise()` has grouped output by &#39;Disturbance&#39;. You can override using the
 ## `.groups` argument.</code></pre>

@@ -279,6 +279,7 @@ div.csl-indent {
 <li class="chapter" data-level="7.3.1" data-path="r-stats.html"><a href="r-stats.html#regression"><i class="fa fa-check"></i><b>7.3.1</b> Regression</a></li>
 <li class="chapter" data-level="7.3.2" data-path="r-stats.html"><a href="r-stats.html#r-stats-anova"><i class="fa fa-check"></i><b>7.3.2</b> ANOVA</a></li>
 <li class="chapter" data-level="7.3.3" data-path="r-stats.html"><a href="r-stats.html#comparing-two-means-t-tests"><i class="fa fa-check"></i><b>7.3.3</b> Comparing two means (t-tests)</a></li>
+<li class="chapter" data-level="7.3.4" data-path="r-stats.html"><a href="r-stats.html#r-stats-ancova"><i class="fa fa-check"></i><b>7.3.4</b> Comparing two rates or relationships (ANCOVA)</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="r-tidyr.html"><a href="r-tidyr.html"><i class="fa fa-check"></i><b>8</b> Wrangling, reshaping, and tidying data with <code>tidyr</code></a>
@@ -544,29 +545,29 @@ This in particular isn’t a biological hypothesis, but comparing different meth
 <h2><span class="header-section-number">15.5</span> Relationships between Cover Levels<a href="hw-heterogeneity.html#relationships-between-cover-levels" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Using the current data, create <a href="r-stats.html#r-stats-cat">contingency tables</a> for each pairwise combination of Canopy, Shrub, and Ground (three tables total); for each of these, run chi-squared tests (or Fisher’s tests if necessary).
 Instead of including the contingency table directly, we’re going to create figures that show colored heat maps.</p>
-<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="hw-heterogeneity.html#cb155-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb155-2"><a href="hw-heterogeneity.html#cb155-2" aria-hidden="true" tabindex="-1"></a>your_contingency_table <span class="sc">|&gt;</span> <span class="co"># replace with your contingency table name</span></span>
-<span id="cb155-3"><a href="hw-heterogeneity.html#cb155-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">|&gt;</span> <span class="co"># Convert to a data frame</span></span>
-<span id="cb155-4"><a href="hw-heterogeneity.html#cb155-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>()  <span class="sc">+</span> </span>
-<span id="cb155-5"><a href="hw-heterogeneity.html#cb155-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> , <span class="at">y =</span> ) <span class="sc">+</span> <span class="co"># Finish these</span></span>
-<span id="cb155-6"><a href="hw-heterogeneity.html#cb155-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="fu">aes</span>(<span class="at">fill =</span> n)) <span class="sc">+</span> <span class="co"># Makes colored squares based on count</span></span>
-<span id="cb155-7"><a href="hw-heterogeneity.html#cb155-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_c</span>() <span class="sc">+</span> <span class="co"># Nice color scale</span></span>
-<span id="cb155-8"><a href="hw-heterogeneity.html#cb155-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_fixed</span>() <span class="sc">+</span> <span class="co"># keeps x &amp; y dimensions equal</span></span>
-<span id="cb155-9"><a href="hw-heterogeneity.html#cb155-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add text to the squares</span></span>
-<span id="cb155-10"><a href="hw-heterogeneity.html#cb155-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_label</span>(<span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">round</span>(n, <span class="dv">3</span>)), <span class="co"># Include the count as a label; the rounding is there in case you want to switch it to a proportion</span></span>
-<span id="cb155-11"><a href="hw-heterogeneity.html#cb155-11" aria-hidden="true" tabindex="-1"></a>            <span class="at">label.size =</span> <span class="dv">0</span>, <span class="co"># Keep this as is</span></span>
-<span id="cb155-12"><a href="hw-heterogeneity.html#cb155-12" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Feel free to adjust these details</span></span>
-<span id="cb155-13"><a href="hw-heterogeneity.html#cb155-13" aria-hidden="true" tabindex="-1"></a>            <span class="co"># to get an image you like</span></span>
-<span id="cb155-14"><a href="hw-heterogeneity.html#cb155-14" aria-hidden="true" tabindex="-1"></a>            <span class="at">color =</span> <span class="st">&quot;white&quot;</span>, <span class="co"># Text color</span></span>
-<span id="cb155-15"><a href="hw-heterogeneity.html#cb155-15" aria-hidden="true" tabindex="-1"></a>            <span class="at">fill =</span> <span class="st">&quot;#00000010&quot;</span>, <span class="co"># Slight background around text to make it more legible</span></span>
-<span id="cb155-16"><a href="hw-heterogeneity.html#cb155-16" aria-hidden="true" tabindex="-1"></a>            <span class="at">size =</span> <span class="dv">10</span>) <span class="co"># text size; </span></span></code></pre></div>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="hw-heterogeneity.html#cb164-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb164-2"><a href="hw-heterogeneity.html#cb164-2" aria-hidden="true" tabindex="-1"></a>your_contingency_table <span class="sc">|&gt;</span> <span class="co"># replace with your contingency table name</span></span>
+<span id="cb164-3"><a href="hw-heterogeneity.html#cb164-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">|&gt;</span> <span class="co"># Convert to a data frame</span></span>
+<span id="cb164-4"><a href="hw-heterogeneity.html#cb164-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>()  <span class="sc">+</span> </span>
+<span id="cb164-5"><a href="hw-heterogeneity.html#cb164-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> , <span class="at">y =</span> ) <span class="sc">+</span> <span class="co"># Finish these</span></span>
+<span id="cb164-6"><a href="hw-heterogeneity.html#cb164-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="fu">aes</span>(<span class="at">fill =</span> n)) <span class="sc">+</span> <span class="co"># Makes colored squares based on count</span></span>
+<span id="cb164-7"><a href="hw-heterogeneity.html#cb164-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_c</span>() <span class="sc">+</span> <span class="co"># Nice color scale</span></span>
+<span id="cb164-8"><a href="hw-heterogeneity.html#cb164-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_fixed</span>() <span class="sc">+</span> <span class="co"># keeps x &amp; y dimensions equal</span></span>
+<span id="cb164-9"><a href="hw-heterogeneity.html#cb164-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add text to the squares</span></span>
+<span id="cb164-10"><a href="hw-heterogeneity.html#cb164-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_label</span>(<span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">round</span>(n, <span class="dv">3</span>)), <span class="co"># Include the count as a label; the rounding is there in case you want to switch it to a proportion</span></span>
+<span id="cb164-11"><a href="hw-heterogeneity.html#cb164-11" aria-hidden="true" tabindex="-1"></a>            <span class="at">label.size =</span> <span class="dv">0</span>, <span class="co"># Keep this as is</span></span>
+<span id="cb164-12"><a href="hw-heterogeneity.html#cb164-12" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Feel free to adjust these details</span></span>
+<span id="cb164-13"><a href="hw-heterogeneity.html#cb164-13" aria-hidden="true" tabindex="-1"></a>            <span class="co"># to get an image you like</span></span>
+<span id="cb164-14"><a href="hw-heterogeneity.html#cb164-14" aria-hidden="true" tabindex="-1"></a>            <span class="at">color =</span> <span class="st">&quot;white&quot;</span>, <span class="co"># Text color</span></span>
+<span id="cb164-15"><a href="hw-heterogeneity.html#cb164-15" aria-hidden="true" tabindex="-1"></a>            <span class="at">fill =</span> <span class="st">&quot;#00000010&quot;</span>, <span class="co"># Slight background around text to make it more legible</span></span>
+<span id="cb164-16"><a href="hw-heterogeneity.html#cb164-16" aria-hidden="true" tabindex="-1"></a>            <span class="at">size =</span> <span class="dv">10</span>) <span class="co"># text size; </span></span></code></pre></div>
 <p>To look at the interaction of all three levels, create four data sets for each different shrub level using the <code>filter()</code> function and run separate Chi-squared / Fisher’s exact tests.
 To visualize the table, you’ll need to make a 3-dimensional contingency table and manipulate it:</p>
-<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="hw-heterogeneity.html#cb156-1" aria-hidden="true" tabindex="-1"></a>contingency_3d <span class="ot">&lt;-</span> current_data <span class="sc">|&gt;</span> </span>
-<span id="cb156-2"><a href="hw-heterogeneity.html#cb156-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Canopy, Shrub, Ground) <span class="sc">|&gt;</span> </span>
-<span id="cb156-3"><a href="hw-heterogeneity.html#cb156-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">table</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb156-4"><a href="hw-heterogeneity.html#cb156-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb156-5"><a href="hw-heterogeneity.html#cb156-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Shrub =</span> <span class="fu">paste</span>(<span class="st">&quot;Shrub = &quot;</span>, Shrub)) <span class="co"># Modify shrub to include the label; this will help with faceting</span></span></code></pre></div>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="hw-heterogeneity.html#cb165-1" aria-hidden="true" tabindex="-1"></a>contingency_3d <span class="ot">&lt;-</span> current_data <span class="sc">|&gt;</span> </span>
+<span id="cb165-2"><a href="hw-heterogeneity.html#cb165-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Canopy, Shrub, Ground) <span class="sc">|&gt;</span> </span>
+<span id="cb165-3"><a href="hw-heterogeneity.html#cb165-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">table</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb165-4"><a href="hw-heterogeneity.html#cb165-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb165-5"><a href="hw-heterogeneity.html#cb165-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Shrub =</span> <span class="fu">paste</span>(<span class="st">&quot;Shrub = &quot;</span>, Shrub)) <span class="co"># Modify shrub to include the label; this will help with faceting</span></span></code></pre></div>
 <p>Then use this with the figure-making code, but use <code>facet_wrap()</code> (Section <a href="r-ggplot.html#r-ggplot-facet">5.4</a>) to make separate panels for each shrub level.
 Your final figure for this should look like this:</p>
 <p><img src="Bio373L-Book_files/figure-html/hw-het-cont-fig-facet-example-1.png" width="672" /></p>
@@ -576,9 +577,9 @@ Your final figure for this should look like this:</p>
 <p>You’ll need to make a dataset that contains the current data and the semester of interest (which is Fall 2004).
 First, filter <code>historical_data_full</code> so that it only includes Fall 2004’s data (save as <code>historical_data_F04</code>).
 Then, you’ll want to modify the <code>current_data</code> so that it has columns for the Semester and Year (Fall 2020) before binding it to the 2004 data:</p>
-<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="hw-heterogeneity.html#cb157-1" aria-hidden="true" tabindex="-1"></a>historical_comparison_data <span class="ot">&lt;-</span> current_data <span class="sc">|&gt;</span> </span>
-<span id="cb157-2"><a href="hw-heterogeneity.html#cb157-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(   ) <span class="sc">|&gt;</span>  <span class="co"># Fill this in; new columns should match the columns in historical_data_full</span></span>
-<span id="cb157-3"><a href="hw-heterogeneity.html#cb157-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(historical_data_F04) <span class="co"># Combine w/ F04 data</span></span></code></pre></div>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="hw-heterogeneity.html#cb166-1" aria-hidden="true" tabindex="-1"></a>historical_comparison_data <span class="ot">&lt;-</span> current_data <span class="sc">|&gt;</span> </span>
+<span id="cb166-2"><a href="hw-heterogeneity.html#cb166-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(   ) <span class="sc">|&gt;</span>  <span class="co"># Fill this in; new columns should match the columns in historical_data_full</span></span>
+<span id="cb166-3"><a href="hw-heterogeneity.html#cb166-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(historical_data_F04) <span class="co"># Combine w/ F04 data</span></span></code></pre></div>
 <p>From here, you’ll need to make 3 more contingency tables (Year vs. each of the cover levels), run the appropriate tests on them, and visualize them.</p>
 </div>
 <div id="calibrating-subjective-scores-with-gap-light-analyzer" class="section level2 hasAnchor" number="15.7">

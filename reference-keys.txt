@@ -112,6 +112,7 @@ post-hoc-tests
 plotting-anovas
 comparing-two-means-t-tests
 effect-size-cohens-d
+r-stats-ancova
 r-tidyr
 tidy-data
 pivot-longer-tutorial

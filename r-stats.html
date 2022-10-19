@@ -279,6 +279,7 @@ div.csl-indent {
 <li class="chapter" data-level="7.3.1" data-path="r-stats.html"><a href="r-stats.html#regression"><i class="fa fa-check"></i><b>7.3.1</b> Regression</a></li>
 <li class="chapter" data-level="7.3.2" data-path="r-stats.html"><a href="r-stats.html#r-stats-anova"><i class="fa fa-check"></i><b>7.3.2</b> ANOVA</a></li>
 <li class="chapter" data-level="7.3.3" data-path="r-stats.html"><a href="r-stats.html#comparing-two-means-t-tests"><i class="fa fa-check"></i><b>7.3.3</b> Comparing two means (t-tests)</a></li>
+<li class="chapter" data-level="7.3.4" data-path="r-stats.html"><a href="r-stats.html#r-stats-ancova"><i class="fa fa-check"></i><b>7.3.4</b> Comparing two rates or relationships (ANCOVA)</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="r-tidyr.html"><a href="r-tidyr.html"><i class="fa fa-check"></i><b>8</b> Wrangling, reshaping, and tidying data with <code>tidyr</code></a>
@@ -1063,8 +1064,219 @@ upr
 <blockquote>
 <p>Big lizards have significantly longer limbs than small lizards (d = 4.27, t = 45.7, df = 442.7, p &lt; 0.0001; Figure 1)</p>
 </blockquote>
-
 </div>
+</div>
+<div id="r-stats-ancova" class="section level3 hasAnchor" number="7.3.4">
+<h3><span class="header-section-number">7.3.4</span> Comparing two rates or relationships (ANCOVA)<a href="r-stats.html#r-stats-ancova" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Analysis of covariance (ANCOVA) is a statistical model that combines a linear regression with an ANOVA or t-test.
+Essentially, it is a regression that also allows the slope and/or intercept of the fit line to vary between levels of a categorical variable.
+To keep things simple, we’re going to focus on ANCOVAS that only test two-level categorical variables; however, there’s no inherent reason for it to require more.</p>
+<p>Let’s make two versions of the <code>lizard</code> data, contrasting Brown with Blue and Brown with Green. I’m also re-defining Color_morph as a factor so that Brown is taken as the reference category (see <strong>dummy coding</strong> under the ANOVA section).</p>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="r-stats.html#cb130-1" aria-hidden="true" tabindex="-1"></a>lizards_brown_green <span class="ot">=</span> lizards <span class="sc">|&gt;</span> <span class="fu">filter</span>(Color_morph <span class="sc">!=</span> <span class="st">&quot;Blue&quot;</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb130-2"><a href="r-stats.html#cb130-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Color_morph =</span> <span class="fu">factor</span>(Color_morph, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;Brown&quot;</span>, <span class="st">&quot;Green&quot;</span>)))</span>
+<span id="cb130-3"><a href="r-stats.html#cb130-3" aria-hidden="true" tabindex="-1"></a>lizards_brown_blue <span class="ot">=</span> lizards <span class="sc">|&gt;</span> <span class="fu">filter</span>(Color_morph <span class="sc">!=</span> <span class="st">&quot;Green&quot;</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb130-4"><a href="r-stats.html#cb130-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Color_morph =</span> <span class="fu">factor</span>(Color_morph, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;Brown&quot;</span>, <span class="st">&quot;Blue&quot;</span>)))</span></code></pre></div>
+<p>Let’s test to see if the relationship between body size (<code>SVL</code>) and limb length (<code>Limb</code>) differs by color morph. To run an ANCOVA, you can use the <code>lm()</code> function with a formula like <code>Limb ~ SVL * Color_morph</code>.</p>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="r-stats.html#cb131-1" aria-hidden="true" tabindex="-1"></a>ancova_limb_green <span class="ot">=</span> <span class="fu">lm</span>(Limb <span class="sc">~</span> SVL <span class="sc">*</span> Color_morph, <span class="at">data =</span> lizards_brown_green)</span>
+<span id="cb131-2"><a href="r-stats.html#cb131-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(ancova_limb_green)</span>
+<span id="cb131-3"><a href="r-stats.html#cb131-3" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb131-4"><a href="r-stats.html#cb131-4" aria-hidden="true" tabindex="-1"></a><span class="do">## Call:</span></span>
+<span id="cb131-5"><a href="r-stats.html#cb131-5" aria-hidden="true" tabindex="-1"></a><span class="do">## lm(formula = Limb ~ SVL * Color_morph, data = lizards_brown_green)</span></span>
+<span id="cb131-6"><a href="r-stats.html#cb131-6" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb131-7"><a href="r-stats.html#cb131-7" aria-hidden="true" tabindex="-1"></a><span class="do">## Coefficients:</span></span>
+<span id="cb131-8"><a href="r-stats.html#cb131-8" aria-hidden="true" tabindex="-1"></a><span class="do">##          (Intercept)                   SVL      Color_morphGreen  </span></span>
+<span id="cb131-9"><a href="r-stats.html#cb131-9" aria-hidden="true" tabindex="-1"></a><span class="do">##            0.8483960             0.2018953             0.0182944  </span></span>
+<span id="cb131-10"><a href="r-stats.html#cb131-10" aria-hidden="true" tabindex="-1"></a><span class="do">## SVL:Color_morphGreen  </span></span>
+<span id="cb131-11"><a href="r-stats.html#cb131-11" aria-hidden="true" tabindex="-1"></a><span class="do">##            0.0008839</span></span>
+<span id="cb131-12"><a href="r-stats.html#cb131-12" aria-hidden="true" tabindex="-1"></a>ancova_limb_blue <span class="ot">=</span><span class="fu">lm</span>(Limb <span class="sc">~</span> SVL <span class="sc">*</span> Color_morph, <span class="at">data =</span> lizards_brown_blue)</span>
+<span id="cb131-13"><a href="r-stats.html#cb131-13" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(ancova_limb_blue)</span>
+<span id="cb131-14"><a href="r-stats.html#cb131-14" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb131-15"><a href="r-stats.html#cb131-15" aria-hidden="true" tabindex="-1"></a><span class="do">## Call:</span></span>
+<span id="cb131-16"><a href="r-stats.html#cb131-16" aria-hidden="true" tabindex="-1"></a><span class="do">## lm(formula = Limb ~ SVL * Color_morph, data = lizards_brown_blue)</span></span>
+<span id="cb131-17"><a href="r-stats.html#cb131-17" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb131-18"><a href="r-stats.html#cb131-18" aria-hidden="true" tabindex="-1"></a><span class="do">## Coefficients:</span></span>
+<span id="cb131-19"><a href="r-stats.html#cb131-19" aria-hidden="true" tabindex="-1"></a><span class="do">##         (Intercept)                  SVL      Color_morphBlue  </span></span>
+<span id="cb131-20"><a href="r-stats.html#cb131-20" aria-hidden="true" tabindex="-1"></a><span class="do">##            0.848396             0.201895             0.441016  </span></span>
+<span id="cb131-21"><a href="r-stats.html#cb131-21" aria-hidden="true" tabindex="-1"></a><span class="do">## SVL:Color_morphBlue  </span></span>
+<span id="cb131-22"><a href="r-stats.html#cb131-22" aria-hidden="true" tabindex="-1"></a><span class="do">##           -0.006167</span></span></code></pre></div>
+<p>This tells us that the ANCOVA has four coefficients:</p>
+<ul>
+<li>Intercept (for the regression on Brown)</li>
+<li><code>SVL</code>, the baseline regression slope for the reference category, Brown</li>
+<li><code>Color_morphGreen</code> (or Blue), how the intercept differs between Brown and the other color; this is the main effect of color morph.</li>
+<li><code>SVL:Color_morphGreen</code> (or Blue), how the slope differs between Brown and the other color; this is the SVL / Color morph interaction term.</li>
+</ul>
+<p>For both data sets, both the main effect and interaction of color morph are near zero; you can test this statistically with <code>summary()</code>.</p>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="r-stats.html#cb132-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(ancova_limb_green)</span>
+<span id="cb132-2"><a href="r-stats.html#cb132-2" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb132-3"><a href="r-stats.html#cb132-3" aria-hidden="true" tabindex="-1"></a><span class="do">## Call:</span></span>
+<span id="cb132-4"><a href="r-stats.html#cb132-4" aria-hidden="true" tabindex="-1"></a><span class="do">## lm(formula = Limb ~ SVL * Color_morph, data = lizards_brown_green)</span></span>
+<span id="cb132-5"><a href="r-stats.html#cb132-5" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb132-6"><a href="r-stats.html#cb132-6" aria-hidden="true" tabindex="-1"></a><span class="do">## Residuals:</span></span>
+<span id="cb132-7"><a href="r-stats.html#cb132-7" aria-hidden="true" tabindex="-1"></a><span class="do">##      Min       1Q   Median       3Q      Max </span></span>
+<span id="cb132-8"><a href="r-stats.html#cb132-8" aria-hidden="true" tabindex="-1"></a><span class="do">## -1.08012 -0.48111  0.03624  0.46773  1.04263 </span></span>
+<span id="cb132-9"><a href="r-stats.html#cb132-9" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb132-10"><a href="r-stats.html#cb132-10" aria-hidden="true" tabindex="-1"></a><span class="do">## Coefficients:</span></span>
+<span id="cb132-11"><a href="r-stats.html#cb132-11" aria-hidden="true" tabindex="-1"></a><span class="do">##                       Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
+<span id="cb132-12"><a href="r-stats.html#cb132-12" aria-hidden="true" tabindex="-1"></a><span class="do">## (Intercept)          0.8483960  0.2841340   2.986  0.00299 ** </span></span>
+<span id="cb132-13"><a href="r-stats.html#cb132-13" aria-hidden="true" tabindex="-1"></a><span class="do">## SVL                  0.2018953  0.0045739  44.140  &lt; 2e-16 ***</span></span>
+<span id="cb132-14"><a href="r-stats.html#cb132-14" aria-hidden="true" tabindex="-1"></a><span class="do">## Color_morphGreen     0.0182944  0.3844295   0.048  0.96207    </span></span>
+<span id="cb132-15"><a href="r-stats.html#cb132-15" aria-hidden="true" tabindex="-1"></a><span class="do">## SVL:Color_morphGreen 0.0008839  0.0062369   0.142  0.88737    </span></span>
+<span id="cb132-16"><a href="r-stats.html#cb132-16" aria-hidden="true" tabindex="-1"></a><span class="do">## ---</span></span>
+<span id="cb132-17"><a href="r-stats.html#cb132-17" aria-hidden="true" tabindex="-1"></a><span class="do">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb132-18"><a href="r-stats.html#cb132-18" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb132-19"><a href="r-stats.html#cb132-19" aria-hidden="true" tabindex="-1"></a><span class="do">## Residual standard error: 0.5664 on 438 degrees of freedom</span></span>
+<span id="cb132-20"><a href="r-stats.html#cb132-20" aria-hidden="true" tabindex="-1"></a><span class="do">## Multiple R-squared:  0.9065, Adjusted R-squared:  0.9058 </span></span>
+<span id="cb132-21"><a href="r-stats.html#cb132-21" aria-hidden="true" tabindex="-1"></a><span class="do">## F-statistic:  1415 on 3 and 438 DF,  p-value: &lt; 2.2e-16</span></span>
+<span id="cb132-22"><a href="r-stats.html#cb132-22" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(ancova_limb_blue)</span>
+<span id="cb132-23"><a href="r-stats.html#cb132-23" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb132-24"><a href="r-stats.html#cb132-24" aria-hidden="true" tabindex="-1"></a><span class="do">## Call:</span></span>
+<span id="cb132-25"><a href="r-stats.html#cb132-25" aria-hidden="true" tabindex="-1"></a><span class="do">## lm(formula = Limb ~ SVL * Color_morph, data = lizards_brown_blue)</span></span>
+<span id="cb132-26"><a href="r-stats.html#cb132-26" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb132-27"><a href="r-stats.html#cb132-27" aria-hidden="true" tabindex="-1"></a><span class="do">## Residuals:</span></span>
+<span id="cb132-28"><a href="r-stats.html#cb132-28" aria-hidden="true" tabindex="-1"></a><span class="do">##      Min       1Q   Median       3Q      Max </span></span>
+<span id="cb132-29"><a href="r-stats.html#cb132-29" aria-hidden="true" tabindex="-1"></a><span class="do">## -1.11070 -0.45341  0.00414  0.47641  1.04449 </span></span>
+<span id="cb132-30"><a href="r-stats.html#cb132-30" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb132-31"><a href="r-stats.html#cb132-31" aria-hidden="true" tabindex="-1"></a><span class="do">## Coefficients:</span></span>
+<span id="cb132-32"><a href="r-stats.html#cb132-32" aria-hidden="true" tabindex="-1"></a><span class="do">##                      Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
+<span id="cb132-33"><a href="r-stats.html#cb132-33" aria-hidden="true" tabindex="-1"></a><span class="do">## (Intercept)          0.848396   0.284746   2.979  0.00305 ** </span></span>
+<span id="cb132-34"><a href="r-stats.html#cb132-34" aria-hidden="true" tabindex="-1"></a><span class="do">## SVL                  0.201895   0.004584  44.046  &lt; 2e-16 ***</span></span>
+<span id="cb132-35"><a href="r-stats.html#cb132-35" aria-hidden="true" tabindex="-1"></a><span class="do">## Color_morphBlue      0.441016   0.392663   1.123  0.26200    </span></span>
+<span id="cb132-36"><a href="r-stats.html#cb132-36" aria-hidden="true" tabindex="-1"></a><span class="do">## SVL:Color_morphBlue -0.006167   0.006381  -0.966  0.33434    </span></span>
+<span id="cb132-37"><a href="r-stats.html#cb132-37" aria-hidden="true" tabindex="-1"></a><span class="do">## ---</span></span>
+<span id="cb132-38"><a href="r-stats.html#cb132-38" aria-hidden="true" tabindex="-1"></a><span class="do">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb132-39"><a href="r-stats.html#cb132-39" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb132-40"><a href="r-stats.html#cb132-40" aria-hidden="true" tabindex="-1"></a><span class="do">## Residual standard error: 0.5677 on 432 degrees of freedom</span></span>
+<span id="cb132-41"><a href="r-stats.html#cb132-41" aria-hidden="true" tabindex="-1"></a><span class="do">## Multiple R-squared:  0.9002, Adjusted R-squared:  0.8995 </span></span>
+<span id="cb132-42"><a href="r-stats.html#cb132-42" aria-hidden="true" tabindex="-1"></a><span class="do">## F-statistic:  1299 on 3 and 432 DF,  p-value: &lt; 2.2e-16</span></span></code></pre></div>
+<p>This means that the two regression lines are essentially the same.
+Let’s plot one of them to see what that looks like:</p>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="r-stats.html#cb133-1" aria-hidden="true" tabindex="-1"></a>lizards_brown_green <span class="sc">|&gt;</span> <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(<span class="at">x =</span> SVL, <span class="at">y =</span> Limb, <span class="at">color =</span> Color_morph) <span class="sc">+</span> </span>
+<span id="cb133-2"><a href="r-stats.html#cb133-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&#39;lm&#39;</span>) <span class="sc">+</span> <span class="fu">scale_color_viridis_d</span>(<span class="at">begin =</span> <span class="fl">0.3</span>, <span class="at">end =</span> <span class="dv">1</span>)</span></code></pre></div>
+<p><img src="Bio373L-Book_files/figure-html/a4_ancova_svl_plt-1.png" width="672" /></p>
+<p>As you can see, the regression lines are almost indistinguishable.</p>
+<p>What would an ANCOVA show if there are differences? Let’s see if color morph affects the Tail:Diameter relationship instead:</p>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="r-stats.html#cb134-1" aria-hidden="true" tabindex="-1"></a>ancova_dia_blue <span class="ot">=</span><span class="fu">lm</span>(Diameter <span class="sc">~</span> Tail <span class="sc">*</span> Color_morph, <span class="at">data =</span> lizards_brown_blue)</span>
+<span id="cb134-2"><a href="r-stats.html#cb134-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(ancova_dia_blue)</span>
+<span id="cb134-3"><a href="r-stats.html#cb134-3" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb134-4"><a href="r-stats.html#cb134-4" aria-hidden="true" tabindex="-1"></a><span class="do">## Call:</span></span>
+<span id="cb134-5"><a href="r-stats.html#cb134-5" aria-hidden="true" tabindex="-1"></a><span class="do">## lm(formula = Diameter ~ Tail * Color_morph, data = lizards_brown_blue)</span></span>
+<span id="cb134-6"><a href="r-stats.html#cb134-6" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb134-7"><a href="r-stats.html#cb134-7" aria-hidden="true" tabindex="-1"></a><span class="do">## Coefficients:</span></span>
+<span id="cb134-8"><a href="r-stats.html#cb134-8" aria-hidden="true" tabindex="-1"></a><span class="do">##          (Intercept)                  Tail       Color_morphBlue  </span></span>
+<span id="cb134-9"><a href="r-stats.html#cb134-9" aria-hidden="true" tabindex="-1"></a><span class="do">##             20.38163               0.06444               7.91466  </span></span>
+<span id="cb134-10"><a href="r-stats.html#cb134-10" aria-hidden="true" tabindex="-1"></a><span class="do">## Tail:Color_morphBlue  </span></span>
+<span id="cb134-11"><a href="r-stats.html#cb134-11" aria-hidden="true" tabindex="-1"></a><span class="do">##              0.01617</span></span>
+<span id="cb134-12"><a href="r-stats.html#cb134-12" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(ancova_dia_blue)</span>
+<span id="cb134-13"><a href="r-stats.html#cb134-13" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb134-14"><a href="r-stats.html#cb134-14" aria-hidden="true" tabindex="-1"></a><span class="do">## Call:</span></span>
+<span id="cb134-15"><a href="r-stats.html#cb134-15" aria-hidden="true" tabindex="-1"></a><span class="do">## lm(formula = Diameter ~ Tail * Color_morph, data = lizards_brown_blue)</span></span>
+<span id="cb134-16"><a href="r-stats.html#cb134-16" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb134-17"><a href="r-stats.html#cb134-17" aria-hidden="true" tabindex="-1"></a><span class="do">## Residuals:</span></span>
+<span id="cb134-18"><a href="r-stats.html#cb134-18" aria-hidden="true" tabindex="-1"></a><span class="do">##      Min       1Q   Median       3Q      Max </span></span>
+<span id="cb134-19"><a href="r-stats.html#cb134-19" aria-hidden="true" tabindex="-1"></a><span class="do">## -13.5127  -2.9652   0.0357   3.2047  19.6002 </span></span>
+<span id="cb134-20"><a href="r-stats.html#cb134-20" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb134-21"><a href="r-stats.html#cb134-21" aria-hidden="true" tabindex="-1"></a><span class="do">## Coefficients:</span></span>
+<span id="cb134-22"><a href="r-stats.html#cb134-22" aria-hidden="true" tabindex="-1"></a><span class="do">##                      Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
+<span id="cb134-23"><a href="r-stats.html#cb134-23" aria-hidden="true" tabindex="-1"></a><span class="do">## (Intercept)          20.38163    1.69334  12.036  &lt; 2e-16 ***</span></span>
+<span id="cb134-24"><a href="r-stats.html#cb134-24" aria-hidden="true" tabindex="-1"></a><span class="do">## Tail                  0.06444    0.02863   2.251 0.024918 *  </span></span>
+<span id="cb134-25"><a href="r-stats.html#cb134-25" aria-hidden="true" tabindex="-1"></a><span class="do">## Color_morphBlue       7.91466    2.32069   3.410 0.000709 ***</span></span>
+<span id="cb134-26"><a href="r-stats.html#cb134-26" aria-hidden="true" tabindex="-1"></a><span class="do">## Tail:Color_morphBlue  0.01617    0.03952   0.409 0.682632    </span></span>
+<span id="cb134-27"><a href="r-stats.html#cb134-27" aria-hidden="true" tabindex="-1"></a><span class="do">## ---</span></span>
+<span id="cb134-28"><a href="r-stats.html#cb134-28" aria-hidden="true" tabindex="-1"></a><span class="do">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb134-29"><a href="r-stats.html#cb134-29" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb134-30"><a href="r-stats.html#cb134-30" aria-hidden="true" tabindex="-1"></a><span class="do">## Residual standard error: 4.966 on 432 degrees of freedom</span></span>
+<span id="cb134-31"><a href="r-stats.html#cb134-31" aria-hidden="true" tabindex="-1"></a><span class="do">## Multiple R-squared:  0.4499, Adjusted R-squared:  0.4461 </span></span>
+<span id="cb134-32"><a href="r-stats.html#cb134-32" aria-hidden="true" tabindex="-1"></a><span class="do">## F-statistic: 117.8 on 3 and 432 DF,  p-value: &lt; 2.2e-16</span></span>
+<span id="cb134-33"><a href="r-stats.html#cb134-33" aria-hidden="true" tabindex="-1"></a>lizards_brown_blue <span class="sc">|&gt;</span> <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(<span class="at">x =</span> Tail, <span class="at">y =</span> Diameter, <span class="at">color =</span> Color_morph) <span class="sc">+</span> </span>
+<span id="cb134-34"><a href="r-stats.html#cb134-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&#39;lm&#39;</span>) <span class="sc">+</span> <span class="fu">scale_color_viridis_d</span>(<span class="at">begin =</span> <span class="fl">0.3</span>, <span class="at">end =</span> <span class="dv">1</span>)</span>
+<span id="cb134-35"><a href="r-stats.html#cb134-35" aria-hidden="true" tabindex="-1"></a><span class="do">## `geom_smooth()` using formula &#39;y ~ x&#39;</span></span></code></pre></div>
+<p><img src="Bio373L-Book_files/figure-html/a4_ancova_dia_blue_run-1.png" width="672" /></p>
+<p>In this case, you can see that there’s a significant main effect but no significant interaction; this results in a separation between the two regression lines on the figure.
+If you get this result, re-run the ANCOVA but replace the <code>*</code> with a <code>+</code>; this will remove the interaction effect and give you better estimate.</p>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="r-stats.html#cb135-1" aria-hidden="true" tabindex="-1"></a>ancova_dia_blue_noint <span class="ot">=</span><span class="fu">lm</span>(Diameter <span class="sc">~</span> Tail <span class="sc">+</span> Color_morph, <span class="at">data =</span> lizards_brown_blue)</span>
+<span id="cb135-2"><a href="r-stats.html#cb135-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(ancova_dia_blue_noint)</span>
+<span id="cb135-3"><a href="r-stats.html#cb135-3" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb135-4"><a href="r-stats.html#cb135-4" aria-hidden="true" tabindex="-1"></a><span class="do">## Call:</span></span>
+<span id="cb135-5"><a href="r-stats.html#cb135-5" aria-hidden="true" tabindex="-1"></a><span class="do">## lm(formula = Diameter ~ Tail + Color_morph, data = lizards_brown_blue)</span></span>
+<span id="cb135-6"><a href="r-stats.html#cb135-6" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb135-7"><a href="r-stats.html#cb135-7" aria-hidden="true" tabindex="-1"></a><span class="do">## Residuals:</span></span>
+<span id="cb135-8"><a href="r-stats.html#cb135-8" aria-hidden="true" tabindex="-1"></a><span class="do">##      Min       1Q   Median       3Q      Max </span></span>
+<span id="cb135-9"><a href="r-stats.html#cb135-9" aria-hidden="true" tabindex="-1"></a><span class="do">## -13.6433  -2.9521   0.0416   3.1976  19.4588 </span></span>
+<span id="cb135-10"><a href="r-stats.html#cb135-10" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb135-11"><a href="r-stats.html#cb135-11" aria-hidden="true" tabindex="-1"></a><span class="do">## Coefficients:</span></span>
+<span id="cb135-12"><a href="r-stats.html#cb135-12" aria-hidden="true" tabindex="-1"></a><span class="do">##                 Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
+<span id="cb135-13"><a href="r-stats.html#cb135-13" aria-hidden="true" tabindex="-1"></a><span class="do">## (Intercept)     19.88954    1.19088  16.701  &lt; 2e-16 ***</span></span>
+<span id="cb135-14"><a href="r-stats.html#cb135-14" aria-hidden="true" tabindex="-1"></a><span class="do">## Tail             0.07293    0.01972   3.699 0.000245 ***</span></span>
+<span id="cb135-15"><a href="r-stats.html#cb135-15" aria-hidden="true" tabindex="-1"></a><span class="do">## Color_morphBlue  8.84397    0.47572  18.591  &lt; 2e-16 ***</span></span>
+<span id="cb135-16"><a href="r-stats.html#cb135-16" aria-hidden="true" tabindex="-1"></a><span class="do">## ---</span></span>
+<span id="cb135-17"><a href="r-stats.html#cb135-17" aria-hidden="true" tabindex="-1"></a><span class="do">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb135-18"><a href="r-stats.html#cb135-18" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb135-19"><a href="r-stats.html#cb135-19" aria-hidden="true" tabindex="-1"></a><span class="do">## Residual standard error: 4.961 on 433 degrees of freedom</span></span>
+<span id="cb135-20"><a href="r-stats.html#cb135-20" aria-hidden="true" tabindex="-1"></a><span class="do">## Multiple R-squared:  0.4497, Adjusted R-squared:  0.4472 </span></span>
+<span id="cb135-21"><a href="r-stats.html#cb135-21" aria-hidden="true" tabindex="-1"></a><span class="do">## F-statistic: 176.9 on 2 and 433 DF,  p-value: &lt; 2.2e-16</span></span></code></pre></div>
+<p>Biologically, you can interpret this as Blue lizards have a larger perch diameter than brown across a variety of tail sizes. Specifically, blue diameter is on average average 8.84 mm wider (you get this from the main effect coefficient of the no-intercept model).</p>
+<p>When reporting this, be sure to provide the regression equation (Intercept and slope of Tail) and the main effect.</p>
+<p>But what if you have a significant interaction? Let’s look at the Brown/Green comparison:</p>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="r-stats.html#cb136-1" aria-hidden="true" tabindex="-1"></a>ancova_dia_green <span class="ot">=</span><span class="fu">lm</span>(Diameter <span class="sc">~</span> Tail <span class="sc">*</span> Color_morph, <span class="at">data =</span> lizards_brown_green)</span>
+<span id="cb136-2"><a href="r-stats.html#cb136-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(ancova_dia_green)</span>
+<span id="cb136-3"><a href="r-stats.html#cb136-3" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb136-4"><a href="r-stats.html#cb136-4" aria-hidden="true" tabindex="-1"></a><span class="do">## Call:</span></span>
+<span id="cb136-5"><a href="r-stats.html#cb136-5" aria-hidden="true" tabindex="-1"></a><span class="do">## lm(formula = Diameter ~ Tail * Color_morph, data = lizards_brown_green)</span></span>
+<span id="cb136-6"><a href="r-stats.html#cb136-6" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb136-7"><a href="r-stats.html#cb136-7" aria-hidden="true" tabindex="-1"></a><span class="do">## Coefficients:</span></span>
+<span id="cb136-8"><a href="r-stats.html#cb136-8" aria-hidden="true" tabindex="-1"></a><span class="do">##           (Intercept)                   Tail       Color_morphGreen  </span></span>
+<span id="cb136-9"><a href="r-stats.html#cb136-9" aria-hidden="true" tabindex="-1"></a><span class="do">##              20.38163                0.06444               -0.01528  </span></span>
+<span id="cb136-10"><a href="r-stats.html#cb136-10" aria-hidden="true" tabindex="-1"></a><span class="do">## Tail:Color_morphGreen  </span></span>
+<span id="cb136-11"><a href="r-stats.html#cb136-11" aria-hidden="true" tabindex="-1"></a><span class="do">##              -0.21839</span></span>
+<span id="cb136-12"><a href="r-stats.html#cb136-12" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(ancova_dia_green)</span>
+<span id="cb136-13"><a href="r-stats.html#cb136-13" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb136-14"><a href="r-stats.html#cb136-14" aria-hidden="true" tabindex="-1"></a><span class="do">## Call:</span></span>
+<span id="cb136-15"><a href="r-stats.html#cb136-15" aria-hidden="true" tabindex="-1"></a><span class="do">## lm(formula = Diameter ~ Tail * Color_morph, data = lizards_brown_green)</span></span>
+<span id="cb136-16"><a href="r-stats.html#cb136-16" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb136-17"><a href="r-stats.html#cb136-17" aria-hidden="true" tabindex="-1"></a><span class="do">## Residuals:</span></span>
+<span id="cb136-18"><a href="r-stats.html#cb136-18" aria-hidden="true" tabindex="-1"></a><span class="do">##      Min       1Q   Median       3Q      Max </span></span>
+<span id="cb136-19"><a href="r-stats.html#cb136-19" aria-hidden="true" tabindex="-1"></a><span class="do">## -10.4841  -3.2126   0.0082   2.9184  14.6412 </span></span>
+<span id="cb136-20"><a href="r-stats.html#cb136-20" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb136-21"><a href="r-stats.html#cb136-21" aria-hidden="true" tabindex="-1"></a><span class="do">## Coefficients:</span></span>
+<span id="cb136-22"><a href="r-stats.html#cb136-22" aria-hidden="true" tabindex="-1"></a><span class="do">##                       Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
+<span id="cb136-23"><a href="r-stats.html#cb136-23" aria-hidden="true" tabindex="-1"></a><span class="do">## (Intercept)           20.38163    1.58128  12.889  &lt; 2e-16 ***</span></span>
+<span id="cb136-24"><a href="r-stats.html#cb136-24" aria-hidden="true" tabindex="-1"></a><span class="do">## Tail                   0.06444    0.02674   2.410   0.0164 *  </span></span>
+<span id="cb136-25"><a href="r-stats.html#cb136-25" aria-hidden="true" tabindex="-1"></a><span class="do">## Color_morphGreen      -0.01528    2.18355  -0.007   0.9944    </span></span>
+<span id="cb136-26"><a href="r-stats.html#cb136-26" aria-hidden="true" tabindex="-1"></a><span class="do">## Tail:Color_morphGreen -0.21839    0.03695  -5.910 6.89e-09 ***</span></span>
+<span id="cb136-27"><a href="r-stats.html#cb136-27" aria-hidden="true" tabindex="-1"></a><span class="do">## ---</span></span>
+<span id="cb136-28"><a href="r-stats.html#cb136-28" aria-hidden="true" tabindex="-1"></a><span class="do">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb136-29"><a href="r-stats.html#cb136-29" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb136-30"><a href="r-stats.html#cb136-30" aria-hidden="true" tabindex="-1"></a><span class="do">## Residual standard error: 4.637 on 438 degrees of freedom</span></span>
+<span id="cb136-31"><a href="r-stats.html#cb136-31" aria-hidden="true" tabindex="-1"></a><span class="do">## Multiple R-squared:  0.6635, Adjusted R-squared:  0.6612 </span></span>
+<span id="cb136-32"><a href="r-stats.html#cb136-32" aria-hidden="true" tabindex="-1"></a><span class="do">## F-statistic: 287.8 on 3 and 438 DF,  p-value: &lt; 2.2e-16</span></span>
+<span id="cb136-33"><a href="r-stats.html#cb136-33" aria-hidden="true" tabindex="-1"></a>lizards_brown_green <span class="sc">|&gt;</span> <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(<span class="at">x =</span> Tail, <span class="at">y =</span> Diameter, <span class="at">color =</span> Color_morph) <span class="sc">+</span> </span>
+<span id="cb136-34"><a href="r-stats.html#cb136-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&#39;lm&#39;</span>) <span class="sc">+</span> <span class="fu">scale_color_viridis_d</span>(<span class="at">begin =</span> <span class="fl">0.3</span>, <span class="at">end =</span> <span class="dv">1</span>)</span>
+<span id="cb136-35"><a href="r-stats.html#cb136-35" aria-hidden="true" tabindex="-1"></a><span class="do">## `geom_smooth()` using formula &#39;y ~ x&#39;</span></span></code></pre></div>
+<p><img src="Bio373L-Book_files/figure-html/a4_ancova_dia_green_run-1.png" width="672" /></p>
+<p>In this case, we have a significant interaction, which indicates that the relationship between Diameter and Tail is different between color morphs; the graph backs this up.
+The main effect is not significantly different in this case, but that generally doesn’t matter (as it can’t be interpreted without the slope).
+To understand and report this, it’s best to think of it as a pair of separate regressions.
+The regression for Brown is determined by your Intercept and your slope (e.g., <code>Diameter = Intercept + slope * Tail</code>).
+The regression for Green adds the Green-specific coefficients to those effects: <code>Diameter = (Intercept + Color_morphGreen) + (Tail slope + Tail:Color_morphGreen) * Tail</code>.
+In this case, you’d report your regression slopes as:</p>
+<p>Brown: Diameter = 20.38 + 0.06 * Tail
+Green: Diameter = 20.37 + -0.15 * Tail</p>
+<p>You should also include the <span class="math inline">\(R^2\)</span> and the p-values for the non-intercept coefficients for both cases.</p>
+<!-- The `*` indicates we want to look at the effects of time, the treatment (control vs. experimental), and the interaction of the two (i.e., if change over time has the same rate for both treatment groups). -->
+<!-- The `summary` of the ANCOVA will include terms for all three of these (the term that is something like `time:treatmentExperimental` is the interaction). -->
+<!-- If the interaction is small and not statistically significant, that means the two treatments change over time at the same rate. -->
+<!-- In this case, the `treatmentExperimental` effect is the difference in the average `ant_activity` value between the experimental and control groups. -->
+<!-- If the interaction is significant, then you essentially have two entirely separate regressions for the two treatments. -->
+<!-- The intercept and slope for the control group are simply given by the `(Intercept)` and `time` terms. -->
+<!-- The experimental equations can be found by adding `treatmentExperimental` and `time:treatmentExperimental` to `(Intercept)` and `time`, respectively. -->
+<!-- Alternatively, you can just fit separate simple regression on time for only the data from each group and use their equations; they should be almost identical. -->
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="r-stats.html#cb137-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(lizards, <span class="fu">aes</span>(<span class="at">x =</span> SVL, <span class="at">y =</span> Diameter, <span class="at">color =</span> Color_morph)) <span class="sc">+</span> </span>
+<span id="cb137-2"><a href="r-stats.html#cb137-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb137-3"><a href="r-stats.html#cb137-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&#39;lm&#39;</span>)</span></code></pre></div>
+<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<p><img src="Bio373L-Book_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+
 </div>
 </div>
 </div>
