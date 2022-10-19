@@ -183,13 +183,14 @@ To compare leaving rates, you'll need to do an analysis of covariance (ANCOVA), 
 
 ### Effects of environmental conditions
 
-Do temperature or relative humidity affect foraging behavior?
-Do these effects change based on the presence of phorid flies?
+<!-- Do temperature or relative humidity affect foraging behavior?-->
+Does temperature affect foraging behavior?
+Does this effect change based on the presence of phorid flies?
 
 Create a scatter plot with temperature on the x-axis and number of ants leaving on the y-axis; separate control and experimental data into different panels.
-Repeat this with Relative Humidity instead of temperature.
+<!-- Repeat this with Relative Humidity instead of temperature. -->
 
-For all four of these, run a linear regression; be sure to include the regression line in the plots and report the appropriate statistics
+For all of these, run a linear regression; be sure to include the regression line in the plots and report the appropriate statistics
 
 ## Discussion
 
