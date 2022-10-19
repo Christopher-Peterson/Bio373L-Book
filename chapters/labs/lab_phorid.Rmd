@@ -163,7 +163,7 @@ This can be done with pivot tables, Excel formulas, or through R.
 This will express your data as a proportion of original "leaving" rates.
 This standardization will allow you to compare "leaving" rates between controls and experimentals across colonies.
 
-To compare leaving rates, you'll need to do an analysis of covariance (ANCOVA), which tests whether the regression between time and proportion of ants differs between the two treatments. Create a figure to accompany this.
+To compare leaving rates, you'll need to do an analysis of covariance (ANCOVA), which tests whether the regression between time and proportion of ants differs between the two treatments. Create a figure to accompany this. See section \@ref(r-stats-ancova) for more details.
 
 <!-- #### A note on running an ANCOVA -->
 
