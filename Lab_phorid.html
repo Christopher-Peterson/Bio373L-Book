@@ -632,7 +632,7 @@ Since you should have three baseline values per area, you could choose to either
 This can be done with pivot tables, Excel formulas, or through R.
 This will express your data as a proportion of original “leaving” rates.
 This standardization will allow you to compare “leaving” rates between controls and experimentals across colonies.</p>
-<p>To compare leaving rates, you’ll need to do an analysis of covariance (ANCOVA), which tests whether the regression between time and proportion of ants differs between the two treatments. Create a figure to accompany this.</p>
+<p>To compare leaving rates, you’ll need to do an analysis of covariance (ANCOVA), which tests whether the regression between time and proportion of ants differs between the two treatments. Create a figure to accompany this. See section <a href="r-stats.html#r-stats-ancova">7.3.4</a> for more details.</p>
 <!-- #### A note on running an ANCOVA -->
 <!-- An ANCOVA is essentially a regression that also allows the slope and/or intercept of the fit line to vary between levels of a categorical variable. -->
 <!-- To run one in R, you can use the `lm()` function with a formula like `ant_activity ~ time * treatment`. -->
