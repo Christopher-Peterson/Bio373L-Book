@@ -122,20 +122,28 @@ In your methods section, be sure to identify the model of HOBO logger used (MX23
 For example, "We collected the temperature of each arena every 15 seconds with HOBO MX2303 data loggers (Onset Computer Corporation)."
 
 
-## Modified protocol if phorids are not present
+## Phorid availability
 
-Due to the climate and the state of BFL's phorid fly project, we will not always be able to examine the effects of phorid flies on foraging on fire ants.
-We have devised a proxy experiment for these semesters that should disrupt ant foraging in a similar manner. You can skip this section if the phorids are available this semester.
+Due to variable weather conditions, phorids may not be abundant enough in the environment to run this experiment.
+In previous semesters, we would supplement this with phorids raised in the BFL fire ant lab; however, shifting research priorities and budgetary conditions have resulted in the phorid program's termination.
+We will instead attempt to collect wild phorids using a series of baiting stations.
+These stations aim to attract phorid flies by concentrating a large number of mostly dead fire ants in a small area.
+This is the first time we have attempted this procedure, so if it does not work we will analyze a previous semester's data for this lab.
 
-Once a phorid fly attacks a fire ant, the ant releases alarm pheromones ($\alpha$-farnesene).
-Therefore, applying alarm pheromones to an experimental arena should simulate the effects of a phorid attack.
-In the absence of the purified compound, we can stimulate pheromone production in a variety of ways; here, we will shock them with a modified cattle prod.
+<!-- ## Modified protocol if phorids are not present -->
 
-In this  experiment, we will have two hot dogs in the each arena. 
-One hot dog will be counted for ant activity as in the original design; the other will be shocked with the cattle prod to produce pheromones.
-The second hot dog will only be shocked in the treatment group; for the control, the cattle prod will be placed in the same configuration but not used.  
+<!-- Due to the climate and the state of BFL's phorid fly project, we will not always be able to examine the effects of phorid flies on foraging on fire ants. -->
+<!-- We have devised a proxy experiment for these semesters that should disrupt ant foraging in a similar manner. You can skip this section if the phorids are available this semester. -->
 
-Otherwise, this will follow the same protocol as the original experiment; the time of phorid introduction will be substituted by the time at which the treatment hotdog is shocked.
+<!-- Once a phorid fly attacks a fire ant, the ant releases alarm pheromones ($\alpha$-farnesene). -->
+<!-- Therefore, applying alarm pheromones to an experimental arena should simulate the effects of a phorid attack. -->
+<!-- In the absence of the purified compound, we can stimulate pheromone production in a variety of ways; here, we will shock them with a modified cattle prod. -->
+
+<!-- In this  experiment, we will have two hot dogs in the each arena.  -->
+<!-- One hot dog will be counted for ant activity as in the original design; the other will be shocked with the cattle prod to produce pheromones. -->
+<!-- The second hot dog will only be shocked in the treatment group; for the control, the cattle prod will be placed in the same configuration but not used.   -->
+
+<!-- Otherwise, this will follow the same protocol as the original experiment; the time of phorid introduction will be substituted by the time at which the treatment hotdog is shocked. -->
 
 
 ## Analysis
@@ -155,30 +163,23 @@ This can be done with pivot tables, Excel formulas, or through R.
 This will express your data as a proportion of original "leaving" rates.
 This standardization will allow you to compare "leaving" rates between controls and experimentals across colonies.
 
-There are a number of ways to test this statistically:
+To compare leaving rates, you'll need to do an analysis of covariance (ANCOVA), which tests whether the regression between time and proportion of ants differs between the two treatments. Create a figure to accompany this.
 
--   You can do five two-sample t-tests, comparing the proportion of ants leaving at each time point.
--   You could do an analysis of covariance (ANCOVA), which tests whether the regression between time and proportion of ants differs between the two treatments. (Details on this below).
--   You can calculate the difference between the standardized leaving rates of each paired control and experimental arena. This would essentially be the effect of phorid flies. You can then use a regression to see if this changes over time.
+<!-- #### A note on running an ANCOVA -->
 
-Create a figure comparing changes in activity over time between the groups.
-Note that your figure should match up with your analysis: the t-test tests option treat each time point as a discrete value, while the ANCOVA and regression options treat time continuously.
+<!-- An ANCOVA is essentially a regression that also allows the slope and/or intercept of the fit line to vary between levels of a categorical variable. -->
+<!-- To run one in R, you can use the `lm()` function with a formula like `ant_activity ~ time * treatment`. -->
+<!-- The `*` indicates we want to look at the effects of time, the treatment (control vs. experimental), and the interaction of the two (i.e., if change over time has the same rate for both treatment groups). -->
+<!-- The `summary` of the ANCOVA will include terms for all three of these (the term that is something like `time:treatmentExperimental` is the interaction). -->
 
-#### A note on running an ANCOVA
+<!-- If the interaction is small and not statistically significant, that means the two treatments change over time at the same rate. -->
+<!-- In this case, the `treatmentExperimental` effect is the difference in the average `ant_activity` value between the experimental and control groups. -->
+<!-- If the interaction is significant, then you essentially have two entirely separate regressions for the two treatments. -->
+<!-- The intercept and slope for the control group are simply given by the `(Intercept)` and `time` terms. -->
+<!-- The experimental equations can be found by adding `treatmentExperimental` and `time:treatmentExperimental` to `(Intercept)` and `time`, respectively. -->
+<!-- Alternatively, you can just fit separate simple regression on time for only the data from each group and use their equations; they should be almost identical. -->
 
-An ANCOVA is essentially a regression that also allows the slope and/or intercept of the fit line to vary between levels of a categorical variable.
-To run one in R, you can use the `lm()` function with a formula like `ant_activity ~ time * treatment`.
-The `*` indicates we want to look at the effects of time, the treatment (control vs. experimental), and the interaction of the two (i.e., if change over time has the same rate for both treatment groups).
-The `summary` of the ANCOVA will include terms for all three of these (the term that is something like `time:treatmentExperimental` is the interaction).
-
-If the interaction is small and not statistically significant, that means the two treatments change over time at the same rate.
-In this case, the `treatmentExperimental` effect is the difference in the average `ant_activity` value between the experimental and control groups.
-If the interaction is significant, then you essentially have two entirely separate regressions for the two treatments.
-The intercept and slope for the control group are simply given by the `(Intercept)` and `time` terms.
-The experimental equations can be found by adding `treatmentExperimental` and `time:treatmentExperimental` to `(Intercept)` and `time`, respectively.
-Alternatively, you can just fit separate simple regression on time for only the data from each group and use their equations; they should be almost identical.
-
-I have no idea how to do an ANCOVA in Excel, and I think it's generally a bad idea to try.
+<!-- I have no idea how to do an ANCOVA in Excel, and I think it's generally a bad idea to try. -->
 
 ### Effects of environmental conditions
 
