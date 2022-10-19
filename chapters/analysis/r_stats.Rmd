@@ -1,3 +1,8 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
 # Performing some useful analyses in R {#r-stats}
 
 I'm going to give some examples of how to do common analyses you'll need for this class. I won't be spending much time on the statistical assumptions or diagnostics.
@@ -348,4 +353,118 @@ You could report your results as follows (assuming that figure 1 compared the tw
 
 > Big lizards have significantly longer limbs than small lizards (d = 4.27, t = 45.7, df = 442.7, p < 0.0001; Figure 1)
 
+### Comparing two rates or relationships (ANCOVA) {#r-stats-ancova}
 
+Analysis of covariance (ANCOVA) is a statistical model that combines a linear regression with an ANOVA or t-test.
+Essentially, it is a regression that also allows the slope and/or intercept of the fit line to vary between levels of a categorical variable.
+To keep things simple, we're going to focus on ANCOVAS that only test two-level categorical variables; however, there's no inherent reason for it to require more.
+
+Let's make two versions of the `lizard` data, contrasting Brown with Blue and Brown with Green. I'm also re-defining Color_morph as a factor so that Brown is taken as the reference category (see **dummy coding** under the ANOVA section).  
+
+```{r a4_ancova_data_setup}
+lizards_brown_green = lizards |> filter(Color_morph != "Blue") |> 
+  mutate(Color_morph = factor(Color_morph, levels = c("Brown", "Green")))
+lizards_brown_blue = lizards |> filter(Color_morph != "Green") |> 
+  mutate(Color_morph = factor(Color_morph, levels = c("Brown", "Blue")))
+```
+
+Let's test to see if the relationship between body size (`SVL`) and limb length (`Limb`) differs by color morph. To run an ANCOVA, you can use the `lm()` function with a formula like `Limb ~ SVL * Color_morph`.
+```{r a4_ancova_svl, collapse=TRUE}
+ancova_limb_green = lm(Limb ~ SVL * Color_morph, data = lizards_brown_green)
+print(ancova_limb_green)
+ancova_limb_blue =lm(Limb ~ SVL * Color_morph, data = lizards_brown_blue)
+print(ancova_limb_blue)
+```
+
+This tells us that the ANCOVA has four coefficients: 
+
+  - Intercept (for the regression on Brown)
+  - `SVL`, the baseline regression slope for the reference category, Brown
+  - `Color_morphGreen` (or Blue), how the intercept differs between Brown and the other color; this is the main effect of color morph.
+  - `SVL:Color_morphGreen` (or Blue), how the slope differs between Brown and the other color; this is the SVL / Color morph interaction term.
+  
+For both data sets, both the main effect and interaction of color morph are near zero; you can test this statistically with `summary()`.
+
+```{r a4_ancova_svl_smry, collapse=TRUE}
+summary(ancova_limb_green)
+summary(ancova_limb_blue)
+```
+
+This means that the two regression lines are essentially the same.
+Let's plot one of them to see what that looks like:
+
+```{r a4_ancova_svl_plt, collapse = TRUE, warning=FALSE,message=FALSE}
+lizards_brown_green |> ggplot() + aes(x = SVL, y = Limb, color = Color_morph) + 
+  geom_point() + geom_smooth(method = 'lm') + scale_color_viridis_d(begin = 0.3, end = 1)
+
+```
+
+As you can see, the regression lines are almost indistinguishable.
+
+What would an ANCOVA show if there are differences? Let's see if color morph affects the Tail:Diameter relationship instead:
+
+```{r a4_ancova_dia_blue_run, collapse=TRUE}
+ancova_dia_blue =lm(Diameter ~ Tail * Color_morph, data = lizards_brown_blue)
+print(ancova_dia_blue)
+summary(ancova_dia_blue)
+lizards_brown_blue |> ggplot() + aes(x = Tail, y = Diameter, color = Color_morph) + 
+  geom_point() + geom_smooth(method = 'lm') + scale_color_viridis_d(begin = 0.3, end = 1)
+```
+
+
+In this case, you can see that there's a significant main effect but no significant interaction; this results in a separation between the two regression lines on the figure.
+If you get this result, re-run the ANCOVA but replace the `*` with a `+`; this will remove the interaction effect and give you better estimate.
+
+```{r a4_ancova_dia_blue_run2, collapse=TRUE}
+ancova_dia_blue_noint =lm(Diameter ~ Tail + Color_morph, data = lizards_brown_blue)
+summary(ancova_dia_blue_noint)
+```
+
+Biologically, you can interpret this as Blue lizards have a larger perch diameter than brown across a variety of tail sizes. Specifically, blue diameter is on average average `r as.numeric(round(coef(ancova_dia_blue_noint)[3], 2))` mm wider (you get this from the main effect coefficient of the no-intercept model).
+
+When reporting this, be sure to provide the regression equation (Intercept and slope of Tail) and the main effect.  
+
+But what if you have a significant interaction?  Let's look at the Brown/Green comparison:
+
+```{r a4_ancova_dia_green_run, collapse=TRUE}
+ancova_dia_green =lm(Diameter ~ Tail * Color_morph, data = lizards_brown_green)
+print(ancova_dia_green)
+summary(ancova_dia_green)
+lizards_brown_green |> ggplot() + aes(x = Tail, y = Diameter, color = Color_morph) + 
+  geom_point() + geom_smooth(method = 'lm') + scale_color_viridis_d(begin = 0.3, end = 1)
+```
+
+In this case, we have a significant interaction, which indicates that the relationship between Diameter and Tail is different between color morphs; the graph backs this up.
+The main effect is not significantly different in this case, but that generally doesn't matter (as it can't be interpreted without the slope).
+To understand and report this, it's best to think of it as a pair of separate regressions.
+The regression for Brown is determined by your Intercept and your slope (e.g., `Diameter = Intercept + slope * Tail`).
+The regression for Green adds the Green-specific coefficients to those effects: `Diameter = (Intercept + Color_morphGreen) + (Tail slope + Tail:Color_morphGreen) * Tail`.
+In this case, you'd report your regression slopes as:
+
+Brown: Diameter = `r round(coef(ancova_dia_green)[[1]], 2)` + `r round(coef(ancova_dia_green)[[2]], 2)` * Tail
+Green: Diameter = `r round(coef(ancova_dia_green)[[1]] + coef(ancova_dia_green)[[3]], 2)` + `r round(coef(ancova_dia_green)[[2]] + coef(ancova_dia_green)[[4]], 2)` * Tail
+
+You should also include the $R^2$ and the p-values for the non-intercept coefficients for both cases.
+
+
+<!-- The `*` indicates we want to look at the effects of time, the treatment (control vs. experimental), and the interaction of the two (i.e., if change over time has the same rate for both treatment groups). -->
+<!-- The `summary` of the ANCOVA will include terms for all three of these (the term that is something like `time:treatmentExperimental` is the interaction). -->
+
+<!-- If the interaction is small and not statistically significant, that means the two treatments change over time at the same rate. -->
+<!-- In this case, the `treatmentExperimental` effect is the difference in the average `ant_activity` value between the experimental and control groups. -->
+<!-- If the interaction is significant, then you essentially have two entirely separate regressions for the two treatments. -->
+<!-- The intercept and slope for the control group are simply given by the `(Intercept)` and `time` terms. -->
+<!-- The experimental equations can be found by adding `treatmentExperimental` and `time:treatmentExperimental` to `(Intercept)` and `time`, respectively. -->
+<!-- Alternatively, you can just fit separate simple regression on time for only the data from each group and use their equations; they should be almost identical. -->
+
+
+
+
+
+```{r}
+ggplot(lizards, aes(x = SVL, y = Diameter, color = Color_morph)) + 
+  geom_point() + 
+  geom_smooth(method = 'lm')
+
+
+```
