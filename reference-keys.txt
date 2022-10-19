@@ -183,10 +183,9 @@ objectives
 methods-2
 phorid-impact-on-fire-ant-foraging
 using-the-hobo-mx2303-data-logger
-modified-protocol-if-phorids-are-not-present
+phorid-availability
 analysis-2
 effect-of-phorids-on-ant-foraging
-a-note-on-running-an-ancova
 effects-of-environmental-conditions
 discussion-3
 some-questions-from-previous-semesters
