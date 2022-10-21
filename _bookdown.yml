@@ -25,6 +25,7 @@ rmd_files:
   - chapters/homework/hw_heterogeneity.Rmd
   - chapters/homework/hw_mrr.Rmd
   - chapters/homework/hw_ants.Rmd
+  - chapters/homework/hw_phorids.Rmd
   - chapters/references.Rmd
   
   
