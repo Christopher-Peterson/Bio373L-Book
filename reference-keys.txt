@@ -245,3 +245,10 @@ jaccard-similarity
 shannon-index-diversity
 species-accumulation-curves
 rank-abundance-curves
+hw-phorid
+required-reading-4
+objectives-and-whats-due-3
+getting-started-4
+the-data-6
+standardizing-ant-counts
+run-ancovas

@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>3 Figures and Tables | Bio 373L Survival Guide</title>
+  <title>18 Homework: Phorids | Bio 373L Survival Guide</title>
   <meta name="description" content="Lab Manual for Field Ecology (Bio 373L) at UT Austin." />
   <meta name="generator" content="bookdown 0.28 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="3 Figures and Tables | Bio 373L Survival Guide" />
+  <meta property="og:title" content="18 Homework: Phorids | Bio 373L Survival Guide" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Lab Manual for Field Ecology (Bio 373L) at UT Austin." />
   <meta name="github-repo" content="Christopher-Peterson/Bio373L-Book" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="3 Figures and Tables | Bio 373L Survival Guide" />
+  <meta name="twitter:title" content="18 Homework: Phorids | Bio 373L Survival Guide" />
   
   <meta name="twitter:description" content="Lab Manual for Field Ecology (Bio 373L) at UT Austin." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="style.html"/>
-<link rel="next" href="r-intro.html"/>
+<link rel="prev" href="hw-ants.html"/>
+<link rel="next" href="references-2.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -498,231 +498,105 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="figures" class="section level1 hasAnchor" number="3">
-<h1><span class="header-section-number">3</span> Figures and Tables<a href="figures.html#figures" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Good figures are one of the most important parts of a manuscript. When learning to write scientific papers, some might view figures as an afterthought. This is a mistake. The figure should tell a fairly complete story. Combined with its caption, the reader should be able to look at the figure immediately after reading the abstract and have a general sense of what’s going on.</p>
-<p>Tables are also an important part of a paper’s results, but good figures are usually easier to interpret by the reader.</p>
-<p>Note that this chapter focuses on general guidlines for figure design.
-For instructions on how to create figures in R using <code>ggplot2</code>, see Chapter @ref(r_ggplot).<br />
-The R code used to generate all of the figures in this chapter can be found <a href="https://github.com/Christopher-Peterson/Bio373L-Book/blob/master/R/figures_chapter_scripts.r">here</a>, along with some annotations.</p>
-<div id="captions" class="section level2 hasAnchor" number="3.1">
-<h2><span class="header-section-number">3.1</span> Captions<a href="figures.html#captions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Figures and tables require captions that explain what they represent. Captions should be below figures and above captions. The first “sentence” of a caption shouldn’t actually be a sentence; it’s more of a description. See the various examples in this chapter for more details.</p>
-<p>The caption should help the figure or table stand alone from everything else. If there are abbreviations or acronyms in the figure, they should be defined in the caption. If your figure is related to a statistical test, you should present the results of the test in the figure caption. If there’s a line of best fit in a scatterplot figure, this means that a linear regression was performed behind the scenes; you should report the details.</p>
-<p>Note that figures in your manuscript <strong>should not have titles</strong>. This information belongs in the caption.</p>
+<div id="hw-phorid" class="section level1 hasAnchor" number="18">
+<h1><span class="header-section-number">18</span> Homework: Phorids<a href="hw-phorid.html#hw-phorid" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="required-reading-4" class="section level2 hasAnchor" number="18.1">
+<h2><span class="header-section-number">18.1</span> Required Reading<a href="hw-phorid.html#required-reading-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This homework will prepare you to analyze the data from the <a href="#lab-phorid">Phorid lab</a>.
+You should read over that the material to properly understand the data you’ll be working with here.
+You will need to be familiar with the chapters <a href="r-intro.html#r-intro">4</a> <a href="r-ggplot.html#r-ggplot">5</a>, <a href="r-dplyr.html#r-dplyr">6</a>, and <a href="r-stats.html#r-stats-lm">7.3</a>; additionally, you should read <a href="r-stats.html#r-stats-ancova">7.3.4</a>).</p>
 </div>
-<div id="figures-1" class="section level2 hasAnchor" number="3.2">
-<h2><span class="header-section-number">3.2</span> Figures<a href="figures.html#figures-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Make sure the caption (and legend, if present) gives enough information that the reader can understand exactly what the figure/table represents without having to look at the text. DO refer to all tables/figures in the body of the text, and include them in order (i.e. the first table/figure the reader comes across should be called table 1/figure 1 and should be the first one referred to in the text). Note that in this chapter, the figures are numbered 3.1, 3.2, etc; this is appropriate for a multi-chapter book, but not for a paper/article/manuscript. Don’t use decimals.</p>
-<p>Figures should communicate your results, not just present/summarize your data. A good figure tells a story. If there is a trend or pattern, it should be designed to emphasize it.</p>
-<div id="specific-figure-guidelines" class="section level3 hasAnchor" number="3.2.1">
-<h3><span class="header-section-number">3.2.1</span> Specific Figure Guidelines<a href="figures.html#specific-figure-guidelines" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Figure design is communication, so you want to make the result/message as obvious as you can. The longer a reader has to stare at your figure before “getting it,” the more likely they are to get bored or stop caring.</p>
+<div id="objectives-and-whats-due-3" class="section level2 hasAnchor" number="18.2">
+<h2><span class="header-section-number">18.2</span> Objectives (and what’s due)<a href="hw-phorid.html#objectives-and-whats-due-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
-<li>Avoid large amounts of empty white space. For categorical data, you should remove categories that have no data unless their absence is somehow important and interesting.
+<li><p>How do phorid flies affect the foraging activity of <em>S. invicta</em>?</p>
 <ul>
-<li>For example, if you are surveying trees and a species is not observed, there’s no reason for it to be in the figure.</li>
+<li><strong>Submit:</strong> Analysis of Covariance (ANCOVA) examining how phorid presence changes ant foraging over time.</li>
+<li><strong>Submit:</strong> Figure supporting this ANCOVA.</li>
 </ul></li>
-<li>Is your figure emphasizing what it should?
+<li><p>How does temperature affect ant foraging behavior, and do phorids affect this relationship?</p>
 <ul>
-<li>If you’re contrasting two groups, are they clearly contrasted? Could re-ordering the groups improve the contrast?</li>
-<li>If you’re comparing groups of frequencies, you should order them from highest to lowest frequency.</li>
-<li>If you are trying to show a trend, is it being adequately emphasized?</li>
-<li>Please note that this doesn’t mean cheating, or changing the data.</li>
-</ul></li>
-<li>The axes and legends should be clear.
-<ul>
-<li>Often, the default axis or legend names will be the label of a specific cell or column. You can change these defaults.</li>
-</ul></li>
-<li>Consider how your figure will look to other people.
-<ul>
-<li>How will it look if printed from a black and white printer?
-<ul>
-<li>Hint: the default blue and orange colors in Excel are indistinguishable in gray scale; the same is true for the default ggplot2 palette in R.</li>
-</ul></li>
-<li><a href="https://venngage.com/blog/color-blind-friendly-palette/">How would it look</a> to someone with color blindness?
--If using R, the Viridis color scales work nicely for this.</li>
+<li><strong>Submit:</strong> ANCOVA examining how phorid presence affects ant behavior / temperature relationship.</li>
+<li><strong>Submit:</strong> Figure supporting this ANCOVA</li>
 </ul></li>
 </ul>
-<p>Please remember that you should be writing your lab reports as if the reader (i.e., me) didn’t know exactly what you did.</p>
 </div>
-<div id="be-concise-1" class="section level3 hasAnchor" number="3.2.2">
-<h3><span class="header-section-number">3.2.2</span> Be Concise<a href="figures.html#be-concise-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>If you have multiple figures that conceptually belong together (e.g., the same measurements taken in three years), you should turn them into a single multi-panel figure. Label your the panels with letters in the upper left corner; the caption should explain how the panels are different.</p>
+<div id="getting-started-4" class="section level2 hasAnchor" number="18.3">
+<h2><span class="header-section-number">18.3</span> Getting started<a href="hw-phorid.html#getting-started-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>You should download the dataset <code>phorid_data_f18.csv</code> from Canvas and put it in your <code>data</code> folder</p>
+<p>Begin your script with the following:</p>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="hw-phorid.html#cb196-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Heterogeneity Lab Analysis</span></span>
+<span id="cb196-2"><a href="hw-phorid.html#cb196-2" aria-hidden="true" tabindex="-1"></a><span class="do">#### Setup ####</span></span>
+<span id="cb196-3"><a href="hw-phorid.html#cb196-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb196-4"><a href="hw-phorid.html#cb196-4" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_classic</span>()) <span class="co"># Removes gridlines from ggplot</span></span>
+<span id="cb196-5"><a href="hw-phorid.html#cb196-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb196-6"><a href="hw-phorid.html#cb196-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Data file locations: Change these when analyzing the current dataset</span></span>
+<span id="cb196-7"><a href="hw-phorid.html#cb196-7" aria-hidden="true" tabindex="-1"></a>phorid_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/phorid_data_f18.csv&quot;</span>)</span></code></pre></div>
+<p>Save the R file as <code>R/phorid_homework.R</code>.</p>
 </div>
-</div>
-<div id="some-example-figures" class="section level2 hasAnchor" number="3.3">
-<h2><span class="header-section-number">3.3</span> Some Example Figures<a href="figures.html#some-example-figures" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="general-formatting" class="section level3 hasAnchor" number="3.3.1">
-<h3><span class="header-section-number">3.3.1</span> General Formatting<a href="figures.html#general-formatting" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Figure <a href="figures.html#fig:penguinBad">3.1</a> is poorly formatted:</p>
+<div id="the-data-6" class="section level2 hasAnchor" number="18.4">
+<h2><span class="header-section-number">18.4</span> The data<a href="hw-phorid.html#the-data-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The columns of these data frames that are relevant are:</p>
 <ul>
-<li>The colors are hard to distinguish when printed and black and white;</li>
-<li>The axis and legend text are showing the default labels instead of informative values;</li>
-<li>There is a lot of white space, partially due to a bad y axis scale;</li>
-<li>The equation is in the figure instead of the caption;</li>
-<li>The caption is vague and uninformative;</li>
-<li>There is an unnecessary title;</li>
-<li>There are grid lines;</li>
+<li><strong>Treatment:</strong> Control (no phorids) or Experimental (phorids introduced)</li>
+<li><strong>Number_Ants:</strong> Number of ants moving across the tile; measure of ant activity</li>
+<li><strong>Team:</strong> Team collecting data; when combined with Treatment, this identifies each experimental arena.</li>
+<li><strong>Temp:</strong> Temperature (Celsius).</li>
+<li><strong>Time_Step:</strong>: Time of observation, separated into baselines and observations</li>
+<li><strong>Time:</strong> Time of observation in numeric form; baseline values are negative; each increase of one is a five-minute interval.</li>
 </ul>
-
-
-<div class="figure"><span style="display:block;" id="fig:penguinBad"></span>
-<img src="Bio373L-Book_files/figure-html/penguinBad-1.png" alt="Body mass (X variable) vs flipper length (Y variable). The regression is significant (\(R^2 = 0.76\); \(p&lt;0.0001\))." width="672" />
-<p class="caption">
-Figure 3.1: Body mass (X variable) vs flipper length (Y variable). The regression is significant (<span class="math inline">\(R^2 = 0.76\)</span>; <span class="math inline">\(p&lt;0.0001\)</span>).
-</p>
 </div>
-<p>Figure <a href="figures.html#fig:penguinGood">3.2</a> contains the same data, but has been reformatted to address these issues. Note the use of units in the axis labels, the formatting of scientific species names, the positioning of the legend to minimize whitespace, and the lack of a title and gridlines. This is also an example of how to plot data with a continuous response and a combination of continuous and categorical predictors.</p>
-<div class="figure"><span style="display:block;" id="fig:penguinGood"></span>
-<img src="Bio373L-Book_files/figure-html/penguinGood-1.png" alt="Association between body mass and flipper length in three species of penguin. Flipper length increases with body mass ((Flipper Length) = 13.7 + 1.5*(Body Mass); \(R^2 = 0.76\); \(p&lt;0.0001\))." width="672" />
-<p class="caption">
-Figure 3.2: Association between body mass and flipper length in three species of penguin. Flipper length increases with body mass ((Flipper Length) = 13.7 + 1.5*(Body Mass); <span class="math inline">\(R^2 = 0.76\)</span>; <span class="math inline">\(p&lt;0.0001\)</span>).
-</p>
+<div id="standardizing-ant-counts" class="section level2 hasAnchor" number="18.5">
+<h2><span class="header-section-number">18.5</span> Standardizing ant counts<a href="hw-phorid.html#standardizing-ant-counts" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Since each bait attracts ants to a different degree, we want to standardize the ant counts to account for this. One way to do so is by calculating the mean number of ants at each for each experimental arena during the baseline period, then dividing the number of ants at other periods by this number.</p>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="hw-phorid.html#cb197-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb197-2"><a href="hw-phorid.html#cb197-2" aria-hidden="true" tabindex="-1"></a>baseline_means <span class="ot">=</span> phorid_data <span class="sc">|&gt;</span> </span>
+<span id="cb197-3"><a href="hw-phorid.html#cb197-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Only include rows with &quot;Baseline&quot; in timestep</span></span>
+<span id="cb197-4"><a href="hw-phorid.html#cb197-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(Time_Step, <span class="st">&quot;Baseline&quot;</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb197-5"><a href="hw-phorid.html#cb197-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># group by arena</span></span>
+<span id="cb197-6"><a href="hw-phorid.html#cb197-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Treatment, Team) <span class="sc">|&gt;</span> </span>
+<span id="cb197-7"><a href="hw-phorid.html#cb197-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calculate means</span></span>
+<span id="cb197-8"><a href="hw-phorid.html#cb197-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">baseline_mean =</span> <span class="fu">mean</span>(Number_Ants))</span>
+<span id="cb197-9"><a href="hw-phorid.html#cb197-9" aria-hidden="true" tabindex="-1"></a>baseline_means</span>
+<span id="cb197-10"><a href="hw-phorid.html#cb197-10" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 8 × 3</span></span>
+<span id="cb197-11"><a href="hw-phorid.html#cb197-11" aria-hidden="true" tabindex="-1"></a><span class="do">## # Groups:   Treatment [2]</span></span>
+<span id="cb197-12"><a href="hw-phorid.html#cb197-12" aria-hidden="true" tabindex="-1"></a><span class="do">##   Treatment    Team  baseline_mean</span></span>
+<span id="cb197-13"><a href="hw-phorid.html#cb197-13" aria-hidden="true" tabindex="-1"></a><span class="do">##   &lt;chr&gt;        &lt;chr&gt;         &lt;dbl&gt;</span></span>
+<span id="cb197-14"><a href="hw-phorid.html#cb197-14" aria-hidden="true" tabindex="-1"></a><span class="do">## 1 Control      A              33.3</span></span>
+<span id="cb197-15"><a href="hw-phorid.html#cb197-15" aria-hidden="true" tabindex="-1"></a><span class="do">## 2 Control      B              28.3</span></span>
+<span id="cb197-16"><a href="hw-phorid.html#cb197-16" aria-hidden="true" tabindex="-1"></a><span class="do">## 3 Control      C             104. </span></span>
+<span id="cb197-17"><a href="hw-phorid.html#cb197-17" aria-hidden="true" tabindex="-1"></a><span class="do">## 4 Control      D              93  </span></span>
+<span id="cb197-18"><a href="hw-phorid.html#cb197-18" aria-hidden="true" tabindex="-1"></a><span class="do">## 5 Experimental A              25  </span></span>
+<span id="cb197-19"><a href="hw-phorid.html#cb197-19" aria-hidden="true" tabindex="-1"></a><span class="do">## 6 Experimental B              61.3</span></span>
+<span id="cb197-20"><a href="hw-phorid.html#cb197-20" aria-hidden="true" tabindex="-1"></a><span class="do">## 7 Experimental C             164  </span></span>
+<span id="cb197-21"><a href="hw-phorid.html#cb197-21" aria-hidden="true" tabindex="-1"></a><span class="do">## 8 Experimental D              86</span></span></code></pre></div>
+<p>Now, we want to combine this mean with the observation period data. We’ll use a <code>join</code> function for this, which is a useful way to combine datasets by value (instead of by row or column). We’ll also do the standardization and change the treatment column to be more descriptive.</p>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="hw-phorid.html#cb198-1" aria-hidden="true" tabindex="-1"></a>standardized_data <span class="ot">=</span> phorid_data <span class="sc">|&gt;</span> </span>
+<span id="cb198-2"><a href="hw-phorid.html#cb198-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Time <span class="sc">&gt;=</span> <span class="dv">0</span>) <span class="sc">|&gt;</span> <span class="co"># Let&#39;s remove the first two baselines</span></span>
+<span id="cb198-3"><a href="hw-phorid.html#cb198-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Combine w/ baseline_means, matching up the Treatment &amp; Team columns</span></span>
+<span id="cb198-4"><a href="hw-phorid.html#cb198-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(baseline_means, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;Treatment&quot;</span>, <span class="st">&quot;Team&quot;</span>)) <span class="sc">|&gt;</span>  <span class="co"># This adds the baseline_mean column</span></span>
+<span id="cb198-5"><a href="hw-phorid.html#cb198-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Standardize the data</span></span>
+<span id="cb198-6"><a href="hw-phorid.html#cb198-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Relative_ant_activity =</span> Number_Ants <span class="sc">/</span> baseline_mean,</span>
+<span id="cb198-7"><a href="hw-phorid.html#cb198-7" aria-hidden="true" tabindex="-1"></a>         <span class="co"># Re-code the Treatment column to make it more self-explanatory in the figure legend</span></span>
+<span id="cb198-8"><a href="hw-phorid.html#cb198-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">Treatment =</span> <span class="fu">recode</span>(Treatment, <span class="at">Control =</span> <span class="st">&quot;Phorids Absent&quot;</span>, <span class="at">Experimental =</span> <span class="st">&quot;Phorids Present&quot;</span>))</span></code></pre></div>
 </div>
-<p>Figure <a href="figures.html#fig:penguinPanel">3.3</a> is an example of a multi-panel figure; in the text, you should refer to parts of it as Figure <a href="figures.html#fig:penguinPanel">3.3</a>A, <a href="figures.html#fig:penguinPanel">3.3</a>B, etc.</p>
-
-<div class="figure"><span style="display:block;" id="fig:penguinPanel"></span>
-<img src="Bio373L-Book_files/figure-html/penguinPanel-1.png" alt="Association between bill length and bill depth for three species of penguins. The association is significant and different among species ((Bill Depth) = 10.6 + 0.2*(Bill Length) for Adelie, 5.5 + 0.2*(Bill Length) for Gentoo, and 8.7 + 0.2*(Bill Length) for Chinstrap; \(R^2 = 0.77\); \(p_{\text{species}} &lt; 0.0001\); \(p_{\text{length}} &lt; 0.0001\);)" width="672" />
-<p class="caption">
-Figure 3.3: Association between bill length and bill depth for three species of penguins. The association is significant and different among species ((Bill Depth) = 10.6 + 0.2*(Bill Length) for Adelie, 5.5 + 0.2*(Bill Length) for Gentoo, and 8.7 + 0.2*(Bill Length) for Chinstrap; <span class="math inline">\(R^2 = 0.77\)</span>; <span class="math inline">\(p_{\text{species}} &lt; 0.0001\)</span>; <span class="math inline">\(p_{\text{length}} &lt; 0.0001\)</span>;)
-</p>
-</div>
-</div>
-<div id="continuous-response-categorical-predictors" class="section level3 hasAnchor" number="3.3.2">
-<h3><span class="header-section-number">3.3.2</span> Continuous response, categorical predictors<a href="figures.html#continuous-response-categorical-predictors" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>There are a number of options for representing continuous data grouped into multiple categories. You should avoid “dynamite” plots (Figure <a href="figures.html#fig:dynamite">3.4</a>), which use a bar with error lines to represent a mean and standard error; these figures use a lot of space to provide very little information. A better option is to use box plots (Figure <a href="figures.html#fig:boxplot">3.5</a>), which show the median, quartiles, range, and outliers of each group. Equivalently, you could use a group of histograms (Figure <a href="figures.html#fig:histoplot">3.6</a>). A particularly effective way to visualize this type of dataset shows the distribution of the data and the summary statistics (Figure <a href="figures.html#fig:violin">3.7</a>).</p>
-
-
-
-<div class="figure"><span style="display:block;" id="fig:dynamite"></span>
-<img src="Bio373L-Book_files/figure-html/dynamite-1.png" alt="Mean body mass for three species of penguin, with standard errors. Body mass differs significantly among species \((p &lt; 0.0001)\)." width="672" />
-<p class="caption">
-Figure 3.4: Mean body mass for three species of penguin, with standard errors. Body mass differs significantly among species <span class="math inline">\((p &lt; 0.0001)\)</span>.
-</p>
-</div>
-<div class="figure"><span style="display:block;" id="fig:boxplot"></span>
-<img src="Bio373L-Book_files/figure-html/boxplot-1.png" alt="Distribution of body mass for three species of penguin. Body mass differs significantly among species \((p &lt; 0.0001)\)." width="672" />
-<p class="caption">
-Figure 3.5: Distribution of body mass for three species of penguin. Body mass differs significantly among species <span class="math inline">\((p &lt; 0.0001)\)</span>.
-</p>
-</div>
-<div class="figure"><span style="display:block;" id="fig:histoplot"></span>
-<img src="Bio373L-Book_files/figure-html/histoplot-1.png" alt="Distribution of body mass for three species of penguin. Body mass differs significantly among species \((p &lt; 0.0001)\)." width="672" />
-<p class="caption">
-Figure 3.6: Distribution of body mass for three species of penguin. Body mass differs significantly among species <span class="math inline">\((p &lt; 0.0001)\)</span>.
-</p>
-</div>
-<div class="figure"><span style="display:block;" id="fig:violin"></span>
-<img src="Bio373L-Book_files/figure-html/violin-1.png" alt="Distribution of body mass for three species of penguin, with mean and standard errors in red. Body mass differs significantly among species \((p &lt; 0.0001)\)." width="672" />
-<p class="caption">
-Figure 3.7: Distribution of body mass for three species of penguin, with mean and standard errors in red. Body mass differs significantly among species <span class="math inline">\((p &lt; 0.0001)\)</span>.
-</p>
-</div>
-</div>
-<div id="categorical-count-or-frequency-responses" class="section level3 hasAnchor" number="3.3.3">
-<h3><span class="header-section-number">3.3.3</span> Categorical, count, or frequency responses<a href="figures.html#categorical-count-or-frequency-responses" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>These sorts of data usually involve examining how counts or frequencies differ among groups; they’re often associated with <span class="math inline">\(\chi^2\)</span> tests. Generally, it’s best to represent these sorts of data with bar graphs (avoid pie charts). When making a bar graph, it’s a good idea to arrange your data to emphasize any trends. The species in Figure <a href="figures.html#fig:anoleBad">3.8</a> are organized alphabetically, which obscures any trend. A better option is to organize by decreasing frequency of either total counts (like in Figure <a href="figures.html#fig:anoleCountStack">3.9</a>) or of one of the groups (Figure <a href="figures.html#fig:anoleCountDodge">3.10</a>). These make it easier to detect patterns.</p>
-
-<div class="figure"><span style="display:block;" id="fig:anoleBad"></span>
-<img src="Bio373L-Book_files/figure-html/anoleBad-1.png" alt="Number of Anolis captured from canopy and trunk perches." width="672" />
-<p class="caption">
-Figure 3.8: Number of <em>Anolis</em> captured from canopy and trunk perches.
-</p>
-</div>
-<div class="figure"><span style="display:block;" id="fig:anoleCountStack"></span>
-<img src="Bio373L-Book_files/figure-html/anoleCountStack-1.png" alt="Number of Anolis captured from canopy and trunk perches." width="672" />
-<p class="caption">
-Figure 3.9: Number of <em>Anolis</em> captured from canopy and trunk perches.
-</p>
-</div>
-<div class="figure"><span style="display:block;" id="fig:anoleCountDodge"></span>
-<img src="Bio373L-Book_files/figure-html/anoleCountDodge-1.png" alt="Number of Anolis captured from canopy and trunk perches." width="672" />
-<p class="caption">
-Figure 3.10: Number of <em>Anolis</em> captured from canopy and trunk perches.
-</p>
-</div>
-<p>An important consideration is whether to represent your data with counts or proportions (AKA frequencies – vary from 0 to 1). There are pros and cons to both approaches, but frequencies are usually better if the number of observations differs among your groups (compare Figure <a href="figures.html#fig:anoleFreqByPerch">3.11</a> with Figure <a href="figures.html#fig:anoleCountDodge">3.10</a>). Be careful when calculating frequencies, because you may inadvertently end up making a graph that isn’t answering the question you’re trying to ask. For example, Figure <a href="figures.html#fig:anoleFreqByPerch">3.11</a> shows how anole frequencies differ between perch types, but Figure <a href="figures.html#fig:anoleFreqBySpp">3.12</a> shows the frequency at which each species occupies the two perches.</p>
-
-<div class="figure"><span style="display:block;" id="fig:anoleFreqByPerch"></span>
-<img src="Bio373L-Book_files/figure-html/anoleFreqByPerch-1.png" alt="Frequency of Anolis species captured from canopy and trunk perches." width="672" />
-<p class="caption">
-Figure 3.11: Frequency of <em>Anolis</em> species captured from canopy and trunk perches.
-</p>
-</div>
-
-<div class="figure"><span style="display:block;" id="fig:anoleFreqBySpp"></span>
-<img src="Bio373L-Book_files/figure-html/anoleFreqBySpp-1.png" alt="Perch frequency for 9 species of Anolis." width="672" />
-<p class="caption">
-Figure 3.12: Perch frequency for 9 species of <em>Anolis</em>.
-</p>
-</div>
-<p>If there is some aspect of your data that you’d like to really emphasize, it can help to get more creative with your figures. For example, the most visually striking parts of Figure <a href="figures.html#fig:anoleBarFreqDiff">3.13</a> are the colored sections of the bars, which correspond to the direction and magnitude of the difference between perches for each species. Do note that making more complicated figures may require extra explanation in the caption.</p>
-
-<div class="figure"><span style="display:block;" id="fig:anoleBarFreqDiff"></span>
-<img src="Bio373L-Book_files/figure-html/anoleBarFreqDiff-1.png" alt="Number of Anolis found at each perch position. The white bar indicates the count at the less frequent perch, the total height is the count at the more frequent perch, color indicates which perch the species was more common at, and the size of the colored regions indicates the difference between perches." width="672" />
-<p class="caption">
-Figure 3.13: Number of <em>Anolis</em> found at each perch position. The white bar indicates the count at the less frequent perch, the total height is the count at the more frequent perch, color indicates which perch the species was more common at, and the size of the colored regions indicates the difference between perches.
-</p>
-</div>
-</div>
-</div>
-<div id="tables" class="section level2 hasAnchor" number="3.4">
-<h2><span class="header-section-number">3.4</span> Tables<a href="figures.html#tables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Tables are an effective addition to a manuscript when you have a lot of data in the text and want to present it to the reader in an organized fashion. They are particularly helpful when you have a lot of different kinds of data that would be hard to plot together. For example, see Table <a href="figures.html#tab:table1">3.1</a>.</p>
-<p>Tables are best for highly structured data. If there isn’t much data to present, the data can usually just be presented in the text of the results. If there’s a lot of data, it is worth considering if a figure would be better.</p>
-<table>
-<caption><span id="tab:table1">Table 3.1: </span>Standard length of three populations of rainbow trout (<em>Oncorhynchus mykiss</em>) in Southern Appalachian streams. Group A was collected from the New River, group B from the Watauga River and group C from Winkler Creek.</caption>
-<thead>
-<tr class="header">
-<th align="left">Group</th>
-<th align="right">N</th>
-<th align="right">Mean</th>
-<th align="right">Std. Dev.</th>
-<th align="right">Min.</th>
-<th align="right">Max.</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">A</td>
-<td align="right">10</td>
-<td align="right">35.33</td>
-<td align="right">3.53</td>
-<td align="right">30.74</td>
-<td align="right">37.02</td>
-</tr>
-<tr class="even">
-<td align="left">B</td>
-<td align="right">15</td>
-<td align="right">42.61</td>
-<td align="right">4.62</td>
-<td align="right">36.36</td>
-<td align="right">49.17</td>
-</tr>
-<tr class="odd">
-<td align="left">C</td>
-<td align="right">12</td>
-<td align="right">22.00</td>
-<td align="right">2.97</td>
-<td align="right">17.99</td>
-<td align="right">26.38</td>
-</tr>
-</tbody>
-</table>
+<div id="run-ancovas" class="section level2 hasAnchor" number="18.6">
+<h2><span class="header-section-number">18.6</span> Run ANCOVAS<a href="hw-phorid.html#run-ancovas" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>You’ll be running two ANCOVAs on these data;
+For the first, you’ll be testing the effects of phorids on the change in relative ant activity over time. For the second, you’ll be testing how phorids and relative temperature affect the number of ants.
+Follow the guide in the Section <a href="r-stats.html#r-stats-ancova">7.3.4</a> on ANCOVAs.</p>
+<p>For each ANCOVA, include a figure (example below), the regression line/lines (depending on whether there is a significant interaction), the <span class="math inline">\(R^2\)</span>, and the p-values of the main and interaction coefficients. You should also include biological interpretations.</p>
+<p><img src="Bio373L-Book_files/figure-html/hw-phor-plt-1.png" width="672" /></p>
 
 </div>
 </div>
-
-
-
             </section>
 
           </div>
         </div>
       </div>
-<a href="style.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="r-intro.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="hw-ants.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references-2.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -753,7 +627,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/Christopher-Peterson/Bio373L-Book/edit/master/chapters/writing/wr_figures.Rmd",
+"link": "https://github.com/Christopher-Peterson/Bio373L-Book/edit/master/chapters/homework/hw_phorids.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -761,7 +635,7 @@ gitbook.start({
 "text": null
 },
 "view": {
-"link": "https://github.com/Christopher-Peterson/Bio373L-Book/blob/master/chapters/writing/wr_figures.Rmd",
+"link": "https://github.com/Christopher-Peterson/Bio373L-Book/blob/master/chapters/homework/hw_phorids.Rmd",
 "text": null
 },
 "download": null,
